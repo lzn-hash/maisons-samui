@@ -241,11 +241,23 @@
   /* ===== INTRO ===== */
   .intro {
     padding: 7rem 3rem;
-    background: var(--sand-light);
+    background: var(--jungle-deep);
+    color: var(--white);
     position: relative;
+    overflow: hidden;
+  }
+
+  .intro::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 70% 30%, rgba(168, 136, 82, 0.12), transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(184, 98, 63, 0.08), transparent 50%);
   }
 
   .intro-inner {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
@@ -259,7 +271,7 @@
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1;
     font-weight: 400;
-    color: var(--ink);
+    color: var(--white);
     text-transform: none;
     letter-spacing: normal;
     position: sticky;
@@ -268,7 +280,7 @@
   .intro-label em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    color: var(--terracotta);
+    color: var(--gold);
   }
 
   .intro-text {
@@ -276,26 +288,28 @@
     font-size: clamp(1.5rem, 2.8vw, 2.4rem);
     line-height: 1.35;
     font-weight: 300;
-    color: var(--ink);
+    color: var(--sand);
   }
   .intro-text em {
     font-style: italic;
-    color: var(--terracotta);
+    color: var(--gold);
   }
   .intro-text p + p {
     margin-top: 2rem;
     font-size: 1rem;
     font-family: 'Inter', sans-serif;
-    color: var(--ink-soft);
+    color: var(--sand);
     max-width: 560px;
     line-height: 1.8;
+    opacity: 0.85;
   }
   .intro-text p + p em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 500;
     font-size: 1.4rem;
-    color: var(--terracotta);
+    color: var(--gold);
+    opacity: 1;
   }
 
   /* ===== COLLECTIONS ===== */

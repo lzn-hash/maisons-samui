@@ -42,19 +42,13 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 1.5rem 3rem;
+    padding: 1rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: all 0.4s ease;
-    mix-blend-mode: difference;
-  }
-
-  nav.scrolled {
-    mix-blend-mode: normal;
     background: rgba(250, 247, 240, 0.92);
     backdrop-filter: blur(12px);
-    padding: 1rem 3rem;
     border-bottom: 1px solid rgba(26, 30, 26, 0.08);
   }
 
@@ -62,11 +56,9 @@
     font-family: 'Italiana', serif;
     font-size: 1.4rem;
     letter-spacing: 0.15em;
-    color: var(--white);
+    color: var(--ink);
     text-transform: uppercase;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
   }
-  nav.scrolled .logo { color: var(--ink); text-shadow: none; }
 
   .nav-links {
     display: flex;
@@ -74,16 +66,14 @@
     list-style: none;
   }
   .nav-links a {
-    color: var(--white);
+    color: var(--ink);
     text-decoration: none;
     font-size: 0.78rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 400;
     transition: opacity 0.3s;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
   }
-  nav.scrolled .nav-links a { color: var(--ink); text-shadow: none; font-weight: 400; }
   .nav-links a:hover { opacity: 0.6; }
 
   .nav-cta {
@@ -97,9 +87,7 @@
     text-transform: uppercase;
     transition: all 0.3s;
   }
-  nav.scrolled .nav-cta { background: var(--gold); border-color: var(--gold); color: var(--white); }
   .nav-cta:hover { background: #8e7043; border-color: #8e7043; color: var(--white); }
-  nav.scrolled .nav-cta:hover { background: #8e7043; border-color: #8e7043; color: var(--white); }
 
   /* ===== HERO ===== */
   .hero {
@@ -806,8 +794,7 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
-    nav { padding: 1.2rem 1.5rem; }
-    nav.scrolled { padding: 1rem 1.5rem; }
+    nav { padding: 0.9rem 1.5rem; }
     .nav-links { display: none; }
 
     .hero { padding: 6rem 1.5rem 3rem; }
@@ -1049,13 +1036,6 @@
 </footer>
 
 <script>
-  // Nav scroll effect
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  });
-
   // Reveal on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

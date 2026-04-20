@@ -777,21 +777,33 @@
   }
 
   /* Règles spécifiques pour le SVG du plan dans la lightbox */
-  #plan-lightbox .lightbox-image-wrap {
-    width: 90vw;
-    height: 85vh;
-    max-width: 90vw;
-    max-height: 85vh;
+  #plan-lightbox {
+    overflow: auto;
+    padding: 2rem;
   }
-  #plan-lightbox-image {
-    width: 100%;
-    height: 100%;
+  #plan-lightbox .lightbox-image-wrap {
+    width: auto;
+    height: auto;
     max-width: none;
     max-height: none;
-    object-fit: contain;
+    margin: auto;
+    min-width: min-content;
+    min-height: min-content;
+  }
+  #plan-lightbox-image {
+    width: 1200px;
+    height: 800px;
+    max-width: none;
+    max-height: none;
+    object-fit: none;
     background: var(--sand-light);
-    padding: 2rem;
-    box-sizing: border-box;
+    display: block;
+  }
+  /* Les contrôles restent fixes pendant le scroll dans la lightbox plan */
+  #plan-lightbox .lightbox-close,
+  #plan-lightbox .lightbox-nav,
+  #plan-lightbox .lightbox-counter {
+    position: fixed;
   }
 
   @keyframes lightboxImageFade {

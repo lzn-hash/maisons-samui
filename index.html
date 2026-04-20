@@ -64,8 +64,9 @@
     letter-spacing: 0.15em;
     color: var(--white);
     text-transform: uppercase;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
   }
-  nav.scrolled .logo { color: var(--ink); }
+  nav.scrolled .logo { color: var(--ink); text-shadow: none; }
 
   .nav-links {
     display: flex;
@@ -78,15 +79,17 @@
     font-size: 0.78rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 500;
     transition: opacity 0.3s;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
   }
-  nav.scrolled .nav-links a { color: var(--ink); }
+  nav.scrolled .nav-links a { color: var(--ink); text-shadow: none; font-weight: 400; }
   .nav-links a:hover { opacity: 0.6; }
 
   .nav-cta {
     padding: 0.7rem 1.5rem;
-    border: 1px solid var(--white);
+    background: var(--terracotta);
+    border: 1px solid var(--terracotta);
     color: var(--white);
     text-decoration: none;
     font-size: 0.75rem;
@@ -94,9 +97,9 @@
     text-transform: uppercase;
     transition: all 0.3s;
   }
-  nav.scrolled .nav-cta { border-color: var(--ink); color: var(--ink); }
-  .nav-cta:hover { background: var(--white); color: var(--ink); }
-  nav.scrolled .nav-cta:hover { background: var(--ink); color: var(--white); }
+  nav.scrolled .nav-cta { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
+  .nav-cta:hover { background: #9a5234; border-color: #9a5234; color: var(--white); }
+  nav.scrolled .nav-cta:hover { background: #9a5234; border-color: #9a5234; color: var(--white); }
 
   /* ===== HERO ===== */
   .hero {
@@ -269,15 +272,6 @@
     position: sticky;
     top: 7rem;
   }
-  .intro-label::before {
-    content: '01';
-    display: block;
-    font-family: 'Italiana', serif;
-    font-size: 3rem;
-    color: var(--jungle);
-    margin-bottom: 1rem;
-    letter-spacing: 0;
-  }
 
   .intro-text {
     font-family: 'Cormorant Garamond', serif;
@@ -297,6 +291,13 @@
     color: var(--ink-soft);
     max-width: 560px;
     line-height: 1.8;
+  }
+  .intro-text p + p em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--terracotta);
   }
 
   /* ===== COLLECTIONS ===== */
@@ -858,7 +859,7 @@
     </div>
     <div class="hero-meta">
       <span class="label">Saison 2026</span>
-      <span class="value">Douze villas<br>soigneusement<br>sélectionnées</span>
+      <span class="value">Quatre villas<br>soigneusement<br>sélectionnées</span>
     </div>
   </div>
   <div class="scroll-hint">Découvrir</div>
@@ -870,7 +871,7 @@
     <div class="intro-label">L'art de vivre<br>tropical</div>
     <div class="intro-text">
       <p>Des villas pensées comme des <em>refuges</em> — entre jungle et océan, tradition thaïlandaise et architecture contemporaine.</p>
-      <p>Maisons Samui accompagne une clientèle exigeante dans l'acquisition de propriétés rares sur l'île de Koh Samui. Chaque bien de notre collection est visité, vérifié et présenté avec la rigueur qu'il mérite. Nous travaillons en direct avec les propriétaires et les architectes locaux, pour offrir un regard honnête sur le marché.</p>
+      <p>Maisons Samui accompagne une clientèle exigeante dans l'acquisition de propriétés rares sur l'île de Koh Samui. Chaque bien de notre collection est visité, vérifié et présenté avec la rigueur qu'il mérite. <em>Nous construisons directement nos villas</em> en collaboration avec des architectes et constructeurs locaux.</p>
     </div>
   </div>
 </section>

@@ -76,37 +76,6 @@
   }
   .nav-links a:hover { opacity: 0.6; }
 
-  .lang-switcher {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-right: 1.2rem;
-  }
-  .lang-switcher a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    font-size: 1.1rem;
-    line-height: 1;
-    opacity: 0.55;
-    transition: all 0.3s;
-    text-decoration: none;
-    filter: grayscale(0.4);
-  }
-  .lang-switcher a:hover {
-    opacity: 1;
-    filter: grayscale(0);
-    transform: scale(1.1);
-  }
-  .lang-switcher a.active {
-    opacity: 1;
-    filter: grayscale(0);
-    box-shadow: 0 0 0 1.5px var(--gold);
-  }
-
   .nav-cta {
     padding: 0.7rem 1.5rem;
     background: var(--gold);
@@ -885,17 +854,13 @@
 <body>
 
 <nav id="nav">
-  <a href="index-fr.html" class="logo">Maisons Samui</a>
+  <a href="index.html" class="logo">Maisons Samui</a>
   <ul class="nav-links">
     <li><a href="#collection">Les Villas</a></li>
     <li><a href="#featured">Histoire</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="lang-switcher">
-    <a href="index.html" data-lang="en" title="English">🇬🇧</a>
-    <a href="index-fr.html" class="active" data-lang="fr" title="Français">🇫🇷</a>
-  </div>
   <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
 </nav>
 
@@ -924,7 +889,7 @@
 
   <div class="villa-grid">
 
-    <a href="villa-ananta-fr.html" class="villa-card">
+    <a href="villa-ananta.html" class="villa-card">
       <div class="villa-image">
         <img src="photos/ananta/ananta-main.jpeg" alt="Villa Ananta" />
         <span class="tag">Vue mer</span>
@@ -945,7 +910,7 @@
       </div>
     </a>
 
-    <a href="villa-baansawan-fr.html" class="villa-card">
+    <a href="villa-baansawan.html" class="villa-card">
       <div class="villa-image">
         <img src="photos/baansawan/baansawan-main.jpeg" alt="Baan Sawan" />
         <span class="tag">Front de mer</span>
@@ -966,7 +931,7 @@
       </div>
     </a>
 
-    <a href="villa-suriya-fr.html" class="villa-card">
+    <a href="villa-suriya.html" class="villa-card">
       <div class="villa-image">
         <img src="photos/suriya/suriya-main.jpeg" alt="Villa Suriya" />
         <span class="tag">Colline</span>
@@ -987,7 +952,7 @@
       </div>
     </a>
 
-    <a href="villa-malee-fr.html" class="villa-card">
+    <a href="villa-malee.html" class="villa-card">
       <div class="villa-image">
         <img src="photos/malee/malee-main.jpeg" alt="Villa Malee" />
         <span class="tag">Jungle privée</span>
@@ -1080,16 +1045,6 @@
     <div>Koh Samui, Thaïlande</div>
   </div>
 </footer>
-
-<script>
-  // ========== GESTION DE LA LANGUE ==========
-  (function() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const isFrenchPage = currentPage.includes('-fr.html');
-    const currentLang = isFrenchPage ? 'fr' : 'en';
-    localStorage.setItem('preferredLang', currentLang);
-  })();
-</script>
 
 <script>
   // Fallback automatique entre .jpeg et .jpg pour toutes les images

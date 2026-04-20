@@ -459,18 +459,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 400px;
+    min-height: 240px;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .plan-visual:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(26, 30, 26, 0.1);
   }
   .plan-visual img {
     width: 100%;
     height: auto;
     display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 
   .plan-level {
-    margin-bottom: 3rem;
-  }
-  .plan-level:last-child {
     margin-bottom: 0;
   }
   .plan-level-title {
@@ -884,6 +894,8 @@
 
     .features-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 
+    .plans-grid { grid-template-columns: 1fr; gap: 2rem; }
+
     .location-inner { grid-template-columns: 1fr; gap: 3rem; }
 
     .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -998,17 +1010,19 @@
       <h2>Les <em>plans</em> de la villa</h2>
     </div>
 
-    <div class="plan-level">
-      <div class="plan-level-title">Rez-de-chaussée</div>
-      <div class="plan-visual">
-        <img src="photos/ananta/ananta-plan-floor-01.svg" alt="Plan du rez-de-chaussée - Villa Ananta" />
+    <div class="plans-grid">
+      <div class="plan-level">
+        <div class="plan-level-title">Rez-de-chaussée</div>
+        <div class="plan-visual" data-plan-index="0">
+          <img src="photos/ananta/ananta-plan-floor-01.svg" alt="Plan du rez-de-chaussée - Villa Ananta" />
+        </div>
       </div>
-    </div>
 
-    <div class="plan-level">
-      <div class="plan-level-title">Étage principal</div>
-      <div class="plan-visual">
-        <img src="photos/ananta/ananta-plan-floor-02.svg" alt="Plan de l'étage - Villa Ananta" />
+      <div class="plan-level">
+        <div class="plan-level-title">Étage principal</div>
+        <div class="plan-visual" data-plan-index="1">
+          <img src="photos/ananta/ananta-plan-floor-02.svg" alt="Plan de l'étage - Villa Ananta" />
+        </div>
       </div>
     </div>
   </div>
@@ -1134,6 +1148,17 @@
   <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">6</span></div>
 </div>
 
+<!-- LIGHTBOX PLANS -->
+<div class="lightbox" id="plan-lightbox" onclick="closePlanLightbox(event)">
+  <button class="lightbox-close" onclick="closePlanLightbox(event)" aria-label="Fermer">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navigatePlanLightbox(event, -1)" aria-label="Plan précédent">‹</button>
+  <div class="lightbox-image-wrap" onclick="event.stopPropagation()">
+    <img class="lightbox-image" id="plan-lightbox-image" src="" alt="" />
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="navigatePlanLightbox(event, 1)" aria-label="Plan suivant">›</button>
+  <div class="lightbox-counter"><span id="plan-lightbox-label">Rez-de-chaussée</span> · <span id="plan-lightbox-current">1</span> / <span id="plan-lightbox-total">2</span></div>
+</div>
+
 <script>
   // Fallback automatique entre .jpg et .jpeg pour toutes les images (sauf SVG)
   function setupImageFallback(img) {
@@ -1202,12 +1227,66 @@
     });
   });
 
-  // Navigation clavier
+  // Navigation clavier (galerie photos)
   document.addEventListener('keydown', (e) => {
+    if (planLightbox.classList.contains('active')) return; // priorité à la lightbox plans si ouverte
     if (!lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox({ target: lightbox });
     if (e.key === 'ArrowLeft') navigateLightbox(e, -1);
     if (e.key === 'ArrowRight') navigateLightbox(e, 1);
+  });
+
+  // ========== LIGHTBOX PLANS ==========
+  const plans = [
+    { src: 'photos/ananta/ananta-plan-floor-01.svg', label: 'Rez-de-chaussée' },
+    { src: 'photos/ananta/ananta-plan-floor-02.svg', label: 'Étage principal' }
+  ];
+
+  let planCurrentIndex = 0;
+  const planLightbox = document.getElementById('plan-lightbox');
+  const planLightboxImage = document.getElementById('plan-lightbox-image');
+  const planLightboxCurrent = document.getElementById('plan-lightbox-current');
+  const planLightboxTotal = document.getElementById('plan-lightbox-total');
+  const planLightboxLabel = document.getElementById('plan-lightbox-label');
+  planLightboxTotal.textContent = plans.length;
+
+  function openPlanLightbox(index) {
+    planCurrentIndex = index;
+    planLightboxImage.src = plans[planCurrentIndex].src;
+    planLightboxCurrent.textContent = planCurrentIndex + 1;
+    planLightboxLabel.textContent = plans[planCurrentIndex].label;
+    planLightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePlanLightbox(e) {
+    if (e && e.target !== planLightbox && !e.target.classList.contains('lightbox-close')) return;
+    planLightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function navigatePlanLightbox(e, direction) {
+    e.stopPropagation();
+    planCurrentIndex = (planCurrentIndex + direction + plans.length) % plans.length;
+    planLightboxImage.src = plans[planCurrentIndex].src;
+    planLightboxCurrent.textContent = planCurrentIndex + 1;
+    planLightboxLabel.textContent = plans[planCurrentIndex].label;
+  }
+
+  // Attacher le clic sur chaque plan
+  document.querySelectorAll('.plan-visual[data-plan-index]').forEach(item => {
+    item.addEventListener('click', () => {
+      const index = parseInt(item.getAttribute('data-plan-index'));
+      openPlanLightbox(index);
+    });
+  });
+
+  // Navigation clavier (plans) — gérée séparément
+  document.addEventListener('keydown', (e) => {
+    if (!planLightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closePlanLightbox({ target: planLightbox });
+    if (e.key === 'ArrowLeft') navigatePlanLightbox(e, -1);
+    if (e.key === 'ArrowRight') navigatePlanLightbox(e, 1);
   });
 </script>
 

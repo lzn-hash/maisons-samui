@@ -776,6 +776,24 @@
     animation: lightboxImageFade 0.4s ease;
   }
 
+  /* Règles spécifiques pour le SVG du plan dans la lightbox */
+  #plan-lightbox .lightbox-image-wrap {
+    width: 90vw;
+    height: 85vh;
+    max-width: 90vw;
+    max-height: 85vh;
+  }
+  #plan-lightbox-image {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    background: var(--sand-light);
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
   @keyframes lightboxImageFade {
     from { opacity: 0; transform: scale(0.97); }
     to { opacity: 1; transform: scale(1); }

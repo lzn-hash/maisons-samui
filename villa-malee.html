@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Villa Malee — Maisons Samui</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #e8e1d4;
+    --sand-light: #f2ede2;
+    --sand-dark: #d4c9b4;
+    --ink: #1a1e1a;
+    --ink-soft: #3a3f39;
+    --jungle: #2d4a34;
+    --jungle-deep: #1a2e22;
+    --terracotta: #b8623f;
+    --gold: #a88852;
+    --white: #faf7f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--sand-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAVIGATION (identique index.html) ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s ease;
+    background: rgba(250, 247, 240, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+  }
+
+  .logo {
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: opacity 0.3s;
+  }
+  .nav-links a:hover { opacity: 0.6; }
+
+  .nav-cta {
+    padding: 0.7rem 1.5rem;
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { background: #8e7043; border-color: #8e7043; }
+
+  /* ===== BACK LINK ===== */
+  .back-link {
+    position: fixed;
+    top: 5rem;
+    left: 3rem;
+    z-index: 90;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+    background: rgba(250, 247, 240, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(26, 30, 26, 0.08);
+    transition: all 0.3s;
+  }
+  .back-link:hover {
+    color: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+  .back-link::before {
+    content: '←';
+    font-size: 1rem;
+  }
+
+  /* ===== HERO VILLA ===== */
+  .villa-hero {
+    padding-top: 5rem;
+    background: var(--sand-light);
+  }
+
+  .villa-hero-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 3rem 2rem;
+  }
+
+  .villa-breadcrumb {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 2rem;
+  }
+  .villa-breadcrumb a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .villa-breadcrumb a:hover { color: var(--terracotta); }
+  .villa-breadcrumb span.sep { opacity: 0.4; }
+
+  .villa-title-block {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 4rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--sand-dark);
+  }
+
+  .villa-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .villa-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+
+  .villa-title-block h1 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
+    font-weight: 400;
+  }
+  .villa-title-block h1 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .villa-title-price {
+    text-align: right;
+  }
+  .villa-title-price .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+  }
+  .villa-title-price .value {
+    font-family: 'Italiana', serif;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--jungle);
+  }
+  .villa-title-price .value small {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--ink-soft);
+    margin-top: 0.3rem;
+  }
+
+  /* Badge cryptos sous le prix (page villa) */
+  .villa-crypto-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding: 0.5rem 0.9rem;
+    background: rgba(250, 247, 240, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(26, 30, 26, 0.08);
+    border-radius: 2px;
+  }
+  .villa-crypto-badge .crypto-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    white-space: nowrap;
+  }
+  .villa-crypto-badge .crypto-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .villa-crypto-badge svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  /* ===== GALERIE ===== */
+  .gallery {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 3rem 0.5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 260px 260px;
+    gap: 1rem;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    background: var(--jungle);
+    cursor: pointer;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover { transform: scale(1.01); }
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+  }
+
+  .gallery-item.main {
+    grid-row: 1 / 3;
+  }
+
+  .gallery-more {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.5rem 3rem 6rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .gallery-more .gallery-item {
+    aspect-ratio: 4/3;
+  }
+
+  /* ===== SPECS ===== */
+  .specs {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .specs-inner {
+    padding: 1.5rem;
+    background: var(--white);
+    border-top: 1px solid var(--sand-dark);
+    border-bottom: 1px solid var(--sand-dark);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+
+  .spec {
+    text-align: center;
+    padding: 0 0.5rem;
+    border-right: 1px solid var(--sand-dark);
+  }
+  .spec:last-child { border-right: none; }
+
+  .spec .value {
+    font-family: 'Italiana', serif;
+    font-size: 1.9rem;
+    line-height: 1;
+    color: var(--jungle);
+    margin-bottom: 0.4rem;
+  }
+  .spec .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ===== DESCRIPTION ===== */
+  .description {
+    padding: 6rem 3rem;
+    background: var(--sand-light);
+  }
+
+  .description-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .description-label {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    font-weight: 400;
+    position: sticky;
+    top: 7rem;
+  }
+  .description-label em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .description-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+  .description-body p + p {
+    margin-top: 1.5rem;
+  }
+  .description-body .lead {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: var(--ink);
+    font-style: italic;
+    margin-bottom: 2.5rem;
+  }
+  .description-body em {
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+
+  /* ===== FEATURES ===== */
+  .features {
+    padding: 3rem 3rem;
+    background: var(--white);
+  }
+
+  .features-header {
+    max-width: 1400px;
+    margin: 0 auto 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-bottom: 1px solid var(--sand-dark);
+    padding-bottom: 1.2rem;
+  }
+  .features-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+    font-weight: 400;
+  }
+  .features-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .features-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 4rem;
+  }
+
+  .feature-group h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--sand-dark);
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+  .feature-list li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+  .feature-list li::before {
+    content: '—';
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  /* ===== PLAN ===== */
+  .plan {
+    padding: 1rem 3rem 6rem;
+    background: var(--sand-light);
+  }
+  .plan-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .plan-header {
+    margin-bottom: 3rem;
+  }
+  .plan-header .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .plan-header .eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+  .plan-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    font-weight: 400;
+  }
+  .plan-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .plan-visual {
+    position: relative;
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--sand-dark);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .plan-visual:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(26, 30, 26, 0.1);
+  }
+  .plan-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .plan-visual .plan-placeholder {
+    width: 100%;
+    aspect-ratio: 3/2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    opacity: 0.5;
+    background: var(--white);
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .plan-level {
+    margin-bottom: 0;
+  }
+  .plan-level-title {
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--sand-dark);
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .plan-level-title::before {
+    content: '—';
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  /* ===== LOCALISATION ===== */
+  .location {
+    padding: 6rem 3rem;
+    background: var(--jungle-deep);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .location::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 70% 30%, rgba(168, 136, 82, 0.12), transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(184, 98, 63, 0.08), transparent 50%);
+  }
+
+  .location-inner {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .location-text .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .location-text .label::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .location-text h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+  .location-text h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .location-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--sand);
+    margin-bottom: 2rem;
+  }
+
+  .location-points {
+    list-style: none;
+    padding: 0;
+  }
+  .location-points li {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(250, 247, 240, 0.1);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+  }
+  .location-points li span:first-child { color: var(--sand); }
+  .location-points li span:last-child { color: var(--gold); font-style: italic; }
+
+  .location-map {
+    position: relative;
+    aspect-ratio: 1/1;
+    background: linear-gradient(135deg, #2d4a34 0%, #1a2e22 100%);
+    overflow: hidden;
+    border: 1px solid rgba(168, 136, 82, 0.3);
+  }
+  .location-map .placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(250, 247, 240, 0.4);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  .location-map::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.8' numOctaves='3' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact {
+    background: var(--ink);
+    color: var(--white);
+    padding: 6rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 50%, rgba(168, 136, 82, 0.15), transparent 60%);
+  }
+
+  .contact-inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .contact-text .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  .contact-text h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+  .contact-text h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .contact-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--sand);
+    margin-bottom: 2rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(250, 247, 240, 0.3);
+    padding: 0.9rem 0;
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    transition: border-color 0.3s;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: rgba(250, 247, 240, 0.4);
+    font-style: italic;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-bottom-color: var(--gold);
+  }
+
+  .contact-form textarea {
+    min-height: 80px;
+    resize: vertical;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+  }
+
+  .contact-form button {
+    margin-top: 0.8rem;
+    padding: 1.1rem 2rem;
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--white);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+  }
+  .contact-form button:hover {
+    background: #8e7043;
+    border-color: #8e7043;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--ink);
+    color: var(--sand);
+    padding: 3rem;
+    border-top: 1px solid rgba(250, 247, 240, 0.1);
+  }
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250, 247, 240, 0.5);
+  }
+  .footer-inner .logo { color: var(--white); }
+
+  /* ===== LIGHTBOX ===== */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 15, 15, 0.96);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    animation: lightboxFadeIn 0.3s ease;
+  }
+  .lightbox.active { display: flex; }
+
+  @keyframes lightboxFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .lightbox-image-wrap {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: lightboxImageFade 0.4s ease;
+  }
+
+  /* Règles spécifiques pour le SVG du plan dans la lightbox */
+  #plan-lightbox {
+    overflow: auto;
+    padding: 2rem;
+  }
+  #plan-lightbox .lightbox-image-wrap {
+    width: auto;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    margin: auto;
+    min-width: min-content;
+    min-height: min-content;
+  }
+  #plan-lightbox-image {
+    width: 1200px;
+    height: 800px;
+    max-width: none;
+    max-height: none;
+    object-fit: none;
+    background: var(--sand-light);
+    display: block;
+  }
+  /* Les contrôles restent fixes pendant le scroll dans la lightbox plan */
+  #plan-lightbox .lightbox-close,
+  #plan-lightbox .lightbox-nav,
+  #plan-lightbox .lightbox-counter {
+    position: fixed;
+  }
+
+  @keyframes lightboxImageFade {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: transparent;
+    border: 1px solid rgba(250, 247, 240, 0.3);
+    color: var(--white);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+  .lightbox-close:hover {
+    background: var(--white);
+    color: var(--ink);
+    border-color: var(--white);
+  }
+
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid rgba(250, 247, 240, 0.3);
+    color: var(--white);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    z-index: 2;
+  }
+  .lightbox-nav:hover {
+    background: var(--white);
+    color: var(--ink);
+    border-color: var(--white);
+  }
+  .lightbox-prev { left: 2rem; }
+  .lightbox-next { right: 2rem; }
+
+  .lightbox-counter {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(250, 247, 240, 0.7);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+  }
+  .lightbox-counter span {
+    font-family: 'Italiana', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    margin: 0 0.3rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 0.9rem 1.5rem; }
+    .nav-links { display: none; }
+
+    .back-link { top: 4.5rem; left: 1.5rem; padding: 0.5rem 0.8rem; font-size: 0.7rem; }
+
+    .villa-hero-inner { padding: 3rem 1.5rem 2rem; }
+    .villa-title-block {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .villa-title-price { text-align: left; }
+
+    .gallery {
+      grid-template-columns: 1fr;
+      grid-template-rows: 300px 200px 200px;
+      padding: 2rem 1.5rem 3rem;
+    }
+    .gallery-item.main { grid-row: auto; }
+    .gallery-more {
+      grid-template-columns: 1fr;
+      padding: 0 1.5rem 3rem;
+    }
+
+    .specs {
+      padding: 0 1.5rem;
+    }
+    .description, .features, .plan, .location, .contact {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    .specs-inner { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .spec { border-right: none; border-bottom: 1px solid var(--sand-dark); padding: 0.8rem 0.5rem; }
+    .spec:nth-last-child(1), .spec:nth-last-child(2) { border-bottom: none; }
+
+    .description-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .description-label { position: static; }
+
+    .features-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+    .plans-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+    .location-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    .lightbox { padding: 2rem 0.5rem; }
+    .lightbox-close { top: 1rem; right: 1rem; width: 40px; height: 40px; }
+    .lightbox-nav { width: 44px; height: 44px; }
+    .lightbox-prev { left: 0.5rem; }
+    .lightbox-next { right: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="logo">Maisons Samui</a>
+  <ul class="nav-links">
+    <li><a href="index.html#collection">Les Villas</a></li>
+    <li><a href="index.html#featured">Histoire</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
+</nav>
+
+<a href="index.html#collection" class="back-link">Retour aux Villas</a>
+
+<!-- HERO VILLA -->
+<section class="villa-hero">
+  <div class="villa-hero-inner">
+    <div class="villa-breadcrumb">
+      <a href="index.html">Maisons Samui</a>
+      <span class="sep">/</span>
+      <a href="index.html#collection">Les Villas</a>
+      <span class="sep">/</span>
+      <span>Villa Malee</span>
+    </div>
+
+    <div class="villa-title-block">
+      <div>
+        <div class="villa-eyebrow">Maenam · Nord de Koh Samui</div>
+        <h1>Villa <em>Malee</em></h1>
+      </div>
+      <div class="villa-title-price">
+        <div class="value">
+          ฿ 42 000 000
+          <small>≈ 1,15 M€</small>
+        </div>
+        <div class="villa-crypto-badge">
+          <span class="crypto-label">Cryptos acceptées</span>
+          <span class="crypto-icons">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#F7931A"/><path d="M22.35 14.07c.29-1.93-1.18-2.97-3.18-3.66l.65-2.61-1.59-.4-.63 2.54c-.42-.1-.85-.2-1.27-.3l.64-2.56-1.59-.4-.65 2.61c-.34-.08-.68-.15-1.01-.23l-2.19-.55-.42 1.7s1.18.27 1.15.29c.64.16.76.59.74.93l-.74 2.97c.04.01.1.03.17.05l-.17-.04-1.04 4.17c-.08.2-.28.49-.73.38.02.02-1.16-.29-1.16-.29l-.79 1.82 2.07.52c.39.1.76.2 1.13.29l-.66 2.64 1.59.4.65-2.61c.43.12.86.22 1.27.33l-.65 2.6 1.59.4.66-2.64c2.71.51 4.75.31 5.61-2.15.69-1.98-.03-3.12-1.46-3.87 1.04-.24 1.83-.92 2.04-2.33zm-3.65 5.11c-.49 1.98-3.83.91-4.92.64l.87-3.5c1.08.27 4.56.8 4.05 2.86zm.49-5.14c-.45 1.8-3.23.89-4.14.66l.79-3.17c.91.23 3.82.65 3.35 2.51z" fill="white"/></svg>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#2775CA"/><path d="M20.9 18.5c0-2.59-1.56-3.48-4.68-3.85-2.23-.3-2.67-.89-2.67-1.93 0-1.04.74-1.71 2.23-1.71 1.34 0 2.08.45 2.45 1.56.07.22.3.37.52.37h1.19c.3 0 .52-.22.52-.52v-.07c-.3-1.64-1.64-2.9-3.35-3.05v-1.78c0-.3-.22-.52-.59-.59h-1.12c-.3 0-.52.22-.59.59v1.71c-2.23.3-3.64 1.78-3.64 3.64 0 2.45 1.49 3.42 4.61 3.79 2.08.37 2.75.82 2.75 2 0 1.19-1.04 2-2.45 2-1.93 0-2.6-.82-2.82-1.93-.07-.3-.3-.45-.52-.45H10.6c-.3 0-.52.22-.52.52v.07c.3 1.86 1.49 3.2 3.94 3.57v1.78c0 .3.22.52.59.59h1.12c.3 0 .52-.22.59-.59v-1.78c2.23-.37 3.57-1.93 3.57-3.94z" fill="white"/><path d="M12.68 25.5c-3.94-1.41-6.38-5.35-5.8-9.37.45-2.97 2.45-5.35 5.35-6.32.3-.15.45-.37.45-.74v-1.04c0-.3-.15-.52-.45-.59-.07 0-.22 0-.3.07C6.97 8.88 4.22 13.7 5.63 18.66c.82 2.97 3.12 5.27 6.17 6.1.3.15.59 0 .67-.3.07-.07.07-.15.07-.22v-1.04c0-.22-.22-.52-.45-.59zm6.62-17.48c-.3-.15-.59 0-.67.3-.07.07-.07.15-.07.22v1.04c0 .3.22.59.45.74 3.94 1.41 6.38 5.35 5.8 9.37-.45 2.97-2.45 5.35-5.35 6.32-.3.15-.45.37-.45.74v1.04c0 .3.15.52.45.59.07 0 .22 0 .3-.07 4.96-1.49 7.7-6.32 6.29-11.27-.82-3.05-3.2-5.35-6.25-6.17z" fill="white"/></svg>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#26A17B"/><path d="M17.92 14.3v-2.03h4.64V9.18H9.46v3.09h4.64v2.03c-3.77.17-6.61.92-6.61 1.81 0 .89 2.84 1.63 6.61 1.81v6.49h3.82v-6.5c3.77-.17 6.6-.92 6.6-1.81 0-.89-2.84-1.63-6.6-1.81zm0 3.07v-.01c-.09.01-.58.04-1.68.04-.88 0-1.5-.02-1.72-.04v.01c-3.42-.15-5.98-.75-5.98-1.46 0-.71 2.56-1.31 5.98-1.46v2.32c.22.02.86.05 1.74.05 1.05 0 1.58-.04 1.67-.05v-2.32c3.42.15 5.97.75 5.97 1.46 0 .71-2.56 1.31-5.97 1.46z" fill="white"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs">
+  <div class="specs-inner">
+    <div class="spec">
+      <div class="value">4</div>
+      <div class="label">Chambres</div>
+    </div>
+    <div class="spec">
+      <div class="value">5</div>
+      <div class="label">Salles d'eau</div>
+    </div>
+    <div class="spec">
+      <div class="value">360<small style="font-size:0.9rem;">m²</small></div>
+      <div class="label">Surface habitable</div>
+    </div>
+    <div class="spec">
+      <div class="value">540<small style="font-size:0.9rem;">m²</small></div>
+      <div class="label">Surface totale</div>
+    </div>
+    <div class="spec">
+      <div class="value">2026</div>
+      <div class="label">Livraison</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<div class="gallery">
+  <div class="gallery-item main" data-index="0">
+    <img src="photos/malee/malee-main.jpg" alt="Villa Malee - vue principale" />
+  </div>
+  <div class="gallery-item top-right" data-index="1">
+    <img src="photos/malee/malee-01.jpg" alt="Villa Malee - photo 1" />
+  </div>
+  <div class="gallery-item bottom-right" data-index="2">
+    <img src="photos/malee/malee-02.jpg" alt="Villa Malee - photo 2" />
+  </div>
+</div>
+
+<div class="gallery-more">
+  <div class="gallery-item g4" data-index="3">
+    <img src="photos/malee/malee-03.jpg" alt="Villa Malee - photo 3" />
+  </div>
+  <div class="gallery-item g5" data-index="4">
+    <img src="photos/malee/malee-04.jpg" alt="Villa Malee - photo 4" />
+  </div>
+  <div class="gallery-item g6" data-index="5">
+    <img src="photos/malee/malee-05.jpg" alt="Villa Malee - photo 5" />
+  </div>
+</div>
+
+<!-- PLAN -->
+<section class="plan">
+  <div class="plan-inner">
+    <div class="plan-header">
+      <div class="eyebrow">Architecture</div>
+      <h2>Les <em>plans</em> de la villa</h2>
+    </div>
+
+    <div class="plans-grid">
+      <div class="plan-level">
+        <div class="plan-level-title">Rez-de-chaussée</div>
+        <div class="plan-visual">
+          <div class="plan-placeholder">Plans à venir</div>
+        </div>
+      </div>
+
+      <div class="plan-level">
+        <div class="plan-level-title">Étage principal</div>
+        <div class="plan-visual">
+          <div class="plan-placeholder">Plans à venir</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-header">
+    <h2><em>Prestations</em> et équipements</h2>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-group">
+      <h3>Extérieur</h3>
+      <ul class="feature-list">
+        <li>Piscine naturelle 11 × 4 m en pierre locale</li>
+        <li>Terrasse en teck massif de 70 m²</li>
+        <li>Sala thaï traditionnelle avec cuisine extérieure</li>
+        <li>Jardin forestier avec essences tropicales</li>
+        <li>Bassin koï zen intégré</li>
+        <li>Parking couvert pour 2 véhicules</li>
+      </ul>
+    </div>
+
+    <div class="feature-group">
+      <h3>Intérieur</h3>
+      <ul class="feature-list">
+        <li>Salon indoor-outdoor 80 m²</li>
+        <li>Cuisine équipée Gaggenau / Miele</li>
+        <li>4 suites parentales climatisées</li>
+        <li>Dressings sur mesure</li>
+        <li>Espace yoga & méditation</li>
+        <li>Buanderie & cellier</li>
+      </ul>
+    </div>
+
+    <div class="feature-group">
+      <h3>Technique</h3>
+      <ul class="feature-list">
+        <li>Domotique KNX intégrale</li>
+        <li>Panneaux solaires 12 kWc</li>
+        <li>Récupération eaux de pluie & puits</li>
+        <li>Fibre optique haute vitesse</li>
+        <li>Système d'alarme & vidéosurveillance</li>
+        <li>Groupe électrogène de secours</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DESCRIPTION -->
+<section class="description">
+  <div class="description-inner">
+    <div class="description-label">Le <em>silence</em><br>de la jungle</div>
+    <div class="description-body">
+      <p class="lead">Villa Malee — « fleur » en thaï — se dissimule dans les collines boisées de Maenam, enveloppée par une jungle primaire protégée.</p>
+      <p>Conçue comme un <em>sanctuaire contemplatif</em>, la villa s'efface volontairement dans son environnement. Toitures basses en tuiles traditionnelles, murs en pierre locale, bois brûlé selon la technique japonaise du shou-sugi-ban.</p>
+      <p>La piscine en pierre se fond dans la végétation, alimentée par une source naturelle filtrée. Les baies vitrées s'ouvrent sur le chant des oiseaux, loin de tout bruit de circulation. La sala thaï traditionnelle accueille les repas à l'abri de la canopée.</p>
+      <p>Pour ceux qui cherchent l'isolement absolu sans sacrifier le confort — à 7 minutes seulement de la plage de Maenam et de ses restaurants.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCALISATION -->
+<section class="location">
+  <div class="location-inner">
+    <div class="location-text">
+      <div class="label">Situation</div>
+      <h2>Maenam, <em>nord</em> de l'île</h2>
+      <p>Côte nord de Koh Samui, la plus authentique et la moins urbanisée. Plages de sable blanc, cocoteraies et villages de pêcheurs — l'esprit originel de l'île.</p>
+      <ul class="location-points">
+        <li><span>Plage de Maenam</span><span>7 min en voiture</span></li>
+        <li><span>Santiburi Golf Club</span><span>10 min</span></li>
+        <li><span>Aéroport international</span><span>18 min</span></li>
+        <li><span>Hôpital Bangkok Samui</span><span>20 min</span></li>
+        <li><span>Supermarché Tesco Lotus</span><span>12 min</span></li>
+        <li><span>International school</span><span>15 min</span></li>
+      </ul>
+    </div>
+    <div class="location-map">
+      <div class="placeholder">[ Carte / plan du quartier ]</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-text">
+      <div class="label">Vous êtes intéressé ?</div>
+      <h2>Planifions<br>une <em>visite</em></h2>
+      <p>Visite sur place, en visioconférence, ou dossier complet envoyé par email. Dites-nous simplement comment vous préférez procéder.</p>
+    </div>
+
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Merci, votre demande concernant Villa Malee a bien été envoyée.');">
+      <input type="hidden" value="Villa Malee" />
+      <input type="text" placeholder="Nom complet" required />
+      <input type="email" placeholder="Adresse email" required />
+      <input type="tel" placeholder="Téléphone (optionnel)" />
+      <textarea placeholder="Votre message — visite, questions, délai souhaité..." required></textarea>
+      <button type="submit">Demander un contact</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="logo">Maisons Samui</a>
+    <div>© 2026 · Tous droits réservés</div>
+    <div>Koh Samui, Thaïlande</div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Fermer">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(event, -1)" aria-label="Photo précédente">‹</button>
+  <div class="lightbox-image-wrap" onclick="event.stopPropagation()">
+    <img class="lightbox-image" id="lightbox-image" src="" alt="" />
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(event, 1)" aria-label="Photo suivante">›</button>
+  <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">6</span></div>
+</div>
+
+<!-- LIGHTBOX PLANS -->
+<div class="lightbox" id="plan-lightbox" onclick="closePlanLightbox(event)">
+  <button class="lightbox-close" onclick="closePlanLightbox(event)" aria-label="Fermer">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navigatePlanLightbox(event, -1)" aria-label="Plan précédent">‹</button>
+  <div class="lightbox-image-wrap" onclick="event.stopPropagation()">
+    <img class="lightbox-image" id="plan-lightbox-image" src="" alt="" />
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="navigatePlanLightbox(event, 1)" aria-label="Plan suivant">›</button>
+  <div class="lightbox-counter"><span id="plan-lightbox-label">Rez-de-chaussée</span> · <span id="plan-lightbox-current">1</span> / <span id="plan-lightbox-total">2</span></div>
+</div>
+
+<script>
+  // Fallback automatique entre .jpg et .jpeg pour toutes les images (sauf SVG)
+  function setupImageFallback(img) {
+    img.addEventListener('error', function() {
+      if (this.dataset.fallbackTried) return;
+      this.dataset.fallbackTried = 'true';
+      const src = this.src;
+      if (src.endsWith('.jpg')) {
+        this.src = src.replace(/\.jpg$/, '.jpeg');
+      } else if (src.endsWith('.jpeg')) {
+        this.src = src.replace(/\.jpeg$/, '.jpg');
+      }
+    });
+  }
+  document.querySelectorAll('img').forEach(setupImageFallback);
+
+  const galleryPhotos = [
+    'photos/malee/malee-main.jpg',
+    'photos/malee/malee-01.jpg',
+    'photos/malee/malee-02.jpg',
+    'photos/malee/malee-03.jpg',
+    'photos/malee/malee-04.jpg',
+    'photos/malee/malee-05.jpg'
+  ];
+
+  let currentIndex = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxCurrent = document.getElementById('lightbox-current');
+  const lightboxTotal = document.getElementById('lightbox-total');
+  lightboxTotal.textContent = galleryPhotos.length;
+
+  function loadLightboxImage(src) {
+    // Reset du flag de fallback pour chaque nouvelle image
+    lightboxImage.dataset.fallbackTried = '';
+    lightboxImage.src = src;
+  }
+
+  function openLightbox(index) {
+    currentIndex = index;
+    loadLightboxImage(galleryPhotos[currentIndex]);
+    lightboxCurrent.textContent = currentIndex + 1;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(e) {
+    // Ne ferme que si on clique sur le fond ou le bouton close
+    if (e && e.target !== lightbox && !e.target.classList.contains('lightbox-close')) return;
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function navigateLightbox(e, direction) {
+    e.stopPropagation();
+    currentIndex = (currentIndex + direction + galleryPhotos.length) % galleryPhotos.length;
+    loadLightboxImage(galleryPhotos[currentIndex]);
+    lightboxCurrent.textContent = currentIndex + 1;
+  }
+
+  // Attacher le clic sur chaque image de la galerie
+  document.querySelectorAll('.gallery-item[data-index]').forEach(item => {
+    item.addEventListener('click', () => {
+      const index = parseInt(item.getAttribute('data-index'));
+      openLightbox(index);
+    });
+  });
+
+  // Navigation clavier (galerie photos)
+  document.addEventListener('keydown', (e) => {
+    if (planLightbox.classList.contains('active')) return; // priorité à la lightbox plans si ouverte
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox({ target: lightbox });
+    if (e.key === 'ArrowLeft') navigateLightbox(e, -1);
+    if (e.key === 'ArrowRight') navigateLightbox(e, 1);
+  });
+
+  // ========== LIGHTBOX PLANS ==========
+  const plans = [];
+
+  let planCurrentIndex = 0;
+  const planLightbox = document.getElementById('plan-lightbox');
+  const planLightboxImage = document.getElementById('plan-lightbox-image');
+  const planLightboxCurrent = document.getElementById('plan-lightbox-current');
+  const planLightboxTotal = document.getElementById('plan-lightbox-total');
+  const planLightboxLabel = document.getElementById('plan-lightbox-label');
+  planLightboxTotal.textContent = plans.length;
+
+  function openPlanLightbox(index) {
+    planCurrentIndex = index;
+    planLightboxImage.src = plans[planCurrentIndex].src;
+    planLightboxCurrent.textContent = planCurrentIndex + 1;
+    planLightboxLabel.textContent = plans[planCurrentIndex].label;
+    planLightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePlanLightbox(e) {
+    if (e && e.target !== planLightbox && !e.target.classList.contains('lightbox-close')) return;
+    planLightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function navigatePlanLightbox(e, direction) {
+    e.stopPropagation();
+    planCurrentIndex = (planCurrentIndex + direction + plans.length) % plans.length;
+    planLightboxImage.src = plans[planCurrentIndex].src;
+    planLightboxCurrent.textContent = planCurrentIndex + 1;
+    planLightboxLabel.textContent = plans[planCurrentIndex].label;
+  }
+
+  // Attacher le clic sur chaque plan
+  document.querySelectorAll('.plan-visual[data-plan-index]').forEach(item => {
+    item.addEventListener('click', () => {
+      const index = parseInt(item.getAttribute('data-plan-index'));
+      openPlanLightbox(index);
+    });
+  });
+
+  // Navigation clavier (plans) — gérée séparément
+  document.addEventListener('keydown', (e) => {
+    if (!planLightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closePlanLightbox({ target: planLightbox });
+    if (e.key === 'ArrowLeft') navigatePlanLightbox(e, -1);
+    if (e.key === 'ArrowRight') navigatePlanLightbox(e, 1);
+  });
+</script>
+
+</body>
+</html>

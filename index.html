@@ -76,6 +76,37 @@
   }
   .nav-links a:hover { opacity: 0.6; }
 
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-right: 1.2rem;
+  }
+  .lang-switcher a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    line-height: 1;
+    opacity: 0.55;
+    transition: all 0.3s;
+    text-decoration: none;
+    filter: grayscale(0.4);
+  }
+  .lang-switcher a:hover {
+    opacity: 1;
+    filter: grayscale(0);
+    transform: scale(1.1);
+  }
+  .lang-switcher a.active {
+    opacity: 1;
+    filter: grayscale(0);
+    box-shadow: 0 0 0 1.5px var(--gold);
+  }
+
   .nav-cta {
     padding: 0.7rem 1.5rem;
     background: var(--gold);
@@ -854,13 +885,17 @@
 <body>
 
 <nav id="nav">
-  <div class="logo">Maisons Samui</div>
+  <a href="index-fr.html" class="logo">Maisons Samui</a>
   <ul class="nav-links">
     <li><a href="#collection">Les Villas</a></li>
     <li><a href="#featured">Histoire</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="lang-switcher">
+    <a href="index.html" data-lang="en" title="English">🇬🇧</a>
+    <a href="index-fr.html" class="active" data-lang="fr" title="Français">🇫🇷</a>
+  </div>
   <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
 </nav>
 
@@ -880,17 +915,6 @@
   <div class="scroll-hint">Découvrir</div>
 </section>
 
-<!-- INTRO -->
-<section class="intro">
-  <div class="intro-inner">
-    <div class="intro-label">L'art de vivre<br><em>tropical</em></div>
-    <div class="intro-text">
-      <p>Des villas pensées comme des <em>refuges</em> — entre jungle et océan, tradition thaïlandaise et architecture contemporaine.</p>
-      <p>Maisons Samui accompagne une clientèle exigeante dans l'acquisition de propriétés rares sur l'île de Koh Samui. <em>Nous construisons directement nos villas</em> en collaboration avec des architectes et constructeurs locaux. Chacune de nos villas est visitée, vérifiée et présentée avec la rigueur qu'elle mérite.</p>
-    </div>
-  </div>
-</section>
-
 <!-- COLLECTION -->
 <section class="collection" id="collection">
   <div class="collection-header">
@@ -900,7 +924,7 @@
 
   <div class="villa-grid">
 
-    <a href="villa-ananta.html" class="villa-card">
+    <a href="villa-ananta-fr.html" class="villa-card">
       <div class="villa-image">
         <img src="photos/ananta/ananta-main.jpeg" alt="Villa Ananta" />
         <span class="tag">Vue mer</span>
@@ -921,7 +945,7 @@
       </div>
     </a>
 
-    <a href="villa-baansawan.html" class="villa-card">
+    <a href="villa-baansawan-fr.html" class="villa-card">
       <div class="villa-image">
         <img src="photos/baansawan/baansawan-main.jpeg" alt="Baan Sawan" />
         <span class="tag">Front de mer</span>
@@ -942,7 +966,7 @@
       </div>
     </a>
 
-    <a href="villa-suriya.html" class="villa-card">
+    <a href="villa-suriya-fr.html" class="villa-card">
       <div class="villa-image">
         <img src="photos/suriya/suriya-main.jpeg" alt="Villa Suriya" />
         <span class="tag">Colline</span>
@@ -963,7 +987,7 @@
       </div>
     </a>
 
-    <a href="villa-malee.html" class="villa-card">
+    <a href="villa-malee-fr.html" class="villa-card">
       <div class="villa-image">
         <img src="photos/malee/malee-main.jpeg" alt="Villa Malee" />
         <span class="tag">Jungle privée</span>
@@ -987,17 +1011,13 @@
   </div>
 </section>
 
-<!-- FEATURED -->
-<section class="featured" id="featured">
-  <div class="featured-inner">
-    <div class="featured-visual">
-      <div class="placeholder">[ Visuel signature ]</div>
-    </div>
-    <div class="featured-text">
-      <div class="label">À la une</div>
-      <h2>Entre le ciel<br>et la <em>mer</em></h2>
-      <p>Chaque villa raconte sa propre histoire. Un balcon ouvert sur le golfe de Thaïlande, une piscine à débordement qui se confond avec l'horizon, un jardin où le frangipanier côtoie le teck centenaire.</p>
-      <p>Nous prenons le temps nécessaire pour comprendre vos aspirations, et nous ne proposons que ce que nous défendrions pour nous-mêmes.</p>
+<!-- INTRO -->
+<section class="intro" id="featured">
+  <div class="intro-inner">
+    <div class="intro-label">Entre le ciel<br>et la <em>mer</em></div>
+    <div class="intro-text">
+      <p>Des villas pensées comme des <em>refuges</em> — entre jungle et océan, tradition thaïlandaise et architecture contemporaine.</p>
+      <p>Maisons Samui accompagne une clientèle exigeante dans l'acquisition de propriétés rares sur l'île de Koh Samui. <em>Nous construisons directement nos villas</em> en collaboration avec des architectes et constructeurs locaux. Chacune de nos villas est visitée, vérifiée et présentée avec la rigueur qu'elle mérite.</p>
       <a href="#contact" class="featured-cta">Découvrir notre approche</a>
     </div>
   </div>
@@ -1060,6 +1080,16 @@
     <div>Koh Samui, Thaïlande</div>
   </div>
 </footer>
+
+<script>
+  // ========== GESTION DE LA LANGUE ==========
+  (function() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const isFrenchPage = currentPage.includes('-fr.html');
+    const currentLang = isFrenchPage ? 'fr' : 'en';
+    localStorage.setItem('preferredLang', currentLang);
+  })();
+</script>
 
 <script>
   // Fallback automatique entre .jpeg et .jpg pour toutes les images

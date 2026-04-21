@@ -294,7 +294,7 @@
   }
   .price-surplus .surplus-row {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 1rem;
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
@@ -302,6 +302,38 @@
     text-transform: uppercase;
     color: var(--terracotta);
     font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+  .price-surplus .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.3);
+  }
+  .price-surplus .total-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .price-surplus .total-amount {
+    font-family: 'Italiana', serif;
+    font-size: 1.8rem;
+    line-height: 1;
+    color: var(--jungle);
+    text-align: right;
+  }
+  .price-surplus .total-amount small {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin-top: 0.2rem;
   }
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-4px); }
@@ -1353,14 +1385,21 @@
       <div class="villa-title-price">
         <div class="label">À partir de</div>
         <div class="value">
-          ฿ <span id="total-thb">62 500 000</span>
-          <small>≈ <span id="total-eur">1,7 M€</span></small>
+          ฿ 62 500 000
+          <small>≈ 1,7 M€</small>
         </div>
 
         <div class="price-surplus" id="price-surplus" hidden>
           <div class="surplus-row">
             <span class="surplus-label">+ <span id="surplus-style-name">Style</span></span>
             <span class="surplus-amount">+<span id="surplus-amount">0</span> THB</span>
+          </div>
+          <div class="total-row">
+            <span class="total-label">Total</span>
+            <span class="total-amount">
+              ฿ <span id="total-thb">62 500 000</span>
+              <small>≈ <span id="total-eur">1,7 M€</span></small>
+            </span>
           </div>
         </div>
 

@@ -58,11 +58,32 @@
   }
 
   .logo {
-    font-family: 'Italiana', serif;
-    font-size: 1.4rem;
-    letter-spacing: 0.15em;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
     color: var(--ink);
-    text-transform: uppercase;
+    text-transform: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    line-height: 1;
+  }
+  .logo .logo-house {
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .logo .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .logo .s-accent {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 400;
   }
 
   .nav-links {
@@ -901,7 +922,7 @@
 <body>
 
 <nav id="nav">
-  <a href="index.html" class="logo">Maisons Samui</a>
+  <a href="index.html" class="logo"><svg class="logo-house" width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22L24 8l18 14"/><path d="M10 20v20h28V20"/><path d="M20 40v-10h8v10"/><circle cx="24" cy="24" r="1.5" fill="currentColor"/></svg><span class="logo-text">Maisons <span class="s-accent">S</span>amui</span></a>
   <ul class="nav-links">
     <li><a href="#collection">Les Villas</a></li>
     <li><a href="#featured">Histoire</a></li>
@@ -1119,7 +1140,7 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="logo">Maisons Samui</div>
+    <div class="logo"><svg class="logo-house" width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22L24 8l18 14"/><path d="M10 20v20h28V20"/><path d="M20 40v-10h8v10"/><circle cx="24" cy="24" r="1.5" fill="currentColor"/></svg><span class="logo-text">Maisons <span class="s-accent">S</span>amui</span></div>
     <div>© 2026 · Tous droits réservés</div>
     <div>Koh Samui, Thaïlande</div>
   </div>

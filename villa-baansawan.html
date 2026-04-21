@@ -125,13 +125,20 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+    max-height: 0;
+    overflow: hidden;
     opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
   }
   .villa-subnav.visible {
+    max-height: 80px;
     opacity: 1;
-    pointer-events: auto;
+  }
+  /* Fallback : si le JS ne tourne pas, la barre reste visible quand même */
+  html.no-js .villa-subnav,
+  .villa-subnav.force-visible {
+    max-height: 80px;
+    opacity: 1;
   }
   .villa-subnav-inner {
     max-width: 1400px;
@@ -1974,45 +1981,49 @@
   // ========== SOUS-NAVIGATION VILLA ==========
   (function() {
     const subnav = document.getElementById('villa-subnav');
+    if (!subnav) {
+      console.warn('[subnav] Element not found');
+      return;
+    }
+
     const links = document.querySelectorAll('.villa-subnav a');
     const sections = Array.from(links).map(a => {
       const id = a.getAttribute('href').substring(1);
       return document.getElementById(id);
     }).filter(Boolean);
 
-    // 1. Afficher la sous-nav uniquement quand on a scrollé au-delà du hero
-    const heroBottom = () => {
-      const hero = document.getElementById('villa');
-      if (!hero) return 400;
-      return hero.offsetTop + hero.offsetHeight - 100;
-    };
+    console.log('[subnav] Initialized with', links.length, 'links and', sections.length, 'sections');
 
+    // 1. Afficher la sous-nav dès qu'on scroll un peu (simplifié)
     function onScroll() {
-      if (window.scrollY > heroBottom()) {
+      const scrolled = window.scrollY || document.documentElement.scrollTop;
+      if (scrolled > 300) {
         subnav.classList.add('visible');
       } else {
         subnav.classList.remove('visible');
       }
     }
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    onScroll(); // check initial
 
-    // 2. Détecter la section active (zone visible à l'écran)
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          links.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-          });
-        }
+    // 2. Détecter la section active (IntersectionObserver)
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, {
+        rootMargin: '-30% 0px -60% 0px',
+        threshold: 0
       });
-    }, {
-      rootMargin: '-30% 0px -60% 0px', // déclenche quand la section est dans le tiers supérieur
-      threshold: 0
-    });
 
-    sections.forEach(section => observer.observe(section));
+      sections.forEach(section => observer.observe(section));
+    }
 
     // 3. Scroll doux au clic
     links.forEach(link => {
@@ -2021,7 +2032,7 @@
         const targetId = link.getAttribute('href').substring(1);
         const target = document.getElementById(targetId);
         if (target) {
-          const offset = 80; // compense la hauteur de la sous-nav
+          const offset = 80;
           const y = target.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top: y, behavior: 'smooth' });
         }

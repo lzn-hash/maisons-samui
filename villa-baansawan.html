@@ -121,7 +121,7 @@
     position: sticky;
     top: 60px;
     z-index: 80;
-    background: rgba(250, 247, 240, 0.65);
+    background: rgba(250, 247, 240, 0.78);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(26, 30, 26, 0.08);
@@ -655,6 +655,126 @@
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--terracotta);
+  }
+
+  /* Icône info (i) dans le titre du style */
+  .style-info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--sand-dark);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0;
+    line-height: 1;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    position: relative;
+    cursor: help;
+    transition: all 0.25s ease;
+    outline: none;
+  }
+  .style-info-icon:hover,
+  .style-info-icon:focus {
+    background: var(--gold);
+    color: var(--white);
+    transform: scale(1.1);
+  }
+
+  /* Tooltip qui liste les fournitures */
+  .style-tooltip {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    padding: 1.25rem 1.4rem;
+    background: var(--white);
+    border: 1px solid rgba(168, 136, 82, 0.3);
+    box-shadow: 0 20px 50px rgba(26, 30, 26, 0.15);
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+    z-index: 50;
+  }
+  .style-info-icon:hover .style-tooltip,
+  .style-info-icon:focus .style-tooltip {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  .style-tooltip strong {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(168, 136, 82, 0.25);
+  }
+  .style-tooltip ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 260px;
+    overflow-y: auto;
+  }
+  .style-tooltip ul::-webkit-scrollbar {
+    width: 4px;
+  }
+  .style-tooltip ul::-webkit-scrollbar-thumb {
+    background: rgba(168, 136, 82, 0.4);
+    border-radius: 2px;
+  }
+  .style-tooltip li {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--ink);
+    padding: 0.35rem 0;
+    padding-left: 1rem;
+    position: relative;
+    font-weight: 400;
+  }
+  .style-tooltip li::before {
+    content: '·';
+    position: absolute;
+    left: 0.2rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  /* Flèche pointant vers l'icône */
+  .style-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--white);
+    margin-top: -1px;
+  }
+  .style-tooltip::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-top-color: rgba(168, 136, 82, 0.3);
   }
   .style-desc {
     font-family: 'Cormorant Garamond', serif;
@@ -1387,7 +1507,7 @@
         <div class="label">À partir de</div>
         <div class="value">
           ฿ 62 500 000
-          <small>≈ 1,7 M€ / 1,8 M$</small>
+          <small>≈ 1,7 M€ / $1,8 M</small>
         </div>
 
         <div class="price-surplus" id="price-surplus" hidden>
@@ -1487,7 +1607,27 @@
           <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/scandinavian/scandinavian-catalog.jpg" alt="Mobilier & matériaux" /></div>
         </div>
         <div class="style-info">
-          <h3>Scandinave <em>moderne</em></h3>
+          <h3>
+            Scandinave <em>moderne</em>
+            <span class="style-info-icon" tabindex="0">
+              i
+              <span class="style-tooltip">
+                <strong>Ce qui est inclus</strong>
+                <ul>
+                  <li>Canapé modulable en lin crème</li>
+                  <li>Table basse en chêne clair</li>
+                  <li>Lit king-size cadre chêne massif</li>
+                  <li>Parure de lit lin naturel</li>
+                  <li>Luminaires suspendus verre opalin</li>
+                  <li>Étagères en chêne blanchi</li>
+                  <li>Vaisselle céramique artisanale</li>
+                  <li>Tapis en laine bouclée crème</li>
+                  <li>Miroir rond cadre laiton brossé</li>
+                  <li>Textiles doux tons neutres</li>
+                </ul>
+              </span>
+            </span>
+          </h3>
           <p class="style-desc">Bois clair, lin naturel, tons crème et blanc. Épuré et lumineux, l'art du moins pour respirer.</p>
           <div class="style-breakdown">
             <div class="breakdown-row">
@@ -1521,7 +1661,33 @@
           <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/thai/thai-catalog.jpg" alt="Mobilier & matériaux" /></div>
         </div>
         <div class="style-info">
-          <h3>Thaï <em>traditionnel</em></h3>
+          <h3>
+            Thaï <em>traditionnel</em>
+            <span class="style-info-icon" tabindex="0">
+              i
+              <span class="style-tooltip">
+                <strong>Ce qui est inclus</strong>
+                <ul>
+                  <li>Daybed traditionnel en teck sculpté</li>
+                  <li>Table basse en teck avec incrustations nacre</li>
+                  <li>Lit à baldaquin teck massif sculpté à la main</li>
+                  <li>Paravents thaï en bois ajouré</li>
+                  <li>Parures de lit en soie thaï brodée main</li>
+                  <li>Coussins en soie thaï teints à la main</li>
+                  <li>Lanternes en laiton percées (motifs géométriques)</li>
+                  <li>Statue de Bouddha en bronze ancien (signée)</li>
+                  <li>Tapis en soie thaï tissée à la main</li>
+                  <li>Céramiques Benjarong peintes à l'or</li>
+                  <li>Laques royales à dorure fine (boîtes, plateaux)</li>
+                  <li>Service à thé en céladon</li>
+                  <li>Parasols peints à la main (Chiang Mai)</li>
+                  <li>Sculptures bois doré (ornements muraux)</li>
+                  <li>Tentures en soie thaï</li>
+                  <li>Accessoires en bronze patiné</li>
+                </ul>
+              </span>
+            </span>
+          </h3>
           <p class="style-desc">Teck massif sculpté, soieries colorées, artisanat local authentique. L'âme de Siam dans chaque détail.</p>
           <div class="style-breakdown">
             <div class="breakdown-row">
@@ -1555,7 +1721,39 @@
           <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/wabisabi/wabisabi-catalog.jpg" alt="Mobilier & matériaux" /></div>
         </div>
         <div class="style-info">
-          <h3>Wabi-Sabi <em>zen</em></h3>
+          <h3>
+            Wabi-Sabi <em>zen</em>
+            <span class="style-info-icon" tabindex="0">
+              i
+              <span class="style-tooltip">
+                <strong>Ce qui est inclus</strong>
+                <ul>
+                  <li>Canapé bas en lin brut non teinté fait main</li>
+                  <li>Table basse travertin taillé dans bloc unique</li>
+                  <li>Lit plateforme bois flotté récupéré</li>
+                  <li>Tansu japonais ancien (commode basse)</li>
+                  <li>Parures de lit lin brut froissé naturellement</li>
+                  <li>Couvertures en laine bouclée tissée main</li>
+                  <li>Tabourets bois brut d'artisan local</li>
+                  <li>Lampes Noguchi originales (papier washi)</li>
+                  <li>Lampadaires bronze oxydé patiné</li>
+                  <li>Céramiques stoneware à glaçure craquelée</li>
+                  <li>Poteries kintsugi (réparées à l'or)</li>
+                  <li>Bol à thé matcha artisanal japonais</li>
+                  <li>Bonsaï âgé (5+ ans, sélection privée)</li>
+                  <li>Vase ikebana en grès irrégulier</li>
+                  <li>Calligraphies japonaises originales encadrées</li>
+                  <li>Tapis en chanvre et jute tissé main</li>
+                  <li>Coussins de méditation laine brute</li>
+                  <li>Lanternes papier washi suspendues</li>
+                  <li>Collection branches bois flotté</li>
+                  <li>Enduits à la chaux teintée argile (4 finitions)</li>
+                  <li>Bois brûlé shou-sugi-ban (murs d'accent)</li>
+                  <li>Pierres de rivière sélectionnées (bassins)</li>
+                </ul>
+              </span>
+            </span>
+          </h3>
           <p class="style-desc">Béton ciré, pierre brute, bois de récupération. L'élégance japonaise du détail imparfait et du vide habité.</p>
           <div class="style-breakdown">
             <div class="breakdown-row">

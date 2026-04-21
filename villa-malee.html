@@ -6,7 +6,7 @@
 <title>Villa Malee — Maisons Samui</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Italiana&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --sand: #e8e1d4;
@@ -116,6 +116,82 @@
     font-size: 1rem;
   }
 
+  /* ===== SOUS-NAVIGATION VILLA ===== */
+  .villa-subnav {
+    position: sticky;
+    top: 60px;
+    z-index: 80;
+    background: rgba(250, 247, 240, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+  }
+  .villa-subnav.visible {
+    max-height: 80px;
+    opacity: 1;
+  }
+  /* Fallback : si le JS ne tourne pas, la barre reste visible quand même */
+  html.no-js .villa-subnav,
+  .villa-subnav.force-visible {
+    max-height: 80px;
+    opacity: 1;
+  }
+  .villa-subnav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .villa-subnav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 2.5rem;
+    padding: 0;
+    margin: 0;
+  }
+  .villa-subnav li {
+    padding: 1rem 0;
+  }
+  .villa-subnav a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-weight: 400;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  .villa-subnav a:hover {
+    color: var(--ink);
+  }
+  .villa-subnav a.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* Mobile : scroll horizontal */
+  @media (max-width: 780px) {
+    .villa-subnav ul {
+      justify-content: flex-start;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .villa-subnav ul::-webkit-scrollbar { display: none; }
+    .villa-subnav-inner { padding: 0 1.5rem; }
+    .villa-subnav a { font-size: 0.65rem; }
+  }
+
   /* ===== HERO VILLA ===== */
   .villa-hero {
     padding-top: 5rem;
@@ -195,18 +271,44 @@
     margin-bottom: 0.5rem;
   }
   .villa-title-price .value {
-    font-family: 'Italiana', serif;
-    font-size: 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 500;
+    letter-spacing: 0;
     line-height: 1;
     color: var(--jungle);
   }
   .villa-title-price .value small {
-    display: block;
+    display: inline-block;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 1.35rem;
     color: var(--ink-soft);
-    margin-top: 0.3rem;
+    margin-left: 1rem;
+    white-space: nowrap;
+  }
+
+  /* Zone surplus style intérieur (affichée seulement quand un style payant est sélectionné) */
+  .price-surplus {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.3);
+    animation: fadeIn 0.4s ease;
+  }
+  .price-surplus .surplus-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* Badge cryptos sous le prix (page villa) */
@@ -293,12 +395,12 @@
   }
 
   .specs-inner {
-    padding: 1.5rem;
+    padding: 1.6rem 1.5rem;
     background: var(--white);
     border-top: 1px solid var(--sand-dark);
     border-bottom: 1px solid var(--sand-dark);
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
   }
 
@@ -309,18 +411,34 @@
   }
   .spec:last-child { border-right: none; }
 
-  .spec .value {
-    font-family: 'Italiana', serif;
-    font-size: 1.9rem;
-    line-height: 1;
+  .spec-icon {
+    width: 34px;
+    height: 34px;
     color: var(--jungle);
-    margin-bottom: 0.4rem;
+    opacity: 0.85;
+    margin: 0 auto 0.65rem;
+    display: block;
+  }
+
+  .spec .value {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+  .spec .value small {
+    font-size: 0.78rem;
+    font-weight: 300;
   }
   .spec .label {
-    font-size: 0.65rem;
+    font-size: 0.59rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--ink-soft);
+    font-family: 'Inter', sans-serif;
   }
 
   /* ===== DESCRIPTION ===== */
@@ -373,6 +491,408 @@
     font-style: italic;
     color: var(--terracotta);
     font-weight: 500;
+  }
+
+  /* ===== STYLES INTÉRIEURS ===== */
+  .styles {
+    padding: 6rem 3rem;
+    background: var(--white);
+  }
+  .styles-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .styles-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+  }
+  .styles-header .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .styles-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+  .styles-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .styles-header p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  .styles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .style-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--sand-light);
+    border: 1px solid rgba(168, 136, 82, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .style-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(26, 30, 26, 0.08);
+    border-color: var(--gold);
+  }
+  .style-card.active {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px var(--gold), 0 20px 50px rgba(168, 136, 82, 0.2);
+  }
+  .style-card.active::before {
+    content: '✓ Sélectionné';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--gold);
+    color: var(--white);
+    padding: 0.4rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    z-index: 5;
+    font-weight: 500;
+  }
+  .style-card {
+    position: relative;
+  }
+
+  .style-preview {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--sand-dark);
+    cursor: zoom-in;
+  }
+  .style-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .style-card:hover .style-preview img {
+    transform: scale(1.04);
+  }
+  .style-zoom-hint {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(15, 31, 23, 0.55);
+    backdrop-filter: blur(8px);
+    color: var(--white);
+    padding: 0.4rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .style-preview:hover .style-zoom-hint {
+    opacity: 1;
+  }
+  .style-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--white);
+    color: var(--jungle);
+    padding: 0.4rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Miniatures sous la photo principale */
+  .style-thumbs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.4rem;
+    padding: 0.5rem;
+    background: var(--sand-light);
+  }
+  .style-thumb {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    cursor: zoom-in;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+  }
+  .style-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .style-thumb:hover {
+    border-color: var(--gold);
+  }
+  .style-thumb:hover img {
+    transform: scale(1.08);
+  }
+
+  .style-info {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .style-info h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+  }
+  .style-info h3 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  /* Icône info (i) dans le titre du style */
+  .style-info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--sand-dark);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0;
+    line-height: 1;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    position: relative;
+    cursor: help;
+    transition: all 0.25s ease;
+    outline: none;
+  }
+  /* Zone invisible "safe" tout autour de l'icône pour éviter les pertes de hover */
+  .style-info-icon::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border-radius: 50%;
+    background: transparent;
+    z-index: 1;
+  }
+  .style-info-icon:hover,
+  .style-info-icon:focus {
+    background: var(--gold);
+    color: var(--white);
+    transform: scale(1.1);
+  }
+
+  /* Tooltip qui liste les fournitures */
+  .style-tooltip {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    padding: 1.25rem 1.4rem;
+    background: var(--white);
+    border: 1px solid rgba(168, 136, 82, 0.3);
+    box-shadow: 0 20px 50px rgba(26, 30, 26, 0.15);
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+    z-index: 50;
+  }
+  /* Pont invisible entre l'icône et la fenêtre pour garder le hover actif */
+  .style-tooltip::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: transparent;
+  }
+  .style-info-icon:hover .style-tooltip,
+  .style-info-icon:focus .style-tooltip,
+  .style-tooltip:hover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  .style-tooltip strong {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(168, 136, 82, 0.25);
+  }
+  .style-tooltip ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 260px;
+    overflow-y: auto;
+  }
+  .style-tooltip ul::-webkit-scrollbar {
+    width: 4px;
+  }
+  .style-tooltip ul::-webkit-scrollbar-thumb {
+    background: rgba(168, 136, 82, 0.4);
+    border-radius: 2px;
+  }
+  .style-tooltip li {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--ink);
+    padding: 0.35rem 0;
+    padding-left: 1rem;
+    position: relative;
+    font-weight: 400;
+  }
+  .style-tooltip li::before {
+    content: '·';
+    position: absolute;
+    left: 0.2rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  /* Flèche pointant vers l'icône */
+  .style-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--white);
+    margin-top: 0;
+    z-index: 2;
+  }
+  .style-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+  .style-breakdown {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.2);
+    margin-bottom: 1.25rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.3rem 0;
+    font-size: 0.8rem;
+  }
+  .breakdown-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+  .breakdown-amount {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .breakdown-amount.breakdown-plus {
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+  .breakdown-row.breakdown-total {
+    margin-top: 0.3rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.2);
+  }
+  .breakdown-row.breakdown-total .breakdown-label {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .breakdown-row.breakdown-total .breakdown-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--jungle);
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  .style-select {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+  .style-select:hover {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .style-card.active .style-select {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .styles-grid { grid-template-columns: 1fr; }
+    .style-thumbs { grid-template-columns: repeat(5, 1fr); }
   }
 
   /* ===== FEATURES ===== */
@@ -987,8 +1507,22 @@
 
 <a href="index.html#collection" class="back-link">Retour aux Villas</a>
 
+<!-- SOUS-NAVIGATION VILLA -->
+<nav class="villa-subnav" id="villa-subnav">
+  <div class="villa-subnav-inner">
+    <ul>
+      <li><a href="#villa" data-section="villa">Villa Malee</a></li>
+      <li><a href="#styles" data-section="styles">Styles</a></li>
+      <li><a href="#architecture" data-section="architecture">Plans</a></li>
+      <li><a href="#features" data-section="features">Prestations</a></li>
+      <li><a href="#location" data-section="location">Situation</a></li>
+      <li><a href="#contact" data-section="contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
 <!-- HERO VILLA -->
-<section class="villa-hero">
+<section class="villa-hero" id="villa">
   <div class="villa-hero-inner">
     <div class="villa-breadcrumb">
       <a href="index.html">Maisons Samui</a>
@@ -1004,10 +1538,19 @@
         <h1>Villa <em>Malee</em></h1>
       </div>
       <div class="villa-title-price">
+        <div class="label">À partir de</div>
         <div class="value">
           ฿ 42 000 000
-          <small>≈ 1,15 M€</small>
+          <small>≈ 1,15 M€ / $1,2 M</small>
         </div>
+
+        <div class="price-surplus" id="price-surplus" hidden>
+          <div class="surplus-row">
+            <span class="surplus-label">+ <span id="surplus-style-name">Style</span></span>
+            <span class="surplus-amount">+<span id="surplus-amount">0</span> THB</span>
+          </div>
+        </div>
+
         <div class="villa-crypto-badge">
           <span class="crypto-label">Cryptos acceptées</span>
           <span class="crypto-icons">
@@ -1024,26 +1567,69 @@
 <!-- SPECS -->
 <section class="specs">
   <div class="specs-inner">
+
     <div class="spec">
+      <svg class="spec-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 30v10M42 30v10"/>
+        <path d="M6 30h36v-6a6 6 0 0 0-6-6H12a6 6 0 0 0-6 6v6z"/>
+        <path d="M12 18v-2a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2M24 18v-2a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2"/>
+      </svg>
       <div class="value">4</div>
       <div class="label">Chambres</div>
     </div>
+
     <div class="spec">
+      <svg class="spec-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 24h36v8a6 6 0 0 1-6 6H12a6 6 0 0 1-6-6v-8z"/>
+        <path d="M10 24V12a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2"/>
+        <path d="M16 14h8"/>
+        <path d="M12 38l-2 4M36 38l2 4"/>
+      </svg>
       <div class="value">5</div>
       <div class="label">Salles d'eau</div>
     </div>
+
     <div class="spec">
-      <div class="value">360<small style="font-size:0.9rem;">m²</small></div>
+      <svg class="spec-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 8h32v32H8z"/>
+        <path d="M8 22h14v18"/>
+        <path d="M4 6l4-4M44 6l-4-4M4 42l4 4M44 42l-4 4"/>
+      </svg>
+      <div class="value">360<small>m²</small></div>
       <div class="label">Surface habitable</div>
     </div>
+
     <div class="spec">
-      <div class="value">540<small style="font-size:0.9rem;">m²</small></div>
+      <svg class="spec-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h40v40H4z"/>
+        <path d="M4 4l40 40M4 44L44 4"/>
+      </svg>
+      <div class="value">540<small>m²</small></div>
       <div class="label">Surface totale</div>
     </div>
+
     <div class="spec">
+      <svg class="spec-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="6" y="10" width="36" height="32" rx="2"/>
+        <path d="M6 18h36"/>
+        <path d="M16 6v8M32 6v8"/>
+        <path d="M14 26h4M22 26h4M30 26h4M14 34h4M22 34h4M30 34h4"/>
+      </svg>
       <div class="value">2026</div>
       <div class="label">Livraison</div>
     </div>
+
+    <div class="spec">
+      <svg class="spec-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 22L24 8l18 14"/>
+        <path d="M10 20v20h28V20"/>
+        <path d="M20 40v-10h8v10"/>
+        <circle cx="24" cy="26" r="1.5" fill="currentColor"/>
+      </svg>
+      <div class="value">Flexible</div>
+      <div class="label">Propriété</div>
+    </div>
+
   </div>
 </section>
 
@@ -1072,8 +1658,216 @@
   </div>
 </div>
 
+<!-- STYLES INTÉRIEURS -->
+<section class="styles" id="styles">
+  <div class="styles-inner">
+    <div class="styles-header">
+      <div class="eyebrow">Personnalisation</div>
+      <h2>Un intérieur à votre <em>image</em></h2>
+      <p>Choisissez parmi trois ambiances soigneusement conçues. Chaque style est livré clés en main, meubles et décoration inclus.</p>
+    </div>
+
+    <div class="styles-grid">
+
+      <!-- Style 1 : Scandinave Moderne (inclus) -->
+      <div class="style-card" data-style="scandinave" data-surplus="0" data-name="Scandinave Moderne">
+        <div class="style-preview" data-thumb-index="0">
+          <img src="photos/styles/scandinavian/scandinavian-salon.jpg" alt="Style Scandinave Moderne" />
+          <span class="style-tag">Inclus</span>
+          <div class="style-zoom-hint">Cliquer pour agrandir</div>
+        </div>
+        <div class="style-thumbs">
+          <div class="style-thumb" data-thumb-index="1"><img src="photos/styles/scandinavian/scandinavian-masterbedroom.jpg" alt="Suite principale" /></div>
+          <div class="style-thumb" data-thumb-index="2"><img src="photos/styles/scandinavian/scandinavian-bedroom.jpg" alt="Chambre d'amis" /></div>
+          <div class="style-thumb" data-thumb-index="3"><img src="photos/styles/scandinavian/scandinavian-kitchen.jpg" alt="Cuisine" /></div>
+          <div class="style-thumb" data-thumb-index="4"><img src="photos/styles/scandinavian/scandinavian-bathroom.jpg" alt="Salle d'eau" /></div>
+          <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/scandinavian/scandinavian-catalog.jpg" alt="Mobilier & matériaux" /></div>
+        </div>
+        <div class="style-info">
+          <h3>
+            Scandinave <em>moderne</em>
+            <span class="style-info-icon" tabindex="0">
+              i
+              <span class="style-tooltip">
+                <strong>Ce qui est inclus</strong>
+                <ul>
+                  <li>Canapé modulable en lin crème</li>
+                  <li>Table basse en chêne clair</li>
+                  <li>Lit king-size cadre chêne massif</li>
+                  <li>Parure de lit lin naturel</li>
+                  <li>Luminaires suspendus verre opalin</li>
+                  <li>Étagères en chêne blanchi</li>
+                  <li>Vaisselle céramique artisanale</li>
+                  <li>Tapis en laine bouclée crème</li>
+                  <li>Miroir rond cadre laiton brossé</li>
+                  <li>Textiles doux tons neutres</li>
+                </ul>
+              </span>
+            </span>
+          </h3>
+          <p class="style-desc">Bois clair, lin naturel, tons crème et blanc. Épuré et lumineux, l'art du moins pour respirer.</p>
+          <div class="style-breakdown">
+            <div class="breakdown-row">
+              <span class="breakdown-label">Villa</span>
+              <span class="breakdown-amount">฿ 42 000 000</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-label">Style</span>
+              <span class="breakdown-amount breakdown-plus">+ 0 THB</span>
+            </div>
+            <div class="breakdown-row breakdown-total">
+              <span class="breakdown-label">Total</span>
+              <span class="breakdown-amount">฿ 42 000 000</span>
+            </div>
+          </div>
+          <button class="style-select" type="button">Choisir ce style</button>
+        </div>
+      </div>
+
+      <!-- Style 2 : Thaï Traditionnel -->
+      <div class="style-card" data-style="thai" data-surplus="2500000" data-name="Thaï Traditionnel">
+        <div class="style-preview" data-thumb-index="0">
+          <img src="photos/styles/thai/thai-salon.jpg" alt="Style Thaï Traditionnel" />
+          <div class="style-zoom-hint">Cliquer pour agrandir</div>
+        </div>
+        <div class="style-thumbs">
+          <div class="style-thumb" data-thumb-index="1"><img src="photos/styles/thai/thai-masterbedroom.jpg" alt="Suite principale" /></div>
+          <div class="style-thumb" data-thumb-index="2"><img src="photos/styles/thai/thai-bedroom.jpg" alt="Chambre d'amis" /></div>
+          <div class="style-thumb" data-thumb-index="3"><img src="photos/styles/thai/thai-kitchen.jpg" alt="Cuisine" /></div>
+          <div class="style-thumb" data-thumb-index="4"><img src="photos/styles/thai/thai-bathroom.jpg" alt="Salle d'eau" /></div>
+          <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/thai/thai-catalog.jpg" alt="Mobilier & matériaux" /></div>
+        </div>
+        <div class="style-info">
+          <h3>
+            Thaï <em>traditionnel</em>
+            <span class="style-info-icon" tabindex="0">
+              i
+              <span class="style-tooltip">
+                <strong>Ce qui est inclus</strong>
+                <ul>
+                  <li>Daybed traditionnel en teck sculpté</li>
+                  <li>Table basse en teck avec incrustations nacre</li>
+                  <li>Lit à baldaquin teck massif sculpté à la main</li>
+                  <li>Paravents thaï en bois ajouré</li>
+                  <li>Parures de lit en soie thaï brodée main</li>
+                  <li>Coussins en soie thaï teints à la main</li>
+                  <li>Lanternes en laiton percées (motifs géométriques)</li>
+                  <li>Statue de Bouddha en bronze ancien (signée)</li>
+                  <li>Tapis en soie thaï tissée à la main</li>
+                  <li>Céramiques Benjarong peintes à l'or</li>
+                  <li>Laques royales à dorure fine (boîtes, plateaux)</li>
+                  <li>Service à thé en céladon</li>
+                  <li>Parasols peints à la main (Chiang Mai)</li>
+                  <li>Sculptures bois doré (ornements muraux)</li>
+                  <li>Tentures en soie thaï</li>
+                  <li>Accessoires en bronze patiné</li>
+                </ul>
+              </span>
+            </span>
+          </h3>
+          <p class="style-desc">Teck massif sculpté, soieries colorées, artisanat local authentique. L'âme de Siam dans chaque détail.</p>
+          <div class="style-breakdown">
+            <div class="breakdown-row">
+              <span class="breakdown-label">Villa</span>
+              <span class="breakdown-amount">฿ 42 000 000</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-label">Style</span>
+              <span class="breakdown-amount breakdown-plus">+ 2 500 000 THB</span>
+            </div>
+            <div class="breakdown-row breakdown-total">
+              <span class="breakdown-label">Total</span>
+              <span class="breakdown-amount">฿ 44 500 000</span>
+            </div>
+          </div>
+          <button class="style-select" type="button">Choisir ce style</button>
+        </div>
+      </div>
+
+      <!-- Style 3 : Wabi-Sabi Zen -->
+      <div class="style-card" data-style="wabisabi" data-surplus="3500000" data-name="Wabi-Sabi Zen">
+        <div class="style-preview" data-thumb-index="0">
+          <img src="photos/styles/wabisabi/wabisabi-salon.jpg" alt="Style Wabi-Sabi Zen" />
+          <div class="style-zoom-hint">Cliquer pour agrandir</div>
+        </div>
+        <div class="style-thumbs">
+          <div class="style-thumb" data-thumb-index="1"><img src="photos/styles/wabisabi/wabisabi-masterbedroom.jpg" alt="Suite principale" /></div>
+          <div class="style-thumb" data-thumb-index="2"><img src="photos/styles/wabisabi/wabisabi-bedroom.jpg" alt="Chambre d'amis" /></div>
+          <div class="style-thumb" data-thumb-index="3"><img src="photos/styles/wabisabi/wabisabi-kitchen.jpg" alt="Cuisine" /></div>
+          <div class="style-thumb" data-thumb-index="4"><img src="photos/styles/wabisabi/wabisabi-bathroom.jpg" alt="Salle d'eau" /></div>
+          <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/wabisabi/wabisabi-catalog.jpg" alt="Mobilier & matériaux" /></div>
+        </div>
+        <div class="style-info">
+          <h3>
+            Wabi-Sabi <em>zen</em>
+            <span class="style-info-icon" tabindex="0">
+              i
+              <span class="style-tooltip">
+                <strong>Ce qui est inclus</strong>
+                <ul>
+                  <li>Canapé bas en lin brut non teinté fait main</li>
+                  <li>Table basse travertin taillé dans bloc unique</li>
+                  <li>Lit plateforme bois flotté récupéré</li>
+                  <li>Tansu japonais ancien (commode basse)</li>
+                  <li>Parures de lit lin brut froissé naturellement</li>
+                  <li>Couvertures en laine bouclée tissée main</li>
+                  <li>Tabourets bois brut d'artisan local</li>
+                  <li>Lampes Noguchi originales (papier washi)</li>
+                  <li>Lampadaires bronze oxydé patiné</li>
+                  <li>Céramiques stoneware à glaçure craquelée</li>
+                  <li>Poteries kintsugi (réparées à l'or)</li>
+                  <li>Bol à thé matcha artisanal japonais</li>
+                  <li>Bonsaï âgé (5+ ans, sélection privée)</li>
+                  <li>Vase ikebana en grès irrégulier</li>
+                  <li>Calligraphies japonaises originales encadrées</li>
+                  <li>Tapis en chanvre et jute tissé main</li>
+                  <li>Coussins de méditation laine brute</li>
+                  <li>Lanternes papier washi suspendues</li>
+                  <li>Collection branches bois flotté</li>
+                  <li>Enduits à la chaux teintée argile (4 finitions)</li>
+                  <li>Bois brûlé shou-sugi-ban (murs d'accent)</li>
+                  <li>Pierres de rivière sélectionnées (bassins)</li>
+                </ul>
+              </span>
+            </span>
+          </h3>
+          <p class="style-desc">Béton ciré, pierre brute, bois de récupération. L'élégance japonaise du détail imparfait et du vide habité.</p>
+          <div class="style-breakdown">
+            <div class="breakdown-row">
+              <span class="breakdown-label">Villa</span>
+              <span class="breakdown-amount">฿ 42 000 000</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-label">Style</span>
+              <span class="breakdown-amount breakdown-plus">+ 3 500 000 THB</span>
+            </div>
+            <div class="breakdown-row breakdown-total">
+              <span class="breakdown-label">Total</span>
+              <span class="breakdown-amount">฿ 45 500 000</span>
+            </div>
+          </div>
+          <button class="style-select" type="button">Choisir ce style</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox pour les photos de style -->
+<div class="lightbox" id="style-lightbox" onclick="closeStyleLightbox(event)">
+  <button class="lightbox-close" onclick="closeStyleLightbox(event)" aria-label="Fermer">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navigateStyleLightbox(event, -1)" aria-label="Photo précédente">‹</button>
+  <div class="lightbox-image-wrap" onclick="event.stopPropagation()">
+    <img class="lightbox-image" id="style-lightbox-image" src="" alt="" />
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="navigateStyleLightbox(event, 1)" aria-label="Photo suivante">›</button>
+  <div class="lightbox-counter"><span id="style-lightbox-label">Salon</span> · <span id="style-lightbox-current">1</span> / <span id="style-lightbox-total">6</span></div>
+</div>
+
 <!-- PLAN -->
-<section class="plan">
+<section class="plan" id="architecture">
   <div class="plan-inner">
     <div class="plan-header">
       <div class="eyebrow">Architecture</div>
@@ -1360,6 +2154,222 @@
     if (e.key === 'ArrowLeft') navigatePlanLightbox(e, -1);
     if (e.key === 'ArrowRight') navigatePlanLightbox(e, 1);
   });
+</script>
+
+<script>
+  // ========== STYLES INTÉRIEURS DYNAMIQUES ==========
+  (function() {
+    const BASE_PRICE_THB = 62500000;
+    const EUR_RATE = 37000;
+
+    // Photos associées à chaque style (ordre = index 0 à 5)
+    const stylePhotos = {
+      scandinave: [
+        { src: 'photos/styles/scandinavian/scandinavian-salon.jpg', label: 'Salon' },
+        { src: 'photos/styles/scandinavian/scandinavian-masterbedroom.jpg', label: 'Suite principale' },
+        { src: 'photos/styles/scandinavian/scandinavian-bedroom.jpg', label: 'Chambre d\'amis' },
+        { src: 'photos/styles/scandinavian/scandinavian-kitchen.jpg', label: 'Cuisine' },
+        { src: 'photos/styles/scandinavian/scandinavian-bathroom.jpg', label: 'Salle d\'eau' },
+        { src: 'photos/styles/scandinavian/scandinavian-catalog.jpg', label: 'Mobilier & matériaux' }
+      ],
+      thai: [
+        { src: 'photos/styles/thai/thai-salon.jpg', label: 'Salon' },
+        { src: 'photos/styles/thai/thai-masterbedroom.jpg', label: 'Suite principale' },
+        { src: 'photos/styles/thai/thai-bedroom.jpg', label: 'Chambre d\'amis' },
+        { src: 'photos/styles/thai/thai-kitchen.jpg', label: 'Cuisine' },
+        { src: 'photos/styles/thai/thai-bathroom.jpg', label: 'Salle d\'eau' },
+        { src: 'photos/styles/thai/thai-catalog.jpg', label: 'Mobilier & matériaux' }
+      ],
+      wabisabi: [
+        { src: 'photos/styles/wabisabi/wabisabi-salon.jpg', label: 'Salon' },
+        { src: 'photos/styles/wabisabi/wabisabi-masterbedroom.jpg', label: 'Suite principale' },
+        { src: 'photos/styles/wabisabi/wabisabi-bedroom.jpg', label: 'Chambre d\'amis' },
+        { src: 'photos/styles/wabisabi/wabisabi-kitchen.jpg', label: 'Cuisine' },
+        { src: 'photos/styles/wabisabi/wabisabi-bathroom.jpg', label: 'Salle d\'eau' },
+        { src: 'photos/styles/wabisabi/wabisabi-catalog.jpg', label: 'Mobilier & matériaux' }
+      ]
+    };
+
+    const styleCards = document.querySelectorAll('.style-card');
+    const selectButtons = document.querySelectorAll('.style-select');
+    const priceSurplus = document.getElementById('price-surplus');
+    const surplusStyleName = document.getElementById('surplus-style-name');
+    const surplusAmount = document.getElementById('surplus-amount');
+
+    function formatPrice(thb) {
+      return thb.toLocaleString('fr-FR').replace(/,/g, ' ');
+    }
+
+    function updateSurplus(surplus, styleName) {
+      if (surplus > 0) {
+        surplusStyleName.textContent = styleName;
+        surplusAmount.textContent = formatPrice(surplus);
+        priceSurplus.hidden = false;
+      } else {
+        priceSurplus.hidden = true;
+      }
+    }
+
+    // Sélection du style (bouton "Choisir")
+    selectButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = btn.closest('.style-card');
+        const surplus = parseInt(card.dataset.surplus, 10);
+        const styleName = card.dataset.name;
+
+        styleCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+
+        selectButtons.forEach(b => b.textContent = 'Choisir ce style');
+        btn.textContent = 'Style sélectionné';
+
+        updateSurplus(surplus, styleName);
+      });
+    });
+
+    // ===== LIGHTBOX POUR LES STYLES =====
+    const lightbox = document.getElementById('style-lightbox');
+    const lightboxImage = document.getElementById('style-lightbox-image');
+    const lightboxLabel = document.getElementById('style-lightbox-label');
+    const lightboxCurrent = document.getElementById('style-lightbox-current');
+    const lightboxTotal = document.getElementById('style-lightbox-total');
+
+    let currentStyle = null;
+    let currentIndex = 0;
+
+    function openStyleLightbox(styleKey, index) {
+      currentStyle = styleKey;
+      currentIndex = index;
+      updateLightboxImage();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function updateLightboxImage() {
+      const photos = stylePhotos[currentStyle];
+      const photo = photos[currentIndex];
+      lightboxImage.src = photo.src;
+      lightboxImage.alt = photo.label;
+      lightboxLabel.textContent = photo.label;
+      lightboxCurrent.textContent = currentIndex + 1;
+      lightboxTotal.textContent = photos.length;
+    }
+
+    window.closeStyleLightbox = function(e) {
+      if (e.target === lightbox || e.currentTarget.classList.contains('lightbox-close')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    };
+
+    window.navigateStyleLightbox = function(e, direction) {
+      e.stopPropagation();
+      const photos = stylePhotos[currentStyle];
+      currentIndex = (currentIndex + direction + photos.length) % photos.length;
+      updateLightboxImage();
+    };
+
+    // Clic sur photo principale OU miniature → ouvre lightbox
+    styleCards.forEach(card => {
+      const styleKey = card.dataset.style;
+
+      // Photo principale
+      const preview = card.querySelector('.style-preview');
+      if (preview) {
+        preview.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const idx = parseInt(preview.dataset.thumbIndex, 10);
+          openStyleLightbox(styleKey, idx);
+        });
+      }
+
+      // Miniatures
+      const thumbs = card.querySelectorAll('.style-thumb');
+      thumbs.forEach(thumb => {
+        thumb.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const idx = parseInt(thumb.dataset.thumbIndex, 10);
+          openStyleLightbox(styleKey, idx);
+        });
+      });
+    });
+
+    // Navigation clavier dans la lightbox style
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      if (e.key === 'ArrowLeft') navigateStyleLightbox(e, -1);
+      if (e.key === 'ArrowRight') navigateStyleLightbox(e, 1);
+    });
+  })();
+</script>
+
+<script>
+  // ========== SOUS-NAVIGATION VILLA ==========
+  (function() {
+    const subnav = document.getElementById('villa-subnav');
+    if (!subnav) {
+      console.warn('[subnav] Element not found');
+      return;
+    }
+
+    const links = document.querySelectorAll('.villa-subnav a');
+    const sections = Array.from(links).map(a => {
+      const id = a.getAttribute('href').substring(1);
+      return document.getElementById(id);
+    }).filter(Boolean);
+
+    console.log('[subnav] Initialized with', links.length, 'links and', sections.length, 'sections');
+
+    // 1. Afficher la sous-nav dès qu'on scroll un peu (simplifié)
+    function onScroll() {
+      const scrolled = window.scrollY || document.documentElement.scrollTop;
+      if (scrolled > 300) {
+        subnav.classList.add('visible');
+      } else {
+        subnav.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // check initial
+
+    // 2. Détecter la section active (IntersectionObserver)
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, {
+        rootMargin: '-30% 0px -60% 0px',
+        threshold: 0
+      });
+
+      sections.forEach(section => observer.observe(section));
+    }
+
+    // 3. Scroll doux au clic
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          const offset = 80;
+          const y = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+    });
+  })();
 </script>
 
 </body>

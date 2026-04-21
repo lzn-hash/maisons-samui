@@ -283,6 +283,7 @@
     font-size: 1.35rem;
     color: var(--ink-soft);
     margin-top: 0.3rem;
+    white-space: nowrap;
   }
 
   /* Zone surplus style intérieur (affichée seulement quand un style payant est sélectionné) */
@@ -302,38 +303,6 @@
     text-transform: uppercase;
     color: var(--terracotta);
     font-weight: 500;
-    margin-bottom: 0.8rem;
-  }
-  .price-surplus .total-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-    padding-top: 0.8rem;
-    border-top: 1px solid rgba(168, 136, 82, 0.3);
-  }
-  .price-surplus .total-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    font-weight: 500;
-  }
-  .price-surplus .total-amount {
-    font-family: 'Italiana', serif;
-    font-size: 1.8rem;
-    line-height: 1;
-    color: var(--jungle);
-    text-align: right;
-  }
-  .price-surplus .total-amount small {
-    display: block;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--ink-soft);
-    margin-top: 0.2rem;
   }
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-4px); }
@@ -1386,20 +1355,13 @@
         <div class="label">À partir de</div>
         <div class="value">
           ฿ 62 500 000
-          <small>≈ 1,7 M€</small>
+          <small>≈ 1,7 M€ / 1,8 M$</small>
         </div>
 
         <div class="price-surplus" id="price-surplus" hidden>
           <div class="surplus-row">
             <span class="surplus-label">+ <span id="surplus-style-name">Style</span></span>
             <span class="surplus-amount">+<span id="surplus-amount">0</span> THB</span>
-          </div>
-          <div class="total-row">
-            <span class="total-label">Total</span>
-            <span class="total-amount">
-              ฿ <span id="total-thb">62 500 000</span>
-              <small>≈ <span id="total-eur">1,7 M€</span></small>
-            </span>
           </div>
         </div>
 
@@ -1890,8 +1852,6 @@
 
     const styleCards = document.querySelectorAll('.style-card');
     const selectButtons = document.querySelectorAll('.style-select');
-    const totalTHB = document.getElementById('total-thb');
-    const totalEUR = document.getElementById('total-eur');
     const priceSurplus = document.getElementById('price-surplus');
     const surplusStyleName = document.getElementById('surplus-style-name');
     const surplusAmount = document.getElementById('surplus-amount');
@@ -1899,16 +1859,8 @@
     function formatPrice(thb) {
       return thb.toLocaleString('fr-FR').replace(/,/g, ' ');
     }
-    function formatEUR(thb) {
-      const eur = thb / EUR_RATE;
-      if (eur >= 1000000) return (eur / 1000000).toFixed(2).replace('.', ',') + ' M€';
-      return Math.round(eur / 1000) + ' k€';
-    }
 
-    function updatePrice(surplus, styleName) {
-      const total = BASE_PRICE_THB + surplus;
-      totalTHB.textContent = formatPrice(total);
-      totalEUR.textContent = formatEUR(total);
+    function updateSurplus(surplus, styleName) {
       if (surplus > 0) {
         surplusStyleName.textContent = styleName;
         surplusAmount.textContent = formatPrice(surplus);
@@ -1932,7 +1884,7 @@
         selectButtons.forEach(b => b.textContent = 'Choisir ce style');
         btn.textContent = 'Style sélectionné';
 
-        updatePrice(surplus, styleName);
+        updateSurplus(surplus, styleName);
       });
     });
 

@@ -489,6 +489,7 @@
     aspect-ratio: 4/3;
     overflow: hidden;
     background: var(--sand-dark);
+    cursor: zoom-in;
   }
   .style-preview img {
     width: 100%;
@@ -498,6 +499,25 @@
   }
   .style-card:hover .style-preview img {
     transform: scale(1.04);
+  }
+  .style-zoom-hint {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(15, 31, 23, 0.55);
+    backdrop-filter: blur(8px);
+    color: var(--white);
+    padding: 0.4rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .style-preview:hover .style-zoom-hint {
+    opacity: 1;
   }
   .style-tag {
     position: absolute;
@@ -511,6 +531,34 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 500;
+  }
+
+  /* Miniatures sous la photo principale */
+  .style-thumbs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.4rem;
+    padding: 0.5rem;
+    background: var(--sand-light);
+  }
+  .style-thumb {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    cursor: zoom-in;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+  }
+  .style-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .style-thumb:hover {
+    border-color: var(--gold);
+  }
+  .style-thumb:hover img {
+    transform: scale(1.08);
   }
 
   .style-info {
@@ -578,77 +626,10 @@
     color: var(--white);
   }
 
-  /* Galerie du style sélectionné */
-  .style-gallery {
-    margin-top: 3rem;
-    padding-top: 3rem;
-    border-top: 1px solid rgba(168, 136, 82, 0.3);
-    animation: fadeIn 0.5s ease;
-  }
-  .style-gallery-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  .style-gallery-header h3 {
-    font-family: 'Italiana', serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-  }
-  .style-gallery-header h3 span {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--terracotta);
-  }
-  .style-gallery-close {
-    background: transparent;
-    border: 1px solid var(--ink-soft);
-    color: var(--ink-soft);
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s;
-  }
-  .style-gallery-close:hover {
-    background: var(--ink);
-    color: var(--white);
-    border-color: var(--ink);
-  }
-  .style-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .style-gallery-grid .gallery-photo {
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .style-gallery-grid .gallery-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-  .style-gallery-grid .gallery-photo:hover img {
-    transform: scale(1.04);
-  }
-  .style-gallery-grid .gallery-photo-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    padding: 0.6rem 0 0;
-    text-align: center;
-  }
-
   /* Responsive */
   @media (max-width: 900px) {
     .styles-grid { grid-template-columns: 1fr; }
-    .style-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .style-thumbs { grid-template-columns: repeat(5, 1fr); }
   }
 
   /* ===== FEATURES ===== */
@@ -1370,9 +1351,17 @@
 
       <!-- Style 1 : Scandinave Moderne (inclus) -->
       <div class="style-card" data-style="scandinave" data-surplus="0" data-name="Scandinave Moderne">
-        <div class="style-preview">
+        <div class="style-preview" data-thumb-index="0">
           <img src="photos/styles/scandinavian/scandinavian-salon.jpg" alt="Style Scandinave Moderne" />
           <span class="style-tag">Inclus</span>
+          <div class="style-zoom-hint">Cliquer pour agrandir</div>
+        </div>
+        <div class="style-thumbs">
+          <div class="style-thumb" data-thumb-index="1"><img src="photos/styles/scandinavian/scandinavian-masterbedroom.jpg" alt="Suite principale" /></div>
+          <div class="style-thumb" data-thumb-index="2"><img src="photos/styles/scandinavian/scandinavian-bedroom.jpg" alt="Chambre d'amis" /></div>
+          <div class="style-thumb" data-thumb-index="3"><img src="photos/styles/scandinavian/scandinavian-kitchen.jpg" alt="Cuisine" /></div>
+          <div class="style-thumb" data-thumb-index="4"><img src="photos/styles/scandinavian/scandinavian-bathroom.jpg" alt="Salle d'eau" /></div>
+          <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/scandinavian/scandinavian-catalog.jpg" alt="Mobilier & matériaux" /></div>
         </div>
         <div class="style-info">
           <h3>Scandinave <em>moderne</em></h3>
@@ -1386,8 +1375,16 @@
 
       <!-- Style 2 : Thaï Traditionnel -->
       <div class="style-card" data-style="thai" data-surplus="2500000" data-name="Thaï Traditionnel">
-        <div class="style-preview">
-          <img src="photos/baansawan/salon-thai.jpeg" alt="Style Thaï Traditionnel" />
+        <div class="style-preview" data-thumb-index="0">
+          <img src="photos/styles/thai/thai-salon.jpg" alt="Style Thaï Traditionnel" />
+          <div class="style-zoom-hint">Cliquer pour agrandir</div>
+        </div>
+        <div class="style-thumbs">
+          <div class="style-thumb" data-thumb-index="1"><img src="photos/styles/thai/thai-masterbedroom.jpg" alt="Suite principale" /></div>
+          <div class="style-thumb" data-thumb-index="2"><img src="photos/styles/thai/thai-bedroom.jpg" alt="Chambre d'amis" /></div>
+          <div class="style-thumb" data-thumb-index="3"><img src="photos/styles/thai/thai-kitchen.jpg" alt="Cuisine" /></div>
+          <div class="style-thumb" data-thumb-index="4"><img src="photos/styles/thai/thai-bathroom.jpg" alt="Salle d'eau" /></div>
+          <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/thai/thai-catalog.jpg" alt="Mobilier & matériaux" /></div>
         </div>
         <div class="style-info">
           <h3>Thaï <em>traditionnel</em></h3>
@@ -1401,8 +1398,16 @@
 
       <!-- Style 3 : Wabi-Sabi Zen -->
       <div class="style-card" data-style="wabisabi" data-surplus="3500000" data-name="Wabi-Sabi Zen">
-        <div class="style-preview">
-          <img src="photos/baansawan/salon-wabisabi.jpeg" alt="Style Wabi-Sabi Zen" />
+        <div class="style-preview" data-thumb-index="0">
+          <img src="photos/styles/wabisabi/wabisabi-salon.jpg" alt="Style Wabi-Sabi Zen" />
+          <div class="style-zoom-hint">Cliquer pour agrandir</div>
+        </div>
+        <div class="style-thumbs">
+          <div class="style-thumb" data-thumb-index="1"><img src="photos/styles/wabisabi/wabisabi-masterbedroom.jpg" alt="Suite principale" /></div>
+          <div class="style-thumb" data-thumb-index="2"><img src="photos/styles/wabisabi/wabisabi-bedroom.jpg" alt="Chambre d'amis" /></div>
+          <div class="style-thumb" data-thumb-index="3"><img src="photos/styles/wabisabi/wabisabi-kitchen.jpg" alt="Cuisine" /></div>
+          <div class="style-thumb" data-thumb-index="4"><img src="photos/styles/wabisabi/wabisabi-bathroom.jpg" alt="Salle d'eau" /></div>
+          <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/wabisabi/wabisabi-catalog.jpg" alt="Mobilier & matériaux" /></div>
         </div>
         <div class="style-info">
           <h3>Wabi-Sabi <em>zen</em></h3>
@@ -1416,18 +1421,19 @@
 
     </div>
 
-    <!-- Galerie du style sélectionné -->
-    <div class="style-gallery" id="style-gallery" hidden>
-      <div class="style-gallery-header">
-        <h3>Galerie — <span id="gallery-style-name">Scandinave moderne</span></h3>
-        <button class="style-gallery-close" type="button" aria-label="Fermer">✕</button>
-      </div>
-      <div class="style-gallery-grid" id="style-gallery-grid">
-        <!-- Rempli dynamiquement -->
-      </div>
-    </div>
   </div>
 </section>
+
+<!-- Lightbox pour les photos de style -->
+<div class="lightbox" id="style-lightbox" onclick="closeStyleLightbox(event)">
+  <button class="lightbox-close" onclick="closeStyleLightbox(event)" aria-label="Fermer">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navigateStyleLightbox(event, -1)" aria-label="Photo précédente">‹</button>
+  <div class="lightbox-image-wrap" onclick="event.stopPropagation()">
+    <img class="lightbox-image" id="style-lightbox-image" src="" alt="" />
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="navigateStyleLightbox(event, 1)" aria-label="Photo suivante">›</button>
+  <div class="lightbox-counter"><span id="style-lightbox-label">Salon</span> · <span id="style-lightbox-current">1</span> / <span id="style-lightbox-total">6</span></div>
+</div>
 
 <!-- PLAN -->
 <section class="plan">
@@ -1723,9 +1729,9 @@
   // ========== STYLES INTÉRIEURS DYNAMIQUES ==========
   (function() {
     const BASE_PRICE_THB = 62500000;
-    const EUR_RATE = 37000; // 1 EUR ≈ 37 000 THB (à ajuster selon taux réel)
+    const EUR_RATE = 37000;
 
-    // Photos associées à chaque style (les pièces importantes)
+    // Photos associées à chaque style (ordre = index 0 à 5)
     const stylePhotos = {
       scandinave: [
         { src: 'photos/styles/scandinavian/scandinavian-salon.jpg', label: 'Salon' },
@@ -1736,18 +1742,20 @@
         { src: 'photos/styles/scandinavian/scandinavian-catalog.jpg', label: 'Mobilier & matériaux' }
       ],
       thai: [
-        { src: 'photos/baansawan/salon-thai.jpeg', label: 'Salon' },
-        { src: 'photos/baansawan/chambre1-thai.jpeg', label: 'Suite principale' },
-        { src: 'photos/baansawan/chambre2-thai.jpeg', label: 'Chambre d\'amis' },
-        { src: 'photos/baansawan/cuisine-thai.jpeg', label: 'Cuisine' },
-        { src: 'photos/baansawan/salle-bain-thai.jpeg', label: 'Salle d\'eau' }
+        { src: 'photos/styles/thai/thai-salon.jpg', label: 'Salon' },
+        { src: 'photos/styles/thai/thai-masterbedroom.jpg', label: 'Suite principale' },
+        { src: 'photos/styles/thai/thai-bedroom.jpg', label: 'Chambre d\'amis' },
+        { src: 'photos/styles/thai/thai-kitchen.jpg', label: 'Cuisine' },
+        { src: 'photos/styles/thai/thai-bathroom.jpg', label: 'Salle d\'eau' },
+        { src: 'photos/styles/thai/thai-catalog.jpg', label: 'Mobilier & matériaux' }
       ],
       wabisabi: [
-        { src: 'photos/baansawan/salon-wabisabi.jpeg', label: 'Salon' },
-        { src: 'photos/baansawan/chambre1-wabisabi.jpeg', label: 'Suite principale' },
-        { src: 'photos/baansawan/chambre2-wabisabi.jpeg', label: 'Chambre d\'amis' },
-        { src: 'photos/baansawan/cuisine-wabisabi.jpeg', label: 'Cuisine' },
-        { src: 'photos/baansawan/salle-bain-wabisabi.jpeg', label: 'Salle d\'eau' }
+        { src: 'photos/styles/wabisabi/wabisabi-salon.jpg', label: 'Salon' },
+        { src: 'photos/styles/wabisabi/wabisabi-masterbedroom.jpg', label: 'Suite principale' },
+        { src: 'photos/styles/wabisabi/wabisabi-bedroom.jpg', label: 'Chambre d\'amis' },
+        { src: 'photos/styles/wabisabi/wabisabi-kitchen.jpg', label: 'Cuisine' },
+        { src: 'photos/styles/wabisabi/wabisabi-bathroom.jpg', label: 'Salle d\'eau' },
+        { src: 'photos/styles/wabisabi/wabisabi-catalog.jpg', label: 'Mobilier & matériaux' }
       ]
     };
 
@@ -1758,10 +1766,6 @@
     const priceSurplus = document.getElementById('price-surplus');
     const surplusStyleName = document.getElementById('surplus-style-name');
     const surplusAmount = document.getElementById('surplus-amount');
-    const styleGallery = document.getElementById('style-gallery');
-    const galleryStyleName = document.getElementById('gallery-style-name');
-    const galleryGrid = document.getElementById('style-gallery-grid');
-    const galleryCloseBtn = document.querySelector('.style-gallery-close');
 
     function formatPrice(thb) {
       return thb.toLocaleString('fr-FR').replace(/,/g, ' ');
@@ -1785,53 +1789,100 @@
       }
     }
 
-    function showGallery(styleKey, styleName) {
-      galleryStyleName.textContent = styleName;
-      galleryGrid.innerHTML = '';
-      stylePhotos[styleKey].forEach(photo => {
-        const div = document.createElement('div');
-        div.className = 'gallery-photo';
-        div.innerHTML = `
-          <img src="${photo.src}" alt="${photo.label} — ${styleName}" onerror="this.style.opacity='0.3'" />
-          <div class="gallery-photo-label">${photo.label}</div>
-        `;
-        galleryGrid.appendChild(div);
-      });
-      styleGallery.hidden = false;
-      // scroll doux vers la galerie
-      setTimeout(() => styleGallery.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
-    }
+    // Sélection du style (bouton "Choisir")
+    selectButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = btn.closest('.style-card');
+        const surplus = parseInt(card.dataset.surplus, 10);
+        const styleName = card.dataset.name;
 
-    function selectStyle(card) {
-      const styleKey = card.dataset.style;
-      const surplus = parseInt(card.dataset.surplus, 10);
-      const styleName = card.dataset.name;
+        styleCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
 
-      // Mise à jour active
-      styleCards.forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
+        selectButtons.forEach(b => b.textContent = 'Choisir ce style');
+        btn.textContent = 'Style sélectionné';
 
-      // Bouton texte
-      selectButtons.forEach(btn => btn.textContent = 'Choisir ce style');
-      card.querySelector('.style-select').textContent = 'Style sélectionné';
-
-      // Prix
-      updatePrice(surplus, styleName);
-
-      // Galerie
-      showGallery(styleKey, styleName);
-    }
-
-    // Clic sur bouton ou sur carte (en dehors du bouton)
-    styleCards.forEach(card => {
-      card.addEventListener('click', (e) => {
-        selectStyle(card);
+        updatePrice(surplus, styleName);
       });
     });
 
-    // Fermer la galerie
-    galleryCloseBtn.addEventListener('click', () => {
-      styleGallery.hidden = true;
+    // ===== LIGHTBOX POUR LES STYLES =====
+    const lightbox = document.getElementById('style-lightbox');
+    const lightboxImage = document.getElementById('style-lightbox-image');
+    const lightboxLabel = document.getElementById('style-lightbox-label');
+    const lightboxCurrent = document.getElementById('style-lightbox-current');
+    const lightboxTotal = document.getElementById('style-lightbox-total');
+
+    let currentStyle = null;
+    let currentIndex = 0;
+
+    function openStyleLightbox(styleKey, index) {
+      currentStyle = styleKey;
+      currentIndex = index;
+      updateLightboxImage();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function updateLightboxImage() {
+      const photos = stylePhotos[currentStyle];
+      const photo = photos[currentIndex];
+      lightboxImage.src = photo.src;
+      lightboxImage.alt = photo.label;
+      lightboxLabel.textContent = photo.label;
+      lightboxCurrent.textContent = currentIndex + 1;
+      lightboxTotal.textContent = photos.length;
+    }
+
+    window.closeStyleLightbox = function(e) {
+      if (e.target === lightbox || e.currentTarget.classList.contains('lightbox-close')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    };
+
+    window.navigateStyleLightbox = function(e, direction) {
+      e.stopPropagation();
+      const photos = stylePhotos[currentStyle];
+      currentIndex = (currentIndex + direction + photos.length) % photos.length;
+      updateLightboxImage();
+    };
+
+    // Clic sur photo principale OU miniature → ouvre lightbox
+    styleCards.forEach(card => {
+      const styleKey = card.dataset.style;
+
+      // Photo principale
+      const preview = card.querySelector('.style-preview');
+      if (preview) {
+        preview.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const idx = parseInt(preview.dataset.thumbIndex, 10);
+          openStyleLightbox(styleKey, idx);
+        });
+      }
+
+      // Miniatures
+      const thumbs = card.querySelectorAll('.style-thumb');
+      thumbs.forEach(thumb => {
+        thumb.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const idx = parseInt(thumb.dataset.thumbIndex, 10);
+          openStyleLightbox(styleKey, idx);
+        });
+      });
+    });
+
+    // Navigation clavier dans la lightbox style
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      if (e.key === 'ArrowLeft') navigateStyleLightbox(e, -1);
+      if (e.key === 'ArrowRight') navigateStyleLightbox(e, 1);
     });
   })();
 </script>

@@ -277,12 +277,12 @@
     color: var(--jungle);
   }
   .villa-title-price .value small {
-    display: block;
+    display: inline-block;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 1.35rem;
     color: var(--ink-soft);
-    margin-top: 0.3rem;
+    margin-left: 1rem;
     white-space: nowrap;
   }
 
@@ -665,27 +665,59 @@
     line-height: 1.5;
     flex-grow: 1;
   }
-  .style-price {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+  .style-breakdown {
     padding-top: 1rem;
     border-top: 1px solid rgba(168, 136, 82, 0.2);
-  }
-  .price-plus {
+    margin-bottom: 1.25rem;
     font-family: 'Inter', sans-serif;
+  }
+  .breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.3rem 0;
     font-size: 0.8rem;
-    letter-spacing: 0.1em;
+  }
+  .breakdown-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+  .breakdown-amount {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .breakdown-amount.breakdown-plus {
     color: var(--terracotta);
     font-weight: 500;
   }
+  .breakdown-row.breakdown-total {
+    margin-top: 0.3rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.2);
+  }
+  .breakdown-row.breakdown-total .breakdown-label {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .breakdown-row.breakdown-total .breakdown-amount {
+    font-family: 'Italiana', serif;
+    font-size: 1.3rem;
+    color: var(--jungle);
+    font-weight: 400;
+  }
   .style-select {
+    width: 100%;
     font-family: 'Inter', sans-serif;
     font-size: 0.7rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    padding: 0.7rem 1.2rem;
+    padding: 0.9rem 1.2rem;
     border: 1px solid var(--ink);
     background: transparent;
     color: var(--ink);
@@ -1457,10 +1489,21 @@
         <div class="style-info">
           <h3>Scandinave <em>moderne</em></h3>
           <p class="style-desc">Bois clair, lin naturel, tons crème et blanc. Épuré et lumineux, l'art du moins pour respirer.</p>
-          <div class="style-price">
-            <span class="price-plus">+ 0 THB</span>
-            <button class="style-select" type="button">Choisir ce style</button>
+          <div class="style-breakdown">
+            <div class="breakdown-row">
+              <span class="breakdown-label">Villa</span>
+              <span class="breakdown-amount">฿ 62 500 000</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-label">Style</span>
+              <span class="breakdown-amount breakdown-plus">+ 0 THB</span>
+            </div>
+            <div class="breakdown-row breakdown-total">
+              <span class="breakdown-label">Total</span>
+              <span class="breakdown-amount">฿ 62 500 000</span>
+            </div>
           </div>
+          <button class="style-select" type="button">Choisir ce style</button>
         </div>
       </div>
 
@@ -1480,10 +1523,21 @@
         <div class="style-info">
           <h3>Thaï <em>traditionnel</em></h3>
           <p class="style-desc">Teck massif sculpté, soieries colorées, artisanat local authentique. L'âme de Siam dans chaque détail.</p>
-          <div class="style-price">
-            <span class="price-plus">+ 2 500 000 THB</span>
-            <button class="style-select" type="button">Choisir ce style</button>
+          <div class="style-breakdown">
+            <div class="breakdown-row">
+              <span class="breakdown-label">Villa</span>
+              <span class="breakdown-amount">฿ 62 500 000</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-label">Style</span>
+              <span class="breakdown-amount breakdown-plus">+ 2 500 000 THB</span>
+            </div>
+            <div class="breakdown-row breakdown-total">
+              <span class="breakdown-label">Total</span>
+              <span class="breakdown-amount">฿ 65 000 000</span>
+            </div>
           </div>
+          <button class="style-select" type="button">Choisir ce style</button>
         </div>
       </div>
 
@@ -1503,10 +1557,21 @@
         <div class="style-info">
           <h3>Wabi-Sabi <em>zen</em></h3>
           <p class="style-desc">Béton ciré, pierre brute, bois de récupération. L'élégance japonaise du détail imparfait et du vide habité.</p>
-          <div class="style-price">
-            <span class="price-plus">+ 3 500 000 THB</span>
-            <button class="style-select" type="button">Choisir ce style</button>
+          <div class="style-breakdown">
+            <div class="breakdown-row">
+              <span class="breakdown-label">Villa</span>
+              <span class="breakdown-amount">฿ 62 500 000</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-label">Style</span>
+              <span class="breakdown-amount breakdown-plus">+ 3 500 000 THB</span>
+            </div>
+            <div class="breakdown-row breakdown-total">
+              <span class="breakdown-label">Total</span>
+              <span class="breakdown-amount">฿ 66 000 000</span>
+            </div>
           </div>
+          <button class="style-select" type="button">Choisir ce style</button>
         </div>
       </div>
 

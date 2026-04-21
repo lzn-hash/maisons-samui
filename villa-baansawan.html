@@ -209,6 +209,29 @@
     margin-top: 0.3rem;
   }
 
+  /* Zone surplus style intérieur (affichée seulement quand un style payant est sélectionné) */
+  .price-surplus {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.3);
+    animation: fadeIn 0.4s ease;
+  }
+  .price-surplus .surplus-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   /* Badge cryptos sous le prix (page villa) */
   .villa-crypto-badge {
     display: inline-flex;
@@ -373,6 +396,259 @@
     font-style: italic;
     color: var(--terracotta);
     font-weight: 500;
+  }
+
+  /* ===== STYLES INTÉRIEURS ===== */
+  .styles {
+    padding: 6rem 3rem;
+    background: var(--white);
+  }
+  .styles-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .styles-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+  }
+  .styles-header .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .styles-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+  .styles-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .styles-header p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  .styles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .style-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--sand-light);
+    border: 1px solid rgba(168, 136, 82, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .style-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(26, 30, 26, 0.08);
+    border-color: var(--gold);
+  }
+  .style-card.active {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px var(--gold), 0 20px 50px rgba(168, 136, 82, 0.2);
+  }
+  .style-card.active::before {
+    content: '✓ Sélectionné';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--gold);
+    color: var(--white);
+    padding: 0.4rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    z-index: 5;
+    font-weight: 500;
+  }
+  .style-card {
+    position: relative;
+  }
+
+  .style-preview {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--sand-dark);
+  }
+  .style-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .style-card:hover .style-preview img {
+    transform: scale(1.04);
+  }
+  .style-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--white);
+    color: var(--jungle);
+    padding: 0.4rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .style-info {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .style-info h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+  }
+  .style-info h3 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .style-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+  .style-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.2);
+  }
+  .price-plus {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+  .style-select {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.7rem 1.2rem;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+  .style-select:hover {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .style-card.active .style-select {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+  }
+
+  /* Galerie du style sélectionné */
+  .style-gallery {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.3);
+    animation: fadeIn 0.5s ease;
+  }
+  .style-gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .style-gallery-header h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+  .style-gallery-header h3 span {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .style-gallery-close {
+    background: transparent;
+    border: 1px solid var(--ink-soft);
+    color: var(--ink-soft);
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+  .style-gallery-close:hover {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+  .style-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .style-gallery-grid .gallery-photo {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .style-gallery-grid .gallery-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .style-gallery-grid .gallery-photo:hover img {
+    transform: scale(1.04);
+  }
+  .style-gallery-grid .gallery-photo-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 0.6rem 0 0;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .styles-grid { grid-template-columns: 1fr; }
+    .style-gallery-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   /* ===== FEATURES ===== */
@@ -1004,10 +1280,19 @@
         <h1>Baan <em>Sawan</em></h1>
       </div>
       <div class="villa-title-price">
+        <div class="label">À partir de</div>
         <div class="value">
-          ฿ 62 500 000
-          <small>≈ 1,7 M€</small>
+          ฿ <span id="total-thb">62 500 000</span>
+          <small>≈ <span id="total-eur">1,7 M€</span></small>
         </div>
+
+        <div class="price-surplus" id="price-surplus" hidden>
+          <div class="surplus-row">
+            <span class="surplus-label">+ <span id="surplus-style-name">Style</span></span>
+            <span class="surplus-amount">+<span id="surplus-amount">0</span> THB</span>
+          </div>
+        </div>
+
         <div class="villa-crypto-badge">
           <span class="crypto-label">Cryptos acceptées</span>
           <span class="crypto-icons">
@@ -1071,6 +1356,78 @@
     <img src="photos/baansawan/baansawan-05.jpg" alt="Baan Sawan - photo 5" />
   </div>
 </div>
+
+<!-- STYLES INTÉRIEURS -->
+<section class="styles">
+  <div class="styles-inner">
+    <div class="styles-header">
+      <div class="eyebrow">Personnalisation</div>
+      <h2>Un intérieur à votre <em>image</em></h2>
+      <p>Choisissez parmi trois ambiances soigneusement conçues. Chaque style est livré clés en main, meubles et décoration inclus.</p>
+    </div>
+
+    <div class="styles-grid">
+
+      <!-- Style 1 : Scandinave Moderne (inclus) -->
+      <div class="style-card" data-style="scandinave" data-surplus="0" data-name="Scandinave Moderne">
+        <div class="style-preview">
+          <img src="photos/baansawan/salon-scandinave.jpeg" alt="Style Scandinave Moderne" />
+          <span class="style-tag">Inclus</span>
+        </div>
+        <div class="style-info">
+          <h3>Scandinave <em>moderne</em></h3>
+          <p class="style-desc">Bois clair, lin naturel, tons crème et blanc. Épuré et lumineux, l'art du moins pour respirer.</p>
+          <div class="style-price">
+            <span class="price-plus">+ 0 THB</span>
+            <button class="style-select" type="button">Choisir ce style</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Style 2 : Thaï Traditionnel -->
+      <div class="style-card" data-style="thai" data-surplus="2500000" data-name="Thaï Traditionnel">
+        <div class="style-preview">
+          <img src="photos/baansawan/salon-thai.jpeg" alt="Style Thaï Traditionnel" />
+        </div>
+        <div class="style-info">
+          <h3>Thaï <em>traditionnel</em></h3>
+          <p class="style-desc">Teck massif sculpté, soieries colorées, artisanat local authentique. L'âme de Siam dans chaque détail.</p>
+          <div class="style-price">
+            <span class="price-plus">+ 2 500 000 THB</span>
+            <button class="style-select" type="button">Choisir ce style</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Style 3 : Wabi-Sabi Zen -->
+      <div class="style-card" data-style="wabisabi" data-surplus="3500000" data-name="Wabi-Sabi Zen">
+        <div class="style-preview">
+          <img src="photos/baansawan/salon-wabisabi.jpeg" alt="Style Wabi-Sabi Zen" />
+        </div>
+        <div class="style-info">
+          <h3>Wabi-Sabi <em>zen</em></h3>
+          <p class="style-desc">Béton ciré, pierre brute, bois de récupération. L'élégance japonaise du détail imparfait et du vide habité.</p>
+          <div class="style-price">
+            <span class="price-plus">+ 3 500 000 THB</span>
+            <button class="style-select" type="button">Choisir ce style</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Galerie du style sélectionné -->
+    <div class="style-gallery" id="style-gallery" hidden>
+      <div class="style-gallery-header">
+        <h3>Galerie — <span id="gallery-style-name">Scandinave moderne</span></h3>
+        <button class="style-gallery-close" type="button" aria-label="Fermer">✕</button>
+      </div>
+      <div class="style-gallery-grid" id="style-gallery-grid">
+        <!-- Rempli dynamiquement -->
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PLAN -->
 <section class="plan">
@@ -1360,6 +1717,122 @@
     if (e.key === 'ArrowLeft') navigatePlanLightbox(e, -1);
     if (e.key === 'ArrowRight') navigatePlanLightbox(e, 1);
   });
+</script>
+
+<script>
+  // ========== STYLES INTÉRIEURS DYNAMIQUES ==========
+  (function() {
+    const BASE_PRICE_THB = 62500000;
+    const EUR_RATE = 37000; // 1 EUR ≈ 37 000 THB (à ajuster selon taux réel)
+
+    // Photos associées à chaque style (les pièces importantes)
+    const stylePhotos = {
+      scandinave: [
+        { src: 'photos/baansawan/salon-scandinave.jpeg', label: 'Salon' },
+        { src: 'photos/baansawan/chambre1-scandinave.jpeg', label: 'Suite principale' },
+        { src: 'photos/baansawan/chambre2-scandinave.jpeg', label: 'Chambre d\'amis' },
+        { src: 'photos/baansawan/cuisine-scandinave.jpeg', label: 'Cuisine' },
+        { src: 'photos/baansawan/salle-bain-scandinave.jpeg', label: 'Salle d\'eau' }
+      ],
+      thai: [
+        { src: 'photos/baansawan/salon-thai.jpeg', label: 'Salon' },
+        { src: 'photos/baansawan/chambre1-thai.jpeg', label: 'Suite principale' },
+        { src: 'photos/baansawan/chambre2-thai.jpeg', label: 'Chambre d\'amis' },
+        { src: 'photos/baansawan/cuisine-thai.jpeg', label: 'Cuisine' },
+        { src: 'photos/baansawan/salle-bain-thai.jpeg', label: 'Salle d\'eau' }
+      ],
+      wabisabi: [
+        { src: 'photos/baansawan/salon-wabisabi.jpeg', label: 'Salon' },
+        { src: 'photos/baansawan/chambre1-wabisabi.jpeg', label: 'Suite principale' },
+        { src: 'photos/baansawan/chambre2-wabisabi.jpeg', label: 'Chambre d\'amis' },
+        { src: 'photos/baansawan/cuisine-wabisabi.jpeg', label: 'Cuisine' },
+        { src: 'photos/baansawan/salle-bain-wabisabi.jpeg', label: 'Salle d\'eau' }
+      ]
+    };
+
+    const styleCards = document.querySelectorAll('.style-card');
+    const selectButtons = document.querySelectorAll('.style-select');
+    const totalTHB = document.getElementById('total-thb');
+    const totalEUR = document.getElementById('total-eur');
+    const priceSurplus = document.getElementById('price-surplus');
+    const surplusStyleName = document.getElementById('surplus-style-name');
+    const surplusAmount = document.getElementById('surplus-amount');
+    const styleGallery = document.getElementById('style-gallery');
+    const galleryStyleName = document.getElementById('gallery-style-name');
+    const galleryGrid = document.getElementById('style-gallery-grid');
+    const galleryCloseBtn = document.querySelector('.style-gallery-close');
+
+    function formatPrice(thb) {
+      return thb.toLocaleString('fr-FR').replace(/,/g, ' ');
+    }
+    function formatEUR(thb) {
+      const eur = thb / EUR_RATE;
+      if (eur >= 1000000) return (eur / 1000000).toFixed(2).replace('.', ',') + ' M€';
+      return Math.round(eur / 1000) + ' k€';
+    }
+
+    function updatePrice(surplus, styleName) {
+      const total = BASE_PRICE_THB + surplus;
+      totalTHB.textContent = formatPrice(total);
+      totalEUR.textContent = formatEUR(total);
+      if (surplus > 0) {
+        surplusStyleName.textContent = styleName;
+        surplusAmount.textContent = formatPrice(surplus);
+        priceSurplus.hidden = false;
+      } else {
+        priceSurplus.hidden = true;
+      }
+    }
+
+    function showGallery(styleKey, styleName) {
+      galleryStyleName.textContent = styleName;
+      galleryGrid.innerHTML = '';
+      stylePhotos[styleKey].forEach(photo => {
+        const div = document.createElement('div');
+        div.className = 'gallery-photo';
+        div.innerHTML = `
+          <img src="${photo.src}" alt="${photo.label} — ${styleName}" onerror="this.style.opacity='0.3'" />
+          <div class="gallery-photo-label">${photo.label}</div>
+        `;
+        galleryGrid.appendChild(div);
+      });
+      styleGallery.hidden = false;
+      // scroll doux vers la galerie
+      setTimeout(() => styleGallery.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    }
+
+    function selectStyle(card) {
+      const styleKey = card.dataset.style;
+      const surplus = parseInt(card.dataset.surplus, 10);
+      const styleName = card.dataset.name;
+
+      // Mise à jour active
+      styleCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+
+      // Bouton texte
+      selectButtons.forEach(btn => btn.textContent = 'Choisir ce style');
+      card.querySelector('.style-select').textContent = 'Style sélectionné';
+
+      // Prix
+      updatePrice(surplus, styleName);
+
+      // Galerie
+      showGallery(styleKey, styleName);
+    }
+
+    // Clic sur bouton ou sur carte (en dehors du bouton)
+    styleCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        selectStyle(card);
+      });
+    });
+
+    // Fermer la galerie
+    galleryCloseBtn.addEventListener('click', () => {
+      styleGallery.hidden = true;
+    });
+  })();
 </script>
 
 </body>

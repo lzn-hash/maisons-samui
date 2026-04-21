@@ -116,6 +116,75 @@
     font-size: 1rem;
   }
 
+  /* ===== SOUS-NAVIGATION VILLA ===== */
+  .villa-subnav {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    background: rgba(250, 247, 240, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  .villa-subnav.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .villa-subnav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .villa-subnav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 2.5rem;
+    padding: 0;
+    margin: 0;
+  }
+  .villa-subnav li {
+    padding: 1rem 0;
+  }
+  .villa-subnav a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-weight: 400;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  .villa-subnav a:hover {
+    color: var(--ink);
+  }
+  .villa-subnav a.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* Mobile : scroll horizontal */
+  @media (max-width: 780px) {
+    .villa-subnav ul {
+      justify-content: flex-start;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .villa-subnav ul::-webkit-scrollbar { display: none; }
+    .villa-subnav-inner { padding: 0 1.5rem; }
+    .villa-subnav a { font-size: 0.65rem; }
+  }
+
   /* ===== HERO VILLA ===== */
   .villa-hero {
     padding-top: 5rem;
@@ -1244,8 +1313,22 @@
 
 <a href="index.html#collection" class="back-link">Retour aux Villas</a>
 
+<!-- SOUS-NAVIGATION VILLA -->
+<nav class="villa-subnav" id="villa-subnav">
+  <div class="villa-subnav-inner">
+    <ul>
+      <li><a href="#villa" data-section="villa">Baan Sawan</a></li>
+      <li><a href="#styles" data-section="styles">Styles</a></li>
+      <li><a href="#architecture" data-section="architecture">Plans</a></li>
+      <li><a href="#features" data-section="features">Prestations</a></li>
+      <li><a href="#location" data-section="location">Situation</a></li>
+      <li><a href="#contact" data-section="contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
 <!-- HERO VILLA -->
-<section class="villa-hero">
+<section class="villa-hero" id="villa">
   <div class="villa-hero-inner">
     <div class="villa-breadcrumb">
       <a href="index.html">Maisons Samui</a>
@@ -1339,7 +1422,7 @@
 </div>
 
 <!-- STYLES INTÉRIEURS -->
-<section class="styles">
+<section class="styles" id="styles">
   <div class="styles-inner">
     <div class="styles-header">
       <div class="eyebrow">Personnalisation</div>
@@ -1436,7 +1519,7 @@
 </div>
 
 <!-- PLAN -->
-<section class="plan">
+<section class="plan" id="architecture">
   <div class="plan-inner">
     <div class="plan-header">
       <div class="eyebrow">Architecture</div>
@@ -1462,7 +1545,7 @@
 </section>
 
 <!-- FEATURES -->
-<section class="features">
+<section class="features" id="features">
   <div class="features-header">
     <h2><em>Prestations</em> et équipements</h2>
   </div>
@@ -1520,7 +1603,7 @@
 </section>
 
 <!-- LOCALISATION -->
-<section class="location">
+<section class="location" id="location">
   <div class="location-inner">
     <div class="location-text">
       <div class="label">Situation</div>
@@ -1883,6 +1966,66 @@
       }
       if (e.key === 'ArrowLeft') navigateStyleLightbox(e, -1);
       if (e.key === 'ArrowRight') navigateStyleLightbox(e, 1);
+    });
+  })();
+</script>
+
+<script>
+  // ========== SOUS-NAVIGATION VILLA ==========
+  (function() {
+    const subnav = document.getElementById('villa-subnav');
+    const links = document.querySelectorAll('.villa-subnav a');
+    const sections = Array.from(links).map(a => {
+      const id = a.getAttribute('href').substring(1);
+      return document.getElementById(id);
+    }).filter(Boolean);
+
+    // 1. Afficher la sous-nav uniquement quand on a scrollé au-delà du hero
+    const heroBottom = () => {
+      const hero = document.getElementById('villa');
+      if (!hero) return 400;
+      return hero.offsetTop + hero.offsetHeight - 100;
+    };
+
+    function onScroll() {
+      if (window.scrollY > heroBottom()) {
+        subnav.classList.add('visible');
+      } else {
+        subnav.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // 2. Détecter la section active (zone visible à l'écran)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          links.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, {
+      rootMargin: '-30% 0px -60% 0px', // déclenche quand la section est dans le tiers supérieur
+      threshold: 0
+    });
+
+    sections.forEach(section => observer.observe(section));
+
+    // 3. Scroll doux au clic
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          const offset = 80; // compense la hauteur de la sous-nav
+          const y = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
     });
   })();
 </script>

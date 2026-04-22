@@ -2120,6 +2120,43 @@
     background: #8e7043;
     border-color: #8e7043;
   }
+  .contact-form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  .contact-status {
+    margin-top: 1rem;
+    padding: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+  }
+  .contact-status:empty {
+    display: none;
+  }
+  .contact-status.success {
+    padding: 1rem 1.2rem;
+    background: rgba(45, 74, 52, 0.08);
+    border-left: 3px solid var(--jungle);
+    color: var(--jungle-deep);
+  }
+  .contact-status.error {
+    padding: 1rem 1.2rem;
+    background: rgba(184, 98, 63, 0.08);
+    border-left: 3px solid var(--terracotta);
+    color: var(--terracotta);
+  }
+  .contact-status.error a {
+    color: var(--terracotta);
+    text-decoration: underline;
+  }
+  .contact-status.loading {
+    padding: 0.6rem 0;
+    color: var(--ink-soft);
+    font-style: italic;
+    text-align: center;
+  }
 
   /* ===== FOOTER ===== */
   footer {
@@ -2401,7 +2438,7 @@
 
     <div class="villa-title-block">
       <div>
-        <div class="villa-eyebrow">Lipa Noi · Ouest de Koh Samui</div>
+        <div class="villa-eyebrow">Lamai · Côte est de Koh Samui</div>
         <h1>Baan <em>Sawan</em></h1>
       </div>
       <div class="villa-title-price">
@@ -2930,11 +2967,11 @@
   <div class="description-inner">
     <div class="description-label">Le <em>souffle</em><br>de l'océan</div>
     <div class="description-body">
-      <p class="lead">Baan Sawan — « Maison du Paradis » en thaï — se niche sur le front de mer de Lipa Noi, l'une des plages les plus préservées de Koh Samui.</p>
+      <p class="lead">Baan Sawan — « Maison du Paradis » en thaï — se perche sur les hauteurs de Lamai, dominant l'une des plus belles baies de Koh Samui.</p>
       <p>Pensée comme un <em>refuge intime</em>, la villa se déploie sur 152m² habitables et cultive l'art du juste nécessaire. Trois chambres, deux salles d'eau, des volumes calibrés pour qu'aucun geste, aucun rayon de lumière, ne soit superflu.</p>
       <p>L'architecture joue le contraste entre <em>lignes contemporaines épurées</em> et matériaux bruts — teck massif, pierre locale, vasques en marbre thaï. Depuis chaque pièce, la mer s'impose comme un tableau vivant.</p>
-      <p>La piscine à débordement prolonge visuellement le golfe de Thaïlande. En contrebas, la plage de sable blanc reste accessible à pied, uniquement fréquentée par les habitants du domaine.</p>
-      <p>Orientation ouest pour les couchers de soleil spectaculaires, brise marine constante, intimité préservée par la disposition du jardin tropical et l'implantation sur la parcelle de 448m².</p>
+      <p>La piscine à débordement prolonge visuellement le golfe de Thaïlande. En contrebas, la longue plage de sable doré de Lamai et son ambiance vivante restent accessibles en quelques minutes.</p>
+      <p>Orientation est pour les <em>levers de soleil sur la mer</em>, brise marine constante, intimité totale grâce à la position en hauteur et l'implantation sur la parcelle de 448m².</p>
     </div>
   </div>
 </section>
@@ -2944,24 +2981,24 @@
   <div class="location-inner">
     <div class="location-text">
       <div class="label">Situation</div>
-      <h2>Lipa Noi, <em>ouest</em> de l'île</h2>
-      <p>Côte ouest préservée, réputée pour ses eaux calmes et ses couchers de soleil. Une plage confidentielle loin de l'agitation, à 20 minutes seulement de l'aéroport.</p>
+      <h2>Lamai, <em>côte est</em> de l'île</h2>
+      <p>Côte est animée et iconique, réputée pour sa longue plage de sable doré et ses spots emblématiques — Hin Ta & Hin Yai. Une position en hauteur qui offre l'intimité tout en gardant l'accès rapide aux services et plaisirs de l'île.</p>
       <ul class="location-points">
-        <li><span>Plage privative</span><span>accès direct</span></li>
-        <li><span>Nathon ferry</span><span>10 min</span></li>
+        <li><span>Plage de Lamai</span><span>5 min</span></li>
         <li><span>Aéroport international</span><span>20 min</span></li>
-        <li><span>Hôpital Bangkok Samui</span><span>25 min</span></li>
-        <li><span>Supermarché Tesco Lotus</span><span>15 min</span></li>
-        <li><span>International school</span><span>18 min</span></li>
+        <li><span>Hôpital Bangkok Samui</span><span>15 min</span></li>
+        <li><span>Centre Lamai (restaurants, marchés)</span><span>5 min</span></li>
+        <li><span>Chaweng (vie nocturne, shopping)</span><span>15 min</span></li>
+        <li><span>International school</span><span>25 min</span></li>
       </ul>
     </div>
     <div class="location-map">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d31790.21!2d99.9050!3d9.5260!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sth!4v1700000000000!5m2!1sfr!2sth"
+        src="https://maps.google.com/maps?q=9.4615,100.0190&z=14&hl=fr&output=embed"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         allowfullscreen
-        title="Lipa Noi, Koh Samui"></iframe>
+        title="Baan Sawan — Lamai, Koh Samui"></iframe>
     </div>
   </div>
 </section>
@@ -2985,11 +3022,13 @@
 
       <input type="hidden" name="villa" value="Baan Sawan" />
       <input type="hidden" name="config" id="hidden-config" value="" />
+      <input type="text" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;" aria-hidden="true" />
       <input type="text" name="nom" placeholder="Nom complet" required />
       <input type="email" name="email" placeholder="Adresse email" required />
       <input type="tel" name="telephone" placeholder="Téléphone (optionnel)" />
       <textarea name="message" placeholder="Votre message — visite, questions, délai souhaité..." required></textarea>
       <button type="submit">Demander un contact</button>
+      <div class="contact-status" id="contact-status"></div>
     </form>
   </div>
 </section>
@@ -3658,7 +3697,7 @@
 // ========== PANIER "MON PROJET" ==========
 (function() {
   const STORAGE_KEY = 'maisons-samui-panier-baansawan';
-  const VILLA = { name: 'Baan Sawan', loc: 'Lipa Noi · Ouest', basePrice: 19000000 };
+  const VILLA = { name: 'Baan Sawan', loc: 'Lamai · Côte est', basePrice: 19000000 };
   const CONTACT_EMAIL = 'group@blockestate.com';
   const EUR_RATE = 38; // 1 EUR = 38 THB (à mettre à jour régulièrement)
 
@@ -3996,13 +4035,18 @@
   });
 
   // ===== SUBMIT FORMULAIRE =====
-  window.handleContactSubmit = function(e) {
+  const WEB3FORMS_KEY = '289fb372-3290-4eaa-8f2c-ab2d3bddc3bd';
+
+  window.handleContactSubmit = async function(e) {
     e.preventDefault();
     const form = e.target;
     const config = loadConfig();
     const count = countChoices(config);
     const total = computeTotal(config);
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const statusEl = document.getElementById('contact-status');
 
+    // Construction du sujet et du corps (même format qu'avant)
     let subject = `Demande — ${VILLA.name}`;
     if (count > 0) subject += ' (configuré)';
 
@@ -4023,8 +4067,63 @@
     body += `--- Mon message ---\n${form.message.value}\n\n`;
     body += `---\nEnvoyé depuis maisons-samui (${new Date().toLocaleString('fr-FR')})`;
 
-    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
+    // UI : loading
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+    if (statusEl) {
+      statusEl.className = 'contact-status loading';
+      statusEl.textContent = '';
+    }
+
+    // Envoi via Web3Forms
+    const payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: subject,
+      from_name: form.nom.value,
+      replyto: form.email.value,
+      message: body,
+      // Honeypot anti-spam
+      botcheck: ''
+    };
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Succès
+        submitBtn.textContent = '✓ Message envoyé';
+        if (statusEl) {
+          statusEl.className = 'contact-status success';
+          statusEl.innerHTML = '<strong>Merci !</strong> Votre demande a bien été envoyée. Nous vous recontacterons sous 24h.';
+        }
+        form.reset();
+        // Reset bouton après 4s
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Demander un contact';
+        }, 4000);
+      } else {
+        throw new Error(data.message || 'Erreur lors de l\'envoi');
+      }
+    } catch (err) {
+      console.error('Erreur Web3Forms:', err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Demander un contact';
+      if (statusEl) {
+        statusEl.className = 'contact-status error';
+        statusEl.innerHTML = '<strong>Une erreur est survenue.</strong> Veuillez réessayer ou nous contacter directement à <a href="mailto:group@blockestate.com">group@blockestate.com</a>';
+      }
+    }
+
     return false;
   };
 

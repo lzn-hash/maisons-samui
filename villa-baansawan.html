@@ -434,15 +434,16 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.6rem;
     font-weight: 500;
-    color: var(--ink);
+    color: var(--jungle);
   }
   .drawer-total-value small {
     display: block;
-    font-size: 0.85rem;
-    color: var(--ink-soft);
+    font-size: 1.4rem;
+    color: var(--ink);
     font-style: italic;
+    font-weight: 400;
     text-align: right;
-    margin-top: 0.1rem;
+    margin-top: 0.3rem;
   }
   .drawer-footer {
     padding: 1.5rem 1.8rem;
@@ -2406,8 +2407,8 @@
       <div class="villa-title-price">
         <div class="label">À partir de</div>
         <div class="value">
-          ฿ 62 500 000
-          <small>≈ 1,7 M€</small>
+          ฿ 19 000 000
+          <small>≈ 500 k€</small>
         </div>
 
         <div class="villa-crypto-badge">
@@ -2433,7 +2434,7 @@
         <path d="M6 30h36v-6a6 6 0 0 0-6-6H12a6 6 0 0 0-6 6v6z"/>
         <path d="M12 18v-2a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2M24 18v-2a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2"/>
       </svg>
-      <div class="value">5</div>
+      <div class="value">3</div>
       <div class="label">Chambres</div>
     </div>
 
@@ -2444,7 +2445,7 @@
         <path d="M16 14h8"/>
         <path d="M12 38l-2 4M36 38l2 4"/>
       </svg>
-      <div class="value">6</div>
+      <div class="value">2</div>
       <div class="label">Salles d'eau</div>
     </div>
 
@@ -2454,7 +2455,7 @@
         <path d="M8 22h14v18"/>
         <path d="M4 6l4-4M44 6l-4-4M4 42l4 4M44 42l-4 4"/>
       </svg>
-      <div class="value">450<small>m²</small></div>
+      <div class="value">152<small>m²</small></div>
       <div class="label">Surface habitable</div>
     </div>
 
@@ -2463,7 +2464,7 @@
         <path d="M4 4h40v40H4z"/>
         <path d="M4 4l40 40M4 44L44 4"/>
       </svg>
-      <div class="value">680<small>m²</small></div>
+      <div class="value">448<small>m²</small></div>
       <div class="label">Surface totale</div>
     </div>
 
@@ -2540,39 +2541,19 @@
       <div class="options-grid">
 
         <!-- Sol 1 : Travertin (inclus) -->
-        <div class="option-card" data-option-type="sol" data-surplus="0" data-name="Travertin beige">
+        <!-- Sol 1 : Teck massif (inclus) -->
+        <div class="option-card" data-option-type="sol" data-surplus="0" data-name="Teck massif">
           <div class="option-info">
-            <h3>Travertin <em>beige</em></h3>
-            <p class="option-desc">Pierre naturelle calcaire aux veines douces. Intemporelle, elle s'accorde avec tous les styles intérieurs.</p>
+            <h3>Teck <em>massif</em></h3>
+            <p class="option-desc">Bois noble thaïlandais, chaud et vivant. Sa patine naturelle se bonifie avec le temps.</p>
             <div class="option-breakdown">
               <span class="option-amount">+ 0 THB</span>
             </div>
             <button class="option-select" type="button">Choisir ce sol</button>
           </div>
           <div class="option-photo">
-            <img src="photos/sols/travertin/travertin-main.jpg" onerror="this.src='https://placehold.co/800x600/e8e1d4/3a3f39?text=Travertin+%E2%80%94+Photos+%C3%A0+venir'" alt="Travertin beige" />
-            <span class="option-tag">Inclus</span>
-          <div class="option-zoom-hint">Cliquer pour agrandir</div>
-          </div>
-          <div class="option-thumbs">
-            <div class="option-thumb"><img src="photos/sols/travertin/travertin-salon.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Salon'" alt="Salon" /></div>
-            <div class="option-thumb"><img src="photos/sols/travertin/travertin-terrasse.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Terrasse'" alt="Terrasse" /></div>
-            <div class="option-thumb"><img src="photos/sols/travertin/travertin-chambre.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Chambre'" alt="Chambre" /></div>
-          </div>
-        </div>
-
-        <!-- Sol 2 : Teck massif -->
-        <div class="option-card" data-option-type="sol" data-surplus="1200000" data-name="Teck massif">
-          <div class="option-info">
-            <h3>Teck <em>massif</em></h3>
-            <p class="option-desc">Bois noble thaïlandais, chaud et vivant. Sa patine naturelle se bonifie avec le temps.</p>
-            <div class="option-breakdown">
-              <span class="option-amount">+ 1 200 000 THB</span>
-            </div>
-            <button class="option-select" type="button">Choisir ce sol</button>
-          </div>
-          <div class="option-photo">
             <img src="photos/sols/teck/teck-main.jpg" onerror="this.src='https://placehold.co/800x600/3a3f39/e8e1d4?text=Teck+%E2%80%94+Photos+%C3%A0+venir'" alt="Teck massif" />
+            <span class="option-tag">Inclus</span>
           <div class="option-zoom-hint">Cliquer pour agrandir</div>
           </div>
           <div class="option-thumbs">
@@ -2582,13 +2563,34 @@
           </div>
         </div>
 
+        <!-- Sol 2 : Travertin beige -->
+        <div class="option-card" data-option-type="sol" data-surplus="500000" data-name="Travertin beige">
+          <div class="option-info">
+            <h3>Travertin <em>beige</em></h3>
+            <p class="option-desc">Pierre naturelle calcaire aux veines douces. Intemporelle, elle s'accorde avec tous les styles intérieurs.</p>
+            <div class="option-breakdown">
+              <span class="option-amount">+ 500 000 THB</span>
+            </div>
+            <button class="option-select" type="button">Choisir ce sol</button>
+          </div>
+          <div class="option-photo">
+            <img src="photos/sols/travertin/travertin-main.jpg" onerror="this.src='https://placehold.co/800x600/e8e1d4/3a3f39?text=Travertin+%E2%80%94+Photos+%C3%A0+venir'" alt="Travertin beige" />
+          <div class="option-zoom-hint">Cliquer pour agrandir</div>
+          </div>
+          <div class="option-thumbs">
+            <div class="option-thumb"><img src="photos/sols/travertin/travertin-salon.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Salon'" alt="Salon" /></div>
+            <div class="option-thumb"><img src="photos/sols/travertin/travertin-terrasse.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Terrasse'" alt="Terrasse" /></div>
+            <div class="option-thumb"><img src="photos/sols/travertin/travertin-chambre.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Chambre'" alt="Chambre" /></div>
+          </div>
+        </div>
+
         <!-- Sol 3 : Marbre Carrare -->
-        <div class="option-card" data-option-type="sol" data-surplus="2800000" data-name="Marbre de Carrare">
+        <div class="option-card" data-option-type="sol" data-surplus="1000000" data-name="Marbre de Carrare">
           <div class="option-info">
             <h3>Marbre <em>de Carrare</em></h3>
             <p class="option-desc">Le choix absolu du luxe méditerranéen. Blanc lumineux veiné de gris délicat, réfléchit la lumière tropicale.</p>
             <div class="option-breakdown">
-              <span class="option-amount">+ 2 800 000 THB</span>
+              <span class="option-amount">+ 1 000 000 THB</span>
             </div>
             <button class="option-select" type="button">Choisir ce sol</button>
           </div>
@@ -2633,12 +2635,12 @@
         </div>
 
         <!-- Parement 2 : Pierre volcanique -->
-        <div class="option-card" data-option-type="parement" data-surplus="1800000" data-name="Pierre volcanique">
+        <div class="option-card" data-option-type="parement" data-surplus="950000" data-name="Pierre volcanique">
           <div class="option-info">
             <h3>Pierre <em>volcanique</em></h3>
             <p class="option-desc">Extraite localement à Koh Samui, texture brute et contemporaine. Teintes anthracite et gris basalte.</p>
             <div class="option-breakdown">
-              <span class="option-amount">+ 1 800 000 THB</span>
+              <span class="option-amount">+ 950 000 THB</span>
             </div>
             <button class="option-select" type="button">Choisir ce parement</button>
           </div>
@@ -2654,12 +2656,12 @@
         </div>
 
         <!-- Parement 3 : Pierre sèche -->
-        <div class="option-card" data-option-type="parement" data-surplus="2500000" data-name="Pierre sèche">
+        <div class="option-card" data-option-type="parement" data-surplus="1500000" data-name="Pierre sèche">
           <div class="option-info">
             <h3>Pierre <em>sèche</em></h3>
             <p class="option-desc">Empilage artisanal de pierres locales, façon muret méditerranéen. Caractère noble et intemporel.</p>
             <div class="option-breakdown">
-              <span class="option-amount">+ 2 500 000 THB</span>
+              <span class="option-amount">+ 1 500 000 THB</span>
             </div>
             <button class="option-select" type="button">Choisir ce parement</button>
           </div>
@@ -2728,7 +2730,7 @@
         </div>
 
         <!-- Style 2 : Thaï Traditionnel -->
-        <div class="style-card" data-style="thai" data-surplus="2500000" data-name="Thaï Traditionnel">
+        <div class="style-card" data-style="thai" data-surplus="700000" data-name="Thaï Traditionnel">
           <div class="style-preview" data-thumb-index="0">
             <img src="photos/styles/thai/thai-salon.jpg" alt="Style Thaï Traditionnel" />
             <div class="style-zoom-hint">Cliquer pour agrandir</div>
@@ -2771,7 +2773,7 @@
             <p class="style-desc">Teck massif sculpté, soieries colorées, artisanat local authentique. L'âme de Siam dans chaque détail.</p>
             <div class="style-breakdown">
               <div class="breakdown-row breakdown-single">
-                <span class="breakdown-amount breakdown-plus">+ 2 500 000 THB</span>
+                <span class="breakdown-amount breakdown-plus">+ 700 000 THB</span>
               </div>
             </div>
             <button class="style-select" type="button">Choisir ce style</button>
@@ -2779,7 +2781,7 @@
         </div>
 
         <!-- Style 3 : Wabi-Sabi Zen -->
-        <div class="style-card" data-style="wabisabi" data-surplus="3500000" data-name="Wabi-Sabi Zen">
+        <div class="style-card" data-style="wabisabi" data-surplus="900000" data-name="Wabi-Sabi Zen">
           <div class="style-preview" data-thumb-index="0">
             <img src="photos/styles/wabisabi/wabisabi-salon.jpg" alt="Style Wabi-Sabi Zen" />
             <div class="style-zoom-hint">Cliquer pour agrandir</div>
@@ -2828,7 +2830,7 @@
             <p class="style-desc">Béton ciré, pierre brute, bois de récupération. L'élégance japonaise du détail imparfait et du vide habité.</p>
             <div class="style-breakdown">
               <div class="breakdown-row breakdown-single">
-                <span class="breakdown-amount breakdown-plus">+ 3 500 000 THB</span>
+                <span class="breakdown-amount breakdown-plus">+ 900 000 THB</span>
               </div>
             </div>
             <button class="style-select" type="button">Choisir ce style</button>
@@ -2928,10 +2930,11 @@
   <div class="description-inner">
     <div class="description-label">Le <em>souffle</em><br>de l'océan</div>
     <div class="description-body">
-      <p class="lead">Baan Sawan — « Maison du Paradis » en thaï — s'étend sur le front de mer de Lipa Noi, l'une des plages les plus préservées de Koh Samui.</p>
+      <p class="lead">Baan Sawan — « Maison du Paradis » en thaï — se niche sur le front de mer de Lipa Noi, l'une des plages les plus préservées de Koh Samui.</p>
+      <p>Pensée comme un <em>refuge intime</em>, la villa se déploie sur 152m² habitables et cultive l'art du juste nécessaire. Trois chambres, deux salles d'eau, des volumes calibrés pour qu'aucun geste, aucun rayon de lumière, ne soit superflu.</p>
       <p>L'architecture joue le contraste entre <em>lignes contemporaines épurées</em> et matériaux bruts — teck massif, pierre locale, vasques en marbre thaï. Depuis chaque pièce, la mer s'impose comme un tableau vivant.</p>
-      <p>La piscine à débordement de 15 mètres prolonge visuellement le golfe de Thaïlande. En contrebas, la plage de sable blanc reste accessible à pied, uniquement fréquentée par les habitants du domaine.</p>
-      <p>Orientation ouest pour les couchers de soleil spectaculaires, brise marine constante, niveau sonore incomparable grâce à l'isolation phonique avancée du pool house.</p>
+      <p>La piscine à débordement prolonge visuellement le golfe de Thaïlande. En contrebas, la plage de sable blanc reste accessible à pied, uniquement fréquentée par les habitants du domaine.</p>
+      <p>Orientation ouest pour les couchers de soleil spectaculaires, brise marine constante, intimité préservée par la disposition du jardin tropical et l'implantation sur la parcelle de 448m².</p>
     </div>
   </div>
 </section>
@@ -3153,7 +3156,7 @@
 <script>
   // ========== STYLES INTÉRIEURS DYNAMIQUES ==========
   (function() {
-    const BASE_PRICE_THB = 62500000;
+    const BASE_PRICE_THB = 19000000;
     const EUR_RATE = 38; // 1 EUR = 38 THB (à mettre à jour régulièrement)
 
     // Photos associées à chaque style (ordre = index 0 à 5)
@@ -3655,7 +3658,7 @@
 // ========== PANIER "MON PROJET" ==========
 (function() {
   const STORAGE_KEY = 'maisons-samui-panier-baansawan';
-  const VILLA = { name: 'Baan Sawan', loc: 'Lipa Noi · Ouest', basePrice: 62500000 };
+  const VILLA = { name: 'Baan Sawan', loc: 'Lipa Noi · Ouest', basePrice: 19000000 };
   const CONTACT_EMAIL = 'group@blockestate.com';
   const EUR_RATE = 38; // 1 EUR = 38 THB (à mettre à jour régulièrement)
 
@@ -3679,6 +3682,22 @@
     const eur = thb / EUR_RATE;
     if (eur >= 1000000) return '≈ ' + (eur / 1000000).toFixed(1).replace('.', ',') + ' M€';
     return '≈ ' + Math.round(eur / 1000) + ' k€';
+  }
+  function formatEURFull(thb) {
+    // Chiffre complet pour le total du panier (ex: "≈ 562 105 €")
+    const eur = Math.round(thb / EUR_RATE);
+    return '≈ ' + eur.toLocaleString('fr-FR').replace(/,/g, ' ') + ' €';
+  }
+  function formatSurplus(thb) {
+    // < 1M : affiche en K (ex: "500 K THB", "950 K THB")
+    // >= 1M : affiche en M avec 1 décimale (ex: "1 M THB", "1,5 M THB")
+    if (thb < 1000000) {
+      return Math.round(thb / 1000) + ' K THB';
+    }
+    const m = thb / 1000000;
+    // Évite "1,0 M THB" → "1 M THB", garde "1,5 M THB"
+    const formatted = m % 1 === 0 ? m.toString() : m.toFixed(1).replace('.', ',');
+    return formatted + ' M THB';
   }
   function countChoices(c) {
     return (c.sol ? 1 : 0) + (c.parement ? 1 : 0) + (c.style ? 1 : 0);
@@ -3842,7 +3861,7 @@
       const item = config[type];
       if (!item) return;
       const priceText = item.surplus > 0
-        ? '<span class="drawer-item-price">+ ' + (item.surplus / 1000000).toFixed(1).replace('.', ',') + ' M THB</span>'
+        ? '<span class="drawer-item-price">+ ' + formatSurplus(item.surplus) + '</span>'
         : '<span class="drawer-item-price included">Inclus</span>';
       html += `
         <li class="drawer-item">
@@ -3863,7 +3882,7 @@
       </ul>
       <div class="drawer-total">
         <span class="drawer-total-label">Total estimé</span>
-        <span class="drawer-total-value">${formatTHB(total)}<small>${formatEUR(total)}</small></span>
+        <span class="drawer-total-value">${formatTHB(total)}<small>${formatEURFull(total)}</small></span>
       </div>
     `;
 
@@ -3920,7 +3939,7 @@
     if (config.style) lines.push('<span class="recap-label">Style</span>' + config.style.name);
     list.innerHTML = lines.join('<br>');
     const total = computeTotal(config);
-    totalEl.innerHTML = 'Total estimé : ' + formatTHB(total) + ' &nbsp;·&nbsp; ' + formatEUR(total);
+    totalEl.innerHTML = 'Total estimé : ' + formatTHB(total) + ' &nbsp;·&nbsp; ' + formatEURFull(total);
 
     if (hidden) {
       const parts = [];
@@ -3998,7 +4017,7 @@
       if (config.sol) body += `Sol : ${config.sol.name}` + (config.sol.surplus > 0 ? ` (+ ${config.sol.surplus.toLocaleString('fr-FR')} THB)` : ' (inclus)') + '\n';
       if (config.parement) body += `Parement : ${config.parement.name}` + (config.parement.surplus > 0 ? ` (+ ${config.parement.surplus.toLocaleString('fr-FR')} THB)` : ' (inclus)') + '\n';
       if (config.style) body += `Style : ${config.style.name}` + (config.style.surplus > 0 ? ` (+ ${config.style.surplus.toLocaleString('fr-FR')} THB)` : ' (inclus)') + '\n';
-      body += `Prix total estimé : ${formatTHB(total)}\n\n`;
+      body += `Prix total estimé : ${formatTHB(total)}  (${formatEURFull(total)})\n\n`;
     }
 
     body += `--- Mon message ---\n${form.message.value}\n\n`;

@@ -1669,6 +1669,100 @@
     footer { padding: 2rem; }
   }
 
+  /* ========== CARROUSEL MOBILE (personnalisation) ========== */
+  .perso-carousel-wrap {
+    position: relative;
+  }
+  .perso-carousel-dots {
+    display: none;
+  }
+  .perso-carousel-arrow {
+    display: none;
+  }
+
+  @media (max-width: 700px) {
+    /* Transformation des grids en carrousels horizontaux */
+    .options-grid,
+    .styles-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      gap: 1rem;
+      padding: 0 1.5rem;
+      margin: 0 -1.5rem;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .options-grid::-webkit-scrollbar,
+    .styles-grid::-webkit-scrollbar { display: none; }
+
+    .options-grid > .option-card,
+    .styles-grid > .style-card {
+      flex: 0 0 calc(100vw - 3rem);
+      max-width: 500px;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+
+    /* Indicateurs de pagination (dots) */
+    .perso-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+    }
+    .perso-carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sand-dark);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .perso-carousel-dot.active {
+      background: var(--jungle);
+      transform: scale(1.3);
+    }
+
+    /* Flèches navigation */
+    .perso-carousel-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 38%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(250, 247, 240, 0.95);
+      border: 1px solid var(--sand-dark);
+      color: var(--ink);
+      cursor: pointer;
+      z-index: 5;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: all 0.2s ease;
+    }
+    .perso-carousel-arrow:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    .perso-carousel-arrow svg {
+      width: 16px;
+      height: 16px;
+    }
+    .perso-carousel-arrow.prev {
+      left: 0.3rem;
+    }
+    .perso-carousel-arrow.next {
+      right: 0.3rem;
+    }
+  }
+
   @media (max-width: 900px) {
     .styles-grid { grid-template-columns: 1fr; }
     .style-thumbs { grid-template-columns: repeat(5, 1fr); }
@@ -2352,11 +2446,23 @@
     .villa-title-price { text-align: left; }
 
     .gallery {
-      grid-template-columns: 1fr;
-      grid-template-rows: 300px 200px 200px;
-      padding: 2rem 1.5rem 3rem;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 280px 100px;
+      gap: 0.5rem;
+      padding: 2rem 1.5rem 2rem;
     }
-    .gallery-item.main { grid-row: auto; }
+    .gallery-item.main {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+    .gallery-item.top-right {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .gallery-item.bottom-right {
+      grid-column: 2;
+      grid-row: 2;
+    }
     .zoom-hint {
       top: 0.7rem;
       right: 0.7rem;
@@ -2365,9 +2471,11 @@
       gap: 0.35rem;
     }
     .zoom-hint svg { width: 12px; height: 12px; }
+
+    /* Sur mobile : section "plus de photos" (4, 5, 6) masquée.
+       Le visiteur navigue les 6 photos via la lightbox. */
     .gallery-more {
-      grid-template-columns: 1fr;
-      padding: 0 1.5rem 3rem;
+      display: none;
     }
 
     .specs {
@@ -4188,6 +4296,156 @@
     restore();
   }
 })();
+</script>
+
+<script>
+  // ========== CARROUSEL MOBILE (Personnalisation) ==========
+  (function() {
+    const MQ = window.matchMedia('(max-width: 700px)');
+
+    // Tous les containers à transformer en carrousel sur mobile
+    const GRIDS = [
+      { selector: '#perso-sols .options-grid', cardSel: '.option-card' },
+      { selector: '#perso-parements .options-grid', cardSel: '.option-card' },
+      { selector: '#perso-styles .styles-grid', cardSel: '.style-card' }
+    ];
+
+    const carousels = [];
+
+    function setupCarousel(gridEl, cardSel) {
+      const cards = Array.from(gridEl.querySelectorAll(cardSel));
+      if (cards.length === 0) return null;
+
+      // Wrapper parent pour positionner flèches + dots
+      let wrap = gridEl.parentElement;
+      if (!wrap.classList.contains('perso-carousel-wrap')) {
+        const newWrap = document.createElement('div');
+        newWrap.className = 'perso-carousel-wrap';
+        gridEl.parentNode.insertBefore(newWrap, gridEl);
+        newWrap.appendChild(gridEl);
+        wrap = newWrap;
+      }
+
+      // Flèches
+      const prevBtn = document.createElement('button');
+      prevBtn.className = 'perso-carousel-arrow prev';
+      prevBtn.setAttribute('aria-label', 'Précédent');
+      prevBtn.type = 'button';
+      prevBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'perso-carousel-arrow next';
+      nextBtn.setAttribute('aria-label', 'Suivant');
+      nextBtn.type = 'button';
+      nextBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+
+      wrap.appendChild(prevBtn);
+      wrap.appendChild(nextBtn);
+
+      // Dots
+      const dots = document.createElement('div');
+      dots.className = 'perso-carousel-dots';
+      cards.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'perso-carousel-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Aller à l\'option ' + (i + 1));
+        d.dataset.index = i;
+        dots.appendChild(d);
+      });
+      wrap.parentNode.insertBefore(dots, wrap.nextSibling);
+
+      const state = { gridEl, cards, prevBtn, nextBtn, dots, currentIndex: 0, wrap };
+
+      // Click dots
+      dots.querySelectorAll('.perso-carousel-dot').forEach(d => {
+        d.addEventListener('click', () => {
+          scrollToCard(state, parseInt(d.dataset.index, 10));
+        });
+      });
+
+      // Click flèches
+      prevBtn.addEventListener('click', () => scrollToCard(state, state.currentIndex - 1));
+      nextBtn.addEventListener('click', () => scrollToCard(state, state.currentIndex + 1));
+
+      // Synchro au scroll
+      let scrollTimeout;
+      gridEl.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => updateActiveFromScroll(state), 80);
+      });
+
+      updateArrows(state);
+      return state;
+    }
+
+    function scrollToCard(state, index) {
+      if (index < 0 || index >= state.cards.length) return;
+      const card = state.cards[index];
+      const gridRect = state.gridEl.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+      const currentScroll = state.gridEl.scrollLeft;
+      // Offset pour centrer la carte
+      const targetScroll = currentScroll + (cardRect.left - gridRect.left) - (gridRect.width - cardRect.width) / 2;
+      state.gridEl.scrollTo({ left: targetScroll, behavior: 'smooth' });
+    }
+
+    function updateActiveFromScroll(state) {
+      const gridRect = state.gridEl.getBoundingClientRect();
+      const gridCenter = gridRect.left + gridRect.width / 2;
+      let closest = 0;
+      let minDist = Infinity;
+      state.cards.forEach((card, i) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const dist = Math.abs(cardCenter - gridCenter);
+        if (dist < minDist) {
+          minDist = dist;
+          closest = i;
+        }
+      });
+      if (closest !== state.currentIndex) {
+        state.currentIndex = closest;
+        state.dots.querySelectorAll('.perso-carousel-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === closest);
+        });
+        updateArrows(state);
+      }
+    }
+
+    function updateArrows(state) {
+      state.prevBtn.disabled = state.currentIndex === 0;
+      state.nextBtn.disabled = state.currentIndex === state.cards.length - 1;
+    }
+
+    // Initialiser les carrousels (les éléments HTML restent, seul le CSS mobile active le layout horizontal)
+    GRIDS.forEach(g => {
+      const gridEl = document.querySelector(g.selector);
+      if (!gridEl) return;
+      const state = setupCarousel(gridEl, g.cardSel);
+      if (state) carousels.push(state);
+    });
+
+    // Quand on change d'onglet, re-synchroniser le carrousel de l'onglet nouvellement actif
+    document.querySelectorAll('.perso-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Laisser l'onglet s'afficher puis recalculer
+        setTimeout(() => {
+          carousels.forEach(c => {
+            // Reset sur la 1re carte à chaque changement d'onglet pour éviter confusion
+            if (c.gridEl.offsetParent !== null) { // visible
+              c.gridEl.scrollLeft = 0;
+              c.currentIndex = 0;
+              c.dots.querySelectorAll('.perso-carousel-dot').forEach((d, i) => {
+                d.classList.toggle('active', i === 0);
+              });
+              updateArrows(c);
+            }
+          });
+        }, 50);
+      });
+    });
+  })();
 </script>
 
 </body>

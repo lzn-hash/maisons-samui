@@ -524,6 +524,243 @@
     font-weight: 500;
   }
 
+  /* ===== PERSONNALISATION (wrapper section) ===== */
+  .personnalisation {
+    padding: 6rem 3rem;
+    background: var(--white);
+  }
+  .personnalisation-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .personnalisation-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+  }
+  .personnalisation-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+  }
+  .personnalisation-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  /* Onglets */
+  .perso-tabs {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    border-bottom: 1px solid var(--sand-dark);
+  }
+  .perso-tab-btn {
+    background: transparent;
+    border: none;
+    padding: 1.2rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    cursor: pointer;
+    position: relative;
+    font-weight: 400;
+    transition: color 0.3s;
+  }
+  .perso-tab-btn:hover { color: var(--ink); }
+  .perso-tab-btn.active {
+    color: var(--jungle);
+    font-weight: 500;
+  }
+  .perso-tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+  }
+  .perso-tab-num {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--sand-dark);
+    color: var(--ink);
+    font-size: 0.7rem;
+    line-height: 22px;
+    margin-right: 0.7rem;
+    vertical-align: middle;
+    font-weight: 500;
+    text-align: center;
+  }
+  .perso-tab-btn.active .perso-tab-num {
+    background: var(--gold);
+    color: var(--white);
+  }
+  .perso-tab-content { display: none; }
+  .perso-tab-content.active { display: block; animation: persoFadeIn 0.4s ease; }
+  @keyframes persoFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Grille de cartes options (sols/parements) */
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .option-card {
+    background: var(--white);
+    border: 1px solid rgba(168, 136, 82, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .option-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 15px 40px rgba(26, 30, 26, 0.06);
+  }
+  .option-card.active {
+    border-color: var(--gold);
+    border-width: 2px;
+  }
+  .option-card.active::before {
+    content: '✓ Sélectionné';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--gold);
+    color: var(--white);
+    padding: 0.3rem 0.6rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    z-index: 5;
+  }
+
+  /* Infos en haut (ordre visuel) */
+  .option-card .option-info { order: 1; }
+  .option-card .option-photo { order: 2; }
+  .option-card .option-thumbs { order: 3; }
+
+  .option-info {
+    padding: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(168, 136, 82, 0.15);
+  }
+  .option-info h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.45rem;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+    line-height: 1.1;
+  }
+  .option-info h3 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .option-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    min-height: 4.05em; /* 3 lignes minimum pour alignement */
+  }
+  .option-breakdown {
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.2);
+    text-align: right;
+    margin-bottom: 1rem;
+  }
+  .option-amount {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--terracotta);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+  .option-select {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+  .option-select:hover { background: var(--ink); color: var(--white); }
+  .option-card.active .option-select {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+  }
+
+  .option-photo {
+    aspect-ratio: 4/3;
+    background: var(--sand-dark);
+    overflow: hidden;
+    position: relative;
+  }
+  .option-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .option-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--white);
+    color: var(--jungle);
+    padding: 0.35rem 0.7rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .option-thumbs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.3rem;
+    padding: 0.3rem;
+    background: var(--sand-light);
+  }
+  .option-thumb {
+    aspect-ratio: 1/1;
+    background: var(--sand-dark);
+    overflow: hidden;
+  }
+  .option-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   /* ===== STYLES INTÉRIEURS ===== */
   .styles {
     padding: 6rem 3rem;
@@ -864,6 +1101,13 @@
     padding: 0.3rem 0;
     font-size: 0.8rem;
   }
+  .breakdown-row.breakdown-single {
+    justify-content: flex-end;
+    padding: 0.2rem 0;
+  }
+  .breakdown-row.breakdown-single .breakdown-amount {
+    font-size: 0.95rem;
+  }
   .breakdown-label {
     font-size: 0.7rem;
     letter-spacing: 0.2em;
@@ -954,6 +1198,26 @@
     .gallery { padding: 1.5rem 2rem 0.4rem; gap: 0.8rem; max-width: 1200px; grid-template-rows: 200px 200px; }
     .gallery-more { padding: 0.4rem 2rem 2rem; gap: 0.8rem; max-width: 1200px; }
     .gallery-more .gallery-item { aspect-ratio: 16/10; }
+    
+    /* ===== PERSONNALISATION (wrapper + onglets) ===== */
+    .personnalisation { padding: 3rem 2rem; }
+    .personnalisation-inner { max-width: 1100px; }
+    .personnalisation-header { margin: 0 auto 2rem; }
+    .personnalisation-header h2 { font-size: 2.3rem; margin-bottom: 0.8rem; }
+    .personnalisation-header .styles-intro { font-size: 1rem; }
+    
+    .perso-tabs { gap: 1.2rem; margin-bottom: 2rem; }
+    .perso-tab-btn { padding: 1rem 1rem; font-size: 0.72rem; letter-spacing: 0.2em; }
+    .perso-tab-num { width: 20px; height: 20px; font-size: 0.65rem; line-height: 20px; margin-right: 0.5rem; }
+    
+    /* Cartes options (sol/parement) */
+    .options-grid { gap: 1.2rem; max-width: 1100px; }
+    .option-card .option-info { padding: 1.1rem; }
+    .option-card .option-info h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+    .option-desc { font-size: 0.85rem; margin-bottom: 0.9rem; line-height: 1.45; min-height: 3.7em; }
+    .option-breakdown { padding-top: 0.7rem; margin-bottom: 0.9rem; }
+    .option-amount { font-size: 0.8rem; }
+    .option-select { padding: 0.65rem 1rem; font-size: 0.65rem; }
     
     /* ===== STYLES INTÉRIEURS ===== */
     .styles { padding: 3rem 2rem; }
@@ -1624,7 +1888,7 @@
   <div class="villa-subnav-inner">
     <ul>
       <li><a href="#villa" data-section="villa">Baan Sawan</a></li>
-      <li><a href="#styles" data-section="styles">Styles</a></li>
+      <li><a href="#styles" data-section="styles">Personnalisation</a></li>
       <li><a href="#architecture" data-section="architecture">Plans</a></li>
       <li><a href="#features" data-section="features">Prestations</a></li>
       <li><a href="#location" data-section="location">Situation</a></li>
@@ -1657,9 +1921,17 @@
         </div>
 
         <div class="price-surplus" id="price-surplus" hidden>
-          <div class="surplus-row">
-            <span class="surplus-label">+ <span id="surplus-style-name">Style</span></span>
-            <span class="surplus-amount">+<span id="surplus-amount">0</span> THB</span>
+          <div class="surplus-row" id="surplus-sol" hidden>
+            <span class="surplus-label">+ <span class="surplus-name">Sol</span></span>
+            <span class="surplus-amount">+<span class="surplus-value">0</span> THB</span>
+          </div>
+          <div class="surplus-row" id="surplus-parement" hidden>
+            <span class="surplus-label">+ <span class="surplus-name">Parement</span></span>
+            <span class="surplus-amount">+<span class="surplus-value">0</span> THB</span>
+          </div>
+          <div class="surplus-row" id="surplus-style" hidden>
+            <span class="surplus-label">+ <span class="surplus-name" id="surplus-style-name">Style</span></span>
+            <span class="surplus-amount">+<span class="surplus-value" id="surplus-amount">0</span> THB</span>
           </div>
         </div>
 
@@ -1771,196 +2043,318 @@
 </div>
 
 <!-- STYLES INTÉRIEURS -->
-<section class="styles" id="styles">
-  <div class="styles-inner">
-    <div class="styles-header">
+<!-- PERSONNALISATION : Sols / Parements / Styles -->
+<section class="personnalisation" id="styles">
+  <div class="personnalisation-inner">
+
+    <!-- Header commun -->
+    <div class="personnalisation-header">
       <h2>Un intérieur à votre <em>image</em></h2>
-      <p class="styles-intro"><span class="styles-intro-label">Personnalisation</span> : Choisissez parmi trois ambiances soigneusement conçues. Chaque style est livré clés en main, meubles et décoration inclus.</p>
+      <p class="styles-intro"><span class="styles-intro-label">Personnalisation</span> : Composez Baan Sawan selon vos goûts. Trois choix — sols, parements extérieurs, décoration — pour faire de cette villa la vôtre.</p>
     </div>
 
-    <div class="styles-grid">
+    <!-- Onglets navigation -->
+    <div class="perso-tabs">
+      <button class="perso-tab-btn active" data-tab="perso-sols" type="button"><span class="perso-tab-num">1</span>Sols</button>
+      <button class="perso-tab-btn" data-tab="perso-parements" type="button"><span class="perso-tab-num">2</span>Parements</button>
+      <button class="perso-tab-btn" data-tab="perso-styles" type="button"><span class="perso-tab-num">3</span>Styles</button>
+    </div>
 
-      <!-- Style 1 : Scandinave Moderne (inclus) -->
-      <div class="style-card" data-style="scandinave" data-surplus="0" data-name="Scandinave Moderne">
-        <div class="style-preview" data-thumb-index="0">
-          <img src="photos/styles/scandinavian/scandinavian-salon.jpg" alt="Style Scandinave Moderne" />
-          <span class="style-tag">Inclus</span>
-          <div class="style-zoom-hint">Cliquer pour agrandir</div>
-        </div>
-        <div class="style-thumbs">
-          <div class="style-thumb" data-thumb-index="1"><img src="photos/styles/scandinavian/scandinavian-masterbedroom.jpg" alt="Suite principale" /></div>
-          <div class="style-thumb" data-thumb-index="2"><img src="photos/styles/scandinavian/scandinavian-bedroom.jpg" alt="Chambre d'amis" /></div>
-          <div class="style-thumb" data-thumb-index="3"><img src="photos/styles/scandinavian/scandinavian-kitchen.jpg" alt="Cuisine" /></div>
-          <div class="style-thumb" data-thumb-index="4"><img src="photos/styles/scandinavian/scandinavian-bathroom.jpg" alt="Salle d'eau" /></div>
-          <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/scandinavian/scandinavian-catalog.jpg" alt="Mobilier & matériaux" /></div>
-        </div>
-        <div class="style-info">
-          <h3>
-            Scandinave <em>moderne</em>
-            <span class="style-info-icon" tabindex="0">
-              i
-              <span class="style-tooltip">
-                <strong>Ce qui est inclus</strong>
-                <ul>
-                  <li>Canapé modulable en lin crème</li>
-                  <li>Table basse en chêne clair</li>
-                  <li>Lit king-size cadre chêne massif</li>
-                  <li>Parure de lit lin naturel</li>
-                  <li>Luminaires suspendus verre opalin</li>
-                  <li>Étagères en chêne blanchi</li>
-                  <li>Vaisselle céramique artisanale</li>
-                  <li>Tapis en laine bouclée crème</li>
-                  <li>Miroir rond cadre laiton brossé</li>
-                  <li>Textiles doux tons neutres</li>
-                </ul>
-              </span>
-            </span>
-          </h3>
-          <p class="style-desc">Bois clair, lin naturel, tons crème et blanc. Épuré et lumineux, l'art du moins pour respirer.</p>
-          <div class="style-breakdown">
-            <div class="breakdown-row">
-              <span class="breakdown-label">Villa</span>
-              <span class="breakdown-amount">฿ 62 500 000</span>
+    <!-- ONGLET 1 : SOLS -->
+    <div class="perso-tab-content active" id="perso-sols">
+      <div class="options-grid">
+
+        <!-- Sol 1 : Travertin (inclus) -->
+        <div class="option-card" data-option-type="sol" data-surplus="0" data-name="Travertin beige">
+          <div class="option-info">
+            <h3>Travertin <em>beige</em></h3>
+            <p class="option-desc">Pierre naturelle calcaire aux veines douces. Intemporelle, elle s'accorde avec tous les styles intérieurs.</p>
+            <div class="option-breakdown">
+              <span class="option-amount">+ 0 THB</span>
             </div>
-            <div class="breakdown-row">
-              <span class="breakdown-label">Style</span>
-              <span class="breakdown-amount breakdown-plus">+ 0 THB</span>
-            </div>
-            <div class="breakdown-row breakdown-total">
-              <span class="breakdown-label">Total</span>
-              <span class="breakdown-amount">฿ 62 500 000</span>
-            </div>
+            <button class="option-select" type="button">Choisir ce sol</button>
           </div>
-          <button class="style-select" type="button">Choisir ce style</button>
-        </div>
-      </div>
-
-      <!-- Style 2 : Thaï Traditionnel -->
-      <div class="style-card" data-style="thai" data-surplus="2500000" data-name="Thaï Traditionnel">
-        <div class="style-preview" data-thumb-index="0">
-          <img src="photos/styles/thai/thai-salon.jpg" alt="Style Thaï Traditionnel" />
-          <div class="style-zoom-hint">Cliquer pour agrandir</div>
-        </div>
-        <div class="style-thumbs">
-          <div class="style-thumb" data-thumb-index="1"><img src="photos/styles/thai/thai-masterbedroom.jpg" alt="Suite principale" /></div>
-          <div class="style-thumb" data-thumb-index="2"><img src="photos/styles/thai/thai-bedroom.jpg" alt="Chambre d'amis" /></div>
-          <div class="style-thumb" data-thumb-index="3"><img src="photos/styles/thai/thai-kitchen.jpg" alt="Cuisine" /></div>
-          <div class="style-thumb" data-thumb-index="4"><img src="photos/styles/thai/thai-bathroom.jpg" alt="Salle d'eau" /></div>
-          <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/thai/thai-catalog.jpg" alt="Mobilier & matériaux" /></div>
-        </div>
-        <div class="style-info">
-          <h3>
-            Thaï <em>traditionnel</em>
-            <span class="style-info-icon" tabindex="0">
-              i
-              <span class="style-tooltip">
-                <strong>Ce qui est inclus</strong>
-                <ul>
-                  <li>Daybed traditionnel en teck sculpté</li>
-                  <li>Table basse en teck avec incrustations nacre</li>
-                  <li>Lit à baldaquin teck massif sculpté à la main</li>
-                  <li>Paravents thaï en bois ajouré</li>
-                  <li>Parures de lit en soie thaï brodée main</li>
-                  <li>Coussins en soie thaï teints à la main</li>
-                  <li>Lanternes en laiton percées (motifs géométriques)</li>
-                  <li>Statue de Bouddha en bronze ancien (signée)</li>
-                  <li>Tapis en soie thaï tissée à la main</li>
-                  <li>Céramiques Benjarong peintes à l'or</li>
-                  <li>Laques royales à dorure fine (boîtes, plateaux)</li>
-                  <li>Service à thé en céladon</li>
-                  <li>Parasols peints à la main (Chiang Mai)</li>
-                  <li>Sculptures bois doré (ornements muraux)</li>
-                  <li>Tentures en soie thaï</li>
-                  <li>Accessoires en bronze patiné</li>
-                </ul>
-              </span>
-            </span>
-          </h3>
-          <p class="style-desc">Teck massif sculpté, soieries colorées, artisanat local authentique. L'âme de Siam dans chaque détail.</p>
-          <div class="style-breakdown">
-            <div class="breakdown-row">
-              <span class="breakdown-label">Villa</span>
-              <span class="breakdown-amount">฿ 62 500 000</span>
-            </div>
-            <div class="breakdown-row">
-              <span class="breakdown-label">Style</span>
-              <span class="breakdown-amount breakdown-plus">+ 2 500 000 THB</span>
-            </div>
-            <div class="breakdown-row breakdown-total">
-              <span class="breakdown-label">Total</span>
-              <span class="breakdown-amount">฿ 65 000 000</span>
-            </div>
+          <div class="option-photo">
+            <img src="photos/sols/travertin/travertin-main.jpg" onerror="this.src='https://placehold.co/800x600/e8e1d4/3a3f39?text=Travertin+%E2%80%94+Photos+%C3%A0+venir'" alt="Travertin beige" />
+            <span class="option-tag">Inclus</span>
           </div>
-          <button class="style-select" type="button">Choisir ce style</button>
-        </div>
-      </div>
-
-      <!-- Style 3 : Wabi-Sabi Zen -->
-      <div class="style-card" data-style="wabisabi" data-surplus="3500000" data-name="Wabi-Sabi Zen">
-        <div class="style-preview" data-thumb-index="0">
-          <img src="photos/styles/wabisabi/wabisabi-salon.jpg" alt="Style Wabi-Sabi Zen" />
-          <div class="style-zoom-hint">Cliquer pour agrandir</div>
-        </div>
-        <div class="style-thumbs">
-          <div class="style-thumb" data-thumb-index="1"><img src="photos/styles/wabisabi/wabisabi-masterbedroom.jpg" alt="Suite principale" /></div>
-          <div class="style-thumb" data-thumb-index="2"><img src="photos/styles/wabisabi/wabisabi-bedroom.jpg" alt="Chambre d'amis" /></div>
-          <div class="style-thumb" data-thumb-index="3"><img src="photos/styles/wabisabi/wabisabi-kitchen.jpg" alt="Cuisine" /></div>
-          <div class="style-thumb" data-thumb-index="4"><img src="photos/styles/wabisabi/wabisabi-bathroom.jpg" alt="Salle d'eau" /></div>
-          <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/wabisabi/wabisabi-catalog.jpg" alt="Mobilier & matériaux" /></div>
-        </div>
-        <div class="style-info">
-          <h3>
-            Wabi-Sabi <em>zen</em>
-            <span class="style-info-icon" tabindex="0">
-              i
-              <span class="style-tooltip">
-                <strong>Ce qui est inclus</strong>
-                <ul>
-                  <li>Canapé bas en lin brut non teinté fait main</li>
-                  <li>Table basse travertin taillé dans bloc unique</li>
-                  <li>Lit plateforme bois flotté récupéré</li>
-                  <li>Tansu japonais ancien (commode basse)</li>
-                  <li>Parures de lit lin brut froissé naturellement</li>
-                  <li>Couvertures en laine bouclée tissée main</li>
-                  <li>Tabourets bois brut d'artisan local</li>
-                  <li>Lampes Noguchi originales (papier washi)</li>
-                  <li>Lampadaires bronze oxydé patiné</li>
-                  <li>Céramiques stoneware à glaçure craquelée</li>
-                  <li>Poteries kintsugi (réparées à l'or)</li>
-                  <li>Bol à thé matcha artisanal japonais</li>
-                  <li>Bonsaï âgé (5+ ans, sélection privée)</li>
-                  <li>Vase ikebana en grès irrégulier</li>
-                  <li>Calligraphies japonaises originales encadrées</li>
-                  <li>Tapis en chanvre et jute tissé main</li>
-                  <li>Coussins de méditation laine brute</li>
-                  <li>Lanternes papier washi suspendues</li>
-                  <li>Collection branches bois flotté</li>
-                  <li>Enduits à la chaux teintée argile (4 finitions)</li>
-                  <li>Bois brûlé shou-sugi-ban (murs d'accent)</li>
-                  <li>Pierres de rivière sélectionnées (bassins)</li>
-                </ul>
-              </span>
-            </span>
-          </h3>
-          <p class="style-desc">Béton ciré, pierre brute, bois de récupération. L'élégance japonaise du détail imparfait et du vide habité.</p>
-          <div class="style-breakdown">
-            <div class="breakdown-row">
-              <span class="breakdown-label">Villa</span>
-              <span class="breakdown-amount">฿ 62 500 000</span>
-            </div>
-            <div class="breakdown-row">
-              <span class="breakdown-label">Style</span>
-              <span class="breakdown-amount breakdown-plus">+ 3 500 000 THB</span>
-            </div>
-            <div class="breakdown-row breakdown-total">
-              <span class="breakdown-label">Total</span>
-              <span class="breakdown-amount">฿ 66 000 000</span>
-            </div>
+          <div class="option-thumbs">
+            <div class="option-thumb"><img src="photos/sols/travertin/travertin-salon.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Salon'" alt="Salon" /></div>
+            <div class="option-thumb"><img src="photos/sols/travertin/travertin-terrasse.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Terrasse'" alt="Terrasse" /></div>
+            <div class="option-thumb"><img src="photos/sols/travertin/travertin-chambre.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Chambre'" alt="Chambre" /></div>
           </div>
-          <button class="style-select" type="button">Choisir ce style</button>
         </div>
-      </div>
 
+        <!-- Sol 2 : Teck massif -->
+        <div class="option-card" data-option-type="sol" data-surplus="1200000" data-name="Teck massif">
+          <div class="option-info">
+            <h3>Teck <em>massif</em></h3>
+            <p class="option-desc">Bois noble thaïlandais, chaud et vivant. Sa patine naturelle se bonifie avec le temps.</p>
+            <div class="option-breakdown">
+              <span class="option-amount">+ 1 200 000 THB</span>
+            </div>
+            <button class="option-select" type="button">Choisir ce sol</button>
+          </div>
+          <div class="option-photo">
+            <img src="photos/sols/teck/teck-main.jpg" onerror="this.src='https://placehold.co/800x600/3a3f39/e8e1d4?text=Teck+%E2%80%94+Photos+%C3%A0+venir'" alt="Teck massif" />
+          </div>
+          <div class="option-thumbs">
+            <div class="option-thumb"><img src="photos/sols/teck/teck-salon.jpg" onerror="this.src='https://placehold.co/200x200/1a2e22/e8e1d4?text=Salon'" alt="Salon" /></div>
+            <div class="option-thumb"><img src="photos/sols/teck/teck-terrasse.jpg" onerror="this.src='https://placehold.co/200x200/1a2e22/e8e1d4?text=Terrasse'" alt="Terrasse" /></div>
+            <div class="option-thumb"><img src="photos/sols/teck/teck-chambre.jpg" onerror="this.src='https://placehold.co/200x200/1a2e22/e8e1d4?text=Chambre'" alt="Chambre" /></div>
+          </div>
+        </div>
+
+        <!-- Sol 3 : Marbre Carrare -->
+        <div class="option-card" data-option-type="sol" data-surplus="2800000" data-name="Marbre de Carrare">
+          <div class="option-info">
+            <h3>Marbre <em>de Carrare</em></h3>
+            <p class="option-desc">Le choix absolu du luxe méditerranéen. Blanc lumineux veiné de gris délicat, réfléchit la lumière tropicale.</p>
+            <div class="option-breakdown">
+              <span class="option-amount">+ 2 800 000 THB</span>
+            </div>
+            <button class="option-select" type="button">Choisir ce sol</button>
+          </div>
+          <div class="option-photo">
+            <img src="photos/sols/marbre/marbre-main.jpg" onerror="this.src='https://placehold.co/800x600/faf7f0/1a1e1a?text=Marbre+%E2%80%94+Photos+%C3%A0+venir'" alt="Marbre de Carrare" />
+          </div>
+          <div class="option-thumbs">
+            <div class="option-thumb"><img src="photos/sols/marbre/marbre-salon.jpg" onerror="this.src='https://placehold.co/200x200/faf7f0/1a1e1a?text=Salon'" alt="Salon" /></div>
+            <div class="option-thumb"><img src="photos/sols/marbre/marbre-terrasse.jpg" onerror="this.src='https://placehold.co/200x200/faf7f0/1a1e1a?text=Terrasse'" alt="Terrasse" /></div>
+            <div class="option-thumb"><img src="photos/sols/marbre/marbre-chambre.jpg" onerror="this.src='https://placehold.co/200x200/faf7f0/1a1e1a?text=Chambre'" alt="Chambre" /></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ONGLET 2 : PAREMENTS -->
+    <div class="perso-tab-content" id="perso-parements">
+      <div class="options-grid">
+
+        <!-- Parement 1 : Enduit lissé (inclus) -->
+        <div class="option-card" data-option-type="parement" data-surplus="0" data-name="Enduit lissé">
+          <div class="option-info">
+            <h3>Enduit <em>lissé</em></h3>
+            <p class="option-desc">Finition épurée à la chaux naturelle, tons crème ou taupe au choix. Aspect contemporain et minimaliste.</p>
+            <div class="option-breakdown">
+              <span class="option-amount">+ 0 THB</span>
+            </div>
+            <button class="option-select" type="button">Choisir ce parement</button>
+          </div>
+          <div class="option-photo">
+            <img src="photos/parements/enduit/enduit-main.jpg" onerror="this.src='https://placehold.co/800x600/e8e1d4/3a3f39?text=Enduit+%E2%80%94+Photos+%C3%A0+venir'" alt="Enduit lissé" />
+            <span class="option-tag">Inclus</span>
+          </div>
+          <div class="option-thumbs">
+            <div class="option-thumb"><img src="photos/parements/enduit/enduit-facade.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Fa%C3%A7ade'" alt="Façade" /></div>
+            <div class="option-thumb"><img src="photos/parements/enduit/enduit-entree.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Entr%C3%A9e'" alt="Entrée" /></div>
+            <div class="option-thumb"><img src="photos/parements/enduit/enduit-piscine.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Piscine'" alt="Piscine" /></div>
+          </div>
+        </div>
+
+        <!-- Parement 2 : Pierre volcanique -->
+        <div class="option-card" data-option-type="parement" data-surplus="1800000" data-name="Pierre volcanique">
+          <div class="option-info">
+            <h3>Pierre <em>volcanique</em></h3>
+            <p class="option-desc">Extraite localement à Koh Samui, texture brute et contemporaine. Teintes anthracite et gris basalte.</p>
+            <div class="option-breakdown">
+              <span class="option-amount">+ 1 800 000 THB</span>
+            </div>
+            <button class="option-select" type="button">Choisir ce parement</button>
+          </div>
+          <div class="option-photo">
+            <img src="photos/parements/volcanique/volcanique-main.jpg" onerror="this.src='https://placehold.co/800x600/3a3f39/e8e1d4?text=Pierre+volcanique+%E2%80%94+%C3%A0+venir'" alt="Pierre volcanique" />
+          </div>
+          <div class="option-thumbs">
+            <div class="option-thumb"><img src="photos/parements/volcanique/volcanique-facade.jpg" onerror="this.src='https://placehold.co/200x200/1a2e22/e8e1d4?text=Fa%C3%A7ade'" alt="Façade" /></div>
+            <div class="option-thumb"><img src="photos/parements/volcanique/volcanique-entree.jpg" onerror="this.src='https://placehold.co/200x200/1a2e22/e8e1d4?text=Entr%C3%A9e'" alt="Entrée" /></div>
+            <div class="option-thumb"><img src="photos/parements/volcanique/volcanique-piscine.jpg" onerror="this.src='https://placehold.co/200x200/1a2e22/e8e1d4?text=Piscine'" alt="Piscine" /></div>
+          </div>
+        </div>
+
+        <!-- Parement 3 : Pierre sèche -->
+        <div class="option-card" data-option-type="parement" data-surplus="2500000" data-name="Pierre sèche">
+          <div class="option-info">
+            <h3>Pierre <em>sèche</em></h3>
+            <p class="option-desc">Empilage artisanal de pierres locales, façon muret méditerranéen. Caractère noble et intemporel.</p>
+            <div class="option-breakdown">
+              <span class="option-amount">+ 2 500 000 THB</span>
+            </div>
+            <button class="option-select" type="button">Choisir ce parement</button>
+          </div>
+          <div class="option-photo">
+            <img src="photos/parements/seche/seche-main.jpg" onerror="this.src='https://placehold.co/800x600/b8623f/faf7f0?text=Pierre+s%C3%A8che+%E2%80%94+%C3%A0+venir'" alt="Pierre sèche" />
+          </div>
+          <div class="option-thumbs">
+            <div class="option-thumb"><img src="photos/parements/seche/seche-facade.jpg" onerror="this.src='https://placehold.co/200x200/b8623f/faf7f0?text=Fa%C3%A7ade'" alt="Façade" /></div>
+            <div class="option-thumb"><img src="photos/parements/seche/seche-entree.jpg" onerror="this.src='https://placehold.co/200x200/b8623f/faf7f0?text=Entr%C3%A9e'" alt="Entrée" /></div>
+            <div class="option-thumb"><img src="photos/parements/seche/seche-piscine.jpg" onerror="this.src='https://placehold.co/200x200/b8623f/faf7f0?text=Piscine'" alt="Piscine" /></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ONGLET 3 : STYLES (contenu existant préservé) -->
+    <div class="perso-tab-content" id="perso-styles">
+      <div class="styles-grid">
+
+        <!-- Style 1 : Scandinave Moderne (inclus) -->
+        <div class="style-card" data-style="scandinave" data-surplus="0" data-name="Scandinave Moderne">
+          <div class="style-preview" data-thumb-index="0">
+            <img src="photos/styles/scandinavian/scandinavian-salon.jpg" alt="Style Scandinave Moderne" />
+            <span class="style-tag">Inclus</span>
+            <div class="style-zoom-hint">Cliquer pour agrandir</div>
+          </div>
+          <div class="style-thumbs">
+            <div class="style-thumb" data-thumb-index="1"><img src="photos/styles/scandinavian/scandinavian-masterbedroom.jpg" alt="Suite principale" /></div>
+            <div class="style-thumb" data-thumb-index="2"><img src="photos/styles/scandinavian/scandinavian-bedroom.jpg" alt="Chambre d'amis" /></div>
+            <div class="style-thumb" data-thumb-index="3"><img src="photos/styles/scandinavian/scandinavian-kitchen.jpg" alt="Cuisine" /></div>
+            <div class="style-thumb" data-thumb-index="4"><img src="photos/styles/scandinavian/scandinavian-bathroom.jpg" alt="Salle d'eau" /></div>
+            <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/scandinavian/scandinavian-catalog.jpg" alt="Mobilier & matériaux" /></div>
+          </div>
+          <div class="style-info">
+            <h3>
+              Scandinave <em>moderne</em>
+              <span class="style-info-icon" tabindex="0">
+                i
+                <span class="style-tooltip">
+                  <strong>Ce qui est inclus</strong>
+                  <ul>
+                    <li>Canapé modulable en lin crème</li>
+                    <li>Table basse en chêne clair</li>
+                    <li>Lit king-size cadre chêne massif</li>
+                    <li>Parure de lit lin naturel</li>
+                    <li>Luminaires suspendus verre opalin</li>
+                    <li>Étagères en chêne blanchi</li>
+                    <li>Vaisselle céramique artisanale</li>
+                    <li>Tapis en laine bouclée crème</li>
+                    <li>Miroir rond cadre laiton brossé</li>
+                    <li>Textiles doux tons neutres</li>
+                  </ul>
+                </span>
+              </span>
+            </h3>
+            <p class="style-desc">Bois clair, lin naturel, tons crème et blanc. Épuré et lumineux, l'art du moins pour respirer.</p>
+            <div class="style-breakdown">
+              <div class="breakdown-row breakdown-single">
+                <span class="breakdown-amount breakdown-plus">+ 0 THB</span>
+              </div>
+            </div>
+            <button class="style-select" type="button">Choisir ce style</button>
+          </div>
+        </div>
+
+        <!-- Style 2 : Thaï Traditionnel -->
+        <div class="style-card" data-style="thai" data-surplus="2500000" data-name="Thaï Traditionnel">
+          <div class="style-preview" data-thumb-index="0">
+            <img src="photos/styles/thai/thai-salon.jpg" alt="Style Thaï Traditionnel" />
+            <div class="style-zoom-hint">Cliquer pour agrandir</div>
+          </div>
+          <div class="style-thumbs">
+            <div class="style-thumb" data-thumb-index="1"><img src="photos/styles/thai/thai-masterbedroom.jpg" alt="Suite principale" /></div>
+            <div class="style-thumb" data-thumb-index="2"><img src="photos/styles/thai/thai-bedroom.jpg" alt="Chambre d'amis" /></div>
+            <div class="style-thumb" data-thumb-index="3"><img src="photos/styles/thai/thai-kitchen.jpg" alt="Cuisine" /></div>
+            <div class="style-thumb" data-thumb-index="4"><img src="photos/styles/thai/thai-bathroom.jpg" alt="Salle d'eau" /></div>
+            <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/thai/thai-catalog.jpg" alt="Mobilier & matériaux" /></div>
+          </div>
+          <div class="style-info">
+            <h3>
+              Thaï <em>traditionnel</em>
+              <span class="style-info-icon" tabindex="0">
+                i
+                <span class="style-tooltip">
+                  <strong>Ce qui est inclus</strong>
+                  <ul>
+                    <li>Daybed traditionnel en teck sculpté</li>
+                    <li>Table basse en teck avec incrustations nacre</li>
+                    <li>Lit à baldaquin teck massif sculpté à la main</li>
+                    <li>Paravents thaï en bois ajouré</li>
+                    <li>Parures de lit en soie thaï brodée main</li>
+                    <li>Coussins en soie thaï teints à la main</li>
+                    <li>Lanternes en laiton percées (motifs géométriques)</li>
+                    <li>Statue de Bouddha en bronze ancien (signée)</li>
+                    <li>Tapis en soie thaï tissée à la main</li>
+                    <li>Céramiques Benjarong peintes à l'or</li>
+                    <li>Laques royales à dorure fine (boîtes, plateaux)</li>
+                    <li>Service à thé en céladon</li>
+                    <li>Parasols peints à la main (Chiang Mai)</li>
+                    <li>Sculptures bois doré (ornements muraux)</li>
+                    <li>Tentures en soie thaï</li>
+                    <li>Accessoires en bronze patiné</li>
+                  </ul>
+                </span>
+              </span>
+            </h3>
+            <p class="style-desc">Teck massif sculpté, soieries colorées, artisanat local authentique. L'âme de Siam dans chaque détail.</p>
+            <div class="style-breakdown">
+              <div class="breakdown-row breakdown-single">
+                <span class="breakdown-amount breakdown-plus">+ 2 500 000 THB</span>
+              </div>
+            </div>
+            <button class="style-select" type="button">Choisir ce style</button>
+          </div>
+        </div>
+
+        <!-- Style 3 : Wabi-Sabi Zen -->
+        <div class="style-card" data-style="wabisabi" data-surplus="3500000" data-name="Wabi-Sabi Zen">
+          <div class="style-preview" data-thumb-index="0">
+            <img src="photos/styles/wabisabi/wabisabi-salon.jpg" alt="Style Wabi-Sabi Zen" />
+            <div class="style-zoom-hint">Cliquer pour agrandir</div>
+          </div>
+          <div class="style-thumbs">
+            <div class="style-thumb" data-thumb-index="1"><img src="photos/styles/wabisabi/wabisabi-masterbedroom.jpg" alt="Suite principale" /></div>
+            <div class="style-thumb" data-thumb-index="2"><img src="photos/styles/wabisabi/wabisabi-bedroom.jpg" alt="Chambre d'amis" /></div>
+            <div class="style-thumb" data-thumb-index="3"><img src="photos/styles/wabisabi/wabisabi-kitchen.jpg" alt="Cuisine" /></div>
+            <div class="style-thumb" data-thumb-index="4"><img src="photos/styles/wabisabi/wabisabi-bathroom.jpg" alt="Salle d'eau" /></div>
+            <div class="style-thumb" data-thumb-index="5"><img src="photos/styles/wabisabi/wabisabi-catalog.jpg" alt="Mobilier & matériaux" /></div>
+          </div>
+          <div class="style-info">
+            <h3>
+              Wabi-Sabi <em>zen</em>
+              <span class="style-info-icon" tabindex="0">
+                i
+                <span class="style-tooltip">
+                  <strong>Ce qui est inclus</strong>
+                  <ul>
+                    <li>Canapé bas en lin brut non teinté fait main</li>
+                    <li>Table basse travertin taillé dans bloc unique</li>
+                    <li>Lit plateforme bois flotté récupéré</li>
+                    <li>Tansu japonais ancien (commode basse)</li>
+                    <li>Parures de lit lin brut froissé naturellement</li>
+                    <li>Couvertures en laine bouclée tissée main</li>
+                    <li>Tabourets bois brut d'artisan local</li>
+                    <li>Lampes Noguchi originales (papier washi)</li>
+                    <li>Lampadaires bronze oxydé patiné</li>
+                    <li>Céramiques stoneware à glaçure craquelée</li>
+                    <li>Poteries kintsugi (réparées à l'or)</li>
+                    <li>Bol à thé matcha artisanal japonais</li>
+                    <li>Bonsaï âgé (5+ ans, sélection privée)</li>
+                    <li>Vase ikebana en grès irrégulier</li>
+                    <li>Calligraphies japonaises originales encadrées</li>
+                    <li>Tapis en chanvre et jute tissé main</li>
+                    <li>Coussins de méditation laine brute</li>
+                    <li>Lanternes papier washi suspendues</li>
+                    <li>Collection branches bois flotté</li>
+                    <li>Enduits à la chaux teintée argile (4 finitions)</li>
+                    <li>Bois brûlé shou-sugi-ban (murs d'accent)</li>
+                    <li>Pierres de rivière sélectionnées (bassins)</li>
+                  </ul>
+                </span>
+              </span>
+            </h3>
+            <p class="style-desc">Béton ciré, pierre brute, bois de récupération. L'élégance japonaise du détail imparfait et du vide habité.</p>
+            <div class="style-breakdown">
+              <div class="breakdown-row breakdown-single">
+                <span class="breakdown-amount breakdown-plus">+ 3 500 000 THB</span>
+              </div>
+            </div>
+            <button class="style-select" type="button">Choisir ce style</button>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </div>
@@ -2303,22 +2697,9 @@
 
     const styleCards = document.querySelectorAll('.style-card');
     const selectButtons = document.querySelectorAll('.style-select');
-    const priceSurplus = document.getElementById('price-surplus');
-    const surplusStyleName = document.getElementById('surplus-style-name');
-    const surplusAmount = document.getElementById('surplus-amount');
 
     function formatPrice(thb) {
       return thb.toLocaleString('fr-FR').replace(/,/g, ' ');
-    }
-
-    function updateSurplus(surplus, styleName) {
-      if (surplus > 0) {
-        surplusStyleName.textContent = styleName;
-        surplusAmount.textContent = formatPrice(surplus);
-        priceSurplus.hidden = false;
-      } else {
-        priceSurplus.hidden = true;
-      }
     }
 
     // Sélection du style (bouton "Choisir")
@@ -2335,7 +2716,10 @@
         selectButtons.forEach(b => b.textContent = 'Choisir ce style');
         btn.textContent = 'Style sélectionné';
 
-        updateSurplus(surplus, styleName);
+        // Utiliser la nouvelle fonction globale cumulée
+        if (typeof window.updateSurplusRow === 'function') {
+          window.updateSurplusRow('style', surplus, styleName);
+        }
       });
     });
 
@@ -2478,6 +2862,84 @@
           const y = target.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top: y, behavior: 'smooth' });
         }
+      });
+    });
+  })();
+</script>
+
+<script>
+  // ========== ONGLETS PERSONNALISATION ==========
+  (function() {
+    const tabButtons = document.querySelectorAll('.perso-tab-btn');
+    const tabContents = document.querySelectorAll('.perso-tab-content');
+    
+    if (tabButtons.length === 0) return;
+    
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+        
+        // Désactiver tous
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        
+        // Activer le clické
+        btn.classList.add('active');
+        const target = document.getElementById(tabId);
+        if (target) target.classList.add('active');
+      });
+    });
+  })();
+
+  // ========== SÉLECTION SOL / PAREMENT ==========
+  (function() {
+    function formatPrice(thb) {
+      return thb.toLocaleString('fr-FR').replace(/,/g, ' ');
+    }
+
+    // Fonction globale accessible aussi par le JS style existant
+    window.updateSurplusRow = function(type, surplus, name) {
+      const row = document.getElementById('surplus-' + type);
+      const priceSurplus = document.getElementById('price-surplus');
+      if (!row || !priceSurplus) return;
+
+      if (surplus > 0) {
+        row.querySelector('.surplus-name').textContent = name;
+        row.querySelector('.surplus-value').textContent = formatPrice(surplus);
+        row.hidden = false;
+      } else {
+        row.hidden = true;
+      }
+
+      // Afficher/masquer le bloc global selon si au moins 1 ligne visible
+      const anyVisible = document.querySelectorAll('.surplus-row:not([hidden])').length > 0;
+      priceSurplus.hidden = !anyVisible;
+    };
+
+    // Sélection sol ou parement
+    document.querySelectorAll('.option-select').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = btn.closest('.option-card');
+        if (!card) return;
+
+        const type = card.dataset.optionType; // 'sol' ou 'parement'
+        const surplus = parseInt(card.dataset.surplus, 10);
+        const name = card.dataset.name;
+
+        // Désactiver toutes les cartes du même type
+        document.querySelectorAll('.option-card[data-option-type="' + type + '"]').forEach(c => {
+          c.classList.remove('active');
+          const b = c.querySelector('.option-select');
+          if (b) b.textContent = type === 'sol' ? 'Choisir ce sol' : 'Choisir ce parement';
+        });
+
+        // Activer celle-ci
+        card.classList.add('active');
+        btn.textContent = type === 'sol' ? 'Sol sélectionné' : 'Parement sélectionné';
+
+        // Mettre à jour le récap prix
+        window.updateSurplusRow(type, surplus, name);
       });
     });
   })();

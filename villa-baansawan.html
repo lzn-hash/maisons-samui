@@ -296,14 +296,6 @@
     border-bottom: 1px solid rgba(168, 136, 82, 0.2);
     margin-bottom: 1.2rem;
   }
-  .drawer-villa-eyebrow {
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
-    margin-bottom: 0.4rem;
-  }
   .drawer-villa-name {
     font-family: 'Italiana', serif;
     font-size: 1.7rem;
@@ -1239,46 +1231,6 @@
     padding: 4rem 3rem 5rem;
     background: var(--white);
   }
-  .styles-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .styles-header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 3rem;
-  }
-  .styles-header h2 {
-    font-family: 'Italiana', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    line-height: 1.1;
-    font-weight: 400;
-    margin-bottom: 1.2rem;
-  }
-  .styles-header h2 em {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--terracotta);
-  }
-  .styles-header .styles-intro {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-style: italic;
-    color: var(--ink-soft);
-    font-weight: 400;
-    line-height: 1.5;
-  }
-  .styles-header .styles-intro-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
-    font-style: normal;
-    margin-right: 0.3rem;
-  }
-
   .styles-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1588,13 +1540,6 @@
     font-weight: 500;
     letter-spacing: 0.1em;
   }
-  .breakdown-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    font-weight: 400;
-  }
   .breakdown-amount {
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
@@ -1605,22 +1550,6 @@
   .breakdown-amount.breakdown-plus {
     color: var(--terracotta);
     font-weight: 500;
-  }
-  .breakdown-row.breakdown-total {
-    margin-top: 0.3rem;
-    padding-top: 0.7rem;
-    border-top: 1px solid rgba(168, 136, 82, 0.2);
-  }
-  .breakdown-row.breakdown-total .breakdown-label {
-    color: var(--ink);
-    font-weight: 500;
-  }
-  .breakdown-row.breakdown-total .breakdown-amount {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    color: var(--jungle);
-    font-weight: 500;
-    letter-spacing: 0;
   }
   .style-select {
     width: 100%;
@@ -1701,10 +1630,6 @@
     
     /* ===== STYLES INTÉRIEURS ===== */
     .styles { padding: 3rem 2rem 4rem; }
-    .styles-inner { max-width: 1100px; }
-    .styles-header { margin: 0 auto 2rem; }
-    .styles-header h2 { font-size: 2.3rem; margin-bottom: 0.8rem; }
-    .styles-header .styles-intro { font-size: 1rem; }
     .styles-grid { gap: 1.2rem; }
     .style-preview { aspect-ratio: 16/10; }
     .style-thumbs { gap: 0.3rem; padding: 0.3rem; grid-template-columns: repeat(5, 1fr); }
@@ -1717,9 +1642,7 @@
     .style-tooltip li { font-size: 0.72rem; padding: 0.25rem 0 0.25rem 1rem; }
     .style-breakdown { padding-top: 0.7rem; margin-bottom: 0.9rem; }
     .breakdown-row { padding: 0.2rem 0; }
-    .breakdown-label { font-size: 0.62rem; }
     .breakdown-amount { font-size: 0.8rem; }
-    .breakdown-row.breakdown-total .breakdown-amount { font-size: 1.2rem; }
     .style-select { padding: 0.65rem 1rem; font-size: 0.62rem; }
     
     /* Plan */
@@ -3318,9 +3241,6 @@
 <script>
   // ========== STYLES INTÉRIEURS DYNAMIQUES ==========
   (function() {
-    const BASE_PRICE_THB = 19000000;
-    const EUR_RATE = 38; // 1 EUR = 38 THB (à mettre à jour régulièrement)
-
     // Photos associées à chaque style (ordre = index 0 à 5)
     const stylePhotos = {
       scandinave: [
@@ -3352,10 +3272,6 @@
     const styleCards = document.querySelectorAll('.style-card');
     const selectButtons = document.querySelectorAll('.style-select');
 
-    function formatPrice(thb) {
-      return thb.toLocaleString('fr-FR').replace(/,/g, ' ');
-    }
-
     // Sélection du style (bouton "Choisir")
     selectButtons.forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -3369,11 +3285,6 @@
 
         selectButtons.forEach(b => b.textContent = 'Choisir ce style');
         btn.textContent = 'Style sélectionné';
-
-        // Utiliser la nouvelle fonction globale cumulée
-        if (typeof window.updateSurplusRow === 'function') {
-          window.updateSurplusRow('style', surplus, styleName);
-        }
       });
     });
 
@@ -3747,29 +3658,6 @@
 
   // ========== SÉLECTION SOL / PAREMENT ==========
   (function() {
-    function formatPrice(thb) {
-      return thb.toLocaleString('fr-FR').replace(/,/g, ' ');
-    }
-
-    // Fonction globale accessible aussi par le JS style existant
-    window.updateSurplusRow = function(type, surplus, name) {
-      const row = document.getElementById('surplus-' + type);
-      const priceSurplus = document.getElementById('price-surplus');
-      if (!row || !priceSurplus) return;
-
-      if (surplus > 0) {
-        row.querySelector('.surplus-name').textContent = name;
-        row.querySelector('.surplus-value').textContent = formatPrice(surplus);
-        row.hidden = false;
-      } else {
-        row.hidden = true;
-      }
-
-      // Afficher/masquer le bloc global selon si au moins 1 ligne visible
-      const anyVisible = document.querySelectorAll('.surplus-row:not([hidden])').length > 0;
-      priceSurplus.hidden = !anyVisible;
-    };
-
     // Sélection sol ou parement
     document.querySelectorAll('.option-select').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -3791,9 +3679,6 @@
         // Activer celle-ci
         card.classList.add('active');
         btn.textContent = type === 'sol' ? 'Sol sélectionné' : 'Parement sélectionné';
-
-        // Mettre à jour le récap prix
-        window.updateSurplusRow(type, surplus, name);
       });
     });
   })();
@@ -3821,7 +3706,6 @@
 (function() {
   const STORAGE_KEY = 'maisons-samui-panier-baansawan';
   const VILLA = { name: 'Baan Sawan', loc: 'Lamai · Côte est', basePrice: 19000000 };
-  const CONTACT_EMAIL = 'group@blockestate.com';
   const EUR_RATE = 38; // 1 EUR = 38 THB (à mettre à jour régulièrement)
 
   // ===== STORAGE =====

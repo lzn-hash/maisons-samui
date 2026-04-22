@@ -106,17 +106,434 @@
   .nav-links a:hover { opacity: 0.6; }
 
   .nav-cta {
-    padding: 0.7rem 1.5rem;
-    background: var(--gold);
-    border: 1px solid var(--gold);
+    padding: 0.6rem 1.2rem;
+    background: var(--ink);
+    border: 1px solid var(--ink);
     color: var(--white);
     text-decoration: none;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
+    font-weight: 500;
     transition: all 0.3s;
   }
-  .nav-cta:hover { background: #8e7043; border-color: #8e7043; }
+  .nav-cta:hover { background: var(--terracotta); border-color: var(--terracotta); }
+
+  /* Wrapper pour les actions à droite de la nav */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* ===== PANIER (Mon projet) ===== */
+  .basket {
+    position: relative;
+    background: transparent;
+    border: 1px solid rgba(26, 30, 26, 0.15);
+    padding: 0.55rem 0.85rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    color: var(--ink);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .basket:hover {
+    border-color: var(--gold);
+    background: rgba(168, 136, 82, 0.05);
+  }
+  .basket-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--ink);
+    transition: transform 0.4s ease;
+    flex-shrink: 0;
+  }
+  .basket-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  /* Badge compteur */
+  .basket-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 10px;
+    background: var(--terracotta);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border: 2px solid var(--white);
+  }
+  .basket-count.visible {
+    display: inline-flex;
+    animation: countPop 0.4s ease;
+  }
+  @keyframes countPop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+  /* Vibration du panier */
+  .basket.shake .basket-icon {
+    animation: basketShake 0.5s ease;
+  }
+  @keyframes basketShake {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    15% { transform: rotate(-12deg) scale(1.15); }
+    30% { transform: rotate(10deg) scale(1.1); }
+    45% { transform: rotate(-8deg) scale(1.12); }
+    60% { transform: rotate(6deg) scale(1.08); }
+    80% { transform: rotate(-3deg) scale(1.04); }
+  }
+
+  /* ===== ANIMATION DE VOL ===== */
+  .fly-particle {
+    position: fixed;
+    z-index: 999;
+    pointer-events: none;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(26, 30, 26, 0.3);
+  }
+  .fly-particle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ===== DRAWER (panier) ===== */
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 31, 23, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 420px;
+    max-width: 100vw;
+    height: 100vh;
+    z-index: 201;
+    background: var(--white);
+    box-shadow: -20px 0 60px rgba(26, 30, 26, 0.15);
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+  }
+  .drawer.open { transform: translateX(0); }
+  .drawer-header {
+    padding: 1.5rem 1.8rem;
+    border-bottom: 1px solid var(--sand-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .drawer-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .drawer-close {
+    background: transparent;
+    border: none;
+    color: var(--ink-soft);
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    line-height: 1;
+    transition: color 0.3s;
+  }
+  .drawer-close:hover { color: var(--terracotta); }
+  .drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.8rem;
+  }
+  .drawer-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--ink-soft);
+  }
+  .drawer-empty .empty-icon {
+    font-family: 'Italiana', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.5;
+    margin-bottom: 1rem;
+  }
+  .drawer-empty p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  .drawer-villa {
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(168, 136, 82, 0.2);
+    margin-bottom: 1.2rem;
+  }
+  .drawer-villa-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+  .drawer-villa-name {
+    font-family: 'Italiana', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .drawer-villa-name em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .drawer-villa-loc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+  .drawer-villa-base {
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.78rem;
+  }
+  .drawer-villa-base .label {
+    color: var(--ink-soft);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 0.62rem;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+  .drawer-villa-base .price {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .drawer-list { list-style: none; padding: 0; margin: 0; }
+  .drawer-item {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed rgba(168, 136, 82, 0.2);
+  }
+  .drawer-item:last-child { border-bottom: none; }
+  .drawer-item-thumb {
+    width: 60px;
+    height: 60px;
+    background: var(--sand-dark);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .drawer-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .drawer-item-info { min-width: 0; }
+  .drawer-item-type {
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .drawer-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 0.15rem;
+  }
+  .drawer-item-name em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .drawer-item-price {
+    font-size: 0.75rem;
+    color: var(--terracotta);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+  .drawer-item-price.included {
+    color: var(--ink-soft);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .drawer-item-remove {
+    background: transparent;
+    border: 1px solid rgba(168, 136, 82, 0.25);
+    color: var(--ink-soft);
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1;
+    transition: all 0.3s;
+  }
+  .drawer-item-remove:hover {
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+  }
+  .drawer-total {
+    padding-top: 1.2rem;
+    margin-top: 1.2rem;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .drawer-total-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+  .drawer-total-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .drawer-total-value small {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    text-align: right;
+    margin-top: 0.1rem;
+  }
+  .drawer-footer {
+    padding: 1.5rem 1.8rem;
+    border-top: 1px solid var(--sand-dark);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background: var(--sand-light);
+  }
+  .drawer-cta {
+    background: var(--ink);
+    color: var(--white);
+    border: none;
+    padding: 1.1rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+  .drawer-cta:hover { background: var(--terracotta); }
+  .drawer-cta-clear {
+    background: transparent;
+    border: none;
+    color: var(--ink-soft);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s;
+  }
+  .drawer-cta-clear:hover { color: var(--terracotta); }
+
+  /* ===== RECAP CONTACT (au-dessus du formulaire) ===== */
+  .contact-recap {
+    background: rgba(168, 136, 82, 0.08);
+    border: 1px solid rgba(168, 136, 82, 0.25);
+    border-left: 3px solid var(--gold);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    display: none;
+  }
+  .contact-recap.visible { display: block; }
+  .contact-recap-title {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+  .contact-recap-list {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--white);
+    line-height: 1.7;
+  }
+  .contact-recap-list .recap-label {
+    font-style: normal;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-right: 0.5rem;
+  }
+  .contact-recap-total {
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.3);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
 
   /* ===== BACK LINK ===== */
   .back-link {
@@ -326,28 +743,6 @@
   }
 
   /* Zone surplus style intérieur (affichée seulement quand un style payant est sélectionné) */
-  .price-surplus {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(168, 136, 82, 0.3);
-    animation: fadeIn 0.4s ease;
-  }
-  .price-surplus .surplus-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--terracotta);
-    font-weight: 500;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
   /* Badge cryptos sous le prix (page villa) */
   .villa-crypto-badge {
     display: inline-flex;
@@ -1891,8 +2286,12 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
-    nav { padding: 0.9rem 1.5rem; }
+    nav { padding: 0.7rem 1rem; }
     .nav-links { display: none; }
+    .nav-actions { gap: 0.6rem; }
+    .nav-cta { display: none; }
+    .basket-label { display: none; }
+    .basket { padding: 0.5rem 0.7rem; }
 
     .back-link { display: none; }
     .villa-subnav { display: none; }
@@ -1958,7 +2357,18 @@
     <li><a href="index.html#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
+  <div class="nav-actions">
+    <button class="basket" id="basket" type="button" aria-label="Voir mon projet">
+      <svg class="basket-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 22L24 8l18 14"/>
+        <path d="M10 20v20h28V20"/>
+        <path d="M20 40v-10h8v10"/>
+      </svg>
+      <span class="basket-label">Mon projet</span>
+      <span class="basket-count" id="basket-count">0</span>
+    </button>
+    <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
+  </div>
 </nav>
 
 <a href="index.html#collection" class="back-link">Retour aux Villas</a>
@@ -1998,21 +2408,6 @@
         <div class="value">
           ฿ 62 500 000
           <small>≈ 1,7 M€ / $1,8 M</small>
-        </div>
-
-        <div class="price-surplus" id="price-surplus" hidden>
-          <div class="surplus-row" id="surplus-sol" hidden>
-            <span class="surplus-label">+ <span class="surplus-name">Sol</span></span>
-            <span class="surplus-amount">+<span class="surplus-value">0</span> THB</span>
-          </div>
-          <div class="surplus-row" id="surplus-parement" hidden>
-            <span class="surplus-label">+ <span class="surplus-name">Parement</span></span>
-            <span class="surplus-amount">+<span class="surplus-value">0</span> THB</span>
-          </div>
-          <div class="surplus-row" id="surplus-style" hidden>
-            <span class="surplus-label">+ <span class="surplus-name" id="surplus-style-name">Style</span></span>
-            <span class="surplus-amount">+<span class="surplus-value" id="surplus-amount">0</span> THB</span>
-          </div>
         </div>
 
         <div class="villa-crypto-badge">
@@ -2577,12 +2972,20 @@
       <p>Visite sur place, en visioconférence, ou dossier complet envoyé par email. Dites-nous simplement comment vous préférez procéder.</p>
     </div>
 
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('Merci, votre demande concernant Baan Sawan a bien été envoyée.');">
-      <input type="hidden" value="Baan Sawan" />
-      <input type="text" placeholder="Nom complet" required />
-      <input type="email" placeholder="Adresse email" required />
-      <input type="tel" placeholder="Téléphone (optionnel)" />
-      <textarea placeholder="Votre message — visite, questions, délai souhaité..." required></textarea>
+    <form class="contact-form" id="contact-form" onsubmit="return handleContactSubmit(event)">
+      <!-- Récap configuration (visible si choix faits) -->
+      <div class="contact-recap" id="contact-recap">
+        <div class="contact-recap-title">Votre configuration Baan Sawan</div>
+        <div class="contact-recap-list" id="contact-recap-list"></div>
+        <div class="contact-recap-total" id="contact-recap-total"></div>
+      </div>
+
+      <input type="hidden" name="villa" value="Baan Sawan" />
+      <input type="hidden" name="config" id="hidden-config" value="" />
+      <input type="text" name="nom" placeholder="Nom complet" required />
+      <input type="email" name="email" placeholder="Adresse email" required />
+      <input type="tel" name="telephone" placeholder="Téléphone (optionnel)" />
+      <textarea name="message" placeholder="Votre message — visite, questions, délai souhaité..." required></textarea>
       <button type="submit">Demander un contact</button>
     </form>
   </div>
@@ -3229,6 +3632,423 @@
       });
     });
   })();
+</script>
+
+<!-- ===== DRAWER (panier "Mon projet") ===== -->
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-header">
+    <h2>Mon projet</h2>
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="Fermer">✕</button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+  <div class="drawer-footer" id="drawer-footer" style="display:none;">
+    <a href="#contact" class="drawer-cta" id="drawer-cta">
+      Prendre contact
+      <span>→</span>
+    </a>
+    <button class="drawer-cta-clear" id="drawer-clear" type="button">Réinitialiser le projet</button>
+  </div>
+</aside>
+
+<script>
+// ========== PANIER "MON PROJET" ==========
+(function() {
+  const STORAGE_KEY = 'maisons-samui-panier-baansawan';
+  const VILLA = { name: 'Baan Sawan', loc: 'Lipa Noi · Ouest', basePrice: 62500000 };
+  const CONTACT_EMAIL = 'group@blockestate.com';
+  const EUR_RATE = 37000;
+
+  // ===== STORAGE =====
+  function loadConfig() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return { sol: null, parement: null, style: null };
+      return JSON.parse(raw);
+    } catch (e) { return { sol: null, parement: null, style: null }; }
+  }
+  function saveConfig(c) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(c)); } catch (e) {}
+  }
+
+  // ===== HELPERS =====
+  function formatTHB(n) {
+    return '฿ ' + n.toLocaleString('fr-FR').replace(/,/g, ' ');
+  }
+  function formatEUR(thb) {
+    const eur = thb / EUR_RATE;
+    if (eur >= 1000000) return '≈ ' + (eur / 1000000).toFixed(1).replace('.', ',') + ' M€';
+    return '≈ ' + Math.round(eur / 1000) + ' k€';
+  }
+  function countChoices(c) {
+    return (c.sol ? 1 : 0) + (c.parement ? 1 : 0) + (c.style ? 1 : 0);
+  }
+  function computeTotal(c) {
+    let t = VILLA.basePrice;
+    if (c.sol) t += c.sol.surplus;
+    if (c.parement) t += c.parement.surplus;
+    if (c.style) t += c.style.surplus;
+    return t;
+  }
+  function typeLabel(t) {
+    return t === 'sol' ? 'Sol' : t === 'parement' ? 'Parement' : 'Style';
+  }
+
+  // ===== ANIMATION DE VOL =====
+  function flyToBasket(sourceImg) {
+    const basket = document.getElementById('basket');
+    if (!basket || !sourceImg) return;
+
+    const startRect = sourceImg.getBoundingClientRect();
+    const endRect = basket.getBoundingClientRect();
+    const endX = endRect.left + endRect.width / 2 - 25;
+    const endY = endRect.top + endRect.height / 2 - 25;
+    const startX = startRect.left + startRect.width / 2 - 25;
+    const startY = startRect.top + startRect.height / 2 - 25;
+
+    const particle = document.createElement('div');
+    particle.className = 'fly-particle';
+    particle.style.left = startX + 'px';
+    particle.style.top = startY + 'px';
+    particle.style.width = '50px';
+    particle.style.height = '50px';
+    const img = document.createElement('img');
+    img.src = sourceImg.src;
+    particle.appendChild(img);
+    document.body.appendChild(particle);
+
+    const midX = (startX + endX) / 2;
+    const midY = Math.min(startY, endY) - 80;
+
+    particle.animate([
+      { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+      { transform: `translate(${midX - startX}px, ${midY - startY}px) scale(0.7)`, opacity: 1, offset: 0.5 },
+      { transform: `translate(${endX - startX}px, ${endY - startY}px) scale(0.2)`, opacity: 0.3 }
+    ], {
+      duration: 500,
+      easing: 'cubic-bezier(0.4, 0, 0.6, 1)'
+    }).onfinish = () => {
+      particle.remove();
+      basket.classList.add('shake');
+      setTimeout(() => basket.classList.remove('shake'), 500);
+    };
+  }
+
+  // ===== UPDATE COUNTER =====
+  function updateCounter() {
+    const config = loadConfig();
+    const count = countChoices(config);
+    const counter = document.getElementById('basket-count');
+    if (!counter) return;
+    if (count > 0) {
+      counter.textContent = count;
+      counter.classList.add('visible');
+    } else {
+      counter.classList.remove('visible');
+    }
+  }
+
+  // ===== DRAWER =====
+  const drawer = document.getElementById('drawer');
+  const drawerOverlay = document.getElementById('drawer-overlay');
+  const drawerBody = document.getElementById('drawer-body');
+  const drawerFooter = document.getElementById('drawer-footer');
+
+  function openDrawer() {
+    renderDrawer();
+    drawer.classList.add('open');
+    drawerOverlay.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    drawerOverlay.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Branche le bouton "Mon projet"
+  const basketBtn = document.getElementById('basket');
+  if (basketBtn) basketBtn.addEventListener('click', openDrawer);
+  document.getElementById('drawer-close').addEventListener('click', closeDrawer);
+  drawerOverlay.addEventListener('click', closeDrawer);
+
+  // Bouton "Prendre contact" dans le drawer
+  document.getElementById('drawer-cta').addEventListener('click', (e) => {
+    e.preventDefault();
+    closeDrawer();
+    setTimeout(() => {
+      const contactEl = document.getElementById('contact');
+      if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
+    }, 350);
+  });
+
+  // Bouton "Réinitialiser"
+  document.getElementById('drawer-clear').addEventListener('click', () => {
+    if (!confirm('Réinitialiser tous vos choix ?')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    // Désélectionner les cartes
+    document.querySelectorAll('.option-card.active, .style-card.active').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.option-select').forEach(b => {
+      const card = b.closest('.option-card');
+      if (card) {
+        const t = card.dataset.optionType;
+        b.textContent = t === 'sol' ? 'Choisir ce sol' : 'Choisir ce parement';
+      }
+    });
+    document.querySelectorAll('.style-select').forEach(b => b.textContent = 'Choisir ce style');
+    updateCounter();
+    renderDrawer();
+    renderContactRecap();
+  });
+
+  // ESC pour fermer
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+  });
+
+  // ===== RENDER DRAWER =====
+  function renderDrawer() {
+    const config = loadConfig();
+    const count = countChoices(config);
+    const total = computeTotal(config);
+
+    if (count === 0) {
+      drawerBody.innerHTML = `
+        <div class="drawer-empty">
+          <div class="empty-icon">✦</div>
+          <p>Votre projet est vide. Composez votre villa en choisissant un sol, un parement et un style.</p>
+        </div>
+      `;
+      drawerFooter.style.display = 'none';
+      return;
+    }
+
+    let html = `
+      <div class="drawer-villa">
+        <div class="drawer-villa-eyebrow">Villa</div>
+        <div class="drawer-villa-name">${VILLA.name}</div>
+        <div class="drawer-villa-loc">${VILLA.loc}</div>
+        <div class="drawer-villa-base">
+          <span class="label">Prix de base</span>
+          <span class="price">${formatTHB(VILLA.basePrice)}</span>
+        </div>
+      </div>
+      <ul class="drawer-list">
+    `;
+
+    ['sol', 'parement', 'style'].forEach(type => {
+      const item = config[type];
+      if (!item) return;
+      const priceText = item.surplus > 0
+        ? '<span class="drawer-item-price">+ ' + (item.surplus / 1000000).toFixed(1).replace('.', ',') + ' M THB</span>'
+        : '<span class="drawer-item-price included">Inclus</span>';
+      html += `
+        <li class="drawer-item">
+          <div class="drawer-item-thumb">
+            ${item.photo ? `<img src="${item.photo}" alt="">` : ''}
+          </div>
+          <div class="drawer-item-info">
+            <div class="drawer-item-type">${typeLabel(type)}</div>
+            <div class="drawer-item-name">${item.name}</div>
+            ${priceText}
+          </div>
+          <button class="drawer-item-remove" type="button" data-remove="${type}" aria-label="Retirer">✕</button>
+        </li>
+      `;
+    });
+
+    html += `
+      </ul>
+      <div class="drawer-total">
+        <span class="drawer-total-label">Total estimé</span>
+        <span class="drawer-total-value">${formatTHB(total)}<small>${formatEUR(total)}</small></span>
+      </div>
+    `;
+
+    drawerBody.innerHTML = html;
+    drawerFooter.style.display = 'flex';
+
+    // Branche les boutons "✕"
+    drawerBody.querySelectorAll('[data-remove]').forEach(b => {
+      b.addEventListener('click', () => {
+        const type = b.dataset.remove;
+        const cfg = loadConfig();
+        cfg[type] = null;
+        saveConfig(cfg);
+        // Désélectionner la carte correspondante
+        if (type === 'sol' || type === 'parement') {
+          document.querySelectorAll(`.option-card[data-option-type="${type}"].active`).forEach(c => {
+            c.classList.remove('active');
+            const btn = c.querySelector('.option-select');
+            if (btn) btn.textContent = type === 'sol' ? 'Choisir ce sol' : 'Choisir ce parement';
+          });
+        } else if (type === 'style') {
+          document.querySelectorAll('.style-card.active').forEach(c => {
+            c.classList.remove('active');
+            const btn = c.querySelector('.style-select');
+            if (btn) btn.textContent = 'Choisir ce style';
+          });
+        }
+        updateCounter();
+        renderDrawer();
+        renderContactRecap();
+      });
+    });
+  }
+
+  // ===== RECAP CONTACT =====
+  function renderContactRecap() {
+    const config = loadConfig();
+    const count = countChoices(config);
+    const recap = document.getElementById('contact-recap');
+    const list = document.getElementById('contact-recap-list');
+    const totalEl = document.getElementById('contact-recap-total');
+    const hidden = document.getElementById('hidden-config');
+
+    if (!recap) return;
+    if (count === 0) {
+      recap.classList.remove('visible');
+      if (hidden) hidden.value = '';
+      return;
+    }
+    recap.classList.add('visible');
+    const lines = [];
+    if (config.sol) lines.push('<span class="recap-label">Sol</span>' + config.sol.name);
+    if (config.parement) lines.push('<span class="recap-label">Parement</span>' + config.parement.name);
+    if (config.style) lines.push('<span class="recap-label">Style</span>' + config.style.name);
+    list.innerHTML = lines.join('<br>');
+    const total = computeTotal(config);
+    totalEl.innerHTML = 'Total estimé : ' + formatTHB(total) + ' &nbsp;·&nbsp; ' + formatEUR(total);
+
+    if (hidden) {
+      const parts = [];
+      if (config.sol) parts.push('Sol: ' + config.sol.name + ' (+' + config.sol.surplus + ' THB)');
+      if (config.parement) parts.push('Parement: ' + config.parement.name + ' (+' + config.parement.surplus + ' THB)');
+      if (config.style) parts.push('Style: ' + config.style.name + ' (+' + config.style.surplus + ' THB)');
+      parts.push('Total: ' + formatTHB(total));
+      hidden.value = parts.join(' | ');
+    }
+  }
+
+  // ===== HOOK SUR LES BOUTONS "CHOISIR" =====
+  // Sols et Parements
+  document.querySelectorAll('.option-card .option-select').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      // On laisse le handler existant faire son travail (active classe, surplus row...),
+      // puis on ajoute la logique panier
+      setTimeout(() => {
+        const card = btn.closest('.option-card');
+        if (!card) return;
+        const type = card.dataset.optionType;
+        const name = card.dataset.name;
+        const surplus = parseInt(card.dataset.surplus, 10);
+        const photoEl = card.querySelector('.option-photo img');
+
+        const config = loadConfig();
+        config[type] = { name, surplus, photo: photoEl ? photoEl.src : '' };
+        saveConfig(config);
+        updateCounter();
+        renderContactRecap();
+        flyToBasket(photoEl);
+      }, 0);
+    });
+  });
+
+  // Styles
+  document.querySelectorAll('.style-card .style-select').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      setTimeout(() => {
+        const card = btn.closest('.style-card');
+        if (!card) return;
+        const name = card.dataset.name;
+        const surplus = parseInt(card.dataset.surplus, 10);
+        const photoEl = card.querySelector('.style-preview img');
+
+        const config = loadConfig();
+        config.style = { name, surplus, photo: photoEl ? photoEl.src : '' };
+        saveConfig(config);
+        updateCounter();
+        renderContactRecap();
+        flyToBasket(photoEl);
+      }, 0);
+    });
+  });
+
+  // ===== SUBMIT FORMULAIRE =====
+  window.handleContactSubmit = function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const config = loadConfig();
+    const count = countChoices(config);
+    const total = computeTotal(config);
+
+    let subject = `Demande — ${VILLA.name}`;
+    if (count > 0) subject += ' (configuré)';
+
+    let body = `Bonjour,\n\nJe suis intéressé(e) par la villa ${VILLA.name}.\n\n`;
+    body += `--- Mes coordonnées ---\n`;
+    body += `Nom : ${form.nom.value}\n`;
+    body += `Email : ${form.email.value}\n`;
+    body += `Téléphone : ${form.telephone.value || 'Non renseigné'}\n\n`;
+
+    if (count > 0) {
+      body += `--- Configuration choisie ---\n`;
+      if (config.sol) body += `Sol : ${config.sol.name}` + (config.sol.surplus > 0 ? ` (+ ${config.sol.surplus.toLocaleString('fr-FR')} THB)` : ' (inclus)') + '\n';
+      if (config.parement) body += `Parement : ${config.parement.name}` + (config.parement.surplus > 0 ? ` (+ ${config.parement.surplus.toLocaleString('fr-FR')} THB)` : ' (inclus)') + '\n';
+      if (config.style) body += `Style : ${config.style.name}` + (config.style.surplus > 0 ? ` (+ ${config.style.surplus.toLocaleString('fr-FR')} THB)` : ' (inclus)') + '\n';
+      body += `Prix total estimé : ${formatTHB(total)}\n\n`;
+    }
+
+    body += `--- Mon message ---\n${form.message.value}\n\n`;
+    body += `---\nEnvoyé depuis maisons-samui (${new Date().toLocaleString('fr-FR')})`;
+
+    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+    return false;
+  };
+
+  // ===== RESTAURATION AU CHARGEMENT =====
+  function restore() {
+    const config = loadConfig();
+    if (config.sol) {
+      document.querySelectorAll('.option-card[data-option-type="sol"]').forEach(c => {
+        if (c.dataset.name === config.sol.name) {
+          c.classList.add('active');
+          const btn = c.querySelector('.option-select');
+          if (btn) btn.textContent = 'Sol sélectionné';
+        }
+      });
+    }
+    if (config.parement) {
+      document.querySelectorAll('.option-card[data-option-type="parement"]').forEach(c => {
+        if (c.dataset.name === config.parement.name) {
+          c.classList.add('active');
+          const btn = c.querySelector('.option-select');
+          if (btn) btn.textContent = 'Parement sélectionné';
+        }
+      });
+    }
+    if (config.style) {
+      document.querySelectorAll('.style-card').forEach(c => {
+        if (c.dataset.name === config.style.name) {
+          c.classList.add('active');
+          const btn = c.querySelector('.style-select');
+          if (btn) btn.textContent = 'Style sélectionné';
+        }
+      });
+    }
+    updateCounter();
+    renderContactRecap();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', restore);
+  } else {
+    restore();
+  }
+})();
 </script>
 
 </body>

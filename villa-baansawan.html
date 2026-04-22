@@ -2492,16 +2492,10 @@
     }
     .zoom-hint svg { width: 12px; height: 12px; }
 
-    /* Sur mobile : on intègre les photos 4-6 dans le même swiper via display:contents */
+    /* Sur mobile : on intègre les photos 4-6 dans le même swiper via JS (elles sont déplacées dans .gallery).
+       On masque simplement .gallery-more (qui devient vide en mobile) au cas où. */
     .gallery-more {
-      display: contents;
-    }
-    .gallery-more .gallery-item {
-      flex: 0 0 100%;
-      width: 100%;
-      height: 280px;
-      scroll-snap-align: center;
-      scroll-snap-stop: always;
+      display: none;
     }
 
     /* Flèches swiper gallery */
@@ -4388,6 +4382,47 @@
     const items = Array.from(document.querySelectorAll('.gallery-item[data-index]'))
       .sort((a, b) => parseInt(a.dataset.index, 10) - parseInt(b.dataset.index, 10));
     if (items.length === 0) return;
+
+    // === Gestion du DOM selon viewport ===
+    // En mobile, on déplace les items de .gallery-more dans .gallery pour qu'ils soient
+    // dans le même flex container (le swiper horizontal).
+    // En desktop, on les remet à leur place d'origine (grid 2x).
+    const MQ_MOBILE = window.matchMedia('(max-width: 700px)');
+    const moreItems = galleryMore ? Array.from(galleryMore.querySelectorAll('.gallery-item')) : [];
+
+    function syncDOM() {
+      if (!galleryMore) return;
+      if (MQ_MOBILE.matches) {
+        // Mobile : déplacer les items dans .gallery (juste avant les flèches/placeholders)
+        moreItems.forEach(item => {
+          if (item.parentElement !== gallery) {
+            gallery.appendChild(item);
+          }
+        });
+      } else {
+        // Desktop : remettre les items dans .gallery-more
+        moreItems.forEach(item => {
+          if (item.parentElement !== galleryMore) {
+            galleryMore.appendChild(item);
+          }
+        });
+      }
+    }
+
+    syncDOM();
+    MQ_MOBILE.addEventListener('change', () => {
+      syncDOM();
+      // Re-déplacer les flèches à la fin pour qu'elles restent sur l'overlay
+      gallery.appendChild(prevBtn);
+      gallery.appendChild(nextBtn);
+      // Reset scroll
+      gallery.scrollLeft = 0;
+      state.currentIndex = 0;
+      dots.querySelectorAll('.gallery-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === 0);
+      });
+      updateArrows();
+    });
 
     // Flèches (présentes dans le DOM mais visibles seulement en mobile via CSS)
     const prevBtn = document.createElement('button');

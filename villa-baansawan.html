@@ -2124,6 +2124,57 @@
     opacity: 0.7;
     cursor: not-allowed;
   }
+
+  /* Préférence de contact */
+  .contact-preference {
+    margin-top: 0.3rem;
+  }
+  .contact-preference-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0.7rem;
+    font-weight: 400;
+  }
+  .contact-preference-options {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .contact-pref-option {
+    cursor: pointer;
+    user-select: none;
+  }
+  .contact-pref-option input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .contact-pref-option span {
+    display: inline-block;
+    padding: 0.65rem 1.3rem;
+    border: 1px solid var(--sand-dark);
+    background: var(--white);
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+  }
+  .contact-pref-option:hover span {
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+  .contact-pref-option input[type="checkbox"]:checked + span {
+    background: var(--jungle);
+    border-color: var(--jungle);
+    color: var(--white);
+  }
+  .contact-pref-option input[type="checkbox"]:focus-visible + span {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
   .contact-status {
     margin-top: 1rem;
     padding: 0;
@@ -2137,9 +2188,12 @@
   }
   .contact-status.success {
     padding: 1rem 1.2rem;
-    background: rgba(45, 74, 52, 0.08);
-    border-left: 3px solid var(--jungle);
-    color: var(--jungle-deep);
+    background: var(--jungle);
+    border-left: 3px solid var(--jungle-deep);
+    color: var(--white);
+  }
+  .contact-status.success strong {
+    color: var(--white);
   }
   .contact-status.error {
     padding: 1rem 1.2rem;
@@ -2994,7 +3048,7 @@
     </div>
     <div class="location-map">
       <iframe
-        src="https://maps.google.com/maps?q=9.4615,100.0190&z=14&hl=fr&output=embed"
+        src="https://maps.google.com/maps?q=9.456347,100.023422&z=14&hl=fr&output=embed"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         allowfullscreen
@@ -3026,6 +3080,25 @@
       <input type="text" name="nom" placeholder="Nom complet" required />
       <input type="email" name="email" placeholder="Adresse email" required />
       <input type="tel" name="telephone" placeholder="Téléphone (optionnel)" />
+
+      <div class="contact-preference">
+        <div class="contact-preference-label">Comment souhaitez-vous être recontacté ?</div>
+        <div class="contact-preference-options">
+          <label class="contact-pref-option">
+            <input type="checkbox" name="preference" value="Email" checked />
+            <span>Email</span>
+          </label>
+          <label class="contact-pref-option">
+            <input type="checkbox" name="preference" value="Téléphone" />
+            <span>Téléphone</span>
+          </label>
+          <label class="contact-pref-option">
+            <input type="checkbox" name="preference" value="WhatsApp" />
+            <span>WhatsApp</span>
+          </label>
+        </div>
+      </div>
+
       <textarea name="message" placeholder="Votre message — visite, questions, délai souhaité..." required></textarea>
       <button type="submit">Demander un contact</button>
       <div class="contact-status" id="contact-status"></div>
@@ -4054,7 +4127,11 @@
     body += `--- Mes coordonnées ---\n`;
     body += `Nom : ${form.nom.value}\n`;
     body += `Email : ${form.email.value}\n`;
-    body += `Téléphone : ${form.telephone.value || 'Non renseigné'}\n\n`;
+    body += `Téléphone : ${form.telephone.value || 'Non renseigné'}\n`;
+
+    // Préférences de contact (checkboxes multiples)
+    const prefs = Array.from(form.querySelectorAll('input[name="preference"]:checked')).map(c => c.value);
+    body += `Préférence de contact : ${prefs.length > 0 ? prefs.join(', ') : 'Non précisée'}\n\n`;
 
     if (count > 0) {
       body += `--- Configuration choisie ---\n`;

@@ -159,11 +159,17 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.4s ease, opacity 0.4s ease;
+    transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.3s ease;
   }
   .villa-subnav.visible {
     max-height: 80px;
     opacity: 1;
+  }
+  /* Masquée pendant le scroll down */
+  .villa-subnav.visible.hidden-on-scroll {
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
   }
   /* Fallback : si le JS ne tourne pas, la barre reste visible quand même */
   html.no-js .villa-subnav,
@@ -1314,6 +1320,34 @@
   @media (max-width: 900px) {
     .styles-grid { grid-template-columns: 1fr; }
     .style-thumbs { grid-template-columns: repeat(5, 1fr); }
+    /* SOLS & PAREMENTS : 1 colonne aussi sur mobile */
+    .options-grid { grid-template-columns: 1fr; gap: 1.5rem; max-width: 100%; }
+    .option-thumbs { grid-template-columns: repeat(3, 1fr); }
+    .option-card { max-width: 500px; margin: 0 auto; width: 100%; }
+    .perso-tabs { 
+      flex-wrap: wrap; 
+      gap: 0.5rem; 
+      padding: 0 1rem; 
+      margin-bottom: 2rem; 
+    }
+    .perso-tab-btn { 
+      padding: 0.8rem 0.8rem; 
+      font-size: 0.65rem; 
+      letter-spacing: 0.15em; 
+      flex: 1; 
+      min-width: 0; 
+    }
+    .perso-tab-num { 
+      width: 18px; 
+      height: 18px; 
+      font-size: 0.6rem; 
+      line-height: 18px; 
+      margin-right: 0.4rem; 
+    }
+    .personnalisation { padding: 3rem 1.5rem; }
+    .personnalisation-header { margin: 0 auto 1.5rem; }
+    .personnalisation-header h2 { font-size: 2rem; margin-bottom: 0.8rem; }
+    .personnalisation-header .styles-intro { font-size: 0.95rem; }
   }
 
   /* ===== FEATURES ===== */
@@ -3040,17 +3074,46 @@
 
     console.log('[subnav] Initialized with', links.length, 'links and', sections.length, 'sections');
 
-    // 1. Afficher la sous-nav dès qu'on scroll un peu (simplifié)
+    // 1. Apparaît au scroll, disparaît après 2s d'inactivité
+    let hideTimer = null;
+    const INACTIVITY_DELAY = 2000; // 2 secondes
+    const SHOW_AFTER = 300;        // n'activer qu'après 300px de scroll
+    
     function onScroll() {
       const scrolled = window.scrollY || document.documentElement.scrollTop;
-      if (scrolled > 300) {
-        subnav.classList.add('visible');
-      } else {
+      
+      // Avant 300px : pas de sous-nav du tout
+      if (scrolled < SHOW_AFTER) {
         subnav.classList.remove('visible');
+        subnav.classList.remove('hidden-on-scroll');
+        if (hideTimer) clearTimeout(hideTimer);
+        return;
       }
+      
+      // Afficher et annuler tout timer en cours
+      subnav.classList.add('visible');
+      subnav.classList.remove('hidden-on-scroll');
+      if (hideTimer) clearTimeout(hideTimer);
+      
+      // Programmer la disparition après 2s sans scroll
+      hideTimer = setTimeout(() => {
+        subnav.classList.add('hidden-on-scroll');
+      }, INACTIVITY_DELAY);
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll(); // check initial
+    
+    // Réapparition au survol de la sous-nav (pour permettre de cliquer)
+    subnav.addEventListener('mouseenter', () => {
+      subnav.classList.remove('hidden-on-scroll');
+      if (hideTimer) clearTimeout(hideTimer);
+    });
+    subnav.addEventListener('mouseleave', () => {
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        subnav.classList.add('hidden-on-scroll');
+      }, INACTIVITY_DELAY);
+    });
 
     // 2. Détecter la section active (IntersectionObserver)
     if ('IntersectionObserver' in window) {
@@ -3078,6 +3141,8 @@
         const targetId = link.getAttribute('href').substring(1);
         const target = document.getElementById(targetId);
         if (target) {
+          // Forcer la sous-nav à rester visible pendant le scroll programmatique
+          subnav.classList.remove('hidden-on-scroll');
           const offset = 80;
           const y = target.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top: y, behavior: 'smooth' });

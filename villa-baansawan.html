@@ -921,6 +921,54 @@
   }
 
   /* Responsive */
+
+  /* ===== RESPONSIVE LAPTOP 13-14" (1441px et moins) ===== */
+  @media (max-width: 1440px) {
+    /* Nav plus compacte */
+    nav { padding: 0.8rem 2rem; }
+    .nav-links { gap: 2rem; }
+    
+    /* Sous-nav villa */
+    .villa-subnav-inner { padding: 0 2rem; }
+    .villa-subnav ul { gap: 2rem; }
+    .villa-subnav li { padding: 0.8rem 0; }
+    
+    /* Hero villa - on garde padding-top mais on réduit les paddings internes */
+    .villa-hero-inner { padding: 3rem 2rem 1.5rem; }
+    .villa-hero h1 { font-size: 3.8rem; }
+    .villa-title-price .value { font-size: 2.3rem; }
+    .villa-title-price .value small { font-size: 1.2rem; }
+    
+    /* Specs bandeau */
+    .specs { padding: 0 2rem; }
+    .specs-inner { padding: 1.2rem 1rem; }
+    .spec-icon { width: 30px; height: 30px; margin-bottom: 0.5rem; }
+    .spec .value { font-size: 1.25rem; }
+    
+    /* Galerie */
+    .gallery { padding: 1.5rem 2rem 2rem; }
+    
+    /* Styles intérieurs */
+    .styles { padding: 4rem 2rem; }
+    .styles-header { margin-bottom: 3rem; }
+    .styles-grid { gap: 1.5rem; }
+    .style-info { padding: 1.5rem; }
+    .style-info h3 { font-size: 1.6rem; }
+    
+    /* Plan */
+    .plan { padding: 4rem 2rem; }
+    .plan-inner .plan-header { margin-bottom: 2.5rem; }
+    
+    /* Features, description, location, contact */
+    .features { padding: 4rem 2rem; }
+    .description { padding: 4rem 2rem; }
+    .location { padding: 4rem 2rem; }
+    .contact { padding: 4rem 2rem; }
+    
+    /* Footer */
+    footer { padding: 2rem; }
+  }
+
   @media (max-width: 900px) {
     .styles-grid { grid-template-columns: 1fr; }
     .style-thumbs { grid-template-columns: repeat(5, 1fr); }

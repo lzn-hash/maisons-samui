@@ -898,6 +898,38 @@
   .footer-inner .logo { color: var(--white); }
 
   /* ===== RESPONSIVE ===== */
+
+  /* ===== RESPONSIVE LAPTOP 13-14" (1441px et moins) ===== */
+  @media (max-width: 1440px) {
+    /* Nav plus compacte */
+    nav { padding: 0.8rem 2rem; }
+    .nav-links { gap: 2rem; }
+    
+    /* Sections générales - paddings réduits */
+    .hero-inner { padding: 0 2rem; }
+    
+    /* Section villa (collection) */
+    .villas { padding: 4rem 2rem 5rem; }
+    .villas-header { margin: 0 0 3rem; }
+    .villas-grid {
+      gap: 0 2.5rem;
+    }
+    .villa-card:nth-child(even) { margin-top: 2rem; }
+    
+    /* Section featured / jungle */
+    .featured { padding: 5rem 2rem; }
+    
+    /* Services */
+    .services { padding: 5rem 2rem; }
+    .services-grid { gap: 2.5rem; }
+    
+    /* Contact */
+    .contact { padding: 5rem 2rem; }
+    
+    /* Footer */
+    footer { padding: 2rem; }
+  }
+
   @media (max-width: 900px) {
     nav { padding: 0.9rem 1.5rem; }
     .nav-links { display: none; }

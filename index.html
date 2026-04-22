@@ -938,6 +938,99 @@
     background: var(--gold);
     color: var(--ink);
   }
+  .contact-form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  /* Préférence de contact */
+  .contact-preference {
+    margin-top: 0.3rem;
+  }
+  .contact-preference-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0.7rem;
+    font-weight: 400;
+  }
+  .contact-preference-options {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .contact-pref-option {
+    cursor: pointer;
+    user-select: none;
+  }
+  .contact-pref-option input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .contact-pref-option span {
+    display: inline-block;
+    padding: 0.65rem 1.3rem;
+    border: 1px solid var(--sand-dark);
+    background: var(--white);
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+  }
+  .contact-pref-option:hover span {
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+  .contact-pref-option input[type="checkbox"]:checked + span {
+    background: var(--jungle);
+    border-color: var(--jungle);
+    color: var(--white);
+  }
+  .contact-pref-option input[type="checkbox"]:focus-visible + span {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* Statut envoi formulaire */
+  .contact-status {
+    margin-top: 1rem;
+    padding: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+  }
+  .contact-status:empty {
+    display: none;
+  }
+  .contact-status.success {
+    padding: 1rem 1.2rem;
+    background: var(--jungle);
+    border-left: 3px solid var(--jungle-deep);
+    color: var(--white);
+  }
+  .contact-status.success strong {
+    color: var(--white);
+  }
+  .contact-status.error {
+    padding: 1rem 1.2rem;
+    background: rgba(184, 98, 63, 0.08);
+    border-left: 3px solid var(--terracotta);
+    color: var(--terracotta);
+  }
+  .contact-status.error a {
+    color: var(--terracotta);
+    text-decoration: underline;
+  }
+  .contact-status.loading {
+    padding: 0.6rem 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    text-align: center;
+  }
 
   /* ===== FOOTER ===== */
   footer {
@@ -1129,7 +1222,7 @@
     <a href="villa-baansawan.html" class="villa-card">
       <div class="villa-image">
         <img src="photos/baansawan/baansawan-main.jpeg" alt="Baan Sawan" />
-        <span class="tag">Front de mer</span>
+        <span class="tag">Vue mer</span>
         <div class="custom-badge">Personnalisable</div>
         <div class="crypto-badge">
           <span class="crypto-label">Cryptos acceptées</span>
@@ -1141,17 +1234,17 @@
         </div>
         <div class="price-badge">
           
-          ฿ 62 500 000
+          ฿ 19 000 000
         </div>
       </div>
       <div class="villa-info">
         <div>
           <h3>Baan Sawan</h3>
-          <div class="location">Lipa Noi · Ouest</div>
+          <div class="location">Lamai · Côte est</div>
         </div>
         <div class="villa-specs">
-          <span><strong>5</strong>ch</span>
-          <span><strong>450</strong>m²</span>
+          <span><strong>3</strong>ch</span>
+          <span><strong>152</strong>m²</span>
         </div>
       </div>
     </a>
@@ -1271,12 +1364,33 @@
       </div>
     </div>
 
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('Merci, votre message a bien été envoyé.');">
-      <input type="text" placeholder="Nom complet" required />
-      <input type="email" placeholder="Adresse email" required />
-      <input type="tel" placeholder="Téléphone (optionnel)" />
-      <textarea placeholder="Votre projet en quelques mots..." required></textarea>
+    <form class="contact-form" id="contact-form-index" onsubmit="return handleIndexContactSubmit(event)">
+      <input type="text" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;" aria-hidden="true" />
+      <input type="text" name="nom" placeholder="Nom complet" required />
+      <input type="email" name="email" placeholder="Adresse email" required />
+      <input type="tel" name="telephone" placeholder="Téléphone (optionnel)" />
+
+      <div class="contact-preference">
+        <div class="contact-preference-label">Comment souhaitez-vous être recontacté ?</div>
+        <div class="contact-preference-options">
+          <label class="contact-pref-option">
+            <input type="checkbox" name="preference" value="Email" />
+            <span>Email</span>
+          </label>
+          <label class="contact-pref-option">
+            <input type="checkbox" name="preference" value="Téléphone" />
+            <span>Téléphone</span>
+          </label>
+          <label class="contact-pref-option">
+            <input type="checkbox" name="preference" value="WhatsApp" />
+            <span>WhatsApp</span>
+          </label>
+        </div>
+      </div>
+
+      <textarea name="message" placeholder="Votre projet en quelques mots..." required></textarea>
       <button type="submit">Envoyer</button>
+      <div class="contact-status" id="contact-status-index"></div>
     </form>
   </div>
 </section>
@@ -1329,6 +1443,94 @@
     el.style.transition = 'opacity 1s ease, transform 1s ease';
     observer.observe(el);
   });
+
+  // ===== FORMULAIRE CONTACT (Web3Forms) =====
+  const WEB3FORMS_KEY_INDEX = '289fb372-3290-4eaa-8f2c-ab2d3bddc3bd';
+
+  window.handleIndexContactSubmit = async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const statusEl = document.getElementById('contact-status-index');
+
+    // Validation : au moins une préférence de contact requise
+    const prefsCheck = form.querySelectorAll('input[name="preference"]:checked');
+    if (prefsCheck.length === 0) {
+      if (statusEl) {
+        statusEl.className = 'contact-status error';
+        statusEl.innerHTML = '<strong>Préférence de contact requise.</strong> Veuillez sélectionner au moins un mode de contact (Email, Téléphone ou WhatsApp).';
+        statusEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return false;
+    }
+
+    // Préférences cochées
+    const prefs = Array.from(prefsCheck).map(c => c.value);
+
+    // Construction du corps
+    let body = `Bonjour,\n\nJ'ai une demande via le formulaire d'accueil de Maisons Samui.\n\n`;
+    body += `--- Mes coordonnées ---\n`;
+    body += `Nom : ${form.nom.value}\n`;
+    body += `Email : ${form.email.value}\n`;
+    body += `Téléphone : ${form.telephone.value || 'Non renseigné'}\n`;
+    body += `Préférence de contact : ${prefs.join(', ')}\n\n`;
+    body += `--- Mon message ---\n${form.message.value}\n\n`;
+    body += `---\nEnvoyé depuis maisons-samui (page d'accueil) le ${new Date().toLocaleString('fr-FR')}`;
+
+    // UI loading
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+    if (statusEl) {
+      statusEl.className = 'contact-status loading';
+      statusEl.textContent = '';
+    }
+
+    const payload = {
+      access_key: WEB3FORMS_KEY_INDEX,
+      subject: 'Demande — Maisons Samui (page d\'accueil)',
+      from_name: form.nom.value,
+      replyto: form.email.value,
+      message: body,
+      botcheck: ''
+    };
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        submitBtn.textContent = '✓ Message envoyé';
+        if (statusEl) {
+          statusEl.className = 'contact-status success';
+          statusEl.innerHTML = '<strong>Merci !</strong> Votre demande a bien été envoyée. Nous vous recontacterons sous peu.';
+        }
+        form.reset();
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Envoyer';
+        }, 4000);
+      } else {
+        throw new Error(data.message || 'Erreur lors de l\'envoi');
+      }
+    } catch (err) {
+      console.error('Erreur Web3Forms:', err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer';
+      if (statusEl) {
+        statusEl.className = 'contact-status error';
+        statusEl.innerHTML = '<strong>Une erreur est survenue.</strong> Veuillez réessayer ou nous contacter directement à <a href="mailto:group@blockestate.com">group@blockestate.com</a>';
+      }
+    }
+
+    return false;
+  };
 </script>
 
 </body>

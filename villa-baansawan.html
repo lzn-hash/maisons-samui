@@ -493,7 +493,7 @@
     border: 1px solid rgba(168, 136, 82, 0.25);
     border-left: 3px solid var(--gold);
     padding: 1.2rem 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 1.8rem;
     text-align: left;
     display: none;
   }
@@ -3064,16 +3064,16 @@
       <div class="label">Vous êtes intéressé ?</div>
       <h2>Planifions<br>une <em>visite</em></h2>
       <p>Visite sur place, en visioconférence, ou dossier complet envoyé par email. Dites-nous simplement comment vous préférez procéder.</p>
-    </div>
 
-    <form class="contact-form" id="contact-form" onsubmit="return handleContactSubmit(event)">
       <!-- Récap configuration (visible si choix faits) -->
       <div class="contact-recap" id="contact-recap">
         <div class="contact-recap-title">Votre configuration Baan Sawan</div>
         <div class="contact-recap-list" id="contact-recap-list"></div>
         <div class="contact-recap-total" id="contact-recap-total"></div>
       </div>
+    </div>
 
+    <form class="contact-form" id="contact-form" onsubmit="return handleContactSubmit(event)">
       <input type="hidden" name="villa" value="Baan Sawan" />
       <input type="hidden" name="config" id="hidden-config" value="" />
       <input type="text" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;" aria-hidden="true" />
@@ -4051,7 +4051,7 @@
     if (config.style) lines.push('<span class="recap-label">Style</span>' + config.style.name);
     list.innerHTML = lines.join('<br>');
     const total = computeTotal(config);
-    totalEl.innerHTML = 'Total estimé : ' + formatTHB(total) + ' &nbsp;·&nbsp; ' + formatEURFull(total);
+    totalEl.innerHTML = 'Total estimé : ' + formatTHB(total);
 
     if (hidden) {
       const parts = [];

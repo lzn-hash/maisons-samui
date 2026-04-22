@@ -1685,6 +1685,9 @@
   .gallery-dots {
     display: none;
   }
+  .gallery-wrap {
+    position: relative;
+  }
 
   @media (max-width: 700px) {
     /* Transformation des grids en carrousels horizontaux */
@@ -4412,9 +4415,6 @@
     syncDOM();
     MQ_MOBILE.addEventListener('change', () => {
       syncDOM();
-      // Re-déplacer les flèches à la fin pour qu'elles restent sur l'overlay
-      gallery.appendChild(prevBtn);
-      gallery.appendChild(nextBtn);
       // Reset scroll
       gallery.scrollLeft = 0;
       state.currentIndex = 0;
@@ -4423,6 +4423,16 @@
       });
       updateArrows();
     });
+
+    // Créer un wrapper autour de .gallery pour que les flèches soient fixes
+    // et ne scrollent pas avec le swiper horizontal.
+    let galleryWrap = gallery.parentElement;
+    if (!galleryWrap.classList.contains('gallery-wrap')) {
+      galleryWrap = document.createElement('div');
+      galleryWrap.className = 'gallery-wrap';
+      gallery.parentNode.insertBefore(galleryWrap, gallery);
+      galleryWrap.appendChild(gallery);
+    }
 
     // Flèches (présentes dans le DOM mais visibles seulement en mobile via CSS)
     const prevBtn = document.createElement('button');
@@ -4437,8 +4447,9 @@
     nextBtn.type = 'button';
     nextBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
 
-    gallery.appendChild(prevBtn);
-    gallery.appendChild(nextBtn);
+    // Les flèches sont dans le wrapper (position relative), pas dans .gallery (qui scrolle)
+    galleryWrap.appendChild(prevBtn);
+    galleryWrap.appendChild(nextBtn);
 
     // Dots
     const dots = document.createElement('div');

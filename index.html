@@ -458,6 +458,72 @@
     z-index: 3;
   }
 
+  /* Badge Personnalisable (Prop C) */
+  .villa-image .custom-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(26, 46, 34, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--white);
+    padding: 0.5rem 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 3;
+  }
+  .villa-image .custom-badge::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 0.9rem;
+  }
+
+  /* Intro Personnalisation (Prop C) */
+  .custom-intro {
+    max-width: 1400px;
+    margin: 0 auto 3rem;
+    padding: 1.5rem 2rem;
+    background: var(--white);
+    border-left: 3px solid var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .custom-intro-icon {
+    font-family: 'Italiana', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .custom-intro-text { flex: 1; }
+  .custom-intro-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+  .custom-intro-message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .custom-intro-message em {
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+
   .villa-image .price-badge {
     position: absolute;
     bottom: 4.5rem;
@@ -926,6 +992,11 @@
     .villa-image .crypto-badge { bottom: 1.2rem; right: 1.2rem; padding: 0.3rem 0.6rem; font-size: 0.55rem; }
     .villa-image .crypto-badge svg { width: 14px; height: 14px; }
     .villa-image .tag { top: 1.2rem; left: 1.2rem; padding: 0.35rem 0.7rem; font-size: 0.6rem; }
+    .villa-image .custom-badge { top: 1.2rem; right: 1.2rem; padding: 0.4rem 0.7rem; font-size: 0.55rem; }
+    .villa-image .custom-badge::before { font-size: 0.8rem; }
+    .custom-intro { padding: 1.2rem 1.5rem; margin: 0 auto 2rem; gap: 1.2rem; max-width: 1200px; }
+    .custom-intro-icon { font-size: 1.7rem; }
+    .custom-intro-message { font-size: 1rem; }
     .villa-specs { gap: 1.5rem; font-size: 0.6rem; }
     .villa-specs strong { font-size: 1.05rem; }
     
@@ -1015,12 +1086,21 @@
     <div class="collection-count">4 propriétés disponibles</div>
   </div>
 
+  <div class="custom-intro">
+    <div class="custom-intro-icon">✦</div>
+    <div class="custom-intro-text">
+      <div class="custom-intro-label">Sur mesure</div>
+      <div class="custom-intro-message">Une villa qui vous <em>ressemble</em>. Chaque propriété est entièrement personnalisable — cliquez pour explorer les options de sols, parements et décoration.</div>
+    </div>
+  </div>
+
   <div class="villa-grid">
 
     <a href="villa-ananta.html" class="villa-card">
       <div class="villa-image">
         <img src="photos/ananta/ananta-main.jpeg" alt="Villa Ananta" />
         <span class="tag">Vue mer</span>
+        <div class="custom-badge">Personnalisable</div>
         <div class="crypto-badge">
           <span class="crypto-label">Cryptos acceptées</span>
           <span class="crypto-icons">
@@ -1050,6 +1130,7 @@
       <div class="villa-image">
         <img src="photos/baansawan/baansawan-main.jpeg" alt="Baan Sawan" />
         <span class="tag">Front de mer</span>
+        <div class="custom-badge">Personnalisable</div>
         <div class="crypto-badge">
           <span class="crypto-label">Cryptos acceptées</span>
           <span class="crypto-icons">
@@ -1079,6 +1160,7 @@
       <div class="villa-image">
         <img src="photos/suriya/suriya-main.jpeg" alt="Villa Suriya" />
         <span class="tag">Colline</span>
+        <div class="custom-badge">Personnalisable</div>
         <div class="crypto-badge">
           <span class="crypto-label">Cryptos acceptées</span>
           <span class="crypto-icons">
@@ -1108,6 +1190,7 @@
       <div class="villa-image">
         <img src="photos/malee/malee-main.jpeg" alt="Villa Malee" />
         <span class="tag">Jungle privée</span>
+        <div class="custom-badge">Personnalisable</div>
         <div class="crypto-badge">
           <span class="crypto-label">Cryptos acceptées</span>
           <span class="crypto-icons">

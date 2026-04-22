@@ -1014,10 +1014,10 @@
   .style-info-icon::before {
     content: '';
     position: absolute;
-    top: -15px;
-    left: -15px;
-    right: -15px;
-    bottom: -15px;
+    top: -25px;
+    left: -25px;
+    right: -25px;
+    bottom: -25px;
     border-radius: 50%;
     background: transparent;
     z-index: 1;
@@ -1029,10 +1029,10 @@
     transform: scale(1.1);
   }
 
-  /* Tooltip qui liste les fournitures */
+  /* Tooltip qui liste les fournitures — S'OUVRE VERS LE BAS */
   .style-tooltip {
     position: absolute;
-    bottom: calc(100% + 12px);
+    top: calc(100% + 12px);
     left: 50%;
     transform: translateX(-50%);
     width: 320px;
@@ -1048,14 +1048,14 @@
     transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
     z-index: 50;
   }
-  /* Pont invisible entre l'icône et la fenêtre pour garder le hover actif */
+  /* Pont invisible entre l'icône (au-dessus) et la fenêtre (en-dessous) pour garder le hover actif */
   .style-tooltip::before {
     content: '';
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    height: 20px;
+    bottom: 100%;
+    left: -20px;
+    right: -20px;
+    height: 25px;
     background: transparent;
   }
   .style-info-icon:hover .style-tooltip,
@@ -1064,7 +1064,7 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateX(-50%) translateY(-4px);
+    transform: translateX(-50%) translateY(4px);
   }
   .style-tooltip strong {
     display: block;
@@ -1109,16 +1109,16 @@
     color: var(--gold);
     font-weight: 700;
   }
-  /* Flèche pointant vers l'icône */
+  /* Flèche pointant vers l'icône (au-dessus) */
   .style-tooltip::after {
     content: '';
     position: absolute;
-    top: 100%;
+    bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
     border: 6px solid transparent;
-    border-top-color: var(--white);
-    margin-top: 0;
+    border-bottom-color: var(--white);
+    margin-bottom: 0;
     z-index: 2;
   }
   .style-desc {

@@ -431,16 +431,17 @@
     font-family: 'Inter', sans-serif;
   }
   .drawer-total-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
     font-weight: 500;
     color: var(--jungle);
   }
   .drawer-total-value small {
     display: block;
-    font-size: 1.4rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
     color: var(--ink);
-    font-style: italic;
+    font-style: normal;
     font-weight: 400;
     text-align: right;
     margin-top: 0.3rem;
@@ -806,6 +807,38 @@
 
   .gallery-item.main {
     grid-row: 1 / 3;
+  }
+
+  /* Tag "Cliquer pour agrandir" en haut à droite de la photo principale */
+  .zoom-hint {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.9rem;
+    background: rgba(26, 30, 26, 0.7);
+    backdrop-filter: blur(8px);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    z-index: 5;
+    opacity: 0.9;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+  .zoom-hint svg {
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+  .gallery-item:hover .zoom-hint {
+    opacity: 1;
+    transform: scale(1.05);
   }
 
   .gallery-more {
@@ -2401,6 +2434,14 @@
       padding: 2rem 1.5rem 3rem;
     }
     .gallery-item.main { grid-row: auto; }
+    .zoom-hint {
+      top: 0.7rem;
+      right: 0.7rem;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.62rem;
+      gap: 0.35rem;
+    }
+    .zoom-hint svg { width: 12px; height: 12px; }
     .gallery-more {
       grid-template-columns: 1fr;
       padding: 0 1.5rem 3rem;
@@ -2588,6 +2629,15 @@
 <div class="gallery">
   <div class="gallery-item main" data-index="0">
     <img src="photos/baansawan/baansawan-main.jpg" alt="Baan Sawan - vue principale" />
+    <div class="zoom-hint">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        <line x1="11" y1="8" x2="11" y2="14"/>
+        <line x1="8" y1="11" x2="14" y2="11"/>
+      </svg>
+      <span>Cliquer pour agrandir</span>
+    </div>
   </div>
   <div class="gallery-item top-right" data-index="1">
     <img src="photos/baansawan/baansawan-01.jpg" alt="Baan Sawan - photo 1" />
@@ -3958,7 +4008,6 @@
 
     let html = `
       <div class="drawer-villa">
-        <div class="drawer-villa-eyebrow">Villa</div>
         <div class="drawer-villa-name">${VILLA.name}</div>
         <div class="drawer-villa-loc">${VILLA.loc}</div>
         <div class="drawer-villa-base">

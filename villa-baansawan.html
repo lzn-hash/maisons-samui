@@ -535,36 +535,26 @@
   }
   .styles-header {
     text-align: center;
-    max-width: 700px;
-    margin: 0 auto 4rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
   }
-  .styles-header .eyebrow {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-  }
-  .styles-header h2 {
-    font-family: 'Italiana', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    line-height: 1.1;
-    font-weight: 400;
-    margin-bottom: 1.5rem;
-  }
-  .styles-header h2 em {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--terracotta);
-  }
-  .styles-header p {
+  .styles-header .styles-intro {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.2rem;
     font-style: italic;
     color: var(--ink-soft);
     font-weight: 400;
+    line-height: 1.5;
+  }
+  .styles-header .styles-intro-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    font-style: normal;
+    margin-right: 0.3rem;
   }
 
   .styles-grid {
@@ -954,9 +944,8 @@
     /* ===== STYLES INTÉRIEURS - gros gain ici ===== */
     .styles { padding: 3rem 2rem; }
     .styles-inner { max-width: 1200px; }
-    .styles-header { margin: 0 auto 2.5rem; }
-    .styles-header h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-    .styles-header p { font-size: 1rem; }
+    .styles-header { margin: 0 auto 2rem; }
+    .styles-header .styles-intro { font-size: 1rem; }
     .styles-grid { gap: 1.2rem; }
     .style-preview { aspect-ratio: 16/10; }
     .style-thumbs { gap: 0.3rem; padding: 0.4rem; }
@@ -1769,9 +1758,7 @@
 <section class="styles" id="styles">
   <div class="styles-inner">
     <div class="styles-header">
-      <div class="eyebrow">Personnalisation</div>
-      <h2>Un intérieur à votre <em>image</em></h2>
-      <p>Choisissez parmi trois ambiances soigneusement conçues. Chaque style est livré clés en main, meubles et décoration inclus.</p>
+      <p class="styles-intro"><span class="styles-intro-label">Personnalisation</span> : Choisissez parmi trois ambiances soigneusement conçues. Chaque style est livré clés en main, meubles et décoration inclus.</p>
     </div>
 
     <div class="styles-grid">

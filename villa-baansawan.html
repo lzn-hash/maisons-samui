@@ -2854,6 +2854,175 @@
 </script>
 
 <script>
+  // ========== LIGHTBOX SOLS & PAREMENTS ==========
+  // Réutilise la même lightbox que les styles (#style-lightbox)
+  (function() {
+    const lightbox = document.getElementById('style-lightbox');
+    if (!lightbox) return;
+    const lightboxImage = document.getElementById('style-lightbox-image');
+    const lightboxLabel = document.getElementById('style-lightbox-label');
+    const lightboxCurrent = document.getElementById('style-lightbox-current');
+    const lightboxTotal = document.getElementById('style-lightbox-total');
+
+    // Photos associées à chaque matériau (4 photos par carte : main + salon/facade + terrasse/entree + chambre/piscine)
+    const materialPhotos = {
+      // Sols
+      'travertin': [
+        { src: 'photos/sols/travertin/travertin-main.jpg', label: 'Travertin — vue d\'ensemble' },
+        { src: 'photos/sols/travertin/travertin-salon.jpg', label: 'Salon' },
+        { src: 'photos/sols/travertin/travertin-terrasse.jpg', label: 'Terrasse' },
+        { src: 'photos/sols/travertin/travertin-chambre.jpg', label: 'Chambre' }
+      ],
+      'teck': [
+        { src: 'photos/sols/teck/teck-main.jpg', label: 'Teck massif — vue d\'ensemble' },
+        { src: 'photos/sols/teck/teck-salon.jpg', label: 'Salon' },
+        { src: 'photos/sols/teck/teck-terrasse.jpg', label: 'Terrasse' },
+        { src: 'photos/sols/teck/teck-chambre.jpg', label: 'Chambre' }
+      ],
+      'marbre': [
+        { src: 'photos/sols/marbre/marbre-main.jpg', label: 'Marbre — vue d\'ensemble' },
+        { src: 'photos/sols/marbre/marbre-salon.jpg', label: 'Salon' },
+        { src: 'photos/sols/marbre/marbre-terrasse.jpg', label: 'Terrasse' },
+        { src: 'photos/sols/marbre/marbre-chambre.jpg', label: 'Chambre' }
+      ],
+      // Parements
+      'enduit': [
+        { src: 'photos/parements/enduit/enduit-main.jpg', label: 'Enduit lissé — vue d\'ensemble' },
+        { src: 'photos/parements/enduit/enduit-facade.jpg', label: 'Façade' },
+        { src: 'photos/parements/enduit/enduit-entree.jpg', label: 'Entrée' },
+        { src: 'photos/parements/enduit/enduit-piscine.jpg', label: 'Piscine' }
+      ],
+      'volcanique': [
+        { src: 'photos/parements/volcanique/volcanique-main.jpg', label: 'Pierre volcanique — vue d\'ensemble' },
+        { src: 'photos/parements/volcanique/volcanique-facade.jpg', label: 'Façade' },
+        { src: 'photos/parements/volcanique/volcanique-entree.jpg', label: 'Entrée' },
+        { src: 'photos/parements/volcanique/volcanique-piscine.jpg', label: 'Piscine' }
+      ],
+      'seche': [
+        { src: 'photos/parements/seche/seche-main.jpg', label: 'Pierre sèche — vue d\'ensemble' },
+        { src: 'photos/parements/seche/seche-facade.jpg', label: 'Façade' },
+        { src: 'photos/parements/seche/seche-entree.jpg', label: 'Entrée' },
+        { src: 'photos/parements/seche/seche-piscine.jpg', label: 'Piscine' }
+      ]
+    };
+
+    let currentMaterial = null;
+    let currentIndex = 0;
+
+    function openMaterialLightbox(materialKey, index) {
+      currentMaterial = materialKey;
+      currentIndex = index;
+      updateMaterialImage();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function updateMaterialImage() {
+      const photos = materialPhotos[currentMaterial];
+      if (!photos) return;
+      const photo = photos[currentIndex];
+      lightboxImage.src = photo.src;
+      lightboxImage.alt = photo.label;
+      lightboxLabel.textContent = photo.label;
+      lightboxCurrent.textContent = currentIndex + 1;
+      lightboxTotal.textContent = photos.length;
+    }
+
+    // Exposer pour la navigation clavier partagée
+    window.navigateMaterialLightbox = function(direction) {
+      if (!currentMaterial) return;
+      const photos = materialPhotos[currentMaterial];
+      currentIndex = (currentIndex + direction + photos.length) % photos.length;
+      updateMaterialImage();
+    };
+
+    // Identifier le matériau depuis le data-name
+    function getMaterialKey(card) {
+      const name = (card.dataset.name || '').toLowerCase();
+      if (name.includes('travertin')) return 'travertin';
+      if (name.includes('teck')) return 'teck';
+      if (name.includes('marbre')) return 'marbre';
+      if (name.includes('enduit')) return 'enduit';
+      if (name.includes('volcanique')) return 'volcanique';
+      if (name.includes('sèche') || name.includes('seche')) return 'seche';
+      return null;
+    }
+
+    // Clic sur photo principale OU miniatures → ouvre lightbox
+    document.querySelectorAll('.option-card').forEach(card => {
+      const materialKey = getMaterialKey(card);
+      if (!materialKey) return;
+
+      // Photo principale = index 0
+      const photo = card.querySelector('.option-photo');
+      if (photo) {
+        photo.style.cursor = 'pointer';
+        photo.addEventListener('click', (e) => {
+          // Ne pas déclencher si on clique sur le tag "Inclus" ou le hint
+          if (e.target.classList.contains('option-tag')) return;
+          e.stopPropagation();
+          openMaterialLightbox(materialKey, 0);
+        });
+      }
+
+      // Miniatures = index 1, 2, 3
+      const thumbs = card.querySelectorAll('.option-thumb');
+      thumbs.forEach((thumb, idx) => {
+        thumb.style.cursor = 'pointer';
+        thumb.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openMaterialLightbox(materialKey, idx + 1);
+        });
+      });
+    });
+
+    // Étendre la navigation clavier : si une lightbox matériau est ouverte
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (!currentMaterial) return; // laisser la lightbox style gérer
+      if (e.key === 'ArrowLeft') { e.preventDefault(); window.navigateMaterialLightbox(-1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); window.navigateMaterialLightbox(1); }
+    });
+
+    // Réinitialiser currentMaterial quand on ouvre une lightbox style
+    const origOpenStyle = window.openStyleLightbox;
+    // Note: openStyleLightbox est interne, mais on peut intercepter via les clics sur style-card
+    document.querySelectorAll('.style-card .style-preview, .style-card .style-thumb').forEach(el => {
+      el.addEventListener('click', () => { currentMaterial = null; });
+    });
+
+    // Réinitialiser currentMaterial quand on ferme la lightbox
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+        currentMaterial = null;
+      }
+    });
+
+    // Navigation avec les flèches de la lightbox (boutons)
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        if (currentMaterial) {
+          e.stopPropagation();
+          e.preventDefault();
+          window.navigateMaterialLightbox(-1);
+        }
+      }, true); // capture pour passer avant navigateStyleLightbox
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        if (currentMaterial) {
+          e.stopPropagation();
+          e.preventDefault();
+          window.navigateMaterialLightbox(1);
+        }
+      }, true);
+    }
+  })();
+</script>
+
+<script>
   // ========== SOUS-NAVIGATION VILLA ==========
   (function() {
     const subnav = document.getElementById('villa-subnav');

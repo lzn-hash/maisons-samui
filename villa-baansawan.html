@@ -550,6 +550,24 @@
     font-style: italic;
     color: var(--terracotta);
   }
+  .personnalisation-header .styles-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .personnalisation-header .styles-intro-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    font-style: normal;
+    margin-right: 0.3rem;
+  }
 
   /* Onglets */
   .perso-tabs {
@@ -743,6 +761,26 @@
     text-transform: uppercase;
     font-weight: 500;
   }
+  .option-zoom-hint {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(15, 31, 23, 0.55);
+    backdrop-filter: blur(8px);
+    color: var(--white);
+    padding: 0.4rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 1;
+    transition: background 0.3s;
+    pointer-events: none;
+  }
+  .option-photo:hover .option-zoom-hint {
+    background: rgba(15, 31, 23, 0.75);
+  }
   .option-thumbs {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -882,11 +920,11 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 500;
-    opacity: 0;
-    transition: opacity 0.3s;
+    opacity: 1;
+    transition: background 0.3s;
   }
   .style-preview:hover .style-zoom-hint {
-    opacity: 1;
+    background: rgba(15, 31, 23, 0.75);
   }
   .style-tag {
     position: absolute;
@@ -2083,6 +2121,7 @@
           <div class="option-photo">
             <img src="photos/sols/travertin/travertin-main.jpg" onerror="this.src='https://placehold.co/800x600/e8e1d4/3a3f39?text=Travertin+%E2%80%94+Photos+%C3%A0+venir'" alt="Travertin beige" />
             <span class="option-tag">Inclus</span>
+          <div class="option-zoom-hint">Cliquer pour agrandir</div>
           </div>
           <div class="option-thumbs">
             <div class="option-thumb"><img src="photos/sols/travertin/travertin-salon.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Salon'" alt="Salon" /></div>
@@ -2103,6 +2142,7 @@
           </div>
           <div class="option-photo">
             <img src="photos/sols/teck/teck-main.jpg" onerror="this.src='https://placehold.co/800x600/3a3f39/e8e1d4?text=Teck+%E2%80%94+Photos+%C3%A0+venir'" alt="Teck massif" />
+          <div class="option-zoom-hint">Cliquer pour agrandir</div>
           </div>
           <div class="option-thumbs">
             <div class="option-thumb"><img src="photos/sols/teck/teck-salon.jpg" onerror="this.src='https://placehold.co/200x200/1a2e22/e8e1d4?text=Salon'" alt="Salon" /></div>
@@ -2123,6 +2163,7 @@
           </div>
           <div class="option-photo">
             <img src="photos/sols/marbre/marbre-main.jpg" onerror="this.src='https://placehold.co/800x600/faf7f0/1a1e1a?text=Marbre+%E2%80%94+Photos+%C3%A0+venir'" alt="Marbre de Carrare" />
+          <div class="option-zoom-hint">Cliquer pour agrandir</div>
           </div>
           <div class="option-thumbs">
             <div class="option-thumb"><img src="photos/sols/marbre/marbre-salon.jpg" onerror="this.src='https://placehold.co/200x200/faf7f0/1a1e1a?text=Salon'" alt="Salon" /></div>
@@ -2151,6 +2192,7 @@
           <div class="option-photo">
             <img src="photos/parements/enduit/enduit-main.jpg" onerror="this.src='https://placehold.co/800x600/e8e1d4/3a3f39?text=Enduit+%E2%80%94+Photos+%C3%A0+venir'" alt="Enduit lissé" />
             <span class="option-tag">Inclus</span>
+          <div class="option-zoom-hint">Cliquer pour agrandir</div>
           </div>
           <div class="option-thumbs">
             <div class="option-thumb"><img src="photos/parements/enduit/enduit-facade.jpg" onerror="this.src='https://placehold.co/200x200/d4c9b4/3a3f39?text=Fa%C3%A7ade'" alt="Façade" /></div>
@@ -2171,6 +2213,7 @@
           </div>
           <div class="option-photo">
             <img src="photos/parements/volcanique/volcanique-main.jpg" onerror="this.src='https://placehold.co/800x600/3a3f39/e8e1d4?text=Pierre+volcanique+%E2%80%94+%C3%A0+venir'" alt="Pierre volcanique" />
+          <div class="option-zoom-hint">Cliquer pour agrandir</div>
           </div>
           <div class="option-thumbs">
             <div class="option-thumb"><img src="photos/parements/volcanique/volcanique-facade.jpg" onerror="this.src='https://placehold.co/200x200/1a2e22/e8e1d4?text=Fa%C3%A7ade'" alt="Façade" /></div>
@@ -2191,6 +2234,7 @@
           </div>
           <div class="option-photo">
             <img src="photos/parements/seche/seche-main.jpg" onerror="this.src='https://placehold.co/800x600/b8623f/faf7f0?text=Pierre+s%C3%A8che+%E2%80%94+%C3%A0+venir'" alt="Pierre sèche" />
+          <div class="option-zoom-hint">Cliquer pour agrandir</div>
           </div>
           <div class="option-thumbs">
             <div class="option-thumb"><img src="photos/parements/seche/seche-facade.jpg" onerror="this.src='https://placehold.co/200x200/b8623f/faf7f0?text=Fa%C3%A7ade'" alt="Façade" /></div>

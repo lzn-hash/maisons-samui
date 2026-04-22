@@ -810,7 +810,7 @@
   .gallery-more {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0.5rem 3rem 6rem;
+    padding: 0.5rem 3rem 4rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
@@ -875,7 +875,7 @@
 
   /* ===== DESCRIPTION ===== */
   .description {
-    padding: 6rem 3rem;
+    padding: 3rem 3rem 4rem;
     background: var(--sand-light);
   }
 
@@ -927,7 +927,7 @@
 
   /* ===== PERSONNALISATION (wrapper section) ===== */
   .personnalisation {
-    padding: 6rem 3rem;
+    padding: 3rem 3rem 4rem;
     background: var(--white);
   }
   .personnalisation-inner {
@@ -1202,7 +1202,7 @@
 
   /* ===== STYLES INTÉRIEURS ===== */
   .styles {
-    padding: 6rem 3rem;
+    padding: 3rem 3rem 4rem;
     background: var(--white);
   }
   .styles-inner {
@@ -1646,7 +1646,7 @@
     .gallery-more .gallery-item { aspect-ratio: 16/10; }
     
     /* ===== PERSONNALISATION (wrapper + onglets) ===== */
-    .personnalisation { padding: 3rem 2rem; }
+    .personnalisation { padding: 3rem 2rem 3rem; }
     .personnalisation-inner { max-width: 1100px; }
     .personnalisation-header { margin: 0 auto 2rem; }
     .personnalisation-header h2 { font-size: 2.3rem; margin-bottom: 0.8rem; }
@@ -1666,7 +1666,7 @@
     .option-select { padding: 0.65rem 1rem; font-size: 0.65rem; }
     
     /* ===== STYLES INTÉRIEURS ===== */
-    .styles { padding: 3rem 2rem; }
+    .styles { padding: 3rem 2rem 3rem; }
     .styles-inner { max-width: 1100px; }
     .styles-header { margin: 0 auto 2rem; }
     .styles-header h2 { font-size: 2.3rem; margin-bottom: 0.8rem; }
@@ -1689,23 +1689,23 @@
     .style-select { padding: 0.65rem 1rem; font-size: 0.62rem; }
     
     /* Plan */
-    .plan { padding: 3rem 2rem; }
+    .plan { padding: 3rem 2rem 3rem; }
     .plan-inner .plan-header { margin-bottom: 2rem; }
     .plan-header h2 { font-size: 2.3rem; }
     
     /* Features */
-    .features { padding: 3rem 2rem; }
+    .features { padding: 3rem 2rem 3rem; }
     .features-grid { gap: 2rem; }
     
     /* Description */
-    .description { padding: 3rem 2rem; }
+    .description { padding: 3rem 2rem 3rem; }
     .description-body .lead { font-size: 1.2rem; }
     
     /* Location */
-    .location { padding: 3rem 2rem; }
+    .location { padding: 3rem 2rem 3rem; }
     
     /* Contact */
-    .contact { padding: 3rem 2rem; }
+    .contact { padding: 3rem 2rem 3rem; }
     .contact h2 { font-size: 2.3rem; }
     
     /* Footer */
@@ -1747,7 +1747,7 @@
 
   /* ===== FEATURES ===== */
   .features {
-    padding: 3rem 3rem;
+    padding: 3rem 3rem 4rem;
     background: var(--white);
   }
 
@@ -1813,7 +1813,7 @@
 
   /* ===== PLAN ===== */
   .plan {
-    padding: 1rem 3rem 6rem;
+    padding: 3rem 3rem 4rem;
     background: var(--sand-light);
   }
   .plan-inner {
@@ -1917,7 +1917,7 @@
 
   /* ===== LOCALISATION ===== */
   .location {
-    padding: 6rem 3rem;
+    padding: 3rem 3rem 4rem;
     background: var(--jungle-deep);
     color: var(--white);
     position: relative;
@@ -2014,7 +2014,7 @@
   .contact {
     background: var(--ink);
     color: var(--white);
-    padding: 6rem 3rem;
+    padding: 3rem 3rem 4rem;
     position: relative;
     overflow: hidden;
   }
@@ -3547,7 +3547,7 @@
         if (target) {
           // Forcer la sous-nav à rester visible pendant le scroll programmatique
           subnav.classList.remove('hidden-on-scroll');
-          const offset = 80;
+          const offset = 120;
           const y = target.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top: y, behavior: 'smooth' });
         }

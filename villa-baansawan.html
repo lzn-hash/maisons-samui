@@ -3085,7 +3085,7 @@
         <div class="contact-preference-label">Comment souhaitez-vous être recontacté ?</div>
         <div class="contact-preference-options">
           <label class="contact-pref-option">
-            <input type="checkbox" name="preference" value="Email" checked />
+            <input type="checkbox" name="preference" value="Email" />
             <span>Email</span>
           </label>
           <label class="contact-pref-option">
@@ -4119,6 +4119,17 @@
     const submitBtn = form.querySelector('button[type="submit"]');
     const statusEl = document.getElementById('contact-status');
 
+    // Validation : au moins une préférence de contact requise
+    const prefsCheck = form.querySelectorAll('input[name="preference"]:checked');
+    if (prefsCheck.length === 0) {
+      if (statusEl) {
+        statusEl.className = 'contact-status error';
+        statusEl.innerHTML = '<strong>Préférence de contact requise.</strong> Veuillez sélectionner au moins un mode de contact (Email, Téléphone ou WhatsApp).';
+        statusEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return false;
+    }
+
     // Construction du sujet et du corps (même format qu'avant)
     let subject = `Demande — ${VILLA.name}`;
     if (count > 0) subject += ' (configuré)';
@@ -4130,8 +4141,8 @@
     body += `Téléphone : ${form.telephone.value || 'Non renseigné'}\n`;
 
     // Préférences de contact (checkboxes multiples)
-    const prefs = Array.from(form.querySelectorAll('input[name="preference"]:checked')).map(c => c.value);
-    body += `Préférence de contact : ${prefs.length > 0 ? prefs.join(', ') : 'Non précisée'}\n\n`;
+    const prefs = Array.from(prefsCheck).map(c => c.value);
+    body += `Préférence de contact : ${prefs.join(', ')}\n\n`;
 
     if (count > 0) {
       body += `--- Configuration choisie ---\n`;
@@ -4180,7 +4191,7 @@
         submitBtn.textContent = '✓ Message envoyé';
         if (statusEl) {
           statusEl.className = 'contact-status success';
-          statusEl.innerHTML = '<strong>Merci !</strong> Votre demande a bien été envoyée. Nous vous recontacterons sous 24h.';
+          statusEl.innerHTML = '<strong>Merci !</strong> Votre demande a bien été envoyée. Nous vous recontacterons sous peu.';
         }
         form.reset();
         // Reset bouton après 4s

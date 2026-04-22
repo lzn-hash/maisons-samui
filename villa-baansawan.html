@@ -821,6 +821,10 @@
     transition: all 0.3s ease;
     cursor: pointer;
   }
+  /* INVERSION visuelle : infos d'abord (comme sols/parements) */
+  .style-card .style-info { order: 1; }
+  .style-card .style-preview { order: 2; }
+  .style-card .style-thumbs { order: 3; }
   .style-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 50px rgba(26, 30, 26, 0.08);
@@ -930,7 +934,7 @@
     padding: 1.75rem;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    border-bottom: 1px solid rgba(168, 136, 82, 0.15);
   }
   .style-info h3 {
     font-family: 'Italiana', serif;
@@ -1086,7 +1090,7 @@
     color: var(--ink-soft);
     margin-bottom: 1.5rem;
     line-height: 1.5;
-    flex-grow: 1;
+    min-height: 4.5em; /* 3 lignes minimum pour alignement */
   }
   .style-breakdown {
     padding-top: 1rem;
@@ -1106,7 +1110,9 @@
     padding: 0.2rem 0;
   }
   .breakdown-row.breakdown-single .breakdown-amount {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
   }
   .breakdown-label {
     font-size: 0.7rem;
@@ -1231,7 +1237,7 @@
     .style-thumb { aspect-ratio: 1/1; }
     .style-info { padding: 1.1rem; }
     .style-info h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-    .style-desc { font-size: 0.85rem; margin-bottom: 0.9rem; line-height: 1.45; }
+    .style-desc { font-size: 0.85rem; margin-bottom: 0.9rem; line-height: 1.45; min-height: 3.7em; }
     .style-info-icon { width: 18px; height: 18px; font-size: 0.65rem; }
     .style-tooltip { width: 280px; padding: 1rem 1.2rem; }
     .style-tooltip li { font-size: 0.72rem; padding: 0.25rem 0 0.25rem 1rem; }

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hero V2.1 — Slideshow Ken Burns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #e8e1d4; --sand-light: #f2ede2;
+    --ink: #1a1e1a; --jungle: #2d4a34;
+    --terracotta: #b8623f; --gold: #a88852; --white: #faf7f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; font-weight: 300; color: var(--white); background: #000; line-height: 1.6; overflow-x: hidden; }
+
+  /* === NAV === */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--white); text-decoration: none; display: inline-flex; align-items: center; gap: 0.6rem; }
+  .logo .logo-house { color: var(--gold); }
+  .logo .s-accent { font-style: italic; color: var(--terracotta); }
+  .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+  .nav-links a { color: var(--white); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: opacity 0.3s; }
+  .nav-links a:hover { opacity: 0.6; }
+  .nav-cta { background: var(--white); color: var(--ink) !important; padding: 0.7rem 1.4rem; transition: all 0.3s; }
+  .nav-cta:hover { background: var(--terracotta); color: var(--white) !important; }
+
+  /* === HERO SLIDESHOW === */
+  .hero {
+    position: relative; height: 100vh; min-height: 700px; overflow: hidden;
+  }
+
+  .slide {
+    position: absolute; inset: 0;
+    opacity: 0;
+    transition: opacity 2s ease;
+  }
+  .slide.active { opacity: 1; }
+
+  .slide-img {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    will-change: transform;
+  }
+  .slide.active .slide-img {
+    animation: kenBurns 8s ease-out forwards;
+  }
+  @keyframes kenBurns {
+    from { transform: scale(1) translate(0, 0); }
+    to { transform: scale(1.15) translate(-2%, 2%); }
+  }
+
+  /* Couche d'assombrissement pour lisibilité */
+  .slide-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 30%, rgba(0,0,0,0.6) 100%),
+      linear-gradient(90deg, rgba(0,0,0,0.4) 0%, transparent 50%);
+  }
+
+  /* Photos via Unsplash */
+  .slide-1 .slide-img { background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?w=2400&q=85'); }
+  .slide-2 .slide-img { background-image: url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=2400&q=85'); }
+  .slide-3 .slide-img { background-image: url('https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=2400&q=85'); }
+  .slide-4 .slide-img { background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=2400&q=85'); }
+  .slide-5 .slide-img { background-image: url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=2400&q=85'); }
+
+  /* Contenu fixe par-dessus */
+  .hero-content {
+    position: relative; z-index: 3;
+    height: 100%; padding: 0 3rem 5rem;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.5em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before { content: ''; width: 50px; height: 1px; background: var(--gold); }
+  .hero-title {
+    font-family: 'Italiana', serif;
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    line-height: 0.95; font-weight: 400;
+    letter-spacing: -0.02em; margin-bottom: 1.5rem;
+    max-width: 1100px;
+  }
+  .hero-title em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold); }
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 1.4rem; color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+  }
+
+  /* Caption en bas à droite : info de la slide en cours */
+  .slide-caption {
+    position: absolute; bottom: 5rem; right: 3rem;
+    text-align: right; z-index: 4;
+    border-right: 1px solid rgba(255,255,255,0.4);
+    padding-right: 1.5rem;
+    transition: opacity 0.5s;
+  }
+  .caption-num {
+    font-family: 'Italiana', serif; font-size: 0.75rem;
+    letter-spacing: 0.3em; color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .caption-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; line-height: 1.1; margin-bottom: 0.3rem; }
+  .caption-loc { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+
+  /* Indicateurs slideshow */
+  .slide-indicators {
+    position: absolute; bottom: 2rem; left: 3rem; z-index: 4;
+    display: flex; gap: 0.6rem;
+  }
+  .indicator {
+    width: 40px; height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer; transition: background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .indicator.active { background: rgba(255, 255, 255, 0.4); }
+  .indicator.active::after {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 0%; background: var(--white);
+    animation: progress 6s linear forwards;
+  }
+  @keyframes progress { to { width: 100%; } }
+
+  /* === SCROLL TEASE === */
+  .scroll-tease {
+    background: var(--ink); color: var(--white);
+    padding: 6rem 3rem;
+    display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start;
+  }
+  .tease-num { font-family: 'Italiana', serif; font-size: 0.75rem; letter-spacing: 0.3em; color: var(--gold); }
+  .tease-title { font-family: 'Italiana', serif; font-size: 3rem; line-height: 1.05; margin-top: 1rem; font-weight: 400; }
+  .tease-title em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--terracotta); }
+  .tease-text { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: rgba(255,255,255,0.85); line-height: 1.6; max-width: 700px; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero-content { padding: 0 1.5rem 4rem; }
+    .slide-caption { right: 1.5rem; bottom: 4rem; }
+    .slide-indicators { left: 1.5rem; }
+    .scroll-tease { grid-template-columns: 1fr; padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">
+    <svg class="logo-house" width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 22L24 8l18 14"/><path d="M10 20v20h28V20"/><path d="M20 40v-10h8v10"/><circle cx="24" cy="24" r="1.5" fill="currentColor"/>
+    </svg>
+    Maisons <span class="s-accent">S</span>amui
+  </a>
+  <div class="nav-links">
+    <a href="#villas">Les villas</a>
+    <a href="#histoire">Histoire</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="#rdv" class="nav-cta">Prendre rendez-vous</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="slide slide-1 active">
+    <div class="slide-img"></div>
+    <div class="slide-overlay"></div>
+  </div>
+  <div class="slide slide-2">
+    <div class="slide-img"></div>
+    <div class="slide-overlay"></div>
+  </div>
+  <div class="slide slide-3">
+    <div class="slide-img"></div>
+    <div class="slide-overlay"></div>
+  </div>
+  <div class="slide slide-4">
+    <div class="slide-img"></div>
+    <div class="slide-overlay"></div>
+  </div>
+  <div class="slide slide-5">
+    <div class="slide-img"></div>
+    <div class="slide-overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Constructeur · Koh Samui</div>
+    <h1 class="hero-title">Votre <em>villa</em><br>au plus près de l'île.</h1>
+    <p class="hero-tagline">Quinze ans de savoir-faire local pour bâtir des maisons qui durent.</p>
+  </div>
+
+  <div class="slide-caption" id="caption">
+    <div class="caption-num" id="capNum">N° I / V</div>
+    <div class="caption-title" id="capTitle">Baan Sawan</div>
+    <div class="caption-loc" id="capLoc">Lamai · Côte est</div>
+  </div>
+
+  <div class="slide-indicators" id="indicators">
+    <div class="indicator active" data-index="0"></div>
+    <div class="indicator" data-index="1"></div>
+    <div class="indicator" data-index="2"></div>
+    <div class="indicator" data-index="3"></div>
+    <div class="indicator" data-index="4"></div>
+  </div>
+</section>
+
+<section class="scroll-tease">
+  <div>
+    <div class="tease-num">CHAPITRE I</div>
+    <h2 class="tease-title">Les <em>villas</em></h2>
+  </div>
+  <p class="tease-text">Chaque maison est une réponse au lieu où elle s'inscrit. Au climat, à la pente, à la lumière du matin. Découvrez celles qui vous attendent.</p>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const indicators = document.querySelectorAll('.indicator');
+  const captions = [
+    { num: 'N° I / V', title: 'Baan Sawan', loc: 'Lamai · Côte est' },
+    { num: 'N° II / V', title: 'Suriya House', loc: 'Bophut · Côte nord' },
+    { num: 'N° III / V', title: 'Villa Malee', loc: 'Lipa Noi · Côte ouest' },
+    { num: 'N° IV / V', title: 'Pak Nam', loc: 'Taling Ngam · Côte sud' },
+    { num: 'N° V / V', title: 'Khao Lak', loc: 'Chaweng · Côte est' }
+  ];
+  let currentIndex = 0;
+
+  function goToSlide(index) {
+    slides[currentIndex].classList.remove('active');
+    indicators[currentIndex].classList.remove('active');
+    currentIndex = index;
+    slides[currentIndex].classList.add('active');
+    indicators[currentIndex].classList.add('active');
+    // Update caption
+    const cap = captions[currentIndex];
+    const capEl = document.getElementById('caption');
+    capEl.style.opacity = '0';
+    setTimeout(() => {
+      document.getElementById('capNum').textContent = cap.num;
+      document.getElementById('capTitle').textContent = cap.title;
+      document.getElementById('capLoc').textContent = cap.loc;
+      capEl.style.opacity = '1';
+    }, 250);
+  }
+
+  function nextSlide() {
+    goToSlide((currentIndex + 1) % slides.length);
+  }
+
+  let interval = setInterval(nextSlide, 6000);
+
+  indicators.forEach((ind, i) => {
+    ind.addEventListener('click', () => {
+      clearInterval(interval);
+      goToSlide(i);
+      interval = setInterval(nextSlide, 6000);
+    });
+  });
+</script>
+
+</body>
+</html>

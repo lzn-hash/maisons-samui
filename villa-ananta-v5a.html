@@ -1085,23 +1085,25 @@
   }
 
   /* =================================================
-     MOSAÏQUE PHOTOS (Lazudi-style)
+     MOSAÏQUE PHOTOS (Lazudi-style — alignée specs-bar)
      ================================================= */
   .photo-mosaic {
+    max-width: 1640px;
+    margin: 0 auto;
     padding: 4rem 2rem 2rem;
     background: var(--white);
   }
   .photo-mosaic-inner {
-    max-width: 1500px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
   }
   .mosaic-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 0.5rem;
-    aspect-ratio: 16/9;
-    max-height: 620px;
+    height: 680px;
+    width: 100%;
     position: relative;
   }
   .mosaic-tile {
@@ -1159,7 +1161,7 @@
      HEADBAR SPECS (style fichier de référence — avec icônes)
      ================================================= */
   .specs-bar {
-    max-width: 1500px;
+    max-width: 1640px;
     margin: 0 auto;
     padding: 1.5rem 2rem 3rem;
     background: var(--white);

@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Villa Ananta — Maisons Samui</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #e8e1d4;
+    --sand-light: #f2ede2;
+    --sand-dark: #d4c9b4;
+    --ink: #1a1e1a;
+    --ink-soft: #3a3f39;
+    --ink-faint: #6b6e6a;
+    --jungle: #2d4a34;
+    --jungle-deep: #1a2e22;
+    --terracotta: #b8623f;
+    --gold: #a88852;
+    --white: #faf7f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s ease;
+    background: transparent;
+  }
+  nav.scrolled {
+    background: rgba(250, 247, 240, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+    padding: 1rem 3rem;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--white);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: color 0.4s ease;
+  }
+  nav.scrolled .logo { color: var(--ink); }
+  .logo .logo-house { color: var(--gold); }
+  .logo .s-accent {
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: all 0.3s;
+  }
+  nav.scrolled .nav-links a { color: var(--ink); }
+  .nav-links a:hover { opacity: 0.6; }
+  .nav-cta {
+    padding: 0.6rem 1.2rem;
+    background: var(--white);
+    border: 1px solid var(--white);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  nav.scrolled .nav-cta {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--white);
+  }
+  .nav-cta:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
+
+  .back-link {
+    position: fixed;
+    top: 5.5rem;
+    left: 3rem;
+    z-index: 90;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+    background: rgba(15, 31, 23, 0.4);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(250, 247, 240, 0.2);
+    transition: all 0.3s;
+  }
+  .back-link.dark {
+    color: var(--ink);
+    background: rgba(250, 247, 240, 0.85);
+    border-color: rgba(26, 30, 26, 0.08);
+  }
+  .back-link:hover { color: var(--terracotta); border-color: var(--terracotta); }
+  .back-link::before { content: '←'; }
+
+  /* =================================================
+     HERO PLEIN VIEWPORT
+     ================================================= */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    background: var(--ink);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .hero-bg img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    animation: heroZoom 18s ease-out forwards;
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1.08); }
+    to   { transform: scale(1); }
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(15, 31, 23, 0.3) 0%,
+      rgba(15, 31, 23, 0.1) 40%,
+      rgba(15, 31, 23, 0.7) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0 4rem 4rem;
+    color: var(--white);
+  }
+  .hero-content-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: end;
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.3s ease forwards;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero h1 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(4rem, 10vw, 9rem);
+    line-height: 0.9;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp 1.2s 0.5s ease forwards;
+  }
+  .hero h1 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  .hero-loc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: rgba(250, 247, 240, 0.85);
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.7s ease forwards;
+  }
+  .hero-meta {
+    text-align: right;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.9s ease forwards;
+  }
+  .hero-meta-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .hero-meta-value {
+    font-family: 'Italiana', serif;
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+  .hero-meta-eur {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(250, 247, 240, 0.7);
+  }
+
+  /* Scroll indicator */
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: rgba(250, 247, 240, 0.7);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 1.2s 1.4s ease forwards;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: rgba(250, 247, 240, 0.4);
+    margin: 0.8rem auto 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-scroll-line::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 0; right: 0;
+    height: 40px;
+    background: var(--gold);
+    animation: scrollDown 2.5s ease-in-out infinite;
+  }
+  @keyframes scrollDown {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(80px); }
+  }
+
+  /* =================================================
+     SECTION COMMUNE — 100vh
+     ================================================= */
+  .scene {
+    min-height: 100vh;
+    padding: 8rem 0;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    position: relative;
+  }
+  .scene.alt { background: var(--sand-light); }
+  .scene.dark { background: var(--jungle-deep); color: var(--sand); }
+  .scene-inner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+  .scene-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .scene-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .scene-title {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .scene-title em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+  .scene.dark .scene-title { color: var(--white); }
+  .scene.dark .scene-title em { color: var(--gold); }
+
+  /* =================================================
+     SCENE I — Description / Manifeste
+     ================================================= */
+  .scene-manifesto .scene-inner {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .manifesto-text h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(3rem, 5.5vw, 5rem);
+    line-height: 0.95;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+  }
+  .manifesto-text h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .manifesto-text .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 2rem;
+    max-width: 500px;
+  }
+  .manifesto-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 500px;
+  }
+  .manifesto-text p + p { margin-top: 1.2rem; }
+  .manifesto-text em {
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+  .manifesto-img {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: var(--sand-dark);
+    cursor: zoom-in;
+  }
+  .manifesto-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s ease;
+  }
+  .manifesto-img:hover img { transform: scale(1.04); }
+
+  /* =================================================
+     SCENE II — Specs (chiffres immenses)
+     ================================================= */
+  .scene-numbers {
+    background: var(--ink);
+    color: var(--white);
+    padding: 10rem 0;
+  }
+  .scene-numbers .scene-eyebrow { color: var(--gold); }
+  .scene-numbers-header {
+    text-align: center;
+    margin-bottom: 6rem;
+  }
+  .scene-numbers-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    font-weight: 400;
+    color: var(--white);
+    margin-top: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .scene-numbers-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+  }
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(168, 136, 82, 0.2);
+    border-top: 1px solid rgba(168, 136, 82, 0.3);
+    border-bottom: 1px solid rgba(168, 136, 82, 0.3);
+  }
+  .number-cell {
+    background: var(--ink);
+    padding: 4rem 2rem;
+    text-align: center;
+    transition: background 0.4s ease;
+  }
+  .number-cell:hover { background: rgba(168, 136, 82, 0.05); }
+  .number-cell-value {
+    font-family: 'Italiana', serif;
+    font-size: clamp(4rem, 7vw, 6rem);
+    line-height: 1;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .number-cell-value small {
+    font-size: 0.4em;
+    color: var(--gold);
+    margin-left: 0.2rem;
+  }
+  .number-cell-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(250, 247, 240, 0.7);
+  }
+
+  /* =================================================
+     SCENE III — Galerie pleine immersion
+     ================================================= */
+  .scene-gallery {
+    padding: 8rem 0;
+    background: var(--sand-light);
+  }
+  .scene-gallery-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+  }
+  .scene-gallery-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    color: var(--ink);
+    margin: 1rem 0 1.5rem;
+  }
+  .scene-gallery-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .scene-gallery-header p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .gallery-cinema {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    padding: 0 2rem;
+  }
+  .gc-cell {
+    overflow: hidden;
+    background: var(--sand-dark);
+    cursor: zoom-in;
+    position: relative;
+  }
+  .gc-cell img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+  .gc-cell:hover img { transform: scale(1.05); }
+  .gc-cell-cap {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(15, 31, 23, 0.6));
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    color: var(--white);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .gc-cell:hover .gc-cell-cap { opacity: 1; }
+  .gc-cell-cap-num {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .gc-cell-cap-name {
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    line-height: 1.1;
+  }
+
+  /* Disposition 6 cellules grand format */
+  .gc-cell.gc1 { grid-column: 1 / 5; aspect-ratio: 16/9; }
+  .gc-cell.gc2 { grid-column: 5 / 7; aspect-ratio: 4/5; }
+  .gc-cell.gc3 { grid-column: 1 / 3; aspect-ratio: 1; }
+  .gc-cell.gc4 { grid-column: 3 / 5; aspect-ratio: 1; }
+  .gc-cell.gc5 { grid-column: 5 / 7; aspect-ratio: 1; }
+  .gc-cell.gc6 { grid-column: 1 / 7; aspect-ratio: 21/9; }
+
+  /* =================================================
+     SCENE IV — Timeline horizontale
+     ================================================= */
+  .scene-timeline {
+    background: var(--white);
+    padding: 5rem 0 4rem;
+    overflow: hidden;
+  }
+  .scene-timeline-header {
+    max-width: 1400px;
+    margin: 0 auto 3rem;
+    padding: 0 4rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: end;
+  }
+  .scene-timeline-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    line-height: 1.05;
+    color: var(--ink);
+    margin: 0.6rem 0 0;
+  }
+  .scene-timeline-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .timeline-progress-display {
+    text-align: right;
+    min-width: 200px;
+  }
+  .timeline-progress-pct {
+    font-family: 'Italiana', serif;
+    font-size: 2.8rem;
+    line-height: 1;
+    color: var(--jungle);
+    margin-bottom: 0.3rem;
+  }
+  .timeline-progress-pct sup {
+    font-size: 1.1rem;
+    color: var(--gold);
+  }
+  .timeline-progress-eta {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--terracotta);
+  }
+
+  .timeline-h-wrap {
+    position: relative;
+    overflow: hidden;
+    padding: 0 4rem;
+  }
+  .timeline-h-wrap::before {
+    /* Trait horizontal continu en arrière-plan */
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 4rem;
+    right: 4rem;
+    height: 1px;
+    background: var(--sand-dark);
+    z-index: 0;
+  }
+  .timeline-h-wrap::after {
+    /* Trait progressif (rempli) */
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 4rem;
+    width: calc((100% - 8rem) * 0.38);
+    height: 1px;
+    background: var(--terracotta);
+    z-index: 1;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .timeline-h {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    z-index: 2;
+  }
+  .timeline-h-step {
+    text-align: center;
+    padding: 0 1rem;
+  }
+  .timeline-h-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--sand-dark);
+    margin: 42px auto 1.5rem;
+    position: relative;
+    z-index: 3;
+    transition: all 0.3s;
+  }
+  .timeline-h-step.done .timeline-h-dot {
+    background: var(--jungle);
+    border-color: var(--jungle);
+  }
+  .timeline-h-step.current .timeline-h-dot {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    width: 20px;
+    height: 20px;
+    margin-top: 40px;
+    box-shadow: 0 0 0 6px rgba(184, 98, 63, 0.15);
+    animation: pulseDotH 2s infinite;
+  }
+  @keyframes pulseDotH {
+    0%, 100% { box-shadow: 0 0 0 6px rgba(184, 98, 63, 0.15); }
+    50%      { box-shadow: 0 0 0 14px rgba(184, 98, 63, 0.05); }
+  }
+  .timeline-h-num {
+    font-family: 'Italiana', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.25em;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-h-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+  }
+  .timeline-h-date {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .timeline-h-step.done .timeline-h-name { color: var(--jungle); }
+  .timeline-h-step.done .timeline-h-date { color: var(--jungle); opacity: 0.7; }
+  .timeline-h-step.current .timeline-h-name { color: var(--terracotta); }
+  .timeline-h-step.current .timeline-h-date { color: var(--terracotta); opacity: 0.85; }
+  .timeline-h-step.upcoming .timeline-h-name { color: var(--ink-faint); }
+
+  /* =================================================
+     SCENE V — Personnalisation (carrousel horizontal)
+     ================================================= */
+  .scene-perso {
+    padding: 8rem 0;
+    background: var(--sand-light);
+    overflow: hidden;
+  }
+  .scene-perso-header {
+    max-width: 1400px;
+    margin: 0 auto 5rem;
+    padding: 0 4rem;
+    text-align: center;
+  }
+  .scene-perso-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    color: var(--ink);
+    margin: 1rem 0 1.5rem;
+  }
+  .scene-perso-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .scene-perso-header p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  .perso-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+  .perso-tile {
+    background: var(--white);
+    overflow: hidden;
+    transition: all 0.5s ease;
+    position: relative;
+  }
+  .perso-tile:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(26, 30, 26, 0.08);
+  }
+  .perso-tile-img {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    position: relative;
+  }
+  .perso-tile-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s ease;
+  }
+  .perso-tile:hover .perso-tile-img img { transform: scale(1.06); }
+  .perso-tile-num {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: var(--white);
+    color: var(--ink);
+    padding: 0.5rem 0.8rem;
+    font-family: 'Italiana', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    z-index: 2;
+  }
+  .perso-tile-body {
+    padding: 2rem;
+    text-align: center;
+  }
+  .perso-tile-cat {
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .perso-tile-name {
+    font-family: 'Italiana', serif;
+    font-size: 1.6rem;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  .perso-tile-name em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .perso-tile-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* =================================================
+     SCENE VI — Plans
+     ================================================= */
+  .scene-plans .scene-inner {
+    text-align: center;
+  }
+  .scene-plans .scene-eyebrow,
+  .scene-plans .scene-title { margin-left: auto; margin-right: auto; display: block; }
+  .scene-plans .scene-eyebrow { display: inline-flex; }
+  .plans-stage {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    text-align: left;
+  }
+  .plan-piece {
+    background: var(--sand-light);
+    overflow: hidden;
+  }
+  .plan-piece-img {
+    aspect-ratio: 4/3;
+    background-color: var(--sand);
+    background-image: 
+      linear-gradient(0deg, rgba(196,186,163,0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(196,186,163,0.25) 1px, transparent 1px);
+    background-size: 36px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-faint);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    cursor: zoom-in;
+    transition: opacity 0.3s;
+  }
+  .plan-piece-img:hover { opacity: 0.85; }
+  .plan-piece-meta {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid var(--sand-dark);
+    background: var(--white);
+  }
+  .plan-piece-name {
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    color: var(--ink);
+  }
+  .plan-piece-info {
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* =================================================
+     SCENE VII — Prestations (sur dark)
+     ================================================= */
+  .scene-features {
+    background: var(--jungle-deep);
+    color: var(--sand);
+  }
+  .scene-features .scene-eyebrow { color: var(--gold); }
+  .scene-features .scene-eyebrow::before { background: var(--gold); }
+  .scene-features .scene-title { color: var(--white); }
+  .scene-features .scene-title em { color: var(--gold); }
+  .features-stage {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+  }
+  .feature-block h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.7rem;
+    color: var(--white);
+    margin-bottom: 1.8rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(168, 136, 82, 0.3);
+    font-weight: 400;
+  }
+  .feature-block ul {
+    list-style: none;
+  }
+  .feature-block li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: rgba(232, 225, 212, 0.85);
+    padding: 0.7rem 0;
+    line-height: 1.5;
+    border-bottom: 1px dashed rgba(168, 136, 82, 0.15);
+  }
+  .feature-block li:last-child { border-bottom: none; }
+
+  /* =================================================
+     SCENE VIII — Localisation (carte plein écran)
+     ================================================= */
+  .scene-location {
+    padding: 0;
+    background: var(--white);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    align-items: stretch;
+  }
+  .location-text-pane {
+    padding: 8rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .location-text-pane .scene-title {
+    margin-bottom: 1rem;
+  }
+  .location-text-pane p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+  }
+  .location-points {
+    list-style: none;
+    max-width: 500px;
+  }
+  .location-points li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed var(--sand-dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+  }
+  .location-points li:last-child { border-bottom: none; }
+  .location-points li span:last-child {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .location-map-pane {
+    background: var(--sand-dark);
+    overflow: hidden;
+    min-height: 500px;
+  }
+  .location-map-pane iframe {
+    width: 100%; height: 100%;
+    border: 0;
+    filter: grayscale(0.3) contrast(1.05);
+  }
+
+  /* =================================================
+     SCENE IX — Contact
+     ================================================= */
+  .scene-contact {
+    background: var(--sand-light);
+    padding: 8rem 0;
+  }
+  .scene-contact .scene-inner {
+    text-align: center;
+  }
+  .scene-contact .scene-eyebrow { display: inline-flex; }
+  .scene-contact .scene-title { margin: 1rem auto 1.5rem; }
+  .scene-contact-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 500px;
+    margin: 0 auto 4rem;
+    line-height: 1.5;
+  }
+  .scene-contact-form {
+    max-width: 540px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+  }
+  .scene-contact-form input,
+  .scene-contact-form textarea {
+    padding: 1rem 1.2rem;
+    background: var(--white);
+    border: 1px solid transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    transition: all 0.3s;
+  }
+  .scene-contact-form input:focus,
+  .scene-contact-form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+  .scene-contact-form textarea {
+    min-height: 140px;
+    resize: vertical;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+  }
+  .scene-contact-form button {
+    padding: 1.2rem;
+    background: var(--ink);
+    color: var(--white);
+    border: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 0.5rem;
+  }
+  .scene-contact-form button:hover { background: var(--terracotta); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--ink);
+    color: var(--sand);
+    padding: 3rem 4rem;
+    text-align: center;
+  }
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  footer .logo { color: var(--sand); }
+  footer .logo .logo-house { color: var(--gold); }
+
+  /* ===== LIGHTBOX ===== */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 31, 23, 0.97);
+    z-index: 1000;
+    padding: 3rem;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .lightbox-close, .lightbox-nav {
+    position: absolute;
+    background: rgba(250, 247, 240, 0.1);
+    border: 1px solid rgba(250, 247, 240, 0.3);
+    color: var(--white);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s;
+  }
+  .lightbox-close { top: 2rem; right: 2rem; }
+  .lightbox-prev { left: 2rem; top: 50%; transform: translateY(-50%); }
+  .lightbox-next { right: 2rem; top: 50%; transform: translateY(-50%); }
+  .lightbox-close:hover, .lightbox-nav:hover { background: var(--terracotta); border-color: var(--terracotta); }
+  .lightbox-counter {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* =================================================
+     MOSAÏQUE PHOTOS (Lazudi-style)
+     ================================================= */
+  .photo-mosaic {
+    padding: 4rem 2rem 2rem;
+    background: var(--white);
+  }
+  .photo-mosaic-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  .mosaic-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5rem;
+    aspect-ratio: 16/9;
+    max-height: 620px;
+    position: relative;
+  }
+  .mosaic-tile {
+    overflow: hidden;
+    background: var(--sand-dark);
+    cursor: zoom-in;
+    position: relative;
+    transition: opacity 0.3s ease;
+  }
+  .mosaic-tile:hover { opacity: 0.92; }
+  .mosaic-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+  .mosaic-tile:hover img { transform: scale(1.03); }
+  /* tile principale gauche, occupe les 2 lignes */
+  .mosaic-tile.main { grid-row: 1 / 3; }
+  /* le bouton "Afficher toutes les photos" se positionne dans la dernière tile */
+  .mosaic-show-all {
+    position: absolute;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    z-index: 5;
+    padding: 0.85rem 1.4rem;
+    background: var(--white);
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(26, 30, 26, 0.15);
+  }
+  .mosaic-show-all:hover {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .mosaic-show-all svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+
+  /* =================================================
+     HEADBAR SPECS (style fichier de référence — avec icônes)
+     ================================================= */
+  .specs-bar {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 3rem;
+    background: var(--white);
+  }
+  .specs-bar-inner {
+    padding: 1.6rem 1.5rem;
+    background: var(--white);
+    border-top: 1px solid var(--sand-dark);
+    border-bottom: 1px solid var(--sand-dark);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+  .specs-bar-item {
+    text-align: center;
+    padding: 0 0.5rem;
+    border-right: 1px solid var(--sand-dark);
+  }
+  .specs-bar-item:last-child { border-right: none; }
+  .specs-bar-icon {
+    width: 34px;
+    height: 34px;
+    color: var(--jungle);
+    opacity: 0.85;
+    margin: 0 auto 0.65rem;
+    display: block;
+  }
+  .specs-bar-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+  .specs-bar-value small {
+    font-size: 0.78rem;
+    font-weight: 300;
+  }
+  .specs-bar-label {
+    font-size: 0.59rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1100px) {
+    .hero-content { padding: 0 2rem 3rem; }
+    .hero-content-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-meta { text-align: left; }
+    .scene-inner { padding: 0 2rem; }
+    .scene-manifesto .scene-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .manifesto-img { aspect-ratio: 16/10; }
+    .numbers-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-cinema { padding: 0 1.5rem; }
+    .gc-cell.gc1 { grid-column: 1 / 7; }
+    .gc-cell.gc2 { grid-column: 1 / 7; }
+    .gc-cell.gc3 { grid-column: 1 / 4; }
+    .gc-cell.gc4 { grid-column: 4 / 7; }
+    .gc-cell.gc5 { grid-column: 1 / 7; }
+    .scene-timeline-header { padding: 0 2rem; grid-template-columns: 1fr; gap: 1.5rem; }
+    .timeline-progress-display { text-align: left; }
+    .timeline-h-wrap { padding: 0 2rem; }
+    .timeline-h-wrap::before, .timeline-h-wrap::after { left: 2rem; right: 2rem; }
+    .timeline-h-wrap::after { width: calc((100% - 4rem) * 0.38); }
+    .perso-track { grid-template-columns: 1fr; padding: 0 2rem; }
+    .plans-stage { grid-template-columns: 1fr; }
+    .features-stage { grid-template-columns: 1fr; gap: 2.5rem; }
+    .scene-location { grid-template-columns: 1fr; }
+    .location-text-pane { padding: 5rem 2rem; }
+    .location-map-pane { min-height: 400px; }
+    /* Mosaïque + specs-bar */
+    .mosaic-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      aspect-ratio: 4/5;
+      max-height: 720px;
+    }
+    .mosaic-tile.main { grid-column: 1 / 3; grid-row: 1 / 2; }
+    .mosaic-tile:nth-child(2) { grid-row: 2 / 3; }
+    .mosaic-tile:nth-child(3) { grid-row: 2 / 3; }
+    .mosaic-tile:nth-child(4) { grid-row: 3 / 4; }
+    .mosaic-tile:nth-child(5) { grid-row: 3 / 4; }
+    .specs-bar-inner { grid-template-columns: repeat(3, 1fr); gap: 1.2rem 0.5rem; }
+    .specs-bar-item:nth-child(3n) { border-right: none; }
+  }
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.5rem; }
+    nav.scrolled { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .back-link { left: 1rem; top: 4.5rem; }
+    .hero-content { padding: 0 1.5rem 2.5rem; }
+    .scene { padding: 5rem 0; }
+    .scene-numbers { padding: 5rem 0; }
+    .scene-numbers-header { margin-bottom: 3rem; }
+    .number-cell { padding: 2.5rem 1rem; }
+    .numbers-grid { grid-template-columns: 1fr; }
+    .gallery-cinema { gap: 0.6rem; padding: 0 1rem; }
+    .gc-cell.gc3, .gc-cell.gc4 { grid-column: 1 / 7; }
+    .timeline-h { grid-template-columns: 1fr; gap: 1.5rem; }
+    .timeline-h-wrap::before, .timeline-h-wrap::after { display: none; }
+    .timeline-h-step { text-align: left; padding-left: 2.5rem; position: relative; padding-bottom: 1rem; border-bottom: 1px dashed var(--sand-dark); }
+    .timeline-h-dot { margin: 0; position: absolute; left: 0; top: 0.3rem; }
+    .scene-timeline { padding: 5rem 0; }
+    .scene-perso { padding: 5rem 0; }
+    .scene-perso-header { padding: 0 1.5rem; margin-bottom: 3rem; }
+    .perso-track { padding: 0 1.5rem; gap: 1.5rem; }
+    .scene-contact { padding: 5rem 0; }
+    footer { padding: 2.5rem 1.5rem; }
+    .photo-mosaic { padding: 2.5rem 1rem 1.5rem; }
+    .mosaic-grid { gap: 0.4rem; }
+    .specs-bar { padding: 1.2rem 1rem; }
+    .specs-bar-inner { grid-template-columns: repeat(2, 1fr); gap: 1rem 0.5rem; }
+    .specs-bar-item:nth-child(2n) { border-right: none; }
+    .specs-bar-item:nth-child(3n) { border-right: 1px solid rgba(26, 30, 26, 0.08); }
+    .specs-bar-value { font-size: 1.3rem; }
+    .mosaic-show-all {
+      bottom: 0.7rem;
+      right: 0.7rem;
+      padding: 0.65rem 1rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index2.html" class="logo">
+    <svg class="logo-house" width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 22L24 8l18 14"/><path d="M10 20v20h28V20"/><path d="M20 40v-10h8v10"/>
+      <circle cx="24" cy="24" r="1.5" fill="currentColor"/>
+    </svg>
+    Maisons <span class="s-accent">S</span>amui
+  </a>
+  <ul class="nav-links">
+    <li><a href="index2.html#collection">Les Villas</a></li>
+    <li><a href="index2.html#featured">Histoire</a></li>
+    <li><a href="index2.html#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
+</nav>
+
+<a href="index2.html#collection" class="back-link" id="back-link">Retour aux Villas</a>
+
+<!-- HERO PLEIN VIEWPORT -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="photos/ananta/ananta-main.avif"
+         data-unsplash="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1600&q=85"
+         alt="Villa Ananta - Vue extérieure" />
+  </div>
+  <div class="hero-content">
+    <div class="hero-content-inner">
+      <div>
+        <div class="hero-eyebrow">Bophut · Côte Nord-Est · Vue mer</div>
+        <h1>Villa <em>Ananta</em></h1>
+        <p class="hero-loc">Une parenthèse perchée, à l'orée de la baie.</p>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-label">À partir de</div>
+        <div class="hero-meta-value">฿ 48 000 000</div>
+        <div class="hero-meta-eur">≈ 1,26 M€ · cryptos acceptées</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    Scroll
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- MOSAÏQUE PHOTOS (5 tiles) + bouton "Afficher toutes les photos" -->
+<section class="photo-mosaic" id="galerie">
+  <div class="photo-mosaic-inner">
+    <div class="mosaic-grid">
+      <div class="mosaic-tile main" data-gallery-index="0">
+        <img src="photos/ananta/ananta-main.avif"
+             data-unsplash="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1800&q=85"
+             alt="Villa Ananta - Vue d'ensemble" />
+      </div>
+      <div class="mosaic-tile" data-gallery-index="1">
+        <img src="photos/ananta/ananta-01-exterior.avif"
+             data-unsplash="https://images.unsplash.com/photo-1677778036878-95b768b1c40a?auto=format&fit=crop&w=1200&q=85"
+             alt="Façade architecturée avec claustras bois" />
+      </div>
+      <div class="mosaic-tile" data-gallery-index="6">
+        <img src="photos/ananta/ananta-06-aerial.avif"
+             data-unsplash="https://images.unsplash.com/photo-1729720281656-0ee786260bde?auto=format&fit=crop&w=1200&q=85"
+             alt="Vue aérienne plage et palmiers" />
+      </div>
+      <div class="mosaic-tile" data-gallery-index="3">
+        <img src="photos/ananta/ananta-03-kitchen.avif"
+             data-unsplash="https://images.unsplash.com/photo-1676088933950-bae87cf34fee?auto=format&fit=crop&w=1200&q=85"
+             alt="Cuisine ouverte et salle à manger" />
+      </div>
+      <div class="mosaic-tile" data-gallery-index="5">
+        <img src="photos/ananta/ananta-05-bathroom.avif"
+             data-unsplash="https://images.unsplash.com/premium_photo-1661902468735-eabf780f8ff6?auto=format&fit=crop&w=1200&q=85"
+             alt="Salle d'eau spa" />
+      </div>
+      <button type="button" class="mosaic-show-all" onclick="openLightbox(0)">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+        </svg>
+        Afficher toutes les photos
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- HEADBAR specs (avec icônes, fond clair, style référence) -->
+<section class="specs-bar" id="villa">
+  <div class="specs-bar-inner">
+
+    <div class="specs-bar-item">
+      <svg class="specs-bar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 30v10M42 30v10"/>
+        <path d="M6 30h36v-6a6 6 0 0 0-6-6H12a6 6 0 0 0-6 6v6z"/>
+        <path d="M12 18v-2a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2M24 18v-2a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2"/>
+      </svg>
+      <div class="specs-bar-value">4</div>
+      <div class="specs-bar-label">Chambres</div>
+    </div>
+
+    <div class="specs-bar-item">
+      <svg class="specs-bar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 24h36v8a6 6 0 0 1-6 6H12a6 6 0 0 1-6-6v-8z"/>
+        <path d="M10 24V12a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2"/>
+        <path d="M16 14h8"/>
+        <path d="M12 38l-2 4M36 38l2 4"/>
+      </svg>
+      <div class="specs-bar-value">5</div>
+      <div class="specs-bar-label">Salles d'eau</div>
+    </div>
+
+    <div class="specs-bar-item">
+      <svg class="specs-bar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 8h32v32H8z"/>
+        <path d="M8 22h14v18"/>
+        <path d="M4 6l4-4M44 6l-4-4M4 42l4 4M44 42l-4 4"/>
+      </svg>
+      <div class="specs-bar-value">531<small>m²</small></div>
+      <div class="specs-bar-label">Surface habitable</div>
+    </div>
+
+    <div class="specs-bar-item">
+      <svg class="specs-bar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h40v40H4z"/>
+        <path d="M4 4l40 40M4 44L44 4"/>
+      </svg>
+      <div class="specs-bar-value">742<small>m²</small></div>
+      <div class="specs-bar-label">Surface totale</div>
+    </div>
+
+    <div class="specs-bar-item">
+      <svg class="specs-bar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="6" y="10" width="36" height="32" rx="2"/>
+        <path d="M6 18h36"/>
+        <path d="M16 6v8M32 6v8"/>
+        <path d="M14 26h4M22 26h4M30 26h4M14 34h4M22 34h4M30 34h4"/>
+      </svg>
+      <div class="specs-bar-value">2026</div>
+      <div class="specs-bar-label">Livraison</div>
+    </div>
+
+    <div class="specs-bar-item">
+      <svg class="specs-bar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 22L24 8l18 14"/>
+        <path d="M10 20v20h28V20"/>
+        <path d="M20 40v-10h8v10"/>
+        <circle cx="24" cy="26" r="1.5" fill="currentColor"/>
+      </svg>
+      <div class="specs-bar-value">Flexible</div>
+      <div class="specs-bar-label">Propriété</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SCÈNE IV — Timeline horizontale -->
+<section class="scene-timeline" id="chantier">
+  <div class="scene-timeline-header">
+    <div>
+      <div class="scene-eyebrow">État du chantier</div>
+      <h2>Construction <em>en cours</em></h2>
+    </div>
+    <div class="timeline-progress-display">
+      <div class="timeline-progress-pct">38<sup>%</sup></div>
+      <div class="timeline-progress-eta">Livraison Q3 2026</div>
+    </div>
+  </div>
+  <div class="timeline-h-wrap">
+    <div class="timeline-h">
+      <div class="timeline-h-step done">
+        <div class="timeline-h-dot"></div>
+        <div class="timeline-h-num">I</div>
+        <div class="timeline-h-name">Terrassement</div>
+        <div class="timeline-h-date">Terminé</div>
+      </div>
+      <div class="timeline-h-step done">
+        <div class="timeline-h-dot"></div>
+        <div class="timeline-h-num">II</div>
+        <div class="timeline-h-name">Gros œuvre</div>
+        <div class="timeline-h-date">Terminé</div>
+      </div>
+      <div class="timeline-h-step current">
+        <div class="timeline-h-dot"></div>
+        <div class="timeline-h-num">III</div>
+        <div class="timeline-h-name">Cloisons & Toiture</div>
+        <div class="timeline-h-date">En cours</div>
+      </div>
+      <div class="timeline-h-step upcoming">
+        <div class="timeline-h-dot"></div>
+        <div class="timeline-h-num">IV</div>
+        <div class="timeline-h-name">Finitions intérieures</div>
+        <div class="timeline-h-date">Q1 2026</div>
+      </div>
+      <div class="timeline-h-step upcoming">
+        <div class="timeline-h-dot"></div>
+        <div class="timeline-h-num">V</div>
+        <div class="timeline-h-name">Aménagements</div>
+        <div class="timeline-h-date">Q2 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCÈNE V — Personnalisation -->
+<section class="scene-perso" id="personnalisation">
+  <div class="scene-perso-header">
+    <div class="scene-eyebrow" style="margin-left: auto; margin-right: auto;">Personnalisation</div>
+    <h2>Vos <em>matériaux</em></h2>
+    <p>Trois familles de finitions pour ajuster Ananta à votre sensibilité — aperçu condensé de l'expérience complète à venir.</p>
+  </div>
+  <div class="perso-track">
+    <div class="perso-tile">
+      <div class="perso-tile-img">
+        <img src="photos/perso/sols.jpg" data-unsplash="https://images.unsplash.com/photo-1611048268330-53de574cae3b?auto=format&fit=crop&w=1000&q=80" alt="Sols" />
+        <span class="perso-tile-num">I</span>
+      </div>
+      <div class="perso-tile-body">
+        <div class="perso-tile-cat">Sols</div>
+        <div class="perso-tile-name">Teck, travertin,<br><em>marbre</em></div>
+        <div class="perso-tile-desc">Trois palettes — chaleureuse, intemporelle, méditerranéenne.</div>
+      </div>
+    </div>
+    <div class="perso-tile">
+      <div class="perso-tile-img">
+        <img src="photos/perso/cuisine.avif" data-unsplash="https://images.unsplash.com/photo-1708426045546-8911cfea6162?auto=format&fit=crop&w=1600&q=85" alt="Cuisine minimaliste" />
+        <span class="perso-tile-num">II</span>
+      </div>
+      <div class="perso-tile-body">
+        <div class="perso-tile-cat">Cuisine</div>
+        <div class="perso-tile-name">Bois, pierre,<br><em>professionnel</em></div>
+        <div class="perso-tile-desc">Du bois et laque mate à la configuration chef Gaggenau.</div>
+      </div>
+    </div>
+    <div class="perso-tile">
+      <div class="perso-tile-img">
+        <img src="photos/perso/sdb.avif" data-unsplash="https://images.unsplash.com/photo-1661107259637-4e1c55462428?auto=format&fit=crop&w=1600&q=85" alt="Salle de bain pierre et bois" />
+        <span class="perso-tile-num">III</span>
+      </div>
+      <div class="perso-tile-body">
+        <div class="perso-tile-cat">Salle de bain</div>
+        <div class="perso-tile-name">Contemporaine,<br><em>spa</em>, outdoor</div>
+        <div class="perso-tile-desc">De l'épure contemporaine à la douche jungle ouverte.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCÈNE VI — Plans -->
+<section class="scene scene-plans" id="plans">
+  <div class="scene-inner">
+    <div class="scene-eyebrow">Architecture</div>
+    <h2 class="scene-title">Les <em>plans</em><br>de la villa</h2>
+    <div class="plans-stage">
+      <div class="plan-piece">
+        <div class="plan-piece-img">Plan à venir</div>
+        <div class="plan-piece-meta">
+          <span class="plan-piece-name">Rez-de-chaussée</span>
+          <span class="plan-piece-info">104 m² · Niveau 0</span>
+        </div>
+      </div>
+      <div class="plan-piece">
+        <div class="plan-piece-img">Plan à venir</div>
+        <div class="plan-piece-meta">
+          <span class="plan-piece-name">Étage</span>
+          <span class="plan-piece-info">72 m² · Niveau 1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCÈNE VII — Prestations -->
+<section class="scene scene-features" id="prestations">
+  <div class="scene-inner">
+    <div class="scene-eyebrow">Prestations</div>
+    <h2 class="scene-title">Équipements <em>signature</em></h2>
+    <div class="features-stage">
+      <div class="feature-block">
+        <h3>Extérieur</h3>
+        <ul>
+          <li>Piscine à débordement 12 × 4 m</li>
+          <li>Terrasse en teck plein sud, 80 m²</li>
+          <li>Jardin tropical paysager</li>
+          <li>Pool house avec douche extérieure</li>
+          <li>Parking couvert pour 2 véhicules</li>
+        </ul>
+      </div>
+      <div class="feature-block">
+        <h3>Intérieur</h3>
+        <ul>
+          <li>Salon cathédrale 60 m²</li>
+          <li>Cuisine équipée Bosch</li>
+          <li>4 suites parentales</li>
+          <li>Master 28 m² avec vue mer</li>
+          <li>Hauteur sous plafond 3,2 m</li>
+        </ul>
+      </div>
+      <div class="feature-block">
+        <h3>Technique</h3>
+        <ul>
+          <li>Climatisation Daikin inverter</li>
+          <li>Système d'alarme & 6 caméras HD</li>
+          <li>Fibre optique haute vitesse</li>
+          <li>Adoucisseur d'eau</li>
+          <li>Pré-équipement Sonos multiroom</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCÈNE VIII — Localisation plein écran -->
+<section class="scene-location" id="situation">
+  <div class="location-text-pane">
+    <div class="scene-eyebrow">Situation</div>
+    <h2 class="scene-title">Bophut,<br><em>côte nord-est</em></h2>
+    <p>Hauteurs résidentielles, à dix minutes du Fisherman's Village et de ses dîners au bord de l'eau. Position dominante : intimité sans isolement.</p>
+    <ul class="location-points">
+      <li><span>Plage de Bophut</span><span>10 min</span></li>
+      <li><span>Fisherman's Village</span><span>10 min</span></li>
+      <li><span>Aéroport international</span><span>15 min</span></li>
+      <li><span>Hôpital Bangkok Samui</span><span>10 min</span></li>
+      <li><span>Chaweng (vie nocturne)</span><span>20 min</span></li>
+      <li><span>International school</span><span>20 min</span></li>
+    </ul>
+  </div>
+  <div class="location-map-pane">
+    <iframe src="https://maps.google.com/maps?q=9.5613,100.0608&z=14&hl=fr&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+            title="Villa Ananta — Bophut"></iframe>
+  </div>
+</section>
+
+<!-- SCÈNE IX — Contact -->
+<section class="scene-contact" id="contact">
+  <div class="scene-inner">
+    <div class="scene-eyebrow">Vous êtes intéressé ?</div>
+    <h2 class="scene-title">Planifions<br>une <em>visite</em></h2>
+    <p class="scene-contact-lead">Visite sur place, en visioconférence, ou dossier complet par email. Précisez simplement comment vous préférez procéder.</p>
+    <form class="scene-contact-form" onsubmit="event.preventDefault(); alert('Formulaire de démonstration.');">
+      <input type="text" placeholder="Nom complet" required />
+      <input type="email" placeholder="Adresse email" required />
+      <input type="tel" placeholder="Téléphone (optionnel)" />
+      <textarea placeholder="Votre message — visite, questions, délai..." required></textarea>
+      <button type="submit">Demander un contact</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index2.html" class="logo">
+      <svg class="logo-house" width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 22L24 8l18 14"/><path d="M10 20v20h28V20"/><path d="M20 40v-10h8v10"/>
+        <circle cx="24" cy="24" r="1.5" fill="currentColor"/>
+      </svg>
+      Maisons <span class="s-accent">S</span>amui
+    </a>
+    <div>© 2026 · Tous droits réservés</div>
+    <div>Koh Samui, Thaïlande</div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Fermer">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(event, -1)" aria-label="Précédent">‹</button>
+  <img id="lightbox-img" src="" alt="" />
+  <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(event, 1)" aria-label="Suivant">›</button>
+  <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">7</span></div>
+</div>
+
+<script>
+  // Nav scrolled state
+  const nav = document.getElementById('nav');
+  const backLink = document.getElementById('back-link');
+  function updateNavState() {
+    if (window.scrollY > 80) {
+      nav.classList.add('scrolled');
+      backLink.classList.add('dark');
+    } else {
+      nav.classList.remove('scrolled');
+      backLink.classList.remove('dark');
+    }
+  }
+  window.addEventListener('scroll', updateNavState);
+  updateNavState();
+
+  // Image fallback
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function() {
+      const stage = this.dataset.fallbackStage || '0';
+      if (stage === '0') {
+        this.dataset.fallbackStage = '1';
+        if (this.src.endsWith('.jpg')) { this.src = this.src.replace(/\.jpg$/, '.jpeg'); return; }
+        if (this.src.endsWith('.jpeg')) { this.src = this.src.replace(/\.jpeg$/, '.jpg'); return; }
+      }
+      if (this.dataset.unsplash && this.dataset.fallbackStage !== '2') {
+        this.dataset.fallbackStage = '2';
+        this.src = this.dataset.unsplash;
+      }
+    });
+  });
+
+  // Lightbox
+  const galleryPhotos = [
+    { local: 'photos/ananta/ananta-main.avif', fallback: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1800&q=85' },
+    { local: 'photos/ananta/ananta-01-exterior.avif',   fallback: 'https://images.unsplash.com/photo-1677778036878-95b768b1c40a?auto=format&fit=crop&w=1800&q=85' },
+    { local: 'photos/ananta/ananta-02-pool.avif',   fallback: 'https://images.unsplash.com/premium_photo-1675745329659-29044cb6adbb?auto=format&fit=crop&w=1800&q=85' },
+    { local: 'photos/ananta/ananta-03-kitchen.avif',   fallback: 'https://images.unsplash.com/photo-1676088933950-bae87cf34fee?auto=format&fit=crop&w=1800&q=85' },
+    { local: 'photos/ananta/ananta-04-bedroom.avif',   fallback: 'https://images.unsplash.com/photo-1758072328635-586f3c121af2?auto=format&fit=crop&w=1800&q=85' },
+    { local: 'photos/ananta/ananta-05-bathroom.avif',   fallback: 'https://images.unsplash.com/premium_photo-1661902468735-eabf780f8ff6?auto=format&fit=crop&w=1800&q=85' },
+    { local: 'photos/ananta/ananta-06-aerial.avif',   fallback: 'https://images.unsplash.com/photo-1729720281656-0ee786260bde?auto=format&fit=crop&w=1800&q=85' }
+  ];
+  let lbIndex = 0;
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCurrent = document.getElementById('lightbox-current');
+  document.getElementById('lightbox-total').textContent = galleryPhotos.length;
+
+  function loadLbImage(i) {
+    const photo = galleryPhotos[i];
+    lbImg.dataset.fallbackStage = '0';
+    lbImg.dataset.unsplash = photo.fallback;
+    lbImg.src = photo.local;
+    lbCurrent.textContent = i + 1;
+  }
+  function openLightbox(i) {
+    lbIndex = i;
+    loadLbImage(lbIndex);
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(e) {
+    if (e && e.target !== lb && !e.target.classList.contains('lightbox-close')) return;
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function navigateLightbox(e, dir) {
+    e.stopPropagation();
+    lbIndex = (lbIndex + dir + galleryPhotos.length) % galleryPhotos.length;
+    loadLbImage(lbIndex);
+  }
+  document.querySelectorAll('[data-gallery-index]').forEach(el => {
+    el.addEventListener('click', () => openLightbox(parseInt(el.dataset.galleryIndex, 10)));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox({ target: lb });
+    if (e.key === 'ArrowLeft')  navigateLightbox(e, -1);
+    if (e.key === 'ArrowRight') navigateLightbox(e, 1);
+  });
+</script>
+</body>
+</html>

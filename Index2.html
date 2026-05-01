@@ -1,0 +1,2944 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maisons Samui — Villas d'exception à Koh Samui</title>
+<meta name="description" content="Maisons Samui construit directement vos villas de luxe à Koh Samui depuis 2010. Sans intermédiaires, avec des matériaux nobles et un suivi personnel." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Caveat:wght@400;600&family=Inter:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #e8e1d4;
+    --sand-light: #f2ede2;
+    --sand-dark: #d4c9b4;
+    --ink: #1a1e1a;
+    --ink-soft: #3a3f39;
+    --jungle: #2d4a34;
+    --jungle-deep: #1a2e22;
+    --terracotta: #b8623f;
+    --gold: #a88852;
+    --gold-bright: #d4a945;
+    --white: #faf7f0;
+    --pure-white: #ffffff;
+    --success: #4a7c59;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--sand-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ========================================================
+     === HEADER — VERSION A : VERRE DÉPOLI (avec scroll state)
+     ======================================================== */
+  nav.main-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.4s ease;
+  }
+  /* État scrolled : fond ink, lisibilité garantie sur sections claires */
+  nav.main-nav.scrolled {
+    background: rgba(26, 30, 26, 0.92);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    padding: 0.85rem 2.5rem;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 500;
+    color: var(--white); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    line-height: 1;
+  }
+  .logo svg { color: var(--gold); }
+  .logo .s-accent { font-style: italic; color: var(--gold); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; align-items: center;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--white); text-decoration: none;
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.3s;
+    position: relative;
+    cursor: pointer;
+  }
+  .nav-links a:not(.cta)::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:not(.cta):hover::after { width: 100%; }
+  .cta-nav {
+    background: var(--terracotta);
+    color: var(--white) !important;
+    padding: 0.7rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 1px solid var(--terracotta);
+    cursor: pointer;
+  }
+  .cta-nav:hover {
+    background: transparent;
+    color: var(--white) !important;
+    border-color: var(--white);
+  }
+
+  /* Burger mobile */
+  .nav-burger {
+    display: none;
+    background: transparent; border: none; cursor: pointer;
+    color: var(--white);
+    padding: 0.5rem;
+  }
+  .nav-burger svg { width: 24px; height: 24px; }
+
+  /* ========================================================
+     === HERO — V2.1 SLIDESHOW KEN BURNS
+     ======================================================== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 2s ease;
+  }
+  .slide.active { opacity: 1; }
+
+  .slide-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+  }
+  .slide.active .slide-img {
+    animation: kenBurns 8s ease-out forwards;
+  }
+  @keyframes kenBurns {
+    from { transform: scale(1) translate(0, 0); }
+    to { transform: scale(1.15) translate(-2%, 2%); }
+  }
+
+  .slide-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 30%, rgba(0,0,0,0.6) 100%),
+      linear-gradient(90deg, rgba(0,0,0,0.4) 0%, transparent 50%);
+  }
+
+  .slide-1 .slide-img { background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?w=2400&q=85'); }
+  .slide-2 .slide-img { background-image: url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=2400&q=85'); }
+  .slide-3 .slide-img { background-image: url('https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=2400&q=85'); }
+  .slide-4 .slide-img { background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=2400&q=85'); }
+  .slide-5 .slide-img { background-image: url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=2400&q=85'); }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    padding: 0 3rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: var(--white);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    line-height: 0.95;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    max-width: 1100px;
+    color: var(--white);
+  }
+  .hero h1 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+  }
+
+  .slide-caption {
+    position: absolute;
+    bottom: 5rem;
+    right: 3rem;
+    text-align: right;
+    z-index: 4;
+    border-right: 1px solid rgba(255,255,255,0.4);
+    padding-right: 1.5rem;
+    transition: opacity 0.5s;
+    color: var(--white);
+  }
+  .caption-num {
+    font-family: 'Italiana', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .caption-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+  }
+  .caption-loc {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .slide-indicators {
+    position: absolute;
+    bottom: 2rem;
+    left: 3rem;
+    z-index: 4;
+    display: flex;
+    gap: 0.6rem;
+  }
+  .indicator {
+    width: 40px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    padding: 0;
+  }
+  .indicator.active { background: rgba(255, 255, 255, 0.4); }
+  .indicator.active::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0%;
+    background: var(--white);
+    animation: progress 6s linear forwards;
+  }
+  @keyframes progress { to { width: 100%; } }
+
+  /* ========================================================
+     === SECTION WRAPPERS COMMUNS
+     ======================================================== */
+  .section { padding: 7rem 3rem; }
+  .section-header { max-width: 1400px; margin: 0 auto 4rem; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::before {
+    content: ''; width: 40px; height: 1px; background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+    line-height: 1; font-weight: 400;
+  }
+  .section-title em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; color: var(--terracotta);
+  }
+  .section-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.25rem;
+    color: var(--ink-soft); max-width: 650px; margin-top: 1.8rem;
+    line-height: 1.5;
+  }
+
+  /* Numérotation romaine entre sections */
+  .section-roman {
+    display: flex; align-items: center; gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .section-roman-num {
+    font-family: 'Italiana', serif;
+    font-size: 0.8rem; letter-spacing: 0.3em;
+    color: var(--terracotta);
+  }
+  .section-roman-line { flex: 1; height: 1px; background: rgba(0,0,0,0.1); max-width: 100px; }
+
+  /* ========================================================
+     === VILLAS — VERSION C : GALERIE IMMERSIVE
+     ======================================================== */
+  .villas-section {
+    background: var(--white);
+    padding: 5rem 0 4rem;
+    position: relative;
+  }
+  .villas-section .section-header {
+    padding: 0 3rem;
+  }
+  /* Header compact villas : titre et lead côte à côte */
+  .villas-header-compact {
+    max-width: 1700px;
+    margin: 0 auto 2.5rem;
+    padding: 0 3rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: end;
+  }
+  .villas-title-compact {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1;
+    font-weight: 400;
+    color: var(--ink);
+    margin-top: 0.5rem;
+  }
+  .villas-title-compact em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .villas-lead-compact {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    text-align: right;
+    max-width: 380px;
+    padding-bottom: 0.5rem;
+  }
+  .villas-section .section-label { color: var(--gold); }
+  .villas-section .section-label::before { background: var(--gold); }
+  .villas-section .section-title { color: var(--ink); }
+  .villas-section .section-title em { color: var(--terracotta); }
+  .villas-section .section-lead { color: var(--ink-soft); }
+  .villas-section .section-roman-num { color: var(--terracotta); }
+  .villas-section .section-roman-line { background: rgba(0,0,0,0.1); }
+
+  /* === V6 : Carrousel swap (villa par villa avec flèches) === */
+  .villas-swap {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 2rem;
+    position: relative;
+  }
+
+  .swap-container {
+    position: relative;
+    width: 100%;
+  }
+
+  /* Flèches de navigation - design minimaliste fin */
+  .swap-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .swap-arrow.prev { left: 2.5rem; }
+  .swap-arrow.next { right: 2.5rem; }
+  /* Cercle décoratif intérieur (effet de pulsation au hover) */
+  .swap-arrow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-bright);
+    opacity: 0;
+    transform: scale(0.92);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .swap-arrow:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--gold-bright);
+    color: var(--gold-bright);
+    transform: translateY(-50%) scale(1.04);
+  }
+  .swap-arrow:hover::before {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  /* SVG plus fin et élégant */
+  .swap-arrow svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .swap-arrow.prev:hover svg { transform: translateX(-3px); }
+  .swap-arrow.next:hover svg { transform: translateX(3px); }
+  /* Pas de :disabled — la rotation est infinie maintenant */
+
+  /* Zone visuelle paysage cinématique */
+  .swap-visual {
+    position: relative;
+    aspect-ratio: 21/9;
+    min-height: 520px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  /* Overlay sombre dégradé pour lisibilité du texte */
+  .swap-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.85) 100%),
+      linear-gradient(90deg, rgba(0,0,0,0.5) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .swap-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .swap-image.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .swap-image-1 { background-image: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1800&q=85'); }
+  .swap-image-2 { background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=85'); }
+  .swap-image-3 { background-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1800&q=85'); }
+  .swap-image-4 { background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=85'); }
+
+  /* Tag glassmorphism sur l'image */
+  .swap-tag {
+    position: absolute;
+    top: 1.5rem;
+    left: 8rem;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    padding: 1.1rem 1.4rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    z-index: 5;
+    transition: all 0.4s ease;
+  }
+
+  /* Crypto badge - en haut-droite, aligné horizontalement avec le tag de lieu */
+  .swap-crypto {
+    position: absolute;
+    top: 1.5rem;
+    right: 8rem;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 1.1rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 6;
+  }
+  .swap-crypto-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .swap-crypto-icons { display: flex; gap: 0.4rem; }
+  .swap-crypto-icons svg {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.3s ease;
+  }
+  .swap-crypto-icons svg:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Numéro romain en bas-gauche de l'image */
+
+  /* Indicateurs de pagination en bas-droite de l'image */
+  .swap-indicators {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    gap: 0.4rem;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 0.7rem;
+  }
+  .swap-indicator {
+    width: 24px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+  }
+  .swap-indicator.active {
+    background: var(--white);
+    width: 36px;
+  }
+
+  /* Zone d'infos textuelles - en OVERLAY sur la photo */
+  /* Padding gauche/droite augmenté pour ne pas chevaucher les flèches au milieu vertical */
+  .swap-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem 8rem;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    align-items: end;
+    color: var(--white);
+  }
+  .swap-info-block {
+    transition: opacity 0.4s ease;
+    display: contents;
+  }
+  .swap-info-block.changing { opacity: 0; }
+  .swap-info-left { }
+  .swap-info-right { }
+
+  .swap-loc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .swap-loc::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--gold-bright);
+  }
+  .swap-name {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.3rem, 4vw, 3.5rem);
+    line-height: 1;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .swap-name em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold-bright);
+  }
+  .swap-desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.92);
+    margin-bottom: 1.5rem;
+    max-width: 520px;
+    letter-spacing: 0.01em;
+  }
+
+  /* Specs en lignes (4ch · 531m²) - mode clair sur foncé */
+  .swap-specs {
+    display: flex;
+    gap: 2.5rem;
+    padding: 0.9rem 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    margin-bottom: 0;
+  }
+  .swap-spec {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .swap-spec-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  .swap-spec-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  /* Bloc statut - en glassmorphism foncé pour overlay */
+  .swap-status {
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.2rem;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-left: 3px solid var(--gold-bright);
+  }
+  .swap-status.delivered {
+    border-left-color: #6ec78a;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .swap-status.delivered .status-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: #6ec78a;
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .swap-status.delivered .status-icon svg { width: 16px; height: 16px; }
+  .swap-status.delivered .status-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #6ec78a;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+  }
+  .swap-status.delivered .status-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--white);
+  }
+
+  .swap-status.building { border-left-color: var(--gold-bright); }
+  .swap-status.building .status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.9rem;
+  }
+  .swap-status.building .status-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    font-weight: 500;
+  }
+  .swap-status.building .status-pct {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--gold-bright);
+    letter-spacing: 0.05em;
+  }
+  .swap-progress-track {
+    position: relative;
+    height: 14px;
+    margin-bottom: 0.9rem;
+  }
+  .swap-progress-track::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+  }
+  .swap-progress-fill {
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--terracotta) 0%, var(--gold-bright) 100%);
+    border-radius: 2px;
+    transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .swap-progress-dot {
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gold-bright);
+    border: 2px solid var(--ink);
+    transform: translate(-50%, -50%);
+    transition: left 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 6px rgba(212, 169, 69, 0.4), 0 0 0 0 rgba(212, 169, 69, 0.5);
+    animation: dotPulse 2.2s ease-out infinite;
+    z-index: 2;
+  }
+  @keyframes dotPulse {
+    0%   { box-shadow: 0 2px 6px rgba(184, 98, 63, 0.4), 0 0 0 0 rgba(184, 98, 63, 0.5); }
+    70%  { box-shadow: 0 2px 6px rgba(184, 98, 63, 0.4), 0 0 0 10px rgba(184, 98, 63, 0); }
+    100% { box-shadow: 0 2px 6px rgba(184, 98, 63, 0.4), 0 0 0 0 rgba(184, 98, 63, 0); }
+  }
+  .swap-status.building .status-detail {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+  }
+  .swap-status.building .status-detail strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* Footer : prix + CTA */
+  .swap-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .swap-price {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .swap-price-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .swap-price-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .swap-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.95rem 1.7rem;
+    background: var(--terracotta);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    border: 1px solid var(--terracotta);
+  }
+  .swap-cta:hover {
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--ink);
+  }
+  .swap-cta svg {
+    width: 14px; height: 14px;
+    transition: transform 0.3s;
+  }
+  .swap-cta:hover svg { transform: translateX(4px); }
+
+  /* === Responsive === */
+  @media (max-width: 1200px) and (min-width: 901px) {
+    /* Tablette / écran moyen : padding réduit mais flèches encore au centre */
+    .swap-info { padding: 2.5rem 6rem; }
+    .swap-arrow { width: 52px; height: 52px; }
+    .swap-arrow.prev { left: 1.5rem; }
+    .swap-arrow.next { right: 1.5rem; }
+    /* Crypto badge et tag légèrement réduits sur tablette */
+    .swap-crypto { right: 6rem; padding: 0.9rem 1.2rem; gap: 0.8rem; }
+    .swap-crypto-label { font-size: 0.62rem; }
+    .swap-crypto-icons svg { width: 24px; height: 24px; }
+    .swap-tag { padding: 0.9rem 1.2rem; font-size: 0.62rem; left: 6rem; }
+  }
+  @media (max-width: 900px) {
+    .swap-arrow { width: 44px; height: 44px; }
+    .swap-arrow.prev { left: 0.8rem; }
+    .swap-arrow.next { right: 0.8rem; }
+    .swap-visual { aspect-ratio: 4/5; min-height: auto; }
+    .swap-info {
+      position: relative;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 2rem 1.5rem;
+      background: var(--ink);
+    }
+    .swap-visual::after {
+      background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+    }
+    .swap-name { font-size: clamp(2rem, 7vw, 2.5rem); }
+    .swap-footer { flex-direction: column; align-items: stretch; gap: 1rem; }
+    .swap-cta { justify-content: center; }
+    .swap-indicators { top: 1rem; }
+    /* Crypto badge sur mobile : sous le tag (qui est top: 1rem), reste plus compact */
+    .swap-crypto {
+      top: 4.5rem;
+      right: 1rem;
+      padding: 0.7rem 0.9rem;
+      gap: 0.6rem;
+    }
+    .swap-crypto-label { font-size: 0.55rem; letter-spacing: 0.2em; }
+    .swap-crypto-icons svg { width: 22px; height: 22px; }
+    /* Tag agrandi sur mobile aussi mais légèrement plus compact */
+    .swap-tag { padding: 0.7rem 0.9rem; font-size: 0.55rem; letter-spacing: 0.2em; left: 1rem; }
+  }
+
+    /* ========================================================
+     === HISTOIRE — VERSION C : PORTRAIT FONDATEUR
+     ======================================================== */
+  .portrait {
+    padding: 7rem 3rem;
+    background: var(--sand-light);
+    position: relative;
+  }
+  .portrait::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 200px;
+    background: linear-gradient(180deg, var(--ink), transparent);
+    pointer-events: none;
+    opacity: 0.05;
+  }
+  .portrait-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 5rem;
+    align-items: center;
+    position: relative;
+  }
+
+  .portrait-photo {
+    position: relative;
+    aspect-ratio: 4/5;
+  }
+  .portrait-photo-img {
+    width: 100%; height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?w=1200&q=85');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(0.2);
+  }
+  .portrait-photo::before {
+    content: '';
+    position: absolute;
+    top: 1.5rem; left: -1.5rem;
+    width: 100%; height: 100%;
+    border: 1px solid var(--gold);
+    z-index: -1;
+  }
+  .portrait-caption {
+    position: absolute;
+    bottom: -3rem;
+    right: -1rem;
+    background: var(--white);
+    padding: 0.8rem 1.2rem;
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    color: var(--terracotta);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: rotate(-2deg);
+    z-index: 2;
+  }
+  .portrait-caption span {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.3rem;
+  }
+
+  .portrait-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .portrait-eyebrow::before {
+    content: ''; width: 40px; height: 1px; background: var(--gold);
+  }
+  .portrait-title {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+    line-height: 1.05;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+  .portrait-title em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .portrait-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .portrait-text em {
+    color: var(--terracotta);
+    font-style: italic;
+  }
+  .portrait-text:first-of-type::first-letter {
+    font-family: 'Italiana', serif;
+    font-size: 4rem;
+    float: left;
+    line-height: 0.9;
+    padding-right: 0.6rem;
+    padding-top: 0.3rem;
+    color: var(--terracotta);
+  }
+  .portrait-signature {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    display: flex; align-items: center; gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .portrait-sign-text {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .portrait-sign-info {
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .portrait-sign-info strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: none;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .portrait-cta {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    margin-top: 2.5rem;
+    padding: 1rem 2rem;
+    background: var(--ink);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s;
+  }
+  .portrait-cta:hover {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+  .portrait-cta svg { width: 16px; height: 16px; }
+
+  /* ========================================================
+     === SERVICES / ÉTAPES — VERSION A : PARCOURS 4 ÉTAPES
+     ======================================================== */
+  .journey {
+    padding: 7rem 3rem;
+    background: var(--white);
+    position: relative;
+  }
+  .journey-inner { max-width: 1400px; margin: 0 auto; }
+  .journey-header { text-align: center; margin-bottom: 5rem; }
+  .journey-header .section-label { justify-content: center; }
+  .journey-header .section-label::before { display: none; }
+  .journey-header .section-label::after {
+    content: ''; width: 40px; height: 1px; background: var(--gold);
+    margin-left: 1rem;
+  }
+  .journey-header .section-label::before {
+    display: block; content: ''; width: 40px; height: 1px;
+    background: var(--gold); margin-right: 1rem;
+  }
+  .journey-title { margin: 0 auto; max-width: 700px; }
+  .journey-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.2rem;
+    color: var(--ink-soft); max-width: 600px; margin: 1.8rem auto 0;
+  }
+
+  .journey-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .journey-steps::before {
+    content: '';
+    position: absolute;
+    top: 50px; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold) 100%);
+    opacity: 0.3;
+    z-index: 0;
+  }
+  /* Cercles légèrement plus petits pour 5 colonnes */
+  .journey-step { padding: 0 1rem; }
+  .journey-step-circle { width: 90px; height: 90px; }
+  .journey-step-circle svg { width: 36px; height: 36px; }
+  .journey-step-title { font-size: 1.25rem; }
+  .journey-step-desc { font-size: 0.85rem; }
+  .journey-step {
+    padding: 0 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .journey-step-circle {
+    width: 100px; height: 100px;
+    background: var(--white);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 2rem;
+    position: relative;
+    transition: all 0.4s;
+  }
+  .journey-step:hover .journey-step-circle {
+    background: var(--ink); border-color: var(--ink);
+    transform: scale(1.05);
+  }
+  .journey-step:hover .journey-step-circle svg { color: var(--gold-bright); }
+  .journey-step-circle svg {
+    width: 40px; height: 40px;
+    color: var(--gold);
+    transition: color 0.4s;
+  }
+  .journey-step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+  .journey-step-title em { font-style: italic; color: var(--terracotta); }
+  .journey-step-desc {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .journey-cta {
+    text-align: center;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  .journey-cta-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+  }
+  .journey-cta-btn {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    padding: 1rem 2.5rem;
+    background: var(--ink);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s;
+  }
+  .journey-cta-btn:hover {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+
+  /* ========================================================
+     === SECTION CONTACT FINAL (avant footer)
+     ======================================================== */
+  .contact-section {
+    padding: 7rem 3rem;
+    background: var(--terracotta);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1505881502353-a1986add3762?w=2400&q=85');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    mix-blend-mode: multiply;
+  }
+  .contact-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .contact-main { text-align: left; }
+  .contact-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.5em; text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .contact-eyebrow::before {
+    content: ''; width: 40px; height: 1px; background: rgba(255,255,255,0.5);
+  }
+  .contact-title {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1; font-weight: 400;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .contact-title em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .contact-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.9);
+    max-width: 600px;
+    margin: 0 0 3rem;
+    line-height: 1.5;
+  }
+  .contact-actions {
+    display: flex; gap: 1rem; justify-content: flex-start; flex-wrap: wrap;
+  }
+  .contact-btn {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    padding: 1.1rem 2.2rem;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border: 1px solid;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s;
+  }
+  .contact-btn svg { width: 16px; height: 16px; }
+  .contact-btn-primary {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+  .contact-btn-primary:hover { background: transparent; }
+  .contact-btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+  }
+  .contact-btn-secondary:hover {
+    background: var(--white);
+    color: var(--terracotta);
+  }
+
+  /* === Coordonnées dans la section contact (colonne gauche) === */
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    padding-right: 2rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .contact-detail {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+  .contact-detail-icon {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: rgba(26, 30, 26, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .contact-detail-icon svg { width: 18px; height: 18px; }
+  .contact-detail-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .contact-detail-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+  }
+  .contact-detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+    line-height: 1.2;
+  }
+  a.contact-detail-value:hover { color: var(--ink); }
+
+  /* ========================================================
+     === FOOTER
+     ======================================================== */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.7);
+    padding: 4rem 3rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1400px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand .logo {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .footer-brand p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  .footer-col h4 {
+    font-family: 'Italiana', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li {
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .footer-col a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: pointer;
+  }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    max-width: 1400px; margin: 0 auto;
+    padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+
+  /* ========================================================
+     === MODAL DE CONTACT (3 ÉTAPES)
+     ======================================================== */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(26, 30, 26, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+  }
+  .modal-overlay.active { display: flex; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .modal {
+    background: var(--white);
+    width: 100%;
+    max-width: 640px;
+    max-height: 92vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: modalIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .modal-close {
+    position: absolute; top: 1rem; right: 1rem;
+    width: 36px; height: 36px;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    z-index: 10;
+  }
+  .modal-close:hover {
+    background: var(--ink); color: var(--white); border-color: var(--ink);
+  }
+  .modal-close svg { width: 16px; height: 16px; }
+
+  .modal-progress {
+    display: flex;
+    height: 3px;
+    background: rgba(0,0,0,0.05);
+    flex-shrink: 0;
+  }
+  .modal-progress-bar {
+    flex: 1;
+    background: rgba(0,0,0,0.05);
+    transition: background 0.5s;
+  }
+  .modal-progress-bar.done { background: var(--terracotta); }
+  .modal-progress-bar.active { background: var(--gold); }
+
+  .modal-content {
+    padding: 2rem 2.5rem 1.5rem;
+    overflow-y: auto;
+    flex: 1;
+  }
+  .modal-step { display: none; }
+  .modal-step.active { display: block; animation: modalIn 0.4s ease; }
+
+  .modal-step-num {
+    font-family: 'Italiana', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .modal-step h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.7rem;
+    line-height: 1.05;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+  .modal-step h3 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .modal-step .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .stage-options {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .stage-options input[type="radio"] { display: none; }
+  .stage-option-label {
+    padding: 0.85rem 1.2rem;
+    background: var(--sand-light);
+    border: 1px solid rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .stage-option-label:hover {
+    background: var(--sand);
+    border-color: var(--gold);
+  }
+  .stage-options input[type="radio"]:checked + .stage-option-label {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+  .stage-option-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .stage-option-icon svg { width: 16px; height: 16px; }
+  .stage-options input[type="radio"]:checked + .stage-option-label .stage-option-icon {
+    background: var(--gold); color: var(--ink); border-color: var(--gold);
+  }
+  .stage-option-text strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    display: block;
+    line-height: 1.2;
+    margin-bottom: 0.15rem;
+  }
+  .stage-option-text span {
+    font-size: 0.78rem;
+    opacity: 0.7;
+    line-height: 1.35;
+  }
+
+  .form-group {
+    display: grid;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+  }
+  .form-input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: var(--sand-light);
+    border: 1px solid rgba(0,0,0,0.08);
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--ink);
+    transition: all 0.3s;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--terracotta);
+    background: var(--white);
+  }
+  .form-input::placeholder { color: var(--ink-soft); opacity: 0.6; }
+
+  .pref-section { margin-top: 1.1rem; }
+  .pref-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+  }
+  .pref-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .pref-options input[type="radio"] { display: none; }
+  .pref-option-label {
+    padding: 0.75rem 0.5rem;
+    background: var(--sand-light);
+    border: 1px solid rgba(0,0,0,0.08);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .pref-option-label:hover { background: var(--sand); border-color: var(--gold); }
+  .pref-options input[type="radio"]:checked + .pref-option-label {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+  .pref-option-label svg {
+    width: 24px; height: 24px;
+    color: var(--gold);
+    transition: color 0.2s;
+  }
+  .pref-options input[type="radio"]:checked + .pref-option-label svg {
+    color: var(--gold-bright);
+  }
+  .pref-option-label span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .form-textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: var(--sand-light);
+    border: 1px solid rgba(0,0,0,0.08);
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--ink);
+    min-height: 110px;
+    resize: vertical;
+    transition: all 0.3s;
+  }
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--terracotta);
+    background: var(--white);
+  }
+  .form-textarea::placeholder { color: var(--ink-soft); opacity: 0.6; }
+
+  .reassurance {
+    margin-top: 1rem;
+    padding: 0.8rem 1.1rem;
+    background: var(--sand-light);
+    border-left: 3px solid var(--gold);
+    font-size: 0.83rem;
+    color: var(--ink-soft);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    line-height: 1.45;
+  }
+
+  .modal-step.success {
+    text-align: center;
+    padding: 1.5rem 0;
+  }
+  .modal-step.success .check-icon {
+    width: 80px; height: 80px;
+    margin: 0 auto 1.5rem;
+    background: var(--success);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white);
+  }
+  .modal-step.success .check-icon svg { width: 38px; height: 38px; }
+  .modal-step.success p {
+    margin-top: 1rem;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--ink-soft);
+  }
+  .modal-step.success .small {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem 1.1rem;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    background: var(--sand-light);
+    flex-shrink: 0;
+  }
+  .modal-back {
+    background: transparent;
+    border: none;
+    color: var(--ink-soft);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+  }
+  .modal-back:hover { color: var(--ink); }
+  .modal-back[disabled] { opacity: 0.3; cursor: not-allowed; }
+  .modal-next {
+    padding: 1rem 2rem;
+    background: var(--terracotta);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    transition: background 0.3s;
+  }
+  .modal-next:hover { background: var(--ink); }
+
+
+  /* ========================================================
+     === CALENDRIER (RDV DIRECT)
+     ======================================================== */
+  .calendar-overlay {
+    position: fixed; inset: 0;
+    background: rgba(26, 30, 26, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+  }
+  .calendar-overlay.active { display: flex; }
+
+  .calendar-modal {
+    background: var(--white);
+    width: 100%;
+    max-width: 1000px;
+    max-height: 92vh;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    animation: modalIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .calendar-side {
+    flex: 0 0 320px;
+    background: var(--sand-light);
+    padding: 2.5rem 2rem;
+    overflow-y: auto;
+  }
+  .calendar-host {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .calendar-host-photo {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background-image: url('https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?w=200&q=85');
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--gold);
+    flex-shrink: 0;
+  }
+  .calendar-host-name {
+    font-family: 'Italiana', serif;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+  .calendar-host-role {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.4rem;
+  }
+  .calendar-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem;
+  }
+  .calendar-title {
+    font-family: 'Italiana', serif;
+    font-size: 1.7rem;
+    line-height: 1.05;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  .calendar-title em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .calendar-info-list { list-style: none; margin-top: 1rem; }
+  .calendar-info-list li {
+    padding: 0.5rem 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .calendar-info-list li svg {
+    width: 16px; height: 16px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .calendar-main {
+    flex: 1;
+    padding: 1.5rem 2rem 1.5rem;
+    overflow-y: auto;
+    position: relative;
+  }
+  .calendar-close {
+    position: absolute; top: 1rem; right: 1rem;
+    width: 36px; height: 36px;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10;
+    transition: all 0.2s;
+  }
+  .calendar-close:hover {
+    background: var(--ink); color: var(--white); border-color: var(--ink);
+  }
+  .calendar-close svg { width: 16px; height: 16px; }
+
+  .calendar-month-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-right: 3rem; /* libère l'espace pour la croix de fermeture */
+  }
+  .calendar-month-name { font-family: 'Italiana', serif; font-size: 1.15rem; }
+  .calendar-nav-btn {
+    width: 32px; height: 32px;
+    background: var(--sand-light);
+    border: 1px solid rgba(0,0,0,0.1);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink);
+    transition: all 0.2s;
+  }
+  .calendar-nav-btn:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+    margin-bottom: 1rem;
+  }
+  .calendar-day-name {
+    text-align: center;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 0.3rem 0;
+  }
+  .calendar-day {
+    aspect-ratio: 1;
+    background: var(--sand-light);
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: var(--ink);
+    transition: all 0.2s;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .calendar-day:hover { border-color: var(--gold); background: var(--sand); }
+  .calendar-day.today { background: var(--gold); color: var(--ink); font-weight: 500; }
+  .calendar-day.disabled {
+    color: rgba(0,0,0,0.2);
+    cursor: not-allowed;
+    background: transparent;
+  }
+  .calendar-day.disabled:hover { border-color: transparent; background: transparent; }
+  .calendar-day.selected {
+    background: var(--terracotta);
+    color: var(--white);
+    border-color: var(--terracotta);
+  }
+
+  .calendar-slots {
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 1rem;
+  }
+  .calendar-slots-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.6rem;
+  }
+  .calendar-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .calendar-slot {
+    padding: 0.55rem 0.4rem;
+    background: var(--sand-light);
+    border: 1px solid rgba(0,0,0,0.08);
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    transition: all 0.2s;
+  }
+  .calendar-slot:hover { border-color: var(--gold); }
+  .calendar-slot.selected {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+  .calendar-slot.disabled { opacity: 0.3; pointer-events: none; }
+
+  .calendar-confirm {
+    width: 100%;
+    padding: 0.95rem;
+    background: var(--terracotta);
+    color: var(--white);
+    border: none;
+    font-family: inherit;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .calendar-confirm.ready { opacity: 1; pointer-events: auto; }
+  .calendar-confirm.ready:hover { background: var(--ink); }
+
+  .calendar-success {
+    display: none; text-align: center; padding: 3rem 2rem;
+  }
+  .calendar-success.active { display: block; }
+  .calendar-success .check-icon {
+    width: 80px; height: 80px;
+    margin: 0 auto 1.5rem;
+    background: var(--success);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white);
+  }
+  .calendar-success h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .calendar-success h3 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .calendar-success-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--terracotta);
+    margin: 1rem 0;
+  }
+  .calendar-success p {
+    color: var(--ink-soft);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+  }
+
+  /* ========================================================
+     === RESPONSIVE
+     ======================================================== */
+  @media (max-width: 1200px) and (min-width: 901px) {
+    /* Tablette / écran moyen : padding réduit mais flèches encore au centre */
+    .swap-info { padding: 2.5rem 6rem; }
+    .swap-arrow { width: 52px; height: 52px; }
+    .swap-arrow.prev { left: 1.5rem; }
+    .swap-arrow.next { right: 1.5rem; }
+    /* Crypto badge et tag légèrement réduits sur tablette */
+    .swap-crypto { right: 6rem; padding: 0.9rem 1.2rem; gap: 0.8rem; }
+    .swap-crypto-label { font-size: 0.62rem; }
+    .swap-crypto-icons svg { width: 24px; height: 24px; }
+    .swap-tag { padding: 0.9rem 1.2rem; font-size: 0.62rem; left: 6rem; }
+  }
+  @media (max-width: 900px) {
+    nav.main-nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .hero-content { padding: 0 1.5rem 4rem; }
+    .slide-caption { right: 1.5rem; bottom: 4rem; }
+    .slide-indicators { left: 1.5rem; }
+    .section { padding: 4rem 1.5rem; }
+    .villas-section { padding: 3rem 0 0; }
+    .villas-section .section-header { padding: 0 1.5rem; }
+    .villas-header-compact {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 0 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .villas-lead-compact { text-align: left; max-width: none; }
+    .villas-c { flex-direction: column; height: auto; }
+    .villa-c { min-height: 280px; }
+    .villa-c:hover { flex: 1; }
+    .villa-c-details { max-height: 200px; opacity: 1; }
+    .portrait { padding: 4rem 1.5rem; }
+    .portrait-inner { grid-template-columns: 1fr; gap: 4rem; }
+    .portrait-photo { max-width: 400px; margin: 0 auto; }
+    .journey { padding: 4rem 1.5rem; }
+    .journey-steps { grid-template-columns: 1fr; gap: 3rem; }
+    .journey-steps::before { display: none; }
+    .contact-section { padding: 4rem 1.5rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .contact-main { order: -1; text-align: center; }
+    .contact-eyebrow { justify-content: center; }
+    .contact-actions { justify-content: center; }
+    .contact-details { padding-right: 0; padding-top: 2rem; border-right: none; border-top: 1px solid rgba(255,255,255,0.2); }
+    .contact-detail { justify-content: center; max-width: 320px; margin: 0 auto; }
+    .contact-lead { margin-left: auto; margin-right: auto; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  @media (max-width: 768px) {
+    .modal-overlay, .calendar-overlay { padding: 0; }
+    .modal, .calendar-modal { max-width: 100%; max-height: 100vh; height: 100vh; }
+    .modal-content { padding: 4rem 1.5rem 2rem; }
+    .modal-actions { padding: 1rem 1.5rem; }
+    .calendar-modal { flex-direction: column; }
+    .calendar-side { flex: 0 0 auto; max-height: 35vh; padding: 1.5rem; }
+    .calendar-main { padding: 1.5rem; }
+    .pref-options { grid-template-columns: 1fr; }
+    .calendar-slots-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* === Animations au scroll (fade-in léger) === */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Délais en cascade pour des éléments en groupe */
+  .reveal.delay-1 { transition-delay: 0.1s; }
+  .reveal.delay-2 { transition-delay: 0.2s; }
+  .reveal.delay-3 { transition-delay: 0.3s; }
+  .reveal.delay-4 { transition-delay: 0.4s; }
+  /* Respect des préférences utilisateur */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION (header A — glassmorphism + scrolled state)
+     ============================================================ -->
+<nav class="main-nav" id="mainNav">
+  <a href="#" class="logo">
+    <svg width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 22L24 8l18 14"/><path d="M10 20v20h28V20"/><path d="M20 40v-10h8v10"/><circle cx="24" cy="24" r="1.5" fill="currentColor"/>
+    </svg>
+    Maisons <span class="s-accent">S</span>amui
+  </a>
+  <ul class="nav-links">
+    <li><a href="#villas">Les Villas</a></li>
+    <li><a href="#histoire">Histoire</a></li>
+    <li><a href="#parcours">Étapes</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a class="cta-nav" onclick="openCalendar()">Prendre rendez-vous</a></li>
+  </ul>
+  <button class="nav-burger" onclick="openContactModal()" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+</nav>
+
+<!-- ============================================================
+     HERO (slideshow Ken Burns V2.1)
+     ============================================================ -->
+<section class="hero">
+  <div class="slide slide-1 active">
+    <div class="slide-img"></div>
+    <div class="slide-overlay"></div>
+  </div>
+  <div class="slide slide-2"><div class="slide-img"></div><div class="slide-overlay"></div></div>
+  <div class="slide slide-3"><div class="slide-img"></div><div class="slide-overlay"></div></div>
+  <div class="slide slide-4"><div class="slide-img"></div><div class="slide-overlay"></div></div>
+  <div class="slide slide-5"><div class="slide-img"></div><div class="slide-overlay"></div></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Koh Samui · Thaïlande</div>
+    <h1>Une île.<br>Des maisons<br><em>d'exception.</em></h1>
+    <p class="hero-tagline">Quatre villas soigneusement sélectionnées. Construction directe, sans intermédiaires.</p>
+  </div>
+
+  <div class="slide-caption" id="caption">
+    <div class="caption-num" id="capNum">N° I / V</div>
+    <div class="caption-title" id="capTitle">Villa Ananta</div>
+    <div class="caption-loc" id="capLoc">Bophut · Côte Nord-Est</div>
+  </div>
+
+  <div class="slide-indicators" id="indicators">
+    <button class="indicator active" data-index="0" aria-label="Slide 1"></button>
+    <button class="indicator" data-index="1" aria-label="Slide 2"></button>
+    <button class="indicator" data-index="2" aria-label="Slide 3"></button>
+    <button class="indicator" data-index="3" aria-label="Slide 4"></button>
+    <button class="indicator" data-index="4" aria-label="Slide 5"></button>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION I : VILLAS (Galerie immersive C)
+     ============================================================ -->
+<section class="villas-section" id="villas">
+  <div class="villas-header-compact reveal">
+    <div class="villas-header-left">
+      <div class="section-roman">
+        <span class="section-roman-num">— I —</span>
+        <span class="section-roman-line"></span>
+      </div>
+      <div class="section-label">— Notre collection</div>
+      <h2 class="villas-title-compact">Quatre villas, <em>quatre côtes</em>.</h2>
+    </div>
+    <p class="villas-lead-compact">Survolez celle qui vous parle.<br>Chacune est une réponse au lieu où elle s'inscrit.</p>
+  </div>
+
+  <div class="villas-swap reveal delay-1">
+    <div class="swap-container">
+
+      <!-- Visuel villa pleine largeur avec tout en overlay -->
+      <button class="swap-arrow prev" id="swapPrev" aria-label="Villa précédente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="20" y1="12" x2="4" y2="12"/>
+          <polyline points="11 19 4 12 11 5"/>
+        </svg>
+      </button>
+      <button class="swap-arrow next" id="swapNext" aria-label="Villa suivante">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <polyline points="13 5 20 12 13 19"/>
+        </svg>
+      </button>
+
+      <div class="swap-visual">
+        <div class="swap-image swap-image-1 active"></div>
+        <div class="swap-image swap-image-2"></div>
+        <div class="swap-image swap-image-3"></div>
+        <div class="swap-image swap-image-4"></div>
+
+        <span class="swap-tag" id="swapTag">Vue mer</span>
+        <div class="swap-crypto">
+          <span class="swap-crypto-label">Cryptos acceptées</span>
+          <span class="swap-crypto-icons"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#F7931A"/><path d="M22.35 14.07c.29-1.93-1.18-2.97-3.18-3.66l.65-2.61-1.59-.4-.63 2.54c-.42-.1-.85-.2-1.27-.3l.64-2.56-1.59-.4-.65 2.61c-.34-.08-.68-.15-1.01-.23l-2.19-.55-.42 1.7s1.18.27 1.15.29c.64.16.76.59.74.93l-.74 2.97c.04.01.1.03.17.05l-.17-.04-1.04 4.17c-.08.2-.28.49-.73.38.02.02-1.16-.29-1.16-.29l-.79 1.82 2.07.52c.39.1.76.2 1.13.29l-.66 2.64 1.59.4.65-2.61c.43.12.86.22 1.27.33l-.65 2.6 1.59.4.66-2.64c2.71.51 4.75.31 5.61-2.15.69-1.98-.03-3.12-1.46-3.87 1.04-.24 1.83-.92 2.04-2.33zm-3.65 5.11c-.49 1.98-3.83.91-4.92.64l.87-3.5c1.08.27 4.56.8 4.05 2.86zm.49-5.14c-.45 1.8-3.23.89-4.14.66l.79-3.17c.91.23 3.82.65 3.35 2.51z" fill="white"/></svg><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#2775CA"/><path d="M20.9 18.5c0-2.59-1.56-3.48-4.68-3.85-2.23-.3-2.67-.89-2.67-1.93 0-1.04.74-1.71 2.23-1.71 1.34 0 2.08.45 2.45 1.56.07.22.3.37.52.37h1.19c.3 0 .52-.22.52-.52v-.07c-.3-1.64-1.64-2.9-3.35-3.05v-1.78c0-.3-.22-.52-.59-.59h-1.12c-.3 0-.52.22-.59.59v1.71c-2.23.3-3.64 1.78-3.64 3.64 0 2.45 1.49 3.42 4.61 3.79 2.08.37 2.75.82 2.75 2 0 1.19-1.04 2-2.45 2-1.93 0-2.6-.82-2.82-1.93-.07-.3-.3-.45-.52-.45H10.6c-.3 0-.52.22-.52.52v.07c.3 1.86 1.49 3.2 3.94 3.57v1.78c0 .3.22.52.59.59h1.12c.3 0 .52-.22.59-.59v-1.78c2.23-.37 3.57-1.93 3.57-3.94z" fill="white"/></svg><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#26A17B"/><path d="M17.92 14.3v-2.03h4.64V9.18H9.46v3.09h4.64v2.03c-3.77.17-6.61.92-6.61 1.81 0 .89 2.84 1.63 6.61 1.81v6.49h3.82v-6.5c3.77-.17 6.6-.92 6.6-1.81 0-.89-2.84-1.63-6.6-1.81zm0 3.07v-.01c-.09.01-.58.04-1.68.04-.88 0-1.5-.02-1.72-.04v.01c-3.42-.15-5.98-.75-5.98-1.46 0-.71 2.56-1.31 5.98-1.46v2.32c.22.02.86.05 1.74.05 1.05 0 1.58-.04 1.67-.05v-2.32c3.42.15 5.97.75 5.97 1.46 0 .71-2.56 1.31-5.97 1.46z" fill="white"/></svg></span>
+        </div>
+        <div class="swap-indicators">
+          <button class="swap-indicator active" data-idx="0" aria-label="Villa 1"></button>
+          <button class="swap-indicator" data-idx="1" aria-label="Villa 2"></button>
+          <button class="swap-indicator" data-idx="2" aria-label="Villa 3"></button>
+          <button class="swap-indicator" data-idx="3" aria-label="Villa 4"></button>
+        </div>
+      </div>
+
+      <!-- Infos villa (centre-droite) -->
+      <div class="swap-info">
+        <div class="swap-info-block" id="swapInfoBlock">
+          <div class="swap-info-left">
+            <div class="swap-loc" id="swapLoc">Bophut · Côte Nord-Est</div>
+            <h3 class="swap-name" id="swapName">Villa <em>Ananta</em></h3>
+            <p class="swap-desc" id="swapDesc">Perchée sur les hauteurs de Bophut, vue dégagée sur la baie.</p>
+            <div class="swap-specs">
+              <div class="swap-spec">
+                <span class="swap-spec-label">— Chambres —</span>
+                <span class="swap-spec-value" id="swapBedrooms">4</span>
+              </div>
+              <div class="swap-spec">
+                <span class="swap-spec-label">— Surface —</span>
+                <span class="swap-spec-value" id="swapSurface">531 m²</span>
+              </div>
+            </div>
+          </div>
+          <div class="swap-info-right">
+            <div id="swapStatusContainer"></div>
+            <div class="swap-footer">
+              <div class="swap-price">
+                <span class="swap-price-label">À partir de</span>
+                <span class="swap-price-value" id="swapPrice">฿ 48 000 000</span>
+              </div>
+              <a href="villa-ananta.html" class="swap-cta" id="swapCta">
+                Découvrir
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION II : HISTOIRE (Portrait fondateur C)
+     ============================================================ -->
+<section class="portrait" id="histoire">
+  <div class="portrait-inner">
+    <div class="portrait-photo reveal">
+      <div class="portrait-photo-img"></div>
+      <div class="portrait-caption">
+        Sur le chantier, hier.
+        <span>Bophut · Avril 2026</span>
+      </div>
+    </div>
+
+    <div class="reveal delay-1">
+      <div class="section-roman">
+        <span class="section-roman-num">— II —</span>
+        <span class="section-roman-line"></span>
+      </div>
+      <div class="portrait-eyebrow">L'homme derrière les villas</div>
+      <h2 class="portrait-title">« Cette île ne se<br><em>visite</em> pas. Elle se choisit. »</h2>
+
+      <p class="portrait-text">En 2021, Sébastien pose le pied sur Koh Samui pour la première fois. Une semaine plus tard, il sait. <em>Pas en touriste — en futur habitant.</em> Cette île, ses lumières, ses artisans, son rythme : tout résonne avec ce qu'il cherchait sans le savoir depuis des années en France.</p>
+
+      <p class="portrait-text">Quatre ans à préparer. À revenir. À comprendre. Puis en 2025, le grand saut : il quitte la France avec sa femme et leurs deux filles pour s'installer ici. Maisons Samui naît de cette <em>conviction profonde</em> — bâtir, sur cette île, des villas pensées pour ceux qui, comme lui, ont reconnu Koh Samui comme un lieu d'âme.</p>
+
+      <div class="portrait-signature">
+        <div class="portrait-sign-text">S. Dupond</div>
+        <div class="portrait-sign-info">
+          <strong>Sébastien Dupond</strong>
+          Fondateur · Maisons Samui
+        </div>
+      </div>
+
+      <button class="portrait-cta" onclick="openContactModal()">
+        Lui écrire directement
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION III : PARCOURS (Services A — 4 étapes)
+     ============================================================ -->
+<section class="journey" id="parcours">
+  <div class="journey-inner">
+    <div class="journey-header reveal">
+      <div class="section-roman" style="justify-content: center;">
+        <span class="section-roman-line"></span>
+        <span class="section-roman-num">— III —</span>
+        <span class="section-roman-line"></span>
+      </div>
+      <div class="section-label" style="justify-content: center;">— Notre accompagnement</div>
+      <h2 class="section-title journey-title">Cinq étapes,<br>un seul <em>interlocuteur</em>.</h2>
+      <p class="journey-lead">De votre premier email aux clés en main : voici exactement ce qui vous attend, sans surprise.</p>
+    </div>
+
+    <div class="journey-steps">
+      <div class="journey-step reveal delay-1">
+        <div class="journey-step-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
+        <h3 class="journey-step-title">Premier <em>échange</em></h3>
+        <p class="journey-step-desc">Un email, un appel WhatsApp. Réponse personnelle de Sébastien sous 24h, en français.</p>
+      </div>
+
+      <div class="journey-step reveal delay-2">
+        <div class="journey-step-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h3 class="journey-step-title">Visite <em>terrain</em></h3>
+        <p class="journey-step-desc">Sur place ou par drone HD. Sélection des parcelles selon vos critères, cadrage budget.</p>
+      </div>
+
+      <div class="journey-step reveal delay-3">
+        <div class="journey-step-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 11l3 3L22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+        </div>
+        <h3 class="journey-step-title">Cadre <em>juridique</em></h3>
+        <p class="journey-step-desc">Bail longue durée, société Thai Ltd ou droit de superficie : nos avocats partenaires structurent l'acquisition et la signature.</p>
+      </div>
+
+      <div class="journey-step reveal delay-4">
+        <div class="journey-step-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          </svg>
+        </div>
+        <h3 class="journey-step-title">Construction <em>maîtrisée</em></h3>
+        <p class="journey-step-desc">Photos hebdo, page web dédiée, personnalisation des finitions à chaque étape.</p>
+      </div>
+
+      <div class="journey-step reveal">
+        <div class="journey-step-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        <h3 class="journey-step-title">Remise des <em>clés</em></h3>
+        <p class="journey-step-desc">Vous emménagez. Conciergerie, entretien, location saisonnière restent à disposition.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION IV : CONTACT FINAL
+     ============================================================ -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <aside class="contact-details">
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div class="contact-detail-text">
+          <div class="contact-detail-label">— Bureau —</div>
+          <div class="contact-detail-value">Bophut, Koh Samui</div>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div class="contact-detail-text">
+          <div class="contact-detail-label">— Email —</div>
+          <a href="mailto:contact@maisons-samui.com" class="contact-detail-value">contact@maisons-samui.com</a>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <div class="contact-detail-text">
+          <div class="contact-detail-label">— Téléphone —</div>
+          <a href="tel:+6677000000" class="contact-detail-value">+66 (0) 77 000 000</a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="contact-main">
+      <div class="contact-eyebrow reveal">— Et si nous parlions —</div>
+      <h2 class="contact-title reveal delay-1">Votre île<br>vous <em>attend</em>.</h2>
+      <p class="contact-lead reveal delay-2">Quinze ans, quarante-deux villas, et un fil conducteur : la rencontre. Chaque grand projet commence par un simple échange.</p>
+
+      <div class="contact-actions reveal delay-3">
+        <button class="contact-btn contact-btn-primary" onclick="openContactModal()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Nous écrire
+        </button>
+        <button class="contact-btn contact-btn-secondary" onclick="openCalendar()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Prendre rendez-vous
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <svg width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 22L24 8l18 14"/><path d="M10 20v20h28V20"/><path d="M20 40v-10h8v10"/><circle cx="24" cy="24" r="1.5" fill="currentColor"/>
+        </svg>
+        Maisons <span class="s-accent">S</span>amui
+      </a>
+      <p>Constructeur direct de villas d'exception à Koh Samui.<br>Sans intermédiaires, depuis 2010.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Le site</h4>
+      <ul>
+        <li><a href="#villas">Les Villas</a></li>
+        <li><a href="#histoire">Histoire</a></li>
+        <li><a href="#parcours">Étapes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Les villas</h4>
+      <ul>
+        <li><a href="villa-ananta.html">Villa Ananta</a></li>
+        <li><a href="villa-baansawan.html">Baan Sawan</a></li>
+        <li><a href="villa-suriya.html">Villa Suriya</a></li>
+        <li><a href="villa-malee.html">Villa Malee</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>Bophut, Koh Samui</li>
+        <li>contact@maisons-samui.com</li>
+        <li>+66 (0) 77 000 000</li>
+        <li><a onclick="openCalendar()">Prendre rendez-vous →</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Maisons Samui · Koh Samui, Thaïlande</span>
+    <span>Cryptos acceptées · BTC · USDC · USDT</span>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     MODAL DE CONTACT (3 étapes)
+     ============================================================ -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeContactModal()" aria-label="Fermer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="modal-progress" id="modalProgress">
+      <div class="modal-progress-bar active"></div>
+      <div class="modal-progress-bar"></div>
+      <div class="modal-progress-bar"></div>
+    </div>
+    <div class="modal-content">
+      <div class="modal-step active" id="step1">
+        <h3>Où en êtes-vous<br>dans votre <em>projet</em> ?</h3>
+        <p class="lead">Pas de mauvaise réponse. Cela nous aide juste à adapter notre première réponse.</p>
+        <div class="stage-options">
+          <input type="radio" name="stage" id="stage1" value="explore" />
+          <label for="stage1" class="stage-option-label">
+            <div class="stage-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+            <div class="stage-option-text"><strong>Je découvre l'île</strong><span>Phase d'exploration, pas encore de calendrier précis.</span></div>
+          </label>
+          <input type="radio" name="stage" id="stage2" value="search" />
+          <label for="stage2" class="stage-option-label">
+            <div class="stage-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="stage-option-text"><strong>Je cherche activement</strong><span>Projet concret dans les 6 à 18 prochains mois.</span></div>
+          </label>
+          <input type="radio" name="stage" id="stage3" value="ready" />
+          <label for="stage3" class="stage-option-label">
+            <div class="stage-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+            <div class="stage-option-text"><strong>Je suis prêt à acheter</strong><span>Budget cadré, recherche dans les 3 prochains mois.</span></div>
+          </label>
+          <input type="radio" name="stage" id="stage4" value="other" />
+          <label for="stage4" class="stage-option-label">
+            <div class="stage-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div class="stage-option-text"><strong>Autre demande</strong><span>Question spécifique, partenariat, presse, etc.</span></div>
+          </label>
+        </div>
+      </div>
+      <div class="modal-step" id="step2">
+        <h3>Comment <em>vous joindre</em> ?</h3>
+        <p class="lead">Vous choisissez le canal qui vous convient. Nous nous adaptons.</p>
+        <div class="form-group">
+          <input type="text" class="form-input" id="contactName" placeholder="Prénom et nom" required />
+          <input type="email" class="form-input" id="contactEmail" placeholder="Adresse email" required />
+          <input type="tel" class="form-input" id="contactPhone" placeholder="Téléphone (avec indicatif pays, ex: +33 6...)" />
+        </div>
+        <div class="pref-section">
+          <div class="pref-label">— Préférence de contact —</div>
+          <div class="pref-options">
+            <input type="radio" name="pref" id="pref1" value="email" checked />
+            <label for="pref1" class="pref-option-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Email</span></label>
+            <input type="radio" name="pref" id="pref2" value="phone" />
+            <label for="pref2" class="pref-option-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Téléphone</span></label>
+            <input type="radio" name="pref" id="pref3" value="whatsapp" />
+            <label for="pref3" class="pref-option-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>WhatsApp</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-step" id="step3">
+        <h3>Quelques <em>mots</em><br>sur votre projet ?</h3>
+        <p class="lead">Tout ce que vous voulez nous dire. Côté préféré, nombre de chambres, budget, calendrier... ou rien si vous préférez en parler de vive voix.</p>
+        <textarea class="form-textarea" id="contactMessage" placeholder="L'image que vous avez en tête, vos questions, vos contraintes..."></textarea>
+        <div class="reassurance"><strong>Sébastien</strong> vous répond personnellement sous 24h, en français. Pas de relance commerciale automatique. Vos informations restent strictement confidentielles.</div>
+      </div>
+      <div class="modal-step success" id="stepSuccess">
+        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Message <em>envoyé</em></h3>
+        <p>Sébastien vous répond personnellement sous 24h.<br>À très bientôt.</p>
+        <p class="small">Pensez à vérifier vos spams si vous ne recevez rien dans la journée.</p>
+      </div>
+    </div>
+    <div class="modal-actions" id="modalActions">
+      <button class="modal-back" id="modalBack" onclick="prevContactStep()" disabled>← Retour</button>
+      <button class="modal-next" id="modalNext" onclick="nextContactStep()">Suivant →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     CALENDRIER (RDV direct)
+     ============================================================ -->
+<div class="calendar-overlay" id="calendarModal">
+  <div class="calendar-modal">
+    <button class="calendar-close" onclick="closeCalendar()" aria-label="Fermer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <aside class="calendar-side">
+      <div class="calendar-host">
+        <div class="calendar-host-photo"></div>
+        <div>
+          <div class="calendar-host-name">Sébastien Dupond</div>
+          <div class="calendar-host-role">Fondateur</div>
+        </div>
+      </div>
+      <div class="calendar-eyebrow">— Appel découverte —</div>
+      <h2 class="calendar-title">30 minutes pour<br>cadrer votre <em>projet</em>.</h2>
+      <ul class="calendar-info-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>30 min · Visio ou téléphone</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Français · Anglais · Russe</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>Sans engagement · Confidentiel</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Invitation calendrier envoyée</li>
+      </ul>
+    </aside>
+    <div class="calendar-main">
+      <div id="calendarView">
+        <div class="calendar-month-nav">
+          <button class="calendar-nav-btn" aria-label="Mois précédent">←</button>
+          <div class="calendar-month-name">Mai 2026</div>
+          <button class="calendar-nav-btn" aria-label="Mois suivant">→</button>
+        </div>
+        <div class="calendar-grid">
+          <div class="calendar-day-name">L</div><div class="calendar-day-name">M</div><div class="calendar-day-name">M</div><div class="calendar-day-name">J</div><div class="calendar-day-name">V</div><div class="calendar-day-name">S</div><div class="calendar-day-name">D</div>
+          <div class="calendar-day disabled">28</div><div class="calendar-day disabled">29</div><div class="calendar-day disabled">30</div><div class="calendar-day disabled">1</div><div class="calendar-day today">2</div><div class="calendar-day disabled">3</div><div class="calendar-day disabled">4</div>
+          <div class="calendar-day" onclick="selectDay(this, '5 mai')">5</div><div class="calendar-day" onclick="selectDay(this, '6 mai')">6</div><div class="calendar-day" onclick="selectDay(this, '7 mai')">7</div><div class="calendar-day" onclick="selectDay(this, '8 mai')">8</div><div class="calendar-day" onclick="selectDay(this, '9 mai')">9</div><div class="calendar-day disabled">10</div><div class="calendar-day disabled">11</div>
+          <div class="calendar-day" onclick="selectDay(this, '12 mai')">12</div><div class="calendar-day" onclick="selectDay(this, '13 mai')">13</div><div class="calendar-day" onclick="selectDay(this, '14 mai')">14</div><div class="calendar-day" onclick="selectDay(this, '15 mai')">15</div><div class="calendar-day" onclick="selectDay(this, '16 mai')">16</div><div class="calendar-day disabled">17</div><div class="calendar-day disabled">18</div>
+          <div class="calendar-day" onclick="selectDay(this, '19 mai')">19</div><div class="calendar-day" onclick="selectDay(this, '20 mai')">20</div><div class="calendar-day" onclick="selectDay(this, '21 mai')">21</div><div class="calendar-day" onclick="selectDay(this, '22 mai')">22</div><div class="calendar-day" onclick="selectDay(this, '23 mai')">23</div><div class="calendar-day disabled">24</div><div class="calendar-day disabled">25</div>
+          <div class="calendar-day" onclick="selectDay(this, '26 mai')">26</div><div class="calendar-day" onclick="selectDay(this, '27 mai')">27</div><div class="calendar-day" onclick="selectDay(this, '28 mai')">28</div><div class="calendar-day" onclick="selectDay(this, '29 mai')">29</div><div class="calendar-day" onclick="selectDay(this, '30 mai')">30</div><div class="calendar-day disabled">31</div><div class="calendar-day disabled">1</div>
+        </div>
+        <div class="calendar-slots">
+          <div class="calendar-slots-title" id="slotsTitle">— Sélectionnez une date —</div>
+          <div class="calendar-slots-grid" id="slotsGrid">
+            <div class="calendar-slot disabled">09:00</div><div class="calendar-slot disabled">10:30</div><div class="calendar-slot disabled">14:00</div><div class="calendar-slot disabled">15:30</div><div class="calendar-slot disabled">17:00</div><div class="calendar-slot disabled">18:30</div><div class="calendar-slot disabled">20:00</div><div class="calendar-slot disabled">21:30</div>
+          </div>
+          <button class="calendar-confirm" id="calendarConfirm" onclick="confirmAppointment()">Confirmer le rendez-vous</button>
+        </div>
+      </div>
+      <div class="calendar-success" id="calendarSuccess">
+        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="38" height="38"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Rendez-vous <em>confirmé</em></h3>
+        <div class="calendar-success-time" id="calendarSuccessTime"></div>
+        <p>Vous recevez une invitation calendrier dans les prochaines minutes,<br>avec le lien de visio et le numéro à appeler.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// ============================================================
+// ANIMATIONS AU SCROLL (Intersection Observer)
+// ============================================================
+(function() {
+  const reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+  if (!('IntersectionObserver' in window)) {
+    // Fallback : tout afficher direct
+    reveals.forEach(el => el.classList.add('visible'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -60px 0px'
+  });
+  reveals.forEach(el => observer.observe(el));
+})();
+
+// ============================================================
+// V6 : CARROUSEL VILLAS (swap avec flèches)
+// ============================================================
+(function() {
+  const villasData = [
+    {
+      tag: 'Vue mer',
+      loc: 'Bophut · Côte Nord-Est',
+      name: 'Villa <em>Ananta</em>',
+      desc: 'Perchée sur les hauteurs de Bophut, vue dégagée sur la baie. Architecture contemporaine, terrasse plein sud — une des plus belles vues de l\'île.',
+      bedrooms: '4',
+      surface: '531 m²',
+      price: '฿ 48 000 000',
+      url: 'villa-ananta.html',
+      status: { type: 'delivered', year: '2024' }
+    },
+    {
+      tag: 'Front de mer',
+      loc: 'Lipa Noi · Côte Ouest',
+      name: 'Baan <em>Sawan</em>',
+      desc: 'Notre villa la plus emblématique. 450 m² posés à dix mètres de l\'eau, livrable Q3 2026 — couchers de soleil légendaires sur le golfe de Thaïlande.',
+      bedrooms: '5',
+      surface: '450 m²',
+      price: '฿ 62 500 000',
+      url: 'villa-baansawan.html',
+      status: { type: 'building', pct: 35, target: 'Q3 2026', detail: 'gros œuvre achevé, second œuvre en cours' }
+    },
+    {
+      tag: 'Colline',
+      loc: 'Chaweng Noi · Côte Est',
+      name: 'Villa <em>Suriya</em>',
+      desc: 'La plus intime de notre collection. Posée à flanc de colline, entourée d\'une végétation dense — calme absolu à dix minutes de Chaweng.',
+      bedrooms: '3',
+      surface: '280 m²',
+      price: '฿ 35 000 000',
+      url: 'villa-suriya.html',
+      status: { type: 'delivered', year: '2023' }
+    },
+    {
+      tag: 'Jungle privée',
+      loc: 'Maenam · Côte Nord',
+      name: 'Villa <em>Malee</em>',
+      desc: 'Un hectare de jungle préservée pour une seule maison. Piscine à débordement, pavillon extérieur — pour ceux qui cherchent la retraite ultime.',
+      bedrooms: '4',
+      surface: '360 m²',
+      price: '฿ 42 000 000',
+      url: 'villa-malee.html',
+      status: { type: 'building', pct: 12, target: 'Q1 2027', detail: 'fondations terminées, élévation en cours' }
+    }
+  ];
+
+  let currentIdx = 0;
+
+  // Refs DOM
+  const images = document.querySelectorAll('.swap-image');
+  const indicators = document.querySelectorAll('.swap-indicator');
+  const prevBtn = document.getElementById('swapPrev');
+  const nextBtn = document.getElementById('swapNext');
+  const tagEl = document.getElementById('swapTag');
+  const infoBlock = document.getElementById('swapInfoBlock');
+  const locEl = document.getElementById('swapLoc');
+  const nameEl = document.getElementById('swapName');
+  const descEl = document.getElementById('swapDesc');
+  const bedroomsEl = document.getElementById('swapBedrooms');
+  const surfaceEl = document.getElementById('swapSurface');
+  const statusContainer = document.getElementById('swapStatusContainer');
+  const priceEl = document.getElementById('swapPrice');
+  const ctaEl = document.getElementById('swapCta');
+
+  function renderStatus(status) {
+    if (status.type === 'delivered') {
+      return '<div class="swap-status delivered">' +
+        '<div class="status-icon">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">' +
+            '<polyline points="20 6 9 17 4 12"/>' +
+          '</svg>' +
+        '</div>' +
+        '<div class="status-text">' +
+          '<div class="status-label">— Livrée en ' + status.year + ' —</div>' +
+          '<div class="status-value">Disponible immédiatement, prête à habiter.</div>' +
+        '</div>' +
+      '</div>';
+    } else {
+      return '<div class="swap-status building">' +
+        '<div class="status-header">' +
+          '<span class="status-label">— En construction —</span>' +
+          '<span class="status-pct">' + status.pct + '%</span>' +
+        '</div>' +
+        '<div class="swap-progress-track">' +
+          '<div class="swap-progress-fill" style="width:' + status.pct + '%"></div>' +
+          '<div class="swap-progress-dot" style="left:' + status.pct + '%"></div>' +
+        '</div>' +
+        '<div class="status-detail">Livraison estimée <strong>' + status.target + '</strong> · ' + status.detail + '.</div>' +
+      '</div>';
+    }
+  }
+
+  function renderVilla(idx) {
+    const v = villasData[idx];
+    if (!v) return;
+
+    // Image active
+    images.forEach((img, i) => img.classList.toggle('active', i === idx));
+    indicators.forEach((dot, i) => dot.classList.toggle('active', i === idx));
+
+    // Animer le bloc texte (fade)
+    if (infoBlock) {
+      infoBlock.classList.add('changing');
+      setTimeout(() => {
+        if (tagEl) tagEl.textContent = v.tag;
+        if (locEl) locEl.textContent = v.loc;
+        if (nameEl) nameEl.innerHTML = v.name;
+        if (descEl) descEl.textContent = v.desc;
+        if (bedroomsEl) bedroomsEl.textContent = v.bedrooms;
+        if (surfaceEl) surfaceEl.textContent = v.surface;
+        if (priceEl) priceEl.textContent = v.price;
+        if (ctaEl) ctaEl.href = v.url;
+        if (statusContainer) {
+          // Render le statut
+          statusContainer.innerHTML = renderStatus(v.status);
+          // Si en construction : animer la barre depuis 0 vers le %
+          if (v.status.type === 'building') {
+            requestAnimationFrame(() => {
+              const fill = statusContainer.querySelector('.swap-progress-fill');
+              const dot = statusContainer.querySelector('.swap-progress-dot');
+              if (fill && dot) {
+                fill.style.width = '0%';
+                dot.style.left = '0%';
+                // Force reflow puis lance l'animation vers la cible
+                void fill.offsetWidth;
+                fill.style.width = v.status.pct + '%';
+                dot.style.left = v.status.pct + '%';
+              }
+            });
+          }
+        }
+        infoBlock.classList.remove('changing');
+      }, 200);
+    }
+
+    // Plus de désactivation : rotation infinie
+    currentIdx = idx;
+  }
+
+  function next() {
+    // Rotation infinie : si on est à la dernière, on revient à la première
+    const nextIdx = (currentIdx + 1) % villasData.length;
+    renderVilla(nextIdx);
+  }
+  function prev() {
+    // Rotation infinie : si on est à la première, on va à la dernière
+    const prevIdx = (currentIdx - 1 + villasData.length) % villasData.length;
+    renderVilla(prevIdx);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', prev);
+  if (nextBtn) nextBtn.addEventListener('click', next);
+
+  indicators.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.idx);
+      if (!isNaN(idx)) renderVilla(idx);
+    });
+  });
+
+  // Navigation clavier
+  document.addEventListener('keydown', (e) => {
+    // Ne pas interférer avec les modaux ouverts
+    const modalOpen = document.querySelector('.modal-overlay.active, .calendar-overlay.active');
+    if (modalOpen) return;
+    if (e.key === 'ArrowLeft') prev();
+    else if (e.key === 'ArrowRight') next();
+  });
+
+  // Init : afficher villa 0 avec animation
+  renderVilla(0);
+})();
+
+// ============================================================
+// HEADER : état "scrolled"
+// ============================================================
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+}, { passive: true });
+
+// ============================================================
+// HERO SLIDESHOW Ken Burns
+// ============================================================
+(function() {
+  const slides = document.querySelectorAll('.slide');
+  const indicators = document.querySelectorAll('.indicator');
+  const captions = [
+    { num: 'N° I / V', title: 'Villa Ananta', loc: 'Bophut · Côte Nord-Est' },
+    { num: 'N° II / V', title: 'Baan Sawan', loc: 'Lipa Noi · Côte Ouest' },
+    { num: 'N° III / V', title: 'Villa Suriya', loc: 'Chaweng Noi · Côte Est' },
+    { num: 'N° IV / V', title: 'Villa Malee', loc: 'Maenam · Côte Nord' },
+    { num: 'N° V / V', title: 'Pak Nam', loc: 'Taling Ngam · Côte Sud' }
+  ];
+  let currentIndex = 0;
+  const capEl = document.getElementById('caption');
+
+  function goToSlide(index) {
+    slides[currentIndex].classList.remove('active');
+    indicators[currentIndex].classList.remove('active');
+    currentIndex = index;
+    slides[currentIndex].classList.add('active');
+    indicators[currentIndex].classList.add('active');
+    const cap = captions[currentIndex];
+    if (capEl) {
+      capEl.style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('capNum').textContent = cap.num;
+        document.getElementById('capTitle').textContent = cap.title;
+        document.getElementById('capLoc').textContent = cap.loc;
+        capEl.style.opacity = '1';
+      }, 250);
+    }
+  }
+  function nextSlide() { goToSlide((currentIndex + 1) % slides.length); }
+  let interval = setInterval(nextSlide, 6000);
+  indicators.forEach((ind, i) => {
+    ind.addEventListener('click', () => {
+      clearInterval(interval);
+      goToSlide(i);
+      interval = setInterval(nextSlide, 6000);
+    });
+  });
+})();
+
+// ============================================================
+// MODAL CONTACT (3 étapes)
+// ============================================================
+let currentStep = 1;
+const totalSteps = 3;
+
+function openContactModal() {
+  document.getElementById('contactModal').classList.add('active');
+  resetContactModal();
+  document.body.style.overflow = 'hidden';
+}
+function closeContactModal() {
+  document.getElementById('contactModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function resetContactModal() {
+  currentStep = 1;
+  showContactStep(1);
+  document.querySelectorAll('input[name="stage"]').forEach(r => r.checked = false);
+  document.getElementById('pref1').checked = true;
+  document.getElementById('contactName').value = '';
+  document.getElementById('contactEmail').value = '';
+  document.getElementById('contactPhone').value = '';
+  document.getElementById('contactMessage').value = '';
+  document.getElementById('modalActions').style.display = 'flex';
+}
+function showContactStep(n) {
+  document.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
+  const stepEl = document.getElementById('step' + n);
+  if (stepEl) stepEl.classList.add('active');
+  const bars = document.querySelectorAll('#modalProgress .modal-progress-bar');
+  bars.forEach((b, i) => {
+    b.classList.remove('active', 'done');
+    if (i + 1 < n) b.classList.add('done');
+    else if (i + 1 === n) b.classList.add('active');
+  });
+  document.getElementById('modalBack').disabled = (n === 1);
+  const nextBtn = document.getElementById('modalNext');
+  nextBtn.textContent = (n === totalSteps) ? 'Envoyer →' : 'Suivant →';
+}
+function nextContactStep() {
+  if (currentStep === 1) {
+    const stage = document.querySelector('input[name="stage"]:checked');
+    if (!stage) { alert('Merci de sélectionner une option.'); return; }
+  }
+  if (currentStep === 2) {
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    if (!name || !email) { alert('Merci de renseigner au minimum votre nom et votre email.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Merci de renseigner une adresse email valide.'); return; }
+  }
+  if (currentStep === totalSteps) { submitContact(); return; }
+  currentStep++;
+  showContactStep(currentStep);
+}
+function prevContactStep() {
+  if (currentStep > 1) { currentStep--; showContactStep(currentStep); }
+}
+function submitContact() {
+  const data = {
+    stage: document.querySelector('input[name="stage"]:checked')?.value,
+    name: document.getElementById('contactName').value,
+    email: document.getElementById('contactEmail').value,
+    phone: document.getElementById('contactPhone').value,
+    pref: document.querySelector('input[name="pref"]:checked')?.value,
+    message: document.getElementById('contactMessage').value
+  };
+  console.log('Données envoyées :', data);
+  document.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('stepSuccess').classList.add('active');
+  document.getElementById('modalActions').style.display = 'none';
+  document.querySelectorAll('#modalProgress .modal-progress-bar').forEach(b => {
+    b.classList.add('done');
+    b.classList.remove('active');
+  });
+}
+document.getElementById('contactModal').addEventListener('click', (e) => {
+  if (e.target.id === 'contactModal') closeContactModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') { closeContactModal(); closeCalendar(); }
+});
+
+// ============================================================
+// CALENDRIER
+// ============================================================
+let selectedDay = null;
+let selectedSlot = null;
+function openCalendar() {
+  document.getElementById('calendarModal').classList.add('active');
+  resetCalendar();
+  document.body.style.overflow = 'hidden';
+}
+function closeCalendar() {
+  document.getElementById('calendarModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function resetCalendar() {
+  selectedDay = null; selectedSlot = null;
+  document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+  document.querySelectorAll('.calendar-slot').forEach(s => {
+    s.classList.remove('selected'); s.classList.add('disabled'); s.onclick = null;
+  });
+  document.getElementById('slotsTitle').textContent = '— Sélectionnez une date —';
+  const btn = document.getElementById('calendarConfirm');
+  btn.classList.remove('ready');
+  btn.textContent = 'Confirmer le rendez-vous';
+  document.getElementById('calendarView').style.display = 'block';
+  document.getElementById('calendarSuccess').classList.remove('active');
+}
+function selectDay(el, label) {
+  if (el.classList.contains('disabled')) return;
+  document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedDay = label; selectedSlot = null;
+  document.getElementById('slotsTitle').textContent = '— Créneaux du ' + label;
+  document.querySelectorAll('.calendar-slot').forEach(s => {
+    s.classList.remove('selected', 'disabled');
+    s.onclick = function() {
+      document.querySelectorAll('.calendar-slot').forEach(x => x.classList.remove('selected'));
+      this.classList.add('selected');
+      selectedSlot = this.textContent;
+      checkReady();
+    };
+  });
+  checkReady();
+}
+function checkReady() {
+  const btn = document.getElementById('calendarConfirm');
+  if (selectedDay && selectedSlot) {
+    btn.classList.add('ready');
+    btn.textContent = 'Confirmer pour le ' + selectedDay + ' à ' + selectedSlot;
+  } else {
+    btn.classList.remove('ready');
+    btn.textContent = 'Confirmer le rendez-vous';
+  }
+}
+function confirmAppointment() {
+  if (!selectedDay || !selectedSlot) return;
+  document.getElementById('calendarView').style.display = 'none';
+  document.getElementById('calendarSuccessTime').textContent = selectedDay + ' à ' + selectedSlot;
+  document.getElementById('calendarSuccess').classList.add('active');
+}
+document.getElementById('calendarModal').addEventListener('click', (e) => {
+  if (e.target.id === 'calendarModal') closeCalendar();
+});
+</script>
+
+</body>
+</html>

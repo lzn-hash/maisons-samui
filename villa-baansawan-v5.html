@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Personnaliser Baan Sawan — Maisons Samui</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #e8e1d4;
+    --sand-light: #f2ede2;
+    --sand-dark: #d4c9b4;
+    --ink: #1a1e1a;
+    --ink-soft: #3a3f39;
+    --jungle: #2d4a34;
+    --jungle-deep: #1a2e22;
+    --terracotta: #b8623f;
+    --gold: #a88852;
+    --white: #faf7f0;
+    --locked: #9a9385;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--sand-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .display { font-family: 'Italiana', serif; }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 247, 240, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    line-height: 1;
+  }
+  .logo .logo-house { color: var(--gold); flex-shrink: 0; }
+  .logo .logo-text { font-weight: 500; color: var(--ink); }
+  .logo .s-accent {
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+
+  .nav-back {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: opacity 0.3s;
+  }
+  .nav-back:hover { opacity: 0.6; }
+  .nav-back svg { width: 14px; height: 14px; }
+
+  /* ===== HERO PERSONNALISATION ===== */
+  .perso-hero {
+    padding: 8rem 3rem 4rem;
+    background: var(--sand-light);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .perso-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.55 0 0 0 0 0.45 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .perso-hero-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .perso-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .perso-label::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .perso-hero h1 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .perso-hero h1 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+
+  .perso-hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  /* ===== TIMELINE D'AVANCEMENT ===== */
+  .timeline-section {
+    padding: 4rem 3rem 6rem;
+    background: var(--white);
+    border-top: 1px solid rgba(26, 30, 26, 0.06);
+    border-bottom: 1px solid rgba(26, 30, 26, 0.06);
+  }
+
+  .timeline-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .timeline-title h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.1;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .timeline-title h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .timeline-title .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .progress-display {
+    text-align: right;
+    min-width: 280px;
+  }
+  .progress-percent {
+    font-family: 'Italiana', serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--jungle);
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+  .progress-percent sup {
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-left: 0.2rem;
+  }
+  .progress-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .progress-eta {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--terracotta);
+    margin-top: 0.5rem;
+  }
+
+  /* Timeline visual */
+  .timeline-track {
+    position: relative;
+    padding: 2rem 0 1rem;
+  }
+  .timeline-bar {
+    position: relative;
+    height: 2px;
+    background: var(--sand-dark);
+    margin: 0 0 3rem;
+  }
+  .timeline-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--jungle-deep) 0%, var(--jungle) 100%);
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .timeline-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    position: relative;
+  }
+  .timeline-step {
+    position: relative;
+    text-align: center;
+    padding-top: 0;
+  }
+  .timeline-step::before {
+    content: '';
+    position: absolute;
+    top: -3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--sand-dark);
+    transition: all 0.3s;
+    z-index: 2;
+  }
+  .timeline-step.done::before {
+    background: var(--jungle);
+    border-color: var(--jungle);
+  }
+  .timeline-step.current::before {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    box-shadow: 0 0 0 6px rgba(184, 98, 63, 0.15);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 6px rgba(184, 98, 63, 0.15); }
+    50% { box-shadow: 0 0 0 12px rgba(184, 98, 63, 0.05); }
+  }
+
+  .step-num {
+    font-family: 'Italiana', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.15em;
+  }
+  .step-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+  .step-date {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0.6;
+  }
+  .timeline-step.done .step-name { color: var(--jungle); }
+  .timeline-step.current .step-name { color: var(--terracotta); }
+  .timeline-step.upcoming .step-name { color: var(--locked); }
+  .timeline-step.upcoming .step-num { color: var(--sand-dark); }
+
+  /* ===== UNIVERS DE PERSONNALISATION (TABS) ===== */
+  .universes {
+    padding: 6rem 3rem;
+    background: var(--sand-light);
+  }
+  .universes-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .universes-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .universes-header .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .universes-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.1;
+    font-weight: 400;
+    color: var(--ink);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .universes-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  /* Layout principal : tabs + sidebar */
+  .universes-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+  .universes-main { min-width: 0; }
+  .recap-sidebar {
+    position: sticky;
+    top: 6rem;
+  }
+
+  /* Tabs (v3 : avec teaser des contenus) */
+  .univ-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+    scroll-margin-top: 90px;
+  }
+  .univ-tab {
+    background: var(--white);
+    border: 1px solid rgba(26, 30, 26, 0.1);
+    padding: 1.5rem 1.2rem;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    transition: all 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .univ-tab:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(26, 30, 26, 0.05);
+  }
+  .univ-tab.active {
+    border-color: var(--terracotta);
+    background: rgba(184, 98, 63, 0.04);
+  }
+  .univ-tab.active::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--terracotta);
+  }
+  /* État "complété" sur l'onglet */
+  .univ-tab.completed {
+    border-color: var(--jungle);
+  }
+  .univ-tab.completed::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--jungle);
+  }
+  .univ-tab.completed .univ-tab-num { color: var(--jungle); }
+  .univ-tab.completed .univ-tab-status { color: var(--jungle); opacity: 1; }
+  /* Coche pour les onglets complétés */
+  .univ-tab-check {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--jungle);
+    color: var(--white);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .univ-tab.completed .univ-tab-check {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+  }
+  .univ-tab-check svg { width: 12px; height: 12px; }
+  .univ-tab.locked {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+  .univ-tab.locked:hover {
+    transform: none;
+    border-color: rgba(26, 30, 26, 0.1);
+    box-shadow: none;
+  }
+
+  .univ-tab-num {
+    font-family: 'Italiana', serif;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    display: block;
+  }
+  .univ-tab.locked .univ-tab-num { color: var(--locked); }
+  .univ-tab.active .univ-tab-num { color: var(--terracotta); }
+
+  .univ-tab-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  /* Teaser : les sous-catégories listées */
+  .univ-tab-teaser {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(26, 30, 26, 0.06);
+  }
+
+  .univ-tab-status {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: auto;
+  }
+  .univ-tab.active .univ-tab-status { color: var(--jungle); opacity: 1; }
+  .univ-tab.locked .univ-tab-status { color: var(--terracotta); opacity: 0.85; }
+  .univ-tab.free .univ-tab-status { color: var(--jungle); }
+  .univ-tab.urgent .univ-tab-status { color: var(--terracotta); }
+  .univ-tab-status .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  /* Tab content (v5 : tous visibles, gérés en accordéon) */
+  .univ-content {
+    display: block;
+    margin-bottom: 1.2rem;
+    scroll-margin-top: 90px; /* offset pour scroll + nav fixe */
+  }
+  .univ-content:last-child { margin-bottom: 0; }
+
+  .univ-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.4rem 1.8rem;
+    background: var(--white);
+    border: 1px solid rgba(26, 30, 26, 0.1);
+    cursor: pointer;
+    transition: all 0.3s;
+    user-select: none;
+    list-style: none;
+  }
+  .univ-section-header:hover { border-color: var(--gold); }
+  .univ-section-header::-webkit-details-marker { display: none; }
+  .univ-content[open] .univ-section-header {
+    border-color: var(--terracotta);
+    background: rgba(184, 98, 63, 0.03);
+    border-bottom-color: transparent;
+  }
+  /* État "complété" : bordure jungle (vert) */
+  .univ-content.completed .univ-section-header {
+    border-color: var(--jungle);
+    background: rgba(45, 74, 52, 0.04);
+  }
+  .univ-content.completed[open] .univ-section-header {
+    border-bottom-color: transparent;
+  }
+
+  .univ-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    min-width: 0;
+  }
+  .univ-section-num {
+    font-family: 'Italiana', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .univ-section-title {
+    font-family: 'Italiana', serif;
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .univ-section-title em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .univ-content.completed .univ-section-title em { color: var(--jungle); }
+
+  .univ-header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+  .univ-section-status {
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid currentColor;
+  }
+  .univ-section-status.free { color: var(--jungle); }
+  .univ-section-status.urgent { color: var(--terracotta); }
+  .univ-section-status.locked { color: var(--locked); }
+  .univ-section-status.done { color: var(--jungle); background: var(--jungle); color: var(--white); border-color: var(--jungle); }
+  .univ-section-status .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .univ-section-status.done .dot { background: var(--white); }
+
+  /* Compteur de progression (1/3) */
+  .univ-progress-mini {
+    font-family: 'Italiana', serif;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .univ-progress-mini strong {
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+  .univ-content.completed .univ-progress-mini strong { color: var(--jungle); }
+
+  .univ-chevron {
+    width: 22px; height: 22px;
+    transition: transform 0.3s;
+    color: var(--ink-soft);
+    flex-shrink: 0;
+  }
+  .univ-content[open] .univ-chevron {
+    transform: rotate(180deg);
+    color: var(--terracotta);
+  }
+  .univ-content.completed[open] .univ-chevron { color: var(--jungle); }
+
+  /* Body de l'accordéon */
+  .univ-body {
+    padding: 2.5rem 1.8rem;
+    background: var(--white);
+    border: 1px solid var(--terracotta);
+    border-top: none;
+    animation: slideDown 0.4s ease;
+  }
+  .univ-content.completed .univ-body {
+    border-color: var(--jungle);
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .univ-body-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .univ-intro {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+  }
+  .univ-intro h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+  .univ-intro h3 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .univ-intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 600px;
+  }
+
+  /* État verrouillé d'un univers */
+  .univ-locked-banner {
+    padding: 2rem;
+    background: rgba(184, 98, 63, 0.06);
+    border-left: 3px solid var(--terracotta);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+  .univ-locked-banner svg {
+    flex-shrink: 0;
+    color: var(--terracotta);
+    margin-top: 2px;
+  }
+  .univ-locked-banner h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .univ-locked-banner p {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Sub-categories à l'intérieur d'un univers */
+  .subcat {
+    margin-bottom: 3.5rem;
+  }
+  .subcat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+  }
+  .subcat-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .subcat-help {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* Cartes options */
+  .options-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .option {
+    background: var(--white);
+    border: 1px solid rgba(26, 30, 26, 0.08);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-family: inherit;
+    color: inherit;
+  }
+  .option:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26, 30, 26, 0.06);
+  }
+  .option.selected {
+    border-color: var(--jungle);
+    background: rgba(45, 74, 52, 0.03);
+  }
+  .option.selected::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--jungle);
+  }
+  .option.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .option-visual {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--sand);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    position: relative;
+  }
+  .option-visual img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .option-visual .placeholder-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+    opacity: 0.3;
+  }
+
+  .option-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+  .option-name em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .option-desc {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+  .option-price {
+    font-family: 'Italiana', serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(26, 30, 26, 0.08);
+  }
+  .option-price.included { color: var(--jungle); }
+  .option-tag {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--jungle);
+    color: var(--white);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.6rem;
+    z-index: 2;
+  }
+  .option.selected .option-tag {
+    background: var(--terracotta);
+  }
+
+  /* ===== SIDEBAR RECAP ===== */
+  .recap {
+    background: var(--white);
+    border: 1px solid rgba(26, 30, 26, 0.1);
+    padding: 2rem;
+  }
+  .recap-header {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+    margin-bottom: 1.5rem;
+  }
+  .recap-villa-name {
+    font-family: 'Italiana', serif;
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.1;
+  }
+  .recap-villa-loc {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .recap-base {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dashed rgba(26, 30, 26, 0.15);
+  }
+  .recap-base-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .recap-base-amount {
+    font-family: 'Italiana', serif;
+    font-size: 1.2rem;
+    color: var(--ink);
+  }
+
+  .recap-list {
+    list-style: none;
+    padding: 0;
+    min-height: 60px;
+    margin-bottom: 1.5rem;
+  }
+  .recap-empty {
+    text-align: center;
+    color: var(--ink-soft);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    padding: 2rem 0;
+    opacity: 0.6;
+    font-size: 1rem;
+  }
+  .recap-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(26, 30, 26, 0.05);
+    font-size: 0.85rem;
+  }
+  .recap-item:last-child { border-bottom: none; }
+  .recap-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+  .recap-item-cat {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .recap-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .recap-item-price {
+    font-family: 'Italiana', serif;
+    font-size: 0.95rem;
+    color: var(--terracotta);
+    white-space: nowrap;
+  }
+  .recap-item-price.included { color: var(--jungle); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+
+  .recap-total {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .recap-total-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.4rem;
+  }
+  .recap-total-amount {
+    font-family: 'Italiana', serif;
+    font-size: 2rem;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .recap-total-eur {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-soft);
+  }
+
+  .recap-cta {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: var(--ink);
+    color: var(--white);
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .recap-cta:hover {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+  .recap-secondary {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    background: transparent;
+    color: var(--ink-soft);
+    text-align: center;
+    border: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    font-family: inherit;
+    transition: color 0.3s;
+  }
+  .recap-secondary:hover { color: var(--terracotta); }
+
+  /* ===== SECTION VERROUILLÉ (transparence) ===== */
+  .locked-section {
+    padding: 5rem 3rem;
+    background: var(--white);
+    border-top: 1px solid rgba(26, 30, 26, 0.06);
+  }
+  .locked-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .locked-inner .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--locked);
+    margin-bottom: 1rem;
+  }
+  .locked-inner h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .locked-inner h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--locked);
+  }
+  .locked-inner > p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+
+  .locked-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .locked-item {
+    padding: 1.5rem;
+    background: var(--sand-light);
+    border: 1px dashed var(--sand-dark);
+    text-align: left;
+  }
+  .locked-item-cat {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--locked);
+    margin-bottom: 0.4rem;
+  }
+  .locked-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .locked-item-info {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--jungle-deep);
+    color: var(--sand);
+    padding: 3rem;
+    text-align: center;
+  }
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  footer .logo, footer .logo .logo-text { color: var(--sand); }
+  footer .logo .logo-house { color: var(--gold); }
+  footer .logo .s-accent { color: var(--terracotta); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .universes-layout {
+      grid-template-columns: 1fr;
+    }
+    .recap-sidebar {
+      position: static;
+      order: -1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .perso-hero { padding: 7rem 1.5rem 3rem; }
+    .timeline-section, .universes, .locked-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .timeline-header { flex-direction: column; align-items: flex-start; }
+    .progress-display { text-align: left; }
+    .timeline-steps {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .timeline-bar { display: none; }
+    .timeline-step { 
+      text-align: left; 
+      padding-left: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed var(--sand-dark);
+    }
+    .timeline-step::before {
+      top: 0.3rem;
+      left: 0;
+      transform: none;
+    }
+    .univ-tabs {
+      grid-template-columns: 1fr 1fr;
+    }
+    .univ-tab { padding: 1rem 0.5rem; }
+    .univ-tab-name { font-size: 1rem; }
+  }
+  @media (max-width: 480px) {
+    .univ-tabs { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">
+    <svg class="logo-house" width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 22L24 8l18 14"/>
+      <path d="M10 20v20h28V20"/>
+      <path d="M20 40v-10h8v10"/>
+      <circle cx="24" cy="24" r="1.5" fill="currentColor"/>
+    </svg>
+    <span class="logo-text">Maisons <span class="s-accent">S</span>amui</span>
+  </a>
+  <a href="villa-baansawan.html" class="nav-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 6l-6 6 6 6"/></svg>
+    Retour à la villa
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="perso-hero">
+  <div class="perso-hero-inner">
+    <div class="perso-label">Personnalisation Sur-Mesure</div>
+    <h1>Composez <em>Baan Sawan</em><br>à votre image</h1>
+    <p class="perso-hero-sub">Architecture, finitions, extérieurs, équipements — sculptez chaque détail de votre villa selon votre art de vivre. Les options évoluent au rythme du chantier.</p>
+  </div>
+</section>
+
+<!-- TIMELINE D'AVANCEMENT -->
+<section class="timeline-section">
+  <div class="timeline-inner">
+    <div class="timeline-header">
+      <div class="timeline-title">
+        <div class="label">État du chantier</div>
+        <h2>Construction <em>en cours</em></h2>
+      </div>
+      <div class="progress-display">
+        <div class="progress-percent" id="progress-percent">35<sup>%</sup></div>
+        <div class="progress-label">Étape : Cloisons & second œuvre</div>
+        <div class="progress-eta">Livraison estimée : Q3 2026</div>
+      </div>
+    </div>
+
+    <div class="timeline-track">
+      <div class="timeline-bar">
+        <div class="timeline-fill" id="timeline-fill" style="width: 35%;"></div>
+      </div>
+      <div class="timeline-steps">
+        <div class="timeline-step done" data-step="1">
+          <div class="step-num">I</div>
+          <div class="step-name">Terrassement</div>
+          <div class="step-date">Terminé</div>
+        </div>
+        <div class="timeline-step done" data-step="2">
+          <div class="step-num">II</div>
+          <div class="step-name">Gros œuvre</div>
+          <div class="step-date">Terminé</div>
+        </div>
+        <div class="timeline-step current" data-step="3">
+          <div class="step-num">III</div>
+          <div class="step-name">Cloisons & Toiture</div>
+          <div class="step-date">En cours</div>
+        </div>
+        <div class="timeline-step upcoming" data-step="4">
+          <div class="step-num">IV</div>
+          <div class="step-name">Finitions intérieures</div>
+          <div class="step-date">Q1 2026</div>
+        </div>
+        <div class="timeline-step upcoming" data-step="5">
+          <div class="step-num">V</div>
+          <div class="step-name">Aménagements</div>
+          <div class="step-date">Q2 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNIVERS DE PERSONNALISATION -->
+<section class="universes" id="personnaliser">
+  <div class="universes-inner">
+    <div class="universes-header">
+      <div class="label">Quatre univers</div>
+      <h2>Tout ce qui peut <em>encore</em> être personnalisé</h2>
+    </div>
+
+    <div class="universes-layout">
+      <div class="universes-main">
+
+        <!-- Tabs avec teasers + coches de complétion (v5) -->
+        <div class="univ-tabs" id="univ-tabs-anchor">
+          <button class="univ-tab locked" data-univ="archi" type="button">
+            <span class="univ-tab-num">I</span>
+            <div class="univ-tab-name">Architecture</div>
+            <div class="univ-tab-teaser">Configuration des pièces, agencement</div>
+            <div class="univ-tab-status"><span class="dot"></span>Verrouillé</div>
+            <span class="univ-tab-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5 12 10 17 19 7"/></svg></span>
+          </button>
+          <button class="univ-tab urgent" data-univ="exterieurs" type="button">
+            <span class="univ-tab-num">II</span>
+            <div class="univ-tab-name">Extérieurs</div>
+            <div class="univ-tab-teaser">Piscine, terrasse, jardin paysager</div>
+            <div class="univ-tab-status"><span class="dot"></span>3 semaines restantes</div>
+            <span class="univ-tab-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5 12 10 17 19 7"/></svg></span>
+          </button>
+          <button class="univ-tab free" data-univ="finitions" type="button">
+            <span class="univ-tab-num">III</span>
+            <div class="univ-tab-name">Finitions</div>
+            <div class="univ-tab-teaser">Sols, cuisine, salle de bain</div>
+            <div class="univ-tab-status"><span class="dot"></span>2 mois restants</div>
+            <span class="univ-tab-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5 12 10 17 19 7"/></svg></span>
+          </button>
+          <button class="univ-tab free" data-univ="domotique" type="button">
+            <span class="univ-tab-num">IV</span>
+            <div class="univ-tab-name">Domotique</div>
+            <div class="univ-tab-teaser">Climatisation, sécurité, audio & éclairage</div>
+            <div class="univ-tab-status"><span class="dot"></span>Libre</div>
+            <span class="univ-tab-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5 12 10 17 19 7"/></svg></span>
+          </button>
+        </div>
+
+        <!-- ARCHITECTURE (verrouillé) -->
+        <details class="univ-content" id="univ-archi" data-total="1">
+          <summary class="univ-section-header">
+            <div class="univ-header-left">
+              <div>
+                <span class="univ-section-num">UNIVERS I</span>
+                <h2 class="univ-section-title">Architecture & <em>agencement</em></h2>
+              </div>
+            </div>
+            <div class="univ-header-right">
+              <span class="univ-section-status locked"><span class="dot"></span>Verrouillé</span>
+              <svg class="univ-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </summary>
+          <div class="univ-body">
+          <p class="univ-body-intro">Configuration des pièces, nombre de chambres, ouvertures et volumes principaux.</p>
+          <div class="univ-locked-banner">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="5" y="11" width="14" height="10" rx="1"/>
+              <path d="M8 11V7a4 4 0 1 1 8 0v4"/>
+            </svg>
+            <div>
+              <h4>Cette étape est verrouillée</h4>
+              <p>Le gros œuvre étant achevé, l'architecture (3 chambres, agencement, ouvertures) est désormais figée. Pour une villa entièrement modulable, consultez nos projets en phase d'étude.</p>
+            </div>
+          </div>
+          <div class="subcat">
+            <div class="subcat-header">
+              <h3 class="subcat-title">Configuration choisie</h3>
+              <span class="subcat-help">Définitif</span>
+            </div>
+            <div class="options-row">
+              <div class="option locked selected" data-univ="archi" data-cat="config" data-name="3 chambres en L" data-price="0">
+                <div class="option-visual">
+                  <div class="placeholder-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+                  </div>
+                </div>
+                <div class="option-name">3 chambres <em>en L</em></div>
+                <div class="option-desc">Suite parentale au sud, deux chambres invités, séjour ouvert sur piscine.</div>
+                <div class="option-price included">Configuration figée</div>
+              </div>
+            </div>
+          </div>
+        </div></details>
+
+        <!-- EXTÉRIEURS -->
+        <details class="univ-content" id="univ-exterieurs" data-total="3">
+          <summary class="univ-section-header">
+            <div class="univ-header-left">
+              <div>
+                <span class="univ-section-num">UNIVERS II</span>
+                <h2 class="univ-section-title">Aménagements <em>extérieurs</em></h2>
+              </div>
+            </div>
+            <div class="univ-header-right">
+              <span class="univ-progress-mini" data-univ-progress="exterieurs"><strong>0</strong>/3</span>
+              <span class="univ-section-status urgent"><span class="dot"></span>3 semaines restantes</span>
+              <svg class="univ-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </summary>
+          <div class="univ-body">
+          <p class="univ-body-intro">Piscine, terrasse, jardin paysager — chaque élément qui prolonge votre villa vers la nature.</p>
+
+          <!-- Piscine -->
+          <div class="subcat">
+            <div class="subcat-header">
+              <h3 class="subcat-title">Piscine</h3>
+              <span class="subcat-help">Choisir une option</span>
+            </div>
+            <div class="options-row">
+              <button class="option" data-univ="exterieurs" data-cat="piscine" data-name="Piscine béton classique" data-price="0">
+                <div class="option-visual">
+                  <div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 14s2-2 5-2 5 2 10 2 5-2 5-2"/><path d="M2 18s2-2 5-2 5 2 10 2 5-2 5-2"/></svg></div>
+                </div>
+                <span class="option-tag">Inclus</span>
+                <div class="option-name">Piscine <em>béton</em> 8×4 m</div>
+                <div class="option-desc">Bassin classique avec margelles en travertin, profondeur progressive.</div>
+                <div class="option-price included">Inclus</div>
+              </button>
+              <button class="option" data-univ="exterieurs" data-cat="piscine" data-name="Piscine à débordement" data-price="800000">
+                <div class="option-visual">
+                  <div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 14s2-2 5-2 5 2 10 2 5-2 5-2"/><path d="M2 18s2-2 5-2 5 2 10 2 5-2 5-2"/><path d="M2 10s2-2 5-2 5 2 10 2 5-2 5-2"/></svg></div>
+                </div>
+                <div class="option-name">Piscine à <em>débordement</em></div>
+                <div class="option-desc">Effet miroir face à la végétation, finition mosaïque verte de Bali.</div>
+                <div class="option-price">+ 800 000 THB</div>
+              </button>
+              <button class="option" data-univ="exterieurs" data-cat="piscine" data-name="Piscine miroir + pool house" data-price="1500000">
+                <div class="option-visual">
+                  <div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18"/><path d="M3 14s2-2 5-2 5 2 10 2"/></svg></div>
+                </div>
+                <div class="option-name">Piscine <em>miroir</em> & pool house</div>
+                <div class="option-desc">Piscine 12×4 m avec pool house couvert (douche, vestiaire, bar extérieur).</div>
+                <div class="option-price">+ 1 500 000 THB</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Terrasse -->
+          <div class="subcat">
+            <div class="subcat-header">
+              <h3 class="subcat-title">Terrasse</h3>
+              <span class="subcat-help">Choisir une option</span>
+            </div>
+            <div class="options-row">
+              <button class="option" data-univ="exterieurs" data-cat="terrasse" data-name="Terrasse bois exotique" data-price="0">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div></div>
+                <span class="option-tag">Inclus</span>
+                <div class="option-name">Bois <em>exotique</em></div>
+                <div class="option-desc">Lames de yang-na local, traitement anti-UV et insectes.</div>
+                <div class="option-price included">Inclus</div>
+              </button>
+              <button class="option" data-univ="exterieurs" data-cat="terrasse" data-name="Travertin extérieur" data-price="350000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></svg></div></div>
+                <div class="option-name">Travertin <em>extérieur</em></div>
+                <div class="option-desc">Dalles en travertin antidérapant, beige clair, finition adoucie.</div>
+                <div class="option-price">+ 350 000 THB</div>
+              </button>
+              <button class="option" data-univ="exterieurs" data-cat="terrasse" data-name="Pierre noire de Bali" data-price="600000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="12 2 22 12 12 22 2 12"/></svg></div></div>
+                <div class="option-name">Pierre <em>noire</em> de Bali</div>
+                <div class="option-desc">Lave volcanique, contraste dramatique avec la végétation tropicale.</div>
+                <div class="option-price">+ 600 000 THB</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Jardin -->
+          <div class="subcat">
+            <div class="subcat-header">
+              <h3 class="subcat-title">Jardin paysager</h3>
+              <span class="subcat-help">Choisir une option</span>
+            </div>
+            <div class="options-row">
+              <button class="option" data-univ="exterieurs" data-cat="jardin" data-name="Jardin tropical standard" data-price="0">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2v20"/><path d="M12 8c-3-3-3-6 0-6 3 0 3 3 0 6"/><path d="M12 14c-4-2-4-7 0-7"/><path d="M12 14c4-2 4-7 0-7"/></svg></div></div>
+                <span class="option-tag">Inclus</span>
+                <div class="option-name">Jardin <em>tropical</em></div>
+                <div class="option-desc">Cocotiers, frangipaniers, bougainvilliers — palette classique de Samui.</div>
+                <div class="option-price included">Inclus</div>
+              </button>
+              <button class="option" data-univ="exterieurs" data-cat="jardin" data-name="Jardin signature paysagiste" data-price="450000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="6" cy="14" r="3"/><circle cx="18" cy="14" r="3"/><circle cx="12" cy="8" r="3"/></svg></div></div>
+                <div class="option-name">Jardin <em>signature</em></div>
+                <div class="option-desc">Création sur-mesure par paysagiste, essences rares, éclairage scénographique.</div>
+                <div class="option-price">+ 450 000 THB</div>
+              </button>
+              <button class="option" data-univ="exterieurs" data-cat="jardin" data-name="Jardin zen + bassin koi" data-price="700000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="9"/><path d="M3 12c4-4 14-4 18 0"/></svg></div></div>
+                <div class="option-name">Jardin <em>zen</em> & bassin koi</div>
+                <div class="option-desc">Inspiration japonaise, bassin avec carpes koi, lanternes en pierre.</div>
+                <div class="option-price">+ 700 000 THB</div>
+              </button>
+            </div>
+          </div>
+        </div></details>
+
+        <!-- FINITIONS -->
+        <details class="univ-content" id="univ-finitions" data-total="3">
+          <summary class="univ-section-header">
+            <div class="univ-header-left">
+              <div>
+                <span class="univ-section-num">UNIVERS III</span>
+                <h2 class="univ-section-title">Finitions <em>intérieures</em></h2>
+              </div>
+            </div>
+            <div class="univ-header-right">
+              <span class="univ-progress-mini" data-univ-progress="finitions"><strong>0</strong>/3</span>
+              <span class="univ-section-status free"><span class="dot"></span>2 mois restants</span>
+              <svg class="univ-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </summary>
+          <div class="univ-body">
+          <p class="univ-body-intro">Sols, parements, cuisine, salle de bain — la matière qui donne son âme à votre intérieur.</p>
+
+          <!-- Sols -->
+          <div class="subcat">
+            <div class="subcat-header">
+              <h3 class="subcat-title">Sols</h3>
+              <span class="subcat-help">Choisir une option</span>
+            </div>
+            <div class="options-row">
+              <button class="option" data-univ="finitions" data-cat="sol" data-name="Teck massif" data-price="0">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg></div></div>
+                <span class="option-tag">Inclus</span>
+                <div class="option-name">Teck <em>massif</em></div>
+                <div class="option-desc">Bois noble thaïlandais, patine naturelle, chaleureux et vivant.</div>
+                <div class="option-price included">Inclus</div>
+              </button>
+              <button class="option" data-univ="finitions" data-cat="sol" data-name="Travertin beige" data-price="500000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="12" cy="12" r="2"/></svg></div></div>
+                <div class="option-name">Travertin <em>beige</em></div>
+                <div class="option-desc">Pierre naturelle calcaire, intemporelle, accord parfait avec tous les styles.</div>
+                <div class="option-price">+ 500 000 THB</div>
+              </button>
+              <button class="option" data-univ="finitions" data-cat="sol" data-name="Marbre de Carrare" data-price="1000000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M3 18c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/></svg></div></div>
+                <div class="option-name">Marbre <em>de Carrare</em></div>
+                <div class="option-desc">Le luxe méditerranéen absolu, blanc lumineux veiné de gris.</div>
+                <div class="option-price">+ 1 000 000 THB</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Cuisine -->
+          <div class="subcat">
+            <div class="subcat-header">
+              <h3 class="subcat-title">Cuisine</h3>
+              <span class="subcat-help">Choisir une option</span>
+            </div>
+            <div class="options-row">
+              <button class="option" data-univ="finitions" data-cat="cuisine" data-name="Cuisine bois & laque mate" data-price="0">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg></div></div>
+                <span class="option-tag">Inclus</span>
+                <div class="option-name">Bois & <em>laque mate</em></div>
+                <div class="option-desc">Façades en chêne et laque taupe, électroménager Bosch encastré.</div>
+                <div class="option-price included">Inclus</div>
+              </button>
+              <button class="option" data-univ="finitions" data-cat="cuisine" data-name="Cuisine îlot pierre naturelle" data-price="600000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="10" width="18" height="6"/><line x1="7" y1="10" x2="7" y2="16"/><line x1="17" y1="10" x2="17" y2="16"/></svg></div></div>
+                <div class="option-name">Îlot <em>pierre naturelle</em></div>
+                <div class="option-desc">Plan en quartzite avec îlot central, électroménager Miele.</div>
+                <div class="option-price">+ 600 000 THB</div>
+              </button>
+              <button class="option" data-univ="finitions" data-cat="cuisine" data-name="Cuisine pro Gaggenau" data-price="1200000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="6" width="20" height="14"/><line x1="2" y1="11" x2="22" y2="11"/><circle cx="7" cy="15" r="1"/><circle cx="12" cy="15" r="1"/><circle cx="17" cy="15" r="1"/></svg></div></div>
+                <div class="option-name">Cuisine <em>pro Gaggenau</em></div>
+                <div class="option-desc">Configuration chef avec piano de cuisson Gaggenau, cave à vin intégrée.</div>
+                <div class="option-price">+ 1 200 000 THB</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Salle de bain -->
+          <div class="subcat">
+            <div class="subcat-header">
+              <h3 class="subcat-title">Salle de bain principale</h3>
+              <span class="subcat-help">Choisir une option</span>
+            </div>
+            <div class="options-row">
+              <button class="option" data-univ="finitions" data-cat="sdb" data-name="SDB contemporaine" data-price="0">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="12" width="18" height="8" rx="1"/><path d="M7 12V8a3 3 0 0 1 6 0"/></svg></div></div>
+                <span class="option-tag">Inclus</span>
+                <div class="option-name">Contemporaine <em>épurée</em></div>
+                <div class="option-desc">Vasques posées en pierre composite, douche italienne, robinetterie Hansgrohe.</div>
+                <div class="option-price included">Inclus</div>
+              </button>
+              <button class="option" data-univ="finitions" data-cat="sdb" data-name="SDB spa marbre" data-price="450000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><ellipse cx="12" cy="14" rx="9" ry="6"/><circle cx="12" cy="6" r="2"/></svg></div></div>
+                <div class="option-name">Spa <em>marbre</em></div>
+                <div class="option-desc">Marbre du sol au plafond, baignoire îlot, hammam intégré.</div>
+                <div class="option-price">+ 450 000 THB</div>
+              </button>
+              <button class="option" data-univ="finitions" data-cat="sdb" data-name="SDB outdoor jungle" data-price="350000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2v8"/><path d="M8 6c0-2 2-4 4-4s4 2 4 4"/><rect x="6" y="14" width="12" height="6" rx="1"/></svg></div></div>
+                <div class="option-name">Outdoor <em>jungle</em></div>
+                <div class="option-desc">Douche extérieure ouverte sur jardin, pierre brute, végétation tropicale.</div>
+                <div class="option-price">+ 350 000 THB</div>
+              </button>
+            </div>
+          </div>
+        </div></details>
+
+        <!-- DOMOTIQUE -->
+        <details class="univ-content" id="univ-domotique" data-total="3">
+          <summary class="univ-section-header">
+            <div class="univ-header-left">
+              <div>
+                <span class="univ-section-num">UNIVERS IV</span>
+                <h2 class="univ-section-title">Domotique & <em>équipements</em></h2>
+              </div>
+            </div>
+            <div class="univ-header-right">
+              <span class="univ-progress-mini" data-univ-progress="domotique"><strong>0</strong>/3</span>
+              <span class="univ-section-status free"><span class="dot"></span>Libre</span>
+              <svg class="univ-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </summary>
+          <div class="univ-body">
+          <p class="univ-body-intro">Climatisation, sécurité, sonorisation, éclairage scénographique — la couche invisible qui transforme l'usage.</p>
+
+          <!-- Climatisation -->
+          <div class="subcat">
+            <div class="subcat-header">
+              <h3 class="subcat-title">Climatisation</h3>
+              <span class="subcat-help">Choisir une option</span>
+            </div>
+            <div class="options-row">
+              <button class="option" data-univ="domotique" data-cat="clim" data-name="Clim split inverter" data-price="0">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="6" width="20" height="6" rx="1"/><line x1="6" y1="14" x2="6" y2="18"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="18" y1="14" x2="18" y2="18"/></svg></div></div>
+                <span class="option-tag">Inclus</span>
+                <div class="option-name">Split <em>inverter</em></div>
+                <div class="option-desc">Climatiseurs Daikin inverter dans toutes les pièces principales, A+++.</div>
+                <div class="option-price included">Inclus</div>
+              </button>
+              <button class="option" data-univ="domotique" data-cat="clim" data-name="Clim gainable centralisée" data-price="550000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 6h18"/><path d="M3 18h18"/><circle cx="6" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="12" r="2"/></svg></div></div>
+                <div class="option-name">Gainable <em>centralisé</em></div>
+                <div class="option-desc">Climatisation invisible par gaines, contrôle pièce par pièce.</div>
+                <div class="option-price">+ 550 000 THB</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sécurité -->
+          <div class="subcat">
+            <div class="subcat-header">
+              <h3 class="subcat-title">Sécurité</h3>
+              <span class="subcat-help">Choisir une option</span>
+            </div>
+            <div class="options-row">
+              <button class="option" data-univ="domotique" data-cat="securite" data-name="Alarme & vidéosurveillance" data-price="0">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg></div></div>
+                <span class="option-tag">Inclus</span>
+                <div class="option-name">Alarme & <em>vidéo</em></div>
+                <div class="option-desc">Système d'alarme, 6 caméras HD, accès via app smartphone.</div>
+                <div class="option-price included">Inclus</div>
+              </button>
+              <button class="option" data-univ="domotique" data-cat="securite" data-name="Sécurité premium 24/7" data-price="400000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></div></div>
+                <div class="option-name">Premium <em>24/7</em></div>
+                <div class="option-desc">Télésurveillance professionnelle, intervention sous 15 min, contrôle d'accès biométrique.</div>
+                <div class="option-price">+ 400 000 THB</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Audio / éclairage -->
+          <div class="subcat">
+            <div class="subcat-header">
+              <h3 class="subcat-title">Audio & éclairage scénographique</h3>
+              <span class="subcat-help">Optionnel</span>
+            </div>
+            <div class="options-row">
+              <button class="option" data-univ="domotique" data-cat="ambiance" data-name="Aucune" data-price="0">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="5" y1="5" x2="19" y2="19"/><circle cx="12" cy="12" r="9"/></svg></div></div>
+                <span class="option-tag">Inclus</span>
+                <div class="option-name">Standard</div>
+                <div class="option-desc">Éclairage LED basique sur variateurs, prises pour enceintes Bluetooth.</div>
+                <div class="option-price included">Inclus</div>
+              </button>
+              <button class="option" data-univ="domotique" data-cat="ambiance" data-name="Sonos multiroom" data-price="280000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="3"/><path d="M16 8a5 5 0 0 1 0 8"/><path d="M8 8a5 5 0 0 0 0 8"/><path d="M19 5a9 9 0 0 1 0 14"/><path d="M5 5a9 9 0 0 0 0 14"/></svg></div></div>
+                <div class="option-name">Sonos <em>multiroom</em></div>
+                <div class="option-desc">Enceintes Sonos intégrées dans 6 zones, contrôle centralisé par app.</div>
+                <div class="option-price">+ 280 000 THB</div>
+              </button>
+              <button class="option" data-univ="domotique" data-cat="ambiance" data-name="Lutron + Sonos premium" data-price="650000">
+                <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="5" y1="5" x2="7" y2="7"/><line x1="17" y1="17" x2="19" y2="19"/><line x1="5" y1="19" x2="7" y2="17"/><line x1="17" y1="7" x2="19" y2="5"/></svg></div></div>
+                <div class="option-name">Lutron + <em>Sonos premium</em></div>
+                <div class="option-desc">Scénarios d'éclairage Lutron, Sonos haut de gamme, intégration Apple HomeKit & Google Home.</div>
+                <div class="option-price">+ 650 000 THB</div>
+              </button>
+            </div>
+          </div>
+        </div></details>
+
+      </div>
+
+      <!-- SIDEBAR RECAP -->
+      <aside class="recap-sidebar">
+        <div class="recap">
+          <div class="recap-header">
+            <div class="recap-villa-name">Baan Sawan</div>
+            <div class="recap-villa-loc">Lamai · Côte est</div>
+          </div>
+
+          <div class="recap-base">
+            <span class="recap-base-label">Prix de base</span>
+            <span class="recap-base-amount">฿ 19 000 000</span>
+          </div>
+
+          <ul class="recap-list" id="recap-list">
+            <li class="recap-empty">Aucune personnalisation pour le moment</li>
+          </ul>
+
+          <div class="recap-total">
+            <div class="recap-total-label">Total estimé</div>
+            <div class="recap-total-amount" id="recap-total-thb">฿ 19 000 000</div>
+            <div class="recap-total-eur" id="recap-total-eur">≈ 500 000 €</div>
+          </div>
+
+          <a href="villa-baansawan.html#contact" class="recap-cta">
+            Valider ma configuration
+          </a>
+          <button class="recap-secondary" id="recap-reset" type="button">Réinitialiser</button>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- VERROUILLÉ (transparence) -->
+<section class="locked-section">
+  <div class="locked-inner">
+    <div class="label">Transparence</div>
+    <h2>Ce qui est désormais <em>figé</em></h2>
+    <p>Parce que la confiance se construit aussi sur ce qu'on ne peut plus changer. Voici les éléments scellés par l'avancement actuel du chantier.</p>
+
+    <div class="locked-grid">
+      <div class="locked-item">
+        <div class="locked-item-cat">Architecture</div>
+        <div class="locked-item-name">3 chambres en L</div>
+        <div class="locked-item-info">Murs porteurs et ouvertures coulés.</div>
+      </div>
+      <div class="locked-item">
+        <div class="locked-item-cat">Implantation</div>
+        <div class="locked-item-name">Orientation est-sud-est</div>
+        <div class="locked-item-info">Optimisée pour la vue mer matinale.</div>
+      </div>
+      <div class="locked-item">
+        <div class="locked-item-cat">Toiture</div>
+        <div class="locked-item-name">Charpente apparente teck</div>
+        <div class="locked-item-info">Structure posée en juillet 2025.</div>
+      </div>
+      <div class="locked-item">
+        <div class="locked-item-cat">Volumes</div>
+        <div class="locked-item-name">Hauteur sous plafond 3,2 m</div>
+        <div class="locked-item-info">Définitif depuis le coulage des dalles.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="logo">
+      <svg class="logo-house" width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 22L24 8l18 14"/>
+        <path d="M10 20v20h28V20"/>
+        <path d="M20 40v-10h8v10"/>
+        <circle cx="24" cy="24" r="1.5" fill="currentColor"/>
+      </svg>
+      <span class="logo-text">Maisons <span class="s-accent">S</span>amui</span>
+    </a>
+    <div>© 2026 · Tous droits réservés</div>
+    <div>Koh Samui, Thaïlande</div>
+  </div>
+</footer>
+
+<script>
+// ========== CONFIGURATION DE LA PAGE ==========
+const VILLA = {
+  id: 'baansawan',
+  name: 'Baan Sawan',
+  loc: 'Lamai · Côte est',
+  basePrice: 19000000,
+  // Pourcentage d'avancement de la construction (0-100)
+  // Cette variable contrôle quelles options sont verrouillées
+  progress: 35
+};
+const STORAGE_KEY = 'maisons-samui-perso-' + VILLA.id;
+const EUR_RATE = 38;
+
+// ========== HELPERS ==========
+function formatTHB(n) {
+  return '฿ ' + n.toLocaleString('fr-FR').replace(/,/g, ' ');
+}
+function formatEUR(thb) {
+  const eur = Math.round(thb / EUR_RATE);
+  return '≈ ' + eur.toLocaleString('fr-FR').replace(/,/g, ' ') + ' €';
+}
+
+// ========== STORAGE ==========
+function loadConfig() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return {};
+    return JSON.parse(raw) || {};
+  } catch (e) { return {}; }
+}
+function saveConfig(c) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(c)); } catch (e) {}
+}
+
+let config = loadConfig();
+
+// ========== TABS + ACCORDÉON (v5) ==========
+// Configuration des univers : nombre de sous-catégories à compléter
+const UNIVERS_CONFIG = {
+  archi:      { total: 1, cats: ['config'] },
+  exterieurs: { total: 3, cats: ['piscine', 'terrasse', 'jardin'] },
+  finitions:  { total: 3, cats: ['sol', 'cuisine', 'sdb'] },
+  domotique:  { total: 3, cats: ['clim', 'securite', 'ambiance'] }
+};
+
+// Suivi des univers déjà auto-fermés (pour ne pas les refermer si l'user les rouvre)
+const AUTOCLOSE_KEY = STORAGE_KEY + '-autoclosed';
+let autoClosed = (() => {
+  try { return JSON.parse(localStorage.getItem(AUTOCLOSE_KEY) || '[]'); }
+  catch (e) { return []; }
+})();
+function saveAutoClosed() {
+  try { localStorage.setItem(AUTOCLOSE_KEY, JSON.stringify(autoClosed)); } catch (e) {}
+}
+
+// Compte combien de sous-catégories d'un univers ont été choisies
+function countSelections(univ) {
+  if (!config[univ]) return 0;
+  return UNIVERS_CONFIG[univ].cats.filter(cat => config[univ][cat]).length;
+}
+
+// Met à jour le compteur "X/Y" dans le header de l'univers
+function updateUnivProgress(univ) {
+  const total = UNIVERS_CONFIG[univ].total;
+  const count = countSelections(univ);
+  const progressEl = document.querySelector(`[data-univ-progress="${univ}"]`);
+  if (progressEl) {
+    progressEl.innerHTML = `<strong>${count}</strong>/${total}`;
+  }
+
+  // Architecture est verrouillée : on ne marque jamais "completed" (c'est imposé, pas choisi)
+  if (univ === 'archi') return false;
+
+  const detailsEl = document.getElementById('univ-' + univ);
+  const tabEl = document.querySelector(`.univ-tab[data-univ="${univ}"]`);
+  const isComplete = count === total && total > 0;
+
+  if (detailsEl) detailsEl.classList.toggle('completed', isComplete);
+  if (tabEl) tabEl.classList.toggle('completed', isComplete);
+
+  return isComplete;
+}
+
+// Ouvre un univers et scrolle vers lui
+function openUniv(univ) {
+  const detailsEl = document.getElementById('univ-' + univ);
+  if (!detailsEl) return;
+  detailsEl.open = true;
+  // Highlight visuel sur l'onglet correspondant
+  document.querySelectorAll('.univ-tab').forEach(t => t.classList.remove('active'));
+  const tab = document.querySelector(`.univ-tab[data-univ="${univ}"]`);
+  if (tab) tab.classList.add('active');
+  // Scroll smooth (utilise scroll-margin-top défini en CSS)
+  setTimeout(() => {
+    detailsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+}
+
+// === CLIC SUR UN ONGLET → ouvre l'accordéon correspondant ===
+document.querySelectorAll('.univ-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const univ = btn.dataset.univ;
+    openUniv(univ);
+    // Retirer l'univers de la liste auto-fermés (l'user le rouvre volontairement)
+    autoClosed = autoClosed.filter(u => u !== univ);
+    saveAutoClosed();
+  });
+});
+
+// === QUAND L'USER OUVRE/FERME MANUELLEMENT UN ACCORDÉON ===
+document.querySelectorAll('.univ-content').forEach(details => {
+  details.addEventListener('toggle', () => {
+    const univ = details.id.replace('univ-', '');
+    if (details.open) {
+      // L'user a (r)ouvert → on retire de la liste autoclose
+      autoClosed = autoClosed.filter(u => u !== univ);
+      saveAutoClosed();
+      // Highlight de l'onglet
+      document.querySelectorAll('.univ-tab').forEach(t => t.classList.remove('active'));
+      const tab = document.querySelector(`.univ-tab[data-univ="${univ}"]`);
+      if (tab) tab.classList.add('active');
+    }
+  });
+});
+
+// ========== SÉLECTION D'OPTIONS ==========
+document.querySelectorAll('.option').forEach(opt => {
+  // Pré-sélectionner si déjà dans la config
+  const univ = opt.dataset.univ;
+  const cat = opt.dataset.cat;
+  const name = opt.dataset.name;
+  if (config[univ] && config[univ][cat] && config[univ][cat].name === name) {
+    opt.classList.add('selected');
+  }
+
+  opt.addEventListener('click', () => {
+    if (opt.classList.contains('locked')) return;
+    const univ = opt.dataset.univ;
+    const cat = opt.dataset.cat;
+    const name = opt.dataset.name;
+    const price = parseInt(opt.dataset.price, 10) || 0;
+
+    // Désélectionner les autres options de la même sous-catégorie
+    document.querySelectorAll(`.option[data-univ="${univ}"][data-cat="${cat}"]`).forEach(o => {
+      o.classList.remove('selected');
+    });
+    opt.classList.add('selected');
+
+    // Mettre à jour la config
+    if (!config[univ]) config[univ] = {};
+    config[univ][cat] = { name, price };
+    saveConfig(config);
+    renderRecap();
+
+    // === LOGIQUE DE FERMETURE AUTO ===
+    // 1. Mettre à jour le compteur de progression de l'univers
+    const isComplete = updateUnivProgress(univ);
+
+    // 2. Si l'univers est complet ET pas encore auto-fermé → fermeture douce
+    if (isComplete && !autoClosed.includes(univ)) {
+      const detailsEl = document.getElementById('univ-' + univ);
+      if (detailsEl && detailsEl.open) {
+        // Petit délai pour que l'user voie sa dernière sélection s'appliquer
+        setTimeout(() => {
+          detailsEl.open = false;
+          autoClosed.push(univ);
+          saveAutoClosed();
+          // Remonter vers les onglets aperçus pour offrir le choix de la suite
+          const tabsAnchor = document.getElementById('univ-tabs-anchor');
+          if (tabsAnchor) {
+            tabsAnchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 700);
+      }
+    }
+  });
+});
+
+// ========== RENDU DU RÉCAP ==========
+const CAT_LABELS = {
+  archi: { config: 'Architecture' },
+  exterieurs: { piscine: 'Piscine', terrasse: 'Terrasse', jardin: 'Jardin' },
+  finitions: { sol: 'Sols', cuisine: 'Cuisine', sdb: 'Salle de bain' },
+  domotique: { clim: 'Climatisation', securite: 'Sécurité', ambiance: 'Audio & Éclairage' }
+};
+const UNIV_ORDER = ['exterieurs', 'finitions', 'domotique'];
+
+function renderRecap() {
+  const list = document.getElementById('recap-list');
+  let total = VILLA.basePrice;
+  let items = [];
+
+  UNIV_ORDER.forEach(univ => {
+    if (!config[univ]) return;
+    Object.keys(config[univ]).forEach(cat => {
+      const choice = config[univ][cat];
+      if (!choice) return;
+      total += choice.price;
+      items.push({
+        cat: CAT_LABELS[univ] && CAT_LABELS[univ][cat] ? CAT_LABELS[univ][cat] : cat,
+        name: choice.name,
+        price: choice.price
+      });
+    });
+  });
+
+  if (items.length === 0) {
+    list.innerHTML = '<li class="recap-empty">Aucune personnalisation pour le moment</li>';
+  } else {
+    list.innerHTML = items.map(it => `
+      <li class="recap-item">
+        <div class="recap-item-info">
+          <div class="recap-item-cat">${it.cat}</div>
+          <div class="recap-item-name">${it.name}</div>
+        </div>
+        <div class="recap-item-price ${it.price === 0 ? 'included' : ''}">
+          ${it.price === 0 ? 'Inclus' : '+ ' + formatTHB(it.price)}
+        </div>
+      </li>
+    `).join('');
+  }
+
+  document.getElementById('recap-total-thb').textContent = formatTHB(total);
+  document.getElementById('recap-total-eur').textContent = formatEUR(total);
+}
+
+// ========== RESET ==========
+document.getElementById('recap-reset').addEventListener('click', () => {
+  if (!confirm('Réinitialiser toute la configuration ?')) return;
+  config = {};
+  autoClosed = [];
+  saveConfig(config);
+  saveAutoClosed();
+  document.querySelectorAll('.option.selected').forEach(o => {
+    if (!o.classList.contains('locked')) o.classList.remove('selected');
+  });
+  // Réinit des compteurs et ferme les accordéons (sauf archi qui reste fermé aussi)
+  Object.keys(UNIVERS_CONFIG).forEach(univ => {
+    updateUnivProgress(univ);
+    const detailsEl = document.getElementById('univ-' + univ);
+    if (detailsEl) detailsEl.open = false;
+  });
+  document.querySelectorAll('.univ-tab').forEach(t => t.classList.remove('active'));
+  renderRecap();
+});
+
+// ========== INITIALISATION ==========
+// L'option Architecture est verrouillée mais déjà sélectionnée dans le HTML :
+// on l'enregistre dans config pour que le compteur soit cohérent
+if (!config.archi) {
+  config.archi = { config: { name: '3 chambres en L', price: 0 } };
+  saveConfig(config);
+}
+
+// Initialiser les compteurs et l'état "completed" de tous les univers
+Object.keys(UNIVERS_CONFIG).forEach(univ => updateUnivProgress(univ));
+
+// Initial render
+renderRecap();
+</script>
+
+</body>
+</html>

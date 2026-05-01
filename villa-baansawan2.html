@@ -1,0 +1,5547 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Baan Sawan — Maisons Samui</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Italiana&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #e8e1d4;
+    --sand-light: #f2ede2;
+    --sand-dark: #d4c9b4;
+    --ink: #1a1e1a;
+    --ink-soft: #3a3f39;
+    --jungle: #2d4a34;
+    --jungle-deep: #1a2e22;
+    --terracotta: #b8623f;
+    --gold: #a88852;
+    --white: #faf7f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--sand-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAVIGATION (identique index.html) ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s ease;
+    background: rgba(250, 247, 240, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-transform: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    line-height: 1;
+  }
+  .logo .logo-house {
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .logo .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .logo .s-accent {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+  /* Logo dans footer (fond sombre) */
+  footer .logo,
+  footer .logo .logo-text {
+    color: var(--sand);
+  }
+  footer .logo .logo-house {
+    color: var(--gold);
+  }
+  footer .logo .s-accent {
+    color: var(--terracotta);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: opacity 0.3s;
+  }
+  .nav-links a:hover { opacity: 0.6; }
+
+  .nav-cta {
+    padding: 0.6rem 1.2rem;
+    background: var(--ink);
+    border: 1px solid var(--ink);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--terracotta); border-color: var(--terracotta); }
+
+  /* Wrapper pour les actions à droite de la nav */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* ===== PANIER (Mon projet) ===== */
+  .basket {
+    position: relative;
+    background: transparent;
+    border: 1px solid rgba(26, 30, 26, 0.15);
+    padding: 0.55rem 0.85rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    color: var(--ink);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .basket:hover {
+    border-color: var(--gold);
+    background: rgba(168, 136, 82, 0.05);
+  }
+  .basket-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--ink);
+    transition: transform 0.4s ease;
+    flex-shrink: 0;
+  }
+  .basket-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  /* Badge compteur */
+  .basket-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 10px;
+    background: var(--terracotta);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border: 2px solid var(--white);
+  }
+  .basket-count.visible {
+    display: inline-flex;
+    animation: countPop 0.4s ease;
+  }
+  @keyframes countPop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+  /* Vibration du panier */
+  .basket.shake .basket-icon {
+    animation: basketShake 0.5s ease;
+  }
+  @keyframes basketShake {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    15% { transform: rotate(-12deg) scale(1.15); }
+    30% { transform: rotate(10deg) scale(1.1); }
+    45% { transform: rotate(-8deg) scale(1.12); }
+    60% { transform: rotate(6deg) scale(1.08); }
+    80% { transform: rotate(-3deg) scale(1.04); }
+  }
+
+  /* ===== ANIMATION DE VOL ===== */
+  .fly-particle {
+    position: fixed;
+    z-index: 999;
+    pointer-events: none;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(26, 30, 26, 0.3);
+  }
+  .fly-particle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ===== DRAWER (panier) ===== */
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 31, 23, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 420px;
+    max-width: 100vw;
+    height: 100vh;
+    z-index: 201;
+    background: var(--white);
+    box-shadow: -20px 0 60px rgba(26, 30, 26, 0.15);
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+  }
+  .drawer.open { transform: translateX(0); }
+  .drawer-header {
+    padding: 1.5rem 1.8rem;
+    border-bottom: 1px solid var(--sand-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .drawer-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .drawer-close {
+    background: transparent;
+    border: none;
+    color: var(--ink-soft);
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    line-height: 1;
+    transition: color 0.3s;
+  }
+  .drawer-close:hover { color: var(--terracotta); }
+  .drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 1.8rem 1.8rem;
+  }
+  .drawer-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--ink-soft);
+  }
+  .drawer-empty .empty-icon {
+    font-family: 'Italiana', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.5;
+    margin-bottom: 1rem;
+  }
+  .drawer-empty p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  .drawer-villa {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(168, 136, 82, 0.2);
+    margin-bottom: 1rem;
+  }
+  .drawer-villa-name {
+    font-family: 'Italiana', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .drawer-villa-name em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .drawer-villa-loc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+  .drawer-villa-base {
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.78rem;
+  }
+  .drawer-villa-base .label {
+    color: var(--ink-soft);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 0.62rem;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+  .drawer-villa-base .price {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .drawer-list { list-style: none; padding: 0; margin: 0; }
+  .drawer-item {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed rgba(168, 136, 82, 0.2);
+  }
+  .drawer-item:last-child { border-bottom: none; }
+  .drawer-item-thumb {
+    width: 60px;
+    height: 60px;
+    background: var(--sand-dark);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .drawer-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .drawer-item-info { min-width: 0; }
+  .drawer-item-type {
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .drawer-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 0.15rem;
+  }
+  .drawer-item-name em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .drawer-item-price {
+    font-size: 0.75rem;
+    color: var(--terracotta);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+  .drawer-item-price.included {
+    color: var(--ink-soft);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .drawer-item-remove {
+    background: transparent;
+    border: 1px solid rgba(168, 136, 82, 0.25);
+    color: var(--ink-soft);
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1;
+    transition: all 0.3s;
+  }
+  .drawer-item-remove:hover {
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+  }
+  .drawer-total {
+    padding-top: 1.2rem;
+    margin-top: 1.2rem;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .drawer-total-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+  .drawer-total-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--jungle);
+  }
+  .drawer-total-value small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--ink);
+    font-style: normal;
+    font-weight: 400;
+    text-align: right;
+    margin-top: 0.3rem;
+  }
+  .drawer-footer {
+    padding: 1.5rem 1.8rem;
+    border-top: 1px solid var(--sand-dark);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background: var(--sand-light);
+  }
+  .drawer-cta {
+    background: var(--ink);
+    color: var(--white);
+    border: none;
+    padding: 1.1rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+  .drawer-cta:hover { background: var(--terracotta); }
+  .drawer-cta-clear {
+    background: transparent;
+    border: none;
+    color: var(--ink-soft);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s;
+  }
+  .drawer-cta-clear:hover { color: var(--terracotta); }
+
+  /* ===== RECAP CONTACT (au-dessus du formulaire) ===== */
+  .contact-recap {
+    background: rgba(168, 136, 82, 0.08);
+    border: 1px solid rgba(168, 136, 82, 0.25);
+    border-left: 3px solid var(--gold);
+    padding: 1.2rem 1.5rem;
+    margin-top: 1.8rem;
+    text-align: left;
+    display: none;
+  }
+  .contact-recap.visible { display: block; }
+  .contact-recap-title {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+  .contact-recap-list {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--white);
+    line-height: 1.7;
+  }
+  .contact-recap-list .recap-label {
+    font-style: normal;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-right: 0.5rem;
+  }
+  .contact-recap-total {
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.3);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== BACK LINK ===== */
+  .back-link {
+    position: fixed;
+    top: 5rem;
+    left: 3rem;
+    z-index: 90;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+    background: rgba(250, 247, 240, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(26, 30, 26, 0.08);
+    transition: all 0.3s;
+  }
+  .back-link:hover {
+    color: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+  .back-link::before {
+    content: '←';
+    font-size: 1rem;
+  }
+
+  /* ===== SOUS-NAVIGATION VILLA ===== */
+  .villa-subnav {
+    position: sticky;
+    top: 60px;
+    z-index: 80;
+    background: rgba(250, 247, 240, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.3s ease;
+  }
+  .villa-subnav.visible {
+    max-height: 80px;
+    opacity: 1;
+  }
+  /* Masquée pendant le scroll down */
+  .villa-subnav.visible.hidden-on-scroll {
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  /* Fallback : si le JS ne tourne pas, la barre reste visible quand même */
+  html.no-js .villa-subnav,
+  .villa-subnav.force-visible {
+    max-height: 80px;
+    opacity: 1;
+  }
+  .villa-subnav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .villa-subnav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 2.5rem;
+    padding: 0;
+    margin: 0;
+  }
+  .villa-subnav li {
+    padding: 1rem 0;
+  }
+  .villa-subnav a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-weight: 400;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  .villa-subnav a:hover {
+    color: var(--ink);
+  }
+  .villa-subnav a.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* Mobile : scroll horizontal */
+  @media (max-width: 780px) {
+    .villa-subnav ul {
+      justify-content: flex-start;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .villa-subnav ul::-webkit-scrollbar { display: none; }
+    .villa-subnav-inner { padding: 0 1.5rem; }
+    .villa-subnav a { font-size: 0.65rem; }
+  }
+
+  /* ===== HERO VILLA ===== */
+  .villa-hero {
+    padding-top: 5rem;
+    background: var(--sand-light);
+  }
+
+  .villa-hero-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 3rem 2rem;
+  }
+
+  .villa-breadcrumb {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 2rem;
+  }
+  .villa-breadcrumb a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .villa-breadcrumb a:hover { color: var(--terracotta); }
+  .villa-breadcrumb span.sep { opacity: 0.4; }
+
+  .villa-title-block {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 4rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--sand-dark);
+  }
+
+  .villa-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .villa-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+
+  .villa-title-block h1 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
+    font-weight: 400;
+  }
+  .villa-title-block h1 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .villa-title-price {
+    text-align: right;
+  }
+  .villa-title-price .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+  }
+  .villa-title-price .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1;
+    color: var(--jungle);
+  }
+  .villa-title-price .value small {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--ink-soft);
+    margin-left: 1rem;
+    white-space: nowrap;
+  }
+
+  /* Zone surplus style intérieur (affichée seulement quand un style payant est sélectionné) */
+  /* Badge cryptos sous le prix (page villa) */
+  .villa-crypto-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding: 0.5rem 0.9rem;
+    background: rgba(250, 247, 240, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(26, 30, 26, 0.08);
+    border-radius: 2px;
+  }
+  .villa-crypto-badge .crypto-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    white-space: nowrap;
+  }
+  .villa-crypto-badge .crypto-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .villa-crypto-badge svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  /* ===== GALERIE ===== */
+  .gallery {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 3rem 0.5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 260px 260px;
+    gap: 1rem;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    background: var(--jungle);
+    cursor: pointer;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover { transform: scale(1.01); }
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+  }
+
+  .gallery-item.main {
+    grid-row: 1 / 3;
+  }
+
+  /* Tag "Cliquer pour agrandir" en haut à droite de la photo principale */
+  .zoom-hint {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.9rem;
+    background: rgba(26, 30, 26, 0.7);
+    backdrop-filter: blur(8px);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    z-index: 5;
+    opacity: 0.9;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+  .zoom-hint svg {
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+  .gallery-item:hover .zoom-hint {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  .gallery-more {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.5rem 3rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .gallery-more .gallery-item {
+    aspect-ratio: 4/3;
+  }
+
+  /* ===== SPECS ===== */
+  .specs {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .specs-inner {
+    padding: 1.6rem 1.5rem;
+    background: var(--white);
+    border-top: 1px solid var(--sand-dark);
+    border-bottom: 1px solid var(--sand-dark);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+
+  .spec {
+    text-align: center;
+    padding: 0 0.5rem;
+    border-right: 1px solid var(--sand-dark);
+  }
+  .spec:last-child { border-right: none; }
+
+  .spec-icon {
+    width: 34px;
+    height: 34px;
+    color: var(--jungle);
+    opacity: 0.85;
+    margin: 0 auto 0.65rem;
+    display: block;
+  }
+
+  .spec .value {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+  .spec .value small {
+    font-size: 0.78rem;
+    font-weight: 300;
+  }
+  .spec .label {
+    font-size: 0.59rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ===== DESCRIPTION ===== */
+  .description {
+    padding: 4rem 3rem 5rem;
+    background: var(--sand-light);
+  }
+
+  .description-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .description-label {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    font-weight: 400;
+    position: sticky;
+    top: 7rem;
+  }
+  .description-label em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .description-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+  .description-body p + p {
+    margin-top: 1.5rem;
+  }
+  .description-body .lead {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: var(--ink);
+    font-style: italic;
+    margin-bottom: 2.5rem;
+  }
+  .description-body em {
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+
+  /* ===== PERSONNALISATION (wrapper section) ===== */
+  .personnalisation {
+    padding: 4rem 3rem 5rem;
+    background: var(--white);
+  }
+  .personnalisation-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .personnalisation-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+  }
+  .personnalisation-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+  }
+  .personnalisation-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .personnalisation-header .styles-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .personnalisation-header .styles-intro-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    font-style: normal;
+    margin-right: 0.3rem;
+  }
+
+  /* Onglets */
+  .perso-tabs {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    border-bottom: 1px solid var(--sand-dark);
+  }
+  .perso-tab-btn {
+    background: transparent;
+    border: none;
+    padding: 1.2rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    cursor: pointer;
+    position: relative;
+    font-weight: 400;
+    transition: color 0.3s;
+  }
+  .perso-tab-btn:hover { color: var(--ink); }
+  .perso-tab-btn.active {
+    color: var(--jungle);
+    font-weight: 500;
+  }
+  .perso-tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+  }
+  .perso-tab-num {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--sand-dark);
+    color: var(--ink);
+    font-size: 0.7rem;
+    line-height: 22px;
+    margin-right: 0.7rem;
+    vertical-align: middle;
+    font-weight: 500;
+    text-align: center;
+  }
+  .perso-tab-btn.active .perso-tab-num {
+    background: var(--gold);
+    color: var(--white);
+  }
+  .perso-tab-content { display: none; }
+  .perso-tab-content.active { display: block; animation: persoFadeIn 0.4s ease; }
+  @keyframes persoFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Grille de cartes options (sols/parements) */
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .option-card {
+    background: var(--white);
+    border: 1px solid rgba(168, 136, 82, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .option-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 15px 40px rgba(26, 30, 26, 0.06);
+  }
+  .option-card.active {
+    border-color: var(--gold);
+    border-width: 2px;
+  }
+  .option-card.active::before {
+    content: '✓ Sélectionné';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--gold);
+    color: var(--white);
+    padding: 0.3rem 0.6rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    z-index: 5;
+  }
+
+  /* Infos en haut (ordre visuel) */
+  .option-card .option-info { order: 1; }
+  .option-card .option-photo { order: 2; }
+  .option-card .option-thumbs { order: 3; }
+
+  .option-info {
+    padding: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(168, 136, 82, 0.15);
+  }
+  .option-info h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.45rem;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+    line-height: 1.1;
+  }
+  .option-info h3 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .option-card .option-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    min-height: 4.05em; /* 3 lignes minimum pour alignement */
+  }
+  .option-breakdown {
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.2);
+    text-align: right;
+    margin-bottom: 1rem;
+  }
+  .option-amount {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--terracotta);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+  .option-select {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+  .option-select:hover { background: var(--ink); color: var(--white); }
+  .option-card.active .option-select {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+  }
+
+  .option-photo {
+    aspect-ratio: 4/3;
+    background: var(--sand-dark);
+    overflow: hidden;
+    position: relative;
+  }
+  .option-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .option-card .option-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--white);
+    color: var(--jungle);
+    padding: 0.35rem 0.7rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .option-zoom-hint {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(15, 31, 23, 0.55);
+    backdrop-filter: blur(8px);
+    color: var(--white);
+    padding: 0.4rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 1;
+    transition: background 0.3s;
+    pointer-events: none;
+  }
+  .option-photo:hover .option-zoom-hint {
+    background: rgba(15, 31, 23, 0.75);
+  }
+  .option-thumbs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.3rem;
+    padding: 0.3rem;
+    background: var(--sand-light);
+  }
+  .option-thumb {
+    aspect-ratio: 1/1;
+    background: var(--sand-dark);
+    overflow: hidden;
+  }
+  .option-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ===== STYLES INTÉRIEURS ===== */
+  .styles {
+    padding: 4rem 3rem 5rem;
+    background: var(--white);
+  }
+  .styles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+  }
+
+  .style-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border: 1px solid rgba(168, 136, 82, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  /* INVERSION visuelle : infos d'abord (comme sols/parements) */
+  .style-card .style-info { order: 1; }
+  .style-card .style-preview { order: 2; }
+  .style-card .style-thumbs { order: 3; }
+  .style-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(26, 30, 26, 0.08);
+    border-color: var(--gold);
+  }
+  .style-card.active {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px var(--gold), 0 20px 50px rgba(168, 136, 82, 0.2);
+  }
+  .style-card.active::before {
+    content: '✓ Sélectionné';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--gold);
+    color: var(--white);
+    padding: 0.4rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    z-index: 5;
+    font-weight: 500;
+  }
+  .style-card {
+    position: relative;
+  }
+
+  .style-preview {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--sand-dark);
+    cursor: zoom-in;
+  }
+  .style-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .style-card:hover .style-preview img {
+    transform: scale(1.04);
+  }
+  .style-zoom-hint {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(15, 31, 23, 0.55);
+    backdrop-filter: blur(8px);
+    color: var(--white);
+    padding: 0.4rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 1;
+    transition: background 0.3s;
+  }
+  .style-preview:hover .style-zoom-hint {
+    background: rgba(15, 31, 23, 0.75);
+  }
+  .style-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--white);
+    color: var(--jungle);
+    padding: 0.4rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Miniatures sous la photo principale */
+  .style-thumbs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.4rem;
+    padding: 0.5rem;
+    background: var(--sand-light);
+  }
+  .style-thumb {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    cursor: zoom-in;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+  }
+  .style-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .style-thumb:hover {
+    border-color: var(--gold);
+  }
+  .style-thumb:hover img {
+    transform: scale(1.08);
+  }
+
+  .style-info {
+    padding: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(168, 136, 82, 0.15);
+  }
+  .style-info h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.45rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+  }
+  .style-info h3 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  /* Icône info (i) dans le titre du style */
+  .style-info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--sand-dark);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0;
+    line-height: 1;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    position: relative;
+    cursor: help;
+    transition: all 0.25s ease;
+    outline: none;
+  }
+  /* Zone invisible "safe" tout autour de l'icône pour éviter les pertes de hover */
+  .style-info-icon::before {
+    content: '';
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    right: -25px;
+    bottom: -25px;
+    border-radius: 50%;
+    background: transparent;
+    z-index: 1;
+  }
+  .style-info-icon:hover,
+  .style-info-icon:focus {
+    background: var(--gold);
+    color: var(--white);
+    transform: scale(1.1);
+  }
+
+  /* Tooltip qui liste les fournitures — S'OUVRE VERS LE BAS */
+  .style-tooltip {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    padding: 1.25rem 1.4rem;
+    background: var(--white);
+    border: 1px solid rgba(168, 136, 82, 0.3);
+    box-shadow: 0 20px 50px rgba(26, 30, 26, 0.15);
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+    z-index: 50;
+  }
+  /* Pont invisible entre l'icône (au-dessus) et la fenêtre (en-dessous) pour garder le hover actif */
+  .style-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: -20px;
+    right: -20px;
+    height: 25px;
+    background: transparent;
+  }
+  .style-info-icon:hover .style-tooltip,
+  .style-info-icon:focus .style-tooltip,
+  .style-tooltip:hover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(4px);
+  }
+  .style-tooltip strong {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(168, 136, 82, 0.25);
+  }
+  .style-tooltip ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 260px;
+    overflow-y: auto;
+  }
+  .style-tooltip ul::-webkit-scrollbar {
+    width: 4px;
+  }
+  .style-tooltip ul::-webkit-scrollbar-thumb {
+    background: rgba(168, 136, 82, 0.4);
+    border-radius: 2px;
+  }
+  .style-tooltip li {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--ink);
+    padding: 0.35rem 0;
+    padding-left: 1rem;
+    position: relative;
+    font-weight: 400;
+  }
+  .style-tooltip li::before {
+    content: '·';
+    position: absolute;
+    left: 0.2rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  /* Flèche pointant vers l'icône (au-dessus) */
+  .style-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-bottom-color: var(--white);
+    margin-bottom: 0;
+    z-index: 2;
+  }
+  .style-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    min-height: 4.05em;
+  }
+  .style-breakdown {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(168, 136, 82, 0.2);
+    margin-bottom: 1.25rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.3rem 0;
+    font-size: 0.8rem;
+  }
+  .breakdown-row.breakdown-single {
+    justify-content: flex-end;
+    padding: 0.2rem 0;
+  }
+  .breakdown-row.breakdown-single .breakdown-amount {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+  .breakdown-amount {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .breakdown-amount.breakdown-plus {
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+  .style-select {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+  .style-select:hover {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .style-card.active .style-select {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+  }
+
+  /* Responsive */
+
+  /* ===== RESPONSIVE LAPTOP 13-14" (1441px et moins) ===== */
+  @media (max-width: 1440px) {
+    /* Nav plus compacte */
+    nav { padding: 0.8rem 2rem; }
+    .nav-links { gap: 2rem; }
+    
+    /* Sous-nav villa */
+    .villa-subnav-inner { padding: 0 2rem; }
+    .villa-subnav ul { gap: 2rem; }
+    .villa-subnav li { padding: 0.8rem 0; }
+    .villa-subnav a { font-size: 0.65rem; }
+    
+    /* Hero villa */
+    .villa-hero-inner { padding: 3rem 2rem 1.5rem; }
+    .villa-hero h1 { font-size: 3.5rem; }
+    .villa-title-price .value { font-size: 2.1rem; }
+    .villa-title-price .value small { font-size: 1.15rem; }
+    
+    /* Specs bandeau */
+    .specs { padding: 0 2rem; }
+    .specs-inner { padding: 1rem 0.8rem; gap: 0.6rem; }
+    .spec-icon { width: 28px; height: 28px; margin-bottom: 0.4rem; }
+    .spec .value { font-size: 1.2rem; margin-bottom: 0.25rem; }
+    .spec .value small { font-size: 0.72rem; }
+    .spec .label { font-size: 0.55rem; }
+    
+    /* Galerie - tailles réduites pour laptop */
+    .gallery { padding: 1.5rem 2rem 0.4rem; gap: 0.8rem; max-width: 1200px; grid-template-rows: 200px 200px; }
+    .gallery-more { padding: 0.4rem 2rem 2rem; gap: 0.8rem; max-width: 1200px; }
+    .gallery-more .gallery-item { aspect-ratio: 16/10; }
+    
+    /* ===== PERSONNALISATION (wrapper + onglets) ===== */
+    .personnalisation { padding: 3rem 2rem 4rem; }
+    .personnalisation-inner { max-width: 1100px; }
+    .personnalisation-header { margin: 0 auto 2rem; }
+    .personnalisation-header h2 { font-size: 2.3rem; margin-bottom: 0.8rem; }
+    .personnalisation-header .styles-intro { font-size: 1rem; }
+    
+    .perso-tabs { gap: 1.2rem; margin-bottom: 2rem; }
+    .perso-tab-btn { padding: 1rem 1rem; font-size: 0.72rem; letter-spacing: 0.2em; }
+    .perso-tab-num { width: 20px; height: 20px; font-size: 0.65rem; line-height: 20px; margin-right: 0.5rem; }
+    
+    /* Cartes options (sol/parement) */
+    .options-grid { gap: 1.2rem; max-width: 1100px; }
+    .option-card .option-info { padding: 1.1rem; }
+    .option-card .option-info h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+    .option-card .option-desc { font-size: 0.85rem; margin-bottom: 0.9rem; line-height: 1.45; min-height: 3.7em; }
+    .option-breakdown { padding-top: 0.7rem; margin-bottom: 0.9rem; }
+    .option-amount { font-size: 0.8rem; }
+    .option-select { padding: 0.65rem 1rem; font-size: 0.65rem; }
+    
+    /* ===== STYLES INTÉRIEURS ===== */
+    .styles { padding: 3rem 2rem 4rem; }
+    .styles-grid { gap: 1.2rem; }
+    .style-preview { aspect-ratio: 16/10; }
+    .style-thumbs { gap: 0.3rem; padding: 0.3rem; grid-template-columns: repeat(5, 1fr); }
+    .style-thumb { aspect-ratio: 1/1; }
+    .style-info { padding: 1.1rem; }
+    .style-info h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .style-desc { font-size: 0.85rem; margin-bottom: 0.9rem; line-height: 1.45; min-height: 3.7em; }
+    .style-info-icon { width: 18px; height: 18px; font-size: 0.65rem; }
+    .style-tooltip { width: 280px; padding: 1rem 1.2rem; }
+    .style-tooltip li { font-size: 0.72rem; padding: 0.25rem 0 0.25rem 1rem; }
+    .style-breakdown { padding-top: 0.7rem; margin-bottom: 0.9rem; }
+    .breakdown-row { padding: 0.2rem 0; }
+    .breakdown-amount { font-size: 0.8rem; }
+    .style-select { padding: 0.65rem 1rem; font-size: 0.62rem; }
+    
+    /* Plan */
+    .plan { padding: 3rem 2rem 4rem; }
+    .plan-inner .plan-header { margin-bottom: 2rem; }
+    .plan-header h2 { font-size: 2.3rem; }
+    
+    /* Features */
+    .features { padding: 3rem 2rem 4rem; }
+    .features-grid { gap: 2rem; }
+    
+    /* Description */
+    .description { padding: 3rem 2rem 4rem; }
+    .description-body .lead { font-size: 1.2rem; }
+    
+    /* Location */
+    .location { padding: 3rem 2rem 4rem; }
+    
+    /* Contact */
+    .contact { padding: 3rem 2rem 4rem; }
+    .contact h2 { font-size: 2.3rem; }
+    
+    /* Footer */
+    footer { padding: 2rem; }
+  }
+
+  /* ========== CARROUSEL MOBILE (personnalisation) ========== */
+  .perso-carousel-wrap {
+    position: relative;
+  }
+  .perso-carousel-dots {
+    display: none;
+  }
+  .perso-carousel-arrow {
+    display: none;
+  }
+  .gallery-arrow {
+    display: none;
+  }
+  .gallery-dots {
+    display: none;
+  }
+  .gallery-wrap {
+    position: relative;
+  }
+
+  @media (max-width: 700px) {
+    /* Transformation des grids en carrousels horizontaux */
+    .options-grid,
+    .styles-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      gap: 1rem;
+      padding: 0.3rem 0;
+      margin: 0;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .options-grid::-webkit-scrollbar,
+    .styles-grid::-webkit-scrollbar { display: none; }
+
+    .options-grid > .option-card,
+    .styles-grid > .style-card {
+      flex: 0 0 100%;
+      max-width: 100%;
+      width: 100%;
+      margin: 0;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+
+    /* Indicateurs de pagination (dots) */
+    .perso-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+    }
+    .perso-carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sand-dark);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .perso-carousel-dot.active {
+      background: var(--jungle);
+      transform: scale(1.3);
+    }
+
+    /* Flèches navigation */
+    .perso-carousel-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 38%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(250, 247, 240, 0.95);
+      border: 1px solid var(--sand-dark);
+      color: var(--ink);
+      cursor: pointer;
+      z-index: 5;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: all 0.2s ease;
+    }
+    .perso-carousel-arrow:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    .perso-carousel-arrow svg {
+      width: 16px;
+      height: 16px;
+    }
+    .perso-carousel-arrow.prev {
+      left: 0.3rem;
+    }
+    .perso-carousel-arrow.next {
+      right: 0.3rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .styles-grid { grid-template-columns: 1fr; }
+    .style-thumbs { grid-template-columns: repeat(5, 1fr); }
+    /* SOLS & PAREMENTS : 1 colonne aussi sur mobile */
+    .options-grid { grid-template-columns: 1fr; gap: 1.5rem; max-width: 100%; }
+    .option-thumbs { grid-template-columns: repeat(3, 1fr); }
+    .option-card { max-width: 500px; margin: 0 auto; width: 100%; }
+    .perso-tabs { 
+      flex-wrap: wrap; 
+      gap: 0.5rem; 
+      padding: 0 1rem; 
+      margin-bottom: 2rem; 
+    }
+    .perso-tab-btn { 
+      padding: 0.8rem 0.8rem; 
+      font-size: 0.65rem; 
+      letter-spacing: 0.15em; 
+      flex: 1; 
+      min-width: 0; 
+    }
+    .perso-tab-num { 
+      width: 18px; 
+      height: 18px; 
+      font-size: 0.6rem; 
+      line-height: 18px; 
+      margin-right: 0.4rem; 
+    }
+    .personnalisation { padding: 3rem 1.5rem; }
+    .personnalisation-header { margin: 0 auto 1.5rem; }
+    .personnalisation-header h2 { font-size: 2rem; margin-bottom: 0.8rem; }
+    .personnalisation-header .styles-intro { font-size: 0.95rem; }
+  }
+
+  /* ===== FEATURES ===== */
+  .features {
+    padding: 4rem 3rem 5rem;
+    background: var(--white);
+  }
+
+  .features-header {
+    max-width: 1400px;
+    margin: 0 auto 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-bottom: 1px solid var(--sand-dark);
+    padding-bottom: 1.2rem;
+  }
+  .features-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+    font-weight: 400;
+  }
+  .features-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .features-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 4rem;
+  }
+
+  .feature-group h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--sand-dark);
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+  .feature-list li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+  .feature-list li::before {
+    content: '—';
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  /* ===== PLAN ===== */
+  .plan {
+    padding: 4rem 3rem 5rem;
+    background: var(--sand-light);
+  }
+  .plan-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .plan-header {
+    margin-bottom: 3rem;
+  }
+  .plan-header .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .plan-header .eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+  .plan-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    font-weight: 400;
+  }
+  .plan-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .plan-visual {
+    position: relative;
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--sand-dark);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .plan-visual:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(26, 30, 26, 0.1);
+  }
+  .plan-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .plan-visual .plan-placeholder {
+    width: 100%;
+    aspect-ratio: 3/2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    opacity: 0.5;
+    background: var(--white);
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .plan-level {
+    margin-bottom: 0;
+  }
+  .plan-level-title {
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--sand-dark);
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .plan-level-title::before {
+    content: '—';
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  /* ===== LOCALISATION ===== */
+  .location {
+    padding: 4rem 3rem 5rem;
+    background: var(--jungle-deep);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .location::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 70% 30%, rgba(168, 136, 82, 0.12), transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(184, 98, 63, 0.08), transparent 50%);
+  }
+
+  .location-inner {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .location-text .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .location-text .label::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .location-text h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+  .location-text h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .location-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--sand);
+    margin-bottom: 2rem;
+  }
+
+  .location-points {
+    list-style: none;
+    padding: 0;
+  }
+  .location-points li {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(250, 247, 240, 0.1);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+  }
+  .location-points li span:first-child { color: var(--sand); }
+  .location-points li span:last-child { color: var(--gold); font-style: italic; }
+
+  .location-map {
+    position: relative;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border: 1px solid rgba(168, 136, 82, 0.3);
+    background: var(--jungle-deep);
+  }
+  .location-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    filter: grayscale(0.2) contrast(0.95);
+  }
+
+  /* ===== CONTACT ===== */
+  .contact {
+    background: var(--ink);
+    color: var(--white);
+    padding: 4rem 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 50%, rgba(168, 136, 82, 0.15), transparent 60%);
+  }
+
+  .contact-inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .contact-text .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  .contact-text h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+  .contact-text h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .contact-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--sand);
+    margin-bottom: 2rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(250, 247, 240, 0.3);
+    padding: 0.9rem 0;
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    transition: border-color 0.3s;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: rgba(250, 247, 240, 0.4);
+    font-style: italic;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-bottom-color: var(--gold);
+  }
+
+  .contact-form textarea {
+    min-height: 80px;
+    resize: vertical;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+  }
+
+  .contact-form button {
+    margin-top: 0.8rem;
+    padding: 1.1rem 2rem;
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--white);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+  }
+  .contact-form button:hover {
+    background: #8e7043;
+    border-color: #8e7043;
+  }
+  .contact-form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  /* Préférence de contact */
+  .contact-preference {
+    margin-top: 0.3rem;
+  }
+  .contact-preference-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0.7rem;
+    font-weight: 400;
+  }
+  .contact-preference-options {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .contact-pref-option {
+    cursor: pointer;
+    user-select: none;
+  }
+  .contact-pref-option input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .contact-pref-option span {
+    display: inline-block;
+    padding: 0.65rem 1.3rem;
+    border: 1px solid var(--sand-dark);
+    background: var(--white);
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+  }
+  .contact-pref-option:hover span {
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+  .contact-pref-option input[type="checkbox"]:checked + span {
+    background: var(--jungle);
+    border-color: var(--jungle);
+    color: var(--white);
+  }
+  .contact-pref-option input[type="checkbox"]:focus-visible + span {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+  .contact-status {
+    margin-top: 1rem;
+    padding: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+  }
+  .contact-status:empty {
+    display: none;
+  }
+  .contact-status.success {
+    padding: 1rem 1.2rem;
+    background: var(--jungle);
+    border-left: 3px solid var(--jungle-deep);
+    color: var(--white);
+  }
+  .contact-status.success strong {
+    color: var(--white);
+  }
+  .contact-status.error {
+    padding: 1rem 1.2rem;
+    background: rgba(184, 98, 63, 0.08);
+    border-left: 3px solid var(--terracotta);
+    color: var(--terracotta);
+  }
+  .contact-status.error a {
+    color: var(--terracotta);
+    text-decoration: underline;
+  }
+  .contact-status.loading {
+    padding: 0.6rem 0;
+    color: var(--ink-soft);
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--ink);
+    color: var(--sand);
+    padding: 3rem;
+    border-top: 1px solid rgba(250, 247, 240, 0.1);
+  }
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250, 247, 240, 0.5);
+  }
+  .footer-inner .logo { color: var(--white); }
+
+  /* ===== LIGHTBOX ===== */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 15, 15, 0.96);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    animation: lightboxFadeIn 0.3s ease;
+  }
+  .lightbox.active { display: flex; }
+
+  @keyframes lightboxFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .lightbox-image-wrap {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: lightboxImageFade 0.4s ease;
+  }
+
+  /* Règles spécifiques pour le SVG du plan dans la lightbox */
+  #plan-lightbox {
+    overflow: auto;
+    padding: 2rem;
+  }
+  #plan-lightbox .lightbox-image-wrap {
+    width: auto;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    margin: auto;
+    min-width: min-content;
+    min-height: min-content;
+  }
+  #plan-lightbox-image {
+    width: 1200px;
+    height: 800px;
+    max-width: none;
+    max-height: none;
+    object-fit: none;
+    background: var(--sand-light);
+    display: block;
+  }
+  /* Les contrôles restent fixes pendant le scroll dans la lightbox plan */
+  #plan-lightbox .lightbox-close,
+  #plan-lightbox .lightbox-nav,
+  #plan-lightbox .lightbox-counter {
+    position: fixed;
+  }
+
+  @keyframes lightboxImageFade {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: transparent;
+    border: 1px solid rgba(250, 247, 240, 0.3);
+    color: var(--white);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+  .lightbox-close:hover {
+    background: var(--white);
+    color: var(--ink);
+    border-color: var(--white);
+  }
+
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid rgba(250, 247, 240, 0.3);
+    color: var(--white);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    z-index: 2;
+  }
+  .lightbox-nav:hover {
+    background: var(--white);
+    color: var(--ink);
+    border-color: var(--white);
+  }
+  .lightbox-prev { left: 2rem; }
+  .lightbox-next { right: 2rem; }
+
+  .lightbox-counter {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(250, 247, 240, 0.7);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+  }
+  .lightbox-counter span {
+    font-family: 'Italiana', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    margin: 0 0.3rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 0.7rem 1rem; }
+    .nav-links { display: none; }
+    .nav-actions { gap: 0.6rem; }
+    .nav-cta { display: none; }
+    .basket-label { display: none; }
+    .basket { padding: 0.5rem 0.7rem; }
+
+    .back-link { display: none; }
+    .villa-subnav { display: none; }
+
+    .villa-hero-inner { padding: 3rem 1.5rem 2rem; }
+    .villa-title-block {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .villa-title-price { text-align: left; }
+
+    /* Sur mobile : gallery devient un swiper horizontal avec uniquement la photo hero visible.
+       Les 5 autres photos sont dans le DOM (accessibles via swipe + lightbox) mais pas empilées. */
+    .gallery {
+      display: flex;
+      grid-template-columns: none;
+      grid-template-rows: none;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      gap: 0;
+      padding: 1rem 1.5rem 1.5rem;
+      margin: 0;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+    }
+    .gallery::-webkit-scrollbar { display: none; }
+    .gallery-item,
+    .gallery-item.main,
+    .gallery-item.top-right,
+    .gallery-item.bottom-right {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 280px;
+      grid-row: auto;
+      grid-column: auto;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+    .zoom-hint {
+      top: 0.7rem;
+      right: 0.7rem;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.62rem;
+      gap: 0.35rem;
+    }
+    .zoom-hint svg { width: 12px; height: 12px; }
+
+    /* Sur mobile : on intègre les photos 4-6 dans le même swiper via JS (elles sont déplacées dans .gallery).
+       On masque simplement .gallery-more (qui devient vide en mobile) au cas où. */
+    .gallery-more {
+      display: none;
+    }
+
+    /* Flèches swiper gallery */
+    .gallery-arrow {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(250, 247, 240, 0.95);
+      border: 1px solid var(--sand-dark);
+      color: var(--ink);
+      cursor: pointer;
+      z-index: 5;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transition: all 0.2s ease;
+      padding: 0;
+    }
+    .gallery-arrow:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    .gallery-arrow svg {
+      width: 16px;
+      height: 16px;
+    }
+    .gallery-arrow.prev { left: 1.8rem; }
+    .gallery-arrow.next { right: 1.8rem; }
+
+    /* Dots gallery */
+    .gallery-dots {
+      display: flex !important;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+    }
+    .gallery-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--sand-dark);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .gallery-dot.active {
+      background: var(--jungle);
+      transform: scale(1.3);
+    }
+
+    .specs {
+      padding: 0 1.5rem;
+    }
+    .description, .features, .plan, .location, .contact {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    .specs-inner { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .spec { border-right: none; border-bottom: 1px solid var(--sand-dark); padding: 0.8rem 0.5rem; }
+    .spec:nth-last-child(1), .spec:nth-last-child(2) { border-bottom: none; }
+
+    .description-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .description-label { position: static; }
+
+    .features-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+    .plans-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+    .location-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    .lightbox { padding: 2rem 0.5rem; }
+    .lightbox-close { top: 1rem; right: 1rem; width: 40px; height: 40px; }
+    .lightbox-nav { width: 44px; height: 44px; }
+    .lightbox-prev { left: 0.5rem; }
+    .lightbox-next { right: 0.5rem; }
+  }
+
+  /* ================================================================
+     ===== PERSONNALISATION V5 (Univers + Timeline + Recap) =====
+     ================================================================ */
+  :root {
+    --locked: #9a9385;
+  }
+
+  /* === Wrapper === */
+  .personnalisation-v5 {
+    background: var(--sand-light);
+    padding: 0;
+  }
+  .perso-v5-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  /* === Header === */
+  .perso-v5-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 5rem 0 3rem;
+  }
+  .perso-v5-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .perso-v5-eyebrow::before,
+  .perso-v5-eyebrow::after {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+    display: inline-block;
+  }
+  .perso-v5-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.4rem, 4.5vw, 4rem);
+    line-height: 1.05;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .perso-v5-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+  .perso-v5-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .perso-v5-sub strong {
+    color: var(--ink);
+    font-weight: 500;
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* === Timeline d'avancement === */
+  .timeline-section {
+    background: var(--white);
+    border: 1px solid rgba(26, 30, 26, 0.08);
+    padding: 3rem 2.5rem 2rem;
+    margin-bottom: 4rem;
+  }
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  .timeline-title .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .timeline-title h3 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1.1;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .timeline-title h3 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .progress-display {
+    text-align: right;
+    min-width: 280px;
+  }
+  .progress-percent {
+    font-family: 'Italiana', serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--jungle);
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+  }
+  .progress-percent sup {
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-left: 0.2rem;
+  }
+  .progress-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .progress-eta {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--terracotta);
+    margin-top: 0.4rem;
+  }
+  .timeline-track {
+    position: relative;
+    padding: 2rem 0 1rem;
+  }
+  .timeline-bar {
+    position: relative;
+    height: 2px;
+    background: var(--sand-dark);
+    margin: 0 0 3rem;
+  }
+  .timeline-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--jungle-deep) 0%, var(--jungle) 100%);
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .timeline-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    position: relative;
+  }
+  .timeline-step {
+    position: relative;
+    text-align: center;
+  }
+  .timeline-step::before {
+    content: '';
+    position: absolute;
+    top: -3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--sand-dark);
+    transition: all 0.3s;
+    z-index: 2;
+  }
+  .timeline-step.done::before {
+    background: var(--jungle);
+    border-color: var(--jungle);
+  }
+  .timeline-step.current::before {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    box-shadow: 0 0 0 6px rgba(184, 98, 63, 0.15);
+    animation: pulseStep 2s ease-in-out infinite;
+  }
+  @keyframes pulseStep {
+    0%, 100% { box-shadow: 0 0 0 6px rgba(184, 98, 63, 0.15); }
+    50%      { box-shadow: 0 0 0 12px rgba(184, 98, 63, 0.05); }
+  }
+  .step-num {
+    font-family: 'Italiana', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.15em;
+  }
+  .step-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+  .step-date {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0.6;
+  }
+  .timeline-step.done .step-name { color: var(--jungle); }
+  .timeline-step.current .step-name { color: var(--terracotta); }
+  .timeline-step.upcoming .step-name { color: var(--locked); }
+  .timeline-step.upcoming .step-num { color: var(--sand-dark); }
+
+  /* === Univers section === */
+  .universes-section {
+    margin-bottom: 4rem;
+  }
+  .universes-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .universes-header .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .universes-header h3 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1.1;
+    font-weight: 400;
+    color: var(--ink);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .universes-header h3 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  /* Layout : main + sidebar */
+  .universes-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+  .universes-main { min-width: 0; }
+  .recap-sidebar {
+    position: sticky;
+    top: 6rem;
+  }
+
+  /* Tabs avec teasers */
+  .univ-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+    scroll-margin-top: 90px;
+  }
+  .univ-tab {
+    background: var(--white);
+    border: 1px solid rgba(26, 30, 26, 0.1);
+    padding: 1.4rem 1.1rem;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    transition: all 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .univ-tab:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(26, 30, 26, 0.05);
+  }
+  .univ-tab.active {
+    border-color: var(--terracotta);
+    background: rgba(184, 98, 63, 0.04);
+  }
+  .univ-tab.active::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--terracotta);
+  }
+  .univ-tab.completed { border-color: var(--jungle); }
+  .univ-tab.completed::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--jungle);
+  }
+  .univ-tab.completed .univ-tab-num    { color: var(--jungle); }
+  .univ-tab.completed .univ-tab-status { color: var(--jungle); opacity: 1; }
+  .univ-tab-check {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--jungle);
+    color: var(--white);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .univ-tab.completed .univ-tab-check {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+  }
+  .univ-tab-check svg { width: 12px; height: 12px; }
+  .univ-tab.locked { opacity: 0.65; cursor: not-allowed; }
+  .univ-tab.locked:hover {
+    transform: none;
+    border-color: rgba(26, 30, 26, 0.1);
+    box-shadow: none;
+  }
+  .univ-tab-num {
+    font-family: 'Italiana', serif;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    display: block;
+  }
+  .univ-tab.locked .univ-tab-num { color: var(--locked); }
+  .univ-tab.active .univ-tab-num { color: var(--terracotta); }
+  .univ-tab-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .univ-tab-teaser {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(26, 30, 26, 0.06);
+  }
+  .univ-tab-status {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: auto;
+  }
+  .univ-tab.active .univ-tab-status { color: var(--jungle); opacity: 1; }
+  .univ-tab.locked .univ-tab-status { color: var(--terracotta); opacity: 0.85; }
+  .univ-tab.free   .univ-tab-status { color: var(--jungle); }
+  .univ-tab.urgent .univ-tab-status { color: var(--terracotta); }
+  .univ-tab-status .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  /* Univers content (accordéon natif <details>) */
+  .univ-content {
+    display: block;
+    margin-bottom: 1.2rem;
+    scroll-margin-top: 90px;
+  }
+  .univ-content:last-child { margin-bottom: 0; }
+  .univ-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.4rem 1.8rem;
+    background: var(--white);
+    border: 1px solid rgba(26, 30, 26, 0.1);
+    cursor: pointer;
+    transition: all 0.3s;
+    user-select: none;
+    list-style: none;
+  }
+  .univ-section-header:hover { border-color: var(--gold); }
+  .univ-section-header::-webkit-details-marker { display: none; }
+  .univ-content[open] .univ-section-header {
+    border-color: var(--terracotta);
+    background: rgba(184, 98, 63, 0.03);
+    border-bottom-color: transparent;
+  }
+  .univ-content.completed .univ-section-header {
+    border-color: var(--jungle);
+    background: rgba(45, 74, 52, 0.04);
+  }
+  .univ-content.completed[open] .univ-section-header {
+    border-bottom-color: transparent;
+  }
+  .univ-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    min-width: 0;
+  }
+  .univ-section-num {
+    font-family: 'Italiana', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .univ-section-title {
+    font-family: 'Italiana', serif;
+    font-size: clamp(1.3rem, 2vw, 1.65rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .univ-section-title em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .univ-content.completed .univ-section-title em { color: var(--jungle); }
+  .univ-header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+  .univ-section-status {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid currentColor;
+  }
+  .univ-section-status.free    { color: var(--jungle); }
+  .univ-section-status.urgent  { color: var(--terracotta); }
+  .univ-section-status.locked  { color: var(--locked); }
+  .univ-section-status.done    {
+    color: var(--white);
+    background: var(--jungle);
+    border-color: var(--jungle);
+  }
+  .univ-section-status .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .univ-section-status.done .dot { background: var(--white); }
+  .univ-progress-mini {
+    font-family: 'Italiana', serif;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .univ-progress-mini strong {
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+  .univ-content.completed .univ-progress-mini strong { color: var(--jungle); }
+  .univ-chevron {
+    width: 22px; height: 22px;
+    transition: transform 0.3s;
+    color: var(--ink-soft);
+    flex-shrink: 0;
+  }
+  .univ-content[open] .univ-chevron {
+    transform: rotate(180deg);
+    color: var(--terracotta);
+  }
+  .univ-content.completed[open] .univ-chevron { color: var(--jungle); }
+
+  /* Body de l'accordéon */
+  .univ-body {
+    padding: 2.5rem 1.8rem;
+    background: var(--white);
+    border: 1px solid var(--terracotta);
+    border-top: none;
+    animation: univSlideDown 0.4s ease;
+  }
+  .univ-content.completed .univ-body { border-color: var(--jungle); }
+  @keyframes univSlideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .univ-body-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+  .univ-locked-banner {
+    padding: 1.8rem;
+    background: rgba(184, 98, 63, 0.06);
+    border-left: 3px solid var(--terracotta);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+  .univ-locked-banner svg {
+    flex-shrink: 0;
+    color: var(--terracotta);
+    margin-top: 2px;
+  }
+  .univ-locked-banner h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .univ-locked-banner p {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Sub-categories */
+  .subcat { margin-bottom: 3.5rem; }
+  .subcat:last-child { margin-bottom: 0; }
+  .subcat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+  }
+  .subcat-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .subcat-help {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* Cartes options (v5) */
+  .options-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.2rem;
+  }
+  .option {
+    background: var(--white);
+    border: 1px solid rgba(26, 30, 26, 0.08);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-family: inherit;
+    color: inherit;
+  }
+  .option:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26, 30, 26, 0.06);
+  }
+  .option.selected {
+    border-color: var(--jungle);
+    background: rgba(45, 74, 52, 0.03);
+  }
+  .option.selected::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--jungle);
+  }
+  .option.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  .option .option-visual {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--sand);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    position: relative;
+  }
+  .option .option-visual img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .option .option-visual .placeholder-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+    opacity: 0.3;
+  }
+  .option .option-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.18rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+  .option .option-name em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .option .option-desc {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    min-height: auto;
+  }
+  .option .option-price {
+    font-family: 'Italiana', serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(26, 30, 26, 0.08);
+  }
+  .option .option-price.included { color: var(--jungle); }
+  .option .option-tag {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--jungle);
+    color: var(--white);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.6rem;
+    z-index: 2;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    left: auto;
+  }
+  .option.selected .option-tag {
+    background: var(--terracotta);
+  }
+
+  /* === Sidebar Recap === */
+  .recap {
+    background: var(--white);
+    border: 1px solid rgba(26, 30, 26, 0.1);
+    padding: 2rem;
+  }
+  .recap-header {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+    margin-bottom: 1.5rem;
+  }
+  .recap-villa-name {
+    font-family: 'Italiana', serif;
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.1;
+  }
+  .recap-villa-loc {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .recap-base {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dashed rgba(26, 30, 26, 0.15);
+  }
+  .recap-base-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .recap-base-amount {
+    font-family: 'Italiana', serif;
+    font-size: 1.18rem;
+    color: var(--ink);
+  }
+  .recap-list {
+    list-style: none;
+    padding: 0;
+    min-height: 60px;
+    margin-bottom: 1.5rem;
+  }
+  .recap-empty {
+    text-align: center;
+    color: var(--ink-soft);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    padding: 2rem 0;
+    opacity: 0.6;
+    font-size: 1rem;
+  }
+  .recap-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(26, 30, 26, 0.05);
+    font-size: 0.85rem;
+  }
+  .recap-item:last-child { border-bottom: none; }
+  .recap-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+  .recap-item-cat {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .recap-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .recap-item-price {
+    font-family: 'Italiana', serif;
+    font-size: 0.95rem;
+    color: var(--terracotta);
+    white-space: nowrap;
+  }
+  .recap-item-price.included {
+    color: var(--jungle);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+  }
+  .recap-total {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .recap-total-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.4rem;
+  }
+  .recap-total-amount {
+    font-family: 'Italiana', serif;
+    font-size: 2rem;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .recap-total-eur {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-soft);
+  }
+  .recap-cta {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: var(--ink);
+    color: var(--white);
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .recap-cta:hover {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+  .recap-secondary {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    background: transparent;
+    color: var(--ink-soft);
+    text-align: center;
+    border: none;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    font-family: inherit;
+    transition: color 0.3s;
+  }
+  .recap-secondary:hover { color: var(--terracotta); }
+
+  /* === Section Verrouillé (transparence) === */
+  .locked-section {
+    padding: 4rem 0 5rem;
+  }
+  .locked-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(26, 30, 26, 0.08);
+  }
+  .locked-inner .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--locked);
+    margin-bottom: 1rem;
+  }
+  .locked-inner h3 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(1.7rem, 2.8vw, 2.2rem);
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .locked-inner h3 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--locked);
+  }
+  .locked-inner > p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    font-style: italic;
+  }
+  .locked-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .locked-item {
+    padding: 1.5rem;
+    background: var(--sand-light);
+    border: 1px dashed var(--sand-dark);
+    text-align: left;
+  }
+  .locked-item-cat {
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--locked);
+    margin-bottom: 0.4rem;
+  }
+  .locked-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .locked-item-info {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* === Responsive === */
+  @media (max-width: 1100px) {
+    .universes-layout {
+      grid-template-columns: 1fr;
+    }
+    .recap-sidebar {
+      position: static;
+      order: -1;
+      max-width: 500px;
+      margin: 0 auto 1.5rem;
+      width: 100%;
+    }
+  }
+  @media (max-width: 900px) {
+    .perso-v5-inner { padding: 0 2rem; }
+    .timeline-section { padding: 2rem 1.5rem 1.5rem; }
+    .timeline-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .progress-display { text-align: left; min-width: 0; }
+    .timeline-steps {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .timeline-bar { display: none; }
+    .timeline-step {
+      text-align: left;
+      padding-left: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed var(--sand-dark);
+    }
+    .timeline-step::before {
+      top: 0.3rem;
+      left: 0;
+      transform: none;
+    }
+    .univ-tabs {
+      grid-template-columns: 1fr 1fr;
+    }
+    .univ-section-header { padding: 1.1rem 1.2rem; }
+    .univ-header-right { gap: 0.6rem; flex-wrap: wrap; justify-content: flex-end; }
+    .univ-body { padding: 2rem 1.2rem; }
+  }
+  @media (max-width: 540px) {
+    .perso-v5-inner { padding: 0 1.5rem; }
+    .perso-v5-header { padding: 3.5rem 0 2rem; }
+    .univ-tabs { grid-template-columns: 1fr; }
+    .options-row { grid-template-columns: 1fr; }
+  }
+
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="Index2.html" class="logo"><svg class="logo-house" width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22L24 8l18 14"/><path d="M10 20v20h28V20"/><path d="M20 40v-10h8v10"/><circle cx="24" cy="24" r="1.5" fill="currentColor"/></svg><span class="logo-text">Maisons <span class="s-accent">S</span>amui</span></a>
+  <ul class="nav-links">
+    <li><a href="Index2.html#collection">Les Villas</a></li>
+    <li><a href="Index2.html#featured">Histoire</a></li>
+    <li><a href="Index2.html#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="basket" id="basket" type="button" aria-label="Voir mon projet">
+      <svg class="basket-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 22L24 8l18 14"/>
+        <path d="M10 20v20h28V20"/>
+        <path d="M20 40v-10h8v10"/>
+      </svg>
+      <span class="basket-label">Mon projet</span>
+      <span class="basket-count" id="basket-count">0</span>
+    </button>
+    <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
+  </div>
+</nav>
+
+<a href="Index2.html#collection" class="back-link">Retour aux Villas</a>
+
+<!-- SOUS-NAVIGATION VILLA -->
+<nav class="villa-subnav" id="villa-subnav">
+  <div class="villa-subnav-inner">
+    <ul>
+      <li><a href="#villa" data-section="villa">Baan Sawan</a></li>
+      <li><a href="#styles" data-section="styles">Personnalisation</a></li>
+      <li><a href="#architecture" data-section="architecture">Plans</a></li>
+      <li><a href="#features" data-section="features">Prestations</a></li>
+      <li><a href="#location" data-section="location">Situation</a></li>
+      <li><a href="#contact" data-section="contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO VILLA -->
+<section class="villa-hero" id="villa">
+  <div class="villa-hero-inner">
+    <div class="villa-breadcrumb">
+      <a href="Index2.html">Maisons Samui</a>
+      <span class="sep">/</span>
+      <a href="Index2.html#collection">Les Villas</a>
+      <span class="sep">/</span>
+      <span>Baan Sawan</span>
+    </div>
+
+    <div class="villa-title-block">
+      <div>
+        <div class="villa-eyebrow">Lamai · Côte est de Koh Samui</div>
+        <h1>Baan <em>Sawan</em></h1>
+      </div>
+      <div class="villa-title-price">
+        <div class="label">À partir de</div>
+        <div class="value">
+          ฿ 19 000 000
+          <small>≈ 500 k€</small>
+        </div>
+
+        <div class="villa-crypto-badge">
+          <span class="crypto-label">Cryptos acceptées</span>
+          <span class="crypto-icons">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#F7931A"/><path d="M22.35 14.07c.29-1.93-1.18-2.97-3.18-3.66l.65-2.61-1.59-.4-.63 2.54c-.42-.1-.85-.2-1.27-.3l.64-2.56-1.59-.4-.65 2.61c-.34-.08-.68-.15-1.01-.23l-2.19-.55-.42 1.7s1.18.27 1.15.29c.64.16.76.59.74.93l-.74 2.97c.04.01.1.03.17.05l-.17-.04-1.04 4.17c-.08.2-.28.49-.73.38.02.02-1.16-.29-1.16-.29l-.79 1.82 2.07.52c.39.1.76.2 1.13.29l-.66 2.64 1.59.4.65-2.61c.43.12.86.22 1.27.33l-.65 2.6 1.59.4.66-2.64c2.71.51 4.75.31 5.61-2.15.69-1.98-.03-3.12-1.46-3.87 1.04-.24 1.83-.92 2.04-2.33zm-3.65 5.11c-.49 1.98-3.83.91-4.92.64l.87-3.5c1.08.27 4.56.8 4.05 2.86zm.49-5.14c-.45 1.8-3.23.89-4.14.66l.79-3.17c.91.23 3.82.65 3.35 2.51z" fill="white"/></svg>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#2775CA"/><path d="M20.9 18.5c0-2.59-1.56-3.48-4.68-3.85-2.23-.3-2.67-.89-2.67-1.93 0-1.04.74-1.71 2.23-1.71 1.34 0 2.08.45 2.45 1.56.07.22.3.37.52.37h1.19c.3 0 .52-.22.52-.52v-.07c-.3-1.64-1.64-2.9-3.35-3.05v-1.78c0-.3-.22-.52-.59-.59h-1.12c-.3 0-.52.22-.59.59v1.71c-2.23.3-3.64 1.78-3.64 3.64 0 2.45 1.49 3.42 4.61 3.79 2.08.37 2.75.82 2.75 2 0 1.19-1.04 2-2.45 2-1.93 0-2.6-.82-2.82-1.93-.07-.3-.3-.45-.52-.45H10.6c-.3 0-.52.22-.52.52v.07c.3 1.86 1.49 3.2 3.94 3.57v1.78c0 .3.22.52.59.59h1.12c.3 0 .52-.22.59-.59v-1.78c2.23-.37 3.57-1.93 3.57-3.94z" fill="white"/><path d="M12.68 25.5c-3.94-1.41-6.38-5.35-5.8-9.37.45-2.97 2.45-5.35 5.35-6.32.3-.15.45-.37.45-.74v-1.04c0-.3-.15-.52-.45-.59-.07 0-.22 0-.3.07C6.97 8.88 4.22 13.7 5.63 18.66c.82 2.97 3.12 5.27 6.17 6.1.3.15.59 0 .67-.3.07-.07.07-.15.07-.22v-1.04c0-.22-.22-.52-.45-.59zm6.62-17.48c-.3-.15-.59 0-.67.3-.07.07-.07.15-.07.22v1.04c0 .3.22.59.45.74 3.94 1.41 6.38 5.35 5.8 9.37-.45 2.97-2.45 5.35-5.35 6.32-.3.15-.45.37-.45.74v1.04c0 .3.15.52.45.59.07 0 .22 0 .3-.07 4.96-1.49 7.7-6.32 6.29-11.27-.82-3.05-3.2-5.35-6.25-6.17z" fill="white"/></svg>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#26A17B"/><path d="M17.92 14.3v-2.03h4.64V9.18H9.46v3.09h4.64v2.03c-3.77.17-6.61.92-6.61 1.81 0 .89 2.84 1.63 6.61 1.81v6.49h3.82v-6.5c3.77-.17 6.6-.92 6.6-1.81 0-.89-2.84-1.63-6.6-1.81zm0 3.07v-.01c-.09.01-.58.04-1.68.04-.88 0-1.5-.02-1.72-.04v.01c-3.42-.15-5.98-.75-5.98-1.46 0-.71 2.56-1.31 5.98-1.46v2.32c.22.02.86.05 1.74.05 1.05 0 1.58-.04 1.67-.05v-2.32c3.42.15 5.97.75 5.97 1.46 0 .71-2.56 1.31-5.97 1.46z" fill="white"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs">
+  <div class="specs-inner">
+
+    <div class="spec">
+      <svg class="spec-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 30v10M42 30v10"/>
+        <path d="M6 30h36v-6a6 6 0 0 0-6-6H12a6 6 0 0 0-6 6v6z"/>
+        <path d="M12 18v-2a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2M24 18v-2a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2"/>
+      </svg>
+      <div class="value">3</div>
+      <div class="label">Chambres</div>
+    </div>
+
+    <div class="spec">
+      <svg class="spec-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 24h36v8a6 6 0 0 1-6 6H12a6 6 0 0 1-6-6v-8z"/>
+        <path d="M10 24V12a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2"/>
+        <path d="M16 14h8"/>
+        <path d="M12 38l-2 4M36 38l2 4"/>
+      </svg>
+      <div class="value">2</div>
+      <div class="label">Salles d'eau</div>
+    </div>
+
+    <div class="spec">
+      <svg class="spec-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 8h32v32H8z"/>
+        <path d="M8 22h14v18"/>
+        <path d="M4 6l4-4M44 6l-4-4M4 42l4 4M44 42l-4 4"/>
+      </svg>
+      <div class="value">152<small>m²</small></div>
+      <div class="label">Surface habitable</div>
+    </div>
+
+    <div class="spec">
+      <svg class="spec-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h40v40H4z"/>
+        <path d="M4 4l40 40M4 44L44 4"/>
+      </svg>
+      <div class="value">448<small>m²</small></div>
+      <div class="label">Surface totale</div>
+    </div>
+
+    <div class="spec">
+      <svg class="spec-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="6" y="10" width="36" height="32" rx="2"/>
+        <path d="M6 18h36"/>
+        <path d="M16 6v8M32 6v8"/>
+        <path d="M14 26h4M22 26h4M30 26h4M14 34h4M22 34h4M30 34h4"/>
+      </svg>
+      <div class="value">2026</div>
+      <div class="label">Livraison</div>
+    </div>
+
+    <div class="spec">
+      <svg class="spec-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 22L24 8l18 14"/>
+        <path d="M10 20v20h28V20"/>
+        <path d="M20 40v-10h8v10"/>
+        <circle cx="24" cy="26" r="1.5" fill="currentColor"/>
+      </svg>
+      <div class="value">Flexible</div>
+      <div class="label">Propriété</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALERIE -->
+<!-- Photos : on charge en priorité les images locales (photos/baansawan/baansawan-XX.jpg)
+     et on bascule sur des visuels Unsplash de référence si elles ne sont pas disponibles. -->
+<div class="gallery" id="villa-gallery">
+  <div class="gallery-item main" data-index="0">
+    <img src="photos/baansawan/baansawan-main.jpg"
+         data-unsplash="https://images.unsplash.com/photo-1582610116397-edb318620f90?auto=format&fit=crop&w=1600&q=80"
+         alt="Baan Sawan — Vue piscine à débordement face à la mer" />
+    <div class="zoom-hint">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        <line x1="11" y1="8" x2="11" y2="14"/>
+        <line x1="8" y1="11" x2="14" y2="11"/>
+      </svg>
+      <span>Cliquer pour agrandir</span>
+    </div>
+  </div>
+  <div class="gallery-item top-right" data-index="1">
+    <img src="photos/baansawan/baansawan-01.jpg"
+         data-unsplash="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80"
+         alt="Baan Sawan — Salon ouvert sur la terrasse" />
+  </div>
+  <div class="gallery-item bottom-right" data-index="2">
+    <img src="photos/baansawan/baansawan-02.jpg"
+         data-unsplash="https://images.unsplash.com/photo-1571508601891-ca5e7a713859?auto=format&fit=crop&w=1200&q=80"
+         alt="Baan Sawan — Suite parentale vue mer" />
+  </div>
+</div>
+
+<div class="gallery-more">
+  <div class="gallery-item g4" data-index="3">
+    <img src="photos/baansawan/baansawan-03.jpg"
+         data-unsplash="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=80"
+         alt="Baan Sawan — Façade en bois et pierre locale" />
+  </div>
+  <div class="gallery-item g5" data-index="4">
+    <img src="photos/baansawan/baansawan-04.jpg"
+         data-unsplash="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80"
+         alt="Baan Sawan — Salle de bain marbre & douche italienne" />
+  </div>
+  <div class="gallery-item g6" data-index="5">
+    <img src="photos/baansawan/baansawan-05.jpg"
+         data-unsplash="https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?auto=format&fit=crop&w=1200&q=80"
+         alt="Baan Sawan — Terrasse en teck et jardin tropical" />
+  </div>
+</div>
+
+<!-- ===== PERSONNALISATION V5 (Univers + Timeline + Sidebar Recap) ===== -->
+<section class="personnalisation-v5" id="styles">
+  <div class="perso-v5-inner">
+
+    <!-- Header -->
+    <div class="perso-v5-header">
+      <div class="perso-v5-eyebrow">Personnalisation Sur-Mesure</div>
+      <h2>Composez <em>Baan Sawan</em><br>à votre image</h2>
+      <p class="perso-v5-sub">Architecture, finitions, extérieurs, équipements — sculptez chaque détail de votre villa selon votre art de vivre. <strong>Les options évoluent au rythme du chantier.</strong></p>
+    </div>
+
+    <!-- TIMELINE D'AVANCEMENT -->
+    <div class="timeline-section">
+      <div class="timeline-header">
+        <div class="timeline-title">
+          <div class="label">État du chantier</div>
+          <h3>Construction <em>en cours</em></h3>
+        </div>
+        <div class="progress-display">
+          <div class="progress-percent" id="progress-percent">35<sup>%</sup></div>
+          <div class="progress-label">Étape : Cloisons & second œuvre</div>
+          <div class="progress-eta">Livraison estimée : Q3 2026</div>
+        </div>
+      </div>
+
+      <div class="timeline-track">
+        <div class="timeline-bar">
+          <div class="timeline-fill" id="timeline-fill" style="width: 35%;"></div>
+        </div>
+        <div class="timeline-steps">
+          <div class="timeline-step done" data-step="1">
+            <div class="step-num">I</div>
+            <div class="step-name">Terrassement</div>
+            <div class="step-date">Terminé</div>
+          </div>
+          <div class="timeline-step done" data-step="2">
+            <div class="step-num">II</div>
+            <div class="step-name">Gros œuvre</div>
+            <div class="step-date">Terminé</div>
+          </div>
+          <div class="timeline-step current" data-step="3">
+            <div class="step-num">III</div>
+            <div class="step-name">Cloisons & Toiture</div>
+            <div class="step-date">En cours</div>
+          </div>
+          <div class="timeline-step upcoming" data-step="4">
+            <div class="step-num">IV</div>
+            <div class="step-name">Finitions intérieures</div>
+            <div class="step-date">Q1 2026</div>
+          </div>
+          <div class="timeline-step upcoming" data-step="5">
+            <div class="step-num">V</div>
+            <div class="step-name">Aménagements</div>
+            <div class="step-date">Q2 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UNIVERS DE PERSONNALISATION -->
+    <div class="universes-section" id="universes-section">
+      <div class="universes-header">
+        <div class="label">Quatre univers</div>
+        <h3>Tout ce qui peut <em>encore</em> être personnalisé</h3>
+      </div>
+
+      <div class="universes-layout">
+        <div class="universes-main">
+
+          <!-- Tabs avec teasers + coches de complétion -->
+          <div class="univ-tabs" id="univ-tabs-anchor">
+            <button class="univ-tab locked" data-univ="archi" type="button">
+              <span class="univ-tab-num">I</span>
+              <div class="univ-tab-name">Architecture</div>
+              <div class="univ-tab-teaser">Configuration des pièces, agencement</div>
+              <div class="univ-tab-status"><span class="dot"></span>Verrouillé</div>
+              <span class="univ-tab-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5 12 10 17 19 7"/></svg></span>
+            </button>
+            <button class="univ-tab urgent" data-univ="exterieurs" type="button">
+              <span class="univ-tab-num">II</span>
+              <div class="univ-tab-name">Extérieurs</div>
+              <div class="univ-tab-teaser">Piscine, terrasse, jardin paysager</div>
+              <div class="univ-tab-status"><span class="dot"></span>3 semaines restantes</div>
+              <span class="univ-tab-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5 12 10 17 19 7"/></svg></span>
+            </button>
+            <button class="univ-tab free" data-univ="finitions" type="button">
+              <span class="univ-tab-num">III</span>
+              <div class="univ-tab-name">Finitions</div>
+              <div class="univ-tab-teaser">Sols, cuisine, salle de bain</div>
+              <div class="univ-tab-status"><span class="dot"></span>2 mois restants</div>
+              <span class="univ-tab-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5 12 10 17 19 7"/></svg></span>
+            </button>
+            <button class="univ-tab free" data-univ="domotique" type="button">
+              <span class="univ-tab-num">IV</span>
+              <div class="univ-tab-name">Domotique</div>
+              <div class="univ-tab-teaser">Climatisation, sécurité, audio & éclairage</div>
+              <div class="univ-tab-status"><span class="dot"></span>Libre</div>
+              <span class="univ-tab-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5 12 10 17 19 7"/></svg></span>
+            </button>
+          </div>
+
+          <!-- ARCHITECTURE (verrouillé) -->
+          <details class="univ-content" id="univ-archi" data-total="1">
+            <summary class="univ-section-header">
+              <div class="univ-header-left">
+                <div>
+                  <span class="univ-section-num">UNIVERS I</span>
+                  <h4 class="univ-section-title">Architecture & <em>agencement</em></h4>
+                </div>
+              </div>
+              <div class="univ-header-right">
+                <span class="univ-section-status locked"><span class="dot"></span>Verrouillé</span>
+                <svg class="univ-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+            </summary>
+            <div class="univ-body">
+              <p class="univ-body-intro">Configuration des pièces, nombre de chambres, ouvertures et volumes principaux.</p>
+              <div class="univ-locked-banner">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="5" y="11" width="14" height="10" rx="1"/>
+                  <path d="M8 11V7a4 4 0 1 1 8 0v4"/>
+                </svg>
+                <div>
+                  <h5>Cette étape est verrouillée</h5>
+                  <p>Le gros œuvre étant achevé, l'architecture (3 chambres, agencement, ouvertures) est désormais figée. Pour une villa entièrement modulable, consultez nos projets en phase d'étude.</p>
+                </div>
+              </div>
+              <div class="subcat">
+                <div class="subcat-header">
+                  <h4 class="subcat-title">Configuration choisie</h4>
+                  <span class="subcat-help">Définitif</span>
+                </div>
+                <div class="options-row">
+                  <div class="option locked selected" data-univ="archi" data-cat="config" data-name="3 chambres en L" data-price="0">
+                    <div class="option-visual">
+                      <div class="placeholder-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+                      </div>
+                    </div>
+                    <div class="option-name">3 chambres <em>en L</em></div>
+                    <div class="option-desc">Suite parentale au sud, deux chambres invités, séjour ouvert sur piscine.</div>
+                    <div class="option-price included">Configuration figée</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- EXTÉRIEURS -->
+          <details class="univ-content" id="univ-exterieurs" data-total="3">
+            <summary class="univ-section-header">
+              <div class="univ-header-left">
+                <div>
+                  <span class="univ-section-num">UNIVERS II</span>
+                  <h4 class="univ-section-title">Aménagements <em>extérieurs</em></h4>
+                </div>
+              </div>
+              <div class="univ-header-right">
+                <span class="univ-progress-mini" data-univ-progress="exterieurs"><strong>0</strong>/3</span>
+                <span class="univ-section-status urgent"><span class="dot"></span>3 semaines restantes</span>
+                <svg class="univ-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+            </summary>
+            <div class="univ-body">
+              <p class="univ-body-intro">Piscine, terrasse, jardin paysager — chaque élément qui prolonge votre villa vers la nature.</p>
+
+              <!-- Piscine -->
+              <div class="subcat">
+                <div class="subcat-header">
+                  <h4 class="subcat-title">Piscine</h4>
+                  <span class="subcat-help">Choisir une option</span>
+                </div>
+                <div class="options-row">
+                  <button class="option" data-univ="exterieurs" data-cat="piscine" data-name="Piscine béton classique" data-price="0">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 14s2-2 5-2 5 2 10 2 5-2 5-2"/><path d="M2 18s2-2 5-2 5 2 10 2 5-2 5-2"/></svg></div></div>
+                    <span class="option-tag">Inclus</span>
+                    <div class="option-name">Piscine <em>béton</em> 8×4 m</div>
+                    <div class="option-desc">Bassin classique avec margelles en travertin, profondeur progressive.</div>
+                    <div class="option-price included">Inclus</div>
+                  </button>
+                  <button class="option" data-univ="exterieurs" data-cat="piscine" data-name="Piscine à débordement" data-price="800000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 14s2-2 5-2 5 2 10 2 5-2 5-2"/><path d="M2 18s2-2 5-2 5 2 10 2 5-2 5-2"/><path d="M2 10s2-2 5-2 5 2 10 2 5-2 5-2"/></svg></div></div>
+                    <div class="option-name">Piscine à <em>débordement</em></div>
+                    <div class="option-desc">Effet miroir face à la végétation, finition mosaïque verte de Bali.</div>
+                    <div class="option-price">+ 800 000 THB</div>
+                  </button>
+                  <button class="option" data-univ="exterieurs" data-cat="piscine" data-name="Piscine miroir + pool house" data-price="1500000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18"/><path d="M3 14s2-2 5-2 5 2 10 2"/></svg></div></div>
+                    <div class="option-name">Piscine <em>miroir</em> & pool house</div>
+                    <div class="option-desc">Piscine 12×4 m avec pool house couvert (douche, vestiaire, bar extérieur).</div>
+                    <div class="option-price">+ 1 500 000 THB</div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Terrasse -->
+              <div class="subcat">
+                <div class="subcat-header">
+                  <h4 class="subcat-title">Terrasse</h4>
+                  <span class="subcat-help">Choisir une option</span>
+                </div>
+                <div class="options-row">
+                  <button class="option" data-univ="exterieurs" data-cat="terrasse" data-name="Terrasse bois exotique" data-price="0">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div></div>
+                    <span class="option-tag">Inclus</span>
+                    <div class="option-name">Bois <em>exotique</em></div>
+                    <div class="option-desc">Lames de yang-na local, traitement anti-UV et insectes.</div>
+                    <div class="option-price included">Inclus</div>
+                  </button>
+                  <button class="option" data-univ="exterieurs" data-cat="terrasse" data-name="Travertin extérieur" data-price="350000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></svg></div></div>
+                    <div class="option-name">Travertin <em>extérieur</em></div>
+                    <div class="option-desc">Dalles en travertin antidérapant, beige clair, finition adoucie.</div>
+                    <div class="option-price">+ 350 000 THB</div>
+                  </button>
+                  <button class="option" data-univ="exterieurs" data-cat="terrasse" data-name="Pierre noire de Bali" data-price="600000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="12 2 22 12 12 22 2 12"/></svg></div></div>
+                    <div class="option-name">Pierre <em>noire</em> de Bali</div>
+                    <div class="option-desc">Lave volcanique, contraste dramatique avec la végétation tropicale.</div>
+                    <div class="option-price">+ 600 000 THB</div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Jardin -->
+              <div class="subcat">
+                <div class="subcat-header">
+                  <h4 class="subcat-title">Jardin paysager</h4>
+                  <span class="subcat-help">Choisir une option</span>
+                </div>
+                <div class="options-row">
+                  <button class="option" data-univ="exterieurs" data-cat="jardin" data-name="Jardin tropical standard" data-price="0">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2v20"/><path d="M12 8c-3-3-3-6 0-6 3 0 3 3 0 6"/><path d="M12 14c-4-2-4-7 0-7"/><path d="M12 14c4-2 4-7 0-7"/></svg></div></div>
+                    <span class="option-tag">Inclus</span>
+                    <div class="option-name">Jardin <em>tropical</em></div>
+                    <div class="option-desc">Cocotiers, frangipaniers, bougainvilliers — palette classique de Samui.</div>
+                    <div class="option-price included">Inclus</div>
+                  </button>
+                  <button class="option" data-univ="exterieurs" data-cat="jardin" data-name="Jardin signature paysagiste" data-price="450000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="6" cy="14" r="3"/><circle cx="18" cy="14" r="3"/><circle cx="12" cy="8" r="3"/></svg></div></div>
+                    <div class="option-name">Jardin <em>signature</em></div>
+                    <div class="option-desc">Création sur-mesure par paysagiste, essences rares, éclairage scénographique.</div>
+                    <div class="option-price">+ 450 000 THB</div>
+                  </button>
+                  <button class="option" data-univ="exterieurs" data-cat="jardin" data-name="Jardin zen + bassin koi" data-price="700000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="9"/><path d="M3 12c4-4 14-4 18 0"/></svg></div></div>
+                    <div class="option-name">Jardin <em>zen</em> & bassin koi</div>
+                    <div class="option-desc">Inspiration japonaise, bassin avec carpes koi, lanternes en pierre.</div>
+                    <div class="option-price">+ 700 000 THB</div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- FINITIONS -->
+          <details class="univ-content" id="univ-finitions" data-total="3">
+            <summary class="univ-section-header">
+              <div class="univ-header-left">
+                <div>
+                  <span class="univ-section-num">UNIVERS III</span>
+                  <h4 class="univ-section-title">Finitions <em>intérieures</em></h4>
+                </div>
+              </div>
+              <div class="univ-header-right">
+                <span class="univ-progress-mini" data-univ-progress="finitions"><strong>0</strong>/3</span>
+                <span class="univ-section-status free"><span class="dot"></span>2 mois restants</span>
+                <svg class="univ-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+            </summary>
+            <div class="univ-body">
+              <p class="univ-body-intro">Sols, parements, cuisine, salle de bain — la matière qui donne son âme à votre intérieur.</p>
+
+              <!-- Sols -->
+              <div class="subcat">
+                <div class="subcat-header">
+                  <h4 class="subcat-title">Sols</h4>
+                  <span class="subcat-help">Choisir une option</span>
+                </div>
+                <div class="options-row">
+                  <button class="option" data-univ="finitions" data-cat="sol" data-name="Teck massif" data-price="0">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg></div></div>
+                    <span class="option-tag">Inclus</span>
+                    <div class="option-name">Teck <em>massif</em></div>
+                    <div class="option-desc">Bois noble thaïlandais, patine naturelle, chaleureux et vivant.</div>
+                    <div class="option-price included">Inclus</div>
+                  </button>
+                  <button class="option" data-univ="finitions" data-cat="sol" data-name="Travertin beige" data-price="500000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="12" cy="12" r="2"/></svg></div></div>
+                    <div class="option-name">Travertin <em>beige</em></div>
+                    <div class="option-desc">Pierre naturelle calcaire, intemporelle, accord parfait avec tous les styles.</div>
+                    <div class="option-price">+ 500 000 THB</div>
+                  </button>
+                  <button class="option" data-univ="finitions" data-cat="sol" data-name="Marbre de Carrare" data-price="1000000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M3 18c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/></svg></div></div>
+                    <div class="option-name">Marbre <em>de Carrare</em></div>
+                    <div class="option-desc">Le luxe méditerranéen absolu, blanc lumineux veiné de gris.</div>
+                    <div class="option-price">+ 1 000 000 THB</div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Cuisine -->
+              <div class="subcat">
+                <div class="subcat-header">
+                  <h4 class="subcat-title">Cuisine</h4>
+                  <span class="subcat-help">Choisir une option</span>
+                </div>
+                <div class="options-row">
+                  <button class="option" data-univ="finitions" data-cat="cuisine" data-name="Cuisine bois & laque mate" data-price="0">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg></div></div>
+                    <span class="option-tag">Inclus</span>
+                    <div class="option-name">Bois & <em>laque mate</em></div>
+                    <div class="option-desc">Façades en chêne et laque taupe, électroménager Bosch encastré.</div>
+                    <div class="option-price included">Inclus</div>
+                  </button>
+                  <button class="option" data-univ="finitions" data-cat="cuisine" data-name="Cuisine îlot pierre naturelle" data-price="600000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="10" width="18" height="6"/><line x1="7" y1="10" x2="7" y2="16"/><line x1="17" y1="10" x2="17" y2="16"/></svg></div></div>
+                    <div class="option-name">Îlot <em>pierre naturelle</em></div>
+                    <div class="option-desc">Plan en quartzite avec îlot central, électroménager Miele.</div>
+                    <div class="option-price">+ 600 000 THB</div>
+                  </button>
+                  <button class="option" data-univ="finitions" data-cat="cuisine" data-name="Cuisine pro Gaggenau" data-price="1200000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="6" width="20" height="14"/><line x1="2" y1="11" x2="22" y2="11"/><circle cx="7" cy="15" r="1"/><circle cx="12" cy="15" r="1"/><circle cx="17" cy="15" r="1"/></svg></div></div>
+                    <div class="option-name">Cuisine <em>pro Gaggenau</em></div>
+                    <div class="option-desc">Configuration chef avec piano de cuisson Gaggenau, cave à vin intégrée.</div>
+                    <div class="option-price">+ 1 200 000 THB</div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Salle de bain -->
+              <div class="subcat">
+                <div class="subcat-header">
+                  <h4 class="subcat-title">Salle de bain principale</h4>
+                  <span class="subcat-help">Choisir une option</span>
+                </div>
+                <div class="options-row">
+                  <button class="option" data-univ="finitions" data-cat="sdb" data-name="SDB contemporaine" data-price="0">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="12" width="18" height="8" rx="1"/><path d="M7 12V8a3 3 0 0 1 6 0"/></svg></div></div>
+                    <span class="option-tag">Inclus</span>
+                    <div class="option-name">Contemporaine <em>épurée</em></div>
+                    <div class="option-desc">Vasques posées en pierre composite, douche italienne, robinetterie Hansgrohe.</div>
+                    <div class="option-price included">Inclus</div>
+                  </button>
+                  <button class="option" data-univ="finitions" data-cat="sdb" data-name="SDB spa marbre" data-price="450000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><ellipse cx="12" cy="14" rx="9" ry="6"/><circle cx="12" cy="6" r="2"/></svg></div></div>
+                    <div class="option-name">Spa <em>marbre</em></div>
+                    <div class="option-desc">Marbre du sol au plafond, baignoire îlot, hammam intégré.</div>
+                    <div class="option-price">+ 450 000 THB</div>
+                  </button>
+                  <button class="option" data-univ="finitions" data-cat="sdb" data-name="SDB outdoor jungle" data-price="350000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2v8"/><path d="M8 6c0-2 2-4 4-4s4 2 4 4"/><rect x="6" y="14" width="12" height="6" rx="1"/></svg></div></div>
+                    <div class="option-name">Outdoor <em>jungle</em></div>
+                    <div class="option-desc">Douche extérieure ouverte sur jardin, pierre brute, végétation tropicale.</div>
+                    <div class="option-price">+ 350 000 THB</div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- DOMOTIQUE -->
+          <details class="univ-content" id="univ-domotique" data-total="3">
+            <summary class="univ-section-header">
+              <div class="univ-header-left">
+                <div>
+                  <span class="univ-section-num">UNIVERS IV</span>
+                  <h4 class="univ-section-title">Domotique & <em>équipements</em></h4>
+                </div>
+              </div>
+              <div class="univ-header-right">
+                <span class="univ-progress-mini" data-univ-progress="domotique"><strong>0</strong>/3</span>
+                <span class="univ-section-status free"><span class="dot"></span>Libre</span>
+                <svg class="univ-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+            </summary>
+            <div class="univ-body">
+              <p class="univ-body-intro">Climatisation, sécurité, sonorisation, éclairage scénographique — la couche invisible qui transforme l'usage.</p>
+
+              <!-- Climatisation -->
+              <div class="subcat">
+                <div class="subcat-header">
+                  <h4 class="subcat-title">Climatisation</h4>
+                  <span class="subcat-help">Choisir une option</span>
+                </div>
+                <div class="options-row">
+                  <button class="option" data-univ="domotique" data-cat="clim" data-name="Clim split inverter" data-price="0">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="6" width="20" height="6" rx="1"/><line x1="6" y1="14" x2="6" y2="18"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="18" y1="14" x2="18" y2="18"/></svg></div></div>
+                    <span class="option-tag">Inclus</span>
+                    <div class="option-name">Split <em>inverter</em></div>
+                    <div class="option-desc">Climatiseurs Daikin inverter dans toutes les pièces principales, A+++.</div>
+                    <div class="option-price included">Inclus</div>
+                  </button>
+                  <button class="option" data-univ="domotique" data-cat="clim" data-name="Clim gainable centralisée" data-price="550000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 6h18"/><path d="M3 18h18"/><circle cx="6" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="12" r="2"/></svg></div></div>
+                    <div class="option-name">Gainable <em>centralisé</em></div>
+                    <div class="option-desc">Climatisation invisible par gaines, contrôle pièce par pièce.</div>
+                    <div class="option-price">+ 550 000 THB</div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Sécurité -->
+              <div class="subcat">
+                <div class="subcat-header">
+                  <h4 class="subcat-title">Sécurité</h4>
+                  <span class="subcat-help">Choisir une option</span>
+                </div>
+                <div class="options-row">
+                  <button class="option" data-univ="domotique" data-cat="securite" data-name="Alarme & vidéosurveillance" data-price="0">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg></div></div>
+                    <span class="option-tag">Inclus</span>
+                    <div class="option-name">Alarme & <em>vidéo</em></div>
+                    <div class="option-desc">Système d'alarme, 6 caméras HD, accès via app smartphone.</div>
+                    <div class="option-price included">Inclus</div>
+                  </button>
+                  <button class="option" data-univ="domotique" data-cat="securite" data-name="Sécurité premium 24/7" data-price="400000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></div></div>
+                    <div class="option-name">Premium <em>24/7</em></div>
+                    <div class="option-desc">Télésurveillance professionnelle, intervention sous 15 min, contrôle d'accès biométrique.</div>
+                    <div class="option-price">+ 400 000 THB</div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Audio / éclairage -->
+              <div class="subcat">
+                <div class="subcat-header">
+                  <h4 class="subcat-title">Audio & éclairage scénographique</h4>
+                  <span class="subcat-help">Optionnel</span>
+                </div>
+                <div class="options-row">
+                  <button class="option" data-univ="domotique" data-cat="ambiance" data-name="Aucune" data-price="0">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="5" y1="5" x2="19" y2="19"/><circle cx="12" cy="12" r="9"/></svg></div></div>
+                    <span class="option-tag">Inclus</span>
+                    <div class="option-name">Standard</div>
+                    <div class="option-desc">Éclairage LED basique sur variateurs, prises pour enceintes Bluetooth.</div>
+                    <div class="option-price included">Inclus</div>
+                  </button>
+                  <button class="option" data-univ="domotique" data-cat="ambiance" data-name="Sonos multiroom" data-price="280000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="3"/><path d="M16 8a5 5 0 0 1 0 8"/><path d="M8 8a5 5 0 0 0 0 8"/><path d="M19 5a9 9 0 0 1 0 14"/><path d="M5 5a9 9 0 0 0 0 14"/></svg></div></div>
+                    <div class="option-name">Sonos <em>multiroom</em></div>
+                    <div class="option-desc">Enceintes Sonos intégrées dans 6 zones, contrôle centralisé par app.</div>
+                    <div class="option-price">+ 280 000 THB</div>
+                  </button>
+                  <button class="option" data-univ="domotique" data-cat="ambiance" data-name="Lutron + Sonos premium" data-price="650000">
+                    <div class="option-visual"><div class="placeholder-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="5" y1="5" x2="7" y2="7"/><line x1="17" y1="17" x2="19" y2="19"/><line x1="5" y1="19" x2="7" y2="17"/><line x1="17" y1="7" x2="19" y2="5"/></svg></div></div>
+                    <div class="option-name">Lutron + <em>Sonos premium</em></div>
+                    <div class="option-desc">Scénarios d'éclairage Lutron, Sonos haut de gamme, intégration Apple HomeKit & Google Home.</div>
+                    <div class="option-price">+ 650 000 THB</div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+        <!-- SIDEBAR RECAP -->
+        <aside class="recap-sidebar">
+          <div class="recap">
+            <div class="recap-header">
+              <div class="recap-villa-name">Baan Sawan</div>
+              <div class="recap-villa-loc">Lamai · Côte est</div>
+            </div>
+
+            <div class="recap-base">
+              <span class="recap-base-label">Prix de base</span>
+              <span class="recap-base-amount">฿ 19 000 000</span>
+            </div>
+
+            <ul class="recap-list" id="recap-list">
+              <li class="recap-empty">Aucune personnalisation pour le moment</li>
+            </ul>
+
+            <div class="recap-total">
+              <div class="recap-total-label">Total estimé</div>
+              <div class="recap-total-amount" id="recap-total-thb">฿ 19 000 000</div>
+              <div class="recap-total-eur" id="recap-total-eur">≈ 500 000 €</div>
+            </div>
+
+            <a href="#contact" class="recap-cta">
+              Valider ma configuration
+            </a>
+            <button class="recap-secondary" id="recap-reset" type="button">Réinitialiser</button>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- VERROUILLÉ (transparence) -->
+    <div class="locked-section">
+      <div class="locked-inner">
+        <div class="label">Transparence</div>
+        <h3>Ce qui est désormais <em>figé</em></h3>
+        <p>Parce que la confiance se construit aussi sur ce qu'on ne peut plus changer. Voici les éléments scellés par l'avancement actuel du chantier.</p>
+
+        <div class="locked-grid">
+          <div class="locked-item">
+            <div class="locked-item-cat">Architecture</div>
+            <div class="locked-item-name">3 chambres en L</div>
+            <div class="locked-item-info">Murs porteurs et ouvertures coulés.</div>
+          </div>
+          <div class="locked-item">
+            <div class="locked-item-cat">Implantation</div>
+            <div class="locked-item-name">Orientation est-sud-est</div>
+            <div class="locked-item-info">Optimisée pour la vue mer matinale.</div>
+          </div>
+          <div class="locked-item">
+            <div class="locked-item-cat">Toiture</div>
+            <div class="locked-item-name">Charpente apparente teck</div>
+            <div class="locked-item-info">Structure posée en juillet 2025.</div>
+          </div>
+          <div class="locked-item">
+            <div class="locked-item-cat">Volumes</div>
+            <div class="locked-item-name">Hauteur sous plafond 3,2 m</div>
+            <div class="locked-item-info">Définitif depuis le coulage des dalles.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PLAN -->
+<section class="plan" id="architecture">
+  <div class="plan-inner">
+    <div class="plan-header">
+      <div class="eyebrow">Architecture</div>
+      <h2>Les <em>plans</em> de la villa</h2>
+    </div>
+
+    <div class="plans-grid">
+      <div class="plan-level">
+        <div class="plan-level-title">Rez-de-chaussée</div>
+        <div class="plan-visual">
+          <div class="plan-placeholder">Plans à venir</div>
+        </div>
+      </div>
+
+      <div class="plan-level">
+        <div class="plan-level-title">Étage principal</div>
+        <div class="plan-visual">
+          <div class="plan-placeholder">Plans à venir</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="features-header">
+    <h2><em>Prestations</em> et équipements</h2>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-group">
+      <h3>Extérieur</h3>
+      <ul class="feature-list">
+        <li>Accès direct à la plage privative</li>
+        <li>Piscine à débordement 15 × 5 m chauffée</li>
+        <li>Vaste terrasse en teck de 90 m²</li>
+        <li>Pool house avec bar et cuisine d'été</li>
+        <li>Jardin tropical paysager face à la mer</li>
+        <li>Parking couvert pour 3 véhicules</li>
+      </ul>
+    </div>
+
+    <div class="feature-group">
+      <h3>Intérieur</h3>
+      <ul class="feature-list">
+        <li>Salon cathédrale 110 m² vue mer</li>
+        <li>Cuisine équipée Gaggenau / La Cornue</li>
+        <li>5 suites parentales avec terrasse privée</li>
+        <li>Salle home cinéma</li>
+        <li>Dressings sur mesure en teck</li>
+        <li>Cave à vins climatisée</li>
+      </ul>
+    </div>
+
+    <div class="feature-group">
+      <h3>Technique</h3>
+      <ul class="feature-list">
+        <li>Domotique KNX intégrale</li>
+        <li>Panneaux solaires 15 kWc</li>
+        <li>Osmose inverse & adoucisseur d'eau</li>
+        <li>Fibre optique haute vitesse</li>
+        <li>Système d'alarme & vidéosurveillance</li>
+        <li>Groupe électrogène de secours</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DESCRIPTION -->
+<section class="description">
+  <div class="description-inner">
+    <div class="description-label">Le <em>souffle</em><br>de l'océan</div>
+    <div class="description-body">
+      <p class="lead">Baan Sawan — « Maison du Paradis » en thaï — se perche sur les hauteurs de Lamai, dominant l'une des plus belles baies de Koh Samui.</p>
+      <p>Pensée comme un <em>refuge intime</em>, la villa se déploie sur 152m² habitables et cultive l'art du juste nécessaire. Trois chambres, deux salles d'eau, des volumes calibrés pour qu'aucun geste, aucun rayon de lumière, ne soit superflu.</p>
+      <p>L'architecture joue le contraste entre <em>lignes contemporaines épurées</em> et matériaux bruts — teck massif, pierre locale, vasques en marbre thaï. Depuis chaque pièce, la mer s'impose comme un tableau vivant.</p>
+      <p>La piscine à débordement prolonge visuellement le golfe de Thaïlande. En contrebas, la longue plage de sable doré de Lamai et son ambiance vivante restent accessibles en quelques minutes.</p>
+      <p>Orientation est pour les <em>levers de soleil sur la mer</em>, brise marine constante, intimité totale grâce à la position en hauteur et l'implantation sur la parcelle de 448m².</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCALISATION -->
+<section class="location" id="location">
+  <div class="location-inner">
+    <div class="location-text">
+      <div class="label">Situation</div>
+      <h2>Lamai, <em>côte est</em> de l'île</h2>
+      <p>Côte est animée et iconique, réputée pour sa longue plage de sable doré et ses spots emblématiques — Hin Ta & Hin Yai. Une position en hauteur qui offre l'intimité tout en gardant l'accès rapide aux services et plaisirs de l'île.</p>
+      <ul class="location-points">
+        <li><span>Plage de Lamai</span><span>5 min</span></li>
+        <li><span>Aéroport international</span><span>20 min</span></li>
+        <li><span>Hôpital Bangkok Samui</span><span>15 min</span></li>
+        <li><span>Centre Lamai (restaurants, marchés)</span><span>5 min</span></li>
+        <li><span>Chaweng (vie nocturne, shopping)</span><span>15 min</span></li>
+        <li><span>International school</span><span>25 min</span></li>
+      </ul>
+    </div>
+    <div class="location-map">
+      <iframe
+        src="https://maps.google.com/maps?q=9.456347,100.023422&z=14&hl=fr&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+        title="Baan Sawan — Lamai, Koh Samui"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-text">
+      <div class="label">Vous êtes intéressé ?</div>
+      <h2>Planifions<br>une <em>visite</em></h2>
+      <p>Visite sur place, en visioconférence, ou dossier complet envoyé par email. Dites-nous simplement comment vous préférez procéder.</p>
+
+      <!-- Récap configuration (visible si choix faits) -->
+      <div class="contact-recap" id="contact-recap">
+        <div class="contact-recap-title">Votre configuration Baan Sawan</div>
+        <div class="contact-recap-list" id="contact-recap-list"></div>
+        <div class="contact-recap-total" id="contact-recap-total"></div>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contact-form" onsubmit="return handleContactSubmit(event)">
+      <input type="hidden" name="villa" value="Baan Sawan" />
+      <input type="hidden" name="config" id="hidden-config" value="" />
+      <input type="text" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;" aria-hidden="true" />
+      <input type="text" name="nom" placeholder="Nom complet" required />
+      <input type="email" name="email" placeholder="Adresse email" required />
+      <input type="tel" name="telephone" placeholder="Téléphone (optionnel)" />
+
+      <div class="contact-preference">
+        <div class="contact-preference-label">Comment souhaitez-vous être recontacté ?</div>
+        <div class="contact-preference-options">
+          <label class="contact-pref-option">
+            <input type="checkbox" name="preference" value="Email" />
+            <span>Email</span>
+          </label>
+          <label class="contact-pref-option">
+            <input type="checkbox" name="preference" value="Téléphone" />
+            <span>Téléphone</span>
+          </label>
+          <label class="contact-pref-option">
+            <input type="checkbox" name="preference" value="WhatsApp" />
+            <span>WhatsApp</span>
+          </label>
+        </div>
+      </div>
+
+      <textarea name="message" placeholder="Votre message — visite, questions, délai souhaité..." required></textarea>
+      <button type="submit">Demander un contact</button>
+      <div class="contact-status" id="contact-status"></div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="Index2.html" class="logo"><svg class="logo-house" width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22L24 8l18 14"/><path d="M10 20v20h28V20"/><path d="M20 40v-10h8v10"/><circle cx="24" cy="24" r="1.5" fill="currentColor"/></svg><span class="logo-text">Maisons <span class="s-accent">S</span>amui</span></a>
+    <div>© 2026 · Tous droits réservés</div>
+    <div>Koh Samui, Thaïlande</div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Fermer">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(event, -1)" aria-label="Photo précédente">‹</button>
+  <div class="lightbox-image-wrap" onclick="event.stopPropagation()">
+    <img class="lightbox-image" id="lightbox-image" src="" alt="" />
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(event, 1)" aria-label="Photo suivante">›</button>
+  <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">6</span></div>
+</div>
+
+<!-- LIGHTBOX PLANS -->
+<div class="lightbox" id="plan-lightbox" onclick="closePlanLightbox(event)">
+  <button class="lightbox-close" onclick="closePlanLightbox(event)" aria-label="Fermer">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navigatePlanLightbox(event, -1)" aria-label="Plan précédent">‹</button>
+  <div class="lightbox-image-wrap" onclick="event.stopPropagation()">
+    <img class="lightbox-image" id="plan-lightbox-image" src="" alt="" />
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="navigatePlanLightbox(event, 1)" aria-label="Plan suivant">›</button>
+  <div class="lightbox-counter"><span id="plan-lightbox-label">Rez-de-chaussée</span> · <span id="plan-lightbox-current">1</span> / <span id="plan-lightbox-total">2</span></div>
+</div>
+
+<script>
+  // Fallback en cascade :
+  //   1) tente .jpg ↔ .jpeg
+  //   2) si une URL data-unsplash est fournie, bascule dessus
+  function setupImageFallback(img) {
+    img.addEventListener('error', function() {
+      const stage = this.dataset.fallbackStage || '0';
+      // Étape 1 : swap d'extension jpg <-> jpeg
+      if (stage === '0') {
+        this.dataset.fallbackStage = '1';
+        const src = this.src;
+        if (src.endsWith('.jpg')) {
+          this.src = src.replace(/\.jpg$/, '.jpeg');
+          return;
+        }
+        if (src.endsWith('.jpeg')) {
+          this.src = src.replace(/\.jpeg$/, '.jpg');
+          return;
+        }
+      }
+      // Étape 2 : fallback vers Unsplash si fourni
+      if (this.dataset.unsplash && this.dataset.fallbackStage !== '2') {
+        this.dataset.fallbackStage = '2';
+        this.src = this.dataset.unsplash;
+      }
+    });
+  }
+  document.querySelectorAll('img').forEach(setupImageFallback);
+
+  // Chaque photo a une src "locale" (priorité) et une "unsplash" (fallback)
+  // Synchronisé avec les data-unsplash de la galerie HTML
+  const galleryPhotos = [
+    { local: 'photos/baansawan/baansawan-main.jpg', fallback: 'https://images.unsplash.com/photo-1582610116397-edb318620f90?auto=format&fit=crop&w=1800&q=85' },
+    { local: 'photos/baansawan/baansawan-01.jpg',   fallback: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1800&q=85' },
+    { local: 'photos/baansawan/baansawan-02.jpg',   fallback: 'https://images.unsplash.com/photo-1571508601891-ca5e7a713859?auto=format&fit=crop&w=1800&q=85' },
+    { local: 'photos/baansawan/baansawan-03.jpg',   fallback: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1800&q=85' },
+    { local: 'photos/baansawan/baansawan-04.jpg',   fallback: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1800&q=85' },
+    { local: 'photos/baansawan/baansawan-05.jpg',   fallback: 'https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?auto=format&fit=crop&w=1800&q=85' }
+  ];
+
+  let currentIndex = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxCurrent = document.getElementById('lightbox-current');
+  const lightboxTotal = document.getElementById('lightbox-total');
+  lightboxTotal.textContent = galleryPhotos.length;
+
+  function loadLightboxImage(photo) {
+    // Reset du flag de fallback pour chaque nouvelle image
+    lightboxImage.dataset.fallbackStage = '0';
+    lightboxImage.dataset.unsplash = photo.fallback || '';
+    lightboxImage.src = photo.local;
+  }
+
+  function openLightbox(index) {
+    currentIndex = index;
+    loadLightboxImage(galleryPhotos[currentIndex]);
+    lightboxCurrent.textContent = currentIndex + 1;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(e) {
+    // Ne ferme que si on clique sur le fond ou le bouton close
+    if (e && e.target !== lightbox && !e.target.classList.contains('lightbox-close')) return;
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function navigateLightbox(e, direction) {
+    e.stopPropagation();
+    currentIndex = (currentIndex + direction + galleryPhotos.length) % galleryPhotos.length;
+    loadLightboxImage(galleryPhotos[currentIndex]);
+    lightboxCurrent.textContent = currentIndex + 1;
+  }
+
+  // Attacher le clic sur chaque image de la galerie
+  document.querySelectorAll('.gallery-item[data-index]').forEach(item => {
+    item.addEventListener('click', () => {
+      const index = parseInt(item.getAttribute('data-index'));
+      openLightbox(index);
+    });
+  });
+
+  // Navigation clavier (galerie photos)
+  document.addEventListener('keydown', (e) => {
+    if (planLightbox.classList.contains('active')) return; // priorité à la lightbox plans si ouverte
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox({ target: lightbox });
+    if (e.key === 'ArrowLeft') navigateLightbox(e, -1);
+    if (e.key === 'ArrowRight') navigateLightbox(e, 1);
+  });
+
+  // ========== LIGHTBOX PLANS ==========
+  const plans = [];
+
+  let planCurrentIndex = 0;
+  const planLightbox = document.getElementById('plan-lightbox');
+  const planLightboxImage = document.getElementById('plan-lightbox-image');
+  const planLightboxCurrent = document.getElementById('plan-lightbox-current');
+  const planLightboxTotal = document.getElementById('plan-lightbox-total');
+  const planLightboxLabel = document.getElementById('plan-lightbox-label');
+  planLightboxTotal.textContent = plans.length;
+
+  function openPlanLightbox(index) {
+    planCurrentIndex = index;
+    planLightboxImage.src = plans[planCurrentIndex].src;
+    planLightboxCurrent.textContent = planCurrentIndex + 1;
+    planLightboxLabel.textContent = plans[planCurrentIndex].label;
+    planLightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePlanLightbox(e) {
+    if (e && e.target !== planLightbox && !e.target.classList.contains('lightbox-close')) return;
+    planLightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function navigatePlanLightbox(e, direction) {
+    e.stopPropagation();
+    planCurrentIndex = (planCurrentIndex + direction + plans.length) % plans.length;
+    planLightboxImage.src = plans[planCurrentIndex].src;
+    planLightboxCurrent.textContent = planCurrentIndex + 1;
+    planLightboxLabel.textContent = plans[planCurrentIndex].label;
+  }
+
+  // Attacher le clic sur chaque plan
+  document.querySelectorAll('.plan-visual[data-plan-index]').forEach(item => {
+    item.addEventListener('click', () => {
+      const index = parseInt(item.getAttribute('data-plan-index'));
+      openPlanLightbox(index);
+    });
+  });
+
+  // Navigation clavier (plans) — gérée séparément
+  document.addEventListener('keydown', (e) => {
+    if (!planLightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closePlanLightbox({ target: planLightbox });
+    if (e.key === 'ArrowLeft') navigatePlanLightbox(e, -1);
+    if (e.key === 'ArrowRight') navigatePlanLightbox(e, 1);
+  });
+</script>
+
+
+
+<script>
+  // ========== SOUS-NAVIGATION VILLA ==========
+  (function() {
+    const subnav = document.getElementById('villa-subnav');
+    if (!subnav) {
+      console.warn('[subnav] Element not found');
+      return;
+    }
+
+    const links = document.querySelectorAll('.villa-subnav a');
+    const sections = Array.from(links).map(a => {
+      const id = a.getAttribute('href').substring(1);
+      return document.getElementById(id);
+    }).filter(Boolean);
+
+    console.log('[subnav] Initialized with', links.length, 'links and', sections.length, 'sections');
+
+    // 1. Apparaît au scroll, disparaît après 2s d'inactivité
+    let hideTimer = null;
+    const INACTIVITY_DELAY = 2000; // 2 secondes
+    const SHOW_AFTER = 300;        // n'activer qu'après 300px de scroll
+    
+    function onScroll() {
+      const scrolled = window.scrollY || document.documentElement.scrollTop;
+      
+      // Avant 300px : pas de sous-nav du tout
+      if (scrolled < SHOW_AFTER) {
+        subnav.classList.remove('visible');
+        subnav.classList.remove('hidden-on-scroll');
+        if (hideTimer) clearTimeout(hideTimer);
+        return;
+      }
+      
+      // Afficher et annuler tout timer en cours
+      subnav.classList.add('visible');
+      subnav.classList.remove('hidden-on-scroll');
+      if (hideTimer) clearTimeout(hideTimer);
+      
+      // Programmer la disparition après 2s sans scroll
+      hideTimer = setTimeout(() => {
+        subnav.classList.add('hidden-on-scroll');
+      }, INACTIVITY_DELAY);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // check initial
+    
+    // Réapparition au survol de la sous-nav (pour permettre de cliquer)
+    subnav.addEventListener('mouseenter', () => {
+      subnav.classList.remove('hidden-on-scroll');
+      if (hideTimer) clearTimeout(hideTimer);
+    });
+    subnav.addEventListener('mouseleave', () => {
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        subnav.classList.add('hidden-on-scroll');
+      }, INACTIVITY_DELAY);
+    });
+
+    // 2. Détecter la section active (IntersectionObserver)
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, {
+        rootMargin: '-30% 0px -60% 0px',
+        threshold: 0
+      });
+
+      sections.forEach(section => observer.observe(section));
+    }
+
+    // 3. Scroll doux au clic
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          // Forcer la sous-nav à rester visible pendant le scroll programmatique
+          subnav.classList.remove('hidden-on-scroll');
+          const offset = 120;
+          const y = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+    });
+  })();
+</script>
+
+
+<!-- ===== DRAWER (panier "Mon projet") ===== -->
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-header">
+    <h2>Mon projet</h2>
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="Fermer">✕</button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+  <div class="drawer-footer" id="drawer-footer" style="display:none;">
+    <a href="#contact" class="drawer-cta" id="drawer-cta">
+      Prendre contact
+      <span>→</span>
+    </a>
+    <button class="drawer-cta-clear" id="drawer-clear" type="button">Réinitialiser le projet</button>
+  </div>
+</aside>
+
+<script>
+// ================================================================
+// PERSONNALISATION V5 + PANIER "MON PROJET" (unifié)
+// ================================================================
+(function() {
+
+  // ===== CONFIG VILLA =====
+  const VILLA = {
+    id: 'baansawan',
+    name: 'Baan Sawan',
+    loc: 'Lamai · Côte est',
+    basePrice: 19000000,
+    progress: 35  // % d'avancement
+  };
+  const STORAGE_KEY = 'maisons-samui-perso-' + VILLA.id;
+  const AUTOCLOSE_KEY = STORAGE_KEY + '-autoclosed';
+  const EUR_RATE = 38;
+
+  // Configuration des univers : sous-catégories à compléter par univers
+  const UNIVERS_CONFIG = {
+    archi:      { total: 1, cats: ['config'] },
+    exterieurs: { total: 3, cats: ['piscine', 'terrasse', 'jardin'] },
+    finitions:  { total: 3, cats: ['sol', 'cuisine', 'sdb'] },
+    domotique:  { total: 3, cats: ['clim', 'securite', 'ambiance'] }
+  };
+
+  // Labels lisibles pour le récap
+  const CAT_LABELS = {
+    archi:      { config: 'Architecture' },
+    exterieurs: { piscine: 'Piscine', terrasse: 'Terrasse', jardin: 'Jardin' },
+    finitions:  { sol: 'Sols', cuisine: 'Cuisine', sdb: 'Salle de bain' },
+    domotique:  { clim: 'Climatisation', securite: 'Sécurité', ambiance: 'Audio & Éclairage' }
+  };
+  const UNIV_LABELS = {
+    archi: 'Architecture',
+    exterieurs: 'Extérieurs',
+    finitions: 'Finitions',
+    domotique: 'Domotique'
+  };
+  // Ordre d'affichage dans le récap (archi en premier car verrouillé/contextuel)
+  const UNIV_ORDER = ['archi', 'exterieurs', 'finitions', 'domotique'];
+  // Ordre des univers à compter dans le badge nav (on exclut archi qui est imposé)
+  const UNIV_COUNTABLE = ['exterieurs', 'finitions', 'domotique'];
+
+  // ===== STORAGE =====
+  function loadConfig() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return {};
+      return JSON.parse(raw) || {};
+    } catch (e) { return {}; }
+  }
+  function saveConfig(c) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(c)); } catch (e) {}
+  }
+  let config = loadConfig();
+
+  let autoClosed = (() => {
+    try { return JSON.parse(localStorage.getItem(AUTOCLOSE_KEY) || '[]'); }
+    catch (e) { return []; }
+  })();
+  function saveAutoClosed() {
+    try { localStorage.setItem(AUTOCLOSE_KEY, JSON.stringify(autoClosed)); } catch (e) {}
+  }
+
+  // ===== HELPERS =====
+  function formatTHB(n) {
+    return '฿ ' + n.toLocaleString('fr-FR').replace(/,/g, ' ');
+  }
+  function formatEURFull(thb) {
+    const eur = Math.round(thb / EUR_RATE);
+    return '≈ ' + eur.toLocaleString('fr-FR').replace(/,/g, ' ') + ' €';
+  }
+  function formatEUR(thb) {
+    const eur = thb / EUR_RATE;
+    if (eur >= 1000000) return '≈ ' + (eur / 1000000).toFixed(1).replace('.', ',') + ' M€';
+    return '≈ ' + Math.round(eur / 1000) + ' k€';
+  }
+  function formatSurplus(thb) {
+    if (thb < 1000000) return Math.round(thb / 1000) + ' K THB';
+    const m = thb / 1000000;
+    const formatted = m % 1 === 0 ? m.toString() : m.toFixed(1).replace('.', ',');
+    return formatted + ' M THB';
+  }
+
+  // Compte le nombre de sous-catégories sélectionnées dans un univers
+  function countSelections(univ) {
+    if (!config[univ]) return 0;
+    return UNIVERS_CONFIG[univ].cats.filter(cat => config[univ][cat]).length;
+  }
+
+  // Compte le nombre TOTAL de personnalisations payantes/utiles (pour le badge nav).
+  // On compte tout sauf l'architecture verrouillée (qui est une donnée, pas un choix).
+  function countAllSelections() {
+    let n = 0;
+    UNIV_COUNTABLE.forEach(univ => { n += countSelections(univ); });
+    return n;
+  }
+
+  function computeTotal() {
+    let t = VILLA.basePrice;
+    Object.keys(config).forEach(univ => {
+      const u = config[univ];
+      if (!u) return;
+      Object.keys(u).forEach(cat => {
+        const ch = u[cat];
+        if (ch && typeof ch.price === 'number') t += ch.price;
+      });
+    });
+    return t;
+  }
+
+  // ===========================================================
+  // ===== 1. PANIER NAV (badge + drawer "Mon projet") =====
+  // ===========================================================
+  function updateBadge() {
+    const counter = document.getElementById('basket-count');
+    if (!counter) return;
+    const n = countAllSelections();
+    if (n > 0) {
+      counter.textContent = n;
+      counter.classList.add('visible');
+    } else {
+      counter.classList.remove('visible');
+    }
+  }
+
+  // ===== Drawer =====
+  const drawer = document.getElementById('drawer');
+  const drawerOverlay = document.getElementById('drawer-overlay');
+  const drawerBody = document.getElementById('drawer-body');
+  const drawerFooter = document.getElementById('drawer-footer');
+
+  function openDrawer() {
+    renderDrawer();
+    drawer.classList.add('open');
+    drawerOverlay.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    drawerOverlay.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function renderDrawer() {
+    const total = computeTotal();
+    const n = countAllSelections();
+
+    if (n === 0) {
+      drawerBody.innerHTML = `
+        <div class="drawer-empty">
+          <div class="empty-icon">✦</div>
+          <p>Votre projet est vide. Composez votre villa en sélectionnant vos options dans la section Personnalisation.</p>
+        </div>
+      `;
+      drawerFooter.style.display = 'none';
+      return;
+    }
+
+    let html = `
+      <div class="drawer-villa">
+        <div class="drawer-villa-name">${VILLA.name}</div>
+        <div class="drawer-villa-loc">${VILLA.loc}</div>
+        <div class="drawer-villa-base">
+          <span class="label">Prix de base</span>
+          <span class="price">${formatTHB(VILLA.basePrice)}</span>
+        </div>
+      </div>
+      <ul class="drawer-list">
+    `;
+
+    // On itère sur les univers comptabilisés (pas archi)
+    UNIV_COUNTABLE.forEach(univ => {
+      if (!config[univ]) return;
+      UNIVERS_CONFIG[univ].cats.forEach(cat => {
+        const ch = config[univ][cat];
+        if (!ch) return;
+        const catLabel = (CAT_LABELS[univ] && CAT_LABELS[univ][cat]) || cat;
+        const priceText = ch.price > 0
+          ? '<span class="drawer-item-price">+ ' + formatSurplus(ch.price) + '</span>'
+          : '<span class="drawer-item-price included">Inclus</span>';
+        html += `
+          <li class="drawer-item" style="grid-template-columns: 1fr auto;">
+            <div class="drawer-item-info">
+              <div class="drawer-item-type">${UNIV_LABELS[univ]} · ${catLabel}</div>
+              <div class="drawer-item-name">${ch.name}</div>
+              ${priceText}
+            </div>
+            <button class="drawer-item-remove" type="button" data-univ-remove="${univ}" data-cat-remove="${cat}" aria-label="Retirer">✕</button>
+          </li>
+        `;
+      });
+    });
+
+    html += `
+      </ul>
+      <div class="drawer-total">
+        <span class="drawer-total-label">Total estimé</span>
+        <span class="drawer-total-value">${formatTHB(total)}<small>${formatEURFull(total)}</small></span>
+      </div>
+    `;
+
+    drawerBody.innerHTML = html;
+    drawerFooter.style.display = 'flex';
+
+    // Branche les boutons "✕" pour retirer un choix depuis le drawer
+    drawerBody.querySelectorAll('[data-univ-remove]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const univ = btn.dataset.univRemove;
+        const cat = btn.dataset.catRemove;
+        if (config[univ]) {
+          delete config[univ][cat];
+          if (Object.keys(config[univ]).length === 0) delete config[univ];
+        }
+        // ré-injecter archi si supprimé par mégarde (il est imposé)
+        if (univ === 'archi' || !config.archi) {
+          config.archi = { config: { name: '3 chambres en L', price: 0 } };
+        }
+        saveConfig(config);
+        // Désélectionner la carte correspondante dans la perso
+        const card = document.querySelector(`.option[data-univ="${univ}"][data-cat="${cat}"].selected`);
+        if (card && !card.classList.contains('locked')) card.classList.remove('selected');
+        updateBadge();
+        renderRecapSidebar();
+        renderDrawer();
+        renderContactRecap();
+        UNIV_COUNTABLE.forEach(u => updateUnivProgress(u));
+      });
+    });
+  }
+
+  // Branche le bouton "Mon projet" dans la nav
+  const basketBtn = document.getElementById('basket');
+  if (basketBtn) basketBtn.addEventListener('click', openDrawer);
+  const drawerCloseBtn = document.getElementById('drawer-close');
+  if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
+  if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
+  // CTA "Prendre contact" du drawer → scrolle vers #contact
+  const drawerCta = document.getElementById('drawer-cta');
+  if (drawerCta) {
+    drawerCta.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeDrawer();
+      setTimeout(() => {
+        const c = document.getElementById('contact');
+        if (c) c.scrollIntoView({ behavior: 'smooth' });
+      }, 350);
+    });
+  }
+
+  // Bouton "Réinitialiser" du drawer
+  const drawerClear = document.getElementById('drawer-clear');
+  if (drawerClear) {
+    drawerClear.addEventListener('click', () => {
+      if (!confirm('Réinitialiser tous vos choix ?')) return;
+      resetAll();
+    });
+  }
+
+  // ESC pour fermer
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) closeDrawer();
+  });
+
+  // ===== ANIMATION DE VOL (bonus visuel pour le panier nav) =====
+  function flyToBasket(sourceEl) {
+    const basket = document.getElementById('basket');
+    if (!basket || !sourceEl) return;
+    const startRect = sourceEl.getBoundingClientRect();
+    const endRect = basket.getBoundingClientRect();
+    const endX = endRect.left + endRect.width / 2 - 18;
+    const endY = endRect.top + endRect.height / 2 - 18;
+    const startX = startRect.left + startRect.width / 2 - 18;
+    const startY = startRect.top + startRect.height / 2 - 18;
+
+    const particle = document.createElement('div');
+    particle.className = 'fly-particle';
+    particle.style.left = startX + 'px';
+    particle.style.top = startY + 'px';
+    particle.style.width = '36px';
+    particle.style.height = '36px';
+    particle.style.background = 'var(--terracotta)';
+    particle.style.borderRadius = '50%';
+    document.body.appendChild(particle);
+
+    const midX = (startX + endX) / 2;
+    const midY = Math.min(startY, endY) - 80;
+
+    particle.animate([
+      { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+      { transform: `translate(${midX - startX}px, ${midY - startY}px) scale(0.7)`, opacity: 1, offset: 0.5 },
+      { transform: `translate(${endX - startX}px, ${endY - startY}px) scale(0.2)`, opacity: 0.3 }
+    ], {
+      duration: 500,
+      easing: 'cubic-bezier(0.4, 0, 0.6, 1)'
+    }).onfinish = () => {
+      particle.remove();
+      basket.classList.add('shake');
+      setTimeout(() => basket.classList.remove('shake'), 500);
+    };
+  }
+
+  // ===========================================================
+  // ===== 2. SIDEBAR RECAP (in-context, dans la perso) =====
+  // ===========================================================
+  function renderRecapSidebar() {
+    const list = document.getElementById('recap-list');
+    const totalThb = document.getElementById('recap-total-thb');
+    const totalEur = document.getElementById('recap-total-eur');
+    if (!list || !totalThb || !totalEur) return;
+
+    let total = VILLA.basePrice;
+    let items = [];
+
+    // On affiche tout sauf archi (car c'est figé / pas un "choix" de l'utilisateur)
+    UNIV_COUNTABLE.forEach(univ => {
+      if (!config[univ]) return;
+      Object.keys(config[univ]).forEach(cat => {
+        const ch = config[univ][cat];
+        if (!ch) return;
+        total += ch.price;
+        items.push({
+          cat: (CAT_LABELS[univ] && CAT_LABELS[univ][cat]) || cat,
+          name: ch.name,
+          price: ch.price
+        });
+      });
+    });
+
+    if (items.length === 0) {
+      list.innerHTML = '<li class="recap-empty">Aucune personnalisation pour le moment</li>';
+    } else {
+      list.innerHTML = items.map(it => `
+        <li class="recap-item">
+          <div class="recap-item-info">
+            <div class="recap-item-cat">${it.cat}</div>
+            <div class="recap-item-name">${it.name}</div>
+          </div>
+          <div class="recap-item-price ${it.price === 0 ? 'included' : ''}">
+            ${it.price === 0 ? 'Inclus' : '+ ' + formatTHB(it.price)}
+          </div>
+        </li>
+      `).join('');
+    }
+
+    totalThb.textContent = formatTHB(total);
+    totalEur.textContent = formatEURFull(total);
+  }
+
+  // ===========================================================
+  // ===== 3. CONTACT RECAP (au-dessus du formulaire) =====
+  // ===========================================================
+  function renderContactRecap() {
+    const recap = document.getElementById('contact-recap');
+    const list = document.getElementById('contact-recap-list');
+    const totalEl = document.getElementById('contact-recap-total');
+    const hidden = document.getElementById('hidden-config');
+    if (!recap) return;
+
+    const n = countAllSelections();
+    if (n === 0) {
+      recap.classList.remove('visible');
+      if (hidden) hidden.value = '';
+      return;
+    }
+    recap.classList.add('visible');
+
+    const lines = [];
+    UNIV_COUNTABLE.forEach(univ => {
+      if (!config[univ]) return;
+      UNIVERS_CONFIG[univ].cats.forEach(cat => {
+        const ch = config[univ][cat];
+        if (!ch) return;
+        const catLabel = (CAT_LABELS[univ] && CAT_LABELS[univ][cat]) || cat;
+        lines.push('<span class="recap-label">' + catLabel + '</span>' + ch.name);
+      });
+    });
+    list.innerHTML = lines.join('<br>');
+
+    const total = computeTotal();
+    totalEl.innerHTML = 'Total estimé : ' + formatTHB(total);
+
+    if (hidden) {
+      const parts = [];
+      UNIV_COUNTABLE.forEach(univ => {
+        if (!config[univ]) return;
+        UNIVERS_CONFIG[univ].cats.forEach(cat => {
+          const ch = config[univ][cat];
+          if (!ch) return;
+          const catLabel = (CAT_LABELS[univ] && CAT_LABELS[univ][cat]) || cat;
+          parts.push(catLabel + ': ' + ch.name + (ch.price > 0 ? ' (+' + ch.price + ' THB)' : ' (inclus)'));
+        });
+      });
+      parts.push('Total: ' + formatTHB(total));
+      hidden.value = parts.join(' | ');
+    }
+  }
+
+  // ===========================================================
+  // ===== 4. UNIVERS : tabs, accordéon, options =====
+  // ===========================================================
+  function updateUnivProgress(univ) {
+    const total = UNIVERS_CONFIG[univ].total;
+    const count = countSelections(univ);
+    const progressEl = document.querySelector('[data-univ-progress="' + univ + '"]');
+    if (progressEl) {
+      progressEl.innerHTML = '<strong>' + count + '</strong>/' + total;
+    }
+    // Architecture est verrouillée : pas de "completed" même si total atteint
+    if (univ === 'archi') return false;
+
+    const detailsEl = document.getElementById('univ-' + univ);
+    const tabEl = document.querySelector('.univ-tab[data-univ="' + univ + '"]');
+    const isComplete = count === total && total > 0;
+    if (detailsEl) detailsEl.classList.toggle('completed', isComplete);
+    if (tabEl) tabEl.classList.toggle('completed', isComplete);
+    return isComplete;
+  }
+
+  function openUniv(univ) {
+    const detailsEl = document.getElementById('univ-' + univ);
+    if (!detailsEl) return;
+    detailsEl.open = true;
+    document.querySelectorAll('.univ-tab').forEach(t => t.classList.remove('active'));
+    const tab = document.querySelector('.univ-tab[data-univ="' + univ + '"]');
+    if (tab) tab.classList.add('active');
+    setTimeout(() => {
+      detailsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
+
+  // Clic sur un onglet d'univers
+  document.querySelectorAll('.univ-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const univ = btn.dataset.univ;
+      openUniv(univ);
+      autoClosed = autoClosed.filter(u => u !== univ);
+      saveAutoClosed();
+    });
+  });
+
+  // Quand l'user toggle un accordéon manuellement
+  document.querySelectorAll('.univ-content').forEach(details => {
+    details.addEventListener('toggle', () => {
+      const univ = details.id.replace('univ-', '');
+      if (details.open) {
+        autoClosed = autoClosed.filter(u => u !== univ);
+        saveAutoClosed();
+        document.querySelectorAll('.univ-tab').forEach(t => t.classList.remove('active'));
+        const tab = document.querySelector('.univ-tab[data-univ="' + univ + '"]');
+        if (tab) tab.classList.add('active');
+      }
+    });
+  });
+
+  // Sélection d'une option
+  document.querySelectorAll('.option').forEach(opt => {
+    // Pré-sélectionner si déjà dans la config
+    const univ = opt.dataset.univ;
+    const cat = opt.dataset.cat;
+    const name = opt.dataset.name;
+    if (config[univ] && config[univ][cat] && config[univ][cat].name === name) {
+      opt.classList.add('selected');
+    }
+
+    opt.addEventListener('click', () => {
+      if (opt.classList.contains('locked')) return;
+      const univ = opt.dataset.univ;
+      const cat = opt.dataset.cat;
+      const name = opt.dataset.name;
+      const price = parseInt(opt.dataset.price, 10) || 0;
+
+      // Désélectionner les autres options de la même sous-catégorie
+      document.querySelectorAll('.option[data-univ="' + univ + '"][data-cat="' + cat + '"]').forEach(o => {
+        o.classList.remove('selected');
+      });
+      opt.classList.add('selected');
+
+      // Mettre à jour la config
+      if (!config[univ]) config[univ] = {};
+      config[univ][cat] = { name, price };
+      saveConfig(config);
+
+      // Refresh des affichages
+      updateBadge();
+      renderRecapSidebar();
+      renderContactRecap();
+      // Animation panier (légère, sans image car les options sont des SVG)
+      flyToBasket(opt);
+
+      // Logique de fermeture auto si univers complet
+      const isComplete = updateUnivProgress(univ);
+      if (isComplete && !autoClosed.includes(univ)) {
+        const detailsEl = document.getElementById('univ-' + univ);
+        if (detailsEl && detailsEl.open) {
+          setTimeout(() => {
+            detailsEl.open = false;
+            autoClosed.push(univ);
+            saveAutoClosed();
+            const tabsAnchor = document.getElementById('univ-tabs-anchor');
+            if (tabsAnchor) {
+              tabsAnchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 700);
+        }
+      }
+    });
+  });
+
+  // ===========================================================
+  // ===== 5. RESET & INITIALISATION =====
+  // ===========================================================
+  function resetAll() {
+    config = {};
+    autoClosed = [];
+    saveConfig(config);
+    saveAutoClosed();
+    document.querySelectorAll('.option.selected').forEach(o => {
+      if (!o.classList.contains('locked')) o.classList.remove('selected');
+    });
+    Object.keys(UNIVERS_CONFIG).forEach(univ => {
+      updateUnivProgress(univ);
+      const detailsEl = document.getElementById('univ-' + univ);
+      if (detailsEl) detailsEl.open = false;
+    });
+    document.querySelectorAll('.univ-tab').forEach(t => t.classList.remove('active'));
+    // Réinjecter l'archi par défaut (verrouillée)
+    config.archi = { config: { name: '3 chambres en L', price: 0 } };
+    saveConfig(config);
+    updateBadge();
+    renderRecapSidebar();
+    renderContactRecap();
+    renderDrawer();
+  }
+
+  // Bouton "Réinitialiser" de la sidebar
+  const recapResetBtn = document.getElementById('recap-reset');
+  if (recapResetBtn) {
+    recapResetBtn.addEventListener('click', () => {
+      if (!confirm('Réinitialiser toute la configuration ?')) return;
+      resetAll();
+    });
+  }
+
+  // L'archi est verrouillée mais pré-sélectionnée : l'enregistrer pour cohérence
+  if (!config.archi) {
+    config.archi = { config: { name: '3 chambres en L', price: 0 } };
+    saveConfig(config);
+  }
+
+  // Initialiser tous les compteurs et les états "completed"
+  Object.keys(UNIVERS_CONFIG).forEach(univ => updateUnivProgress(univ));
+  updateBadge();
+  renderRecapSidebar();
+  renderContactRecap();
+
+  // ===========================================================
+  // ===== 6. SUBMIT FORMULAIRE CONTACT =====
+  // ===========================================================
+  const WEB3FORMS_KEY = '289fb372-3290-4eaa-8f2c-ab2d3bddc3bd';
+
+  window.handleContactSubmit = async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const total = computeTotal();
+    const n = countAllSelections();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const statusEl = document.getElementById('contact-status');
+
+    const prefsCheck = form.querySelectorAll('input[name="preference"]:checked');
+    if (prefsCheck.length === 0) {
+      if (statusEl) {
+        statusEl.className = 'contact-status error';
+        statusEl.innerHTML = '<strong>Préférence de contact requise.</strong> Veuillez sélectionner au moins un mode de contact (Email, Téléphone ou WhatsApp).';
+        statusEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return false;
+    }
+
+    let subject = 'Demande — ' + VILLA.name;
+    if (n > 0) subject += ' (configuré)';
+
+    let body = 'Bonjour,\n\nJe suis intéressé(e) par la villa ' + VILLA.name + '.\n\n';
+    body += '--- Mes coordonnées ---\n';
+    body += 'Nom : ' + form.nom.value + '\n';
+    body += 'Email : ' + form.email.value + '\n';
+    body += 'Téléphone : ' + (form.telephone.value || 'Non renseigné') + '\n';
+    const prefs = Array.from(prefsCheck).map(c => c.value);
+    body += 'Préférence de contact : ' + prefs.join(', ') + '\n\n';
+
+    if (n > 0) {
+      body += '--- Configuration choisie ---\n';
+      UNIV_COUNTABLE.forEach(univ => {
+        if (!config[univ]) return;
+        UNIVERS_CONFIG[univ].cats.forEach(cat => {
+          const ch = config[univ][cat];
+          if (!ch) return;
+          const catLabel = (CAT_LABELS[univ] && CAT_LABELS[univ][cat]) || cat;
+          body += catLabel + ' : ' + ch.name + (ch.price > 0 ? ' (+ ' + ch.price.toLocaleString('fr-FR') + ' THB)' : ' (inclus)') + '\n';
+        });
+      });
+      body += 'Prix total estimé : ' + formatTHB(total) + '  (' + formatEURFull(total) + ')\n\n';
+    }
+
+    body += '--- Mon message ---\n' + form.message.value + '\n\n';
+    body += '---\nEnvoyé depuis maisons-samui (' + new Date().toLocaleString('fr-FR') + ')';
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+    if (statusEl) {
+      statusEl.className = 'contact-status loading';
+      statusEl.textContent = '';
+    }
+
+    const payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: subject,
+      from_name: form.nom.value,
+      replyto: form.email.value,
+      message: body,
+      botcheck: ''
+    };
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await response.json();
+      if (data.success) {
+        submitBtn.textContent = '✓ Message envoyé';
+        if (statusEl) {
+          statusEl.className = 'contact-status success';
+          statusEl.innerHTML = '<strong>Merci !</strong> Votre demande a bien été envoyée. Nous vous recontacterons sous peu.';
+        }
+        form.reset();
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Demander un contact';
+        }, 4000);
+      } else {
+        throw new Error(data.message || 'Erreur lors de l\'envoi');
+      }
+    } catch (err) {
+      console.error('Erreur Web3Forms:', err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Demander un contact';
+      if (statusEl) {
+        statusEl.className = 'contact-status error';
+        statusEl.innerHTML = '<strong>Une erreur est survenue.</strong> Veuillez réessayer ou nous contacter directement à <a href="mailto:group@blockestate.com">group@blockestate.com</a>';
+      }
+    }
+    return false;
+  };
+
+})();
+</script>
+
+
+<script>
+  // ========== GALLERY SWIPER MOBILE ==========
+  (function() {
+    const gallery = document.querySelector('.gallery');
+    if (!gallery) return;
+
+    const galleryMore = document.querySelector('.gallery-more');
+    const items = Array.from(document.querySelectorAll('.gallery-item[data-index]'))
+      .sort((a, b) => parseInt(a.dataset.index, 10) - parseInt(b.dataset.index, 10));
+    if (items.length === 0) return;
+
+    // === Gestion du DOM selon viewport ===
+    // En mobile, on déplace les items de .gallery-more dans .gallery pour qu'ils soient
+    // dans le même flex container (le swiper horizontal).
+    // En desktop, on les remet à leur place d'origine (grid 2x).
+    const MQ_MOBILE = window.matchMedia('(max-width: 700px)');
+    const moreItems = galleryMore ? Array.from(galleryMore.querySelectorAll('.gallery-item')) : [];
+
+    function syncDOM() {
+      if (!galleryMore) return;
+      if (MQ_MOBILE.matches) {
+        // Mobile : déplacer les items dans .gallery (juste avant les flèches/placeholders)
+        moreItems.forEach(item => {
+          if (item.parentElement !== gallery) {
+            gallery.appendChild(item);
+          }
+        });
+      } else {
+        // Desktop : remettre les items dans .gallery-more
+        moreItems.forEach(item => {
+          if (item.parentElement !== galleryMore) {
+            galleryMore.appendChild(item);
+          }
+        });
+      }
+    }
+
+    syncDOM();
+    MQ_MOBILE.addEventListener('change', () => {
+      syncDOM();
+      // Reset scroll
+      gallery.scrollLeft = 0;
+      state.currentIndex = 0;
+      dots.querySelectorAll('.gallery-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === 0);
+      });
+      updateArrows();
+    });
+
+    // Créer un wrapper autour de .gallery pour que les flèches soient fixes
+    // et ne scrollent pas avec le swiper horizontal.
+    let galleryWrap = gallery.parentElement;
+    if (!galleryWrap.classList.contains('gallery-wrap')) {
+      galleryWrap = document.createElement('div');
+      galleryWrap.className = 'gallery-wrap';
+      gallery.parentNode.insertBefore(galleryWrap, gallery);
+      galleryWrap.appendChild(gallery);
+    }
+
+    // Flèches (présentes dans le DOM mais visibles seulement en mobile via CSS)
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'gallery-arrow prev';
+    prevBtn.setAttribute('aria-label', 'Photo précédente');
+    prevBtn.type = 'button';
+    prevBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'gallery-arrow next';
+    nextBtn.setAttribute('aria-label', 'Photo suivante');
+    nextBtn.type = 'button';
+    nextBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+
+    // Les flèches sont dans le wrapper (position relative), pas dans .gallery (qui scrolle)
+    galleryWrap.appendChild(prevBtn);
+    galleryWrap.appendChild(nextBtn);
+
+    // Dots
+    const dots = document.createElement('div');
+    dots.className = 'gallery-dots';
+    items.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Photo ' + (i + 1));
+      d.dataset.index = i;
+      dots.appendChild(d);
+    });
+    const afterEl = galleryMore || gallery;
+    afterEl.parentNode.insertBefore(dots, afterEl.nextSibling);
+
+    const state = { currentIndex: 0 };
+
+    function scrollToIndex(i) {
+      if (i < 0 || i >= items.length) return;
+      const target = items[i];
+      const galleryRect = gallery.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const currentScroll = gallery.scrollLeft;
+      const targetScroll = currentScroll + (targetRect.left - galleryRect.left);
+      gallery.scrollTo({ left: targetScroll, behavior: 'smooth' });
+    }
+
+    function updateActiveFromScroll() {
+      const galleryRect = gallery.getBoundingClientRect();
+      const centerX = galleryRect.left + galleryRect.width / 2;
+      let closest = 0;
+      let minDist = Infinity;
+      items.forEach((item, i) => {
+        const rect = item.getBoundingClientRect();
+        const itemCenter = rect.left + rect.width / 2;
+        const dist = Math.abs(itemCenter - centerX);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      if (closest !== state.currentIndex) {
+        state.currentIndex = closest;
+        dots.querySelectorAll('.gallery-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === closest);
+        });
+        updateArrows();
+      }
+    }
+
+    function updateArrows() {
+      prevBtn.disabled = state.currentIndex === 0;
+      nextBtn.disabled = state.currentIndex === items.length - 1;
+    }
+
+    // Les flèches ne doivent PAS déclencher la lightbox (elles sont dans .gallery parent)
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      scrollToIndex(state.currentIndex - 1);
+    });
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      scrollToIndex(state.currentIndex + 1);
+    });
+    dots.querySelectorAll('.gallery-dot').forEach(d => {
+      d.addEventListener('click', () => scrollToIndex(parseInt(d.dataset.index, 10)));
+    });
+
+    let scrollTimeout;
+    gallery.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateActiveFromScroll, 80);
+    });
+
+    updateArrows();
+  })();
+</script>
+
+
+</body>
+</html>

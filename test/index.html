@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maisons Samui — Villas d'exception à Koh Samui</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #e8e1d4;
+    --sand-light: #f2ede2;
+    --sand-dark: #d4c9b4;
+    --ink: #1a1e1a;
+    --ink-soft: #3a3f39;
+    --jungle: #2d4a34;
+    --jungle-deep: #1a2e22;
+    --terracotta: #b8623f;
+    --gold: #a88852;
+    --white: #faf7f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: var(--ink);
+    background: var(--sand-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .display { font-family: 'Italiana', serif; }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s ease;
+    background: rgba(250, 247, 240, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26, 30, 26, 0.08);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-transform: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    line-height: 1;
+  }
+  .logo .logo-house {
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .logo .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .logo .s-accent {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+  /* Logo dans footer (fond sombre) */
+  footer .logo,
+  footer .logo .logo-text {
+    color: var(--sand);
+  }
+  footer .logo .logo-house {
+    color: var(--gold);
+  }
+  footer .logo .s-accent {
+    color: var(--terracotta);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: opacity 0.3s;
+  }
+  .nav-links a:hover { opacity: 0.6; }
+
+  .nav-cta {
+    padding: 0.7rem 1.5rem;
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { background: #8e7043; border-color: #8e7043; color: var(--white); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 4rem 3rem 5rem;
+    overflow: hidden;
+    background: #0f1f17;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2400&q=80");
+    background-size: cover;
+    background-position: center;
+    animation: heroZoom 20s ease-out forwards;
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1.08); }
+    to { transform: scale(1); }
+  }
+
+  /* Overlay pour lisibilité du texte */
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(180deg, rgba(15, 31, 23, 0.65) 0%, rgba(15, 31, 23, 0.25) 30%, rgba(15, 31, 23, 0.47) 70%, rgba(15, 31, 23, 0.88) 100%),
+      linear-gradient(90deg, rgba(15, 31, 23, 0.57) 0%, rgba(15, 31, 23, 0.1) 50%, rgba(15, 31, 23, 0.2) 100%);
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.9 0 0 0 0 0.8 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 4rem;
+  }
+
+  .hero-eyebrow {
+    color: var(--gold);
+    font-size: 1.15rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-weight: 500;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 55px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.95;
+    color: var(--white);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.5s forwards;
+  }
+  .hero h1 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+  }
+
+  .hero-meta {
+    color: var(--sand);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-align: right;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.9s forwards;
+  }
+  .hero-meta .label {
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  .hero-meta .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.85rem;
+    font-style: italic;
+    line-height: 1.3;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    z-index: 2;
+    opacity: 0.7;
+  }
+  .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 30px;
+    background: var(--white);
+    margin: 0.8rem auto 0;
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleY(1); opacity: 0.7; }
+    50% { transform: scaleY(0.3); opacity: 0.3; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== INTRO ===== */
+  .intro {
+    padding: 7rem 3rem;
+    background: var(--jungle-deep);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .intro::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 70% 30%, rgba(168, 136, 82, 0.12), transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(184, 98, 63, 0.08), transparent 50%);
+  }
+
+  .intro-inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .intro-label {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    font-weight: 400;
+    color: var(--white);
+    text-transform: none;
+    letter-spacing: normal;
+    position: sticky;
+    top: 7rem;
+  }
+  .intro-label em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .intro-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+    line-height: 1.35;
+    font-weight: 400;
+    color: var(--sand);
+  }
+  .intro-text em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .intro-text p + p {
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--sand);
+    max-width: 560px;
+    line-height: 1.8;
+    opacity: 0.85;
+  }
+  .intro-text p + p em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--gold);
+    opacity: 1;
+  }
+
+  /* ===== COLLECTIONS ===== */
+  .collection {
+    padding: 4rem 3rem 7rem;
+    background: var(--sand-light);
+  }
+
+  .collection-header {
+    max-width: 1400px;
+    margin: 0 auto 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-bottom: 1px solid var(--sand-dark);
+    padding-bottom: 1.5rem;
+  }
+
+  .collection-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    font-weight: 400;
+  }
+  .collection-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .collection-count {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+  }
+
+  .villa-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 4rem;
+  }
+
+  .villa-card {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .villa-card:hover { transform: translateY(-8px); }
+
+  .villa-card:nth-child(even) { margin-top: 3rem; }
+
+  .villa-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    background: var(--jungle);
+    margin-bottom: 1.5rem;
+  }
+
+  .villa-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+  }
+  .villa-card:hover .villa-image img {
+    transform: scale(1.05);
+  }
+
+  /* Overlay dégradé pour lisibilité du tag et du prix */
+  .villa-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.25) 0%,
+        rgba(0, 0, 0, 0) 30%,
+        rgba(0, 0, 0, 0) 55%,
+        rgba(0, 0, 0, 0.7) 100%
+      ),
+      rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .villa-image .tag {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: var(--white);
+    color: var(--ink);
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    z-index: 3;
+  }
+
+  .villa-image .price-badge {
+    position: absolute;
+    bottom: 4.5rem;
+    right: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    color: var(--white);
+    font-size: 1.9rem;
+    z-index: 3;
+    text-align: right;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+  .villa-image .price-badge small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Badge cryptos sur chaque villa */
+  .villa-image .crypto-badge {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.7rem;
+    background: rgba(15, 31, 23, 0.55);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(168, 136, 82, 0.5);
+    z-index: 3;
+  }
+  .villa-image .crypto-badge .crypto-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  .villa-image .crypto-badge .crypto-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .villa-image .crypto-badge svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  .villa-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 2rem;
+  }
+
+  .villa-info h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.95rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+
+  .villa-info .location {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .villa-specs {
+    display: flex;
+    gap: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    align-items: baseline;
+  }
+  .villa-specs span {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .villa-specs strong {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--ink);
+  }
+
+  /* ===== FEATURED STORY ===== */
+  .featured {
+    background: var(--jungle-deep);
+    color: var(--white);
+    padding: 7rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 70% 30%, rgba(168, 136, 82, 0.12), transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(184, 98, 63, 0.08), transparent 50%);
+  }
+
+  .featured-inner {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .featured-visual {
+    position: relative;
+    aspect-ratio: 3/4;
+    background: linear-gradient(145deg, #a88852 0%, #7a6339 50%, #4a3d22 100%);
+    overflow: hidden;
+  }
+  .featured-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.8' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.15 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+  .featured-visual .placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(250, 247, 240, 0.5);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .featured-text .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .featured-text .label::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .featured-text h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+  .featured-text h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .featured-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--sand);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .featured-cta {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--gold);
+    transition: all 0.3s;
+  }
+  .featured-cta:hover {
+    color: var(--gold);
+    padding-left: 0.5rem;
+  }
+
+  /* ===== SERVICES ===== */
+  .services {
+    padding: 7rem 3rem;
+    background: var(--white);
+  }
+
+  .services-header {
+    max-width: 1400px;
+    margin: 0 auto 5rem;
+    text-align: center;
+  }
+  .services-header .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+  }
+  .services-header h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    font-weight: 400;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .services-header h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--jungle);
+  }
+
+  .services-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .service {
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--sand-dark);
+    position: relative;
+  }
+
+  .service-num {
+    font-family: 'Italiana', serif;
+    font-size: 1rem;
+    color: var(--terracotta);
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+  .service h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .service p {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact {
+    background: var(--ink);
+    color: var(--white);
+    padding: 6rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 50%, rgba(168, 136, 82, 0.15), transparent 60%);
+  }
+
+  .contact-inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .contact-text .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  .contact-text h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+  .contact-text h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .contact-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--sand);
+    margin-bottom: 3rem;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .contact-info div {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+  }
+  .contact-info .key {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    min-width: 80px;
+  }
+  .contact-info .val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(250, 247, 240, 0.3);
+    padding: 1rem 0;
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: rgba(250, 247, 240, 0.4);
+    font-style: italic;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-bottom-color: var(--gold);
+  }
+
+  .contact-form textarea {
+    min-height: 100px;
+    resize: vertical;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+  }
+
+  .contact-form button {
+    margin-top: 1rem;
+    padding: 1.2rem 2rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--white);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+  }
+  .contact-form button:hover {
+    background: var(--gold);
+    color: var(--ink);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--ink);
+    color: var(--sand);
+    padding: 3rem;
+    border-top: 1px solid rgba(250, 247, 240, 0.1);
+  }
+
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250, 247, 240, 0.5);
+  }
+
+  .footer-inner .logo { color: var(--white); }
+
+  /* ===== RESPONSIVE ===== */
+
+  /* ===== RESPONSIVE LAPTOP 13-14" (1441px et moins) ===== */
+  @media (max-width: 1440px) {
+    /* Nav plus compacte */
+    nav { padding: 0.8rem 2rem; }
+    .nav-links { gap: 2rem; }
+    
+    /* Sections générales - paddings réduits */
+    .hero-inner { padding: 0 2rem; }
+    
+    /* Section Collection / villas */
+    .collection { padding: 3rem 2rem 4rem; }
+    .collection-header { margin: 0 0 2rem; }
+    .collection-header h2 { font-size: 3rem; }
+    .villa-grid {
+      max-width: 1200px;
+      gap: 0 2.5rem;
+    }
+    .villa-card:nth-child(even) { margin-top: 1.5rem; }
+    .villa-image { aspect-ratio: 16/10; margin-bottom: 1rem; }
+    .villa-info { padding: 0; }
+    .villa-info h3 { font-size: 1.6rem; }
+    .villa-info .location { font-size: 0.7rem; }
+    .villa-image .price-badge { font-size: 1.5rem; bottom: 3.5rem; right: 1.2rem; }
+    .villa-image .price-badge small { font-size: 0.6rem; }
+    .villa-image .crypto-badge { bottom: 1.2rem; right: 1.2rem; padding: 0.3rem 0.6rem; font-size: 0.55rem; }
+    .villa-image .crypto-badge svg { width: 14px; height: 14px; }
+    .villa-image .tag { top: 1.2rem; left: 1.2rem; padding: 0.35rem 0.7rem; font-size: 0.6rem; }
+    .villa-specs { gap: 1.5rem; font-size: 0.6rem; }
+    .villa-specs strong { font-size: 1.05rem; }
+    
+    /* Section intro / featured / jungle */
+    .intro { padding: 4rem 2rem; }
+    .intro h2 { font-size: 2.5rem; }
+    
+    /* Services */
+    .services { padding: 4rem 2rem; }
+    .services-grid { gap: 2rem; }
+    .service h3 { font-size: 1.5rem; }
+    .service p { font-size: 0.9rem; }
+    
+    /* Contact */
+    .contact { padding: 4rem 2rem; }
+    .contact h2 { font-size: 2.5rem; }
+    
+    /* Footer */
+    footer { padding: 2rem; }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 0.9rem 1.5rem; }
+    .nav-links { display: none; }
+
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .hero-meta { text-align: left; }
+
+    .intro, .collection, .featured, .services, .contact { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .intro { padding-top: 5rem; padding-bottom: 5rem; }
+    .intro-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .intro-label { position: static; }
+
+    .villa-grid { grid-template-columns: 1fr; gap: 4rem; }
+    .villa-card:nth-child(even) { margin-top: 0; }
+
+    .featured { padding-top: 5rem; padding-bottom: 5rem; }
+    .featured-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    .services { padding-top: 5rem; padding-bottom: 5rem; }
+    .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+    .contact { padding-top: 5rem; padding-bottom: 5rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    .collection-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="logo"><svg class="logo-house" width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22L24 8l18 14"/><path d="M10 20v20h28V20"/><path d="M20 40v-10h8v10"/><circle cx="24" cy="24" r="1.5" fill="currentColor"/></svg><span class="logo-text">Maisons <span class="s-accent">S</span>amui</span></a>
+  <ul class="nav-links">
+    <li><a href="#collection">Les Villas</a></li>
+    <li><a href="#featured">Histoire</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">Koh Samui · Thaïlande</div>
+      <h1>Une île.<br>Des maisons<br><em>d'exception.</em></h1>
+    </div>
+    <div class="hero-meta">
+      <span class="label">Saison 2026</span>
+      <span class="value">Quatre villas<br>soigneusement<br>sélectionnées</span>
+    </div>
+  </div>
+  <div class="scroll-hint">Découvrir</div>
+</section>
+
+<!-- COLLECTION -->
+<section class="collection" id="collection">
+  <div class="collection-header">
+    <h2>Les <em>Villas</em></h2>
+    <div class="collection-count">4 propriétés disponibles</div>
+  </div>
+
+  <div class="villa-grid">
+
+    <a href="villa-ananta.html" class="villa-card">
+      <div class="villa-image">
+        <img src="photos/ananta/ananta-main.jpeg" alt="Villa Ananta" />
+        <span class="tag">Vue mer</span>
+        <div class="crypto-badge">
+          <span class="crypto-label">Cryptos acceptées</span>
+          <span class="crypto-icons">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#F7931A"/><path d="M22.35 14.07c.29-1.93-1.18-2.97-3.18-3.66l.65-2.61-1.59-.4-.63 2.54c-.42-.1-.85-.2-1.27-.3l.64-2.56-1.59-.4-.65 2.61c-.34-.08-.68-.15-1.01-.23l-2.19-.55-.42 1.7s1.18.27 1.15.29c.64.16.76.59.74.93l-.74 2.97c.04.01.1.03.17.05l-.17-.04-1.04 4.17c-.08.2-.28.49-.73.38.02.02-1.16-.29-1.16-.29l-.79 1.82 2.07.52c.39.1.76.2 1.13.29l-.66 2.64 1.59.4.65-2.61c.43.12.86.22 1.27.33l-.65 2.6 1.59.4.66-2.64c2.71.51 4.75.31 5.61-2.15.69-1.98-.03-3.12-1.46-3.87 1.04-.24 1.83-.92 2.04-2.33zm-3.65 5.11c-.49 1.98-3.83.91-4.92.64l.87-3.5c1.08.27 4.56.8 4.05 2.86zm.49-5.14c-.45 1.8-3.23.89-4.14.66l.79-3.17c.91.23 3.82.65 3.35 2.51z" fill="white"/></svg>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#2775CA"/><path d="M20.9 18.5c0-2.59-1.56-3.48-4.68-3.85-2.23-.3-2.67-.89-2.67-1.93 0-1.04.74-1.71 2.23-1.71 1.34 0 2.08.45 2.45 1.56.07.22.3.37.52.37h1.19c.3 0 .52-.22.52-.52v-.07c-.3-1.64-1.64-2.9-3.35-3.05v-1.78c0-.3-.22-.52-.59-.59h-1.12c-.3 0-.52.22-.59.59v1.71c-2.23.3-3.64 1.78-3.64 3.64 0 2.45 1.49 3.42 4.61 3.79 2.08.37 2.75.82 2.75 2 0 1.19-1.04 2-2.45 2-1.93 0-2.6-.82-2.82-1.93-.07-.3-.3-.45-.52-.45H10.6c-.3 0-.52.22-.52.52v.07c.3 1.86 1.49 3.2 3.94 3.57v1.78c0 .3.22.52.59.59h1.12c.3 0 .52-.22.59-.59v-1.78c2.23-.37 3.57-1.93 3.57-3.94z" fill="white"/><path d="M12.68 25.5c-3.94-1.41-6.38-5.35-5.8-9.37.45-2.97 2.45-5.35 5.35-6.32.3-.15.45-.37.45-.74v-1.04c0-.3-.15-.52-.45-.59-.07 0-.22 0-.3.07C6.97 8.88 4.22 13.7 5.63 18.66c.82 2.97 3.12 5.27 6.17 6.1.3.15.59 0 .67-.3.07-.07.07-.15.07-.22v-1.04c0-.22-.22-.52-.45-.59zm6.62-17.48c-.3-.15-.59 0-.67.3-.07.07-.07.15-.07.22v1.04c0 .3.22.59.45.74 3.94 1.41 6.38 5.35 5.8 9.37-.45 2.97-2.45 5.35-5.35 6.32-.3.15-.45.37-.45.74v1.04c0 .3.15.52.45.59.07 0 .22 0 .3-.07 4.96-1.49 7.7-6.32 6.29-11.27-.82-3.05-3.2-5.35-6.25-6.17z" fill="white"/></svg>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#26A17B"/><path d="M17.92 14.3v-2.03h4.64V9.18H9.46v3.09h4.64v2.03c-3.77.17-6.61.92-6.61 1.81 0 .89 2.84 1.63 6.61 1.81v6.49h3.82v-6.5c3.77-.17 6.6-.92 6.6-1.81 0-.89-2.84-1.63-6.6-1.81zm0 3.07v-.01c-.09.01-.58.04-1.68.04-.88 0-1.5-.02-1.72-.04v.01c-3.42-.15-5.98-.75-5.98-1.46 0-.71 2.56-1.31 5.98-1.46v2.32c.22.02.86.05 1.74.05 1.05 0 1.58-.04 1.67-.05v-2.32c3.42.15 5.97.75 5.97 1.46 0 .71-2.56 1.31-5.97 1.46z" fill="white"/></svg>
+          </span>
+        </div>
+        <div class="price-badge">
+          
+          ฿ 48 000 000
+        </div>
+      </div>
+      <div class="villa-info">
+        <div>
+          <h3>Villa Ananta</h3>
+          <div class="location">Bophut · Nord-Est</div>
+        </div>
+        <div class="villa-specs">
+          <span><strong>4</strong>ch</span>
+          <span><strong>531</strong>m²</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="villa-baansawan.html" class="villa-card">
+      <div class="villa-image">
+        <img src="photos/baansawan/baansawan-main.jpeg" alt="Baan Sawan" />
+        <span class="tag">Front de mer</span>
+        <div class="crypto-badge">
+          <span class="crypto-label">Cryptos acceptées</span>
+          <span class="crypto-icons">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#F7931A"/><path d="M22.35 14.07c.29-1.93-1.18-2.97-3.18-3.66l.65-2.61-1.59-.4-.63 2.54c-.42-.1-.85-.2-1.27-.3l.64-2.56-1.59-.4-.65 2.61c-.34-.08-.68-.15-1.01-.23l-2.19-.55-.42 1.7s1.18.27 1.15.29c.64.16.76.59.74.93l-.74 2.97c.04.01.1.03.17.05l-.17-.04-1.04 4.17c-.08.2-.28.49-.73.38.02.02-1.16-.29-1.16-.29l-.79 1.82 2.07.52c.39.1.76.2 1.13.29l-.66 2.64 1.59.4.65-2.61c.43.12.86.22 1.27.33l-.65 2.6 1.59.4.66-2.64c2.71.51 4.75.31 5.61-2.15.69-1.98-.03-3.12-1.46-3.87 1.04-.24 1.83-.92 2.04-2.33zm-3.65 5.11c-.49 1.98-3.83.91-4.92.64l.87-3.5c1.08.27 4.56.8 4.05 2.86zm.49-5.14c-.45 1.8-3.23.89-4.14.66l.79-3.17c.91.23 3.82.65 3.35 2.51z" fill="white"/></svg>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#2775CA"/><path d="M20.9 18.5c0-2.59-1.56-3.48-4.68-3.85-2.23-.3-2.67-.89-2.67-1.93 0-1.04.74-1.71 2.23-1.71 1.34 0 2.08.45 2.45 1.56.07.22.3.37.52.37h1.19c.3 0 .52-.22.52-.52v-.07c-.3-1.64-1.64-2.9-3.35-3.05v-1.78c0-.3-.22-.52-.59-.59h-1.12c-.3 0-.52.22-.59.59v1.71c-2.23.3-3.64 1.78-3.64 3.64 0 2.45 1.49 3.42 4.61 3.79 2.08.37 2.75.82 2.75 2 0 1.19-1.04 2-2.45 2-1.93 0-2.6-.82-2.82-1.93-.07-.3-.3-.45-.52-.45H10.6c-.3 0-.52.22-.52.52v.07c.3 1.86 1.49 3.2 3.94 3.57v1.78c0 .3.22.52.59.59h1.12c.3 0 .52-.22.59-.59v-1.78c2.23-.37 3.57-1.93 3.57-3.94z" fill="white"/><path d="M12.68 25.5c-3.94-1.41-6.38-5.35-5.8-9.37.45-2.97 2.45-5.35 5.35-6.32.3-.15.45-.37.45-.74v-1.04c0-.3-.15-.52-.45-.59-.07 0-.22 0-.3.07C6.97 8.88 4.22 13.7 5.63 18.66c.82 2.97 3.12 5.27 6.17 6.1.3.15.59 0 .67-.3.07-.07.07-.15.07-.22v-1.04c0-.22-.22-.52-.45-.59zm6.62-17.48c-.3-.15-.59 0-.67.3-.07.07-.07.15-.07.22v1.04c0 .3.22.59.45.74 3.94 1.41 6.38 5.35 5.8 9.37-.45 2.97-2.45 5.35-5.35 6.32-.3.15-.45.37-.45.74v1.04c0 .3.15.52.45.59.07 0 .22 0 .3-.07 4.96-1.49 7.7-6.32 6.29-11.27-.82-3.05-3.2-5.35-6.25-6.17z" fill="white"/></svg>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#26A17B"/><path d="M17.92 14.3v-2.03h4.64V9.18H9.46v3.09h4.64v2.03c-3.77.17-6.61.92-6.61 1.81 0 .89 2.84 1.63 6.61 1.81v6.49h3.82v-6.5c3.77-.17 6.6-.92 6.6-1.81 0-.89-2.84-1.63-6.6-1.81zm0 3.07v-.01c-.09.01-.58.04-1.68.04-.88 0-1.5-.02-1.72-.04v.01c-3.42-.15-5.98-.75-5.98-1.46 0-.71 2.56-1.31 5.98-1.46v2.32c.22.02.86.05 1.74.05 1.05 0 1.58-.04 1.67-.05v-2.32c3.42.15 5.97.75 5.97 1.46 0 .71-2.56 1.31-5.97 1.46z" fill="white"/></svg>
+          </span>
+        </div>
+        <div class="price-badge">
+          
+          ฿ 62 500 000
+        </div>
+      </div>
+      <div class="villa-info">
+        <div>
+          <h3>Baan Sawan</h3>
+          <div class="location">Lipa Noi · Ouest</div>
+        </div>
+        <div class="villa-specs">
+          <span><strong>5</strong>ch</span>
+          <span><strong>450</strong>m²</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="villa-suriya.html" class="villa-card">
+      <div class="villa-image">
+        <img src="photos/suriya/suriya-main.jpeg" alt="Villa Suriya" />
+        <span class="tag">Colline</span>
+        <div class="crypto-badge">
+          <span class="crypto-label">Cryptos acceptées</span>
+          <span class="crypto-icons">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#F7931A"/><path d="M22.35 14.07c.29-1.93-1.18-2.97-3.18-3.66l.65-2.61-1.59-.4-.63 2.54c-.42-.1-.85-.2-1.27-.3l.64-2.56-1.59-.4-.65 2.61c-.34-.08-.68-.15-1.01-.23l-2.19-.55-.42 1.7s1.18.27 1.15.29c.64.16.76.59.74.93l-.74 2.97c.04.01.1.03.17.05l-.17-.04-1.04 4.17c-.08.2-.28.49-.73.38.02.02-1.16-.29-1.16-.29l-.79 1.82 2.07.52c.39.1.76.2 1.13.29l-.66 2.64 1.59.4.65-2.61c.43.12.86.22 1.27.33l-.65 2.6 1.59.4.66-2.64c2.71.51 4.75.31 5.61-2.15.69-1.98-.03-3.12-1.46-3.87 1.04-.24 1.83-.92 2.04-2.33zm-3.65 5.11c-.49 1.98-3.83.91-4.92.64l.87-3.5c1.08.27 4.56.8 4.05 2.86zm.49-5.14c-.45 1.8-3.23.89-4.14.66l.79-3.17c.91.23 3.82.65 3.35 2.51z" fill="white"/></svg>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#2775CA"/><path d="M20.9 18.5c0-2.59-1.56-3.48-4.68-3.85-2.23-.3-2.67-.89-2.67-1.93 0-1.04.74-1.71 2.23-1.71 1.34 0 2.08.45 2.45 1.56.07.22.3.37.52.37h1.19c.3 0 .52-.22.52-.52v-.07c-.3-1.64-1.64-2.9-3.35-3.05v-1.78c0-.3-.22-.52-.59-.59h-1.12c-.3 0-.52.22-.59.59v1.71c-2.23.3-3.64 1.78-3.64 3.64 0 2.45 1.49 3.42 4.61 3.79 2.08.37 2.75.82 2.75 2 0 1.19-1.04 2-2.45 2-1.93 0-2.6-.82-2.82-1.93-.07-.3-.3-.45-.52-.45H10.6c-.3 0-.52.22-.52.52v.07c.3 1.86 1.49 3.2 3.94 3.57v1.78c0 .3.22.52.59.59h1.12c.3 0 .52-.22.59-.59v-1.78c2.23-.37 3.57-1.93 3.57-3.94z" fill="white"/><path d="M12.68 25.5c-3.94-1.41-6.38-5.35-5.8-9.37.45-2.97 2.45-5.35 5.35-6.32.3-.15.45-.37.45-.74v-1.04c0-.3-.15-.52-.45-.59-.07 0-.22 0-.3.07C6.97 8.88 4.22 13.7 5.63 18.66c.82 2.97 3.12 5.27 6.17 6.1.3.15.59 0 .67-.3.07-.07.07-.15.07-.22v-1.04c0-.22-.22-.52-.45-.59zm6.62-17.48c-.3-.15-.59 0-.67.3-.07.07-.07.15-.07.22v1.04c0 .3.22.59.45.74 3.94 1.41 6.38 5.35 5.8 9.37-.45 2.97-2.45 5.35-5.35 6.32-.3.15-.45.37-.45.74v1.04c0 .3.15.52.45.59.07 0 .22 0 .3-.07 4.96-1.49 7.7-6.32 6.29-11.27-.82-3.05-3.2-5.35-6.25-6.17z" fill="white"/></svg>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#26A17B"/><path d="M17.92 14.3v-2.03h4.64V9.18H9.46v3.09h4.64v2.03c-3.77.17-6.61.92-6.61 1.81 0 .89 2.84 1.63 6.61 1.81v6.49h3.82v-6.5c3.77-.17 6.6-.92 6.6-1.81 0-.89-2.84-1.63-6.6-1.81zm0 3.07v-.01c-.09.01-.58.04-1.68.04-.88 0-1.5-.02-1.72-.04v.01c-3.42-.15-5.98-.75-5.98-1.46 0-.71 2.56-1.31 5.98-1.46v2.32c.22.02.86.05 1.74.05 1.05 0 1.58-.04 1.67-.05v-2.32c3.42.15 5.97.75 5.97 1.46 0 .71-2.56 1.31-5.97 1.46z" fill="white"/></svg>
+          </span>
+        </div>
+        <div class="price-badge">
+          
+          ฿ 35 000 000
+        </div>
+      </div>
+      <div class="villa-info">
+        <div>
+          <h3>Villa Suriya</h3>
+          <div class="location">Chaweng Noi · Est</div>
+        </div>
+        <div class="villa-specs">
+          <span><strong>3</strong>ch</span>
+          <span><strong>280</strong>m²</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="villa-malee.html" class="villa-card">
+      <div class="villa-image">
+        <img src="photos/malee/malee-main.jpeg" alt="Villa Malee" />
+        <span class="tag">Jungle privée</span>
+        <div class="crypto-badge">
+          <span class="crypto-label">Cryptos acceptées</span>
+          <span class="crypto-icons">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#F7931A"/><path d="M22.35 14.07c.29-1.93-1.18-2.97-3.18-3.66l.65-2.61-1.59-.4-.63 2.54c-.42-.1-.85-.2-1.27-.3l.64-2.56-1.59-.4-.65 2.61c-.34-.08-.68-.15-1.01-.23l-2.19-.55-.42 1.7s1.18.27 1.15.29c.64.16.76.59.74.93l-.74 2.97c.04.01.1.03.17.05l-.17-.04-1.04 4.17c-.08.2-.28.49-.73.38.02.02-1.16-.29-1.16-.29l-.79 1.82 2.07.52c.39.1.76.2 1.13.29l-.66 2.64 1.59.4.65-2.61c.43.12.86.22 1.27.33l-.65 2.6 1.59.4.66-2.64c2.71.51 4.75.31 5.61-2.15.69-1.98-.03-3.12-1.46-3.87 1.04-.24 1.83-.92 2.04-2.33zm-3.65 5.11c-.49 1.98-3.83.91-4.92.64l.87-3.5c1.08.27 4.56.8 4.05 2.86zm.49-5.14c-.45 1.8-3.23.89-4.14.66l.79-3.17c.91.23 3.82.65 3.35 2.51z" fill="white"/></svg>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#2775CA"/><path d="M20.9 18.5c0-2.59-1.56-3.48-4.68-3.85-2.23-.3-2.67-.89-2.67-1.93 0-1.04.74-1.71 2.23-1.71 1.34 0 2.08.45 2.45 1.56.07.22.3.37.52.37h1.19c.3 0 .52-.22.52-.52v-.07c-.3-1.64-1.64-2.9-3.35-3.05v-1.78c0-.3-.22-.52-.59-.59h-1.12c-.3 0-.52.22-.59.59v1.71c-2.23.3-3.64 1.78-3.64 3.64 0 2.45 1.49 3.42 4.61 3.79 2.08.37 2.75.82 2.75 2 0 1.19-1.04 2-2.45 2-1.93 0-2.6-.82-2.82-1.93-.07-.3-.3-.45-.52-.45H10.6c-.3 0-.52.22-.52.52v.07c.3 1.86 1.49 3.2 3.94 3.57v1.78c0 .3.22.52.59.59h1.12c.3 0 .52-.22.59-.59v-1.78c2.23-.37 3.57-1.93 3.57-3.94z" fill="white"/><path d="M12.68 25.5c-3.94-1.41-6.38-5.35-5.8-9.37.45-2.97 2.45-5.35 5.35-6.32.3-.15.45-.37.45-.74v-1.04c0-.3-.15-.52-.45-.59-.07 0-.22 0-.3.07C6.97 8.88 4.22 13.7 5.63 18.66c.82 2.97 3.12 5.27 6.17 6.1.3.15.59 0 .67-.3.07-.07.07-.15.07-.22v-1.04c0-.22-.22-.52-.45-.59zm6.62-17.48c-.3-.15-.59 0-.67.3-.07.07-.07.15-.07.22v1.04c0 .3.22.59.45.74 3.94 1.41 6.38 5.35 5.8 9.37-.45 2.97-2.45 5.35-5.35 6.32-.3.15-.45.37-.45.74v1.04c0 .3.15.52.45.59.07 0 .22 0 .3-.07 4.96-1.49 7.7-6.32 6.29-11.27-.82-3.05-3.2-5.35-6.25-6.17z" fill="white"/></svg>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#26A17B"/><path d="M17.92 14.3v-2.03h4.64V9.18H9.46v3.09h4.64v2.03c-3.77.17-6.61.92-6.61 1.81 0 .89 2.84 1.63 6.61 1.81v6.49h3.82v-6.5c3.77-.17 6.6-.92 6.6-1.81 0-.89-2.84-1.63-6.6-1.81zm0 3.07v-.01c-.09.01-.58.04-1.68.04-.88 0-1.5-.02-1.72-.04v.01c-3.42-.15-5.98-.75-5.98-1.46 0-.71 2.56-1.31 5.98-1.46v2.32c.22.02.86.05 1.74.05 1.05 0 1.58-.04 1.67-.05v-2.32c3.42.15 5.97.75 5.97 1.46 0 .71-2.56 1.31-5.97 1.46z" fill="white"/></svg>
+          </span>
+        </div>
+        <div class="price-badge">
+          
+          ฿ 42 000 000
+        </div>
+      </div>
+      <div class="villa-info">
+        <div>
+          <h3>Villa Malee</h3>
+          <div class="location">Maenam · Nord</div>
+        </div>
+        <div class="villa-specs">
+          <span><strong>4</strong>ch</span>
+          <span><strong>360</strong>m²</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="featured">
+  <div class="intro-inner">
+    <div class="intro-label">Un Havre de Paix<br><em>Tropical</em></div>
+    <div class="intro-text">
+      <p>Des villas pensées comme des <em>refuges</em> — entre jungle et océan, tradition thaïlandaise et architecture contemporaine.</p>
+      <p>Maisons Samui accompagne une clientèle exigeante dans l'acquisition de propriétés rares sur l'île de Koh Samui. <em>Nous construisons directement nos villas</em> en collaboration avec des architectes et constructeurs locaux. Chacune de nos villas est visitée, vérifiée et présentée avec la rigueur qu'elle mérite.</p>
+      <a href="#contact" class="featured-cta">Découvrir notre approche</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div class="label">Notre accompagnement</div>
+    <h2>Un service <em>sur mesure</em>, du premier regard à la remise des clés.</h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="service">
+      <span class="service-num">I</span>
+      <h3>Construction maîtrisée</h3>
+      <p>Nous construisons nos villas directement, selon des standards européens. Volumes pensés pour l'art de vivre, raccordements aux réseaux, conformité aux normes : chaque détail est maîtrisé de A à Z.</p>
+    </div>
+    <div class="service">
+      <span class="service-num">II</span>
+      <h3>Accompagnement juridique</h3>
+      <p>Structuration adaptée au droit thaïlandais, vérifications de titre, due diligence complète avec nos partenaires avocats. Étude des différentes approches : bail longue durée, droit de superficie, ou acquisition via société Thai Ltd.</p>
+    </div>
+    <div class="service">
+      <span class="service-num">III</span>
+      <h3>Gestion après-vente</h3>
+      <p>Entretien, conciergerie, location saisonnière : nous restons présents bien au-delà de la signature.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-text">
+      <div class="label">Prenons contact</div>
+      <h2>Parlons de<br>votre <em>projet</em></h2>
+      <p>Confidentiel, sans engagement. Nous répondons à chaque demande sous 24 heures.</p>
+      <div class="contact-info">
+        <div><span class="key">Bureau</span><span class="val">Bophut, Koh Samui</span></div>
+        <div><span class="key">Email</span><span class="val">contact@maisons-samui.com</span></div>
+        <div><span class="key">Téléphone</span><span class="val">+66 (0) 77 000 000</span></div>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Merci, votre message a bien été envoyé.');">
+      <input type="text" placeholder="Nom complet" required />
+      <input type="email" placeholder="Adresse email" required />
+      <input type="tel" placeholder="Téléphone (optionnel)" />
+      <textarea placeholder="Votre projet en quelques mots..." required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="logo"><svg class="logo-house" width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22L24 8l18 14"/><path d="M10 20v20h28V20"/><path d="M20 40v-10h8v10"/><circle cx="24" cy="24" r="1.5" fill="currentColor"/></svg><span class="logo-text">Maisons <span class="s-accent">S</span>amui</span></div>
+    <div>© 2026 · Tous droits réservés</div>
+    <div>Koh Samui, Thaïlande</div>
+  </div>
+</footer>
+
+<script>
+  // Fallback automatique entre .jpeg et .jpg pour toutes les images
+  // S'exécute dès que le DOM est prêt, avant le chargement complet des images
+  (function() {
+    function handleImageError(img) {
+      if (img.dataset.fallbackTried) return;
+      img.dataset.fallbackTried = 'true';
+      const src = img.getAttribute('src');
+      if (src.endsWith('.jpeg')) {
+        img.src = src.replace(/\.jpeg$/, '.jpg');
+      } else if (src.endsWith('.jpg')) {
+        img.src = src.replace(/\.jpg$/, '.jpeg');
+      }
+    }
+
+    document.querySelectorAll('img').forEach(img => {
+      // Si l'image a déjà échoué avant que le script se charge
+      if (img.complete && img.naturalWidth === 0) {
+        handleImageError(img);
+      }
+      img.addEventListener('error', () => handleImageError(img));
+    });
+  })();
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.villa-card, .service, .intro-text, .featured-text, .featured-visual').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(40px)';
+    el.style.transition = 'opacity 1s ease, transform 1s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

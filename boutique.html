@@ -122,11 +122,34 @@
   }
 
   /* ============================================================
+     === BANDEAU PREVIEW (sous la nav)
+     ============================================================ */
+  .preview-banner {
+    background: var(--jungle);
+    color: var(--white);
+    text-align: center;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: fixed;
+    top: 65px; /* sous la nav (padding 0.3rem 2.5rem = ~65px de haut) */
+    left: 0; right: 0;
+    z-index: 99;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .preview-banner span {
+    color: var(--gold-bright);
+    margin: 0 0.4rem;
+  }
+
+  /* ============================================================
      === HERO BOUTIQUE
      ============================================================ */
   .shop-hero {
     background: var(--sand-light);
-    padding: 11rem 3rem 5rem; /* 11rem pour compenser nav fixe */
+    padding: 12rem 3rem 5rem; /* 12rem pour compenser nav fixe + bandeau preview */
     text-align: center;
     border-bottom: 1px solid rgba(0,0,0,0.06);
   }
@@ -533,7 +556,13 @@
     .logo-text-sub { font-size: 0.5rem; }
     .nav-links { gap: 1rem; font-size: 0.6rem; }
     .nav-links a:not(.cta-nav) { display: none; }
-    .shop-hero { padding: 9rem 1.5rem 3rem; }
+    .preview-banner {
+      top: 55px;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      padding: 0.5rem 1rem;
+    }
+    .shop-hero { padding: 10rem 1.5rem 3rem; }
     .filters { padding: 0 1.5rem; }
     .products-grid { padding: 0 1.5rem 4rem; gap: 2rem 1.2rem; grid-template-columns: repeat(2, 1fr); }
     .shop-modal { padding: 2.5rem 1.5rem; }
@@ -582,6 +611,11 @@
     <li><a class="cta-nav" href="index.html#contact">Prendre rendez-vous</a></li>
   </ul>
 </nav>
+
+<!-- Bandeau preview -->
+<div class="preview-banner">
+  <span>◆</span> Boutique en développement — Ouverture prochaine <span>◆</span>
+</div>
 
 <!-- ============================================================
      HERO BOUTIQUE

@@ -29,12 +29,18 @@
 
 
 
+
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
 
 
 
+
+
   html { scroll-behavior: smooth; }
+
+
 
 
 
@@ -50,11 +56,15 @@
 
 
 
+
+
   .logo-img {
     height: 48px;
     width: auto;
     display: block;
   }
+
+
 
 
 
@@ -72,16 +82,19 @@
 
 
 
+
+
   .villa-hero-bg {
     position: absolute; inset: 0;
     background-image:
-      url('photos/sabai/hero.jpg'),
-      url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=2400&q=85');
-    background-size: cover, cover;
-    background-position: center, center;
-    background-repeat: no-repeat, no-repeat;
-    background-color: var(--ink);
+      url('photos/sabai/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--jungle-deep);
   }
+
+
 
 
 
@@ -98,6 +111,8 @@
 
 
 
+
+
   .villa-hero-content {
     position: relative; z-index: 2;
     height: 100%;
@@ -105,6 +120,8 @@
     padding: 0 3rem 5rem;
     color: var(--white);
   }
+
+
 
 
 
@@ -122,9 +139,13 @@
 
 
 
+
+
   .villa-hero-text {
     max-width: 600px;
   }
+
+
 
 
 
@@ -142,10 +163,14 @@
 
 
 
+
+
   .villa-hero-eyebrow::before {
     content: ''; width: 40px; height: 1px;
     background: var(--gold-bright);
   }
+
+
 
 
 
@@ -161,11 +186,15 @@
 
 
 
+
+
   .villa-hero-title em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--gold-bright);
   }
+
+
 
 
 
@@ -178,6 +207,8 @@
     color: rgba(255,255,255,0.9);
     max-width: 500px;
   }
+
+
 
 
 
@@ -205,7 +236,11 @@
 
 
 
+
+
   .villa-hero-perso-teaser svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+
 
 
 
@@ -214,6 +249,8 @@
     width: 13px; height: 13px;
     animation: teaserArrow 2.2s ease-in-out infinite;
   }
+
+
 
 
 
@@ -228,10 +265,14 @@
 
 
 
+
+
   @keyframes teaserPulse {
     0%, 100% { border-color: rgba(201,160,88,0.5); box-shadow: 0 0 0 0 rgba(201,160,88,0); }
     50% { border-color: rgba(201,160,88,0.95); box-shadow: 0 0 0 4px rgba(201,160,88,0.12); }
   }
+
+
 
 
 
@@ -244,9 +285,13 @@
 
 
 
+
+
   @media (prefers-reduced-motion: reduce) {
     .villa-hero-perso-teaser, .villa-hero-perso-teaser .teaser-arrow { animation: none; }
   }
+
+
 
 
 
@@ -259,6 +304,8 @@
 
 
 
+
+
   .villa-hero-meta-label {
     font-size: 0.65rem;
     letter-spacing: 0.3em;
@@ -266,6 +313,8 @@
     color: rgba(255,255,255,0.65);
     margin-bottom: 0.5rem;
   }
+
+
 
 
 
@@ -282,12 +331,16 @@
 
 
 
+
+
   .villa-hero-meta-sub {
     font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: 0.82rem;
     color: rgba(255,255,255,0.8);
   }
+
+
 
 
 
@@ -308,6 +361,8 @@
 
 
 
+
+
   .villa-hero-scroll-line {
     width: 1px; height: 30px;
     background: rgba(255,255,255,0.4);
@@ -317,10 +372,14 @@
 
 
 
+
+
   @keyframes scrollLine {
     0%, 100% { opacity: 0.4; transform: scaleY(1); }
     50% { opacity: 1; transform: scaleY(1.2); }
   }
+
+
 
 
 
@@ -338,10 +397,14 @@
 
 
 
+
+
   .villa-intro-inner {
     max-width: 800px;
     margin: 0 auto;
   }
+
+
 
 
 
@@ -358,6 +421,8 @@
 
 
 
+
+
   .villa-intro-quote {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2rem, 3.5vw, 2.8rem);
@@ -370,11 +435,15 @@
 
 
 
+
+
   .villa-intro-quote em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--terracotta);
   }
+
+
 
 
 
@@ -390,6 +459,8 @@
 
 
 
+
+
   .villa-intro-text p {
     margin-bottom: 1.2rem;
   }
@@ -397,7 +468,11 @@
 
 
 
+
+
   .villa-intro-text p:last-child { margin-bottom: 0; }
+
+
 
 
 
@@ -419,10 +494,14 @@
 
 
 
+
+
   .photo-mosaic-inner {
     width: 100%;
     margin: 0;
   }
+
+
 
 
 
@@ -440,6 +519,8 @@
 
 
 
+
+
   .mosaic-tile {
     overflow: hidden;
     background: var(--sand-light);
@@ -451,7 +532,11 @@
 
 
 
+
+
   .mosaic-tile:hover { opacity: 0.92; }
+
+
 
 
 
@@ -466,12 +551,18 @@
 
 
 
+
+
   .mosaic-tile:hover img { transform: scale(1.03); }
 
 
 
 
+
+
   .mosaic-tile.main { grid-row: 1 / 3; }
+
+
 
 
 
@@ -502,10 +593,14 @@
 
 
 
+
+
   .mosaic-show-all:hover {
     background: var(--ink);
     color: var(--white);
   }
+
+
 
 
 
@@ -522,9 +617,12 @@
 
 
 
+
+
   /* Responsive mosaïque */
   @media (max-width: 900px) {
     .photo-mosaic { padding: 2rem 1rem; }
+
 
 
 
@@ -537,14 +635,18 @@
 
 
 
+
     .mosaic-tile.main { grid-row: 1; grid-column: 1 / 3; }
   }
 
 
 
 
+
+
   @media (max-width: 600px) {
     .mosaic-grid { height: 480px; }
+
 
 
 
@@ -555,6 +657,8 @@
       letter-spacing: 0.15em;
     }
   }
+
+
 
 
 
@@ -577,7 +681,11 @@
 
 
 
+
+
   .lightbox.active { display: flex; }
+
+
 
 
 
@@ -587,6 +695,8 @@
     max-height: 100%;
     object-fit: contain;
   }
+
+
 
 
 
@@ -610,7 +720,11 @@
 
 
 
+
+
   .lightbox-close { top: 2rem; right: 2rem; }
+
+
 
 
 
@@ -620,7 +734,11 @@
 
 
 
+
+
   .lightbox-next { right: 2rem; top: 50%; transform: translateY(-50%); }
+
+
 
 
 
@@ -629,6 +747,8 @@
     background: var(--terracotta);
     border-color: var(--terracotta);
   }
+
+
 
 
 
@@ -650,6 +770,8 @@
 
 
 
+
+
   /* ============================================================
      === SECTION ORIENTATION (caractère émotionnel de la villa)
      ============================================================ */
@@ -665,11 +787,15 @@
 
 
 
+
+
   .orientation-inner {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
   }
+
+
 
 
 
@@ -686,6 +812,8 @@
 
 
 
+
+
   .orientation-text-block h2 {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.2rem, 3.5vw, 3rem);
@@ -698,11 +826,15 @@
 
 
 
+
+
   .orientation-text-block h2 em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--gold-bright);
   }
+
+
 
 
 
@@ -722,9 +854,13 @@
 
 
 
+
+
   .orientation-text-block p:last-child {
     margin-bottom: 0;
   }
+
+
 
 
 
@@ -741,11 +877,15 @@
 
 
 
+
+
   .features-header {
     max-width: 900px;
     margin: 0 auto 4rem;
     text-align: center;
   }
+
+
 
 
 
@@ -762,6 +902,8 @@
 
 
 
+
+
   .features-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.2rem, 3.5vw, 3rem);
@@ -773,11 +915,15 @@
 
 
 
+
+
   .features-title em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--terracotta);
   }
+
+
 
 
 
@@ -793,9 +939,13 @@
 
 
 
+
+
   .feature {
     text-align: left;
   }
+
+
 
 
 
@@ -806,6 +956,8 @@
     margin-bottom: 1.2rem;
     stroke-width: 1.4;
   }
+
+
 
 
 
@@ -821,6 +973,8 @@
 
 
 
+
+
   .feature p {
     font-family: 'Inter', sans-serif;
     font-weight: 300;
@@ -832,10 +986,14 @@
 
 
 
+
+
   .plan-card {
     background: var(--white);
     border: 1px solid rgba(0,0,0,0.06);
   }
+
+
 
 
 
@@ -852,6 +1010,8 @@
 
 
 
+
+
   .plan-info h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.3rem;
@@ -859,6 +1019,8 @@
     margin-bottom: 0.4rem;
     font-weight: 400;
   }
+
+
 
 
 
@@ -873,13 +1035,18 @@
 
 
 
+
+
   @media (max-width: 768px) {
     .plans { padding: 5rem 1.5rem; }
 
 
 
+
     .plans-grid { grid-template-columns: 1fr; gap: 2rem; }
   }
+
+
 
 
 
@@ -899,6 +1066,8 @@
 
 
 
+
+
   .location::before {
     content: '';
     position: absolute;
@@ -907,6 +1076,8 @@
       radial-gradient(circle at 70% 30%, rgba(201, 160, 88, 0.12), transparent 50%),
       radial-gradient(circle at 20% 80%, rgba(184, 98, 63, 0.08), transparent 50%);
   }
+
+
 
 
 
@@ -920,6 +1091,8 @@
     gap: 5rem;
     align-items: center;
   }
+
+
 
 
 
@@ -939,12 +1112,16 @@
 
 
 
+
+
   .location-text .label::before {
     content: '';
     width: 40px;
     height: 1px;
     background: var(--gold-bright);
   }
+
+
 
 
 
@@ -961,11 +1138,15 @@
 
 
 
+
+
   .location-text h2 em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--gold-bright);
   }
+
+
 
 
 
@@ -981,10 +1162,14 @@
 
 
 
+
+
   .location-points {
     list-style: none;
     padding: 0;
   }
+
+
 
 
 
@@ -1001,12 +1186,18 @@
 
 
 
+
+
   .location-points li span:first-child { color: var(--sand); }
 
 
 
 
+
+
   .location-points li span:last-child { color: var(--gold-bright); font-style: italic; }
+
+
 
 
 
@@ -1022,6 +1213,8 @@
 
 
 
+
+
   .location-map iframe {
     width: 100%;
     height: 100%;
@@ -1033,13 +1226,18 @@
 
 
 
+
+
   @media (max-width: 900px) {
     .location { padding: 4rem 1.5rem; }
 
 
 
+
     .location-inner { grid-template-columns: 1fr; gap: 3rem; }
   }
+
+
 
 
 
@@ -1058,10 +1256,14 @@
 
 
 
+
+
   .villa-contact-inner {
     max-width: 700px;
     margin: 0 auto;
   }
+
+
 
 
 
@@ -1078,6 +1280,8 @@
 
 
 
+
+
   .villa-contact h2 {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -1085,6 +1289,8 @@
     margin-bottom: 2rem;
     font-weight: 500;
   }
+
+
 
 
 
@@ -1098,6 +1304,8 @@
 
 
 
+
+
   .villa-contact p {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -1106,6 +1314,8 @@
     margin-bottom: 3rem;
     line-height: 1.6;
   }
+
+
 
 
 
@@ -1130,6 +1340,8 @@
 
 
 
+
+
   .villa-contact-btn:hover {
     background: transparent;
     border-color: var(--white);
@@ -1138,7 +1350,11 @@
 
 
 
+
+
   .villa-contact-btn svg { width: 14px; height: 14px; }
+
+
 
 
 
@@ -1157,6 +1373,8 @@
 
 
 
+
+
   .footer-inner {
     max-width: 1400px; margin: 0 auto;
     display: grid;
@@ -1169,12 +1387,18 @@
 
 
 
+
+
   .footer-brand .logo { margin-bottom: 1rem; }
 
 
 
 
+
+
   .footer-logo-img { height: 88px; width: auto; display: block; }
+
+
 
 
 
@@ -1186,6 +1410,8 @@
     margin-bottom: 1rem;
     color: rgba(255,255,255,0.6);
   }
+
+
 
 
 
@@ -1202,7 +1428,11 @@
 
 
 
+
+
   .footer-col ul { list-style: none; }
+
+
 
 
 
@@ -1211,6 +1441,8 @@
     margin-bottom: 0.6rem;
     font-size: 0.85rem;
   }
+
+
 
 
 
@@ -1224,7 +1456,11 @@
 
 
 
+
+
   .footer-col a:hover { color: var(--gold); }
+
+
 
 
 
@@ -1245,6 +1481,8 @@
 
 
 
+
+
   /* ============================================================
      === RESPONSIVE
      ============================================================ */
@@ -1255,8 +1493,11 @@
 
 
 
+
     .footer-inner { grid-template-columns: 1fr 1fr; }
   }
+
+
 
 
 
@@ -1266,7 +1507,9 @@
 
 
 
+
     .villa-hero-content { padding: 0 1.5rem 3rem; }
+
 
 
 
@@ -1274,7 +1517,9 @@
 
 
 
+
     .villa-hero-meta { text-align: left; }
+
 
 
 
@@ -1282,7 +1527,9 @@
 
 
 
+
     .villa-gallery { padding: 0 1.5rem 5rem; }
+
 
 
 
@@ -1294,11 +1541,14 @@
 
 
 
+
     .gallery-tile { aspect-ratio: 4/3; }
 
 
 
+
     .gallery-tile.main { grid-row: auto; grid-column: 1; }
+
 
 
 
@@ -1308,7 +1558,9 @@
 
 
 
+
     .orientation, .features, .location, .villa-contact { padding: 5rem 1.5rem; }
+
 
 
 
@@ -1316,12 +1568,16 @@
 
 
 
+
     .features-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
 
 
 
     .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
   }
+
+
 
 
 
@@ -1346,7 +1602,11 @@
 
 
 
+
+
   .modal-overlay.active { display: flex; }
+
+
 
 
 
@@ -1356,10 +1616,14 @@
 
 
 
+
+
   @keyframes modalIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+
 
 
 
@@ -1380,6 +1644,8 @@
 
 
 
+
+
   .modal-close:hover {
     background: var(--ink); color: var(--white); border-color: var(--ink);
   }
@@ -1387,7 +1653,11 @@
 
 
 
+
+
   .modal-close svg { width: 16px; height: 16px; }
+
+
 
 
 
@@ -1403,6 +1673,8 @@
 
 
 
+
+
   .modal-progress-bar {
     flex: 1;
     background: rgba(0,0,0,0.05);
@@ -1412,12 +1684,18 @@
 
 
 
+
+
   .modal-progress-bar.done { background: var(--terracotta); }
 
 
 
 
+
+
   .modal-progress-bar.active { background: var(--gold); }
+
+
 
 
 
@@ -1432,12 +1710,18 @@
 
 
 
+
+
   .modal-step { display: none; }
 
 
 
 
+
+
   .modal-step.active { display: block; animation: modalIn 0.4s ease; }
+
+
 
 
 
@@ -1454,6 +1738,8 @@
 
 
 
+
+
   .modal-step h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.7rem;
@@ -1461,6 +1747,8 @@
     font-weight: 400;
     margin-bottom: 0.5rem;
   }
+
+
 
 
 
@@ -1474,6 +1762,8 @@
 
 
 
+
+
   .modal-step .lead {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -1481,6 +1771,8 @@
     margin-bottom: 1.2rem;
     font-size: 1rem;
   }
+
+
 
 
 
@@ -1499,10 +1791,14 @@
 
 
 
+
+
   .stage-option-label:hover {
     background: var(--sand);
     border-color: var(--gold);
   }
+
+
 
 
 
@@ -1521,7 +1817,11 @@
 
 
 
+
+
   .stage-option-icon svg { width: 16px; height: 16px; }
+
+
 
 
 
@@ -1538,6 +1838,8 @@
 
 
 
+
+
   .stage-option-text span {
     font-size: 0.78rem;
     opacity: 0.7;
@@ -1548,10 +1850,14 @@
 
 
 
+
+
   .modal-step.success {
     text-align: center;
     padding: 1.5rem 0;
   }
+
+
 
 
 
@@ -1568,7 +1874,11 @@
 
 
 
+
+
   .modal-step.success .check-icon svg { width: 38px; height: 38px; }
+
+
 
 
 
@@ -1583,11 +1893,15 @@
 
 
 
+
+
   .modal-step.success .small {
     margin-top: 2rem;
     font-size: 0.8rem;
     color: var(--ink-soft);
   }
+
+
 
 
 
@@ -1602,6 +1916,8 @@
     background: var(--sand-light);
     flex-shrink: 0;
   }
+
+
 
 
 
@@ -1621,12 +1937,18 @@
 
 
 
+
+
   .modal-back:hover { color: var(--ink); }
 
 
 
 
+
+
   .modal-back[disabled] { opacity: 0.3; cursor: not-allowed; }
+
+
 
 
 
@@ -1647,164 +1969,11 @@
 
 
 
+
+
   .modal-next:hover { background: var(--ink); }
 
 
-
-
-
-  /* ============================================================
-     PERSONNALISATION — onglets éditoriaux + sélection
-     ============================================================ */
-  .perso { padding: 2.5rem 2rem 4.5rem; max-width: 1020px; margin: 0 auto; }
-
-
-
-
-  .perso-header { text-align: center; margin-bottom: 2rem; }
-
-
-
-
-  .perso-eyebrow {
-    font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; letter-spacing: 0.4em;
-    color: var(--terracotta); margin-bottom: 1rem; text-transform: uppercase;
-  }
-
-
-
-
-  .perso-title {
-    font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3vw, 2.6rem);
-    line-height: 1.05; color: var(--ink); font-weight: 500;
-  }
-
-
-
-
-  .perso-title em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--terracotta); }
-
-
-
-
-  .perso-kicker {
-    font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: 1.05rem; color: var(--ink-soft); margin: 0.9rem auto 0; max-width: 700px; line-height: 1.5;
-  }
-
-
-
-
-  .perso-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-
-
-
-
-  .perso-group-label {
-    font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem;
-    padding-bottom: 0.55rem; border-bottom: 1px solid rgba(201,160,88,0.3);
-  }
-
-
-
-
-  .perso-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-
-
-
-
-  .perso-tab {
-    font-family: 'Inter', sans-serif; font-size: 0.78rem; letter-spacing: 0.04em;
-    padding: 0.55rem 0.9rem; border: 1px solid rgba(26,30,26,0.2); background: transparent;
-    cursor: pointer; transition: all 0.25s; color: var(--ink-soft); position: relative;
-  }
-
-
-
-
-  .perso-tab:hover { border-color: var(--terracotta); color: var(--ink); }
-
-
-
-
-  .perso-tab.on { background: var(--jungle); color: var(--white); border-color: var(--jungle); }
-
-
-
-
-  .perso-visual {
-    aspect-ratio: 16/9; margin-bottom: 1rem; background-size: cover; background-position: center;
-    position: relative; transition: background 0.4s;
-  }
-
-
-
-
-  .perso-visual::after {
-    content: attr(data-label); position: absolute; bottom: 10px; left: 12px;
-    font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: rgba(255,255,255,0.5); font-family: 'Inter', sans-serif;
-  }
-
-
-
-
-  .ph-scandi { background: linear-gradient(135deg,#e9e4da,#cfc7b8 55%,#b9ad9a); }
-
-
-
-
-  .ph-bali { background: linear-gradient(135deg,#3d4a3a,#5e6b4f 50%,#8a7d5e); }
-
-
-
-
-  .ph-wabi { background: linear-gradient(135deg,#4a4640,#6b655c 55%,#9a9286); }
-
-
-
-
-  .ph-tropic { background: linear-gradient(135deg,#173524,#2f5a3c 55%,#5b7e4a); }
-
-
-
-
-  .ph-zen { background: linear-gradient(135deg,#9a958c,#bdb6a8 55%,#7d776c); }
-
-
-
-
-  .ph-medit { background: linear-gradient(135deg,#6b7a52,#9aa472 55%,#cdb98a); }
-
-
-
-
-  .perso-visual { position: relative; overflow: hidden; }
-
-
-  .perso-visual::after { bottom: auto !important; top: 10px; right: 12px; left: auto !important; }
-
-
-  .perso-panel { display: none; position: absolute; left: 0; right: 0; bottom: 0;
-    padding: 2.2rem 1.4rem 1.1rem;
-    background: linear-gradient(to top, rgba(13,16,13,0.85) 20%, rgba(13,16,13,0.45) 65%, transparent);
-  }
-
-
-
-
-  .perso-panel.on { display: block; animation: persoFade 0.5s ease; }
-
-
-
-
-  .perso-panel h4 { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.4rem; color: var(--white); margin-bottom: 0.3rem; font-weight: 500; }
-
-
-
-
-  .perso-panel p { font-size: 0.84rem; line-height: 1.55; color: rgba(250,247,240,0.88); }
 
 
 
@@ -1815,79 +1984,15 @@
 
 
 
-  /* bloc CTA central — demander la configuration */
-  .perso-cta-block {
-    margin-top: 1.6rem; text-align: center;
-  }
-
-
-
-
-  .perso-cta-recap {
-    font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: 1.3rem; color: var(--ink); margin-bottom: 1.6rem; line-height: 1.5;
-  }
-
-
-
-
-  .perso-cta-recap b { font-style: normal; font-weight: 500; color: var(--terracotta); }
-
-
-
-
-  .perso-cta {
-    display: inline-flex; align-items: center; gap: 0.7rem;
-    font-family: 'Inter', sans-serif; font-size: 0.78rem; letter-spacing: 0.18em;
-    text-transform: uppercase; font-weight: 500; padding: 1rem 2rem;
-    background: var(--terracotta); color: var(--white); border: none; cursor: pointer;
-    transition: all 0.3s;
-  }
-
-
-
-
-  .perso-cta svg { width: 17px; height: 17px; transition: transform 0.3s; }
-
-
-
-
-  .perso-cta:hover { background: #a4552f; }
-
-
-
-
-  .perso-cta:hover svg { transform: translateX(4px); }
-
-
-
-
-  .perso-cta-hint {
-    margin-top: 1rem; font-size: 0.72rem; color: var(--ink-soft);
-    letter-spacing: 0.03em; font-family: 'Inter', sans-serif;
-  }
-
-
-
-
-
-  /* note coûts */
-  .perso-note {
-    margin-top: 3.5rem; max-width: 760px; margin-left: auto; margin-right: auto;
-    text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: 1.02rem; line-height: 1.6; color: var(--ink-soft);
-    padding-top: 2rem; border-top: 1px solid rgba(201,160,88,0.25);
-  }
-
-
-
 
 
   /* bande de rappel mi-parcours */
   .perso-recall {
     background: var(--jungle);
-    padding: 3rem 2rem;
+    padding: 1.2rem 2rem;
   }
+
+
 
 
 
@@ -1901,10 +2006,14 @@
 
 
 
+
+
   .perso-recall-eyebrow {
     font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: 1.5rem; color: var(--gold-bright); margin-bottom: 0.5rem;
+    font-size: 1.35rem; color: var(--gold-bright); margin-bottom: 0.3rem;
   }
+
+
 
 
 
@@ -1914,6 +2023,8 @@
     font-size: 0.95rem; line-height: 1.6; color: rgba(250,247,240,0.85);
     max-width: 560px;
   }
+
+
 
 
 
@@ -1929,7 +2040,11 @@
 
 
 
+
+
   .perso-recall-btn svg { width: 16px; height: 16px; transition: transform 0.3s; }
+
+
 
 
 
@@ -1939,7 +2054,11 @@
 
 
 
+
+
   .perso-recall-btn:hover svg { transform: translateX(4px); }
+
+
 
 
 
@@ -1947,6 +2066,8 @@
   @media (max-width: 700px) {
     .perso-recall-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
   }
+
+
 
 
 
@@ -1962,7 +2083,11 @@
 
 
 
+
+
   .modal-perso-recap.show { display: block; }
+
+
 
 
 
@@ -1973,13 +2098,12 @@
 
 
 
+
+
   @media (max-width: 860px) {
-    .perso-groups { grid-template-columns: 1fr; gap: 2.8rem; }
-
-
-
-    .perso { padding: 4.5rem 1.5rem; }
   }
+
+
 
 
 
@@ -1995,7 +2119,11 @@
 
 
 
+
+
   .plans-request:hover { border-color: var(--gold); background: rgba(201,160,88,0.1); }
+
+
 
 
 
@@ -2003,7 +2131,11 @@
 
 
 
+
+
   .plans-request em { font-style: italic; color: var(--ink); }
+
+
 
 
 
@@ -2014,8 +2146,11 @@
 
 
 
+
+
   @media (max-width: 640px) {
     .plans-request { flex-wrap: wrap; }
+
 
 
     .plans-request-cta { margin-left: 0; }
@@ -2023,94 +2158,302 @@
 
 
 
+
+
   /* ============================================================
      SECTION SPECS + ÉTAT DU CHANTIER
      Mise à jour mensuelle : voir commentaires dans le markup HTML
      ============================================================ */
-  .specs-chantier {
+  .villa-specs, .villa-chantier .chantier-inner {
     max-width: 1300px; margin: 0 auto; padding: 3.5rem 3rem 4rem;
     background: var(--white);
   }
 
-.specs-chantier /* ===== BARRE A (commune, .specs-chantier inchangée) ===== */
+
+
+/* ===== BARRE A (commune) ===== */
   .a-steps{ display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
 
-.specs-chantier .a-line{ position: absolute; top: 18px; left: 10%; right: 10%; height: 1px; background: var(--sand); z-index: 0; }
 
-.specs-chantier .a-line-fill{ position: absolute; top: 18px; left: 10%; height: 1px; background: var(--jungle); z-index: 1; width: 30%; }
 
-.specs-chantier .a-step{ position: relative; text-align: center; z-index: 2; }
+.villa-specs .a-line, .villa-chantier .a-line{ position: absolute; top: 18px; left: 10%; right: 10%; height: 1px; background: var(--sand); z-index: 0; }
 
-.specs-chantier .a-dot{
+
+
+.villa-specs .a-line-fill, .villa-chantier .a-line-fill{ position: absolute; top: 18px; left: 10%; height: 1px; background: var(--jungle); z-index: 1; width: 30%; }
+
+
+
+.villa-specs .a-step, .villa-chantier .a-step{ position: relative; text-align: center; z-index: 2; }
+
+
+
+.villa-specs .a-dot, .villa-chantier .a-dot{
     width: 38px; height: 38px; border-radius: 50%; margin: 0 auto 1rem;
     display: flex; align-items: center; justify-content: center;
     font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-weight: 500;
     background: var(--white); border: 1px solid var(--sand); color: #b0a99c; transition: all 0.3s;
   }
 
-.specs-chantier .a-step.done .a-dot{ background: var(--jungle); border-color: var(--jungle); color: var(--white); }
 
-.specs-chantier .a-step.current .a-dot{
+
+.villa-specs .a-step.done .a-dot, .villa-chantier .a-step.done .a-dot{ background: var(--jungle); border-color: var(--jungle); color: var(--white); }
+
+
+
+.villa-specs .a-step.current .a-dot, .villa-chantier .a-step.current .a-dot{
     background: var(--terracotta); border-color: var(--terracotta); color: var(--white);
     box-shadow: 0 0 0 6px rgba(184,98,63,0.15); animation: scPulse 2s ease-in-out infinite;
   }
 
 
 
+
+
   @keyframes scPulse { 0%,100%{box-shadow:0 0 0 6px rgba(184,98,63,0.15);} 50%{box-shadow:0 0 0 13px rgba(184,98,63,0.04);} }
 
-.specs-chantier .a-name{ font-family: 'Cormorant Garamond', serif; font-size: 1.02rem; font-weight: 500; color: var(--ink); margin-bottom: 0.2rem; }
 
-.specs-chantier .a-date{ font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); opacity: 0.6; }
 
-.specs-chantier .a-step.done .a-name{ color: var(--jungle); }
+.villa-specs .a-name, .villa-chantier .a-name{ font-family: 'Cormorant Garamond', serif; font-size: 1.02rem; font-weight: 500; color: var(--ink); margin-bottom: 0.2rem; }
 
-.specs-chantier .a-step.current .a-name{ color: var(--terracotta); }
 
-.specs-chantier .a-step.upcoming .a-name{ color: #b0a99c; }
 
-.specs-chantier /* ===== 3 — Pastille % intégrée dans la ligne (à gauche de la barre) ===== */
+.villa-specs .a-date, .villa-chantier .a-date{ font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); opacity: 0.6; }
+
+
+
+.villa-specs .a-step.done .a-name, .villa-chantier .a-step.done .a-name{ color: var(--jungle); }
+
+
+
+.villa-specs .a-step.current .a-name, .villa-chantier .a-step.current .a-name{ color: var(--terracotta); }
+
+
+
+.villa-specs .a-step.upcoming .a-name, .villa-chantier .a-step.upcoming .a-name{ color: #b0a99c; }
+
+
+
+/* ===== 3 — Pastille % intégrée dans la ligne (à gauche de la barre) ===== */
   .p3-wrap{ display: flex; align-items: center; gap: 2.5rem; }
 
-.specs-chantier .p3-badge{
+
+
+.villa-specs .p3-badge, .villa-chantier .p3-badge{
     flex-shrink: 0; width: 130px; height: 130px; border-radius: 50%;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     background: var(--jungle); color: var(--white); text-align: center;
   }
 
-.specs-chantier .p3-badge .pct{ font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; line-height: 1; font-weight: 500; }
 
-.specs-chantier .p3-badge .pct sup{ font-size: 0.9rem; color: var(--gold-bright); }
 
-.specs-chantier .p3-badge .lab{ font-size: 0.54rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 0.4rem; }
+.villa-specs .p3-badge .pct, .villa-chantier .p3-badge .pct{ font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; line-height: 1; font-weight: 500; }
 
-.specs-chantier .p3-steps-wrap{ flex: 1; }
 
-.specs-chantier .p3-eta{ text-align: right; font-family: 'Inter', sans-serif; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.6rem; }
 
-.specs-chantier /* ===== SPECS refonte 2 : icône + chiffre alignés sur une ligne, .specs-chantier label centré dessous ===== */
+.villa-specs .p3-badge .pct sup, .villa-chantier .p3-badge .pct sup{ font-size: 0.9rem; color: var(--gold-bright); }
+
+
+
+.villa-specs .p3-badge .lab, .villa-chantier .p3-badge .lab{ font-size: 0.54rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 0.4rem; }
+
+
+
+.villa-specs .p3-steps-wrap, .villa-chantier .p3-steps-wrap{ flex: 1; }
+
+
+
+.villa-specs .p3-eta, .villa-chantier .p3-eta{ text-align: right; font-family: 'Inter', sans-serif; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.6rem; }
+
+
+
+/* ===== SPECS refonte 2 : icône + chiffre alignés sur une ligne, label centré dessous ===== */
   .spec-ic{ width: 36px; height: 36px; stroke-width: 1.2; color: var(--terracotta); flex-shrink: 0; }
 
-.specs-chantier .specs-row{ display: flex; margin-bottom: 2.8rem; padding-bottom: 2.8rem; border-bottom: 1px solid rgba(26,30,26,0.08); }
 
-.specs-chantier .spec-item{ flex: 1; display: flex; flex-direction: column; align-items: center; padding: 0 1.5rem; border-right: 1px solid rgba(26,30,26,0.1); }
 
-.specs-chantier .spec-item:last-child{ border-right: none; }
-
-.specs-chantier .spec-top{ display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
-
-.specs-chantier .spec-val{ font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 500; line-height: 1; position: relative; top: -0.06em; }
-
-.specs-chantier .spec-val small{ font-size: 0.85rem; color: var(--ink-soft); }
-
-.specs-chantier .spec-lab{ font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
+.villa-specs .specs-row, .villa-chantier .specs-row{ display: flex; margin-bottom: 2.8rem; padding-bottom: 2.8rem; border-bottom: 1px solid rgba(26,30,26,0.08); }
 
 
 
-  @media (max-width: 760px) {.specs-chantier .specs-row{ flex-wrap: wrap; gap: 1.8rem 0; }
+.villa-specs .spec-item, .villa-chantier .spec-item{ flex: 1; display: flex; flex-direction: column; align-items: center; padding: 0 1.5rem; border-right: 1px solid rgba(26,30,26,0.1); }
 
-.specs-chantier .spec-item{ flex: 0 0 50%; border-right: none; }
+
+
+.villa-specs .spec-item:last-child, .villa-chantier .spec-item:last-child{ border-right: none; }
+
+
+
+.villa-specs .spec-top, .villa-chantier .spec-top{ display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
+
+
+
+.villa-specs .spec-val, .villa-chantier .spec-val{ font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 500; line-height: 1; position: relative; top: -0.06em; }
+
+
+
+.villa-specs .spec-val small, .villa-chantier .spec-val small{ font-size: 0.85rem; color: var(--ink-soft); }
+
+
+
+.villa-specs .spec-lab, .villa-chantier .spec-lab{ font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
+
+
+
+
+
+  @media (max-width: 760px) {.villa-specs, .villa-chantier .specs-row{ flex-wrap: wrap; gap: 1.8rem 0; }
+
+
+.villa-specs .spec-item, .villa-chantier .spec-item{ flex: 0 0 50%; border-right: none; }
   }
+
+
+
+  .villa-specs { max-width: 1300px; margin: 0 auto; padding: 5.5rem 3rem 2.5rem; background: var(--white); }
+
+
+  .villa-specs .specs-row { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+
+  .villa-chantier { max-width: 1300px; margin: 0 auto; padding: 1rem 3rem 4rem; background: var(--white); }
+
+
+  .villa-chantier .chantier-inner { padding: 0; }
+
+
+
+
+  @media (max-width: 900px) {
+    .approche-cards { grid-template-columns: 1fr; }
+  }
+
+
+  @media (prefers-reduced-motion: reduce) { .art-signature { animation: none; } }
+/* ===== SECTION APPROCHES (interactive, variante A) ===== */
+
+  .approches { max-width:1280px; margin:0 auto; padding:4rem 3rem; }
+
+  .approches-header { text-align:center; margin-bottom:2.5rem; }
+
+  .approches-eyebrow { font-size:0.7rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem; }
+
+  .approches-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,4vw,3.2rem); font-weight:500; line-height:1.05; }
+
+  .approches-title em { font-style:italic; color:var(--terracotta); }
+
+  .approches-lead { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.2rem; color:var(--ink-soft); margin:1.2rem auto 0; max-width:680px; line-height:1.5; }
+
+  .approche-custom-banner { display:flex; align-items:center; justify-content:center; gap:1.5rem; flex-wrap:wrap; background:var(--sand-light); border:1px solid rgba(201,160,88,0.25); padding:1.1rem 2rem; margin-top:2.5rem; }
+
+  .approche-custom-banner p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.05rem; }
+
+  .approche-custom-banner .btn { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; padding:0.7rem 1.4rem; border:1px solid var(--gold); color:var(--gold-deep); background:transparent; cursor:pointer; transition:all 0.3s; }
+
+  .approche-custom-banner .btn:hover { background:var(--gold); color:var(--white); }
+
+  .approche-group { margin-top:3rem; scroll-margin-top:80px; }
+
+  .approche-group-label { display:flex; align-items:center; gap:1.2rem; margin-bottom:1.6rem; }
+
+  .approche-group-label .txt { font-size:0.72rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-deep); white-space:nowrap; }
+
+  .approche-group-label .line { flex:1; height:1px; background:rgba(201,160,88,0.3); }
+
+  .approche-group-label svg { width:22px; height:22px; color:var(--terracotta); }
+
+  .approche-group-label .step-num { width:24px; height:24px; border-radius:50%; background:var(--terracotta); color:var(--white); display:inline-flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:0.85rem; flex-shrink:0; }
+
+  .approche-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+
+  .approche-card { background:var(--white); border:1px solid rgba(26,30,26,0.1); display:flex; flex-direction:column; overflow:hidden; transition:all 0.3s; position:relative; }
+
+  .approche-card:hover { border-color:rgba(184,98,63,0.5); box-shadow:0 12px 30px rgba(26,30,26,0.06); }
+
+  /* SÉLECTION : bordure terracotta */
+  .approche-card.selected { border-color:var(--terracotta); box-shadow:0 12px 34px rgba(184,98,63,0.15); }
+
+  /* coche terracotta */
+  .approche-card.selected::before { content:'\2713'; position:absolute; top:12px; left:12px; z-index:3; width:26px; height:26px; border-radius:50%; background:var(--terracotta); color:var(--white); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:600; }
+
+  .approche-visual { aspect-ratio:4/3; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+
+  .approche-visual::after { content:'Rendu 3D à venir'; position:absolute; top:12px; right:14px; font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(250,247,240,0.7); }
+
+  .ph-blanche { background:linear-gradient(135deg,#efe9dd,#e2d9c8); }
+
+  .ph-eveil { background:linear-gradient(135deg,#d9c9a8,#c9a058); }
+
+  .ph-art { background:linear-gradient(135deg,#2a4436,#14241b); }
+
+  .ph-eclosion { background:linear-gradient(135deg,#a9b98f,#6f8a5a); }
+
+  .approche-visual .tier-badge { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.1rem; color:rgba(255,255,255,0.4); }
+
+  .ph-blanche .tier-badge { color:rgba(26,30,26,0.25); }
+
+  .ph-eclosion .tier-badge { color:rgba(255,255,255,0.55); }
+
+  .approche-body { padding:1.8rem 1.6rem 1.6rem; display:flex; flex-direction:column; flex:1; }
+
+  .approche-name { font-family:'Cormorant Garamond',serif; font-size:1.65rem; font-weight:500; line-height:1.1; margin-bottom:0.3rem; }
+
+  .approche-name em { font-style:italic; }
+
+  .approche-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:var(--terracotta); margin-bottom:1rem; }
+
+  .approche-desc { font-size:0.82rem; line-height:1.65; color:var(--ink-soft); flex:1; }
+
+  .approche-desc strong { color:var(--ink); font-weight:600; }
+
+  .approche-select-btn { margin-top:1.4rem; width:100%; padding:0.85rem; cursor:pointer; font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; border:1px solid var(--ink); background:transparent; color:var(--ink); transition:all 0.3s; }
+
+  .approche-select-btn:hover { background:var(--ink); color:var(--white); }
+
+  /* bouton sélectionné : INK noir */
+  .approche-card.selected .approche-select-btn { background:var(--ink); border-color:var(--ink); color:var(--white); }
+
+  .art-signature { position:absolute; left:14px; bottom:14px; right:14px; display:flex; align-items:center; gap:0.6rem; padding:0.65rem 0.8rem; border:1px solid rgba(201,160,88,0.5); border-radius:2px; background:rgba(13,16,13,0.4); backdrop-filter:blur(6px); animation:artSig 2.8s ease-in-out infinite; }
+
+  .art-signature svg { width:18px; height:18px; color:var(--gold-bright); flex-shrink:0; }
+
+  .art-signature-text { display:flex; flex-direction:column; gap:0.1rem; }
+
+  .art-signature-text strong { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.92rem; font-weight:500; color:var(--white); line-height:1.1; }
+
+  .art-signature-text span { font-size:0.56rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-bright); }
+
+  @keyframes artSig { 0%,100%{border-color:rgba(201,160,88,0.5);box-shadow:0 0 0 0 rgba(201,160,88,0);} 50%{border-color:rgba(201,160,88,0.9);box-shadow:0 0 0 4px rgba(201,160,88,0.1);} }
+
+  @media (max-width:900px) { .approche-cards { grid-template-columns:1fr; } }
+
+  
+  .sticky-bar { position:fixed; left:0; right:0; bottom:0; z-index:150; background:var(--jungle-deep); color:var(--white); box-shadow:0 -6px 24px rgba(0,0,0,0.25); transform:translateY(100%); transition:transform 0.4s ease; }
+
+  .sticky-bar.show { transform:translateY(0); }
+
+  .sticky-inner { max-width:1280px; margin:0 auto; padding:1rem 3rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+
+  .sticky-choices { display:flex; gap:2.5rem; }
+
+  .sticky-choice { display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; }
+
+  .sticky-choice .n { width:22px; height:22px; border-radius:50%; border:1px solid rgba(255,255,255,0.3); display:inline-flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:0.8rem; color:rgba(255,255,255,0.5); flex-shrink:0; }
+
+  .sticky-choice.done .n { background:var(--terracotta); border-color:var(--terracotta); color:var(--white); }
+
+  .sticky-choice .lbl { color:rgba(255,255,255,0.55); letter-spacing:0.1em; text-transform:uppercase; font-size:0.62rem; }
+
+  .sticky-choice .val { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:rgba(255,255,255,0.4); }
+
+  .sticky-choice.done .val { color:var(--gold-bright); }
+
+  .sticky-validate { display:inline-flex; align-items:center; gap:0.6rem; font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; padding:0.9rem 2rem; border:none; background:rgba(255,255,255,0.15); color:rgba(255,255,255,0.5); cursor:not-allowed; transition:all 0.3s; }
+
+  .sticky-validate.ready { background:var(--terracotta); color:var(--white); cursor:pointer; }
+
+  .sticky-validate.ready:hover { background:#a3542f; }
+
 </style>
 </head>
 <body>
@@ -2132,7 +2475,7 @@
         <p class="villa-hero-lead">« Sabai » — le bien-être en thaï. Une parenthèse calme, orientée plein sud, au cœur d'un jardin tropical privé.</p>
         <a href="#personnalisation" class="villa-hero-perso-teaser">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
-          Cette villa se personnalise — 3 intérieurs, 3 jardins
+          Votre villa, votre art de vivre — intérieur et jardin sur mesure
           <svg class="teaser-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
         </a>
       </div>
@@ -2166,29 +2509,33 @@
           et l'étape "upcoming" suivante en "current". Mettre à jour son <div class="a-date">.
        Le trait de progression se cale tout seul sur l'étape "current".
      ============================================================ -->
-<section class="specs-chantier">
+<!-- ============================================================
+     CARACTÉRISTIQUES DE LA VILLA
+     ============================================================ -->
+<section class="villa-specs">
 <div class="specs-row"><div class="spec-item"><div class="spec-top"><svg class="spec-ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30v10M42 30v10"/>
         <path d="M6 30h36v-6a6 6 0 0 0-6-6H12a6 6 0 0 0-6 6v6z"/>
         <path d="M12 18v-2a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2M24 18v-2a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2"/></svg><span class="spec-val">3</span></div><div class="spec-lab">Chambres</div></div><div class="spec-item"><div class="spec-top"><svg class="spec-ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 24h36v8a6 6 0 0 1-6 6H12a6 6 0 0 1-6-6v-8z"/>
         <path d="M10 24V12a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2"/>
         <path d="M16 14h8"/></svg><span class="spec-val">3</span></div><div class="spec-lab">Salles d'eau</div></div><div class="spec-item"><div class="spec-top"><svg class="spec-ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8h32v32H8z"/>
         <path d="M8 22h14v18"/></svg><span class="spec-val">148<small>m²</small></span></div><div class="spec-lab">Habitable</div></div><div class="spec-item"><div class="spec-top"><svg class="spec-ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h40v40H4z"/>
-        <path d="M4 4l40 40M4 44L44 4"/></svg><span class="spec-val">445<small>m²</small></span></div><div class="spec-lab">Parcelle</div></div></div><div class="p3-wrap">
-      <div class="p3-badge">
-        <div class="lab">Avancement</div>
-        <div class="pct">35<sup>%</sup></div><!-- ⚙️ % AVANCEMENT : changer "35" ici -->
-      </div>
-      <div class="p3-steps-wrap">
-        <div class="p3-eta">Livraison estimée Q3 2026</div><!-- ⚙️ DATE LIVRAISON : changer ici -->
-        <div class="a-steps">
-          <div class="a-line"></div><div class="a-line-fill"></div>
-          <div class="a-step done"><div class="a-dot">I</div><div class="a-name">Terrassement</div><div class="a-date">Terminé</div></div>
-          <div class="a-step done"><div class="a-dot">II</div><div class="a-name">Gros œuvre</div><div class="a-date">Terminé</div></div>
-          <div class="a-step current"><div class="a-dot">III</div><div class="a-name">Cloisons</div><div class="a-date">En cours</div></div>
-          <div class="a-step upcoming"><div class="a-dot">IV</div><div class="a-name">Finitions</div><div class="a-date">Q1 2026</div></div>
-          <div class="a-step upcoming"><div class="a-dot">V</div><div class="a-name">Aménagements</div><div class="a-date">Q2 2026</div></div>
-        </div>
-</body><
+        <path d="M4 4l40 40M4 44L44 4"/></svg><span class="spec-val">445<small>m²</small></span></div><div class="spec-lab">Parcelle</div></div></div>
+</section>
+
+<!-- ============================================================
+     BANDEAU APPROCHES (introduction)
+     ============================================================ -->
+<section class="perso-recall">
+  <div class="perso-recall-inner">
+    <div class="perso-recall-text">
+      <div class="perso-recall-eyebrow">Et si vous la personnalisiez ?</div>
+      <p>La villa vous est livrée nue ou aménagée selon l'approche qui vous correspond. Découvrez notre signature <em>« Art de Vivre »</em>.</p>
+    </div>
+    <a href="#personnalisation" class="perso-recall-btn">
+      Découvrir les approches
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
 </section>
 
 <!-- ============================================================
@@ -2242,20 +2589,39 @@
 </section>
 
 <!-- ============================================================
-     RAPPEL PERSONNALISATION (mi-parcours)
+     AVANCEMENT DU CHANTIER
+     ⚙️  MISE À JOUR MENSUELLE :
+       1. % : chercher <div class="pct"> et changer le nombre
+       2. Livraison : chercher "Livraison estimée"
+       3. Étapes : passer "current" → "done" et l'"upcoming" suivante → "current"
+       Le trait de progression se cale automatiquement.
      ============================================================ -->
-<section class="perso-recall">
-  <div class="perso-recall-inner">
-    <div class="perso-recall-text">
-      <div class="perso-recall-eyebrow">— Et si vous la personnalisiez ?</div>
-      <p>Chaque villa se décline selon votre univers. Trois ambiances intérieures, trois jardins — choisissez le vôtre.</p>
-    </div>
-    <a href="#personnalisation" class="perso-recall-btn">
-      Personnaliser Sabai
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
+<section class="villa-chantier">
+  <div class="chantier-inner">
+<div class="p3-wrap">
+      <div class="p3-badge">
+        <div class="lab">Avancement</div>
+        <div class="pct">35<sup>%</sup></div><!-- ⚙️ % AVANCEMENT : changer "35" ici -->
+      </div>
+      <div class="p3-steps-wrap">
+        <div class="p3-eta">Livraison estimée Q3 2026</div><!-- ⚙️ DATE LIVRAISON : changer ici -->
+        <div class="a-steps">
+          <div class="a-line"></div><div class="a-line-fill"></div>
+          <div class="a-step done"><div class="a-dot">I</div><div class="a-name">Terrassement</div><div class="a-date">Terminé</div></div>
+          <div class="a-step done"><div class="a-dot">II</div><div class="a-name">Gros œuvre</div><div class="a-date">Terminé</div></div>
+          <div class="a-step current"><div class="a-dot">III</div><div class="a-name">Cloisons</div><div class="a-date">En cours</div></div>
+          <div class="a-step upcoming"><div class="a-dot">IV</div><div class="a-name">Finitions</div><div class="a-date">Q1 2026</div></div>
+          <div class="a-step upcoming"><div class="a-dot">V</div><div class="a-name">Aménagements</div><div class="a-date">Q2 2026</div></div>
+        </div>
+</div>
+      </div>
   </div>
 </section>
+
+<!-- ============================================================
+     RAPPEL PERSONNALISATION (mi-parcours)
+     ============================================================ -->
+
 
 <!-- ============================================================
      LIGHTBOX (design original ananta — vert foncé)
@@ -2359,70 +2725,77 @@
 <!-- ============================================================
      PERSONNALISATION — Faites-en la vôtre
      ============================================================ -->
-<section class="perso" id="personnalisation">
-  <div class="perso-header">
-    <div class="perso-eyebrow">— Faites-en la vôtre</div>
-    <h2 class="perso-title">Une architecture, <em>mille intérieurs</em>.</h2>
-    <p class="perso-kicker">Sabai est livrée clé en main. À vous l'atmosphère&nbsp;: choisissez un univers intérieur et un jardin, notre studio compose le reste.</p>
+<section class="approches" id="personnalisation">
+  <div class="approches-header">
+    <div class="approches-eyebrow">— Faites-en la vôtre</div>
+    <h2 class="approches-title">Choisissez l'approche<br>qui <em>vous correspond</em></h2>
+    <p class="approches-lead">La villa est livrée clé en main côté structure et équipements. Pour la décoration, à vous de choisir : de la toile vierge à l'art de vivre absolu, à l'intérieur comme au jardin.</p>
   </div>
 
-  <div class="perso-groups">
-
-    <!-- INTÉRIEUR -->
-    <div>
-      <div class="perso-group-label">L'intérieur</div>
-      <div class="perso-tabs" data-group="int">
-        <button class="perso-tab on" data-i="0">Modern Scandinavian</button>
-        <button class="perso-tab" data-i="1">Bali · Thai Touch</button>
-        <button class="perso-tab" data-i="2">Wabi-Sabi Zen</button>
-      </div>
-      <div class="perso-visual ph-scandi" id="int-visual" data-label="Rendu 3D à venir">
-        <div class="perso-panel on" data-group="int" data-i="0"><h4>Modern Scandinavian</h4><p>Bois clairs, lignes pures, lumière généreuse. Une chaleur minimale qui laisse la vue et l'espace respirer.</p></div>
-        <div class="perso-panel" data-group="int" data-i="1"><h4>Bali · Thai Touch</h4><p>Teck massif, fibres naturelles, artisanat local. L'élégance tropicale dans ce qu'elle a de plus authentique.</p></div>
-        <div class="perso-panel" data-group="int" data-i="2"><h4>Wabi-Sabi Zen</h4><p>Matières brutes, palette sourde, beauté de l'imperfection. Un calme méditatif, pièce après pièce.</p></div>
-      </div>
-
-      
-      
-      
-    </div>
-
-    <!-- JARDIN -->
-    <div>
-      <div class="perso-group-label">Le jardin</div>
-      <div class="perso-tabs" data-group="jar">
-        <button class="perso-tab on" data-i="0">Tropical Luxuriant</button>
-        <button class="perso-tab" data-i="1">Zen Minéral</button>
-        <button class="perso-tab" data-i="2">Méditerranéen</button>
-      </div>
-      <div class="perso-visual ph-tropic" id="jar-visual" data-label="Rendu 3D à venir">
-        <div class="perso-panel on" data-group="jar" data-i="0"><h4>Tropical Luxuriant</h4><p>Palmiers, bananiers, frangipaniers. Une jungle maîtrisée qui enveloppe la villa d'intimité verte.</p></div>
-        <div class="perso-panel" data-group="jar" data-i="1"><h4>Zen Minéral</h4><p>Gravier ratissé, pierres, bambou noir. La rigueur d'un jardin sec, en écho au Wabi-Sabi.</p></div>
-        <div class="perso-panel" data-group="jar" data-i="2"><h4>Méditerranéen</h4><p>Oliviers, lavandes, terrasses ouvertes. Le soleil franc d'un jardin du Sud, sous les tropiques.</p></div>
-      </div>
-
-      
-      
-      
-    </div>
-
-  </div>
-
-  <div class="perso-cta-block">
-    <p class="perso-cta-recap" id="persoRecap">
-      Votre Sabai : intérieur <b id="recap-int">Modern Scandinavian</b> · jardin <b id="recap-jar">Tropical Luxuriant</b>
-    </p>
-    <button class="perso-cta" onclick="requestConfiguration()">
-      Demander cette configuration
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </button>
-    <p class="perso-cta-hint">Vos choix sont transmis avec votre demande. Vous pourrez en discuter avec Sébastien.</p>
-  </div>
-
-  <p class="perso-note">
-    Les univers présentés sont inclus dans la livraison clé en main. Certaines configurations plus élaborées — essences rares, aménagements paysagers complexes, pièces d'eau — peuvent faire l'objet d'un devis complémentaire. Nous en discutons ensemble, en toute transparence.
-  </p>
+  <div class="approche-group" id="grp-int"><div class="approche-group-label"><span class="step-num">1</span><span class="txt">L'intérieur</span><span class="line"></span></div><div class="approche-cards" data-group="interieur">
+        <div class="approche-card" data-approche="Carte Blanche">
+          <div class="approche-visual ph-blanche"><span class="tier-badge">I</span></div>
+          <div class="approche-body">
+            <div class="approche-name">Carte <em>Blanche</em></div>
+            <div class="approche-tagline">La villa nue</div>
+            <p class="approche-desc">La villa livrée telle quelle, structure et équipements en place. Le reste est une page blanche que vous composez à votre rythme.</p>
+            <button class="approche-select-btn" onclick="selectApproche(this)">Sélectionner</button>
+          </div>
+        </div>
+        <div class="approche-card" data-approche="Éveil des Sens">
+          <div class="approche-visual ph-eveil"><span class="tier-badge">II</span></div>
+          <div class="approche-body">
+            <div class="approche-name">Éveil des <em>Sens</em></div>
+            <div class="approche-tagline">Prête à vivre, prête à louer</div>
+            <p class="approche-desc">Tout le nécessaire dès la remise des clés : <strong>mobilier principal</strong>, <strong>luminaires d'ambiance</strong>, <strong>textiles</strong> et l'<strong>extérieur essentiel</strong>. En accord avec les visuels 3D.</p>
+            <button class="approche-select-btn" onclick="selectApproche(this)">Sélectionner</button>
+          </div>
+        </div>
+        <div class="approche-card" data-approche="Art de Vivre">
+          <div class="approche-visual ph-art"><span class="tier-badge">III</span><div class="art-signature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6-6.3 4.6L7.9 14 2 9.4h7.6z"/></svg><div class="art-signature-text"><strong>« The Art of Island Living »</strong><span>Notre approche signature Latitude Samui</span></div></div></div>
+          <div class="approche-body">
+            <div class="approche-name">Art de <em>Vivre</em></div>
+            <div class="approche-tagline">L'expérience ultime</div>
+            <p class="approche-desc">Tout l'Éveil des Sens, plus <strong>déco murale et objets curated</strong>, <strong>végétal intérieur</strong>, <strong>équipement lifestyle</strong> et des <strong>finitions sensorielles</strong> dignes d'un hôtel étoilé.</p>
+            <button class="approche-select-btn" onclick="selectApproche(this)">Sélectionner</button>
+          </div>
+        </div></div></div>
+  <div class="approche-group" id="grp-jar"><div class="approche-group-label"><span class="step-num">2</span><span class="txt">Le jardin</span><span class="line"></span></div><div class="approche-cards" data-group="jardin">
+        <div class="approche-card" data-approche="Carte Blanche">
+          <div class="approche-visual ph-blanche"><span class="tier-badge">I</span></div>
+          <div class="approche-body">
+            <div class="approche-name">Carte <em>Blanche</em></div>
+            <div class="approche-tagline">Le terrain nu</div>
+            <p class="approche-desc">Le jardin livré au naturel : terrain nivelé et engazonné, prêt à accueillir le paysage de votre choix.</p>
+            <button class="approche-select-btn" onclick="selectApproche(this)">Sélectionner</button>
+          </div>
+        </div>
+        <div class="approche-card" data-approche="Éclosion">
+          <div class="approche-visual ph-eclosion"><span class="tier-badge">II</span></div>
+          <div class="approche-body">
+            <div class="approche-name"><em>Éclosion</em></div>
+            <div class="approche-tagline">Le jardin qui prend vie</div>
+            <p class="approche-desc">Un aménagement paysager pensé : <strong>plantations en pleine terre</strong>, essences tropicales, massifs structurés et allées.</p>
+            <button class="approche-select-btn" onclick="selectApproche(this)">Sélectionner</button>
+          </div>
+        </div>
+        <div class="approche-card" data-approche="Art de Vivre">
+          <div class="approche-visual ph-art"><span class="tier-badge">III</span><div class="art-signature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6-6.3 4.6L7.9 14 2 9.4h7.6z"/></svg><div class="art-signature-text"><strong>« The Art of Island Living »</strong><span>Notre approche signature Latitude Samui</span></div></div></div>
+          <div class="approche-body">
+            <div class="approche-name">Art de <em>Vivre</em></div>
+            <div class="approche-tagline">L'expérience ultime</div>
+            <p class="approche-desc">Toute l'Éclosion, sublimée : <strong>cuisine d'été</strong>, <strong>éclairage paysager</strong>, végétal premium et mise en scène complète des extérieurs.</p>
+            <button class="approche-select-btn" onclick="selectApproche(this)">Sélectionner</button>
+          </div>
+        </div></div></div>
 </section>
+<div class="sticky-bar" id="stickyBar"><div class="sticky-inner">
+  <div class="sticky-choices">
+    <div class="sticky-choice" id="sc-int"><span class="n">1</span><div><div class="lbl">Intérieur</div><div class="val" id="scv-int">À choisir</div></div></div>
+    <div class="sticky-choice" id="sc-jar"><span class="n">2</span><div><div class="lbl">Jardin</div><div class="val" id="scv-jar">À choisir</div></div></div>
+  </div>
+  <button class="sticky-validate" id="stickyValidate" onclick="validateApproches()">Valider mes choix <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+</div></div>
 
 <!-- ============================================================
      SITUATION (copie exacte du fichier référence)
@@ -2590,60 +2963,7 @@
     if (e.key === 'ArrowRight') navigateLightbox(e, 1);
   });
 
-// ============================================================
-// PERSONNALISATION — onglets + demande de configuration
-// ============================================================
-const persoData = {
-  int: [
-    { name: 'Modern Scandinavian', cls: 'ph-scandi' },
-    { name: 'Bali · Thai Touch',   cls: 'ph-bali' },
-    { name: 'Wabi-Sabi Zen',       cls: 'ph-wabi' }
-  ],
-  jar: [
-    { name: 'Tropical Luxuriant', cls: 'ph-tropic' },
-    { name: 'Zen Minéral',        cls: 'ph-zen' },
-    { name: 'Méditerranéen',      cls: 'ph-medit' }
-  ]
-};
-// l'univers affiché EST le choix courant (plus de validation séparée)
-const persoActive = { int: 0, jar: 0 };
-
-document.querySelectorAll('.perso-tabs').forEach(tabs => {
-  const group = tabs.dataset.group;
-  tabs.querySelectorAll('.perso-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      const i = parseInt(tab.dataset.i, 10);
-      persoActive[group] = i;
-      tabs.querySelectorAll('.perso-tab').forEach(t => t.classList.remove('on'));
-      tab.classList.add('on');
-      document.querySelectorAll(`.perso-panel[data-group="${group}"]`).forEach(p => {
-        p.classList.toggle('on', parseInt(p.dataset.i, 10) === i);
-      });
-      const vis = document.getElementById(group + '-visual');
-      vis.className = 'perso-visual ' + persoData[group][i].cls;
-      updatePersoRecap();
-    });
-  });
-});
-
-function updatePersoRecap() {
-  document.getElementById('recap-int').textContent = persoData.int[persoActive.int].name;
-  document.getElementById('recap-jar').textContent = persoData.jar[persoActive.jar].name;
-}
-
-function getPersoSummary() {
-  return {
-    interior: persoData.int[persoActive.int].name,
-    garden: persoData.jar[persoActive.jar].name
-  };
-}
-
-window.VILLA_NAME = 'Sabai';
-
-// CTA : ouvre le formulaire avec la configuration déjà transmise
-function requestConfiguration() {
-  openContactModal();
-}
+// (personnalisation par univers supprimée — remplacée par la section approches)
 
 
 </script>
@@ -2657,7 +2977,7 @@ function requestConfiguration() {
 /* Cale automatiquement le trait de progression de la timeline chantier
    sur l'étape "current". Aucune largeur à calculer à la main. */
 (function(){
-  var section = document.querySelector('.specs-chantier');
+  var section = document.querySelector('.villa-chantier');
   if(!section) return;
   var steps = section.querySelectorAll('.a-step');
   var fill = section.querySelector('.a-line-fill');
@@ -2675,5 +2995,78 @@ function requestConfiguration() {
   fill.style.width = (pos - 10) + '%';
 })();
 </script>
+
+<script>
+/* ============================================================
+   SECTION APPROCHES — sélection intérieur + jardin
+   ============================================================ */
+(function(){
+  window.VILLA_NAME = 'Sabai';
+  var selection = { interieur: null, jardin: null };
+
+  window.selectApproche = function(btn){
+    var card = btn.closest('.approche-card');
+    var group = card.closest('.approche-cards').dataset.group;
+    card.closest('.approche-cards').querySelectorAll('.approche-card').forEach(function(c){
+      c.classList.remove('selected');
+      var b = c.querySelector('.approche-select-btn'); if(b) b.textContent = 'Sélectionner';
+    });
+    card.classList.add('selected');
+    btn.textContent = 'Sélectionné';
+    selection[group] = card.dataset.approche;
+    onSelect(group);
+  };
+
+  // hook lu par contact.js pour pré-remplir le récap + le payload
+  window.getPersoSummary = function(){
+    if(!selection.interieur && !selection.jardin) return null;
+    return { interior: selection.interieur, garden: selection.jardin };
+  };
+
+  var bar = document.getElementById('stickyBar');
+  var grpInt = document.getElementById('grp-int');
+  var section = document.querySelector('.approches');
+  // barre visible UNIQUEMENT quand la section approches est à l'écran
+  if('IntersectionObserver' in window && section && bar){
+    var obs = new IntersectionObserver(function(es){
+      es.forEach(function(e){ bar.classList.toggle('show', e.isIntersecting); });
+    }, { threshold: 0, rootMargin: '0px 0px -40% 0px' });
+    obs.observe(section);
+  }
+
+  function onSelect(group){
+    if(group === 'interieur'){
+      document.getElementById('scv-int').textContent = selection.interieur;
+      document.getElementById('sc-int').classList.add('done');
+      var jar = document.getElementById('grp-jar');
+      if(jar){
+        var navH = 90;
+        // cible idéale : titre du jardin calé sous la nav
+        var target = window.scrollY + jar.getBoundingClientRect().top - navH;
+        // limite : ne pas scroller au point de faire apparaître la section suivante (Situation)
+        var section = document.querySelector('.approches');
+        var sectionBottom = window.scrollY + section.getBoundingClientRect().bottom;
+        var maxAllowed = sectionBottom - window.innerHeight + 40; // garde la fin de section en bas d'écran
+        var finalTop = Math.min(target, Math.max(0, maxAllowed));
+        window.scrollTo({ top: finalTop, behavior: 'smooth' });
+      }
+    }
+    if(group === 'jardin'){
+      document.getElementById('scv-jar').textContent = selection.jardin;
+      document.getElementById('sc-jar').classList.add('done');
+    }
+    if(selection.interieur && selection.jardin){
+      document.getElementById('stickyValidate').classList.add('ready');
+    }
+  }
+
+  window.validateApproches = function(){
+    if(selection.interieur && selection.jardin && typeof window.openContactModal === 'function'){
+      window.openContactModal();
+    }
+  };
+})();
+</script>
+
 </body>
 </html>

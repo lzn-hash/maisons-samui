@@ -37,10 +37,10 @@
     resetContactModal();
     // Récap personnalisation (pages villa uniquement)
     var recap = document.getElementById('modalPersoRecap');
-    if (typeof window.getPersoSummary === 'function' && recap) {
-      var s = window.getPersoSummary();
+    var s = (typeof window.getPersoSummary === 'function') ? window.getPersoSummary() : null;
+    if (s && recap) {
       var villa = window.VILLA_NAME || 'cette villa';
-      recap.innerHTML = 'Configuration choisie pour ' + villa + ' : intérieur <b>' + s.interior + '</b>, jardin <b>' + s.garden + '</b>. Nous la reprenons avec vous.';
+      recap.innerHTML = 'Vos choix pour la Villa <b>' + villa + '</b> : intérieur <b>' + s.interior + '</b>, jardin <b>' + s.garden + '</b>. Nous les reprenons ensemble.';
       recap.classList.add('show');
     } else if (recap) {
       recap.classList.remove('show'); recap.innerHTML = '';
@@ -145,8 +145,8 @@
     };
     if (villa) payload['Villa'] = villa;
     if (perso) {
-      payload['Univers intérieur choisi'] = perso.interior;
-      payload['Univers jardin choisi'] = perso.garden;
+      payload['Approche intérieure choisie'] = perso.interior;
+      payload['Approche jardin choisie'] = perso.garden;
     }
 
     fetch('https://api.web3forms.com/submit', {

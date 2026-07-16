@@ -131,7 +131,7 @@
   // Transparence au scroll : nav transparente sur le hero, ink sobre après défilement
   var navEl = document.querySelector('nav.sn');
   function onScroll() {
-    if (window.scrollY > 450) navEl.classList.add('scrolled');
+    if (window.scrollY > 180) navEl.classList.add('scrolled');
     else navEl.classList.remove('scrolled');
   }
   window.addEventListener('scroll', onScroll, { passive: true });

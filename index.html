@@ -35,13 +35,16 @@
     --success: #4a7c59;
   }
 
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
 
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
 
   body {
     font-family: 'Inter', sans-serif;
@@ -52,42 +55,6 @@
     overflow-x: hidden;
   }
 
-  /* ========================================================
-     === HEADER — VERSION A : VERRE DÉPOLI (avec scroll state)
-     ======================================================== */
-  nav.main-nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 0.4rem 2.5rem;
-    display: flex; justify-content: space-between; align-items: center;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    transition: all 0.4s ease;
-  }
-  /* État scrolled : fond ink, lisibilité garantie sur sections claires */
-  nav.main-nav.scrolled {
-    background: rgba(26, 30, 26, 0.92);
-    backdrop-filter: blur(20px) saturate(180%);
-    border-bottom-color: rgba(255, 255, 255, 0.08);
-    padding: 0.3rem 2.5rem;
-  }
-  .logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
-    text-decoration: none;
-    line-height: 1;
-    transition: opacity 0.3s;
-  }
-  .logo:hover { opacity: 0.85; }
-
-  /* Nouveau logo image (nav) — SVG paysage avec texte intégré */
-  .logo-img {
-    height: 48px;
-    width: auto;
-    display: block;
-  }
   /* Nouveau logo image (footer) — plus grand pour lisibilité */
   .logo-img-footer {
     height: 140px;
@@ -95,6 +62,7 @@
     display: block;
     margin-bottom: 0.5rem;
   }
+
 
   /* Icône à gauche */
   .logo-icon {
@@ -104,12 +72,14 @@
     display: block;
   }
 
+
   /* Bloc texte à droite */
   .logo-text-block {
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
   }
+
   .logo-text-main {
     color: #ffffff;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -118,6 +88,7 @@
     letter-spacing: 0.32em;
     line-height: 1;
   }
+
   .logo-text-sub {
     color: #C9A058;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -127,18 +98,21 @@
     line-height: 1;
   }
 
+
   /* Couleurs internes du logo SVG (pour le footer où le SVG complet est utilisé) */
   .logo-svg {
     height: 60px;
     width: auto;
     display: block;
   }
+
   .logo-svg .logo-deco,
   .logo-svg .logo-deco-line {
     stroke: #C9A058;
     stroke-width: 2;
     fill: none;
   }
+
   .logo-svg .svg-text-main {
     fill: #ffffff;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -146,6 +120,7 @@
     letter-spacing: 8px;
     font-weight: 300;
   }
+
   .logo-svg .svg-text-sub {
     fill: #C9A058;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -154,50 +129,6 @@
     font-weight: 300;
   }
 
-  .nav-links {
-    display: flex; gap: 2.5rem; align-items: center;
-    list-style: none;
-  }
-  .nav-links a {
-    color: var(--white); text-decoration: none;
-    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
-    font-weight: 400;
-    transition: color 0.3s;
-    position: relative;
-    cursor: pointer;
-  }
-  .nav-links a:not(.cta)::after {
-    content: '';
-    position: absolute;
-    bottom: -6px; left: 0;
-    width: 0; height: 1px;
-    background: var(--gold);
-    transition: width 0.3s ease;
-  }
-  .nav-links a:not(.cta):hover::after { width: 100%; }
-  .cta-nav {
-    background: var(--terracotta);
-    color: var(--white) !important;
-    padding: 0.7rem 1.5rem;
-    font-weight: 500;
-    transition: all 0.3s;
-    border: 1px solid var(--terracotta);
-    cursor: pointer;
-  }
-  .cta-nav:hover {
-    background: transparent;
-    color: var(--white) !important;
-    border-color: var(--white);
-  }
-
-  /* Burger mobile */
-  .nav-burger {
-    display: none;
-    background: transparent; border: none; cursor: pointer;
-    color: var(--white);
-    padding: 0.5rem;
-  }
-  .nav-burger svg { width: 24px; height: 24px; }
 
   /* ========================================================
      === HERO — V2.1 SLIDESHOW KEN BURNS
@@ -209,13 +140,16 @@
     overflow: hidden;
   }
 
+
   .slide {
     position: absolute;
     inset: 0;
     opacity: 0;
     transition: opacity 2s ease;
   }
+
   .slide.active { opacity: 1; }
+
 
   .slide-img {
     position: absolute;
@@ -224,13 +158,16 @@
     background-position: center;
     will-change: transform;
   }
+
   .slide.active .slide-img {
     animation: kenBurns 8s ease-out forwards;
   }
+
   @keyframes kenBurns {
     from { transform: scale(1) translate(0, 0); }
     to { transform: scale(1.15) translate(-2%, 2%); }
   }
+
 
   .slide-overlay {
     position: absolute;
@@ -240,12 +177,19 @@
       linear-gradient(90deg, rgba(0,0,0,0.4) 0%, transparent 50%);
   }
 
+
   .slide-1 .slide-img { background-image: url('photos/index/(1).jpg'); }
+
   .slide-2 .slide-img { background-image: url('photos/index/(2).jpg'); }
+
   .slide-3 .slide-img { background-image: url('photos/index/(3).jpg'); }
+
   .slide-4 .slide-img { background-image: url('photos/index/(4).jpg'); }
+
   .slide-5 .slide-img { background-image: url('photos/index/(5).jpg'); }
+
   .slide-6 .slide-img { background-image: url('photos/index/(6).jpg'); }
+
 
   .hero-content {
     position: relative;
@@ -259,6 +203,7 @@
     max-width: 1400px;
     margin: 0 auto;
   }
+
   .hero-eyebrow {
     font-size: 0.7rem;
     letter-spacing: 0.4em;
@@ -269,12 +214,14 @@
     align-items: center;
     gap: 1rem;
   }
+
   .hero-eyebrow::before {
     content: '';
     width: 50px;
     height: 1px;
     background: var(--gold);
   }
+
   .hero h1 {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(3.5rem, 8vw, 8rem);
@@ -285,12 +232,14 @@
     max-width: 1100px;
     color: var(--white);
   }
+
   .hero h1 em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--gold);
     font-weight: 400;
   }
+
   .hero-tagline {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -298,6 +247,7 @@
     color: rgba(255, 255, 255, 0.9);
     max-width: 600px;
   }
+
 
   .slide-indicators {
     position: absolute;
@@ -307,6 +257,7 @@
     display: flex;
     gap: 0.6rem;
   }
+
   .indicator {
     width: 40px;
     height: 2px;
@@ -318,7 +269,9 @@
     border: none;
     padding: 0;
   }
+
   .indicator.active { background: rgba(255, 255, 255, 0.4); }
+
   .indicator.active::after {
     content: '';
     position: absolute;
@@ -327,30 +280,38 @@
     background: var(--white);
     animation: progress 6s linear forwards;
   }
+
   @keyframes progress { to { width: 100%; } }
+
 
   /* ========================================================
      === SECTION WRAPPERS COMMUNS
      ======================================================== */
   .section { padding: 7rem 3rem; }
+
   .section-header { max-width: 1400px; margin: 0 auto 4rem; }
+
   .section-label {
     font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
     color: var(--gold-deep); margin-bottom: 1rem;
     display: flex; align-items: center; gap: 1rem;
   }
+
   .section-label::before {
     content: ''; width: 40px; height: 1px; background: var(--gold-deep);
   }
+
   .section-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.5rem, 4.5vw, 3.8rem);
     line-height: 1; font-weight: 500;
   }
+
   .section-title em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic; color: var(--terracotta);
   }
+
   .section-lead {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic; font-size: 1.25rem;
@@ -358,17 +319,21 @@
     line-height: 1.5;
   }
 
+
   /* Numérotation romaine entre sections */
   .section-roman {
     display: flex; align-items: center; gap: 1.5rem;
     margin-bottom: 1rem;
   }
+
   .section-roman-num {
     font-family: 'Cormorant Garamond', serif;
     font-size: 0.8rem; letter-spacing: 0.3em;
     color: var(--terracotta);
   }
+
   .section-roman-line { flex: 1; height: 1px; background: rgba(0,0,0,0.1); max-width: 100px; }
+
 
   /* ========================================================
      === VILLAS — VERSION C : GALERIE IMMERSIVE
@@ -378,9 +343,11 @@
     padding: 5rem 0 4rem;
     position: relative;
   }
+
   .villas-section .section-header {
     padding: 0 3rem;
   }
+
   /* Header compact villas : titre et lead côte à côte */
   .villas-header-compact {
     max-width: 1700px;
@@ -391,6 +358,7 @@
     gap: 3rem;
     align-items: end;
   }
+
   .villas-title-compact {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2rem, 3.5vw, 3rem);
@@ -399,11 +367,13 @@
     color: var(--ink);
     margin-top: 0.5rem;
   }
+
   .villas-title-compact em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--terracotta);
   }
+
   .villas-lead-compact {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -414,13 +384,21 @@
     max-width: 380px;
     padding-bottom: 0.5rem;
   }
+
   .villas-section .section-label { color: var(--gold-deep); }
+
   .villas-section .section-label::before { background: var(--gold-deep); }
+
   .villas-section .section-title { color: var(--ink); }
+
   .villas-section .section-title em { color: var(--terracotta); }
+
   .villas-section .section-lead { color: var(--ink-soft); }
+
   .villas-section .section-roman-num { color: var(--terracotta); }
+
   .villas-section .section-roman-line { background: rgba(0,0,0,0.1); }
+
 
   /* === Grille 4 colonnes (Variante A hybride) === */
   .villas-grid {
@@ -431,22 +409,26 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 1.8rem;
   }
+
   .villa-card {
     background: var(--white);
     overflow: hidden;
     transition: transform 0.4s, box-shadow 0.4s;
     border: 1px solid rgba(0,0,0,0.06);
   }
+
   .villa-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.08);
   }
+
   .villa-card-img {
     aspect-ratio: 4/5;
     background-size: cover;
     background-position: center;
     position: relative;
   }
+
   .villa-card-crypto {
     position: absolute;
     top: 0.8rem;
@@ -464,12 +446,14 @@
     align-items: center;
     gap: 0.4rem;
   }
+
   .villa-card-crypto::before {
     content: '';
     width: 5px; height: 5px;
     background: var(--gold-bright);
     border-radius: 50%;
   }
+
   /* Badge "Exception" pour villa premium (haut-gauche) */
   .villa-card-tag {
     position: absolute;
@@ -484,9 +468,11 @@
     text-transform: uppercase;
     border-radius: 0;
   }
+
   .villa-card-body {
     padding: 1.5rem 1.4rem 1.6rem;
   }
+
   /* Typographie inspirée de la Variante C : DM Serif Display + Inter */
   .villa-card-loc {
     font-family: 'Inter', sans-serif;
@@ -497,6 +483,7 @@
     font-weight: 500;
     text-transform: none;
   }
+
   .villa-card-name {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.95rem;
@@ -505,26 +492,31 @@
     color: var(--ink);
     font-weight: 600;
   }
+
   .villa-card-name em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--warm-brown);
   }
+
   .villa-card-meta {
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
     color: var(--ink-soft);
     margin-bottom: 1.2rem;
   }
+
   .villa-card-divider {
     border-top: 1px solid rgba(0,0,0,0.08);
     padding-top: 1rem;
   }
+
   .villa-card-foot {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   .villa-card-price-from {
     font-family: 'Inter', sans-serif;
     font-size: 0.65rem;
@@ -533,12 +525,14 @@
     font-weight: 400;
     margin-bottom: 0.05rem;
   }
+
   .villa-card-price {
     font-family: 'Inter', sans-serif;
     font-size: 1.15rem;
     font-weight: 500;
     color: var(--ink);
   }
+
   /* Bouton Découvrir : style Variante A (terracotta) */
   .villa-card-cta {
     background: var(--terracotta);
@@ -556,17 +550,22 @@
     text-decoration: none;
     transition: background 0.3s;
   }
+
   .villa-card-cta:hover { background: var(--ink); }
+
   .villa-card-cta svg { width: 12px; height: 12px; }
+
 
 
   /* === Responsive grille villas === */
   @media (max-width: 1100px) {
     .villas-grid { grid-template-columns: repeat(2, 1fr); }
   }
+
   @media (max-width: 600px) {
     .villas-grid { grid-template-columns: 1fr; padding: 0 1rem 2rem; }
   }
+
 
     /* ========================================================
      === HISTOIRE — VERSION C : PORTRAIT FONDATEUR
@@ -576,6 +575,7 @@
     background: var(--sand-light);
     position: relative;
   }
+
   .portrait::before {
     content: '';
     position: absolute;
@@ -584,6 +584,7 @@
     pointer-events: none;
     opacity: 0.05;
   }
+
   .portrait-inner {
     max-width: 1300px;
     margin: 0 auto;
@@ -594,10 +595,12 @@
     position: relative;
   }
 
+
   .portrait-photo {
     position: relative;
     aspect-ratio: 4/5;
   }
+
   .portrait-photo-img {
     width: 100%; height: 100%;
     background-image: url('photos/index/(inside).jpg');
@@ -605,6 +608,7 @@
     background-position: center;
     filter: grayscale(0.2);
   }
+
   .portrait-photo::before {
     content: '';
     position: absolute;
@@ -613,6 +617,7 @@
     border: 1px solid var(--gold);
     z-index: -1;
   }
+
   .portrait-caption {
     position: absolute;
     bottom: -3rem;
@@ -626,6 +631,7 @@
     transform: rotate(-2deg);
     z-index: 2;
   }
+
   .portrait-caption span {
     display: block;
     font-family: 'Inter', sans-serif;
@@ -636,15 +642,18 @@
     margin-top: 0.3rem;
   }
 
+
   .portrait-eyebrow {
     font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
     color: var(--gold-deep);
     margin-bottom: 1.5rem;
     display: flex; align-items: center; gap: 1rem;
   }
+
   .portrait-eyebrow::before {
     content: ''; width: 40px; height: 1px; background: var(--gold-deep);
   }
+
   .portrait-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.5rem, 4.5vw, 3.8rem);
@@ -652,11 +661,13 @@
     font-weight: 400;
     margin-bottom: 2rem;
   }
+
   .portrait-title em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--terracotta);
   }
+
   .portrait-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.2rem;
@@ -664,10 +675,12 @@
     color: var(--ink);
     margin-bottom: 1.5rem;
   }
+
   .portrait-text em {
     color: var(--terracotta);
     font-style: italic;
   }
+
   .portrait-text:first-of-type::first-letter {
     font-family: 'Cormorant Garamond', serif;
     font-size: 4rem;
@@ -677,6 +690,7 @@
     padding-top: 0.3rem;
     color: var(--terracotta);
   }
+
   .portrait-signature {
     margin-top: 2.5rem;
     padding-top: 2rem;
@@ -684,16 +698,19 @@
     display: flex; align-items: center; gap: 2rem;
     flex-wrap: wrap;
   }
+
   .portrait-sign-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2rem;
     color: var(--ink);
     line-height: 1;
   }
+
   .portrait-sign-info {
     font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
     color: var(--ink-soft);
   }
+
   .portrait-sign-info strong {
     display: block;
     font-family: 'Cormorant Garamond', serif;
@@ -704,6 +721,7 @@
     color: var(--ink);
     margin-bottom: 0.3rem;
   }
+
   .portrait-cta {
     display: inline-flex; align-items: center; gap: 0.8rem;
     margin-top: 2.5rem;
@@ -719,11 +737,14 @@
     font-family: inherit;
     transition: all 0.3s;
   }
+
   .portrait-cta:hover {
     background: var(--terracotta);
     border-color: var(--terracotta);
   }
+
   .portrait-cta svg { width: 16px; height: 16px; }
+
 
   /* ===== ÉQUIPE (3 profils) ===== */
   .team-inner {
@@ -731,11 +752,13 @@
     margin: 0 auto;
     position: relative;
   }
+
   .team-header {
     text-align: center;
     max-width: 700px;
     margin: 0 auto 4rem;
   }
+
   .team-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.2rem, 4vw, 3.4rem);
@@ -744,22 +767,26 @@
     margin: 0.5rem 0 1.5rem;
     color: var(--ink);
   }
+
   .team-title em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--terracotta);
   }
+
   .team-intro {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.2rem;
     line-height: 1.6;
     color: var(--ink-soft);
   }
+
   .team-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
+
   .team-card {
     background: var(--white);
     padding: 2.5rem 2rem;
@@ -769,10 +796,12 @@
     align-items: flex-start;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
   }
+
   .team-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 16px 40px rgba(26,46,34,0.10);
   }
+
   .team-avatar {
     width: 64px; height: 64px;
     border-radius: 50%;
@@ -784,6 +813,7 @@
     background: var(--sand-light);
     margin-bottom: 1.5rem;
   }
+
   .team-role {
     font-size: 0.62rem;
     letter-spacing: 0.3em;
@@ -791,6 +821,7 @@
     color: var(--gold-deep);
     margin-bottom: 0.6rem;
   }
+
   .team-name {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.8rem;
@@ -798,6 +829,7 @@
     color: var(--ink);
     margin-bottom: 1rem;
   }
+
   .team-bio {
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
@@ -807,6 +839,7 @@
     margin-bottom: 1.5rem;
     flex: 1;
   }
+
   .team-loc {
     font-size: 0.6rem;
     letter-spacing: 0.25em;
@@ -816,13 +849,16 @@
     border-top: 1px solid rgba(0,0,0,0.08);
     width: 100%;
   }
+
   .team-cta-wrap {
     text-align: center;
     margin-top: 3.5rem;
   }
+
   @media (max-width: 900px) {
     .team-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   }
+
 
   /* ========================================================
      === SERVICES / ÉTAPES — VERSION A : PARCOURS 4 ÉTAPES
@@ -832,24 +868,33 @@
     background: var(--white);
     position: relative;
   }
+
   .journey-inner { max-width: 1400px; margin: 0 auto; }
+
   .journey-header { text-align: center; margin-bottom: 5rem; }
+
   .journey-header .section-label { justify-content: center; }
+
   .journey-header .section-label::before { display: none; }
+
   .journey-header .section-label::after {
     content: ''; width: 40px; height: 1px; background: var(--gold);
     margin-left: 1rem;
   }
+
   .journey-header .section-label::before {
     display: block; content: ''; width: 40px; height: 1px;
     background: var(--gold); margin-right: 1rem;
   }
+
   .journey-title { margin: 0 auto; max-width: 700px; }
+
   .journey-lead {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic; font-size: 1.2rem;
     color: var(--ink-soft); max-width: 600px; margin: 1.8rem auto 0;
   }
+
 
   .journey-steps {
     display: grid;
@@ -857,6 +902,7 @@
     gap: 0;
     position: relative;
   }
+
   .journey-steps::before {
     content: '';
     position: absolute;
@@ -866,18 +912,25 @@
     opacity: 0.3;
     z-index: 0;
   }
+
   /* Cercles légèrement plus petits pour 5 colonnes */
   .journey-step { padding: 0 1rem; }
+
   .journey-step-circle { width: 90px; height: 90px; }
+
   .journey-step-circle svg { width: 36px; height: 36px; }
+
   .journey-step-title { font-size: 1.25rem; }
+
   .journey-step-desc { font-size: 0.85rem; }
+
   .journey-step {
     padding: 0 1.5rem;
     text-align: center;
     position: relative;
     z-index: 1;
   }
+
   .journey-step-circle {
     width: 100px; height: 100px;
     background: var(--white);
@@ -888,16 +941,20 @@
     position: relative;
     transition: all 0.4s;
   }
+
   .journey-step:hover .journey-step-circle {
     background: var(--ink); border-color: var(--ink);
     transform: scale(1.05);
   }
+
   .journey-step:hover .journey-step-circle svg { color: var(--gold-bright); }
+
   .journey-step-circle svg {
     width: 40px; height: 40px;
     color: var(--gold);
     transition: color 0.4s;
   }
+
 
   /* Variante "vert samui" pour Premier échange et Visite terrain
      Comportement inverse : fond vert par défaut, fond clair au hover */
@@ -905,16 +962,20 @@
     background: var(--jungle);
     border-color: var(--jungle);
   }
+
   .journey-step-circle--jungle svg {
     color: var(--white);
   }
+
   .journey-step:hover .journey-step-circle--jungle {
     background: var(--white);
     border-color: var(--gold);
   }
+
   .journey-step:hover .journey-step-circle--jungle svg {
     color: var(--gold);
   }
+
   .journey-step-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.4rem;
@@ -922,12 +983,15 @@
     margin-bottom: 0.8rem;
     line-height: 1.2;
   }
+
   .journey-step-title em { font-style: italic; color: var(--terracotta); }
+
   .journey-step-desc {
     font-size: 0.9rem;
     color: var(--ink-soft);
     line-height: 1.5;
   }
+
 
   .journey-cta {
     text-align: center;
@@ -935,6 +999,7 @@
     padding-top: 3rem;
     border-top: 1px solid rgba(0,0,0,0.1);
   }
+
   .journey-cta-text {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -942,6 +1007,7 @@
     color: var(--ink-soft);
     margin-bottom: 1.5rem;
   }
+
   .journey-cta-btn {
     display: inline-flex; align-items: center; gap: 0.8rem;
     padding: 1rem 2.5rem;
@@ -956,10 +1022,12 @@
     font-family: inherit;
     transition: all 0.3s;
   }
+
   .journey-cta-btn:hover {
     background: var(--terracotta);
     border-color: var(--terracotta);
   }
+
 
   /* ========================================================
      === SECTION CONTACT FINAL (avant footer)
@@ -971,6 +1039,7 @@
     position: relative;
     overflow: hidden;
   }
+
   .contact-section::before {
     content: '';
     position: absolute;
@@ -981,6 +1050,7 @@
     opacity: 0.15;
     mix-blend-mode: multiply;
   }
+
   .contact-inner {
     max-width: 1300px;
     margin: 0 auto;
@@ -991,16 +1061,20 @@
     gap: 4rem;
     align-items: center;
   }
+
   .contact-main { text-align: left; }
+
   .contact-eyebrow {
     font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
     color: rgba(255,255,255,0.85);
     margin-bottom: 1.5rem;
     display: flex; align-items: center; gap: 1rem;
   }
+
   .contact-eyebrow::before {
     content: ''; width: 40px; height: 1px; background: rgba(255,255,255,0.5);
   }
+
   .contact-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.8rem, 5vw, 4.5rem);
@@ -1008,11 +1082,13 @@
     color: var(--white);
     margin-bottom: 1.5rem;
   }
+
   .contact-title em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--ink);
   }
+
   .contact-lead {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -1022,9 +1098,11 @@
     margin: 0 0 3rem;
     line-height: 1.5;
   }
+
   .contact-actions {
     display: flex; gap: 1rem; justify-content: flex-start; flex-wrap: wrap;
   }
+
   .contact-btn {
     display: inline-flex; align-items: center; gap: 0.8rem;
     padding: 1.1rem 2.2rem;
@@ -1037,22 +1115,28 @@
     font-family: inherit;
     transition: all 0.3s;
   }
+
   .contact-btn svg { width: 16px; height: 16px; }
+
   .contact-btn-primary {
     background: var(--ink);
     color: var(--white);
     border-color: var(--ink);
   }
+
   .contact-btn-primary:hover { background: transparent; }
+
   .contact-btn-secondary {
     background: transparent;
     color: var(--white);
     border-color: var(--white);
   }
+
   .contact-btn-secondary:hover {
     background: var(--white);
     color: var(--terracotta);
   }
+
 
   /* === Coordonnées dans la section contact (colonne gauche) === */
   .contact-details {
@@ -1062,12 +1146,14 @@
     padding-right: 2rem;
     border-right: 1px solid rgba(255, 255, 255, 0.2);
   }
+
   .contact-detail {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 1rem;
     align-items: center;
   }
+
   .contact-detail-icon {
     width: 42px; height: 42px;
     border-radius: 50%;
@@ -1077,18 +1163,22 @@
     color: var(--white);
     flex-shrink: 0;
   }
+
   .contact-detail-icon svg { width: 18px; height: 18px; }
+
   .contact-detail-text {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
   }
+
   .contact-detail-label {
     font-size: 0.6rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.65);
   }
+
   .contact-detail-value {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.1rem;
@@ -1097,7 +1187,9 @@
     transition: color 0.3s;
     line-height: 1.2;
   }
+
   a.contact-detail-value:hover { color: var(--ink); }
+
 
   /* ========================================================
      === FOOTER
@@ -1107,6 +1199,7 @@
     color: rgba(255,255,255,0.7);
     padding: 4rem 3rem 2rem;
   }
+
   .footer-inner {
     max-width: 1400px; margin: 0 auto;
     display: grid;
@@ -1115,12 +1208,15 @@
     padding-bottom: 3rem;
     border-bottom: 1px solid rgba(255,255,255,0.1);
   }
+
   .footer-brand .logo {
     margin-bottom: 1rem;
   }
+
   .footer-brand .logo-svg {
     height: 90px;
   }
+
   .footer-brand p {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -1128,6 +1224,7 @@
     margin-bottom: 1.5rem;
     line-height: 1.5;
   }
+
   .footer-col h4 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 0.85rem;
@@ -1136,19 +1233,24 @@
     color: var(--gold);
     margin-bottom: 1.5rem;
   }
+
   .footer-col ul { list-style: none; }
+
   .footer-col li {
     padding: 0.4rem 0;
     font-size: 0.9rem;
     font-family: 'Cormorant Garamond', serif;
   }
+
   .footer-col a {
     color: rgba(255,255,255,0.7);
     text-decoration: none;
     transition: color 0.3s;
     cursor: pointer;
   }
+
   .footer-col a:hover { color: var(--gold); }
+
   .footer-bottom {
     max-width: 1400px; margin: 0 auto;
     padding-top: 2rem;
@@ -1159,6 +1261,7 @@
     text-transform: uppercase;
     color: rgba(255,255,255,0.5);
   }
+
 
 
   /* ========================================================
@@ -1176,12 +1279,16 @@
     padding: 2rem;
     animation: fadeIn 0.3s ease;
   }
+
   .modal-overlay.active { display: flex; }
+
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
   @keyframes modalIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
 
   .modal {
     background: var(--white);
@@ -1194,6 +1301,7 @@
     position: relative;
     animation: modalIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
   .modal-close {
     position: absolute; top: 1rem; right: 1rem;
     width: 36px; height: 36px;
@@ -1206,10 +1314,13 @@
     transition: all 0.2s;
     z-index: 10;
   }
+
   .modal-close:hover {
     background: var(--ink); color: var(--white); border-color: var(--ink);
   }
+
   .modal-close svg { width: 16px; height: 16px; }
+
 
   .modal-progress {
     display: flex;
@@ -1217,21 +1328,28 @@
     background: rgba(0,0,0,0.05);
     flex-shrink: 0;
   }
+
   .modal-progress-bar {
     flex: 1;
     background: rgba(0,0,0,0.05);
     transition: background 0.5s;
   }
+
   .modal-progress-bar.done { background: var(--terracotta); }
+
   .modal-progress-bar.active { background: var(--gold); }
+
 
   .modal-content {
     padding: 2rem 2.5rem 1.5rem;
     overflow-y: auto;
     flex: 1;
   }
+
   .modal-step { display: none; }
+
   .modal-step.active { display: block; animation: modalIn 0.4s ease; }
+
 
   .modal-step-num {
     font-family: 'Cormorant Garamond', serif;
@@ -1240,6 +1358,7 @@
     color: var(--gold);
     margin-bottom: 1rem;
   }
+
   .modal-step h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.7rem;
@@ -1247,11 +1366,13 @@
     font-weight: 400;
     margin-bottom: 0.5rem;
   }
+
   .modal-step h3 em {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--terracotta);
   }
+
   .modal-step .lead {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -1260,12 +1381,15 @@
     font-size: 1rem;
   }
 
+
   .stage-options {
     display: grid;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
   }
+
   .stage-options input[type="radio"] { display: none; }
+
   .stage-option-label {
     padding: 0.85rem 1.2rem;
     background: var(--sand-light);
@@ -1276,15 +1400,18 @@
     align-items: center;
     gap: 0.9rem;
   }
+
   .stage-option-label:hover {
     background: var(--sand);
     border-color: var(--gold);
   }
+
   .stage-options input[type="radio"]:checked + .stage-option-label {
     background: var(--ink);
     color: var(--white);
     border-color: var(--ink);
   }
+
   .stage-option-icon {
     width: 32px; height: 32px;
     border-radius: 50%;
@@ -1295,10 +1422,13 @@
     flex-shrink: 0;
     transition: all 0.2s;
   }
+
   .stage-option-icon svg { width: 16px; height: 16px; }
+
   .stage-options input[type="radio"]:checked + .stage-option-label .stage-option-icon {
     background: var(--gold); color: var(--ink); border-color: var(--gold);
   }
+
   .stage-option-text strong {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.05rem;
@@ -1307,17 +1437,20 @@
     line-height: 1.2;
     margin-bottom: 0.15rem;
   }
+
   .stage-option-text span {
     font-size: 0.78rem;
     opacity: 0.7;
     line-height: 1.35;
   }
 
+
   .form-group {
     display: grid;
     gap: 0.7rem;
     margin-bottom: 1rem;
   }
+
   .form-input {
     width: 100%;
     padding: 0.85rem 1rem;
@@ -1328,14 +1461,18 @@
     color: var(--ink);
     transition: all 0.3s;
   }
+
   .form-input:focus {
     outline: none;
     border-color: var(--terracotta);
     background: var(--white);
   }
+
   .form-input::placeholder { color: var(--ink-soft); opacity: 0.6; }
 
+
   .pref-section { margin-top: 1.1rem; }
+
   .pref-label {
     font-size: 0.68rem;
     letter-spacing: 0.3em;
@@ -1343,12 +1480,15 @@
     color: var(--gold);
     margin-bottom: 0.7rem;
   }
+
   .pref-options {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.6rem;
   }
+
   .pref-options input[type="radio"] { display: none; }
+
   .pref-option-label {
     padding: 0.75rem 0.5rem;
     background: var(--sand-light);
@@ -1361,25 +1501,31 @@
     align-items: center;
     gap: 0.4rem;
   }
+
   .pref-option-label:hover { background: var(--sand); border-color: var(--gold); }
+
   .pref-options input[type="radio"]:checked + .pref-option-label {
     background: var(--ink);
     color: var(--white);
     border-color: var(--ink);
   }
+
   .pref-option-label svg {
     width: 24px; height: 24px;
     color: var(--gold);
     transition: color 0.2s;
   }
+
   .pref-options input[type="radio"]:checked + .pref-option-label svg {
     color: var(--gold-bright);
   }
+
   .pref-option-label span {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1rem;
     font-weight: 500;
   }
+
 
   .form-textarea {
     width: 100%;
@@ -1393,12 +1539,15 @@
     resize: vertical;
     transition: all 0.3s;
   }
+
   .form-textarea:focus {
     outline: none;
     border-color: var(--terracotta);
     background: var(--white);
   }
+
   .form-textarea::placeholder { color: var(--ink-soft); opacity: 0.6; }
+
 
   .reassurance {
     margin-top: 1rem;
@@ -1412,10 +1561,12 @@
     line-height: 1.45;
   }
 
+
   .modal-step.success {
     text-align: center;
     padding: 1.5rem 0;
   }
+
   .modal-step.success .check-icon {
     width: 80px; height: 80px;
     margin: 0 auto 1.5rem;
@@ -1424,18 +1575,22 @@
     display: flex; align-items: center; justify-content: center;
     color: var(--white);
   }
+
   .modal-step.success .check-icon svg { width: 38px; height: 38px; }
+
   .modal-step.success p {
     margin-top: 1rem;
     font-style: italic;
     font-family: 'Cormorant Garamond', serif;
     color: var(--ink-soft);
   }
+
   .modal-step.success .small {
     margin-top: 2rem;
     font-size: 0.8rem;
     color: var(--ink-soft);
   }
+
 
   .modal-actions {
     display: flex;
@@ -1446,6 +1601,7 @@
     background: var(--sand-light);
     flex-shrink: 0;
   }
+
   .modal-back {
     background: transparent;
     border: none;
@@ -1457,8 +1613,11 @@
     font-family: inherit;
     padding: 0.5rem 0.5rem 0.5rem 0;
   }
+
   .modal-back:hover { color: var(--ink); }
+
   .modal-back[disabled] { opacity: 0.3; cursor: not-allowed; }
+
   .modal-next {
     padding: 1rem 2rem;
     background: var(--terracotta);
@@ -1471,7 +1630,9 @@
     text-transform: uppercase;
     transition: background 0.3s;
   }
+
   .modal-next:hover { background: var(--ink); }
+
 
 
   /* ========================================================
@@ -1480,50 +1641,79 @@
   @media (max-width: 1200px) and (min-width: 901px) {
     /* (vide pour cette fourchette de tailles) */
   }
+
   @media (max-width: 900px) {
-    nav.main-nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .nav-burger { display: flex; }
     .hero-content { padding: 0 1.5rem 4rem; }
+
     .slide-indicators { left: 1.5rem; }
+
     .section { padding: 4rem 1.5rem; }
+
     .villas-section { padding: 3rem 0 0; }
+
     .villas-section .section-header { padding: 0 1.5rem; }
+
     .villas-header-compact {
       grid-template-columns: 1fr;
       gap: 1rem;
       padding: 0 1.5rem;
       margin-bottom: 2rem;
     }
+
     .villas-lead-compact { text-align: left; max-width: none; }
+
     .villas-c { flex-direction: column; height: auto; }
+
     .villa-c { min-height: 280px; }
+
     .villa-c:hover { flex: 1; }
+
     .villa-c-details { max-height: 200px; opacity: 1; }
+
     .portrait { padding: 4rem 1.5rem; }
+
     .portrait-inner { grid-template-columns: 1fr; gap: 4rem; }
+
     .portrait-photo { max-width: 400px; margin: 0 auto; }
+
     .journey { padding: 4rem 1.5rem; }
+
     .journey-steps { grid-template-columns: 1fr; gap: 3rem; }
+
     .journey-steps::before { display: none; }
+
     .contact-section { padding: 4rem 1.5rem; }
+
     .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+
     .contact-main { order: -1; text-align: center; }
+
     .contact-eyebrow { justify-content: center; }
+
     .contact-actions { justify-content: center; }
+
     .contact-details { padding-right: 0; padding-top: 2rem; border-right: none; border-top: 1px solid rgba(255,255,255,0.2); }
+
     .contact-detail { justify-content: center; max-width: 320px; margin: 0 auto; }
+
     .contact-lead { margin-left: auto; margin-right: auto; }
+
     .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
   }
 
+
   @media (max-width: 768px) {
     .modal-overlay { padding: 0; }
+
     .modal { max-width: 100%; max-height: 100vh; height: 100vh; }
+
     .modal-content { padding: 4rem 1.5rem 2rem; }
+
     .modal-actions { padding: 1rem 1.5rem; }
+
     .pref-options { grid-template-columns: 1fr; }
   }
+
 
   /* === Animations au scroll (fade-in léger) === */
   .reveal {
@@ -1531,15 +1721,21 @@
     transform: translateY(24px);
     transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }
+
   /* Délais en cascade pour des éléments en groupe */
   .reveal.delay-1 { transition-delay: 0.1s; }
+
   .reveal.delay-2 { transition-delay: 0.2s; }
+
   .reveal.delay-3 { transition-delay: 0.3s; }
+
   .reveal.delay-4 { transition-delay: 0.4s; }
+
   /* Respect des préférences utilisateur */
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
@@ -1551,27 +1747,7 @@
 <!-- ============================================================
      NAVIGATION (header A — glassmorphism + scrolled state)
      ============================================================ -->
-<nav class="main-nav" id="mainNav">
-  <a href="#" class="logo">
-    <img src="assets/logo-horizontal.svg" alt="Latitude Samui — Koh Samui, Thailand" class="logo-img" />
-  </a>
-  <ul class="nav-links">
-    <li><a href="#villas">Les Villas</a></li>
-    <li><a href="#histoire">Histoire</a></li>
-    <li><a href="#parcours">Étapes</a></li>
-    <li><a href="boutique.html">Boutique</a></li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a class="cta-nav" onclick="openContactModal()">Prendre rendez-vous</a></li>
-  </ul>
-  <button class="nav-burger" onclick="openContactModal()" aria-label="Menu">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <line x1="3" y1="12" x2="21" y2="12"/>
-      <line x1="3" y1="6" x2="21" y2="6"/>
-      <line x1="3" y1="18" x2="21" y2="18"/>
-    </svg>
-  </button>
-</nav>
+<div id="site-nav"></div>
 
 <!-- ============================================================
      HERO (slideshow Ken Burns V2.1)
@@ -1966,84 +2142,7 @@
 <!-- ============================================================
      MODAL DE CONTACT (3 étapes)
      ============================================================ -->
-<div class="modal-overlay" id="contactModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeContactModal()" aria-label="Fermer">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-      </svg>
-    </button>
-    <div class="modal-progress" id="modalProgress">
-      <div class="modal-progress-bar active"></div>
-      <div class="modal-progress-bar"></div>
-      <div class="modal-progress-bar"></div>
-    </div>
-    <div class="modal-content">
-      <div class="modal-step active" id="step1">
-        <h3>Où en êtes-vous<br>dans votre <em>projet</em> ?</h3>
-        <p class="lead">Pas de mauvaise réponse. Cela nous aide juste à adapter notre première réponse.</p>
-        <div class="stage-options">
-          <input type="radio" name="stage" id="stage1" value="explore" />
-          <label for="stage1" class="stage-option-label">
-            <div class="stage-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-            <div class="stage-option-text"><strong>Je découvre l'île</strong><span>Phase d'exploration, pas encore de calendrier précis.</span></div>
-          </label>
-          <input type="radio" name="stage" id="stage2" value="search" />
-          <label for="stage2" class="stage-option-label">
-            <div class="stage-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div class="stage-option-text"><strong>Je cherche activement</strong><span>Projet concret dans les 6 à 18 prochains mois.</span></div>
-          </label>
-          <input type="radio" name="stage" id="stage3" value="ready" />
-          <label for="stage3" class="stage-option-label">
-            <div class="stage-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
-            <div class="stage-option-text"><strong>Je suis prêt à acheter</strong><span>Budget cadré, recherche dans les 3 prochains mois.</span></div>
-          </label>
-          <input type="radio" name="stage" id="stage4" value="other" />
-          <label for="stage4" class="stage-option-label">
-            <div class="stage-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-            <div class="stage-option-text"><strong>Autre demande</strong><span>Question spécifique, partenariat, presse, etc.</span></div>
-          </label>
-        </div>
-      </div>
-      <div class="modal-step" id="step2">
-        <h3>Comment <em>vous joindre</em> ?</h3>
-        <p class="lead">Vous choisissez le canal qui vous convient. Nous nous adaptons.</p>
-        <div class="form-group">
-          <input type="text" class="form-input" id="contactName" placeholder="Prénom et nom" required />
-          <input type="email" class="form-input" id="contactEmail" placeholder="Adresse email" required />
-          <input type="tel" class="form-input" id="contactPhone" placeholder="Téléphone (avec indicatif pays, ex: +33 6...)" />
-        </div>
-        <div class="pref-section">
-          <div class="pref-label">— Préférence de contact —</div>
-          <div class="pref-options">
-            <input type="radio" name="pref" id="pref1" value="email" checked />
-            <label for="pref1" class="pref-option-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Email</span></label>
-            <input type="radio" name="pref" id="pref2" value="phone" />
-            <label for="pref2" class="pref-option-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Téléphone</span></label>
-            <input type="radio" name="pref" id="pref3" value="whatsapp" />
-            <label for="pref3" class="pref-option-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>WhatsApp</span></label>
-          </div>
-        </div>
-      </div>
-      <div class="modal-step" id="step3">
-        <h3>Quelques <em>mots</em><br>sur votre projet ?</h3>
-        <p class="lead">Tout ce que vous voulez nous dire. Côté préféré, nombre de chambres, budget, calendrier... ou rien si vous préférez en parler de vive voix.</p>
-        <textarea class="form-textarea" id="contactMessage" placeholder="L'image que vous avez en tête, vos questions, vos contraintes..."></textarea>
-        <div class="reassurance"><strong>Sébastien</strong> vous répond personnellement sous 24h, en français. Pas de relance commerciale automatique. Vos informations restent strictement confidentielles.</div>
-      </div>
-      <div class="modal-step success" id="stepSuccess">
-        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <h3>Message <em>envoyé</em></h3>
-        <p>Sébastien vous répond personnellement sous 24h.<br>À très bientôt.</p>
-        <p class="small">Pensez à vérifier vos spams si vous ne recevez rien dans la journée.</p>
-      </div>
-    </div>
-    <div class="modal-actions" id="modalActions">
-      <button class="modal-back" id="modalBack" onclick="prevContactStep()" disabled>← Retour</button>
-      <button class="modal-next" id="modalNext" onclick="nextContactStep()">Suivant →</button>
-    </div>
-  </div>
-</div>
+
 
 
 
@@ -2109,89 +2208,10 @@ window.addEventListener('scroll', () => {
   });
 })();
 
-// ============================================================
-// MODAL CONTACT (3 étapes)
-// ============================================================
-let currentStep = 1;
-const totalSteps = 3;
 
-function openContactModal() {
-  document.getElementById('contactModal').classList.add('active');
-  resetContactModal();
-  document.body.style.overflow = 'hidden';
-}
-function closeContactModal() {
-  document.getElementById('contactModal').classList.remove('active');
-  document.body.style.overflow = '';
-}
-function resetContactModal() {
-  currentStep = 1;
-  showContactStep(1);
-  document.querySelectorAll('input[name="stage"]').forEach(r => r.checked = false);
-  document.getElementById('pref1').checked = true;
-  document.getElementById('contactName').value = '';
-  document.getElementById('contactEmail').value = '';
-  document.getElementById('contactPhone').value = '';
-  document.getElementById('contactMessage').value = '';
-  document.getElementById('modalActions').style.display = 'flex';
-}
-function showContactStep(n) {
-  document.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
-  const stepEl = document.getElementById('step' + n);
-  if (stepEl) stepEl.classList.add('active');
-  const bars = document.querySelectorAll('#modalProgress .modal-progress-bar');
-  bars.forEach((b, i) => {
-    b.classList.remove('active', 'done');
-    if (i + 1 < n) b.classList.add('done');
-    else if (i + 1 === n) b.classList.add('active');
-  });
-  document.getElementById('modalBack').disabled = (n === 1);
-  const nextBtn = document.getElementById('modalNext');
-  nextBtn.textContent = (n === totalSteps) ? 'Envoyer →' : 'Suivant →';
-}
-function nextContactStep() {
-  if (currentStep === 1) {
-    const stage = document.querySelector('input[name="stage"]:checked');
-    if (!stage) { alert('Merci de sélectionner une option.'); return; }
-  }
-  if (currentStep === 2) {
-    const name = document.getElementById('contactName').value.trim();
-    const email = document.getElementById('contactEmail').value.trim();
-    if (!name || !email) { alert('Merci de renseigner au minimum votre nom et votre email.'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Merci de renseigner une adresse email valide.'); return; }
-  }
-  if (currentStep === totalSteps) { submitContact(); return; }
-  currentStep++;
-  showContactStep(currentStep);
-}
-function prevContactStep() {
-  if (currentStep > 1) { currentStep--; showContactStep(currentStep); }
-}
-function submitContact() {
-  const data = {
-    stage: document.querySelector('input[name="stage"]:checked')?.value,
-    name: document.getElementById('contactName').value,
-    email: document.getElementById('contactEmail').value,
-    phone: document.getElementById('contactPhone').value,
-    pref: document.querySelector('input[name="pref"]:checked')?.value,
-    message: document.getElementById('contactMessage').value
-  };
-  console.log('Données envoyées :', data);
-  document.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
-  document.getElementById('stepSuccess').classList.add('active');
-  document.getElementById('modalActions').style.display = 'none';
-  document.querySelectorAll('#modalProgress .modal-progress-bar').forEach(b => {
-    b.classList.add('done');
-    b.classList.remove('active');
-  });
-}
-document.getElementById('contactModal').addEventListener('click', (e) => {
-  if (e.target.id === 'contactModal') closeContactModal();
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') { closeContactModal(); }
-});
 </script>
 
+<script src="nav.js"></script>
+<script src="contact.js"></script>
 </body>
 </html>

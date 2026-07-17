@@ -781,7 +781,7 @@
   .orientation {
     background: var(--jungle);
     color: var(--white);
-    padding: 8rem 3rem;
+    padding: 5rem 3rem;
   }
 
 
@@ -871,7 +871,7 @@
      === PRESTATIONS (liste de features avec icônes)
      ============================================================ */
   .features {
-    padding: 8rem 3rem;
+    padding: 5rem 3rem;
     background: var(--white);
   }
 
@@ -1057,7 +1057,7 @@
      === SITUATION (copie exacte du fichier référence villa-ananta)
      ============================================================ */
   .location {
-    padding: 6rem 3rem;
+    padding: 5rem 3rem;
     background: var(--jungle-deep);
     color: var(--white);
     position: relative;
@@ -1250,7 +1250,7 @@
   .villa-contact {
     background: var(--ink);
     color: var(--white);
-    padding: 8rem 3rem;
+    padding: 7.5rem 3rem;
     text-align: center;
   }
 
@@ -2166,148 +2166,52 @@
      SECTION SPECS + ÉTAT DU CHANTIER
      Mise à jour mensuelle : voir commentaires dans le markup HTML
      ============================================================ */
-  .villa-specs, .villa-chantier .chantier-inner {
+  .villa-specs {
     max-width: 1300px; margin: 0 auto; padding: 3.5rem 3rem 4rem;
     background: var(--white);
   }
-
-
-
-/* ===== BARRE A (commune) ===== */
-  .a-steps{ display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
-
-
-
-.villa-specs .a-line, .villa-chantier .a-line{ position: absolute; top: 18px; left: 10%; right: 10%; height: 1px; background: var(--sand); z-index: 0; }
-
-
-
-.villa-specs .a-line-fill, .villa-chantier .a-line-fill{ position: absolute; top: 18px; left: 10%; height: 1px; background: var(--jungle); z-index: 1; width: 30%; }
-
-
-
-.villa-specs .a-step, .villa-chantier .a-step{ position: relative; text-align: center; z-index: 2; }
-
-
-
-.villa-specs .a-dot, .villa-chantier .a-dot{
-    width: 38px; height: 38px; border-radius: 50%; margin: 0 auto 1rem;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-weight: 500;
-    background: var(--white); border: 1px solid var(--sand); color: #b0a99c; transition: all 0.3s;
-  }
-
-
-
-.villa-specs .a-step.done .a-dot, .villa-chantier .a-step.done .a-dot{ background: var(--jungle); border-color: var(--jungle); color: var(--white); }
-
-
-
-.villa-specs .a-step.current .a-dot, .villa-chantier .a-step.current .a-dot{
-    background: var(--terracotta); border-color: var(--terracotta); color: var(--white);
-    box-shadow: 0 0 0 6px rgba(184,98,63,0.15); animation: scPulse 2s ease-in-out infinite;
-  }
-
-
-
-
-
-  @keyframes scPulse { 0%,100%{box-shadow:0 0 0 6px rgba(184,98,63,0.15);} 50%{box-shadow:0 0 0 13px rgba(184,98,63,0.04);} }
-
-
-
-.villa-specs .a-name, .villa-chantier .a-name{ font-family: 'Cormorant Garamond', serif; font-size: 1.02rem; font-weight: 500; color: var(--ink); margin-bottom: 0.2rem; }
-
-
-
-.villa-specs .a-date, .villa-chantier .a-date{ font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); opacity: 0.6; }
-
-
-
-.villa-specs .a-step.done .a-name, .villa-chantier .a-step.done .a-name{ color: var(--jungle); }
-
-
-
-.villa-specs .a-step.current .a-name, .villa-chantier .a-step.current .a-name{ color: var(--terracotta); }
-
-
-
-.villa-specs .a-step.upcoming .a-name, .villa-chantier .a-step.upcoming .a-name{ color: #b0a99c; }
-
-
-
-/* ===== 3 — Pastille % intégrée dans la ligne (à gauche de la barre) ===== */
-  .p3-wrap{ display: flex; align-items: center; gap: 2.5rem; }
-
-
-
-.villa-specs .p3-badge, .villa-chantier .p3-badge{
-    flex-shrink: 0; width: 130px; height: 130px; border-radius: 50%;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    background: var(--jungle); color: var(--white); text-align: center;
-  }
-
-
-
-.villa-specs .p3-badge .pct, .villa-chantier .p3-badge .pct{ font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; line-height: 1; font-weight: 500; }
-
-
-
-.villa-specs .p3-badge .pct sup, .villa-chantier .p3-badge .pct sup{ font-size: 0.9rem; color: var(--gold-bright); }
-
-
-
-.villa-specs .p3-badge .lab, .villa-chantier .p3-badge .lab{ font-size: 0.54rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 0.4rem; }
-
-
-
-.villa-specs .p3-steps-wrap, .villa-chantier .p3-steps-wrap{ flex: 1; }
-
-
-
-.villa-specs .p3-eta, .villa-chantier .p3-eta{ text-align: right; font-family: 'Inter', sans-serif; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.6rem; }
-
-
 
 /* ===== SPECS refonte 2 : icône + chiffre alignés sur une ligne, label centré dessous ===== */
   .spec-ic{ width: 36px; height: 36px; stroke-width: 1.2; color: var(--terracotta); flex-shrink: 0; }
 
 
 
-.villa-specs .specs-row, .villa-chantier .specs-row{ display: flex; margin-bottom: 2.8rem; padding-bottom: 2.8rem; border-bottom: 1px solid rgba(26,30,26,0.08); }
+.villa-specs .specs-row{ display: flex; margin-bottom: 2.8rem; padding-bottom: 2.8rem; border-bottom: 1px solid rgba(26,30,26,0.08); }
 
 
 
-.villa-specs .spec-item, .villa-chantier .spec-item{ flex: 1; display: flex; flex-direction: column; align-items: center; padding: 0 1.5rem; border-right: 1px solid rgba(26,30,26,0.1); }
+.villa-specs .spec-item{ flex: 1; display: flex; flex-direction: column; align-items: center; padding: 0 1.5rem; border-right: 1px solid rgba(26,30,26,0.1); }
 
 
 
-.villa-specs .spec-item:last-child, .villa-chantier .spec-item:last-child{ border-right: none; }
+.villa-specs .spec-item:last-child:last-child{ border-right: none; }
 
 
 
-.villa-specs .spec-top, .villa-chantier .spec-top{ display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
+.villa-specs .spec-top{ display: grid; grid-template-columns: 36px 90px; align-items: center; gap: 0.6rem; margin: 0 auto 0.4rem; width: max-content; }
+.villa-specs .spec-top .spec-val{ justify-self: start; }
 
 
 
-.villa-specs .spec-val, .villa-chantier .spec-val{ font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 500; line-height: 1; position: relative; top: -0.06em; }
+.villa-specs .spec-val{ font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 500; line-height: 1; position: relative; top: -0.06em; }
+.villa-specs .spec-val-date{ font-size: 1.5rem; white-space: nowrap; }
 
 
 
-.villa-specs .spec-val small, .villa-chantier .spec-val small{ font-size: 0.85rem; color: var(--ink-soft); }
+.villa-specs .spec-val small small{ font-size: 0.85rem; color: var(--ink-soft); }
 
 
 
-.villa-specs .spec-lab, .villa-chantier .spec-lab{ font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
+.villa-specs .spec-lab{ font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
 
 
 
 
 
-  @media (max-width: 760px) {.villa-specs, .villa-chantier .specs-row{ flex-wrap: wrap; gap: 1.8rem 0; }
+  @media (max-width: 760px) {.villa-specs{ flex-wrap: wrap; gap: 1.8rem 0; }
 
 
-.villa-specs .spec-item, .villa-chantier .spec-item{ flex: 0 0 50%; border-right: none; }
+.villa-specs .spec-item{ flex: 0 0 50%; border-right: none; }
   }
 
 
@@ -2318,10 +2222,8 @@
   .villa-specs .specs-row { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
 
 
-  .villa-chantier { max-width: 1300px; margin: 0 auto; padding: 1rem 3rem 4rem; background: var(--white); }
 
 
-  .villa-chantier .chantier-inner { padding: 0; }
 
 
 
@@ -2334,7 +2236,7 @@
   @media (prefers-reduced-motion: reduce) { .art-signature { animation: none; } }
 /* ===== SECTION APPROCHES (interactive, variante A) ===== */
 
-  .approches { max-width:1280px; margin:0 auto; padding:4rem 3rem; }
+  .approches { max-width:1280px; margin:0 auto; padding:5rem 3rem; }
 
   .approches-header { text-align:center; margin-bottom:2.5rem; }
 
@@ -2415,15 +2317,11 @@
   /* bouton sélectionné : INK noir */
   .approche-card.selected .approche-select-btn { background:var(--ink); border-color:var(--ink); color:var(--white); }
 
-  .art-signature { position:absolute; left:14px; bottom:14px; right:14px; display:flex; align-items:center; gap:0.6rem; padding:0.65rem 0.8rem; border:1px solid rgba(201,160,88,0.5); border-radius:2px; background:rgba(13,16,13,0.4); backdrop-filter:blur(6px); animation:artSig 2.8s ease-in-out infinite; }
+  .art-signature { position:absolute; left:12px; top:12px; display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.7rem; border:1px solid rgba(201,160,88,0.6); border-radius:2px; background:rgba(13,16,13,0.72); backdrop-filter:blur(6px); animation:artSig 2.8s ease-in-out infinite; z-index:2; }
+  .art-signature svg { width:13px; height:13px; color:var(--gold-bright); flex-shrink:0; }
+  .art-signature span { font-family:'Inter',sans-serif; font-size:0.56rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:500; color:var(--gold-bright); }
 
   .art-signature svg { width:18px; height:18px; color:var(--gold-bright); flex-shrink:0; }
-
-  .art-signature-text { display:flex; flex-direction:column; gap:0.1rem; }
-
-  .art-signature-text strong { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.92rem; font-weight:500; color:var(--white); line-height:1.1; }
-
-  .art-signature-text span { font-size:0.56rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-bright); }
 
   @keyframes artSig { 0%,100%{border-color:rgba(201,160,88,0.5);box-shadow:0 0 0 0 rgba(201,160,88,0);} 50%{border-color:rgba(201,160,88,0.9);box-shadow:0 0 0 4px rgba(201,160,88,0.1);} }
 
@@ -2455,6 +2353,16 @@
   .sticky-validate.ready { background:var(--terracotta); color:var(--white); cursor:pointer; }
 
   .sticky-validate.ready:hover { background:#a3542f; }
+
+
+  /* Visuel avec vraie photo chargée (via data-photo, JS teste jpg/jpeg/png) */
+  .approche-visual.has-photo { background-size: cover; background-position: center; }
+  .approche-visual.has-photo::after { display: none; }
+  .approche-visual.has-photo .tier-badge { display: none; }
+  /* Icône "agrandir" sur les visuels cliquables (photo chargée) */
+  .zoom-hint { position:absolute; right:12px; bottom:12px; z-index:2; width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(13,16,13,0.55); border:1px solid rgba(250,247,240,0.35); backdrop-filter:blur(4px); opacity:0.85; transition:all 0.3s; pointer-events:none; }
+  .zoom-hint svg { width:15px; height:15px; color:var(--white); }
+  .approche-visual.has-photo:hover .zoom-hint { opacity:1; background:rgba(13,16,13,0.75); transform:scale(1.08); }
 
 </style>
 </head>
@@ -2498,20 +2406,6 @@
      SPECS BAR
      ============================================================ -->
 <!-- ============================================================
-     SPECS + ÉTAT DU CHANTIER
-     ============================================================
-     ⚙️  MISE À JOUR MENSUELLE DU CHANTIER (3 choses à changer) :
-       1. Le pourcentage : chercher <div class="pct">35 et changer le nombre
-       2. La livraison   : chercher "Livraison estimée" et changer la date
-       3. Les étapes     : chaque <div class="a-step XXX"> a une classe :
-            done     = étape terminée (pastille verte)
-            current  = étape en cours (pastille terracotta qui pulse)
-            upcoming = étape à venir (pastille grise)
-          Pour faire avancer le chantier : passer l'étape "current" en "done",
-          et l'étape "upcoming" suivante en "current". Mettre à jour son <div class="a-date">.
-       Le trait de progression se cale tout seul sur l'étape "current".
-     ============================================================ -->
-<!-- ============================================================
      CARACTÉRISTIQUES DE LA VILLA
      ============================================================ -->
 <section class="villa-specs">
@@ -2521,7 +2415,7 @@
         <path d="M10 24V12a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2"/>
         <path d="M16 14h8"/></svg><span class="spec-val">3</span></div><div class="spec-lab">Salles d'eau</div></div><div class="spec-item"><div class="spec-top"><svg class="spec-ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8h32v32H8z"/>
         <path d="M8 22h14v18"/></svg><span class="spec-val">148<small>m²</small></span></div><div class="spec-lab">Habitable</div></div><div class="spec-item"><div class="spec-top"><svg class="spec-ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h40v40H4z"/>
-        <path d="M4 4l40 40M4 44L44 4"/></svg><span class="spec-val">445<small>m²</small></span></div><div class="spec-lab">Parcelle</div></div></div>
+        <path d="M4 4l40 40M4 44L44 4"/></svg><span class="spec-val">445<small>m²</small></span></div><div class="spec-lab">Parcelle</div></div><div class="spec-item"><div class="spec-top"><svg class="spec-ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="11" width="34" height="30" rx="2"/><path d="M7 19h34"/><path d="M16 7v8M32 7v8"/></svg><span class="spec-val spec-val-date">Q4 2028</span></div><div class="spec-lab">Livraison estimée</div></div></div>
 </section>
 
 <!-- ============================================================
@@ -2590,35 +2484,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     AVANCEMENT DU CHANTIER
-     ⚙️  MISE À JOUR MENSUELLE :
-       1. % : chercher <div class="pct"> et changer le nombre
-       2. Livraison : chercher "Livraison estimée"
-       3. Étapes : passer "current" → "done" et l'"upcoming" suivante → "current"
-       Le trait de progression se cale automatiquement.
-     ============================================================ -->
-<section class="villa-chantier">
-  <div class="chantier-inner">
-<div class="p3-wrap">
-      <div class="p3-badge">
-        <div class="lab">Avancement</div>
-        <div class="pct">35<sup>%</sup></div><!-- ⚙️ % AVANCEMENT : changer "35" ici -->
-      </div>
-      <div class="p3-steps-wrap">
-        <div class="p3-eta">Livraison estimée Q3 2026</div><!-- ⚙️ DATE LIVRAISON : changer ici -->
-        <div class="a-steps">
-          <div class="a-line"></div><div class="a-line-fill"></div>
-          <div class="a-step done"><div class="a-dot">I</div><div class="a-name">Terrassement</div><div class="a-date">Terminé</div></div>
-          <div class="a-step done"><div class="a-dot">II</div><div class="a-name">Gros œuvre</div><div class="a-date">Terminé</div></div>
-          <div class="a-step current"><div class="a-dot">III</div><div class="a-name">Cloisons</div><div class="a-date">En cours</div></div>
-          <div class="a-step upcoming"><div class="a-dot">IV</div><div class="a-name">Finitions</div><div class="a-date">Q1 2026</div></div>
-          <div class="a-step upcoming"><div class="a-dot">V</div><div class="a-name">Aménagements</div><div class="a-date">Q2 2026</div></div>
-        </div>
-</div>
-      </div>
-  </div>
-</section>
+
 
 <!-- ============================================================
      RAPPEL PERSONNALISATION (mi-parcours)
@@ -2736,7 +2602,7 @@
 
   <div class="approche-group" id="grp-int"><div class="approche-group-label"><span class="step-num">1</span><span class="txt">L'intérieur</span><span class="line"></span></div><div class="approche-cards" data-group="interieur">
         <div class="approche-card" data-approche="Carte Blanche">
-          <div class="approche-visual ph-blanche"><span class="tier-badge">I</span></div>
+          <div class="approche-visual ph-blanche" data-photo="interieur-carte-blanche"><span class="tier-badge">I</span></div>
           <div class="approche-body">
             <div class="approche-name">Carte <em>Blanche</em></div>
             <div class="approche-tagline">La villa nue</div>
@@ -2745,7 +2611,7 @@
           </div>
         </div>
         <div class="approche-card" data-approche="Éveil des Sens">
-          <div class="approche-visual ph-eveil"><span class="tier-badge">II</span></div>
+          <div class="approche-visual ph-eveil" data-photo="interieur-eveil-des-sens"><span class="tier-badge">II</span></div>
           <div class="approche-body">
             <div class="approche-name">Éveil des <em>Sens</em></div>
             <div class="approche-tagline">Prête à vivre, prête à louer</div>
@@ -2754,7 +2620,7 @@
           </div>
         </div>
         <div class="approche-card" data-approche="Art de Vivre">
-          <div class="approche-visual ph-art"><span class="tier-badge">III</span><div class="art-signature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6-6.3 4.6L7.9 14 2 9.4h7.6z"/></svg><div class="art-signature-text"><strong>« The Art of Island Living »</strong><span>Notre approche signature Latitude Samui</span></div></div></div>
+          <div class="approche-visual ph-art" data-photo="interieur-art-de-vivre"><span class="tier-badge">III</span><div class="art-signature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6-6.3 4.6L7.9 14 2 9.4h7.6z"/></svg><span>Signature</span></div></div>
           <div class="approche-body">
             <div class="approche-name">Art de <em>Vivre</em></div>
             <div class="approche-tagline">L'expérience ultime</div>
@@ -2764,7 +2630,7 @@
         </div></div></div>
   <div class="approche-group" id="grp-jar"><div class="approche-group-label"><span class="step-num">2</span><span class="txt">Le jardin</span><span class="line"></span></div><div class="approche-cards" data-group="jardin">
         <div class="approche-card" data-approche="Carte Blanche">
-          <div class="approche-visual ph-blanche"><span class="tier-badge">I</span></div>
+          <div class="approche-visual ph-blanche" data-photo="jardin-carte-blanche"><span class="tier-badge">I</span></div>
           <div class="approche-body">
             <div class="approche-name">Carte <em>Blanche</em></div>
             <div class="approche-tagline">Le terrain nu</div>
@@ -2773,7 +2639,7 @@
           </div>
         </div>
         <div class="approche-card" data-approche="Éclosion">
-          <div class="approche-visual ph-eclosion"><span class="tier-badge">II</span></div>
+          <div class="approche-visual ph-eclosion" data-photo="jardin-eclosion"><span class="tier-badge">II</span></div>
           <div class="approche-body">
             <div class="approche-name"><em>Éclosion</em></div>
             <div class="approche-tagline">Le jardin qui prend vie</div>
@@ -2782,7 +2648,7 @@
           </div>
         </div>
         <div class="approche-card" data-approche="Art de Vivre">
-          <div class="approche-visual ph-art"><span class="tier-badge">III</span><div class="art-signature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6-6.3 4.6L7.9 14 2 9.4h7.6z"/></svg><div class="art-signature-text"><strong>« The Art of Island Living »</strong><span>Notre approche signature Latitude Samui</span></div></div></div>
+          <div class="approche-visual ph-art" data-photo="jardin-art-de-vivre"><span class="tier-badge">III</span><div class="art-signature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6-6.3 4.6L7.9 14 2 9.4h7.6z"/></svg><span>Signature</span></div></div>
           <div class="approche-body">
             <div class="approche-name">Art de <em>Vivre</em></div>
             <div class="approche-tagline">L'expérience ultime</div>
@@ -2927,24 +2793,31 @@
   ];
 
   let lbIndex = 0;
+  let activeSet = galleryPhotos;   // ensemble d'images courant (galerie par défaut)
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightbox-img');
   const lbCurrent = document.getElementById('lightbox-current');
-  document.getElementById('lightbox-total').textContent = galleryPhotos.length;
 
   function loadLbImage(i) {
-    const photo = galleryPhotos[i];
+    const photo = activeSet[i];
     lbImg.dataset.fallbackStage = '0';
-    lbImg.dataset.unsplash = photo.fallback;
+    lbImg.dataset.unsplash = photo.fallback || '';
     lbImg.src = photo.local;
     lbCurrent.textContent = i + 1;
   }
-  function openLightbox(i) {
-    lbIndex = i;
+  // openLightbox(index) -> galerie ; openLightbox(set, index) -> n'importe quel ensemble
+  function openLightbox(a, b) {
+    if (Array.isArray(a)) { activeSet = a; lbIndex = b || 0; }
+    else { activeSet = galleryPhotos; lbIndex = a || 0; }
+    document.getElementById('lightbox-total').textContent = activeSet.length;
+    document.querySelector('.lightbox-prev').style.display = activeSet.length > 1 ? '' : 'none';
+    document.querySelector('.lightbox-next').style.display = activeSet.length > 1 ? '' : 'none';
+    document.querySelector('.lightbox-counter').style.display = activeSet.length > 1 ? '' : 'none';
     loadLbImage(lbIndex);
     lb.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
+  window.openLightbox = openLightbox;
   function closeLightbox(e) {
     if (e && e.target !== lb && !e.target.classList.contains('lightbox-close')) return;
     lb.classList.remove('active');
@@ -2952,7 +2825,7 @@
   }
   function navigateLightbox(e, dir) {
     e.stopPropagation();
-    lbIndex = (lbIndex + dir + galleryPhotos.length) % galleryPhotos.length;
+    lbIndex = (lbIndex + dir + activeSet.length) % activeSet.length;
     loadLbImage(lbIndex);
   }
   document.querySelectorAll('[data-gallery-index]').forEach(el => {
@@ -2975,28 +2848,7 @@
 <script src="nav.js"></script>
 <script src="contact.js"></script>
 
-<script>
-/* Cale automatiquement le trait de progression de la timeline chantier
-   sur l'étape "current". Aucune largeur à calculer à la main. */
-(function(){
-  var section = document.querySelector('.villa-chantier');
-  if(!section) return;
-  var steps = section.querySelectorAll('.a-step');
-  var fill = section.querySelector('.a-line-fill');
-  if(!steps.length || !fill) return;
-  var n = steps.length;
-  var currentIdx = -1;
-  steps.forEach(function(s,i){ if(s.classList.contains('current')) currentIdx = i; });
-  // dernière "done" si pas de current
-  if(currentIdx === -1){
-    steps.forEach(function(s,i){ if(s.classList.contains('done')) currentIdx = i; });
-  }
-  // les centres des étapes vont de 10% à 90% (répartis) ; le trait démarre à 10%
-  // largeur = (position du current - 10%)
-  var pos = 10 + (currentIdx/(n-1))*80; // % depuis la gauche du conteneur
-  fill.style.width = (pos - 10) + '%';
-})();
-</script>
+
 
 <script>
 /* ============================================================
@@ -3070,5 +2922,41 @@
 })();
 </script>
 
+
+<script>
+/* Charge les rendus 3D des approches depuis photos/approches/[slug].(jpg|jpeg|png).
+   Teste les 3 extensions dans l'ordre ; si aucune image n'existe, le dégradé placeholder reste.
+   Une fois chargée, la photo devient cliquable et s'ouvre dans la lightbox (même moteur que la galerie).
+   Prêt pour plusieurs photos par approche : passer un tableau à openLightbox([...], 0). */
+(function(){
+  var exts = ['jpg','jpeg','png'];
+  document.querySelectorAll('.approche-visual[data-photo]').forEach(function(el){
+    var slug = el.dataset.photo, i = 0;
+    function tryNext(){
+      if(i >= exts.length) return; // aucune image -> placeholder conservé, non cliquable
+      var url = 'photos/approches/' + slug + '.' + exts[i++];
+      var img = new Image();
+      img.onload = function(){
+        el.style.backgroundImage = "url('" + url + "')";
+        el.classList.add('has-photo');
+        // icône "agrandir" discrète (bas-droite)
+        var hint = document.createElement('div');
+        hint.className = 'zoom-hint';
+        hint.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>';
+        el.appendChild(hint);
+        // rendre cliquable -> lightbox. Aujourd'hui 1 image ; demain [url1,url2,...]
+        var images = [{ local: url }];
+        el.style.cursor = 'zoom-in';
+        el.addEventListener('click', function(){
+          if (typeof window.openLightbox === 'function') window.openLightbox(images, 0);
+        });
+      };
+      img.onerror = tryNext;
+      img.src = url;
+    }
+    tryNext();
+  });
+})();
+</script>
 </body>
 </html>

@@ -28,14 +28,13 @@
     nav.sn{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:.55rem 2rem;background:rgba(255,255,255,.06);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.12);transition:background .4s ease,border-color .4s ease,transform .35s ease}
     nav.sn.scrolled{background:rgba(26,30,26,.94);border-bottom-color:rgba(201,160,88,.15)}
     nav.sn.sn-dark{background:rgba(26,30,26,.94);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom-color:rgba(201,160,88,.15)}
-    .sn-links{margin-left:auto}
     .sn-test{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:1px solid rgba(250,247,240,.4);background:transparent;color:#faf7f0;cursor:pointer;padding:0;margin-left:1.2rem;transition:border-color .3s,transform .3s;flex-shrink:0}
     .sn-test:hover{border-color:#d4a945;transform:rotate(180deg)}
     .sn-test svg{width:15px;height:15px;display:block}
     .sn-logo{display:inline-flex;align-items:center;text-decoration:none;transition:opacity .3s}
     .sn-logo:hover{opacity:.85}
     .sn-logo img{height:48px;width:auto;display:block}
-    .sn-links{display:flex;gap:2.2rem;align-items:center;list-style:none;margin:0;padding:0}
+    .sn-links{display:flex;gap:2.2rem;align-items:center;list-style:none;margin:0 0 0 auto;padding:0}
     .sn-links>li{position:relative}
     .sn-links a{font-family:Inter,sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,247,240,.85);text-decoration:none;transition:color .3s;cursor:pointer}
     .sn-links a:hover{color:#d4a945}

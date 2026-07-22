@@ -104,7 +104,7 @@
     +     '<li><a href="boutique.html">Boutique</a></li>'
     +     '<li><a href="faq.html">FAQ</a></li>'
     +     '<li><a href="' + H + '#contact">Contact</a></li>'
-    +     '<li><a class="sn-cta" role="button" onclick="openContactModal()">Prendre rendez-vous</a></li>'
+    +     '<li><a class="sn-cta" role="button" onclick="openContactModal()">Nous contacter</a></li>'
     +   '</ul>'
     +   '<button class="sn-burger" id="snBurger" type="button" onclick="snOpenMobile()" aria-label="Ouvrir le menu" aria-controls="snMobile" aria-expanded="false">'
     +     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>'
@@ -123,7 +123,7 @@
     +     '<a href="faq.html" class="sn-m-primary">FAQ</a>'
     +     '<a href="' + H + '#contact" class="sn-m-primary">Contact</a>'
     +   '</div>'
-    +   '<div class="sn-mobile-foot"><button class="sn-m-cta" type="button" onclick="snCloseMobile();openContactModal()">Prendre rendez-vous ' + arrow + '</button><div class="sn-m-footnote">Un échange personnel, sans relance automatique.</div></div>'
+    +   '<div class="sn-mobile-foot"><button class="sn-m-cta" type="button" onclick="snCloseMobile();openContactModal()">Nous contacter ' + arrow + '</button><div class="sn-m-footnote">Un échange personnel, sans relance automatique.</div></div>'
     + '</aside>';
 
   var style = document.createElement('style');

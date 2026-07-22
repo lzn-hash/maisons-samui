@@ -120,7 +120,6 @@
     +     '<li><a href="' + H + '#parcours">Étapes</a></li>'
     +     '<li><a href="boutique.html">Boutique</a></li>'
     +     '<li><a href="faq.html">FAQ</a></li>'
-    +     '<li><a href="' + H + '#contact">Contact</a></li>'
     +     '<li><a class="sn-cta" role="button" onclick="openContactModal()">Nous contacter</a></li>'
     +   '</ul>'
     +   testBtn
@@ -139,7 +138,6 @@
     +     '<a href="' + H + '#parcours" class="sn-m-primary">Étapes</a>'
     +     '<a href="boutique.html" class="sn-m-primary">Boutique</a>'
     +     '<a href="faq.html" class="sn-m-primary">FAQ</a>'
-    +     '<a href="' + H + '#contact" class="sn-m-primary">Contact</a>'
     +   '</div>'
     +   '<div class="sn-mobile-foot"><button class="sn-m-cta" type="button" onclick="snCloseMobile();openContactModal()">Nous contacter ' + arrow + '</button><div class="sn-m-footnote">Un échange personnel, sans relance automatique.</div></div>'
     + '</aside>';

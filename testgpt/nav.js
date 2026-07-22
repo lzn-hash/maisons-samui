@@ -5,6 +5,12 @@
 (function () {
   'use strict';
 
+  // ====== TEST A/B NAV : glass vs ink sombre ======
+  // Bouton rond dans la nav qui force le style sombre (celui du .scrolled).
+  // Choix mémorisé en localStorage pour tenir d'une page à l'autre.
+  // → Passer NAV_DARK_TEST à false pour retirer le bouton une fois décidé.
+  var NAV_DARK_TEST = true;
+
   var path = window.location.pathname;
   var fileName = (path.split('/').pop() || 'index.html').toLowerCase();
   var isIndex = /^(|index\.html)$/.test(fileName);
@@ -21,6 +27,11 @@
     body.sn-menu-open{overflow:hidden;touch-action:none}
     nav.sn{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:.55rem 2rem;background:rgba(255,255,255,.06);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.12);transition:background .4s ease,border-color .4s ease,transform .35s ease}
     nav.sn.scrolled{background:rgba(26,30,26,.94);border-bottom-color:rgba(201,160,88,.15)}
+    nav.sn.sn-dark{background:rgba(26,30,26,.94);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom-color:rgba(201,160,88,.15)}
+    .sn-links{margin-left:auto}
+    .sn-test{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:1px solid rgba(250,247,240,.4);background:transparent;color:#faf7f0;cursor:pointer;padding:0;margin-left:1.2rem;transition:border-color .3s,transform .3s;flex-shrink:0}
+    .sn-test:hover{border-color:#d4a945;transform:rotate(180deg)}
+    .sn-test svg{width:15px;height:15px;display:block}
     .sn-logo{display:inline-flex;align-items:center;text-decoration:none;transition:opacity .3s}
     .sn-logo:hover{opacity:.85}
     .sn-logo img{height:48px;width:auto;display:block}
@@ -75,6 +86,7 @@
     section[id]{scroll-margin-top:84px}
     @media(max-width:900px){
       .sn-links{display:none}.sn-burger{display:flex}nav.sn{padding:max(.45rem,env(safe-area-inset-top)) 1rem .45rem}.sn-logo img{height:38px}section[id]{scroll-margin-top:68px}
+      .sn-test{margin-left:auto;margin-right:.8rem}
     }
     @media(min-width:901px){.sn-mobile,.sn-mobile-backdrop{display:none!important}}
     @media(prefers-reduced-motion:reduce){.sn-mobile,.sn-mobile-backdrop,.sn-m-villas-panel,.sn-m-villas-toggle svg{transition:none}}
@@ -93,6 +105,11 @@
   }
 
   var isVillaPage = VILLAS.some(function (v) { return fileName === v.href.toLowerCase(); });
+  var testBtn = NAV_DARK_TEST
+    ? '<button class="sn-test" type="button" onclick="snToggleDark()" aria-label="Tester la navigation sombre" title="Tester glass / sombre">'
+      + '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/>'
+      + '<path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button>'
+    : '';
   var navHtml = ''
     + '<nav class="sn" aria-label="Navigation principale">'
     +   '<a href="' + (isIndex ? '#' : 'index.html') + '" class="sn-logo">'
@@ -106,6 +123,7 @@
     +     '<li><a href="' + H + '#contact">Contact</a></li>'
     +     '<li><a class="sn-cta" role="button" onclick="openContactModal()">Nous contacter</a></li>'
     +   '</ul>'
+    +   testBtn
     +   '<button class="sn-burger" id="snBurger" type="button" onclick="snOpenMobile()" aria-label="Ouvrir le menu" aria-controls="snMobile" aria-expanded="false">'
     +     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>'
     +   '</button>'
@@ -147,6 +165,17 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // ====== TEST A/B : bascule glass / ink sombre ======
+  window.snToggleDark = function () {
+    var on = navEl.classList.toggle('sn-dark');
+    try { localStorage.setItem('snNavDark', on ? '1' : '0'); } catch (e) {}
+  };
+  if (NAV_DARK_TEST) {
+    try {
+      if (localStorage.getItem('snNavDark') === '1') navEl.classList.add('sn-dark');
+    } catch (e) {}
+  }
 
   window.snOpenMobile = function () {
     lastFocus = document.activeElement;

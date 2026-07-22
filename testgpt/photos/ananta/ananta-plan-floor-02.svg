@@ -1,0 +1,369 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="'Inter', sans-serif">
+  <!-- Fond -->
+  <rect width="1200" height="800" fill="#f2ede2"/>
+
+  <!-- Définitions : motifs, hachures, dégradés -->
+  <defs>
+    <!-- Motif subtil pour le sol -->
+    <pattern id="floor2" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <rect width="30" height="30" fill="#ebe3d2"/>
+      <line x1="0" y1="0" x2="30" y2="0" stroke="#d4c9b4" stroke-width="0.5" opacity="0.4"/>
+      <line x1="0" y1="0" x2="0" y2="30" stroke="#d4c9b4" stroke-width="0.5" opacity="0.4"/>
+    </pattern>
+
+    <!-- Motif piscine -->
+    <pattern id="pool2" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="#b8d4d8"/>
+      <path d="M 0 10 Q 5 6, 10 10 T 20 10" stroke="#a3c4c9" stroke-width="0.8" fill="none" opacity="0.6"/>
+    </pattern>
+
+    <!-- Terrasse bois -->
+    <pattern id="deck2" x="0" y="0" width="8" height="60" patternUnits="userSpaceOnUse">
+      <rect width="8" height="60" fill="#d4c0a3"/>
+      <line x1="0" y1="0" x2="0" y2="60" stroke="#b8a689" stroke-width="0.4" opacity="0.5"/>
+    </pattern>
+
+    <!-- Motif cuisine (carrelage fin) -->
+    <pattern id="kitchen2" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="#e8e0cf"/>
+      <line x1="0" y1="10" x2="20" y2="10" stroke="#d4c9b4" stroke-width="0.3" opacity="0.5"/>
+      <line x1="10" y1="0" x2="10" y2="20" stroke="#d4c9b4" stroke-width="0.3" opacity="0.5"/>
+    </pattern>
+
+    <marker id="arrow2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#b8623f"/>
+    </marker>
+  </defs>
+
+  <!-- ============ TITRE ============ -->
+  <text x="70" y="55" font-family="'Italiana', serif" font-size="22" fill="#1a1e1a" letter-spacing="4">VILLA ANANTA</text>
+  <text x="70" y="78" font-size="10" fill="#a88852" letter-spacing="3" text-transform="uppercase">ÉTAGE · NIVEAU PRINCIPAL · BOPHUT</text>
+  <line x1="70" y1="92" x2="280" y2="92" stroke="#a88852" stroke-width="1"/>
+
+  <!-- Échelle et orientation (nord) -->
+  <g transform="translate(820, 55)">
+    <circle cx="15" cy="15" r="14" fill="none" stroke="#1a1e1a" stroke-width="0.8"/>
+    <path d="M 15 3 L 18 15 L 15 12 L 12 15 Z" fill="#b8623f"/>
+    <text x="15" y="8" text-anchor="middle" font-size="8" fill="#1a1e1a" font-weight="500">N</text>
+    <text x="40" y="18" font-size="9" fill="#3a3f39" letter-spacing="2">ÉCHELLE 1/100</text>
+  </g>
+
+  <!-- ============ PLAN PRINCIPAL ============ -->
+  <g transform="translate(70, 120)">
+
+    <!-- Contour extérieur général de la villa (plus large à l'étage) -->
+    <path d="M 0 0 L 620 0 L 620 430 L 485 430 L 485 510 L 0 510 Z"
+          fill="url(#floor2)" stroke="#1a1e1a" stroke-width="2.5"/>
+
+    <!-- ==== TERRASSE + PISCINE (partie haute, traverse toute la largeur gauche) ==== -->
+    <!-- Terrasse -->
+    <rect x="0" y="0" width="460" height="250" fill="url(#deck2)" stroke="#1a1e1a" stroke-width="1.5"/>
+
+    <!-- Piscine principale (grande) -->
+    <rect x="130" y="15" width="320" height="150" rx="3" fill="url(#pool2)" stroke="#3a3f39" stroke-width="1"/>
+    <text x="290" y="100" text-anchor="middle" font-family="'Italiana', serif" font-size="18" fill="#ffffff" opacity="0.9">Piscine</text>
+    <text x="290" y="118" text-anchor="middle" font-size="9" fill="#ffffff" opacity="0.7" letter-spacing="2">9.10 × 4 M · À DÉBORDEMENT</text>
+
+    <!-- Coin salon extérieur à gauche -->
+    <g stroke="#3a3f39" stroke-width="0.6" fill="#faf7f0">
+      <circle cx="55" cy="55" r="18"/>
+      <circle cx="55" cy="55" r="10" fill="#c9b88f" stroke="#3a3f39" stroke-width="0.4"/>
+      <path d="M 20 85 Q 20 110, 50 110 L 90 110 Q 90 85, 90 85" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.7"/>
+    </g>
+    <text x="55" y="140" text-anchor="middle" font-size="8" fill="#3a3f39" letter-spacing="2">SALON EXT.</text>
+
+    <!-- Coin détente bas terrasse -->
+    <g stroke="#3a3f39" stroke-width="0.6" fill="#faf7f0">
+      <rect x="30" y="180" width="110" height="40" rx="4"/>
+      <rect x="170" y="180" width="110" height="40" rx="4"/>
+      <circle cx="330" cy="200" r="14" fill="#c9b88f" stroke="#3a3f39" stroke-width="0.4"/>
+    </g>
+    <text x="180" y="238" text-anchor="middle" font-size="9" fill="#3a3f39" letter-spacing="2">TERRASSE</text>
+
+    <!-- ==== BALCONY 1 (haut droite) ==== -->
+    <rect x="460" y="0" width="160" height="110" fill="url(#deck2)" stroke="#1a1e1a" stroke-width="1.5"/>
+    <!-- Chaises lounge -->
+    <g stroke="#3a3f39" stroke-width="0.6" fill="#faf7f0">
+      <rect x="490" y="30" width="35" height="50" rx="3"/>
+      <rect x="540" y="30" width="35" height="50" rx="3"/>
+      <circle cx="485" cy="95" r="6" fill="#c9b88f" stroke="#3a3f39" stroke-width="0.4"/>
+    </g>
+    <text x="540" y="102" text-anchor="middle" font-size="8" fill="#3a3f39" letter-spacing="2">BALCON 1</text>
+
+    <!-- ==== MASTER BEDROOM (milieu droite) ==== -->
+    <rect x="460" y="110" width="160" height="180" fill="#ebe3d2" stroke="#1a1e1a" stroke-width="1.5"/>
+    <!-- Lit king size -->
+    <g>
+      <rect x="485" y="145" width="110" height="130" rx="4" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.8"/>
+      <rect x="493" y="155" width="44" height="110" rx="2" fill="#e8e1d4" stroke="#3a3f39" stroke-width="0.5"/>
+      <rect x="545" y="155" width="44" height="110" rx="2" fill="#e8e1d4" stroke="#3a3f39" stroke-width="0.5"/>
+      <rect x="490" y="138" width="100" height="12" rx="2" fill="#c9b88f" stroke="#3a3f39" stroke-width="0.5"/>
+    </g>
+    <!-- Chevets -->
+    <rect x="475" y="148" width="8" height="20" fill="#c9b88f" stroke="#3a3f39" stroke-width="0.4"/>
+    <rect x="597" y="148" width="8" height="20" fill="#c9b88f" stroke="#3a3f39" stroke-width="0.4"/>
+    <text x="540" y="280" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="13" fill="#1a1e1a" font-style="italic">Suite Parentale</text>
+
+    <!-- ==== MASTER BATHROOM (droite, milieu-bas) ==== -->
+    <rect x="460" y="290" width="160" height="140" fill="#e0d6c1" stroke="#1a1e1a" stroke-width="1.5"/>
+    <!-- Baignoire ilot -->
+    <rect x="535" y="305" width="70" height="32" rx="10" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.8"/>
+    <ellipse cx="570" cy="321" rx="28" ry="10" fill="none" stroke="#3a3f39" stroke-width="0.5" opacity="0.5"/>
+    <!-- Douche italienne -->
+    <rect x="475" y="305" width="45" height="60" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.6"/>
+    <line x1="475" y1="305" x2="520" y2="365" stroke="#b8d4d8" stroke-width="0.4"/>
+    <line x1="475" y1="335" x2="520" y2="335" stroke="#b8d4d8" stroke-width="0.4"/>
+    <line x1="497" y1="305" x2="497" y2="365" stroke="#b8d4d8" stroke-width="0.4"/>
+    <!-- Double vasque -->
+    <rect x="475" y="380" width="55" height="20" rx="2" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.6"/>
+    <rect x="540" y="380" width="55" height="20" rx="2" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.6"/>
+    <text x="540" y="420" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="12" fill="#1a1e1a" font-style="italic">SDB parentale</text>
+
+    <!-- ==== KITCHEN-DINING-LIVING (grand espace central) ==== -->
+    <rect x="130" y="250" width="330" height="180" fill="url(#kitchen2)" stroke="#1a1e1a" stroke-width="1.5"/>
+
+    <!-- Ilot cuisine -->
+    <rect x="150" y="275" width="25" height="100" fill="#2d3438" stroke="#1a1e1a" stroke-width="0.5"/>
+    <rect x="175" y="310" width="90" height="30" fill="#c9b88f" stroke="#3a3f39" stroke-width="0.5"/>
+    <!-- Plaques de cuisson (ronds) -->
+    <circle cx="160" cy="295" r="4" fill="#1a1e1a" stroke="#a88852" stroke-width="0.3"/>
+    <circle cx="160" cy="315" r="4" fill="#1a1e1a" stroke="#a88852" stroke-width="0.3"/>
+    <circle cx="160" cy="335" r="4" fill="#1a1e1a" stroke="#a88852" stroke-width="0.3"/>
+    <circle cx="160" cy="355" r="4" fill="#1a1e1a" stroke="#a88852" stroke-width="0.3"/>
+
+    <!-- Table à manger avec chaises -->
+    <rect x="195" y="270" width="65" height="35" rx="2" fill="#c9b88f" stroke="#3a3f39" stroke-width="0.7"/>
+    <g fill="#faf7f0" stroke="#3a3f39" stroke-width="0.4">
+      <rect x="200" y="260" width="14" height="8" rx="1"/>
+      <rect x="220" y="260" width="14" height="8" rx="1"/>
+      <rect x="240" y="260" width="14" height="8" rx="1"/>
+      <rect x="200" y="307" width="14" height="8" rx="1"/>
+      <rect x="220" y="307" width="14" height="8" rx="1"/>
+      <rect x="240" y="307" width="14" height="8" rx="1"/>
+    </g>
+    <text x="228" y="290" text-anchor="middle" font-size="7" fill="#3a3f39" letter-spacing="1">SALLE À MANGER</text>
+
+    <!-- Salon / canapé -->
+    <g fill="#faf7f0" stroke="#3a3f39" stroke-width="0.6">
+      <!-- Canapé d'angle -->
+      <path d="M 290 330 L 290 395 Q 290 405, 300 405 L 395 405 Q 405 405, 405 395 L 405 370" fill="#e0d6c1"/>
+      <rect x="285" y="320" width="120" height="15" rx="3" fill="#d4c0a3"/>
+      <rect x="390" y="330" width="15" height="50" rx="3" fill="#d4c0a3"/>
+    </g>
+    <!-- Table basse triangle -->
+    <path d="M 340 355 L 380 360 L 345 385 Z" fill="#c9b88f" stroke="#3a3f39" stroke-width="0.5"/>
+    <!-- Meuble TV -->
+    <rect x="425" y="270" width="30" height="60" rx="1" fill="#3a3f39" stroke="#1a1e1a" stroke-width="0.4"/>
+    <rect x="430" y="290" width="20" height="25" fill="#1a1e1a"/>
+
+    <text x="330" y="415" text-anchor="middle" font-family="'Italiana', serif" font-size="16" fill="#2d4a34">Cuisine · Salon</text>
+
+    <!-- ==== BEDROOM 2 (bas gauche) ==== -->
+    <rect x="0" y="250" width="130" height="180" fill="#ebe3d2" stroke="#1a1e1a" stroke-width="1.5"/>
+    <!-- Lit -->
+    <g>
+      <rect x="15" y="285" width="80" height="110" rx="4" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.8"/>
+      <rect x="22" y="295" width="32" height="92" rx="2" fill="#e8e1d4" stroke="#3a3f39" stroke-width="0.5"/>
+      <rect x="58" y="295" width="32" height="92" rx="2" fill="#e8e1d4" stroke="#3a3f39" stroke-width="0.5"/>
+      <rect x="20" y="278" width="70" height="10" rx="2" fill="#c9b88f" stroke="#3a3f39" stroke-width="0.5"/>
+    </g>
+    <text x="65" y="415" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="13" fill="#1a1e1a" font-style="italic">Chambre 2</text>
+
+    <!-- ==== BATHROOM 2 (tout en bas gauche) ==== -->
+    <rect x="0" y="430" width="130" height="80" fill="#e0d6c1" stroke="#1a1e1a" stroke-width="1.5"/>
+    <!-- Douche -->
+    <rect x="12" y="445" width="40" height="45" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.6"/>
+    <line x1="12" y1="445" x2="52" y2="490" stroke="#b8d4d8" stroke-width="0.4"/>
+    <!-- Vasque -->
+    <rect x="62" y="450" width="25" height="18" rx="2" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.6"/>
+    <!-- WC -->
+    <rect x="95" y="450" width="22" height="28" rx="4" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.6"/>
+    <text x="65" y="500" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="11" fill="#1a1e1a" font-style="italic">SDB 2</text>
+
+    <!-- ==== STORE (petit espace bas-centre-gauche) ==== -->
+    <rect x="130" y="430" width="60" height="80" fill="#dcd1b9" stroke="#1a1e1a" stroke-width="1.5"/>
+    <text x="160" y="475" text-anchor="middle" font-size="8" fill="#3a3f39" letter-spacing="1.5">STOCK.</text>
+
+    <!-- ==== STAIR (escalier descendant) ==== -->
+    <rect x="190" y="430" width="200" height="80" fill="#e8e0cf" stroke="#1a1e1a" stroke-width="1.5"/>
+    <line x1="210" y1="430" x2="210" y2="510" stroke="#3a3f39" stroke-width="0.5"/>
+    <line x1="230" y1="430" x2="230" y2="510" stroke="#3a3f39" stroke-width="0.5"/>
+    <line x1="250" y1="430" x2="250" y2="510" stroke="#3a3f39" stroke-width="0.5"/>
+    <line x1="270" y1="430" x2="270" y2="510" stroke="#3a3f39" stroke-width="0.5"/>
+    <line x1="290" y1="430" x2="290" y2="510" stroke="#3a3f39" stroke-width="0.5"/>
+    <line x1="310" y1="430" x2="310" y2="510" stroke="#3a3f39" stroke-width="0.5"/>
+    <line x1="330" y1="430" x2="330" y2="510" stroke="#3a3f39" stroke-width="0.5"/>
+    <line x1="350" y1="430" x2="350" y2="510" stroke="#3a3f39" stroke-width="0.5"/>
+    <line x1="370" y1="430" x2="370" y2="510" stroke="#3a3f39" stroke-width="0.5"/>
+    <path d="M 380 470 L 200 470" stroke="#b8623f" stroke-width="1" marker-end="url(#arrow2)"/>
+    <text x="290" y="502" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="11" fill="#1a1e1a" font-style="italic">Escalier ↓</text>
+
+    <!-- ==== LAUNDRY (buanderie) ==== -->
+    <rect x="390" y="430" width="60" height="80" fill="#dcd1b9" stroke="#1a1e1a" stroke-width="1.5"/>
+    <!-- Machine à laver -->
+    <rect x="400" y="445" width="20" height="22" rx="2" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.5"/>
+    <circle cx="410" cy="456" r="6" fill="none" stroke="#3a3f39" stroke-width="0.5"/>
+    <!-- Sèche -->
+    <rect x="425" y="445" width="20" height="22" rx="2" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.5"/>
+    <circle cx="435" cy="456" r="6" fill="none" stroke="#3a3f39" stroke-width="0.5"/>
+    <text x="420" y="495" text-anchor="middle" font-size="8" fill="#3a3f39" letter-spacing="1.5">BUANDERIE</text>
+
+    <!-- ==== WC (tout en bas droite du plan, petit) ==== -->
+    <rect x="450" y="430" width="35" height="80" fill="#e0d6c1" stroke="#1a1e1a" stroke-width="1.5"/>
+    <rect x="458" y="455" width="18" height="23" rx="3" fill="#faf7f0" stroke="#3a3f39" stroke-width="0.4"/>
+    <text x="467" y="498" text-anchor="middle" font-size="7" fill="#3a3f39" letter-spacing="1">WC</text>
+
+  </g>
+
+  <!-- ============ COTATIONS (dimensions en m) ============ -->
+  <g font-size="9" fill="#3a3f39" font-weight="400">
+    <!-- Haut -->
+    <g stroke="#3a3f39" stroke-width="0.5" fill="none">
+      <line x1="70" y1="108" x2="180" y2="108"/>
+      <line x1="70" y1="104" x2="70" y2="112"/>
+      <line x1="180" y1="104" x2="180" y2="112"/>
+
+      <line x1="180" y1="108" x2="530" y2="108"/>
+      <line x1="530" y1="104" x2="530" y2="112"/>
+
+      <line x1="530" y1="108" x2="690" y2="108"/>
+      <line x1="690" y1="104" x2="690" y2="112"/>
+    </g>
+    <text x="125" y="102" text-anchor="middle">4.40 m</text>
+    <text x="355" y="102" text-anchor="middle">9.10 m</text>
+    <text x="610" y="102" text-anchor="middle">4.50 m</text>
+
+    <!-- Bas -->
+    <g stroke="#3a3f39" stroke-width="0.5" fill="none">
+      <line x1="70" y1="645" x2="175" y2="645"/>
+      <line x1="70" y1="641" x2="70" y2="649"/>
+      <line x1="175" y1="641" x2="175" y2="649"/>
+
+      <line x1="175" y1="645" x2="235" y2="645"/>
+      <line x1="235" y1="641" x2="235" y2="649"/>
+
+      <line x1="235" y1="645" x2="430" y2="645"/>
+      <line x1="430" y1="641" x2="430" y2="649"/>
+
+      <line x1="430" y1="645" x2="515" y2="645"/>
+      <line x1="515" y1="641" x2="515" y2="649"/>
+
+      <line x1="515" y1="645" x2="555" y2="645"/>
+      <line x1="555" y1="641" x2="555" y2="649"/>
+    </g>
+    <text x="122" y="660" text-anchor="middle">4.20 m</text>
+    <text x="205" y="660" text-anchor="middle">1.80 m</text>
+    <text x="332" y="660" text-anchor="middle">7.30 m</text>
+    <text x="472" y="660" text-anchor="middle">2.40 m</text>
+    <text x="535" y="660" text-anchor="middle">2.00 m</text>
+
+    <!-- Gauche -->
+    <g stroke="#3a3f39" stroke-width="0.5" fill="none">
+      <line x1="55" y1="120" x2="55" y2="370"/>
+      <line x1="51" y1="120" x2="59" y2="120"/>
+      <line x1="51" y1="370" x2="59" y2="370"/>
+
+      <line x1="55" y1="370" x2="55" y2="550"/>
+      <line x1="51" y1="550" x2="59" y2="550"/>
+
+      <line x1="55" y1="550" x2="55" y2="630"/>
+      <line x1="51" y1="630" x2="59" y2="630"/>
+    </g>
+    <text x="40" y="250" text-anchor="middle" transform="rotate(-90 40 250)">6.50 m</text>
+    <text x="40" y="465" text-anchor="middle" transform="rotate(-90 40 465)">6.00 m</text>
+    <text x="40" y="595" text-anchor="middle" transform="rotate(-90 40 595)">2.00 m</text>
+
+    <!-- Droite -->
+    <g stroke="#3a3f39" stroke-width="0.5" fill="none">
+      <line x1="705" y1="120" x2="705" y2="230"/>
+      <line x1="701" y1="120" x2="709" y2="120"/>
+      <line x1="701" y1="230" x2="709" y2="230"/>
+
+      <line x1="705" y1="230" x2="705" y2="450"/>
+      <line x1="701" y1="450" x2="709" y2="450"/>
+
+      <line x1="705" y1="450" x2="705" y2="630"/>
+      <line x1="701" y1="630" x2="709" y2="630"/>
+    </g>
+    <text x="720" y="175" text-anchor="middle" transform="rotate(90 720 175)">1.90 m</text>
+    <text x="720" y="340" text-anchor="middle" transform="rotate(90 720 340)">7.20 m</text>
+    <text x="720" y="540" text-anchor="middle" transform="rotate(90 720 540)">3.50 m</text>
+  </g>
+
+  <!-- ============ LÉGENDE DES SURFACES (à droite) ============ -->
+  <g transform="translate(820, 120)">
+    <text x="0" y="0" font-family="'Italiana', serif" font-size="14" fill="#1a1e1a" letter-spacing="3">SURFACES</text>
+    <text x="0" y="18" font-size="9" fill="#a88852" letter-spacing="2">APPROXIMATIVES · M²</text>
+    <line x1="0" y1="32" x2="280" y2="32" stroke="#d4c9b4" stroke-width="0.8"/>
+
+    <!-- Entrées -->
+    <g font-size="10" fill="#3a3f39">
+      <text x="0" y="55">Cuisine · Salle à manger · Salon</text>
+      <text x="280" y="55" text-anchor="end" font-family="'Italiana', serif" font-size="12" fill="#2d4a34">70,50</text>
+      <line x1="0" y1="65" x2="280" y2="65" stroke="#ebe3d2" stroke-width="0.5"/>
+
+      <text x="0" y="83">Suite parentale</text>
+      <text x="280" y="83" text-anchor="end" font-family="'Italiana', serif" font-size="12" fill="#2d4a34">32,40</text>
+      <line x1="0" y1="93" x2="280" y2="93" stroke="#ebe3d2" stroke-width="0.5"/>
+
+      <text x="0" y="111">Salle de bain parentale</text>
+      <text x="280" y="111" text-anchor="end" font-family="'Italiana', serif" font-size="12" fill="#2d4a34">15,75</text>
+      <line x1="0" y1="121" x2="280" y2="121" stroke="#ebe3d2" stroke-width="0.5"/>
+
+      <text x="0" y="139">Chambre 2</text>
+      <text x="280" y="139" text-anchor="end" font-family="'Italiana', serif" font-size="12" fill="#2d4a34">26,40</text>
+      <line x1="0" y1="149" x2="280" y2="149" stroke="#ebe3d2" stroke-width="0.5"/>
+
+      <text x="0" y="167">SDB 2</text>
+      <text x="280" y="167" text-anchor="end" font-family="'Italiana', serif" font-size="12" fill="#2d4a34">8,80</text>
+      <line x1="0" y1="177" x2="280" y2="177" stroke="#ebe3d2" stroke-width="0.5"/>
+
+      <text x="0" y="195">Balcon 1 · WC · Stockage</text>
+      <text x="280" y="195" text-anchor="end" font-family="'Italiana', serif" font-size="12" fill="#2d4a34">15,10</text>
+      <line x1="0" y1="205" x2="280" y2="205" stroke="#ebe3d2" stroke-width="0.5"/>
+
+      <text x="0" y="223">Buanderie · Escalier</text>
+      <text x="280" y="223" text-anchor="end" font-family="'Italiana', serif" font-size="12" fill="#2d4a34">25,40</text>
+      <line x1="0" y1="233" x2="280" y2="233" stroke="#ebe3d2" stroke-width="0.5"/>
+    </g>
+
+    <!-- Totaux intérieur -->
+    <g transform="translate(0, 260)">
+      <rect x="0" y="0" width="280" height="40" fill="#e8e0cf"/>
+      <text x="15" y="26" font-size="10" fill="#1a1e1a" letter-spacing="2">TOTAL INTÉRIEUR</text>
+      <text x="265" y="26" text-anchor="end" font-family="'Italiana', serif" font-size="18" fill="#1a1e1a">194,35</text>
+    </g>
+
+    <!-- Extérieur -->
+    <g transform="translate(0, 320)" font-size="10" fill="#3a3f39">
+      <text x="0" y="0">Piscine</text>
+      <text x="280" y="0" text-anchor="end" font-family="'Italiana', serif" font-size="12" fill="#2d4a34">36,40</text>
+      <line x1="0" y1="10" x2="280" y2="10" stroke="#ebe3d2" stroke-width="0.5"/>
+
+      <text x="0" y="28">Terrasse principale</text>
+      <text x="280" y="28" text-anchor="end" font-family="'Italiana', serif" font-size="12" fill="#2d4a34">51,10</text>
+      <line x1="0" y1="38" x2="280" y2="38" stroke="#ebe3d2" stroke-width="0.5"/>
+    </g>
+
+    <!-- Totaux extérieur -->
+    <g transform="translate(0, 375)">
+      <rect x="0" y="0" width="280" height="40" fill="#e8e0cf"/>
+      <text x="15" y="26" font-size="10" fill="#1a1e1a" letter-spacing="2">TOTAL EXTÉRIEUR</text>
+      <text x="265" y="26" text-anchor="end" font-family="'Italiana', serif" font-size="18" fill="#1a1e1a">87,50</text>
+    </g>
+
+    <!-- Total général -->
+    <g transform="translate(0, 435)">
+      <rect x="0" y="0" width="280" height="52" fill="#2d4a34"/>
+      <text x="15" y="22" font-size="9" fill="#a88852" letter-spacing="3">SURFACE NIVEAU</text>
+      <text x="15" y="42" font-family="'Italiana', serif" font-size="22" fill="#faf7f0">281,85 m²</text>
+    </g>
+
+    <!-- Note de bas -->
+    <text x="0" y="520" font-family="'Cormorant Garamond', serif" font-size="11" fill="#3a3f39" font-style="italic">Plan à titre indicatif — dimensions susceptibles de légères variations.</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="70" y="770" font-size="9" fill="#a88852" letter-spacing="3">MAISONS SAMUI</text>
+  <text x="1130" y="770" text-anchor="end" font-size="9" fill="#3a3f39" letter-spacing="2">PLAN 02 · ÉTAGE PRINCIPAL</text>
+</svg>

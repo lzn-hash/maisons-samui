@@ -727,8 +727,29 @@
     height: 100%;
     border: 0;
     display: block;
-    filter: grayscale(0.2) contrast(0.95);
   }
+
+  /* ===== Façade carte (V4) : visuel maison, la carte Google ne se charge qu'au clic ===== */
+  .map-facade {
+    position: absolute; inset: 0; z-index: 6; cursor: pointer;
+    background:
+      radial-gradient(circle at 62% 42%, rgba(184,98,63,0.5), transparent 4%),
+      linear-gradient(160deg, #22392c 0%, #14241b 55%, #0f1c15 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem;
+    transition: opacity 0.4s;
+  }
+  .map-facade.off { opacity: 0; pointer-events: none; }
+  .map-pin { width: 44px; height: 44px; color: var(--gold-bright); }
+  .map-facade .f-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--white); }
+  .map-facade .f-name em { font-style: italic; color: var(--gold-bright); }
+  .map-facade .f-hint {
+    font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(250,247,240,0.35); padding: 0.65rem 1.2rem;
+    transition: background 0.3s, color 0.3s;
+  }
+  .map-facade:hover .f-hint { background: var(--gold-bright); color: var(--ink-deeper); border-color: var(--gold-bright); }
+  .map-facade svg.deco { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.16; }
+  .map-facade svg.deco path { stroke: #e8e1d4; fill: none; }
 
   @media (max-width: 900px) {
     .location { padding: 4rem 1.5rem; }
@@ -1761,8 +1782,9 @@
 
     <div class="feature">
       <svg class="feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 30h36M8 30c0-8 7-14 16-14s16 6 16 14"/>
-        <path d="M24 16V8M20 8h8"/>
+        <rect x="7" y="13" width="34" height="24" rx="2"/>
+        <path d="M11 23c2.2-2 4.4-2 6.6 0s4.4 2 6.6 0 4.4-2 6.6 0 4.4 2 6.6 0"/>
+        <path d="M11 30c2.2-2 4.4-2 6.6 0s4.4 2 6.6 0 4.4-2 6.6 0 4.4 2 6.6 0"/>
       </svg>
       <h3>Piscine privée à débordement</h3>
       <p>10×4 m, profondeur 1,40 m, système de filtration au sel, éclairage LED submergé.</p>
@@ -1770,8 +1792,9 @@
 
     <div class="feature">
       <svg class="feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M8 12h32v28H8z"/>
-        <path d="M8 20h32M16 12V8M32 12V8"/>
+        <path d="M9 24h26v8a6 6 0 0 1-6 6H15a6 6 0 0 1-6-6v-8z"/>
+        <path d="M35 27h4a3 3 0 0 1 0 6h-4"/>
+        <path d="M17 18c0-3 3-3 3-6M25 18c0-3 3-3 3-6"/>
       </svg>
       <h3>Cuisine entièrement équipée</h3>
       <p>Plan en quartz, électroménager intégré, îlot central, ouverture sur séjour et terrasse.</p>
@@ -1936,14 +1959,23 @@
       </ul>
       <p class="location-travel-note">*Temps de trajet indicatifs en voiture</p>
     </div>
-    <div class="location-map">
-      <!-- COORDONNÉES : remplacer 9.4512,100.0412 par la vraie latitude,longitude de la villa (z=15 = niveau de zoom) -->
-      <iframe
-        src="https://maps.google.com/maps?q=9.4512,100.0412&z=15&hl=fr&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen
-        title="Villa Sabai — Lamai, Koh Samui"></iframe>
+    <div class="location-map" id="mapBox">
+      <!-- COORDONNÉES : remplacer 9.4512,100.0412 par la vraie latitude,longitude de la villa
+           (dans MAP_SRC ci-dessous et dans le lien Itinéraire du cartel si ajouté) -->
+      <div class="map-facade" id="mapFacade" role="button" tabindex="0" aria-label="Afficher la carte de situation">
+        <svg class="deco" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 210 C90 190 150 230 220 205 S340 170 400 190" stroke-width="1.4"/>
+          <path d="M60 0 C80 70 60 140 95 300" stroke-width="1"/>
+          <path d="M0 110 C120 130 240 90 400 120" stroke-width="0.8"/>
+          <path d="M300 0 C280 90 320 180 290 300" stroke-width="0.8"/>
+        </svg>
+        <svg class="map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <div class="f-name">Villa <em>Sabai</em></div>
+        <div class="f-hint">Afficher la carte</div>
+      </div>
     </div>
   </div>
 </section>
@@ -2633,6 +2665,38 @@
       var btn = el.querySelector(dir === 1 ? '.room-next' : '.room-prev');
       if (btn) btn.click();
     });
+  });
+})();
+</script>
+
+<script>
+/* ============================================================
+   CARTE DE SITUATION — façade signature, Google au clic
+   La carte Google (et ses cookies) ne se charge que si le
+   visiteur le demande, déjà teintée aux couleurs du site.
+   ============================================================ */
+(function(){
+  var MAP_SRC = 'https://maps.google.com/maps?q=9.4512,100.0412&z=15&hl=fr&output=embed';
+  var box = document.getElementById('mapBox');
+  var facade = document.getElementById('mapFacade');
+  if (!box || !facade) return;
+
+  function loadMap(){
+    if (!box.querySelector('iframe')) {
+      var f = document.createElement('iframe');
+      f.src = MAP_SRC;
+      f.loading = 'lazy';
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      f.title = 'Villa Sabai — Lamai, Koh Samui';
+      f.style.filter = 'invert(0.92) hue-rotate(120deg) saturate(0.35) brightness(0.9) contrast(0.92)';
+      box.insertBefore(f, facade);
+    }
+    facade.classList.add('off');
+  }
+
+  facade.addEventListener('click', loadMap);
+  facade.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadMap(); }
   });
 })();
 </script>

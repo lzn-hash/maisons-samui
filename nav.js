@@ -1,6 +1,11 @@
 (function () {
   'use strict';
 
+  // ====== NAVIGATION : glass ou ink sombre ======
+  // Bouton rond conservé à la demande. Le choix est mémorisé
+  // dans localStorage et reste identique d'une page à l'autre.
+  var NAV_DARK_TEST = true;
+
   var path = window.location.pathname;
   var fileName = (path.split('/').pop() || 'index.html').toLowerCase();
   var isIndex = /^(|index\.html)$/.test(fileName);
@@ -23,6 +28,11 @@
     body.sn-menu-open{overflow:hidden;touch-action:none}
     nav.sn{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:.55rem 2rem;background:rgba(255,255,255,.06);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.12);transition:background .4s ease,border-color .4s ease}
     nav.sn.scrolled,body.page-light nav.sn{background:rgba(26,30,26,.95);border-bottom-color:rgba(201,160,88,.16)}
+    nav.sn.sn-dark{background:rgba(26,30,26,.94);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom-color:rgba(201,160,88,.15)}
+    .sn-test{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:1px solid rgba(250,247,240,.4);background:transparent;color:#faf7f0;cursor:pointer;padding:0;margin-left:1.2rem;transition:border-color .3s,transform .3s;flex-shrink:0}
+    .sn-test:hover{border-color:#d4a945;transform:rotate(180deg)}
+    .sn-test svg{width:15px;height:15px;display:block}
+
     .sn-logo{display:inline-flex;align-items:center;text-decoration:none;transition:opacity .3s}
     .sn-logo:hover{opacity:.85}.sn-logo img{height:48px;width:auto;display:block}
     .sn-links{display:flex;gap:1.7rem;align-items:center;list-style:none;margin:0 0 0 auto;padding:0}
@@ -67,7 +77,7 @@
     .sn-m-footnote{margin-top:.65rem;text-align:center;font:300 .62rem/1.5 Inter,sans-serif;color:rgba(250,247,240,.48)}
     section[id]{scroll-margin-top:84px}
     @media(max-width:1080px){.sn-links{gap:1.05rem}.sn-link,.sn-dd-toggle,.sn-cta{font-size:.62rem;letter-spacing:.12em}}
-    @media(max-width:900px){.sn-links{display:none}.sn-burger{display:flex}nav.sn{padding:max(.45rem,env(safe-area-inset-top)) 1rem .45rem}.sn-logo img{height:38px}section[id]{scroll-margin-top:68px}}
+    @media(max-width:900px){.sn-links{display:none}.sn-burger{display:flex}nav.sn{padding:max(.45rem,env(safe-area-inset-top)) 1rem .45rem}.sn-logo img{height:38px}section[id]{scroll-margin-top:68px}.sn-test{margin-left:auto;margin-right:.8rem}}
     @media(min-width:901px){.sn-mobile,.sn-mobile-backdrop{display:none!important}}
     @media(prefers-reduced-motion:reduce){.sn-mobile,.sn-mobile-backdrop,.sn-m-panel,.sn-m-toggle svg,.sn-dd-panel{transition:none}}
   `;
@@ -83,6 +93,13 @@
         + '<span class="sn-dd-sub">' + item.sub + '</span></a>';
     }).join('');
   }
+
+
+  var testBtn = NAV_DARK_TEST
+    ? '<button class="sn-test" type="button" onclick="snToggleDark()" aria-label="Basculer entre navigation glass et sombre" title="Tester glass / sombre">'
+      + '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/>'
+      + '<path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button>'
+    : '';
 
   var currentVilla = VILLAS.find(function (villa) {
     return fileName === villa.href.toLowerCase();
@@ -103,6 +120,7 @@
     +     '<li><a href="faq.html" class="sn-link">FAQ</a></li>'
     +     '<li><button class="sn-cta" type="button" onclick="snOpenContact(\'nav-desktop\')">Nous contacter</button></li>'
     +   '</ul>'
+    +   testBtn
     +   '<button class="sn-burger" id="snBurger" type="button" onclick="snOpenMobile()" aria-label="Ouvrir le menu" aria-controls="snMobile" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>'
     + '</nav>'
     + '<button type="button" class="sn-mobile-backdrop" id="snBackdrop" onclick="snCloseMobile()" aria-label="Fermer le menu"></button>'
@@ -142,6 +160,18 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // ====== Bascule glass / ink sombre, mémorisée entre les pages ======
+  window.snToggleDark = function () {
+    var on = navElement.classList.toggle('sn-dark');
+    try { localStorage.setItem('snNavDark', on ? '1' : '0'); } catch (error) {}
+  };
+
+  if (NAV_DARK_TEST) {
+    try {
+      if (localStorage.getItem('snNavDark') === '1') navElement.classList.add('sn-dark');
+    } catch (error) {}
+  }
 
   window.snOpenContact = function (source) {
     if (typeof window.openContactModal !== 'function') return;

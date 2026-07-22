@@ -17,10 +17,10 @@
   var H = isIndex ? '' : 'index.html';
 
   var VILLAS = [
-    { href: 'villa-baansawan.html', name: 'Baan <em>Sawan</em>', sub: "L'exception · Vue mer 360°" },
-    { href: 'villa-sabai.html', name: 'Villa <em>Sabai</em>', sub: 'Lamai N°I · Sud / jardin' },
-    { href: 'villa-suk.html', name: 'Villa <em>Suk</em>', sub: 'Lamai N°II · Est / lever de soleil' },
-    { href: 'villa-jai.html', name: 'Villa <em>Jai</em>', sub: 'Lamai N°III · Ouest / coucher de soleil' }
+    { href: 'villa-baansawan.html', name: 'Baan <em>Sawan</em>', contactName: 'Baan Sawan', sub: "L'exception · Vue mer 360°" },
+    { href: 'villa-sabai.html', name: 'Villa <em>Sabai</em>', contactName: 'Villa Sabai', sub: 'Lamai N°I · Sud / jardin' },
+    { href: 'villa-suk.html', name: 'Villa <em>Suk</em>', contactName: 'Villa Suk', sub: 'Lamai N°II · Est / lever de soleil' },
+    { href: 'villa-jai.html', name: 'Villa <em>Jai</em>', contactName: 'Villa Jai', sub: 'Lamai N°III · Ouest / coucher de soleil' }
   ];
 
   var css = `
@@ -103,7 +103,8 @@
     }).join('');
   }
 
-  var isVillaPage = VILLAS.some(function (v) { return fileName === v.href.toLowerCase(); });
+  var currentVilla = VILLAS.find(function (v) { return fileName === v.href.toLowerCase(); }) || null;
+  var isVillaPage = Boolean(currentVilla);
   var testBtn = NAV_DARK_TEST
     ? '<button class="sn-test" type="button" onclick="snToggleDark()" aria-label="Tester la navigation sombre" title="Tester glass / sombre">'
       + '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/>'
@@ -119,7 +120,7 @@
     +     '<li><a href="' + H + '#parcours">Étapes</a></li>'
     +     '<li><a href="boutique.html">Boutique</a></li>'
     +     '<li><a href="faq.html">FAQ</a></li>'
-    +     '<li><a class="sn-cta" role="button" onclick="openContactModal()">Nous contacter</a></li>'
+    +     '<li><a class="sn-cta" role="button" onclick="snOpenContact(\'nav-desktop\')">Nous contacter</a></li>'
     +   '</ul>'
     +   testBtn
     +   '<button class="sn-burger" id="snBurger" type="button" onclick="snOpenMobile()" aria-label="Ouvrir le menu" aria-controls="snMobile" aria-expanded="false">'
@@ -138,7 +139,7 @@
     +     '<a href="boutique.html" class="sn-m-primary">Boutique</a>'
     +     '<a href="faq.html" class="sn-m-primary">FAQ</a>'
     +   '</div>'
-    +   '<div class="sn-mobile-foot"><button class="sn-m-cta" type="button" onclick="snCloseMobile();openContactModal()">Nous contacter ' + arrow + '</button><div class="sn-m-footnote">Un échange personnel, sans relance automatique.</div></div>'
+    +   '<div class="sn-mobile-foot"><button class="sn-m-cta" type="button" onclick="snCloseMobile();snOpenContact(\'nav-mobile\')">Nous contacter ' + arrow + '</button><div class="sn-m-footnote">Une réponse adaptée à votre projet.</div></div>'
     + '</aside>';
 
   var style = document.createElement('style');
@@ -173,6 +174,15 @@
       if (localStorage.getItem('snNavDark') === '1') navEl.classList.add('sn-dark');
     } catch (e) {}
   }
+
+  window.snOpenContact = function (source) {
+    if (typeof window.openContactModal !== 'function') return;
+    window.openContactModal({
+      intent: 'contact',
+      villa: currentVilla ? currentVilla.contactName : null,
+      source: source || 'navigation'
+    });
+  };
 
   window.snOpenMobile = function () {
     lastFocus = document.activeElement;

@@ -1795,7 +1795,7 @@
             Personnaliser Villa Sabai
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
-          <a href="#contact" class="hero-btn hero-btn-secondary" onclick="if(typeof openContactModal==='function'){event.preventDefault();openContactModal();}">
+          <a href="#contact" class="hero-btn hero-btn-secondary" onclick="if(typeof openContactModal==='function'){event.preventDefault();openContactModal({intent:'brochure',villa:'Sabai',source:'hero'});}">
             Recevoir la brochure
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 8h16M9 4v4"/></svg>
           </a>
@@ -1869,7 +1869,7 @@
       <span>Faites glisser pour parcourir</span>
     </div>
 
-    <button type="button" class="plans-request" onclick="openContactModal()" aria-label="Recevoir les plans détaillés de Villa Sabai">
+    <button type="button" class="plans-request" onclick="openContactModal({intent:'brochure',villa:'Sabai',source:'plans'})" aria-label="Recevoir les plans détaillés de Villa Sabai">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
       <span>Plan d'implantation, surfaces détaillées et plans cotés disponibles dans la brochure.</span>
       <span class="plans-request-cta">Recevoir la brochure →</span>
@@ -2126,7 +2126,7 @@
     <div class="section-eyebrow section-eyebrow--light">— Intéressé ?</div>
     <h2>Découvrons Villa <em>Sabai</em><br>ensemble.</h2>
     <p>Sur place à Koh Samui ou à distance lors d'une visite vidéo personnalisée, notre équipe vous accompagne pour découvrir la villa et répondre à toutes vos questions.</p>
-    <button class="villa-contact-btn" onclick="openContactModal()">
+    <button class="villa-contact-btn" onclick="openContactModal({intent:'visit',villa:'Sabai',source:'footer-visit'})">
       Organiser une visite
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <polyline points="9 18 15 12 9 6"/>
@@ -2318,7 +2318,14 @@
    ============================================================ */
 (function(){
   window.VILLA_NAME = 'Sabai';
-  var selection = { interieur: 'Carte Blanche', jardin: 'Carte Blanche' };
+  window.VILLA_CONTEXT = {
+    key: 'Sabai',
+    name: 'Villa Sabai',
+    location: 'Lamai · Koh Samui',
+    hero: 'photos/sabai/hero.jpg',
+    thumbnail: null
+  };
+  var selection = { interieur: 'Carte Blanche', jardin: 'Carte Blanche', touched: false };
 
   window.selectApproche = function(btn){
     var card = btn.closest('.approche-card');
@@ -2337,13 +2344,14 @@
       ? 'Configuration incluse'
       : 'Ajouté';
     selection[group] = card.dataset.approche;
+    selection.touched = true;
     onSelect(group);
   };
 
-  // hook lu par contact.js pour pré-remplir le récap + le payload
+  // hook lu par contact.js pour pré-remplir la configuration + le payload
   window.getPersoSummary = function(){
     if(!selection.interieur && !selection.jardin) return null;
-    return { interior: selection.interieur, garden: selection.jardin };
+    return { interior: selection.interieur, garden: selection.jardin, touched: selection.touched };
   };
 
   var bar = document.getElementById('stickyBar');
@@ -2391,7 +2399,12 @@
 
   window.validateApproches = function(){
     if(selection.interieur && selection.jardin && typeof window.openContactModal === 'function'){
-      window.openContactModal();
+      window.openContactModal({
+        intent: 'estimate',
+        villa: 'Sabai',
+        source: 'configurator',
+        configuration: window.getPersoSummary()
+      });
     }
   };
 })();

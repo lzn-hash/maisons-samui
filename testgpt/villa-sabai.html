@@ -702,7 +702,19 @@
 
   .location-points li span:first-child { color: rgba(255, 255, 255, 0.85); }
 
-  .location-points li span:last-child { color: var(--gold-bright); font-style: italic; }
+  .location-points li span:last-child,
+  .location-points li .travel-time { color: var(--gold-bright); font-style: italic; }
+
+  .travel-time {
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .travel-time sup, .location-travel-note sup {
+    color: var(--gold-bright);
+    font-size: 0.72em;
+    line-height: 0;
+  }
 
   .location-text .location-travel-note {
     margin: 1.15rem 0 0;
@@ -1442,8 +1454,22 @@
     .approche-card {
       flex: 0 0 min(84vw,360px); min-width: min(84vw,360px); scroll-snap-align: center; scroll-snap-stop: always;
       box-shadow: 0 8px 24px rgba(26,30,26,.07); border-color: rgba(26,30,26,.12);
+      transform: translateY(0);
+      transition: background .42s ease, box-shadow .42s ease, border-color .42s ease, transform .42s ease;
     }
     .approche-card:hover { box-shadow: 0 8px 24px rgba(26,30,26,.07); background: #fdfbf9; border-color: rgba(26,30,26,.12); }
+    .approche-card.mobile-active {
+      background: #fff;
+      border-color: rgba(184,98,63,.42);
+      box-shadow: 0 14px 34px rgba(26,30,26,.12);
+      transform: translateY(-3px);
+    }
+    .approche-card.mobile-active .approche-name::after { width: 46px; }
+    .approche-card.mobile-active .zoom-hint {
+      opacity: 1;
+      background: rgba(13,16,13,.76);
+      transform: scale(1.08);
+    }
     .approche-card.selected { box-shadow: 0 10px 28px rgba(184,98,63,.13); }
     .approche-card.selected::before { top: 10px; right: 10px; width: 28px; height: 28px; }
     .approche-visual { aspect-ratio: 1.55 / 1; }
@@ -1472,8 +1498,8 @@
 
     /* Panneau de détail : feuille plein écran mobile */
     .detail-overlay { padding: 0; align-items: stretch; background: rgba(13,16,13,.92); }
-    .detail-panel { width: 100%; max-width: none; min-height: 100vh; min-height: 100dvh; border-radius: 0; padding: max(4.8rem,env(safe-area-inset-top)) 1.15rem calc(2rem + env(safe-area-inset-bottom)); overflow-y: auto; }
-    .detail-close { position: fixed; top: max(.8rem,env(safe-area-inset-top)); right: .8rem; width: 44px; height: 44px; z-index: 2; }
+    .detail-panel { width: 100%; max-width: none; min-height: 100vh; min-height: 100dvh; border-radius: 0; padding: max(2.55rem,calc(env(safe-area-inset-top) + 1.4rem)) 1.15rem calc(2rem + env(safe-area-inset-bottom)); overflow-y: auto; }
+    .detail-close { position: fixed; top: max(.65rem,env(safe-area-inset-top)); right: .75rem; width: 44px; height: 44px; z-index: 2; }
     .detail-title { font-size: 2rem; padding-right: 2.5rem; }
     .detail-tagline { font-size: 1.05rem; }
     .detail-intro { font-size: .86rem; }
@@ -1792,15 +1818,15 @@
       <h2>Lamai, sur la <em>côte sud-est</em> de Koh Samui</h2>
       <p>L’atmosphère d’un village, entre plages, marché de nuit et vie locale. Un environnement préservé, à environ vingt-deux minutes de l’aéroport.</p>
       <ul class="location-points">
-        <li><span>Plage de Lamai</span><span>4 min en voiture</span></li>
-        <li><span>Marché Hua Thanon</span><span>7 min</span></li>
-        <li><span>Hin Ta &amp; Hin Yai (rochers)</span><span>5 min</span></li>
-        <li><span>Aéroport international</span><span>22 min</span></li>
-        <li><span>Hôpital Bangkok Samui</span><span>20 min</span></li>
-        <li><span>Supermarché Lotus</span><span>10 min</span></li>
-        <li><span>École internationale</span><span>18 min</span></li>
+        <li><span>Plage de Lamai</span><a class="travel-time" href="#travel-note">4 min<sup>*</sup></a></li>
+        <li><span>Marché Hua Thanon</span><a class="travel-time" href="#travel-note">7 min<sup>*</sup></a></li>
+        <li><span>Hin Ta &amp; Hin Yai (rochers)</span><a class="travel-time" href="#travel-note">5 min<sup>*</sup></a></li>
+        <li><span>Aéroport international</span><a class="travel-time" href="#travel-note">22 min<sup>*</sup></a></li>
+        <li><span>Hôpital Bangkok Samui</span><a class="travel-time" href="#travel-note">20 min<sup>*</sup></a></li>
+        <li><span>Supermarché Lotus</span><a class="travel-time" href="#travel-note">10 min<sup>*</sup></a></li>
+        <li><span>École internationale</span><a class="travel-time" href="#travel-note">18 min<sup>*</sup></a></li>
       </ul>
-      <p class="location-travel-note">Temps de trajet indicatifs en voiture, selon les conditions de circulation.</p>
+      <p class="location-travel-note" id="travel-note"><sup>*</sup> Temps de trajet indicatifs en voiture.</p>
     </div>
     <div class="location-map">
       <!-- COORDONNÉES : remplacer 9.4512,100.0412 par la vraie latitude,longitude de la villa (z=15 = niveau de zoom) -->
@@ -2474,6 +2500,58 @@
 
   </div>
 </div>
+
+<script>
+/* Mobile : active la carte la plus visible dans chaque carrousel.
+   Le langage visuel du hover desktop se déclenche au swipe
+   et dès qu'une carte entre dans la zone de lecture. */
+(function(){
+  if(!window.matchMedia('(max-width: 760px)').matches) return;
+
+  document.querySelectorAll('.approche-cards').forEach(function(track){
+    var cards = Array.prototype.slice.call(track.querySelectorAll('.approche-card'));
+    if(!cards.length) return;
+
+    function activateClosest(){
+      var trackRect = track.getBoundingClientRect();
+      var center = trackRect.left + trackRect.width / 2;
+      var closest = null;
+      var best = Infinity;
+
+      cards.forEach(function(card){
+        var rect = card.getBoundingClientRect();
+        var distance = Math.abs((rect.left + rect.width / 2) - center);
+        if(distance < best){ best = distance; closest = card; }
+      });
+
+      cards.forEach(function(card){
+        card.classList.toggle('mobile-active', card === closest);
+      });
+    }
+
+    var raf = 0;
+    track.addEventListener('scroll', function(){
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(activateClosest);
+    }, { passive:true });
+    window.addEventListener('resize', activateClosest, { passive:true });
+
+    if('IntersectionObserver' in window){
+      var observer = new IntersectionObserver(function(entries){
+        if(entries.some(function(entry){ return entry.isIntersecting; })) activateClosest();
+      }, { root:null, threshold:0.18 });
+      cards.forEach(function(card){ observer.observe(card); });
+    } else {
+      function activateWhenVisible(){
+        var rect = track.getBoundingClientRect();
+        if(rect.bottom > 0 && rect.top < window.innerHeight) activateClosest();
+      }
+      window.addEventListener('scroll', activateWhenVisible, { passive:true });
+      activateWhenVisible();
+    }
+  });
+})();
+</script>
 
 <script>
 /* Panneau détail des approches : ouverture par les boutons .approche-extend, fermeture croix / overlay / Échap */

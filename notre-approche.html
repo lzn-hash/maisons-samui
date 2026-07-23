@@ -48,7 +48,58 @@
   </div>
 </section>
 
-<section class="content-section dark" id="methode">
+<section class="approach-evolution" id="personnalisation">
+  <div class="approach-evolution-inner">
+    <header class="approach-evolution-intro">
+      <div class="eyebrow">Plusieurs niveaux d’aménagement</div>
+      <h2 class="section-title">Une même villa,<br><em>plusieurs expressions.</em></h2>
+      <p class="section-lead">De la configuration Carte Blanche à notre finition signature Art de Vivre, en passant par Éveil des Sens, vous choisissez le niveau d’aménagement intérieur correspondant à votre usage.</p>
+    </header>
+
+    <div class="approach-split" aria-label="Comparaison visuelle entre Carte Blanche et Art de Vivre">
+      <div class="approach-split-half left">
+        <img
+          src="photos/approches/salon-carte-blanche.jpg"
+          data-base="photos/approches/salon-carte-blanche"
+          alt="Salon en configuration Carte Blanche"
+          loading="lazy">
+      </div>
+
+      <div class="approach-split-half right">
+        <img
+          src="photos/approches/salon-art-de-vivre.jpg"
+          data-base="photos/approches/salon-art-de-vivre"
+          alt="Salon en finition Art de Vivre"
+          loading="lazy">
+      </div>
+
+      <div class="approach-split-divider" aria-hidden="true"></div>
+
+      <div class="approach-split-label left">
+        <small>Configuration incluse</small>
+        <strong>Carte Blanche</strong>
+      </div>
+
+      <div class="approach-split-label right">
+        <small>Finition signature</small>
+        <strong>Art de Vivre</strong>
+      </div>
+    </div>
+
+    <div class="approach-evolution-foot">
+      <p>Les pages villas présentent les trois niveaux d’aménagement intérieur et les options paysagères disponibles. La comparaison ci-dessus montre volontairement les deux extrêmes de la progression.</p>
+      <a class="btn btn-terracotta btn-white-hover" href="index.html#villas">
+        Découvrir les villas
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="methode">
   <div class="content-grid reverse">
     <div class="content-visual"><img src="photos/index/(2).jpg" alt="Architecture et construction d’une villa Latitude Samui" loading="lazy"></div>
     <div class="content-copy">
@@ -60,19 +111,7 @@
   </div>
 </section>
 
-<section class="content-section alt" id="personnalisation">
-  <div class="content-grid">
-    <div>
-      <div class="eyebrow">Personnaliser sa villa</div>
-      <h2 class="section-title">Une architecture définie.<br><em>Un intérieur qui vous ressemble.</em></h2>
-      <p class="section-lead">Les pages villas permettent d’explorer différentes approches pour l’intérieur et le jardin avant de demander une estimation contextualisée.</p>
-      <a class="btn btn-jungle" href="index.html#villas" style="margin-top:2rem">Découvrir les villas</a>
-    </div>
-    <div class="content-visual tall"><img src="photos/sabai/6.jpg" alt="Exemple de personnalisation intérieure d’une villa Latitude Samui" loading="lazy"></div>
-  </div>
-</section>
-
-<section class="content-section" id="equipe">
+<section class="content-section alt" id="equipe">
   <div style="max-width:850px;margin:0 auto;text-align:center">
     <div class="eyebrow" style="justify-content:center">L’équipe</div>
     <h2 class="section-title">Trois expertises,<br><em>des responsabilités claires.</em></h2>
@@ -94,7 +133,7 @@
   </div>
 </section>
 
-<section class="content-section alt" id="juridique">
+<section class="content-section" id="juridique">
   <div class="content-grid reverse">
     <div class="content-visual"><img src="photos/index/(3).jpg" alt="Accompagnement d’un projet immobilier à Koh Samui" loading="lazy"></div>
     <div class="content-copy">
@@ -120,6 +159,38 @@
 </section>
 
 <div id="site-footer"></div>
+
+<script>
+(function(){
+  var extensions = ['jpg','jpeg','png'];
+
+  document.querySelectorAll('.approach-split img[data-base]').forEach(function(image){
+    var base = image.dataset.base;
+    var index = 0;
+
+    function tryNext(){
+      if(index >= extensions.length){
+        image.removeAttribute('src');
+        image.style.background = 'linear-gradient(135deg,#22382a,#14241b)';
+        return;
+      }
+
+      var candidate = base + '.' + extensions[index++];
+      var test = new Image();
+
+      test.onload = function(){
+        image.src = candidate;
+      };
+
+      test.onerror = tryNext;
+      test.src = candidate;
+    }
+
+    tryNext();
+  });
+})();
+</script>
+
 <script src="nav.js"></script>
 <script src="footer.js"></script>
 <script src="contact.js"></script>

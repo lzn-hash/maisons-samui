@@ -20,8 +20,10 @@
 
   var APPROACH = [
     { href: 'notre-approche.html#philosophie', name: 'Notre philosophie', sub: 'Une collection limitée et une relation directe' },
+    { href: 'notre-approche.html#methode', name: 'Construire directement', sub: 'Un interlocuteur principal et une exécution suivie' },
+    { href: 'notre-approche.html#personnalisation', name: 'Personnaliser sa villa', sub: 'Des finitions adaptées à votre manière de vivre' },
     { href: 'notre-approche.html#equipe', name: "L'équipe", sub: 'Stratégie, construction et technologie' },
-    { href: 'notre-approche.html#methode', name: 'Notre méthode', sub: 'Du terrain à la remise des clés' }
+    { href: 'notre-approche.html#juridique', name: 'Cadre juridique', sub: 'Comprendre les options avant de s’engager' }
   ];
 
   var css = `

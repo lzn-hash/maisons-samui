@@ -68,7 +68,7 @@ img{max-width:100%;display:block}
 .hero-pause[aria-pressed="true"] .play-icon{display:block}
 
 /* Promise / engagements */
-.promise{position:relative;overflow:hidden;background:#eee7db;padding:6rem 3rem}
+.promise{position:relative;overflow:hidden;background:#f2ede2;padding:6rem 3rem}
 .promise::before{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(26,46,34,.07);border-radius:50%;right:-180px;top:-260px}
 .promise::after{content:"";position:absolute;width:320px;height:320px;border:1px solid rgba(184,98,63,.08);border-radius:50%;left:-160px;bottom:-210px}
 .promise-inner{position:relative;z-index:1;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:.78fr 1.22fr;gap:4.5rem;align-items:center}
@@ -84,7 +84,7 @@ img{max-width:100%;display:block}
 .promise-point p{margin-top:.55rem;font-size:.76rem;line-height:1.55;color:var(--ink-soft)}
 
 /* Villas */
-.villas{padding:6rem 3rem;background:var(--sand-light)}
+.villas{padding:6rem 3rem;background:#faf7f0}
 .section-head{max-width:1400px;margin:0 auto 3.2rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,520px);gap:3rem;align-items:end}
 .section-head .section-lead{margin:0;text-align:right;justify-self:end}
 .villas-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem}
@@ -319,6 +319,7 @@ img{max-width:100%;display:block}
 .content-section.dark{background:var(--jungle);color:var(--white)}
 .content-grid{max-width:1250px;margin:0 auto;display:grid;grid-template-columns:.8fr 1.2fr;gap:5rem;align-items:start}
 .content-grid.reverse{grid-template-columns:1.2fr .8fr}
+.content-copy .section-title{margin-bottom:1.7rem}
 .content-copy p{font-family:"Cormorant Garamond",serif;font-size:1.18rem;line-height:1.7;color:var(--ink-soft);margin-bottom:1.15rem}
 .dark .content-copy p{color:rgba(255,255,255,.78)}.dark .eyebrow{color:var(--gold-bright)}.dark .section-title{color:var(--white)}.dark .section-title em{color:var(--gold-bright)}
 .content-visual{aspect-ratio:4/3;overflow:hidden;background:var(--sand)}

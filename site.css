@@ -214,17 +214,15 @@ img{max-width:100%;display:block}
 .approach-split-half.right{left:50%}
 .approach-split-half img{
   position:absolute;
-  top:0;
-  width:200%;
+  inset:0;
+  width:100%;
   max-width:none;
   height:100%;
   object-fit:cover;
+  object-position:center;
   transition:transform .85s cubic-bezier(.22,1,.36,1);
 }
-.approach-split-half.left img{left:0}
-.approach-split-half.right img{right:0}
-.approach-split:hover .approach-split-half.left img{transform:scale(1.018) translateX(-.25%)}
-.approach-split:hover .approach-split-half.right img{transform:scale(1.018) translateX(.25%)}
+.approach-split:hover .approach-split-half img{transform:scale(1.025)}
 .approach-split-half::after{
   content:"";
   position:absolute;
@@ -374,9 +372,8 @@ img{max-width:100%;display:block}
   .approach-split-half{width:100%;height:50%}
   .approach-split-half.left{inset:0 0 auto 0}
   .approach-split-half.right{inset:50% 0 0 0}
-  .approach-split-half img{width:100%;height:200%}
-  .approach-split-half.left img{left:0;top:0}
-  .approach-split-half.right img{right:auto;top:auto;bottom:0}
+  .approach-split-half img{width:100%;height:100%;inset:0}
+  .approach-split-half.left img,.approach-split-half.right img{inset:0}
   .approach-split-divider{top:50%;left:0;right:0;bottom:auto;width:auto;height:1px}
   .approach-split-divider::after{content:"↓"}
   .approach-split-label.left{left:1rem;bottom:auto;top:1rem}

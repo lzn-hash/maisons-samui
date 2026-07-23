@@ -46,17 +46,17 @@
     .sn-dd-toggle{display:inline-flex;align-items:center;gap:.35rem}
     .sn-dd-toggle svg{width:10px;height:10px;transition:transform .25s}
     .sn-dd:hover .sn-dd-toggle svg,.sn-dd:focus-within .sn-dd-toggle svg{transform:rotate(180deg)}
-    .sn-dd-panel{position:absolute;top:calc(100% + 28px);left:50%;transform:translateX(-50%) translateY(6px);width:390px;min-width:390px;max-width:calc(100vw - 2rem);background:#14241b;border:1px solid rgba(201,160,88,.28);padding:.55rem 0;opacity:0;visibility:hidden;transition:opacity .25s ease,transform .25s ease,visibility .25s;box-shadow:0 18px 50px rgba(0,0,0,.4)}
+    .sn-dd-panel{position:absolute;top:calc(100% + 28px);left:50%;transform:translateX(-50%) translateY(6px);width:330px;min-width:330px;max-width:calc(100vw - 2rem);background:#14241b;border:1px solid rgba(201,160,88,.28);padding:.38rem 0;opacity:0;visibility:hidden;transition:opacity .25s ease,transform .25s ease,visibility .25s;box-shadow:0 18px 50px rgba(0,0,0,.4)}
     .sn-dd:hover .sn-dd-panel,.sn-dd:focus-within .sn-dd-panel{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
     .sn-dd-panel::before{content:"";position:absolute;top:-32px;left:0;right:0;height:32px}
-    .sn-dd-panel a{position:relative;display:flex;min-height:88px;flex-direction:column;justify-content:center;padding:1rem 1.65rem;text-decoration:none;border-bottom:1px solid rgba(250,247,240,.075);transition:background .25s,padding-left .25s}
+    .sn-dd-panel a{position:relative;display:flex;min-height:72px;flex-direction:column;justify-content:center;padding:.72rem 1.35rem;text-decoration:none;border-bottom:1px solid rgba(250,247,240,.075);transition:background .25s,padding-left .25s}
     .sn-dd-panel a:last-child{border-bottom:0}
     .sn-dd-panel a::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:#d4a945;transform:scaleY(0);transform-origin:center;transition:transform .25s}
-    .sn-dd-panel a:hover,.sn-dd-panel a:focus-visible{background:rgba(201,160,88,.075);padding-left:1.8rem;outline:none}
+    .sn-dd-panel a:hover,.sn-dd-panel a:focus-visible{background:rgba(201,160,88,.075);padding-left:1.5rem;outline:none}
     .sn-dd-panel a:hover::before,.sn-dd-panel a:focus-visible::before{transform:scaleY(1)}
-    .sn-dd-panel .sn-dd-name{display:block;font-family:"Cormorant Garamond",serif;font-size:1.28rem;font-weight:500;color:#faf7f0;line-height:1.08}
+    .sn-dd-panel .sn-dd-name{display:block;font-family:"Cormorant Garamond",serif;font-size:1.14rem;font-weight:500;color:#faf7f0;line-height:1.1}
     .sn-dd-name em{font-style:italic;color:#d4a945}
-    .sn-dd-panel .sn-dd-sub{display:-webkit-box;min-height:2.7em;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-family:Inter,sans-serif;font-size:.58rem;font-weight:500;letter-spacing:.075em;color:rgba(250,247,240,.48);margin-top:.32rem;text-transform:uppercase;line-height:1.35}
+    .sn-dd-panel .sn-dd-sub{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-family:Inter,sans-serif;font-size:.56rem;font-weight:500;letter-spacing:.07em;color:rgba(250,247,240,.48);margin-top:.22rem;text-transform:uppercase;line-height:1.32}
     .sn-dd-name{display:block;font-family:"Cormorant Garamond",serif;font-size:1.14rem;color:#faf7f0;line-height:1.15}
     .sn-dd-sub{display:block;font-family:Inter,sans-serif;font-size:.57rem;letter-spacing:.07em;color:rgba(250,247,240,.5);margin-top:.2rem;text-transform:uppercase;line-height:1.4}
     .sn-burger{display:none;width:44px;height:44px;align-items:center;justify-content:center;background:rgba(13,16,13,.2);border:1px solid rgba(250,247,240,.22);cursor:pointer;color:#faf7f0;padding:0}

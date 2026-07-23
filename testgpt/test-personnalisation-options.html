@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latitude Samui — Test personnalisation intérieure</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --sand:#e8e1d4;
+  --sand-light:#f2ede2;
+  --cream:#faf7f0;
+  --card:#fdfbf9;
+  --white:#ffffff;
+  --ink:#1a1e1a;
+  --ink-soft:#4a4e4a;
+  --jungle:#1a2e22;
+  --jungle-deep:#14241b;
+  --terracotta:#b8623f;
+  --gold:#c9a058;
+  --gold-bright:#d4a945;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:#dcd7ce;
+  color:var(--ink);
+  font-family:Inter,sans-serif;
+  font-weight:300;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+button,a{font:inherit}
+
+.testbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:.75rem 1.25rem;
+  background:rgba(20,36,27,.96);
+  border-bottom:1px solid rgba(201,160,88,.25);
+  backdrop-filter:blur(14px);
+  color:var(--cream);
+}
+
+.testbar-brand{
+  font-family:"Cormorant Garamond",serif;
+  font-size:1.25rem;
+  letter-spacing:.03em;
+}
+
+.testbar-brand em{
+  color:var(--gold-bright);
+  font-style:italic;
+}
+
+.test-tabs{
+  display:flex;
+  gap:.45rem;
+  flex-wrap:wrap;
+}
+
+.test-tab{
+  border:1px solid rgba(250,247,240,.22);
+  background:transparent;
+  color:rgba(250,247,240,.75);
+  padding:.6rem .9rem;
+  cursor:pointer;
+  text-transform:uppercase;
+  font-size:.62rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  transition:.25s;
+}
+
+.test-tab:hover,
+.test-tab.active{
+  background:var(--terracotta);
+  border-color:var(--terracotta);
+  color:#fff;
+}
+
+.option{
+  display:none;
+  min-height:calc(100vh - 64px);
+}
+
+.option.active{display:block}
+
+.option-label{
+  position:absolute;
+  z-index:8;
+  top:1.2rem;
+  right:1.2rem;
+  padding:.5rem .75rem;
+  color:var(--cream);
+  background:rgba(20,36,27,.8);
+  border:1px solid rgba(201,160,88,.34);
+  font-size:.56rem;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  backdrop-filter:blur(8px);
+}
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:1.1rem;
+  color:#9c7b45;
+  font-size:.65rem;
+  font-weight:500;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+}
+
+.eyebrow::before{
+  content:"";
+  width:38px;
+  height:1px;
+  background:currentColor;
+}
+
+.title{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(3rem,5.2vw,5.25rem);
+  font-weight:500;
+  line-height:.96;
+  letter-spacing:-.025em;
+}
+
+.title em{
+  color:var(--terracotta);
+  font-style:italic;
+  font-weight:400;
+}
+
+.lead{
+  max-width:600px;
+  margin-top:1.55rem;
+  color:var(--ink-soft);
+  font-family:"Cormorant Garamond",serif;
+  font-size:1.18rem;
+  line-height:1.62;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.7rem;
+  min-height:50px;
+  padding:.92rem 1.45rem;
+  border:1px solid var(--jungle);
+  background:var(--jungle);
+  color:#fff;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:.16em;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:#fff;
+  border-color:#fff;
+  color:var(--jungle);
+  box-shadow:0 10px 28px rgba(26,30,26,.08);
+}
+
+.btn svg{
+  width:15px;
+  height:15px;
+  transition:transform .3s;
+}
+
+.btn:hover svg{transform:translateX(4px)}
+
+.image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-label{
+  position:absolute;
+  left:1rem;
+  bottom:1rem;
+  z-index:3;
+  padding:.55rem .75rem;
+  color:#fff;
+  background:rgba(13,16,13,.66);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(7px);
+  font-size:.56rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+/* =========================================================
+   OPTION 1 — Compacte, directement intégrée à la colonne texte
+   ========================================================= */
+
+.option-one{
+  position:relative;
+  background:var(--sand-light);
+  padding:5rem 4vw;
+}
+
+.option-one-grid{
+  max-width:1500px;
+  min-height:790px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  background:var(--cream);
+}
+
+.option-one-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:4.8rem 4.2rem;
+}
+
+.mini-evolution{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);
+  gap:.8rem;
+  align-items:center;
+  margin:2.35rem 0 1.8rem;
+}
+
+.mini-card{
+  position:relative;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  background:var(--sand);
+  border:1px solid rgba(26,30,26,.1);
+}
+
+.mini-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .7s;
+}
+
+.mini-card:hover img{transform:scale(1.03)}
+
+.mini-arrow{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+}
+
+.mini-arrow::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:1px;
+  background:rgba(26,46,34,.28);
+}
+
+.mini-arrow-circle{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:var(--jungle);
+  color:#fff;
+  box-shadow:0 0 0 8px var(--cream);
+}
+
+.mini-arrow-circle svg{width:19px;height:19px}
+
+.mini-caption{
+  position:absolute;
+  inset:auto .75rem .75rem;
+  z-index:2;
+  padding:.6rem .65rem;
+  background:rgba(13,16,13,.68);
+  color:#fff;
+  backdrop-filter:blur(8px);
+}
+
+.mini-caption span{
+  display:block;
+  color:rgba(255,255,255,.62);
+  font-size:.5rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.mini-caption strong{
+  display:block;
+  margin-top:.15rem;
+  font-family:"Cormorant Garamond",serif;
+  font-size:1.12rem;
+  font-weight:500;
+}
+
+.option-one-main{
+  position:relative;
+  overflow:hidden;
+  min-height:790px;
+}
+
+.option-one-main::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(20,36,27,.08),transparent 28%);
+  pointer-events:none;
+}
+
+/* =========================================================
+   OPTION 2 — Comparatif éditorial horizontal (recommandée)
+   ========================================================= */
+
+.option-two{
+  position:relative;
+  background:var(--cream);
+  padding:6.2rem 3rem;
+}
+
+.option-two-head{
+  max-width:920px;
+  margin:0 auto 3.4rem;
+  text-align:center;
+}
+
+.option-two-head .eyebrow{justify-content:center}
+.option-two-head .eyebrow::after{
+  content:"";
+  width:38px;
+  height:1px;
+  background:currentColor;
+}
+
+.option-two-head .lead{margin-left:auto;margin-right:auto}
+
+.evolution-stage{
+  position:relative;
+  max-width:1280px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 160px minmax(0,1fr);
+  align-items:center;
+}
+
+.evolution-card{
+  position:relative;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  background:var(--sand);
+  border:1px solid rgba(26,30,26,.09);
+  box-shadow:0 20px 55px rgba(26,30,26,.08);
+}
+
+.evolution-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .85s cubic-bezier(.22,1,.36,1);
+}
+
+.evolution-card:hover img{transform:scale(1.035)}
+
+.evolution-info{
+  position:absolute;
+  inset:auto 0 0;
+  z-index:3;
+  padding:4.2rem 1.5rem 1.5rem;
+  color:#fff;
+  background:linear-gradient(transparent,rgba(13,16,13,.86));
+}
+
+.evolution-step{
+  color:var(--gold-bright);
+  font-size:.53rem;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.evolution-info h3{
+  margin-top:.25rem;
+  font-family:"Cormorant Garamond",serif;
+  font-size:2rem;
+  font-weight:500;
+  line-height:1;
+}
+
+.evolution-info p{
+  max-width:360px;
+  margin-top:.55rem;
+  color:rgba(255,255,255,.75);
+  font-size:.72rem;
+  line-height:1.55;
+}
+
+.evolution-arrow{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+}
+
+.evolution-arrow::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:1px;
+  background:rgba(26,46,34,.2);
+}
+
+.evolution-arrow-core{
+  position:relative;
+  z-index:2;
+  width:92px;
+  height:92px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  color:#fff;
+  background:var(--jungle);
+  box-shadow:0 0 0 16px var(--cream);
+}
+
+.evolution-arrow-core svg{width:30px;height:30px}
+
+.option-two-cta{
+  margin-top:3rem;
+  text-align:center;
+}
+
+/* =========================================================
+   OPTION 3 — Immersive, transformation dans un même cadre
+   ========================================================= */
+
+.option-three{
+  position:relative;
+  min-height:100vh;
+  padding:5rem 3rem;
+  background:var(--jungle-deep);
+  color:#fff;
+}
+
+.option-three-shell{
+  max-width:1450px;
+  margin:auto;
+}
+
+.option-three-intro{
+  max-width:900px;
+  margin-bottom:2.7rem;
+}
+
+.option-three .eyebrow{color:var(--gold-bright)}
+.option-three .title{color:#fff}
+.option-three .title em{color:var(--gold-bright)}
+.option-three .lead{color:rgba(255,255,255,.72)}
+
+.split-visual{
+  position:relative;
+  height:min(68vh,720px);
+  min-height:540px;
+  overflow:hidden;
+  border:1px solid rgba(201,160,88,.26);
+  background:#111;
+}
+
+.split-half{
+  position:absolute;
+  inset:0;
+  width:50%;
+  overflow:hidden;
+}
+
+.split-half.left{left:0}
+.split-half.right{left:50%}
+
+.split-half img{
+  position:absolute;
+  top:0;
+  width:200%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+}
+
+.split-half.left img{left:0}
+.split-half.right img{right:0}
+
+.split-half::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.split-half.left::after{
+  background:linear-gradient(90deg,rgba(13,16,13,.3),transparent 55%);
+}
+
+.split-half.right::after{
+  background:linear-gradient(270deg,rgba(13,16,13,.24),transparent 55%);
+}
+
+.split-divider{
+  position:absolute;
+  z-index:5;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:1px;
+  background:rgba(255,255,255,.72);
+}
+
+.split-divider::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:70px;
+  height:70px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:var(--terracotta);
+  box-shadow:0 0 0 10px rgba(20,36,27,.7);
+}
+
+.split-divider::after{
+  content:"→";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-54%);
+  color:#fff;
+  font-family:"Cormorant Garamond",serif;
+  font-size:2.2rem;
+}
+
+.split-label{
+  position:absolute;
+  z-index:6;
+  bottom:1.5rem;
+  padding:1rem 1.15rem;
+  background:rgba(13,16,13,.7);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(9px);
+}
+
+.split-label.left{left:1.5rem}
+.split-label.right{right:1.5rem;text-align:right}
+
+.split-label small{
+  display:block;
+  color:var(--gold-bright);
+  font-size:.5rem;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.split-label strong{
+  display:block;
+  margin-top:.2rem;
+  font-family:"Cormorant Garamond",serif;
+  font-size:1.7rem;
+  font-weight:500;
+}
+
+.option-three-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:2rem;
+  margin-top:2rem;
+}
+
+.option-three-foot p{
+  max-width:670px;
+  color:rgba(255,255,255,.65);
+  font-size:.82rem;
+}
+
+.option-three .btn{
+  border-color:var(--terracotta);
+  background:var(--terracotta);
+}
+
+.option-three .btn:hover{
+  border-color:#fff;
+  background:#fff;
+  color:var(--jungle);
+}
+
+/* Notice */
+.notice{
+  padding:1rem 1.25rem;
+  color:rgba(250,247,240,.72);
+  background:#101d16;
+  border-top:1px solid rgba(201,160,88,.18);
+  font-size:.68rem;
+  text-align:center;
+}
+
+.notice strong{color:var(--gold-bright)}
+
+/* Responsive */
+@media(max-width:1050px){
+  .option-one-grid{grid-template-columns:1fr}
+  .option-one-copy{padding:4rem 2rem}
+  .option-one-main{min-height:600px}
+  .evolution-stage{grid-template-columns:1fr 105px 1fr}
+}
+
+@media(max-width:760px){
+  .testbar{align-items:flex-start;flex-direction:column}
+  .test-tabs{width:100%}
+  .test-tab{flex:1}
+
+  .option-one,
+  .option-two,
+  .option-three{padding-left:1rem;padding-right:1rem}
+
+  .option-one-copy{padding:3rem 1.25rem}
+
+  .mini-evolution{
+    grid-template-columns:1fr;
+    gap:.75rem;
+  }
+
+  .mini-card{
+    aspect-ratio:4/3;
+  }
+
+  .mini-arrow{
+    height:62px;
+    transform:rotate(90deg);
+  }
+
+  .mini-arrow-circle{
+    box-shadow:0 0 0 8px var(--cream);
+  }
+
+  .option-one-main{min-height:470px}
+
+  .evolution-stage{
+    grid-template-columns:1fr;
+    gap:1rem;
+  }
+
+  .evolution-card{aspect-ratio:4/3}
+
+  .evolution-arrow{
+    height:78px;
+    transform:rotate(90deg);
+  }
+
+  .evolution-arrow-core{
+    width:64px;
+    height:64px;
+    box-shadow:0 0 0 10px var(--cream);
+  }
+
+  .split-visual{
+    min-height:620px;
+  }
+
+  .split-half{
+    width:100%;
+    height:50%;
+  }
+
+  .split-half.left{
+    inset:0 0 auto 0;
+  }
+
+  .split-half.right{
+    inset:50% 0 0 0;
+  }
+
+  .split-half img{
+    width:100%;
+    height:200%;
+  }
+
+  .split-half.left img{
+    left:0;
+    top:0;
+  }
+
+  .split-half.right img{
+    right:auto;
+    top:auto;
+    bottom:0;
+  }
+
+  .split-divider{
+    top:50%;
+    left:0;
+    right:0;
+    bottom:auto;
+    width:auto;
+    height:1px;
+  }
+
+  .split-divider::after{
+    content:"↓";
+  }
+
+  .split-label.left{
+    left:1rem;
+    bottom:auto;
+    top:1rem;
+  }
+
+  .split-label.right{
+    right:1rem;
+    bottom:1rem;
+  }
+
+  .option-three-foot{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+  <header class="testbar">
+    <div class="testbar-brand">Latitude <em>Samui</em> · Comparatif</div>
+    <nav class="test-tabs" aria-label="Choisir une variante">
+      <button class="test-tab active" type="button" data-option="one">Option 1 · Compacte</button>
+      <button class="test-tab" type="button" data-option="two">Option 2 · Éditoriale</button>
+      <button class="test-tab" type="button" data-option="three">Option 3 · Immersive</button>
+    </nav>
+  </header>
+
+  <!-- OPTION 1 -->
+  <main class="option option-one active" data-panel="one">
+    <span class="option-label">Option 1 · Intégrée à la colonne texte</span>
+
+    <div class="option-one-grid">
+      <section class="option-one-copy">
+        <div class="eyebrow">Personnalisation</div>
+        <h1 class="title">Personnalisez<br><em>votre intérieur.</em></h1>
+        <p class="lead">De la configuration Carte Blanche à notre finition signature « Art de Vivre », chaque villa peut évoluer selon votre manière d’habiter l’espace.</p>
+
+        <div class="mini-evolution" aria-label="Évolution de Carte Blanche vers Art de Vivre">
+          <figure class="mini-card">
+            <img
+              src="photos/sabai/interior-blank.jpg"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85'"
+              alt="Intérieur sobre représentant la configuration Carte Blanche">
+            <figcaption class="mini-caption">
+              <span>Point de départ</span>
+              <strong>Carte Blanche</strong>
+            </figcaption>
+          </figure>
+
+          <div class="mini-arrow" aria-hidden="true">
+            <div class="mini-arrow-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <line x1="4" y1="12" x2="20" y2="12"/>
+                <polyline points="13 5 20 12 13 19"/>
+              </svg>
+            </div>
+          </div>
+
+          <figure class="mini-card">
+            <img
+              src="photos/sabai/interior-art-de-vivre.jpg"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=85'"
+              alt="Intérieur aménagé représentant la finition Art de Vivre">
+            <figcaption class="mini-caption">
+              <span>Finition signature</span>
+              <strong>Art de Vivre</strong>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div>
+          <a class="btn" href="#!">
+            Découvrir les villas
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <figure class="option-one-main">
+        <img
+          class="image"
+          src="photos/sabai/6.jpg"
+          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=88'"
+          alt="Salle à manger contemporaine d’une villa Latitude Samui">
+      </figure>
+    </div>
+  </main>
+
+  <!-- OPTION 2 -->
+  <main class="option option-two" data-panel="two">
+    <span class="option-label">Option 2 · Recommandée</span>
+
+    <header class="option-two-head">
+      <div class="eyebrow">Personnaliser sa villa</div>
+      <h1 class="title">Un intérieur qui<br><em>évolue avec vous.</em></h1>
+      <p class="lead">De la simplicité de Carte Blanche à l’atmosphère signature Art de Vivre, explorez deux niveaux d’aménagement autour d’une même architecture.</p>
+    </header>
+
+    <div class="evolution-stage">
+      <figure class="evolution-card">
+        <img
+          src="photos/sabai/interior-blank.jpg"
+          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=86'"
+          alt="Configuration intérieure Carte Blanche">
+        <figcaption class="evolution-info">
+          <span class="evolution-step">01 · Essentiel</span>
+          <h3>Carte Blanche</h3>
+          <p>Une base sobre et structurée, prête à recevoir votre mobilier, vos objets et votre propre direction décorative.</p>
+        </figcaption>
+      </figure>
+
+      <div class="evolution-arrow" aria-hidden="true">
+        <div class="evolution-arrow-core">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <polyline points="14 5 21 12 14 19"/>
+          </svg>
+        </div>
+      </div>
+
+      <figure class="evolution-card">
+        <img
+          src="photos/sabai/interior-art-de-vivre.jpg"
+          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=86'"
+          alt="Finition intérieure Art de Vivre">
+        <figcaption class="evolution-info">
+          <span class="evolution-step">02 · Signature</span>
+          <h3>Art de Vivre</h3>
+          <p>Une atmosphère complète, enrichie par les matières, le mobilier, les luminaires et les détails décoratifs.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="option-two-cta">
+      <a class="btn" href="#!">
+        Découvrir les villas
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+  </main>
+
+  <!-- OPTION 3 -->
+  <main class="option option-three" data-panel="three">
+    <span class="option-label">Option 3 · Immersive</span>
+
+    <div class="option-three-shell">
+      <header class="option-three-intro">
+        <div class="eyebrow">Deux niveaux d’aménagement</div>
+        <h1 class="title">Une même villa,<br><em>deux expressions.</em></h1>
+        <p class="lead">Commencez avec Carte Blanche, puis découvrez comment la finition Art de Vivre transforme la même architecture en un intérieur entièrement composé.</p>
+      </header>
+
+      <div class="split-visual" aria-label="Comparaison visuelle Carte Blanche et Art de Vivre">
+        <div class="split-half left">
+          <img
+            src="photos/sabai/interior-blank-horizontal.jpg"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=88'"
+            alt="Configuration Carte Blanche">
+        </div>
+
+        <div class="split-half right">
+          <img
+            src="photos/sabai/interior-art-de-vivre-horizontal.jpg"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=88'"
+            alt="Finition Art de Vivre">
+        </div>
+
+        <div class="split-divider" aria-hidden="true"></div>
+
+        <div class="split-label left">
+          <small>Configuration essentielle</small>
+          <strong>Carte Blanche</strong>
+        </div>
+
+        <div class="split-label right">
+          <small>Finition signature</small>
+          <strong>Art de Vivre</strong>
+        </div>
+      </div>
+
+      <div class="option-three-foot">
+        <p>Cette version donne davantage d’impact au concept de transformation. Elle fonctionne particulièrement bien lorsque les deux visuels présentent exactement la même pièce et le même cadrage.</p>
+
+        <a class="btn" href="#!">
+          Découvrir les villas
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="notice">
+    Les visuels distants sont uniquement des <strong>placeholders de mise en page</strong>. Les chemins locaux prévus sont déjà indiqués dans le code.
+  </footer>
+
+<script>
+(function(){
+  const tabs = Array.from(document.querySelectorAll('.test-tab'));
+  const panels = Array.from(document.querySelectorAll('.option'));
+
+  function showOption(name){
+    tabs.forEach(tab => {
+      const active = tab.dataset.option === name;
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-pressed', String(active));
+    });
+
+    panels.forEach(panel => {
+      panel.classList.toggle('active', panel.dataset.panel === name);
+    });
+
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => showOption(tab.dataset.option));
+  });
+})();
+</script>
+</body>
+</html>

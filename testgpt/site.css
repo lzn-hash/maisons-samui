@@ -609,7 +609,20 @@ img{max-width:100%;display:block}
   .pillars{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:900px){
-  .hero-inner{padding:0 1.5rem 4.7rem}.hero-controls{left:1.5rem;right:auto;bottom:1rem}
+  .hero-inner{padding:0 1.5rem 4.7rem}
+  .home-hero .hero-controls{
+    left:50%;
+    right:auto;
+    bottom:1rem;
+    width:calc(100% - 3rem);
+    max-width:343px;
+    transform:translateX(-50%);
+    display:grid;
+    grid-template-columns:repeat(6,minmax(0,1fr)) 38px;
+    gap:clamp(.28rem,1.7vw,.55rem);
+  }
+  .home-hero .indicator{width:100%;min-width:0}
+  .home-hero .hero-pause{width:38px}
   .promise,.villas,.island-preview,.team,.journey,.contact-band,.content-section{padding-left:1.5rem;padding-right:1.5rem}
   .section-head,.island-grid,.contact-grid,.content-grid,.content-grid.reverse{grid-template-columns:1fr;gap:2.6rem}
   .section-head .section-lead{text-align:left;justify-self:start}

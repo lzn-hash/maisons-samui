@@ -692,14 +692,21 @@ img{max-width:100%;display:block}
       sous les boutons, avec l'espace nécessaire réservé.
    ============================================================ */
 @media(max-width:700px){
-  /* espace réservé sous les boutons pour la rangée d'indicateurs */
-  .home-hero .hero-inner{padding-bottom:5.2rem}
+  /* Le min-height de 680px forçait le hero plus haut que la zone
+     réellement visible quand la barre d'adresse du navigateur est
+     affichée (600-650px sur beaucoup de téléphones) : le hero
+     dépassait alors de 30 à 120px. On laisse 100svh faire le travail. */
+  .home-hero,.page-hero{min-height:0}
+
+  /* espace réservé sous les boutons pour la rangée d'indicateurs,
+     avec marge confortable et prise en compte de la zone sûre iOS */
+  .home-hero .hero-inner{padding-bottom:calc(6.4rem + env(safe-area-inset-bottom,0px))}
 
   /* indicateurs centrés sur toute la largeur, plus de collision */
   .hero-controls{
     left:0;
     right:0;
-    bottom:1.5rem;
+    bottom:calc(1.35rem + env(safe-area-inset-bottom,0px));
     justify-content:center;
     padding:0 1.25rem;
   }
@@ -707,4 +714,15 @@ img{max-width:100%;display:block}
   /* zone de tap confortable sans agrandir la barre visible */
   .indicator{padding:1.2rem 0;background-clip:content-box}
   .hero-pause{width:38px;height:38px;flex-shrink:0}
+}
+
+/* Écrans mobiles courts (barre d'adresse visible sur petit téléphone) :
+   on réduit le titre et les espacements pour que tout le contenu du hero
+   tienne sous la navigation sans être masqué. */
+@media(max-width:700px) and (max-height:660px){
+  .home-hero h1,.page-hero h1{font-size:clamp(2.5rem,12.5vw,3.6rem)}
+  .home-hero .hero-tagline{font-size:1rem;line-height:1.45}
+  .hero-actions{margin-top:.9rem;gap:.6rem}
+  .home-hero .hero-inner{padding-bottom:calc(5.4rem + env(safe-area-inset-bottom,0px))}
+  .hero-eyebrow{margin-bottom:.6rem}
 }

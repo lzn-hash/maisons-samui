@@ -123,9 +123,25 @@ superposaient de 15 px en V16.
 - La zone de tap des indicateurs passe de 34 à 38 px sans modifier
   l'apparence des barres (`padding` + `background-clip:content-box`).
 
+**Le hero dépassait de l'écran sur mobile — cause réelle identifiée.**
+Au-delà du `100vh`, la cause principale était `min-height:680px` appliqué au
+hero sur mobile. Lorsque la barre d'adresse du navigateur est affichée, la
+zone réellement visible tombe à 600–650 px sur beaucoup de téléphones : le
+hero restait forcé à 680 px et dépassait donc de 30 à 120 px.
+
+- `min-height` neutralisé sur mobile : `100svh` détermine seul la hauteur,
+  qui correspond exactement à la surface visible.
+- Espace réservé sous les boutons porté à 6,4 rem, avec prise en compte de
+  `env(safe-area-inset-bottom)` pour les iPhone à encoche.
+- Nouvelle règle pour les **écrans courts** (hauteur ≤ 660 px) : titre et
+  espacements réduits afin que le contenu du hero ne passe jamais sous la
+  barre de navigation.
+
 Vérifié sur 320, 360, 375, 390, 414, 430, 540 et 700 px de large :
 hauteur du hero strictement égale à celle de l'écran, superposition nulle,
-contrôles centrés. Le comportement sur ordinateur est inchangé (boutons à
+contrôles centrés. Vérifié également sur onze combinaisons largeur/hauteur
+représentatives (320x540 à 430x932) : aucun dépassement, aucune superposition,
+aucun texte masqué par la navigation. Le comportement sur ordinateur est inchangé (boutons à
 gauche, contrôles à droite, aucun chevauchement).
 
 ---

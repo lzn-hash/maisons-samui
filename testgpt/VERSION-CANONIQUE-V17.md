@@ -98,6 +98,36 @@ Liens ajoutés dans le pied de page de toutes les pages.
 - Le bouton de bascule glass / sombre de la navigation
   (`NAV_DARK_TEST = true`) est **maintenu** à la demande.
 
+
+## 11. Hero mobile — plein écran et superposition (correction post-audit)
+
+Deux défauts signalés après la première passe, tous deux présents en V16 :
+
+**Le hero n'était pas réellement en plein écran sur mobile.**
+La hauteur était fixée à `height:100vh`. Sur les navigateurs mobiles, `100vh`
+correspond à la hauteur *sans* la barre d'adresse : le hero dépassait donc de
+la zone réellement visible. Corrigé en `height:100svh` (avec repli `100vh`
+pour les navigateurs anciens). S'applique aussi aux pages éditoriales
+(`.page-hero`).
+
+**Les indicateurs du diaporama chevauchaient les boutons.**
+Le bloc des six barres et du bouton pause était positionné en absolu en bas à
+droite, alors que les boutons passent en pleine largeur sur mobile : ils se
+superposaient de 15 px en V16.
+
+- Les contrôles sont désormais **centrés** sur toute la largeur, sous les
+  boutons.
+- L'espace nécessaire est réservé via `padding-bottom:5.2rem` sur
+  `.home-hero .hero-inner` (la règle précédente était masquée par une règle
+  plus spécifique déclarée plus haut dans la feuille).
+- La zone de tap des indicateurs passe de 34 à 38 px sans modifier
+  l'apparence des barres (`padding` + `background-clip:content-box`).
+
+Vérifié sur 320, 360, 375, 390, 414, 430, 540 et 700 px de large :
+hauteur du hero strictement égale à celle de l'écran, superposition nulle,
+contrôles centrés. Le comportement sur ordinateur est inchangé (boutons à
+gauche, contrôles à droite, aucun chevauchement).
+
 ---
 
 ## Contrôles effectués

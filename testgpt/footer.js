@@ -10,7 +10,7 @@
     .sf-col ul{list-style:none;margin:0;padding:0}.sf-col li{padding:.34rem 0;font:300 .86rem/1.45 Inter,sans-serif}
     .sf-col a{color:rgba(255,255,255,.68);text-decoration:none;transition:color .25s;cursor:pointer}.sf-col a:hover{color:#d4a945}
     .sf-contact-btn{border:0;background:transparent;padding:0;color:rgba(255,255,255,.68);font:300 .86rem/1.45 Inter,sans-serif;cursor:pointer}.sf-contact-btn:hover{color:#d4a945}
-    .sf-bottom{max-width:1400px;margin:0 auto;padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font:300 .66rem/1.4 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.43)}
+    .sf-legal{display:inline-flex;gap:1.1rem}.sf-legal a{color:inherit;text-decoration:none;opacity:.85}.sf-legal a:hover{opacity:1;color:#d4a945}.sf-bottom{flex-wrap:wrap;gap:.6rem 1.5rem;max-width:1400px;margin:0 auto;padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font:300 .66rem/1.4 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.43)}
     @media(max-width:900px){footer.sf{padding:3.5rem 1.5rem 2rem}.sf-inner{grid-template-columns:1fr 1fr}.sf-brand{grid-column:1/-1}.sf-logo img{height:122px}}
     @media(max-width:620px){.sf-inner{grid-template-columns:1fr;gap:2rem}.sf-brand{grid-column:auto}.sf-bottom{align-items:flex-start;flex-direction:column}.sf-logo img{height:108px}}
   `;
@@ -40,7 +40,11 @@
     +       '<li><button type="button" class="sf-contact-btn" onclick="if(window.snOpenContact){snOpenContact(\'footer\')}else if(window.openContactModal){openContactModal({intent:\'contact\',source:\'footer\'})}">Prendre rendez-vous →</button></li>'
     +     '</ul></div>'
     +   '</div>'
-    +   '<div class="sf-bottom"><span>© 2026 Latitude Samui · Koh Samui, Thaïlande</span><span>Cryptos acceptées · BTC · USDC · USDT</span></div>'
+    +   '<div class="sf-bottom">'
+    +     '<span>© 2026 Latitude Samui · Koh Samui, Thaïlande</span>'
+    +     '<span class="sf-legal"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></span>'
+    +     '<span>Cryptos acceptées · BTC · USDC · USDT</span>'
+    +   '</div>'
     + '</footer>';
 
   var style = document.createElement('style');

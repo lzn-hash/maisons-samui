@@ -659,3 +659,26 @@ img{max-width:100%;display:block}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.slide{transition:none}.slide.active img,.indicator.active::after{animation:none}.villa-media img,.team-photo img,.island-photo img{transition:none}
 }
+
+
+/* ============================================================
+   CORRECTIONS MOBILE — audit
+   Les sections de l'accueil conservaient leur padding desktop
+   (96-104px) sur téléphone : seule .promise était réduite.
+   Sur un écran de 844px de haut, cela gaspillait ~25% de
+   l'écran à chaque transition de section.
+   ============================================================ */
+@media(max-width:700px){
+  .villas,
+  .island-preview,
+  .team,
+  .journey,
+  .contact-band,
+  .content-section{padding-top:3.5rem;padding-bottom:3.5rem}
+
+  /* Zones tactiles portées à 44px (recommandation Apple/Google) */
+  .hero-pause{width:44px;height:44px}
+  .indicator{min-height:44px;display:flex;align-items:center}
+  .footer-links a,
+  .footer-col a{display:inline-block;padding:0.45rem 0;min-height:44px;line-height:1.6}
+}

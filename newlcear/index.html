@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latitude Samui — Villas d'exception à Koh Samui</title>
+<meta name="description" content="Villas de 3 à 5 chambres avec piscine privée à Lamai, Koh Samui. Conception, construction et accompagnement par une équipe présente sur place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* fonds */
+  --cream:#f4efe6;
+  --white:#fffdf9;
+  --white-pur:#ffffff;
+  --jungle:#1a2e22;
+  --jungle-deep:#14241b;
+  /* textes */
+  --ink:#1a1e1a;
+  --ink-soft:#5a5f5a;
+  --ink-lead:#506058;
+  --ink-faint:#6f746e;
+  /* accents */
+  --vert-titre:#2e4600;
+  --saumon:#e8bda4;
+  /* filets */
+  --line:rgba(26,30,26,.14);
+  --line-soft:rgba(26,30,26,.07);
+  /* voiles sombres, base commune */
+  --voile:9,17,12;
+  /* typographie et gabarit */
+  --display:"Cormorant Garamond",serif;
+  --sans:"Manrope",system-ui,sans-serif;
+  --gut:clamp(1.25rem,4vw,3rem);
+  --nav-h:92px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--cream);line-height:1.7;overflow-x:hidden}
+img{display:block;width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--vert-titre);outline-offset:3px}
+
+.h-sec{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,5.4vw,4rem);line-height:1.03;letter-spacing:-.025em}
+.h-sec em{font-style:italic;color:var(--vert-titre)}
+.on-dark .h-sec em,.h-sec.on-dark em{color:var(--saumon)}
+.lead{font-family:var(--display);font-size:clamp(1.35rem,2.3vw,1.6rem);line-height:1.5;color:var(--ink-soft);margin-top:1.3rem;max-width:46ch}
+.lead.on-dark{color:rgba(255,253,249,.76)}
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:.8rem;
+  padding:.95rem 1.7rem;border-radius:999px;border:1px solid transparent;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  transition:border-color .3s ease,color .25s ease}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:scaleX(0);transform-origin:left;
+  transition:transform .46s cubic-bezier(.4,0,.2,1)}
+.btn:hover{transition:border-color .3s ease,color .25s ease .18s}
+.btn:hover::before{transform:scaleX(1)}
+.btn svg{width:14px;height:14px;flex-shrink:0}
+.btn-solid{background:var(--jungle);color:var(--white)}
+.btn-solid::before{background:var(--ink)}
+.btn-light{background:var(--white);color:var(--ink)}
+.btn-light::before{background:var(--saumon)}
+.btn-ghost{border-color:rgba(255,253,249,.55);color:var(--white)}
+.btn-ghost::before{background:var(--white)}
+.btn-ghost:hover{color:var(--jungle);border-color:var(--white)}
+.ulink{position:relative;display:inline-block;margin-top:22px;padding-bottom:8px;color:inherit;
+  font-family:var(--sans);font-weight:400;font-size:10px;text-transform:uppercase;letter-spacing:.12em}
+.ulink::before,.ulink::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:currentColor}
+.ulink::before{transform-origin:right;transition:transform .32s cubic-bezier(.4,0,.2,1) .2s}
+.ulink:hover::before{transform:scaleX(0);transition-delay:0s}
+.ulink::after{transform:scaleX(0);transform-origin:left;transition:transform .32s cubic-bezier(.4,0,.2,1)}
+.ulink:hover::after{transform:scaleX(1);transition-delay:.2s}
+.ulink.on-dark{color:var(--white)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.09s}.d2{transition-delay:.18s}.d3{transition-delay:.27s}.d4{transition-delay:.36s}
+
+/* réserves photo — chaque bloc affiche le chemin du fichier à déposer */
+.ph{position:relative;isolation:isolate;background:var(--jungle-deep);overflow:hidden;display:block;width:100%;height:100%}
+.ph::before{content:"";position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cg fill='none' stroke='%23faf7f0' stroke-width='9' stroke-linecap='round'%3E%3Cpath d='M70 335 H442'/%3E%3Cpath d='M116 335 A140 140 0 0 1 396 335'/%3E%3Cpath d='M256 195 V335'/%3E%3C/g%3E%3Ccircle cx='256' cy='335' r='17' fill='%23faf7f0'/%3E%3C/svg%3E") center/78px no-repeat;opacity:.15}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.ph::after{content:attr(data-path);position:absolute;left:50%;bottom:clamp(12px,4%,24px);transform:translateX(-50%);
+  font-size:.62rem;letter-spacing:.09em;color:rgba(255,253,249,.4);white-space:nowrap;font-weight:500}
+
+/* ---------- Navigation ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:60;height:var(--nav-h);padding:0 var(--gut);display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;color:var(--white);backdrop-filter:blur(2px);border-bottom:1px solid rgba(255,253,249,.18);transition:height .35s ease,background .35s ease,color .35s ease,border-color .35s ease}
+.nav.scrolled{height:74px;color:var(--ink);background:rgba(255,253,249,.94);backdrop-filter:blur(18px);border-color:var(--line)}
+.nav-logo{display:block;width:240px;flex-shrink:0;color:currentColor}
+.nav-logo svg{width:100%;height:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:2rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.nav-links a{opacity:.88;transition:opacity .25s}
+.nav-links a:hover{opacity:1}
+.nav-cta{border:1px solid currentColor;border-radius:999px;padding:.75rem 1.4rem;transition:background .3s,color .3s}
+.nav.scrolled .nav-cta:hover{background:var(--jungle);border-color:var(--jungle);color:var(--white)}
+.nav:not(.scrolled) .nav-cta:hover{background:var(--white);color:var(--jungle)}
+.burger{display:none;width:40px;height:40px;flex-direction:column;justify-content:center;gap:6px;align-items:center}
+.burger span{width:22px;height:1px;background:currentColor;transition:transform .25s}
+.nav.open .burger span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.nav.open .burger span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+@media(max-width:900px){
+  :root{--nav-h:70px}
+  .nav{height:var(--nav-h)}
+  .nav.scrolled{height:64px}
+  .nav-logo{width:190px}
+  .burger{display:flex}
+  .nav-links{position:absolute;inset:70px 0 auto;flex-direction:column;align-items:stretch;gap:0;padding:1.2rem var(--gut) 2rem;
+    background:#fffdf9;color:var(--ink);border-top:1px solid var(--line);display:none}
+  .nav.open{background:#fffdf9;color:var(--ink);border-color:var(--line)}
+  .nav.open .nav-links{display:flex}
+  .nav-links a{padding:1.05rem 0;border-bottom:1px solid var(--line-soft)}
+  .nav-cta{border:0;border-radius:0;padding:1.05rem 0;text-align:left}
+}
+
+/* ---------- Hero (mécanique identique à la V18) ---------- */
+.hero{position:relative;height:100svh;min-height:520px;overflow:hidden;background:var(--jungle-deep);color:var(--white)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.25s ease}
+.slide.active{opacity:1}
+.slide .ph{will-change:transform}
+.slide.active .ph{animation:kenBurns 7.2s linear forwards}
+@keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.065) translate(-.55%,.55%)}}
+.hero.paused .slide.active .ph,.hero.paused .indicator.active::after{animation-play-state:paused}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--voile),.64),transparent 62%),linear-gradient(0deg,rgba(var(--voile),.5),transparent 40%),linear-gradient(0deg,rgba(var(--voile),.2),transparent 52%),linear-gradient(120deg,rgba(39,56,47,.2),rgba(156,128,105,.08))}
+.hero-inner{position:relative;z-index:3;max-width:1440px;height:100%;margin:0 auto;
+  padding:var(--nav-h) var(--gut) clamp(2rem,7vh,7.5rem);
+  display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(3.6rem,8.4vw,7.4rem);line-height:.93;letter-spacing:-.035em;margin-top:1.1rem;max-width:14ch}
+.hero h1 em{font-style:italic;color:var(--saumon)}
+.hero-tagline{font-family:var(--display);font-size:clamp(1.15rem,1.9vw,1.4rem);line-height:1.55;color:rgba(255,253,249,.84);max-width:44ch;margin-top:1.3rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.2rem}
+.hero-controls{position:absolute;z-index:5;right:max(var(--gut),calc((100vw - 1440px)/2 + var(--gut)));bottom:2.2rem;
+  display:flex;align-items:center;gap:.55rem}
+.indicator{position:relative;width:42px;height:34px;padding:0}
+.indicator::before{content:"";position:absolute;left:0;right:0;top:16px;height:2px;background:rgba(255,255,255,.3)}
+.indicator.active::after{content:"";position:absolute;left:0;top:16px;height:2px;width:0;background:var(--white);animation:heroProgress 6.5s linear forwards}
+@keyframes heroProgress{to{width:100%}}
+.hero-pause{width:38px;height:38px;border:1px solid rgba(255,255,255,.36);border-radius:50%;background:rgba(var(--voile),.2);
+  color:var(--white);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-pause svg{width:14px;height:14px}
+.hero-pause .play-icon{display:none}
+.hero-pause[aria-pressed="true"] .pause-icon{display:none}
+.hero-pause[aria-pressed="true"] .play-icon{display:block}
+@media(max-width:900px){
+  .hero-inner{padding-bottom:6.5rem}
+  .hero-controls{left:var(--gut);right:var(--gut);bottom:calc(1.4rem + env(safe-area-inset-bottom,0px));
+    display:grid;grid-template-columns:repeat(6,minmax(0,1fr)) 38px;gap:clamp(.3rem,1.8vw,.55rem)}
+  .indicator{width:100%;min-width:0;height:30px}
+  .indicator::before,.indicator.active::after{top:14px}
+}
+
+/* ---------- Sections claires ---------- */
+.sec{padding:clamp(5rem,10vw,9rem) 0}
+.sec-clair{background:var(--white)}
+.sec-head{padding:0 var(--gut);max-width:1440px;margin:0 auto clamp(2.5rem,5vw,4rem)}
+.sec-head.split{display:grid;grid-template-columns:1.25fr .75fr;gap:2rem clamp(3rem,8vw,7rem);align-items:end}
+.sec-head.split .lead{margin-top:0}
+@media(max-width:900px){.sec-head.split{grid-template-columns:1fr}}
+
+.intro{max-width:1440px;margin:0 auto;min-height:66vh;padding:clamp(5rem,10vw,9rem) var(--gut) clamp(4rem,7vw,7rem);
+  display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(2.5rem,8vw,7rem);align-items:center}
+.intro h2{font-family:var(--display);font-weight:400;font-size:clamp(3rem,6.4vw,6rem);line-height:1;letter-spacing:-.03em}
+.intro h2 em{font-style:italic;color:var(--vert-titre)}
+.intro-copy{max-width:440px}
+.intro-copy p{font-family:var(--display);font-weight:400;font-size:23px;line-height:1.45;color:var(--ink-lead)}
+.intro-copy p+p{margin-top:1.05rem}
+@media(max-width:900px){.intro{grid-template-columns:1fr;min-height:0;align-items:start}}
+@media(max-width:680px){.intro-copy p{font-size:20px}}
+
+/* ---------- Mosaïque villas ---------- */
+.villas{background:var(--white);overflow:hidden;padding-bottom:clamp(5rem,10vw,9rem)}
+.vg{max-width:1560px;margin:0 auto;scroll-margin-top:var(--nav-h);padding:0 clamp(.75rem,2vw,1.5rem);display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  grid-template-rows:clamp(340px,34vw,480px) clamp(240px,23vw,320px);gap:14px}
+.vg-1{grid-column:1/5;grid-row:1}
+.vg-2{grid-column:5/7;grid-row:1}
+.vg-3{grid-column:1/3;grid-row:2}
+.vg-4{grid-column:3/7;grid-row:2}
+.vcard{position:relative;overflow:hidden;display:block;color:var(--white-pur)}
+.vcard .ph{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.vcard:hover .ph{transform:scale(1.045)}
+.vshade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(var(--voile),.67),transparent 62%);pointer-events:none}
+.vtop{position:absolute;top:20px;left:22px;right:22px;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white-pur);text-shadow:0 1px 3px rgba(var(--voile),.55)}
+.vtag{color:var(--white-pur);font-weight:600}
+.vbadge{background:var(--white-pur);color:var(--jungle);border-radius:999px;padding:.42rem .95rem;font-weight:600;
+  letter-spacing:.14em;white-space:nowrap;text-shadow:none}
+.vfoot{position:absolute;left:22px;right:22px;bottom:19px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:1.2rem}
+.vloc{display:block;font-size:.6rem;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.76);margin-bottom:.3rem}
+.vname{display:block;color:var(--white-pur);font-family:var(--display);font-weight:400;line-height:.98;letter-spacing:-.015em;font-size:clamp(1.8rem,3vw,2.5rem)}
+.vg-1 .vname{font-size:clamp(2.6rem,5vw,4.2rem)}
+.vg-2 .vname{font-size:clamp(2rem,3.4vw,2.9rem)}
+.vspecs{display:block;font-size:.72rem;color:rgba(255,255,255,.72);margin-top:.5rem}
+.vprice{text-align:right;white-space:nowrap;padding-bottom:.2rem}
+.vprice small{display:block;font-size:.57rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.vprice b{font-family:var(--display);font-weight:500;font-size:clamp(1.25rem,2vw,1.6rem);letter-spacing:-.01em}
+.vg-1 .vprice b{font-size:clamp(1.6rem,2.6vw,2.1rem)}
+.vright{display:flex;align-items:flex-end;gap:clamp(.7rem,1.2vw,1.1rem)}
+.varrow{width:45px;height:45px;flex-shrink:0;display:grid;place-items:center;border:1px solid rgba(255,255,255,.7);
+  border-radius:50%;transition:background .3s ease,color .3s ease,border-color .3s ease,transform .3s ease}
+.varrow svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.vcard:hover .varrow{background:var(--white-pur);border-color:var(--white-pur);color:var(--jungle);transform:translate(2px,-2px)}
+.vnote{max-width:1560px;margin:1.5rem auto 0;padding:0 clamp(.75rem,2vw,1.5rem);font-size:.76rem;color:var(--ink-faint)}
+@media(max-width:1000px){
+  .vg{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:clamp(260px,42vw,340px)}
+  .vg-1{grid-column:1/3;grid-row:auto;min-height:clamp(320px,52vw,420px)}
+  .vg-2,.vg-3{grid-column:auto;grid-row:auto}
+  .vg-4{grid-column:1/3;grid-row:auto}
+}
+@media(max-width:640px){
+  .vg{grid-template-columns:1fr;grid-auto-rows:clamp(300px,68vw,380px)}
+  .vg-1,.vg-2,.vg-3,.vg-4{grid-column:auto;min-height:0}
+  .vg-1{min-height:clamp(340px,80vw,430px)}
+  .vfoot{flex-direction:column;align-items:flex-start;gap:.7rem}
+  .vprice{text-align:left}
+}
+
+/* ---------- Île ---------- */
+.island{position:relative;min-height:clamp(460px,58vw,640px);display:grid;align-items:center;color:var(--white);overflow:hidden}
+.island .ph{position:absolute;inset:0}
+.island-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--voile),.86),rgba(var(--voile),.36) 62%,rgba(var(--voile),.2))}
+.island-inner{position:relative;z-index:2;max-width:1440px;width:100%;margin:0 auto;padding:clamp(4rem,8vw,6rem) var(--gut)}
+.island-inner .lead{margin-bottom:2rem}
+
+/* ---------- Équipe ---------- */
+.team-roles{max-width:1440px;margin:0 auto;padding:0 var(--gut);display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.5rem,3vw,2.6rem)}
+.team-role{padding-top:.2rem}
+.team-role .fonction{display:block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--ink-faint)}
+.team-role .nom{font-family:var(--display);font-weight:400;font-size:clamp(1.35rem,2vw,1.7rem);line-height:1.1;margin:.45rem 0 .65rem}
+.team-role .txt{font-size:.86rem;line-height:1.75;color:var(--ink-soft)}
+@media(max-width:800px){.team-roles{grid-template-columns:1fr}}
+
+/* ---------- Parcours ---------- */
+.journey{background:linear-gradient(180deg,#101d16,#1d3527);color:var(--white)}
+.journey .h-sec{color:var(--white)}
+.journey .h-sec em{color:var(--saumon)}
+.journey .lead{color:rgba(255,253,249,.76)}
+.steps{max-width:1440px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(1.5rem,2.5vw,2.2rem)}
+.step{padding:1.5rem 1.25rem;border-radius:3px;transition:background .4s ease}
+.step:nth-child(1){background:rgba(255,253,249,.018)}
+.step:nth-child(2){background:rgba(255,253,249,.038)}
+.step:nth-child(3){background:rgba(255,253,249,.058)}
+.step:nth-child(4){background:rgba(255,253,249,.082)}
+.step:nth-child(5){background:rgba(255,253,249,.11)}
+.step:hover{background:rgba(255,253,249,.15)}
+.step-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.15rem}
+.step-icon{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,253,249,.32);background:rgba(var(--voile),.3);
+  color:var(--white);flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  transition:transform .35s ease,background .35s ease,border-color .35s ease,color .35s ease}
+.step-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.step:hover .step-icon{transform:scale(1.05);background:var(--white);border-color:var(--white);color:var(--jungle-deep)}
+.step b{display:block;font-size:.63rem;letter-spacing:.22em;color:rgba(255,253,249,.6);font-weight:600}
+.step h3{font-family:var(--display);font-weight:400;font-size:clamp(1.35rem,1.9vw,1.65rem);line-height:1.14;margin:0 0 .6rem}
+.step p{font-size:.83rem;line-height:1.75;color:rgba(255,253,249,.72)}
+@media(max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* ---------- Contact ---------- */
+.contact{position:relative;isolation:isolate;background:var(--jungle);color:var(--white);overflow:hidden;padding:clamp(5rem,9vw,6.5rem) var(--gut)}
+.contact-bg{position:absolute;inset:0;z-index:0;opacity:.18;mix-blend-mode:screen;pointer-events:none}
+.contact-grid{position:relative;z-index:2;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:.75fr 1.25fr;
+  gap:clamp(2.6rem,5vw,4.5rem);align-items:center}
+.contact-details{display:flex;flex-direction:column;gap:1.45rem;padding-right:2rem;border-right:1px solid rgba(255,253,249,.22)}
+.contact-row{display:grid;grid-template-columns:42px 1fr;align-items:center;gap:1rem}
+.contact-icon{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,253,249,.32);background:rgba(26,30,26,.18);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-icon svg{width:18px;height:18px}
+.contact-label{font-size:.56rem;letter-spacing:.23em;text-transform:uppercase;color:rgba(255,253,249,.65)}
+.contact-value{font-family:var(--display);font-size:1.08rem;color:var(--white);text-decoration:none;transition:opacity .25s}
+a.contact-value:hover{opacity:.72}
+.contact-main .contact-main .h-sec{color:var(--white);font-size:clamp(2.8rem,5vw,4.7rem)}
+.contact-main .h-sec em{color:var(--saumon)}
+.contact-main .lead{color:rgba(255,253,249,.88);max-width:56ch}
+.contact-main .btn{margin-top:2rem}
+@media(max-width:900px){
+  .contact-grid{grid-template-columns:1fr;gap:2.6rem}
+  .contact-main{order:-1}
+  .contact-details{border-right:0;border-top:1px solid rgba(255,253,249,.22);padding:2rem 0 0}
+}
+
+footer{background:var(--ink);color:rgba(255,253,249,.62);padding:2.4rem var(--gut);
+  display:flex;flex-wrap:wrap;gap:1.2rem 2rem;justify-content:space-between;align-items:center;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+footer .nav-logo{width:200px;color:rgba(255,253,249,.9)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ls-logo" viewBox="0 0 1500 380"><g
+     fill="none"
+     stroke="currentColor"
+     stroke-width="8"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+    <path
+       d="M 80,230 H 460" />
+    <path
+       d="m 135,230 a 135,135 0 0 1 270,0" />
+    <path
+       d="M 270,95 V 230" />
+  </g>
+  <circle
+     cx="270"
+     cy="230"
+     r="13"
+     fill="currentColor" />
+  <g>
+    <path
+       d="m 287.5,245 v 1.98 0 0 l 1.94,-1.98 1.95,1.98 v 0 l 1.94,0.39 1.95,0.1 1.94,0.3 1.95,1.18 -1.95,0.59 h -1.94 l -1.95,0.13 -1.94,0.1 -1.95,0.17 -1.94,-0.17 h -1.94 l -1.95,-0.1 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,-0.13 -1.94,-0.34 h -1.95 l -0.97,-0.25 0.97,-0.66 1.95,-0.33 1.94,-0.98 h 1.94 v 0 l 1.95,-1.98 h 1.94 l 1.95,1.98 v 0 h 1.94 v 0 l 1.95,-0.99 1.94,-0.99 v 0 z m -138.06,6.09 h 1.95 l 1.94,0.03 1.95,0.01 1.94,-0.01 1.95,0.01 1.94,-0.01 h 1.95 l 1.94,0.01 h 1.94 l 1.95,0.01 h 1.94 1.95 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 h 1.95 l 1.94,0.01 h 1.95 1.94 1.94 l 1.95,-0.01 h 1.94 l 1.95,-0.01 1.94,-0.01 1.95,-0.01 1.94,0.01 h 1.95 l 1.94,0.01 1.94,0.01 h 1.95 1.94 1.95 l 1.94,-0.01 1.95,-0.01 h 1.94 l 1.95,0.01 1.94,0.01 1.94,0.02 1.95,-0.02 1.94,-0.03 1.95,-0.02 1.94,-0.02 h 1.95 1.94 l 1.95,0.01 h 1.94 1.94 1.95 1.94 1.95 l 1.94,0.01 h 1.95 1.94 l 1.95,0.01 1.94,-0.01 1.94,-0.01 h 1.95 1.94 l 1.95,0.01 h 1.94 l 1.95,-0.02 1.94,-0.01 1.95,-0.01 1.94,-0.01 1.94,-0.01 h 1.95 1.94 l 1.95,0.01 1.94,0.01 1.95,0.01 1.94,0.02 1.95,0.02 1.94,0.01 1.94,0.01 1.95,0.01 h 1.94 1.95 l 1.94,0.01 h 1.95 l 1.94,0.01 h 1.95 l 1.94,-0.01 h 1.94 1.95 1.94 1.95 1.94 l 1.95,-0.02 h 1.94 1.95 1.94 l 1.94,0.01 1.95,-0.01 h 1.94 1.95 1.94 1.95 1.94 1.95 1.94 1.94 1.95 l 1.94,-0.01 h 1.95 l 1.94,-0.01 h 1.95 l 1.94,0.02 1.95,-0.01 H 375 l 1.94,-0.01 h 1.95 l 1.94,0.01 1.95,0.01 1.94,0.04 1.95,0.01 h 1.94 l 1.95,-0.02 h 1.94 l 1.94,-0.02 1.95,-0.01 1.94,-0.02 1.95,0.22 1.55,1.58 0.26,1.98 -1.81,1.84 -1.95,0.07 h -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,0.01 h -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.23,0.05 -0.71,0.72 -1.94,0.84 -1.95,0.16 -1.94,0.11 -1.95,0.05 -1.94,0.02 h -1.95 l -1.94,-0.01 -1.95,-0.02 -1.94,-0.04 -1.94,-0.1 -1.95,-0.28 -1.94,-1.45 v 0 l -1.95,-0.05 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.89,-1.92 0.11,-1.98 z m 64.17,7.49 h 1.95 1.94 1.94 1.95 l 1.94,0.25 -1.94,0.99 h -1.95 l -1.94,0.98 -1.94,-0.98 h -1.95 l -1.94,-0.99 z m 83.61,0 h 1.95 1.94 1.95 1.94 1.94 1.95 l 1.94,0.25 -1.94,1.97 h -1.95 -1.94 -1.94 v 0 l -1.95,1.98 -1.94,-1.98 v 0 h -1.95 l -1.94,-1.97 z m -64.16,5.93 1.94,-0.35 h 1.94 1.95 l 1.94,-0.12 1.95,-0.53 1.94,-0.25 1.95,-0.11 1.94,-0.01 1.95,-0.07 1.94,-0.04 1.94,-0.05 1.95,-0.02 1.94,-0.02 1.95,-0.02 1.94,-0.01 1.95,-0.01 1.94,-0.01 h 1.95 l 1.94,-0.01 h 1.94 1.95 1.94 1.95 1.94 l 1.95,0.01 1.94,0.01 1.95,0.01 1.94,0.01 1.94,0.01 1.95,0.01 1.94,0.03 1.95,0.02 1.94,0.04 1.95,0.12 1.94,-0.37 h 1.95 1.94 1.94 l 1.95,1.98 v 1.97 0 l 1.94,0.99 1.95,0.99 -1.95,0.24 h -1.94 l -1.95,-0.24 v 0 l -1.94,-0.5 -1.94,0.23 -1.95,-0.01 -1.94,-0.3 -1.95,0.1 -1.94,0.02 -1.95,0.04 -1.94,0.02 -1.95,0.03 -1.94,0.04 -1.94,0.03 -1.95,0.02 -1.94,0.03 -1.95,0.01 -1.94,0.01 h -1.95 -1.94 -1.95 L 270,268.5 h -1.94 l -1.95,-0.01 -1.94,-0.01 h -1.95 l -1.94,-0.02 -1.95,-0.02 -1.94,-0.03 -1.95,-0.03 -1.94,-0.05 -1.94,-0.15 -1.95,-0.13 h -1.94 l -1.95,-0.03 -1.94,0.54 -1.95,0.15 v 0 l -1.94,0.59 -1.95,-0.35 -1.94,-0.24 v 0 l -1.94,-1.98 v 0 l -0.98,-1.97 z m -40.84,6.47 1.95,0.03 1.94,0.02 h 1.95 L 200,271 l 1.94,0.01 1.95,-0.01 h 1.94 1.95 l 1.94,0.03 h 1.95 l 1.94,0.02 h 1.95 l 1.94,-0.01 1.94,-0.04 1.95,-0.02 h 1.94 l 1.95,0.02 1.94,-0.02 h 1.95 1.94 1.95 l 1.94,-0.01 1.94,0.01 1.95,-0.01 h 1.94 l 1.95,0.03 h 1.94 l 1.95,0.01 1.94,0.02 1.95,0.03 1.94,0.02 1.94,0.02 1.95,-0.05 1.94,-0.1 1.95,-0.05 1.94,-0.05 1.95,-0.02 1.94,-0.02 1.95,-0.01 1.94,-0.01 1.94,-0.01 1.95,-0.01 h 1.94 1.95 1.94 l 1.95,0.01 1.94,0.01 1.95,0.01 1.94,0.03 1.94,0.03 1.95,0.04 1.94,0.03 1.95,0.02 1.94,0.03 1.95,0.03 1.94,0.05 1.95,0.06 H 305 l 1.94,0.02 h 1.95 l 1.94,0.02 h 1.95 l 1.94,0.08 h 1.95 l 1.94,0.04 1.95,0.09 1.94,0.13 1.94,0.1 1.95,0.24 1.94,0.1 1.95,0.72 v 0 h 1.94 l 1.95,1.73 0.64,0.24 -0.64,0.25 -1.95,1.37 -1.94,0.17 -1.95,0.01 -1.94,0.01 -1.95,0.01 -1.94,0.02 -1.94,0.01 -1.95,0.01 -1.94,0.01 h -1.95 l -1.94,0.01 -1.95,0.01 h -1.94 l -1.95,0.01 -1.94,0.01 h -1.94 -1.95 -1.94 l -1.95,0.01 h -1.94 -1.95 l -1.94,0.01 h -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 l -1.94,-0.01 -1.95,-0.01 h -1.94 l -1.95,-0.01 h -1.94 -1.94 l -1.95,-0.01 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.94,-0.01 h -1.95 -1.94 l -1.95,-0.01 h -1.94 -1.95 l -1.94,-0.01 h -1.95 l -1.94,-0.01 -1.94,-0.01 h -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 l -1.95,-0.01 h -1.94 l -1.95,0.11 -1.94,-0.54 -1.38,-1.4 1.38,-1.97 v 0 z m 60.28,11.31 1.94,-0.58 1.95,-0.46 1.94,-0.33 1.95,-0.08 1.94,-0.06 1.95,-0.02 1.94,-0.02 1.95,-0.01 1.94,-0.01 1.94,-0.01 h 1.95 1.94 1.95 1.94 l 1.95,0.01 1.94,0.01 1.95,0.01 1.94,0.01 h 1.94 l 1.95,0.02 1.94,0.02 1.95,0.02 1.94,0.02 1.95,0.01 1.94,0.02 1.95,0.02 1.94,0.04 1.94,0.04 1.95,0.01 1.94,0.01 1.95,-0.02 1.94,-0.03 1.95,-0.01 1.94,0.01 1.95,0.03 1.94,0.03 h 1.94 l 1.95,0.03 h 1.94 l 1.95,0.02 1.94,0.01 1.95,0.04 1.94,0.02 1.95,0.03 H 340 l 1.94,0.23 h 1.95 l 1.94,0.06 1.95,-0.06 h 1.94 l 1.95,0.11 1.94,0.23 0.81,0.83 1.14,0.37 1.57,1.6 -1.57,1.6 -1.95,0.27 -1.94,-0.03 h -1.95 l -1.94,-0.01 h -1.95 -1.94 -1.95 L 340,286.33 h -1.94 -1.95 -1.94 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.95 l -1.94,0.01 -1.94,-0.01 h -1.95 -1.94 l -1.95,-0.01 h -1.94 l -1.95,-0.01 h -1.94 l -1.95,-0.01 h -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.01 h -1.95 l -1.94,0.01 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.11 -1.94,-0.11 -1.95,-0.01 -1.94,-0.02 -1.95,-0.01 -1.94,-0.03 -1.95,-0.04 -1.94,-0.11 -1.95,-0.1 -1.94,-0.08 -1.94,-0.04 -1.95,-0.09 -1.94,-0.3 -1.95,-0.4 -1.46,-0.59 1.46,-0.59 1.95,-1.14 1.94,-0.1 1.95,-0.14 v 0 z m -56.39,6.96 1.95,0.6 1.94,-0.13 h 1.94 1.95 l 1.94,0.13 1.95,-0.66 h 1.94 l 1.95,0.09 1.14,1.16 -1.14,1.65 -1.95,-0.4 h -1.94 l -1.95,-0.66 -1.94,0.13 h -1.95 l -1.94,0.6 -1.94,-0.14 h -1.95 l -1.46,-1.18 z m 19.45,-0.29 1.94,-0.39 1.94,0.01 1.95,0.01 1.94,0.01 1.95,0.01 h 1.94 1.95 l 1.94,0.01 1.95,0.01 1.94,0.01 1.94,0.01 h 1.95 l 1.94,0.01 h 1.95 1.94 1.95 1.94 l 1.95,-0.01 1.94,-0.19 h 1.94 1.95 1.94 l 1.95,0.16 1.94,-0.01 1.95,0.01 h 1.94 1.95 l 1.94,0.01 1.94,-0.05 1.95,-0.04 1.94,-0.01 h 1.95 l 1.94,0.02 1.95,0.01 1.94,0.02 h 1.95 l 1.94,0.03 1.94,0.02 1.95,0.03 h 1.94 l 1.95,0.01 h 1.94 l 1.95,0.02 h 1.94 l 1.95,0.02 1.94,0.02 h 1.94 1.95 l 1.94,0.02 h 1.95 l 1.94,0.03 h 1.95 l 1.94,0.01 1.95,-0.01 1.94,0.01 h 1.94 1.95 l 1.94,-0.06 1.95,0.03 1.89,1.68 -1.31,1.97 -0.58,0.6 -1.95,0.23 -1.94,-0.11 -1.95,0.27 -1.94,0.07 -1.94,0.11 h -1.95 l -1.94,0.08 h -1.95 l -1.94,0.04 -1.95,0.03 h -1.94 -1.95 -1.94 l -1.94,-0.07 -1.95,0.07 -1.94,0.06 -1.95,0.02 -1.94,-0.02 h -1.95 l -1.94,-0.13 -1.95,-0.13 -1.94,0.05 -1.94,0.15 -1.95,-0.26 -1.94,0.11 -1.95,-0.18 -1.94,-0.16 h -1.95 l -1.94,0.29 -1.95,0.17 -1.94,-0.04 -1.94,-0.13 -1.95,-0.13 -1.51,-0.99 -0.43,-0.04 -1.95,-0.1 -1.94,-0.01 h -1.95 l -1.94,-0.01 -1.95,-0.01 -1.94,-0.01 h -1.94 l -1.95,0.13 -1.94,-0.01 -1.95,-0.13 h -1.94 -1.95 l -1.94,0.01 h -1.95 l -1.94,0.01 h -1.94 l -1.95,0.02 h -1.94 l -1.95,0.01 h -1.94 l -1.95,0.01 -1.94,0.01 -1.95,0.01 -1.94,0.01 -1.94,-0.39 -1.46,-1.48 z m 23.33,10.64 1.94,-0.91 1.95,0.06 h 1.94 l 1.95,-0.06 1.94,0.02 1.95,-0.02 1.94,-0.07 1.94,-0.07 1.95,-0.03 1.94,-0.02 h 1.95 l 1.94,-0.02 1.95,-0.01 1.94,-0.02 1.95,-0.01 1.94,-0.01 1.94,-0.01 h 1.95 1.94 1.95 l 1.94,0.01 1.95,0.01 1.94,0.01 h 1.95 l 1.94,0.01 1.94,0.02 1.95,0.02 1.94,0.02 1.95,0.02 1.94,0.01 1.95,0.02 1.94,0.02 1.95,0.03 1.94,0.01 1.94,0.03 1.95,-0.05 1.94,0.31 1.38,1.4 -0.79,1.97 -0.59,0.6 -1.94,0.72 -1.95,-0.03 -1.94,0.03 h -1.94 l -1.95,0.08 -1.94,0.03 -1.95,0.07 -1.94,0.05 -1.95,0.02 h -1.94 l -1.95,0.03 -1.94,0.01 -1.94,0.02 -1.95,-0.01 -1.94,0.04 -1.95,0.02 h -1.94 l -1.95,0.05 -1.94,0.01 -1.95,-0.02 -1.94,0.01 -1.94,-0.02 -1.95,-0.03 -1.94,-0.06 -1.95,-0.02 -1.94,-0.04 -1.95,0.02 -1.94,-0.03 h -1.95 l -1.94,-0.07 -1.94,-0.05 -1.95,-0.14 -1.94,0.03 -1.95,-0.03 -1.94,0.09 -1.95,-0.06 -1.94,-0.72 -0.58,-0.6 -0.13,-1.97 z m 81.67,0.12 1.94,-0.12 h 1.94 l 1.95,0.12 1.94,-0.12 1.95,0.12 0.58,0.6 -0.58,1.48 -1.95,0.1 -1.94,-0.4 -1.95,0.4 -1.94,-0.27 -1.94,0.17 -1.95,-1.48 z"
+       fill="currentColor"
+       fill-opacity="0.0275" />
+    <path
+       d="m 285.56,248.46 1.94,0.1 1.94,-0.6 1.95,0.6 1.94,0.39 -1.94,0.17 -1.95,0.25 -1.94,-0.25 h -1.94 l -1.95,-0.17 z m -136.12,2.72 1.95,0.01 1.94,0.05 h 1.95 1.94 1.95 1.94 l 1.95,-0.01 1.94,0.01 1.94,0.01 1.95,0.01 h 1.94 1.95 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 h 1.95 l 1.94,0.02 h 1.95 1.94 1.94 l 1.95,-0.01 1.94,-0.01 1.95,-0.01 1.94,-0.02 1.95,-0.01 1.94,0.01 h 1.95 l 1.94,0.01 1.94,0.02 h 1.95 1.94 1.95 l 1.94,-0.01 1.95,-0.01 1.94,-0.01 1.95,0.02 1.94,0.02 1.94,0.02 1.95,-0.03 1.94,-0.04 1.95,-0.04 1.94,-0.03 h 1.95 1.94 l 1.95,0.01 1.94,0.01 h 1.94 1.95 1.94 1.95 l 1.94,0.01 h 1.95 l 1.94,0.01 1.95,0.01 1.94,-0.01 1.94,-0.02 1.95,-0.01 1.94,0.01 1.95,0.01 h 1.94 l 1.95,-0.02 1.94,-0.02 1.95,-0.03 1.94,-0.01 1.94,-0.01 h 1.95 l 1.94,0.01 1.95,0.01 1.94,0.01 1.95,0.02 1.94,0.02 1.95,0.04 1.94,0.02 1.94,0.02 h 1.95 l 1.94,0.01 h 1.95 l 1.94,0.01 1.95,0.01 1.94,0.01 h 1.95 l 1.94,-0.01 h 1.94 l 1.95,-0.01 h 1.94 1.95 1.94 l 1.95,-0.02 1.94,-0.01 h 1.95 l 1.94,0.01 h 1.94 1.95 1.94 l 1.95,-0.01 h 1.94 1.95 1.94 1.95 1.94 1.94 1.95 l 1.94,-0.02 h 1.95 1.94 1.95 l 1.94,0.02 1.95,-0.02 h 1.94 1.94 l 1.95,-0.01 1.94,0.01 1.95,0.02 1.94,0.06 1.95,0.01 h 1.94 l 1.95,-0.02 h 1.94 l 1.94,-0.04 h 1.95 l 1.94,-0.03 1.95,0.34 1.33,1.35 0.41,1.98 -1.74,1.77 -1.95,0.11 -1.94,-0.01 h -1.95 -1.94 l -1.94,0.01 -1.95,-0.01 h -1.94 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.08 v 0 l -1.94,1.32 -1.95,0.25 -1.94,0.18 -1.95,0.08 -1.94,0.03 h -1.95 l -1.94,-0.02 -1.95,-0.03 -1.94,-0.07 -1.94,-0.16 -1.95,-0.44 -1.53,-1.14 -0.41,-0.03 -1.95,-0.05 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.85,-1.89 0.16,-1.98 z m 93.34,12.74 1.94,-0.39 1.95,-0.16 1.94,-0.02 1.95,-0.12 1.94,-0.05 1.94,-0.08 1.95,-0.03 1.94,-0.04 1.95,-0.03 1.94,-0.02 1.95,-0.01 1.94,-0.02 h 1.95 l 1.94,-0.01 1.94,-0.01 h 1.95 1.94 1.95 l 1.94,0.01 1.95,0.01 1.94,0.02 1.95,0.01 1.94,0.02 1.94,0.01 1.95,0.03 1.94,0.03 1.95,0.04 1.94,0.07 1.95,0.19 1.94,-0.03 1.95,0.1 H 305 l 1.94,0.92 0.39,0.4 0.45,1.97 -0.84,0.85 -1.94,0.35 -1.94,-0.01 -1.95,-0.06 -1.94,-0.06 -1.95,0.16 -1.94,0.02 -1.95,0.07 -1.94,0.04 -1.95,0.05 -1.94,0.05 -1.94,0.04 -1.95,0.03 -1.94,0.05 -1.95,0.02 -1.94,0.02 h -1.95 -1.94 -1.95 l -1.94,0.03 h -1.94 l -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 -1.94,-0.03 -1.95,-0.03 -1.94,-0.05 -1.95,-0.05 -1.94,-0.07 -1.94,-0.25 -1.95,-0.2 h -1.94 l -1.95,-0.05 -1.94,0.33 -1.95,-0.37 -1.94,-0.85 1.94,-1.97 v 0 z m -50.56,7.23 1.95,0.05 1.94,0.03 h 1.95 l 1.94,-0.04 1.94,0.01 1.95,-0.01 h 1.94 1.95 l 1.94,0.04 h 1.95 l 1.94,0.02 h 1.95 l 1.94,-0.01 1.94,-0.06 1.95,-0.02 1.94,-0.01 1.95,0.03 1.94,-0.02 1.95,-0.01 h 1.94 1.95 l 1.94,-0.01 1.94,0.01 1.95,-0.01 h 1.94 l 1.95,0.05 h 1.94 l 1.95,0.01 1.94,0.03 1.95,0.04 1.94,0.03 1.94,0.04 1.95,-0.09 1.94,-0.14 1.95,-0.09 1.94,-0.08 1.95,-0.03 1.94,-0.02 1.95,-0.02 1.94,-0.02 1.94,-0.01 1.95,-0.02 h 1.94 l 1.95,-0.01 1.94,0.02 1.95,0.01 1.94,0.01 1.95,0.02 1.94,0.04 1.94,0.05 1.95,0.06 1.94,0.04 1.95,0.04 1.94,0.05 1.95,0.05 1.94,0.07 1.95,0.09 H 305 l 1.94,0.05 h 1.95 l 1.94,0.02 h 1.95 l 1.94,0.12 h 1.95 l 1.94,0.08 1.95,0.14 1.94,0.19 1.94,0.17 1.95,0.36 1.94,0.17 v 0 l 1.95,0.12 1.94,0.13 1.75,1.72 -1.75,1.41 -1.94,0.27 -1.95,0.02 -1.94,0.01 -1.95,0.02 -1.94,0.02 -1.94,0.02 -1.95,0.01 -1.94,0.02 -1.95,0.01 -1.94,0.01 -1.95,0.02 -1.94,0.01 -1.95,0.01 H 305 l -1.94,0.01 h -1.95 l -1.94,0.01 h -1.95 l -1.94,0.01 h -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 -1.94,-0.01 h -1.94 -1.95 l -1.94,-0.01 h -1.95 -1.94 -1.95 l -1.94,-0.01 h -1.95 -1.94 -1.94 l -1.95,-0.01 h -1.94 l -1.95,-0.01 h -1.94 l -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 -1.94,-0.01 h -1.94 l -1.95,-0.01 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.94,-0.01 h -1.95 -1.94 l -1.95,0.12 -1.94,-0.8 -1.06,-1.07 1.06,-1.51 0.19,-0.46 z m 62.22,11.22 1.95,-0.72 1.94,-0.53 1.95,-0.12 1.94,-0.09 1.95,-0.04 1.94,-0.03 1.95,-0.01 1.94,-0.02 1.94,-0.02 h 1.95 1.94 1.95 l 1.94,0.01 1.95,0.01 1.94,0.01 1.95,0.02 1.94,0.01 1.94,0.01 1.95,0.03 1.94,0.03 1.95,0.04 1.94,0.02 1.95,0.02 1.94,0.02 1.95,0.03 1.94,0.08 1.94,0.05 1.95,0.02 1.94,0.02 1.95,-0.04 1.94,-0.03 1.95,-0.03 1.94,0.03 1.95,0.03 1.94,0.06 h 1.94 l 1.95,0.05 h 1.94 l 1.95,0.02 1.94,0.03 1.95,0.06 1.94,0.03 1.95,0.04 H 340 l 1.94,0.37 h 1.95 l 1.94,0.08 1.95,-0.08 h 1.94 l 1.95,0.17 1.94,0.36 0.16,0.17 1.79,0.58 1.36,1.39 -1.36,1.39 -1.95,0.41 -1.94,-0.04 h -1.95 l -1.94,-0.01 h -1.95 -1.94 l -1.95,-0.01 -1.94,-0.01 h -1.94 -1.95 -1.94 l -1.95,0.01 h -1.94 l -1.95,0.01 h -1.94 -1.95 l -1.94,0.01 -1.94,-0.01 h -1.95 -1.94 l -1.95,-0.01 -1.94,-0.02 h -1.95 l -1.94,-0.01 H 306.94 305 l -1.94,-0.01 -1.95,0.01 -1.94,-0.01 h -1.95 -1.94 l -1.95,0.01 -1.94,0.01 h -1.95 -1.94 l -1.94,0.01 h -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.1 -1.94,-0.1 -1.95,-0.01 -1.94,-0.04 -1.95,-0.02 -1.94,-0.04 -1.95,-0.07 -1.94,-0.16 -1.95,-0.16 -1.94,-0.12 -1.94,-0.08 -1.95,-0.14 -1.94,-0.46 -1.46,-0.43 1.46,-0.74 1.94,-0.53 1.95,-0.21 1.94,-0.14 1.46,-0.35 z m -46.66,7.24 h 1.94 l 1.95,0.13 0.68,0.7 -0.68,0.99 -1.95,-0.16 h -1.94 l -1.73,-0.83 z m 7.78,-0.37 1.94,-0.61 1.94,0.01 1.95,0.03 h 1.94 l 1.95,0.02 h 1.94 l 1.95,0.01 1.94,0.01 1.95,0.02 1.94,0.01 1.94,0.01 h 1.95 l 1.94,0.02 h 1.95 1.94 1.95 1.94 l 1.95,-0.01 1.94,-0.18 1.94,-0.01 h 1.95 l 1.94,-0.01 1.95,0.14 h 1.94 1.95 l 1.94,0.01 h 1.95 l 1.94,0.02 1.94,-0.08 1.95,-0.07 1.94,-0.01 h 1.95 l 1.94,0.03 1.95,0.02 1.94,0.02 1.95,0.01 1.94,0.05 1.94,0.02 1.95,0.05 1.94,0.01 1.95,0.01 h 1.94 l 1.95,0.03 1.94,0.01 1.95,0.03 1.94,0.02 1.94,0.01 h 1.95 l 1.94,0.03 h 1.95 l 1.94,0.04 h 1.95 l 1.94,0.01 1.95,-0.01 1.94,0.01 h 1.94 l 1.95,0.01 1.94,-0.09 1.95,0.05 1.7,1.5 -1.7,1.92 -0.97,0.05 -0.98,0.17 -1.94,-0.17 v 0 0 l -1.95,0.43 -1.94,0.1 -1.94,0.17 h -1.95 l -1.94,0.14 h -1.95 l -1.94,0.05 -1.95,0.06 h -1.94 -1.95 -1.94 l -1.94,-0.11 -1.95,0.11 -1.94,0.09 -1.95,0.03 -1.94,-0.03 h -1.95 l -1.94,-0.2 -1.95,-0.22 -1.94,0.08 -1.94,0.25 -1.95,-0.42 -1.94,0.17 -1.95,-0.27 -1.94,-0.26 h -1.95 l -1.94,0.45 -1.95,0.27 -1.94,-0.05 -1.94,-0.22 -1.95,-0.19 -0.65,-0.43 -1.29,-0.13 -1.95,-0.1 -1.94,-0.01 h -1.95 l -1.94,-0.01 -1.95,-0.02 -1.94,-0.01 -1.94,-0.01 -1.95,0.12 h -1.94 l -1.95,-0.14 -1.94,0.01 h -1.95 l -1.94,0.01 -1.95,0.01 -1.94,0.01 -1.94,0.01 -1.95,0.02 -1.94,0.01 h -1.95 l -1.94,0.01 -1.95,0.01 -1.94,0.01 -1.95,0.02 -1.94,0.02 -1.94,-0.61 -1.18,-1.2 z m 25.27,9.64 1.95,0.1 h 1.94 l 1.95,-0.1 1.94,0.03 1.95,-0.03 1.94,-0.1 1.94,-0.11 1.95,-0.04 1.94,-0.03 1.95,-0.01 1.94,-0.03 1.95,-0.02 1.94,-0.03 1.95,-0.01 1.94,-0.02 1.94,-0.01 1.95,-0.01 h 1.94 l 1.95,0.01 1.94,0.01 1.95,0.01 1.94,0.02 1.95,0.01 1.94,0.01 1.94,0.03 1.95,0.03 1.94,0.03 1.95,0.04 1.94,0.01 1.95,0.03 1.94,0.04 1.95,0.04 1.94,0.01 1.94,0.06 1.95,-0.09 1.94,0.49 1.06,1.07 -1.06,1.83 -0.17,0.14 -1.77,0.94 -1.95,-0.05 -1.94,0.05 h -1.94 l -1.95,0.13 -1.94,0.04 -1.95,0.12 -1.94,0.07 -1.95,0.04 h -1.94 l -1.95,0.05 -1.94,0.02 -1.94,0.03 -1.95,-0.02 -1.94,0.05 -1.95,0.05 -1.94,-0.01 -1.95,0.07 -1.94,0.02 -1.95,-0.03 -1.94,0.01 -1.94,-0.03 -1.95,-0.03 -1.94,-0.1 -1.95,-0.03 -1.94,-0.07 -1.95,0.04 -1.94,-0.06 h -1.95 l -1.94,-0.1 -1.94,-0.09 -1.95,-0.22 -1.94,0.05 -1.95,-0.05 -1.94,0.14 -1.95,-0.09 -1.76,-0.94 -0.18,-1.97 z"
+       fill="currentColor"
+       fill-opacity="0.0161" />
+    <path
+       d="m 149.44,251.29 1.95,0.01 1.94,0.08 h 1.95 1.94 1.95 1.94 l 1.95,-0.01 1.94,0.01 1.94,0.02 1.95,0.01 h 1.94 1.95 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 h 1.95 l 1.94,0.03 1.95,0.01 h 1.94 1.94 l 1.95,-0.03 1.94,-0.01 1.95,-0.01 1.94,-0.03 1.95,-0.02 1.94,0.02 h 1.95 l 1.94,0.01 1.94,0.03 h 1.95 1.94 1.95 l 1.94,-0.01 1.95,-0.02 1.94,-0.01 1.95,0.03 1.94,0.02 1.94,0.03 1.95,-0.04 1.94,-0.06 1.95,-0.06 1.94,-0.03 1.95,-0.01 h 1.94 l 1.95,0.02 1.94,0.01 h 1.94 1.95 1.94 l 1.95,0.01 h 1.94 l 1.95,0.01 h 1.94 l 1.95,0.02 1.94,-0.02 1.94,-0.02 1.95,-0.01 1.94,0.01 1.95,0.02 h 1.94 l 1.95,-0.04 1.94,-0.02 1.95,-0.04 1.94,-0.02 1.94,-0.02 h 1.95 l 1.94,0.01 1.95,0.02 1.94,0.02 1.95,0.02 1.94,0.04 1.95,0.05 1.94,0.03 1.94,0.03 h 1.95 l 1.94,0.02 h 1.95 l 1.94,0.01 1.95,0.01 1.94,0.02 h 1.95 l 1.94,-0.02 h 1.94 l 1.95,-0.01 h 1.94 1.95 1.94 l 1.95,-0.03 1.94,-0.01 h 1.95 l 1.94,0.01 h 1.94 1.95 1.94 l 1.95,-0.01 h 1.94 1.95 1.94 1.95 1.94 1.94 1.95 l 1.94,-0.03 h 1.95 l 1.94,-0.01 h 1.95 l 1.94,0.04 1.95,-0.03 H 375 l 1.94,-0.01 h 1.95 l 1.94,0.01 1.95,0.03 1.94,0.08 1.95,0.02 h 1.94 l 1.95,-0.03 1.94,0.01 1.94,-0.07 h 1.95 l 1.94,-0.05 1.95,0.5 1.05,1.07 0.6,1.98 -1.65,1.68 -1.95,0.16 -1.94,-0.02 -1.95,0.01 h -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.01 h -1.95 -1.94 -1.94 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.08 -0.44,0.04 -1.5,1.02 -1.95,0.36 -1.94,0.26 -1.95,0.12 -1.94,0.04 h -1.95 l -1.94,-0.02 -1.95,-0.05 -1.94,-0.09 -1.94,-0.24 -1.95,-0.64 -1.02,-0.76 -0.92,-0.07 -1.95,-0.05 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.82,-1.85 0.24,-1.98 z m 93.34,13.15 1.94,-0.57 1.95,-0.24 1.94,-0.02 1.95,-0.17 1.94,-0.08 1.94,-0.12 1.95,-0.04 1.94,-0.06 1.95,-0.03 1.94,-0.03 1.95,-0.03 1.94,-0.02 1.95,-0.01 1.94,-0.01 1.94,-0.01 h 1.95 1.94 1.95 l 1.94,0.01 1.95,0.02 1.94,0.03 1.95,0.02 1.94,0.03 1.94,0.01 1.95,0.03 1.94,0.06 1.95,0.06 1.94,0.09 1.95,0.27 1.94,0.42 1.95,0.21 H 305 l 0.83,0.5 0.84,1.97 -1.67,0.85 -1.94,-0.32 -1.95,-0.1 -1.94,0.23 -1.95,0.23 -1.94,0.03 -1.95,0.1 -1.94,0.05 -1.95,0.08 -1.94,0.07 -1.94,0.07 -1.95,0.04 -1.94,0.07 -1.95,0.03 -1.94,0.02 -1.95,0.01 h -1.94 -1.95 l -1.94,0.04 h -1.94 l -1.95,-0.01 -1.94,-0.02 -1.95,-0.02 -1.94,-0.04 -1.95,-0.04 -1.94,-0.07 -1.95,-0.08 -1.94,-0.1 -1.94,-0.36 -1.95,-0.29 h -1.94 l -1.95,-0.07 -1.94,0.06 -1.17,-0.46 0.44,-1.97 z m -50.56,6.92 1.95,0.08 1.94,0.03 h 1.95 l 1.94,-0.05 1.94,0.02 1.95,-0.02 h 1.94 1.95 l 1.94,0.05 h 1.95 l 1.94,0.04 h 1.95 l 1.94,-0.02 1.94,-0.09 1.95,-0.03 1.94,-0.01 1.95,0.04 1.94,-0.03 1.95,-0.01 h 1.94 1.95 l 1.94,-0.02 1.94,0.02 1.95,-0.02 h 1.94 l 1.95,0.08 h 1.94 l 1.95,0.02 1.94,0.03 1.95,0.07 1.94,0.05 1.94,0.05 1.95,-0.13 1.94,-0.21 1.95,-0.13 1.94,-0.11 1.95,-0.05 1.94,-0.03 1.95,-0.02 1.94,-0.03 1.94,-0.02 1.95,-0.03 h 1.94 l 1.95,-0.01 1.94,0.02 1.95,0.02 1.94,0.02 1.95,0.03 1.94,0.06 1.94,0.06 1.95,0.1 1.94,0.06 1.95,0.05 1.94,0.07 1.95,0.08 1.94,0.1 1.95,0.13 H 305 l 1.94,0.07 h 1.95 l 1.94,0.03 h 1.95 l 1.94,0.18 h 1.95 l 1.94,0.11 1.95,0.2 1.94,0.28 0.97,0.12 0.97,0.03 1.95,0.08 1.94,0.04 1.95,0.12 1.94,0.3 1.43,1.4 -1.43,1.15 -1.94,0.39 -1.95,0.03 -1.94,0.01 -1.95,0.04 -1.94,0.03 -1.94,0.02 -1.95,0.02 -1.94,0.03 -1.95,0.02 -1.94,0.01 -1.95,0.02 -1.94,0.02 -1.95,0.01 -1.94,0.01 -1.94,0.01 -1.95,0.01 h -1.94 l -1.95,0.01 -1.94,0.01 h -1.95 l -1.94,0.01 h -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 l -1.94,-0.02 -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 -1.94,-0.01 -1.94,-0.01 -1.95,-0.01 h -1.94 -1.95 l -1.94,-0.01 h -1.95 -1.94 l -1.95,-0.01 H 235 233.06 l -1.95,-0.01 -1.94,-0.01 h -1.95 l -1.94,-0.01 -1.95,-0.01 -1.94,-0.01 -1.95,-0.02 -1.94,-0.01 -1.94,-0.01 -1.95,-0.02 -1.94,0.01 h -1.95 l -1.94,0.01 -1.95,-0.01 h -1.94 -1.95 -1.94 l -1.94,-0.01 -1.95,-0.01 h -1.94 l -1.95,0.13 -1.94,-1.11 -0.65,-0.66 0.65,-0.93 0.44,-1.04 z m 64.17,10.78 1.94,-0.77 1.95,-0.16 1.94,-0.14 1.95,-0.06 1.94,-0.04 1.95,-0.02 1.94,-0.03 1.94,-0.02 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 1.95,0.02 1.94,0.02 1.95,0.02 1.94,0.02 1.94,0.02 1.95,0.04 1.94,0.05 1.95,0.05 1.94,0.03 1.95,0.04 1.94,0.02 1.95,0.05 1.94,0.11 1.94,0.07 1.95,0.03 1.94,0.03 1.95,-0.06 1.94,-0.04 1.95,-0.05 1.94,0.05 1.95,0.04 1.94,0.09 h 1.94 l 1.95,0.06 h 1.94 l 1.95,0.04 1.94,0.04 1.95,0.09 1.94,0.05 1.95,0.05 H 340 l 1.94,0.54 h 1.95 l 1.94,0.12 v 0 0 l 1.95,-0.12 h 1.94 l 0.97,0.12 0.98,0.02 1.94,0.05 1.95,0.78 1.1,1.12 -1.1,1.12 -1.95,0.6 -1.94,-0.05 -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 h -1.94 -1.95 L 340,286.13 h -1.94 -1.95 -1.94 l -1.95,0.02 h -1.94 l -1.95,0.01 h -1.94 -1.95 l -1.94,0.01 -1.94,-0.01 -1.95,-0.01 h -1.94 l -1.95,-0.01 -1.94,-0.02 -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 h -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.02 h -1.95 l -1.94,0.01 h -1.94 l -1.95,0.01 h -1.94 l -1.95,-0.01 -1.94,0.01 -1.95,-0.01 h -1.94 -1.95 l -1.94,0.1 -1.94,-0.09 -1.95,-0.02 -1.94,-0.05 -1.95,-0.03 -1.94,-0.06 -1.95,-0.1 -1.94,-0.24 -1.95,-0.23 -1.94,-0.18 -1.94,-0.11 -1.95,-0.2 -1.3,-0.4 1.3,-0.56 1.95,-0.3 1.94,-0.18 1.94,-0.47 0.98,-0.46 z m -48.61,7.99 h 1.94 l 1.95,0.19 0.11,0.12 -0.11,0.16 -1.95,0.15 h -1.94 l -0.65,-0.31 z m 7.78,-0.54 1.94,-0.89 1.94,0.03 1.95,0.03 1.94,0.01 1.95,0.02 1.94,0.01 1.95,0.01 1.94,0.01 1.95,0.03 1.94,0.01 1.94,0.02 h 1.95 l 1.94,0.02 1.95,0.01 h 1.94 1.95 l 1.94,-0.01 1.95,-0.01 1.94,-0.17 1.94,-0.01 1.95,-0.02 1.94,-0.01 1.95,0.13 1.94,-0.01 1.95,0.01 1.94,0.01 h 1.95 l 1.94,0.02 1.94,-0.1 1.95,-0.1 1.94,-0.02 h 1.95 l 1.94,0.04 1.95,0.02 1.94,0.04 1.95,0.02 1.94,0.07 1.94,0.03 1.95,0.07 1.94,0.01 1.95,0.02 h 1.94 l 1.95,0.04 1.94,0.01 1.95,0.05 1.94,0.03 1.94,0.01 h 1.95 l 1.94,0.04 h 1.95 l 1.94,0.06 h 1.95 l 1.94,0.02 1.95,-0.02 1.94,0.02 h 1.94 l 1.95,0.02 1.94,-0.14 1.95,0.07 1.46,1.29 -1.46,1.65 -1.95,0.12 -1.94,-0.11 -1.95,0.18 -1.94,0.06 -0.97,0.07 -0.97,0.12 h -1.95 l -1.94,0.2 h -1.95 l -1.94,0.08 -1.95,0.08 h -1.94 -1.95 -1.94 l -1.94,-0.16 -1.95,0.16 -1.94,0.13 -1.95,0.05 -1.94,-0.05 h -1.95 l -1.94,-0.29 -1.95,-0.32 v 0 0 l -1.94,0.12 -1.94,0.36 -1.62,-0.48 -0.33,-0.01 -0.97,0.01 -0.97,0.12 -0.65,-0.12 -1.3,-0.02 -1.94,-0.02 h -1.95 l -1.94,0.04 v 0 l -1.95,0.4 -1.94,-0.08 -1.94,-0.32 v 0 l -1.95,-0.05 -1.94,-0.2 -1.95,-0.09 -1.94,-0.01 h -1.95 l -1.94,-0.02 -1.95,-0.02 -1.94,-0.02 -1.94,-0.01 -1.95,0.1 h -1.94 l -1.95,-0.13 -1.94,0.01 -1.95,0.01 -1.94,0.01 -1.95,0.01 -1.94,0.02 h -1.94 l -1.95,0.04 -1.94,0.01 -1.95,0.01 -1.94,0.01 -1.95,0.02 -1.94,0.01 -1.95,0.03 -1.94,0.02 -1.94,-0.88 -0.84,-0.85 z m 25.27,9.54 1.95,0.14 h 1.94 l 1.95,-0.14 1.94,0.04 1.95,-0.04 1.94,-0.14 1.94,-0.17 1.95,-0.06 1.94,-0.05 1.95,-0.01 1.94,-0.04 1.95,-0.02 1.94,-0.05 1.95,-0.02 1.94,-0.03 1.94,-0.01 1.95,-0.01 h 1.94 l 1.95,0.01 1.94,0.02 1.95,0.01 1.94,0.02 1.95,0.02 1.94,0.02 1.94,0.03 1.95,0.05 1.94,0.04 1.95,0.06 1.94,0.01 1.95,0.05 1.94,0.06 1.95,0.07 1.94,0.01 1.94,0.08 1.95,-0.13 1.94,0.71 0.65,0.66 -0.65,1.13 -1.06,0.84 -0.88,0.47 -1.95,-0.07 -1.94,0.07 h -1.94 l -1.95,0.19 -1.94,0.05 -1.95,0.18 -1.94,0.1 -1.95,0.06 h -1.94 l -1.95,0.07 -1.94,0.03 -1.94,0.04 -1.95,-0.02 -1.94,0.07 -1.95,0.07 -1.94,-0.02 -1.95,0.11 -1.94,0.02 -1.95,-0.04 -1.94,0.02 -1.94,-0.04 -1.95,-0.05 -1.94,-0.14 -1.95,-0.05 -1.94,-0.1 -1.95,0.06 -1.94,-0.09 h -1.95 l -1.94,-0.14 -1.94,-0.14 -1.95,-0.31 -1.94,0.07 -1.95,-0.07 -1.94,0.2 -1.95,-0.13 -0.88,-0.47 -0.73,-1.97 z"
+       fill="currentColor"
+       fill-opacity="0.0205" />
+    <path
+       d="m 149.44,251.45 1.95,0.02 1.94,0.11 1.95,0.01 1.94,-0.01 1.95,0.01 1.94,-0.01 1.95,-0.01 1.94,0.02 1.94,0.02 1.95,0.01 1.94,0.01 1.95,-0.01 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 h 1.95 l 1.94,0.04 1.95,0.01 h 1.94 1.94 l 1.95,-0.03 1.94,-0.01 1.95,-0.02 1.94,-0.05 1.95,-0.03 1.94,0.03 h 1.95 l 1.94,0.03 1.94,0.03 1.95,0.01 h 1.94 l 1.95,-0.01 1.94,-0.01 1.95,-0.03 1.94,-0.01 1.95,0.04 1.94,0.03 1.94,0.04 1.95,-0.05 1.94,-0.09 1.95,-0.09 1.94,-0.05 1.95,-0.01 h 1.94 l 1.95,0.03 1.94,0.02 h 1.94 1.95 1.94 1.95 l 1.94,0.01 1.95,0.01 1.94,0.01 1.95,0.02 1.94,-0.02 1.94,-0.03 1.95,-0.02 1.94,0.02 1.95,0.02 h 1.94 l 1.95,-0.05 1.94,-0.03 1.95,-0.06 1.94,-0.03 1.94,-0.02 h 1.95 l 1.94,0.01 1.95,0.03 1.94,0.02 1.95,0.03 1.94,0.06 1.95,0.07 1.94,0.04 1.94,0.05 1.95,0.01 1.94,0.02 h 1.95 l 1.94,0.02 1.95,0.01 1.94,0.02 h 1.95 l 1.94,-0.02 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,-0.01 1.95,-0.04 1.94,-0.01 h 1.95 l 1.94,0.01 1.94,0.01 1.95,-0.01 h 1.94 l 1.95,-0.02 h 1.94 1.95 1.94 1.95 1.94 l 1.94,0.01 h 1.95 l 1.94,-0.05 h 1.95 l 1.94,-0.01 h 1.95 l 1.94,0.06 1.95,-0.05 H 375 l 1.94,-0.01 1.95,-0.01 1.94,0.02 1.95,0.05 1.94,0.11 1.95,0.03 h 1.94 l 1.95,-0.05 1.94,0.01 1.94,-0.08 1.95,-0.01 1.94,-0.07 1.95,0.72 0.66,0.67 0.86,1.98 -1.52,1.54 -1.95,0.24 -1.94,-0.02 -1.95,0.01 h -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.01 h -1.95 l -1.94,0.01 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.94,0.01 h -1.95 l -1.94,-0.01 h -1.95 -1.94 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.08 -1.06,0.09 -0.88,0.6 -1.95,0.52 -1.94,0.38 -1.95,0.16 -1.94,0.07 -1.95,-0.01 -1.94,-0.02 -1.95,-0.08 -1.94,-0.13 -1.94,-0.34 -1.95,-0.92 -0.31,-0.23 -1.63,-0.12 -1.95,-0.05 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 h -1.94 -1.95 l -1.94,0.01 -1.94,-0.01 h -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 l -1.94,0.01 h -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 -1.76,-1.79 0.33,-1.98 z m 95.28,12.9 1.95,-0.34 1.94,-0.03 1.95,-0.25 1.94,-0.12 1.94,-0.17 1.95,-0.05 1.94,-0.09 1.95,-0.05 1.94,-0.04 1.95,-0.04 1.94,-0.03 1.95,-0.01 1.94,-0.02 1.94,-0.01 h 1.95 1.94 l 1.95,-0.01 1.94,0.03 1.95,0.02 1.94,0.04 1.95,0.03 1.94,0.04 1.94,0.02 1.95,0.05 1.94,0.07 1.95,0.09 1.94,0.13 1.95,0.4 1.7,0.75 -1.31,1.97 -0.39,0.08 -1.95,0.33 -1.94,0.05 -1.95,0.14 -1.94,0.08 -1.95,0.1 -1.94,0.12 -1.94,0.09 -1.95,0.06 -1.94,0.1 -1.95,0.04 -1.94,0.03 -1.95,0.01 h -1.94 -1.95 l -1.94,0.06 h -1.94 l -1.95,-0.01 -1.94,-0.04 -1.95,-0.02 -1.94,-0.05 -1.95,-0.07 -1.94,-0.09 -1.95,-0.11 -1.94,-0.15 -1.94,-0.52 -1.17,-0.23 -0.78,-0.23 -1.94,-0.02 -1.95,-0.41 -1.16,-1.31 z m 60.28,1.28 0.69,1.1 -0.69,0.35 -1.22,-0.35 z m -112.78,6.02 1.95,0.11 1.94,0.06 h 1.95 l 1.94,-0.08 1.94,0.02 1.95,-0.02 h 1.94 1.95 l 1.94,0.08 h 1.95 l 1.94,0.06 h 1.95 l 1.94,-0.03 1.94,-0.13 1.95,-0.05 1.94,-0.02 1.95,0.07 1.94,-0.05 1.95,-0.02 h 1.94 1.95 l 1.94,-0.02 1.94,0.02 1.95,-0.02 h 1.94 l 1.95,0.11 h 1.94 l 1.95,0.02 1.94,0.06 1.95,0.09 1.94,0.07 1.94,0.08 1.95,-0.18 1.94,-0.31 1.95,-0.19 1.94,-0.15 1.95,-0.07 1.94,-0.05 1.95,-0.04 1.94,-0.03 1.94,-0.03 1.95,-0.04 1.94,-0.01 h 1.95 l 1.94,0.02 1.95,0.02 1.94,0.03 1.95,0.04 1.94,0.1 1.94,0.09 1.95,0.13 1.94,0.09 1.95,0.08 1.94,0.09 1.95,0.11 1.94,0.15 1.95,0.19 H 305 l 1.94,0.1 h 1.95 l 1.94,0.05 h 1.95 l 1.94,0.25 h 1.95 l 1.94,0.16 v 0 l 1.95,0.07 1.94,0.08 1.94,0.07 1.95,0.1 1.94,0.03 1.95,0.13 1.94,0.54 0.97,0.95 -0.97,0.78 -1.94,0.57 -1.95,0.05 -1.94,0.01 -1.95,0.05 -1.94,0.05 -1.94,0.03 -1.95,0.03 -1.94,0.04 -1.95,0.02 -1.94,0.03 -1.95,0.02 -1.94,0.02 -1.95,0.02 -1.94,0.02 -1.94,0.01 -1.95,0.01 -1.94,0.01 -1.95,0.01 -1.94,0.01 -1.95,0.01 h -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 l -1.94,-0.02 -1.95,-0.02 -1.94,-0.01 -1.95,-0.02 -1.94,-0.01 -1.94,-0.01 -1.95,-0.01 h -1.94 l -1.95,-0.01 -1.94,-0.01 h -1.95 l -1.94,-0.01 H 236.94 235 l -1.94,-0.01 -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 -1.94,-0.02 -1.95,-0.02 -1.94,-0.03 -1.94,-0.01 -1.95,-0.02 -1.94,0.01 h -1.95 l -1.94,0.01 -1.95,-0.01 h -1.94 -1.95 -1.94 l -1.94,-0.01 -1.95,-0.02 -1.94,0.01 -1.95,0.14 -1.94,-1.55 -0.08,-0.09 0.08,-0.11 0.78,-1.86 z m 66.11,10.08 1.95,-0.24 1.94,-0.2 1.95,-0.08 1.94,-0.07 1.95,-0.02 1.94,-0.05 1.94,-0.02 1.95,-0.02 h 1.94 1.95 l 1.94,0.02 1.95,0.03 1.94,0.02 1.95,0.04 1.94,0.03 1.94,0.02 1.95,0.06 1.94,0.07 1.95,0.07 1.94,0.04 1.95,0.06 1.94,0.04 1.95,0.06 1.94,0.17 1.94,0.1 1.95,0.04 1.94,0.04 1.95,-0.08 1.94,-0.07 1.95,-0.06 1.94,0.06 1.95,0.07 1.94,0.12 h 1.94 l 1.95,0.1 h 1.94 l 1.95,0.05 1.94,0.05 1.95,0.13 1.94,0.07 1.95,0.07 H 340 l 0.28,0.09 1.66,0.15 h 1.95 l 1.94,0.02 1.95,-0.02 1.94,-0.01 1.95,0.04 1.94,0.01 1.95,1.03 0.73,0.75 -0.73,0.75 -1.95,0.86 -1.94,-0.08 -1.95,-0.02 -1.94,-0.01 -1.95,-0.01 h -1.94 -1.95 l -1.94,-0.02 -1.94,-0.01 -1.95,0.01 h -1.94 l -1.95,0.02 h -1.94 l -1.95,0.01 h -1.94 -1.95 l -1.94,0.01 -1.94,-0.01 -1.95,-0.01 h -1.94 l -1.95,-0.02 -1.94,-0.03 -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 H 305 l -1.94,-0.01 -1.95,0.01 -1.94,-0.01 h -1.95 -1.94 l -1.95,0.01 -1.94,0.02 -1.95,0.01 h -1.94 l -1.94,0.02 h -1.95 l -1.94,0.01 -1.95,-0.01 h -1.94 -1.95 -1.94 -1.95 l -1.94,0.08 -1.94,-0.08 -1.95,-0.02 -1.94,-0.08 -1.95,-0.04 -1.94,-0.09 -1.95,-0.14 -1.94,-0.34 -1.95,-0.34 -1.94,-0.25 -1.94,-0.16 1.94,-0.23 1.94,-0.47 1.95,-0.92 0.31,-0.35 z m -42.77,8.36 1.94,-1.28 1.94,0.03 1.95,0.05 1.94,0.01 1.95,0.04 1.94,0.01 1.95,0.01 1.94,0.02 1.95,0.04 1.94,0.01 1.94,0.03 1.95,0.01 1.94,0.02 1.95,0.01 1.94,0.01 1.95,-0.01 1.94,-0.01 1.95,-0.01 1.94,-0.16 1.94,-0.02 1.95,-0.03 1.94,-0.02 1.95,0.12 1.94,-0.02 1.95,0.02 1.94,0.01 h 1.95 l 1.94,0.03 1.94,-0.15 1.95,-0.15 1.94,-0.03 1.95,0.01 1.94,0.05 1.95,0.04 1.94,0.06 1.95,0.02 1.94,0.1 1.94,0.04 1.95,0.11 1.94,0.01 1.95,0.03 h 1.94 l 1.95,0.06 1.94,0.01 1.95,0.07 1.94,0.05 1.94,0.01 h 1.95 l 1.94,0.06 h 1.95 l 1.94,0.09 h 1.95 l 1.94,0.02 1.95,-0.02 1.94,0.02 h 1.94 l 1.95,0.03 1.94,-0.2 1.95,0.1 1.12,0.99 -1.12,1.26 -1.95,0.16 -1.94,-0.21 -1.95,0.15 -1.94,0.05 -1.94,0.13 -1.95,-0.02 -1.94,0.14 h -1.95 l -1.94,0.1 -1.95,0.07 -1.94,0.01 h -1.95 l -1.94,0.01 -1.94,-0.09 -1.95,0.11 -1.94,0.1 v 0 l -1.95,0.09 -1.94,-0.09 v 0 h -1.95 l -1.94,-0.15 -1.95,-0.05 -1.94,0.05 -1.94,0.11 -1.95,-0.1 -1.94,0.05 -1.95,-0.02 h -1.94 -1.95 l -1.94,0.03 -1.95,0.02 -1.94,-0.06 -1.94,-0.07 -1.95,-0.05 -1.94,-0.17 -1.95,-0.07 -1.94,-0.02 -1.95,-0.01 -1.94,-0.03 -1.95,-0.02 -1.94,-0.03 -1.94,-0.02 -1.95,0.08 h -1.94 l -1.95,-0.11 h -1.94 l -1.95,0.01 -1.94,0.03 -1.95,0.01 -1.94,0.03 h -1.94 l -1.95,0.05 -1.94,0.02 -1.95,0.01 -1.94,0.01 -1.95,0.03 -1.94,0.02 -1.95,0.05 -1.94,0.03 -1.94,-1.28 -0.35,-0.35 z m 25.27,9.39 1.95,0.2 h 1.94 l 1.95,-0.2 1.94,0.06 1.95,-0.06 1.94,-0.21 1.94,-0.24 1.95,-0.09 1.94,-0.06 1.95,-0.02 1.94,-0.06 1.95,-0.03 1.94,-0.07 1.95,-0.03 1.94,-0.04 1.94,-0.02 1.95,-0.01 1.94,-0.01 1.95,0.02 1.94,0.03 1.95,0.01 1.94,0.04 1.95,0.02 1.94,0.03 1.94,0.05 1.95,0.07 1.94,0.06 1.95,0.08 1.94,0.02 1.95,0.07 1.94,0.08 1.95,0.1 1.94,0.02 1.94,0.11 1.95,-0.18 1.94,1.01 0.08,0.09 -0.08,0.14 -1.94,1.71 -1.95,-0.14 -1.94,0.12 h -1.94 l -1.3,0.14 -0.65,0.09 -1.94,0.07 -1.95,0.25 -1.94,0.15 -1.95,0.08 h -1.94 l -1.95,0.11 -1.94,0.03 -1.94,0.06 -1.95,-0.03 -1.94,0.11 -1.95,0.09 -1.94,-0.02 -1.95,0.16 -1.94,0.03 -1.95,-0.06 -1.94,0.03 -1.94,-0.06 -1.95,-0.08 -1.94,-0.2 -1.95,-0.06 -1.94,-0.15 -1.95,0.08 -1.94,-0.12 h -1.95 l -1.94,-0.2 -1.94,-0.2 -0.78,-0.16 -1.17,-0.33 -1.94,0.12 -1.95,-0.21 -1.94,0.42 -1.95,-0.21 -1.14,-1.76 z"
+       fill="currentColor"
+       fill-opacity="0.0293" />
+    <path
+       d="m 149.44,251.65 1.95,0.03 1.94,0.15 1.95,0.01 1.94,-0.01 1.95,0.01 1.94,-0.01 1.95,-0.01 1.94,0.02 1.94,0.03 1.95,0.01 1.94,0.02 1.95,-0.02 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 h 1.95 l 1.94,0.07 1.95,0.01 h 1.94 1.94 l 1.95,-0.05 1.94,-0.01 1.95,-0.03 1.94,-0.07 1.95,-0.03 1.94,0.03 h 1.95 l 1.94,0.04 1.94,0.04 1.95,0.02 h 1.94 l 1.95,-0.02 1.94,-0.01 1.95,-0.04 1.94,-0.01 1.95,0.05 1.94,0.04 1.94,0.07 1.95,-0.08 1.94,-0.12 1.95,-0.13 1.94,-0.06 1.95,-0.02 h 1.94 l 1.95,0.04 1.94,0.03 h 1.94 1.95 1.94 l 1.95,0.01 h 1.94 l 1.95,0.02 1.94,0.01 1.95,0.03 1.94,-0.03 1.94,-0.04 1.95,-0.03 1.94,0.03 1.95,0.03 h 1.94 l 1.95,-0.07 1.94,-0.05 1.95,-0.08 1.94,-0.04 1.94,-0.03 h 1.95 l 1.94,0.02 1.95,0.03 1.94,0.04 1.95,0.04 1.94,0.08 1.95,0.1 1.94,0.06 1.94,0.06 1.95,0.01 1.94,0.03 h 1.95 l 1.94,0.03 1.95,0.01 1.94,0.04 h 1.95 l 1.94,-0.04 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,-0.02 1.95,-0.05 1.94,-0.01 h 1.95 l 1.94,0.01 1.94,0.01 1.95,-0.01 h 1.94 l 1.95,-0.03 h 1.94 1.95 1.94 1.95 1.94 l 1.94,0.02 h 1.95 l 1.94,-0.06 h 1.95 l 1.94,-0.02 h 1.95 l 1.94,0.08 1.95,-0.06 H 375 l 1.94,-0.02 1.95,-0.01 1.94,0.03 1.95,0.06 1.94,0.16 1.95,0.04 h 1.94 l 1.95,-0.07 1.94,0.01 1.94,-0.12 1.95,-0.01 1.94,-0.09 1.95,0.99 0.16,0.17 1.2,1.98 -1.36,1.38 -1.95,0.32 -1.94,-0.03 -1.95,0.02 h -1.94 -1.94 l -1.95,-0.01 -1.94,0.01 h -1.95 -1.94 l -1.95,0.01 h -1.94 l -1.95,0.01 H 375 373.06 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.94,0.01 h -1.95 l -1.94,-0.01 h -1.95 -1.94 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.07 -1.86,0.17 -0.08,0.06 -1.95,0.73 -1.94,0.52 -1.95,0.23 -1.94,0.09 -1.95,-0.01 -1.94,-0.04 -1.95,-0.11 -1.94,-0.18 -1.94,-0.46 -1.55,-0.83 -0.4,-0.05 -1.94,-0.15 -1.95,-0.04 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 h -1.94 -1.95 l -1.94,0.01 -1.94,-0.01 h -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 l -1.94,0.01 h -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 -1.69,-1.72 0.47,-1.98 z m 97.23,12.84 1.94,-0.05 1.95,-0.34 1.94,-0.17 1.94,-0.23 1.95,-0.08 1.94,-0.11 1.95,-0.08 1.94,-0.06 1.95,-0.04 1.94,-0.04 1.95,-0.03 1.94,-0.02 1.94,-0.01 1.95,-0.01 h 1.94 1.95 l 1.94,0.03 1.95,0.04 1.94,0.05 1.95,0.03 1.94,0.06 1.94,0.03 1.95,0.06 1.94,0.11 1.95,0.12 1.94,0.18 1.95,0.56 0.6,0.27 -0.6,0.76 -1.95,0.98 -1.94,0.12 -1.3,0.11 -0.65,0.06 -1.94,0.11 -1.95,0.14 -1.94,0.16 -1.94,0.13 -1.95,0.09 -1.94,0.14 -1.95,0.06 -1.94,0.03 -1.95,0.02 h -1.94 -1.95 l -1.94,0.08 h -1.94 l -1.95,-0.02 -1.94,-0.04 -1.95,-0.04 -1.94,-0.07 -1.95,-0.09 -1.94,-0.13 -1.95,-0.16 -1.94,-0.2 -0.88,-0.27 -1.06,-0.54 -1.95,-0.74 -1.94,-0.08 -1.22,-0.61 z m -54.45,7.54 1.95,0.16 1.94,0.07 h 1.95 l 1.94,-0.11 1.94,0.04 1.95,-0.04 h 1.94 1.95 l 1.94,0.11 h 1.95 l 1.94,0.09 h 1.95 l 1.94,-0.05 1.94,-0.18 1.95,-0.06 1.94,-0.03 1.95,0.09 1.94,-0.06 1.95,-0.03 h 1.94 1.95 L 235,272 l 1.94,0.03 1.95,-0.03 h 1.94 l 1.95,0.15 h 1.94 l 1.95,0.04 1.94,0.07 1.95,0.13 1.94,0.1 1.94,0.11 1.95,-0.25 1.94,-0.43 1.95,-0.26 1.94,-0.22 1.95,-0.1 1.94,-0.06 1.95,-0.05 1.94,-0.05 1.94,-0.05 1.95,-0.04 1.94,-0.02 h 1.95 l 1.94,0.03 1.95,0.03 1.94,0.04 1.95,0.06 1.94,0.13 1.94,0.12 1.95,0.19 1.94,0.12 1.95,0.11 1.94,0.13 1.95,0.16 1.94,0.2 1.95,0.27 v 0 H 305 l 1.94,0.03 h 1.95 l 1.94,0.02 h 1.95 l 1.94,0.08 1.95,0.01 1.94,0.06 1.95,0.08 1.94,0.09 1.94,0.09 1.95,0.12 1.94,0.04 1.95,0.14 1.94,0.83 0.39,0.38 -0.39,0.32 -1.94,0.78 -1.95,0.07 -1.94,0.02 -1.95,0.07 -1.94,0.06 -1.94,0.05 -1.95,0.04 -1.94,0.06 -1.95,0.02 -1.94,0.04 -1.95,0.03 -1.94,0.03 -1.95,0.03 -1.94,0.02 -1.94,0.01 -1.95,0.02 -1.94,0.01 -1.95,0.02 -1.94,0.01 -1.95,0.02 h -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 l -1.94,-0.02 -1.95,-0.03 -1.94,-0.03 -1.95,-0.01 -1.94,-0.03 -1.94,-0.01 -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 h -1.94 l -1.95,-0.01 h -1.94 l -1.95,-0.01 H 235 l -1.94,-0.01 -1.95,-0.03 -1.94,-0.01 h -1.95 l -1.94,-0.03 -1.95,-0.01 -1.94,-0.02 -1.95,-0.03 -1.94,-0.04 -1.94,-0.01 -1.95,-0.03 h -1.94 -1.95 l -1.94,0.02 -1.95,-0.01 h -1.94 l -1.95,-0.01 H 200 l -1.94,-0.01 -1.95,-0.02 -1.94,0.01 -1.95,0.16 -1.76,-1.47 1.03,-1.97 z m 66.11,10.15 1.95,-0.33 1.94,-0.27 1.95,-0.12 1.94,-0.09 1.95,-0.03 1.94,-0.07 1.94,-0.03 1.95,-0.02 h 1.94 1.95 l 1.94,0.03 1.95,0.03 1.94,0.03 1.95,0.05 1.94,0.04 1.94,0.04 1.95,0.08 1.94,0.09 1.95,0.1 1.94,0.07 1.95,0.07 1.94,0.06 1.95,0.09 1.94,0.22 1.94,0.15 1.95,0.05 1.94,0.06 1.95,-0.11 1.94,-0.1 1.95,-0.09 1.94,0.09 1.95,0.1 1.94,0.17 v 0 h 1.94 l 1.95,0.06 h 1.94 l 1.95,0.03 1.94,0.03 1.95,0.06 1.94,0.03 1.95,0.03 H 340 l 1.94,0.15 1.95,-0.01 1.94,0.02 1.95,-0.03 1.94,-0.01 1.95,0.02 1.94,-0.03 1.95,1.36 0.26,0.26 -0.26,0.27 -1.95,1.2 -1.94,-0.11 -1.95,-0.03 -1.94,-0.01 -1.95,-0.01 h -1.94 l -1.95,-0.01 -1.94,-0.03 -1.94,-0.01 -1.95,0.01 h -1.94 l -1.95,0.03 h -1.94 l -1.95,0.02 h -1.94 -1.95 l -1.94,0.01 -1.94,-0.01 -1.95,-0.01 h -1.94 l -1.95,-0.03 -1.94,-0.05 -1.95,-0.01 -1.94,-0.02 -1.95,-0.01 H 305 l -1.94,-0.01 -1.95,0.01 -1.94,-0.01 h -1.95 -1.94 l -1.95,0.01 -1.94,0.03 -1.95,0.01 h -1.94 l -1.94,0.02 -1.95,0.01 -1.94,0.01 -1.95,-0.02 -1.94,0.01 -1.95,-0.01 h -1.94 -1.95 l -1.94,0.08 -1.94,-0.07 -1.95,-0.03 -1.94,-0.11 -1.95,-0.06 -1.94,-0.12 -1.95,-0.2 -1.94,-0.47 -1.22,-0.27 1.22,-0.58 1.23,-1.39 z m -40.83,6.77 1.94,0.04 1.95,0.06 1.94,0.03 1.95,0.04 1.94,0.02 1.95,0.01 1.94,0.03 1.95,0.06 1.94,0.01 1.94,0.05 1.95,0.01 1.94,0.03 1.95,0.01 1.94,0.02 1.95,-0.02 1.94,-0.01 1.95,-0.02 1.94,-0.14 1.94,-0.04 1.95,-0.04 1.94,-0.03 1.95,0.1 1.94,-0.03 1.95,0.03 1.94,0.01 h 1.95 l 1.94,0.05 1.94,-0.22 1.95,-0.2 1.94,-0.04 1.95,0.01 1.94,0.07 1.95,0.06 1.94,0.08 1.95,0.02 1.94,0.14 1.94,0.07 1.95,0.15 1.94,0.01 1.95,0.04 h 1.94 l 1.95,0.08 1.94,0.02 1.95,0.09 1.94,0.07 1.94,0.02 h 1.95 l 1.94,0.08 h 1.95 l 1.94,0.12 h 1.95 l 1.94,0.03 1.95,-0.03 1.94,0.03 h 1.94 l 1.95,0.04 1.94,-0.27 1.95,0.14 0.68,0.6 -0.68,0.77 -1.95,0.19 -1.94,-0.32 -1.95,0.11 -1.94,0.03 -1.94,0.1 -1.95,-0.05 -1.94,0.12 h -1.95 l -1.94,0.18 -1.95,0.04 -1.94,0.08 h -1.95 l -1.94,0.02 -1.94,-0.01 -1.95,0.16 -1.94,0.09 -1.95,0.09 -1.94,-0.04 -1.95,0.03 -1.94,-0.12 -1.95,0.04 -1.94,0.07 -1.94,0.16 -1.95,-0.08 -1.94,0.08 h -1.95 l -1.94,0.03 h -1.95 l -1.94,0.02 -1.95,-0.06 -1.94,-0.16 -1.94,-0.03 -1.95,-0.05 -1.94,-0.14 -1.95,-0.06 -1.94,-0.02 -1.95,-0.01 -1.94,-0.04 -1.95,-0.04 -1.94,-0.04 -1.94,-0.02 -1.95,0.06 -1.94,-0.01 -1.95,-0.1 -1.94,0.01 -1.95,0.02 -1.94,0.03 -1.95,0.01 -1.94,0.04 -1.94,0.01 -1.95,0.07 -1.94,0.03 -1.95,0.01 -1.94,0.02 -1.95,0.04 -1.94,0.02 -1.95,0.07 -1.94,0.04 -1.87,-1.49 z m 23.33,10.97 1.95,0.28 h 1.94 l 1.95,-0.28 1.94,0.09 1.95,-0.09 1.94,-0.29 1.94,-0.33 1.95,-0.13 1.94,-0.08 1.95,-0.03 1.94,-0.08 1.95,-0.05 1.94,-0.09 1.95,-0.04 1.94,-0.06 1.94,-0.02 1.95,-0.02 1.94,-0.01 1.95,0.02 1.94,0.04 1.95,0.03 1.94,0.04 1.95,0.03 1.94,0.05 1.94,0.07 1.95,0.1 1.94,0.07 1.95,0.12 1.94,0.03 1.95,0.09 1.94,0.11 1.95,0.14 1.94,0.03 1.94,0.15 1.95,-0.25 1.39,0.76 -1.39,1.27 -1.95,-0.33 -1.94,0.23 -1.94,0.03 -1.95,0.26 -1.94,0.13 -1.95,0.23 -1.94,0.15 v 0 l -1.95,0.12 h -1.94 l -1.95,0.15 -1.94,0.04 -1.94,0.09 -1.95,-0.04 -1.94,0.15 -1.95,0.12 -1.94,-0.03 -1.95,0.23 -1.94,0.04 -1.95,-0.08 -1.94,0.04 -1.94,-0.09 -1.95,-0.11 -1.94,-0.27 -1.95,-0.09 -1.94,-0.21 -1.95,0.11 -1.94,-0.17 v 0 h -1.95 l -1.94,-0.37 -1.94,-0.55 -1.95,-0.39 -1.94,0.17 -1.95,-0.55 -1.94,0.08 -1.95,0.47 -0.53,-0.83 z"
+       fill="currentColor"
+       fill-opacity="0.0388" />
+    <path
+       d="m 149.44,251.95 1.95,0.04 1.94,0.21 1.95,0.02 1.94,-0.02 1.95,0.02 1.94,-0.02 1.95,-0.02 1.94,0.04 1.94,0.03 1.95,0.02 1.94,0.02 1.95,-0.02 h 1.94 l 1.95,-0.02 h 1.94 1.95 l 1.94,0.02 h 1.94 l 1.95,-0.02 h 1.94 1.95 l 1.94,0.02 h 1.95 l 1.94,0.09 1.95,0.02 h 1.94 1.94 l 1.95,-0.06 1.94,-0.03 1.95,-0.04 1.94,-0.09 1.95,-0.05 1.94,0.05 h 1.95 l 1.94,0.06 1.94,0.05 1.95,0.02 h 1.94 l 1.95,-0.02 1.94,-0.02 1.95,-0.05 1.94,-0.02 1.95,0.07 1.94,0.07 1.94,0.09 1.95,-0.12 1.94,-0.16 1.95,-0.18 1.94,-0.1 1.95,-0.02 h 1.94 l 1.95,0.05 1.94,0.05 h 1.94 1.95 1.94 l 1.95,0.01 1.94,0.01 1.95,0.02 1.94,0.02 1.95,0.03 1.94,-0.03 1.94,-0.06 1.95,-0.05 1.94,0.05 1.95,0.04 h 1.94 l 1.95,-0.1 1.94,-0.06 1.95,-0.12 1.94,-0.06 1.94,-0.04 1.95,0.01 1.94,0.02 1.95,0.05 1.94,0.05 1.95,0.06 1.94,0.1 1.95,0.14 1.94,0.09 1.94,0.09 1.95,0.02 1.94,0.03 h 1.95 l 1.94,0.04 1.95,0.03 1.94,0.04 h 1.95 l 1.94,-0.04 h 1.94 l 1.95,-0.03 h 1.94 1.95 l 1.94,-0.02 1.95,-0.07 1.94,-0.02 h 1.95 l 1.94,0.02 1.94,0.02 1.95,-0.02 h 1.94 l 1.95,-0.04 h 1.94 1.95 1.94 1.95 1.94 l 1.94,0.02 h 1.95 l 1.94,-0.08 h 1.95 l 1.94,-0.03 h 1.95 l 1.94,0.11 1.95,-0.08 H 375 l 1.94,-0.03 1.95,-0.02 1.94,0.05 1.95,0.08 1.94,0.23 1.95,0.05 h 1.94 l 1.95,-0.1 1.94,0.02 1.94,-0.16 1.95,-0.02 1.94,-0.13 1.5,0.83 0.45,0.28 1.12,1.7 -1.12,1.13 -1.95,0.46 -1.94,-0.04 -1.95,0.02 h -1.94 -1.94 -1.95 -1.94 -1.95 l -1.94,0.01 h -1.95 l -1.94,0.01 -1.95,0.01 H 375 l -1.94,0.01 h -1.95 l -1.94,0.01 h -1.95 l -1.94,-0.01 h -1.95 l -1.94,0.01 h -1.95 -1.94 l -1.94,0.01 h -1.95 l -1.94,-0.01 h -1.95 -1.94 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.07 -1.94,0.17 -1.17,0.1 -0.78,0.3 -1.94,0.73 -1.95,0.33 -1.94,0.12 -1.95,-0.01 -1.94,-0.05 -1.95,-0.15 -1.94,-0.26 -1.94,-0.65 -0.67,-0.36 -1.28,-0.16 -1.94,-0.14 -1.95,-0.04 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 h -1.94 -1.95 l -1.94,0.01 -1.94,-0.01 h -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 -1.94,0.01 h -1.94 -1.95 l -1.94,0.01 h -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 -1.59,-1.62 0.66,-1.98 z m 101.12,12.68 1.94,-0.23 1.94,-0.33 1.95,-0.1 1.94,-0.17 1.95,-0.1 1.94,-0.09 1.95,-0.06 1.94,-0.06 1.95,-0.03 1.94,-0.04 1.94,-0.01 1.95,-0.01 h 1.94 l 1.95,-0.01 1.94,0.05 1.95,0.05 1.94,0.08 1.95,0.04 1.94,0.09 1.94,0.04 1.95,0.09 1.94,0.15 1.95,0.17 1.94,0.25 1.08,0.36 -1.08,0.76 -1.94,0.37 -1.95,0.26 -1.94,0.19 -1.95,0.14 -1.94,0.14 -1.46,0.11 -0.48,0.04 -1.95,0.12 -1.94,0.2 -1.95,0.08 -1.94,0.06 -1.95,0.02 h -1.94 -1.95 l -1.94,0.11 h -1.94 l -1.95,-0.02 -1.94,-0.07 -1.95,-0.04 -1.94,-0.11 -1.95,-0.12 -1.94,-0.18 -0.78,-0.09 -1.17,-0.22 -1.94,-0.66 -1.94,-0.82 -0.59,-0.27 z m -58.34,7.94 0.78,0.09 1.17,0.11 1.94,0.07 1.95,-0.01 1.94,-0.1 1.94,0.03 1.95,-0.03 h 1.94 1.95 l 1.94,0.1 h 1.95 l 1.94,0.06 1.95,-0.02 1.94,-0.03 1.94,-0.15 0.98,-0.03 0.97,-0.04 1.94,-0.05 1.3,0.09 0.65,0.02 0.97,-0.02 0.97,-0.04 1.95,-0.05 h 1.94 1.95 l 1.94,-0.03 1.94,0.03 1.95,-0.03 h 1.94 l 1.17,0.12 0.78,0.03 h 1.94 l 1.95,0.02 1.94,0.03 1.95,0.04 1.94,0.02 1.94,0.02 1.95,-0.07 1.05,-0.09 0.89,-0.23 1.95,-0.38 1.94,-0.3 1.95,-0.14 1.94,-0.09 1.95,-0.07 1.94,-0.07 1.94,-0.06 1.95,-0.07 1.94,-0.02 1.95,-0.01 1.94,0.05 1.95,0.04 1.94,0.06 1.95,0.08 1.94,0.18 1.94,0.18 1.95,0.26 1.94,0.17 1.95,0.15 1.94,0.18 0.78,0.09 1.17,0.03 1.94,0.06 1.95,0.07 1.94,0.01 1.94,0.03 1.95,0.02 1.94,0.04 1.95,0.02 1.94,0.09 1.95,0.03 1.94,0.09 1.95,0.1 1.94,0.11 1.94,0.11 1.95,0.15 1.94,0.04 1.95,0.15 1.54,0.82 -1.54,0.75 -1.95,0.09 -1.94,0.03 -1.95,0.1 -1.94,0.08 -1.94,0.07 -1.95,0.06 -1.94,0.08 -1.95,0.04 -1.94,0.04 -1.95,0.05 -1.94,0.04 -1.95,0.05 -1.94,0.02 -1.94,0.02 -1.95,0.03 -1.94,0.01 -1.95,0.02 -1.94,0.02 -1.95,0.02 -1.94,0.01 h -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 l -1.94,-0.03 -1.95,-0.04 -1.94,-0.04 -1.95,-0.02 -1.94,-0.04 -1.94,-0.02 -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 H 235 l -1.94,-0.01 -1.95,-0.03 -1.94,-0.02 -1.95,-0.01 -1.94,-0.03 -1.95,-0.02 -1.94,-0.03 -1.95,-0.04 -1.94,-0.06 -1.94,-0.01 -1.95,-0.05 -1.94,0.01 h -1.95 l -1.94,0.03 -1.95,-0.02 h -1.94 l -1.95,-0.01 H 200 l -1.94,-0.02 -1.95,-0.03 -1.94,0.01 -1.95,0.2 -1.47,-1.23 1.37,-1.97 z m 68.06,9.81 1.94,-0.39 1.95,-0.16 1.94,-0.13 1.95,-0.04 1.94,-0.1 1.94,-0.04 1.95,-0.03 h 1.94 1.95 l 1.94,0.04 1.95,0.04 1.94,0.05 1.95,0.07 1.94,0.06 1.94,0.05 1.95,0.11 1.94,0.13 1.95,0.14 1.94,0.09 1.95,0.11 1.94,0.07 1.3,0.09 0.65,0.05 1.94,0.28 1.94,0.11 1.95,0.02 1.94,0.01 1.95,-0.08 1.94,-0.1 1.95,-0.08 1.94,0.06 1.95,0.05 1.94,0.07 1.94,0.01 1.95,0.05 h 1.94 l 1.95,0.04 1.94,0.02 1.95,0.08 1.94,0.02 1.95,0.03 1.94,-0.01 1.94,0.09 1.95,-0.01 1.94,0.02 1.95,-0.03 1.94,-0.02 h 1.95 l 1.94,-0.11 1.77,1.4 -1.77,1.27 -1.94,-0.16 -1.95,-0.04 -1.94,-0.02 -1.95,-0.02 h -1.94 l -1.95,-0.01 -1.94,-0.04 -1.94,-0.01 -1.95,0.01 h -1.94 l -1.95,0.04 h -1.94 l -1.95,0.03 h -1.94 -1.95 l -1.94,0.02 -1.94,-0.02 -1.95,-0.02 h -1.94 l -1.95,-0.04 -1.94,-0.06 -1.95,-0.02 -1.94,-0.03 -1.95,-0.01 H 305 l -1.94,-0.02 -1.95,0.02 -1.94,-0.02 h -1.95 -1.94 l -1.95,0.02 -1.94,0.04 -1.95,0.01 -1.94,0.01 -1.94,0.03 -1.95,0.01 -1.94,0.01 -1.95,-0.02 -1.94,0.01 -1.95,-0.01 h -1.94 -1.95 l -1.94,0.05 -1.94,-0.04 -1.95,-0.05 -1.94,-0.14 -1.95,-0.09 -1.94,-0.17 -1.95,-0.29 -0.83,-0.23 0.83,-0.99 1.17,-0.98 z m -42.78,6.76 1.94,0.06 1.95,0.09 1.94,0.04 1.95,0.06 1.94,0.02 1.95,0.02 1.94,0.04 1.95,0.09 1.94,0.01 1.94,0.06 1.95,0.02 1.94,0.05 1.95,0.02 1.94,0.01 1.95,-0.01 1.94,-0.02 1.95,-0.04 1.94,-0.11 1.94,-0.06 1.95,-0.05 1.94,-0.05 1.95,0.06 1.94,-0.03 1.95,0.03 1.94,0.02 h 1.95 l 1.94,0.06 1.94,-0.3 1.95,-0.28 1.94,-0.06 1.95,0.01 1.94,0.11 1.95,0.08 1.94,0.11 1.95,0.04 1.94,0.19 1.94,0.09 1.95,0.21 1.94,0.02 1.95,0.06 h 1.94 l 1.95,0.11 1.94,0.03 1.95,0.13 1.94,0.09 1.94,0.04 h 1.95 l 1.94,0.11 h 1.95 l 1.46,0.12 -1.46,0.21 -1.95,0.01 -1.94,0.17 h -1.95 l -1.94,0.06 -1.94,0.1 -1.95,0.21 -1.94,0.07 -1.95,0.16 -1.94,-0.03 -1.95,0.07 -1.94,-0.06 -1.95,0.16 -1.94,0.11 -1.94,0.23 -1.95,-0.05 -1.94,0.12 -1.95,0.02 -1.94,0.07 -1.95,0.01 -1.94,-0.01 -1.95,-0.17 -1.94,-0.29 -1.94,0.01 -1.95,-0.03 -1.94,-0.11 -1.95,-0.02 -1.94,-0.03 -1.95,-0.03 -1.94,-0.04 -1.95,-0.06 -1.94,-0.06 -1.94,-0.03 -1.95,0.03 -1.94,-0.02 -1.95,-0.08 -1.94,0.02 -1.95,0.02 -1.94,0.05 -1.95,0.01 -1.94,0.06 -1.94,0.02 -1.95,0.08 -1.94,0.05 -1.95,0.02 -1.94,0.02 -1.95,0.06 -1.94,0.03 -1.95,0.09 -1.94,0.07 -1.62,-1.3 z m 110.83,1.07 1.95,0.19 0.05,0.04 -0.05,0.05 -1.95,0.25 -1.29,-0.3 z m -75.83,9.95 1.94,-0.47 1.95,-0.18 1.94,-0.12 1.95,-0.04 1.94,-0.11 1.95,-0.07 1.94,-0.12 1.95,-0.07 1.94,-0.07 1.94,-0.04 1.95,-0.02 1.94,-0.02 1.95,0.03 1.94,0.06 1.95,0.03 1.94,0.07 1.95,0.04 1.94,0.07 1.94,0.09 1.95,0.14 1.94,0.11 1.95,0.16 1.94,0.04 1.95,0.13 1.94,0.16 1.95,0.2 1.94,0.03 1.17,0.13 -1.17,0.22 -1.94,0.06 -1.95,0.35 -1.94,0.25 -1.95,0.26 -1.94,0.14 -1.95,0.21 -1.94,0.07 -1.95,0.17 -1.94,0.06 -1.94,0.07 -1.95,-0.02 -1.94,0.09 -0.98,0.04 -0.97,0.09 -1.94,-0.04 -1.95,0.31 -1.94,0.06 -1.95,-0.12 -1.94,0.06 -1.94,-0.12 -1.95,-0.15 -0.49,-0.09 -1.45,-0.17 -1.95,-0.08 -1.94,-0.18 -1.95,0.04 -1.94,-0.19 -1.95,-0.17 -1.94,-0.85 -0.86,-0.37 z m 56.39,-0.11 0.49,0.27 -0.49,0.44 -1.51,-0.44 z"
+       fill="currentColor"
+       fill-opacity="0.0583" />
+    <path
+       d="m 149.44,252.33 1.95,0.06 1.94,0.29 1.95,0.02 1.94,-0.02 1.95,0.02 1.94,-0.02 1.95,-0.03 1.94,0.05 1.94,0.06 1.95,0.02 1.94,0.03 1.95,-0.03 h 1.94 l 1.95,-0.02 h 1.94 1.95 l 1.94,0.02 h 1.94 l 1.95,-0.02 h 1.94 1.95 l 1.94,0.02 h 1.95 l 1.94,0.12 v 0 l 1.95,0.01 h 1.94 1.94 l 0.65,-0.01 1.3,-0.06 1.94,-0.03 1.95,-0.05 1.94,-0.13 1.95,-0.07 1.94,0.07 h 1.95 l 1.94,0.07 1.94,0.08 1.95,0.03 h 1.94 l 1.95,-0.03 1.94,-0.02 1.95,-0.08 1.94,-0.03 1.95,0.11 1.94,0.08 0.97,0.06 0.97,0.02 0.78,-0.02 1.17,-0.09 1.94,-0.23 1.95,-0.25 1.94,-0.13 1.95,-0.02 h 1.94 l 1.95,0.06 1.94,0.06 h 1.94 1.95 1.94 l 1.95,0.02 1.94,0.01 1.95,0.04 1.94,0.02 1.95,0.05 1.94,-0.05 1.94,-0.09 1.95,-0.06 1.94,0.06 1.95,0.07 h 1.94 l 1.95,-0.14 1.94,-0.09 1.95,-0.17 1.94,-0.07 1.94,-0.06 1.95,0.01 1.94,0.03 1.95,0.07 1.94,0.07 1.95,0.08 1.94,0.14 1.95,0.2 1.94,0.12 1.94,0.12 1.95,0.02 1.94,0.06 h 1.95 l 1.94,0.05 1.95,0.03 1.94,0.06 v 0 h 1.95 v 0 l 1.94,-0.06 h 1.94 l 1.95,-0.03 h 1.94 1.95 l 1.94,-0.03 1.95,-0.1 1.94,-0.03 h 1.95 l 1.94,0.03 1.94,0.02 1.95,-0.02 h 1.94 l 1.95,-0.05 h 1.94 1.95 1.94 1.95 1.94 l 1.94,0.02 h 1.95 l 1.94,-0.11 h 1.95 l 1.94,-0.04 h 1.95 l 1.94,0.15 1.95,-0.11 H 375 l 1.94,-0.04 1.95,-0.02 1.94,0.06 1.95,0.11 1.59,0.25 0.35,0.03 1.95,0.02 h 1.94 l 1.95,-0.05 1.94,0.01 0.24,-0.01 1.7,-0.2 1.95,-0.02 1.94,-0.18 0.73,0.4 1.22,0.75 0.8,1.23 -0.8,0.82 -1.95,0.62 -1.94,-0.05 -1.95,0.03 h -1.94 -1.94 l -1.95,-0.01 -1.94,0.01 h -1.95 l -1.94,0.01 h -1.95 l -1.94,0.02 h -1.95 l -1.94,0.02 h -1.94 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,0.01 h -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.07 -1.94,0.16 -1.95,0.17 -0.43,0.08 -1.51,0.68 -1.95,0.45 -1.94,0.16 -1.95,-0.01 -1.94,-0.07 -1.95,-0.21 -1.94,-0.35 -1.58,-0.65 -0.36,-0.07 -1.95,-0.24 -1.94,-0.12 -1.95,-0.05 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 h -1.94 -1.95 -1.94 -1.94 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 -1.46,-1.48 0.91,-1.98 z m 105,12.23 1.95,-0.15 1.94,-0.22 1.95,-0.15 1.94,-0.11 1.95,-0.09 1.94,-0.08 1.95,-0.04 1.94,-0.05 1.94,-0.03 h 1.95 1.94 l 1.95,-0.01 1.94,0.06 1.95,0.07 1.94,0.1 1.95,0.07 1.94,0.11 1.94,0.06 1.95,0.12 1.94,0.22 1.95,0.22 0.58,0.1 -0.58,0.17 -1.95,0.4 -1.94,0.33 -1.95,0.21 -1.94,0.14 -1.94,0.2 -1.95,0.12 -1.94,0.2 -1.95,0.1 -1.94,0.06 -1.95,0.02 h -1.94 -1.95 l -0.38,0.02 -1.56,0.12 h -1.94 l -1.95,-0.03 -1.94,-0.09 v 0 l -1.95,-0.08 -1.94,-0.21 -1.95,-0.27 -1.94,-0.5 -1.95,-0.4 -0.97,-0.51 z m 5.84,8.01 1.94,-0.41 1.95,-0.2 1.94,-0.12 1.95,-0.1 1.94,-0.1 1.94,-0.08 1.95,-0.1 1.94,-0.03 h 1.95 l 1.94,0.06 1.95,0.06 1.94,0.08 1.95,0.11 1.94,0.25 1.94,0.24 1.95,0.37 0.55,0.06 1.39,0.05 1.95,0.06 1.94,0.06 1.95,0.06 1.94,0.06 1.95,0.07 1.94,0.02 1.94,0.05 1.95,0.04 1.94,0.06 1.95,0.06 1.94,0.1 1.95,0.05 1.94,0.13 1.95,0.13 1.94,0.12 1.94,0.15 1.95,0.18 1.94,0.05 1.95,0.17 0.57,0.3 -0.57,0.28 -1.95,0.13 -1.94,0.04 -1.95,0.14 -1.94,0.11 -1.94,0.09 -1.95,0.09 -1.94,0.11 -1.95,0.05 -1.94,0.06 -1.95,0.07 -1.94,0.06 -1.95,0.06 -1.94,0.03 -1.94,0.03 -1.95,0.04 -1.94,0.01 -1.95,0.04 -1.94,0.02 -1.95,0.03 -1.94,0.01 h -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 l -1.94,-0.05 -1.95,-0.05 -1.94,-0.05 -1.95,-0.04 -1.94,-0.04 -1.94,-0.03 -1.95,-0.02 -1.94,-0.01 -1.95,-0.02 -1.94,-0.01 -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 H 235 l -1.94,-0.03 -1.95,-0.04 -1.94,-0.02 -1.95,-0.02 -1.94,-0.04 -1.95,-0.02 -1.94,-0.05 -1.95,-0.05 -1.94,-0.08 -1.94,-0.02 -1.95,-0.06 -1.94,0.01 h -1.95 l -1.94,0.04 -1.95,-0.03 h -1.94 l -1.95,-0.01 H 200 l -1.94,-0.03 -1.95,-0.04 -1.94,0.02 -1.95,0.23 -1.08,-0.91 1.08,-1.5 1.95,0.29 1.94,0.06 1.95,-0.05 1.94,-0.09 1.94,0.02 1.95,-0.03 h 1.94 l 1.95,-0.02 1.94,0.1 h 1.95 l 1.94,0.05 1.95,-0.06 1.94,-0.04 1.94,-0.17 1.95,-0.09 1.94,-0.05 1.95,0.05 1.94,-0.07 1.95,-0.03 1.94,-0.01 1.95,-0.02 1.94,-0.03 1.94,0.01 1.95,-0.02 h 1.94 l 1.95,0.07 1.94,-0.01 h 1.95 l 1.94,0.02 1.95,0.03 1.94,0.01 1.94,-0.01 1.95,-0.08 1.94,-0.17 1.53,-0.13 z m 3.89,9.74 1.94,-0.18 1.95,-0.06 1.94,-0.13 1.94,-0.06 1.95,-0.04 h 1.94 1.95 l 1.94,0.05 1.95,0.06 1.94,0.07 1.95,0.09 1.94,0.08 1.94,0.07 1.95,0.16 1.3,0.12 0.64,0.19 1.95,0.38 1.94,0.16 1.95,0.12 1.94,0.04 1.95,0.12 1.94,0.12 1.94,0.05 1.95,-0.01 1.94,-0.03 1.95,-0.08 1.94,-0.13 1.95,-0.11 1.94,0.04 1.95,0.01 1.94,0.02 1.94,0.03 1.95,0.03 h 1.94 l 1.95,0.07 1.94,0.01 1.95,0.1 1.94,0.01 1.95,0.03 1.94,-0.02 1.94,0.02 1.95,-0.02 1.94,0.01 1.95,-0.04 1.94,-0.03 1.95,-0.03 1.94,-0.19 1.39,1.1 -1.39,1 -1.94,-0.22 -1.95,-0.05 -1.94,-0.03 -1.95,-0.03 h -1.94 l -1.95,-0.01 -1.94,-0.06 -1.94,-0.01 -1.95,0.01 h -1.94 l -1.95,0.06 h -1.94 l -1.95,0.04 h -1.94 -1.95 l -1.94,0.03 -1.94,-0.03 -1.95,-0.03 h -1.94 l -1.95,-0.05 -1.94,-0.08 -1.95,-0.04 -1.94,-0.03 -1.95,-0.02 H 305 l -1.94,-0.02 -1.95,0.02 -1.94,-0.02 h -1.95 -1.94 l -1.95,0.02 -1.94,0.05 -1.95,0.02 -1.94,0.02 -1.94,0.03 -1.95,0.02 -1.94,0.01 -1.95,-0.03 -1.94,0.02 -1.95,-0.02 h -1.94 -1.95 l -1.94,0.03 -1.94,-0.01 -1.95,-0.07 -1.94,-0.2 -1.95,-0.12 -1.7,-0.2 1.7,-1.97 v 0 z m -46.67,7.09 1.94,0.08 1.95,0.13 1.94,0.04 1.95,0.09 1.94,0.03 1.95,0.02 1.94,0.07 1.95,0.12 1.94,0.01 1.94,0.09 1.95,0.02 1.94,0.06 1.95,0.03 1.94,0.02 1.95,-0.02 1.94,-0.03 1.95,-0.04 1.94,-0.08 1.94,-0.09 1.95,-0.08 1.94,-0.07 1.95,0.02 1.94,-0.04 1.95,0.04 1.94,0.04 h 1.95 l 1.94,0.08 1.94,-0.42 1.95,-0.39 1.94,-0.08 1.95,0.02 1.94,0.14 1.95,0.11 1.94,0.16 1.95,0.05 1.94,0.26 1.94,0.13 1.95,0.29 1.94,0.03 1.95,0.08 h 1.94 l 1.56,0.12 -1.56,0.19 -1.94,-0.01 -1.95,0.12 -1.94,0.01 -1.95,0.33 -1.94,0.15 -1.94,0.32 -1.95,-0.01 -1.94,0.17 -1.95,0.07 -1.94,0.11 -1.95,0.02 -1.94,-0.04 -1.95,-0.32 -1.94,-0.46 -1.94,0.06 -1.95,-0.02 -1.94,-0.04 -1.95,0.01 -1.94,-0.05 -1.95,-0.03 -1.94,-0.06 -1.95,-0.08 -1.94,-0.08 -1.94,-0.04 -1.95,-0.03 -1.94,-0.02 -1.95,-0.05 -1.94,0.03 -1.95,0.02 -1.94,0.07 -1.95,0.02 -1.94,0.08 -1.94,0.02 -1.95,0.12 -1.94,0.06 -1.95,0.03 -1.94,0.03 -1.95,0.09 -1.94,0.04 -1.95,0.12 -1.94,0.09 -1.3,-1.04 z m 36.94,10.8 1.95,-0.25 1.94,-0.17 1.95,-0.05 1.94,-0.15 1.95,-0.09 1.94,-0.18 1.95,-0.09 1.94,-0.1 1.94,-0.05 1.95,-0.03 1.94,-0.02 1.95,0.03 1.94,0.09 1.95,0.05 1.94,0.09 1.95,0.05 1.94,0.1 1.94,0.12 1.95,0.2 1.94,0.14 1.95,0.23 1.94,0.05 1.62,0.15 -1.62,0.26 -1.94,0.11 -1.95,0.37 -1.94,0.19 -1.95,0.27 -1.94,0.14 -1.94,0.12 -1.95,0.02 -1.94,0.12 -1.95,0.1 -1.94,0.02 -1.95,0.14 -1.94,0.03 -1.95,-0.07 -1.94,0.02 -1.94,-0.11 -1.95,-0.13 -1.94,-0.3 -1.95,-0.12 -1.94,-0.25 -1.95,-0.02 -1.94,-0.28 -1.95,-0.4 -0.45,-0.23 z"
+       fill="currentColor"
+       fill-opacity="0.081" />
+    <path
+       d="m 149.44,252.83 1.95,0.07 v 0 l 1.94,0.15 1.95,0.01 1.94,-0.01 1.95,0.01 1.94,-0.01 h 1.95 l 1.94,0.02 1.94,0.02 1.95,0.01 1.94,0.01 1.95,-0.02 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.01 h 1.95 l 1.94,0.04 1.95,0.01 h 1.94 1.94 l 1.95,-0.03 1.94,-0.01 1.95,-0.02 1.94,-0.05 1.95,-0.03 1.94,0.03 h 1.95 l 1.94,0.03 1.94,0.03 1.95,0.01 h 1.94 l 1.95,-0.01 1.94,-0.01 1.95,-0.03 1.94,-0.01 1.95,0.04 1.94,0.03 1.94,0.04 1.95,-0.05 1.94,-0.09 1.5,-0.11 0.45,-0.07 1.94,-0.17 1.95,-0.04 h 1.94 l 1.95,0.09 1.94,0.08 h 1.94 1.95 1.94 l 1.95,0.02 1.94,0.02 1.95,0.05 1.94,0.02 v 0 l 1.95,0.04 1.94,-0.04 v 0 l 1.94,-0.11 1.95,-0.08 1.94,0.08 1.95,0.09 h 1.94 l 1.95,-0.19 1.94,-0.12 1.95,-0.22 1.94,-0.11 1.94,-0.07 h 1.95 l 1.94,0.05 1.95,0.09 1.94,0.1 1.95,0.11 1.94,0.19 1.46,0.19 0.49,0.04 1.94,0.06 1.94,0.05 1.95,0.01 1.94,0.02 h 1.95 l 1.94,0.02 1.95,0.01 1.94,0.02 h 1.95 l 1.94,-0.02 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,-0.01 1.95,-0.04 1.94,-0.01 h 1.95 l 1.94,0.01 1.94,0.01 1.95,-0.01 h 1.94 l 1.95,-0.02 h 1.94 1.95 1.94 1.95 1.94 l 1.94,0.01 1.95,0.01 1.94,-0.06 h 1.95 l 1.94,-0.02 h 1.95 l 1.94,0.08 1.95,-0.05 H 375 l 1.94,-0.02 1.95,-0.01 1.94,0.04 1.95,0.06 1.94,0.13 1.95,0.02 h 1.94 l 1.95,-0.04 1.94,0.01 1.94,-0.09 h 1.95 l 1.94,-0.12 1.95,1.29 0.4,0.61 -0.4,0.41 -1.95,0.84 -1.94,-0.06 -1.95,0.03 h -1.94 -1.94 l -1.95,-0.01 -1.94,0.01 -1.95,0.01 -1.94,0.01 h -1.95 l -1.94,0.02 -1.95,0.01 -1.94,0.02 h -1.94 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,0.02 h -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.06 -1.94,0.14 -1.95,0.15 -1.47,0.3 -0.47,0.21 -1.95,0.62 -1.94,0.22 -1.95,-0.01 -1.94,-0.1 -1.95,-0.29 -1.94,-0.47 -0.42,-0.18 -1.52,-0.28 -1.95,-0.22 -1.94,-0.11 -1.95,-0.04 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 -1.94,-0.01 h -1.95 -1.94 -1.94 l -1.95,0.02 h -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 -1.29,-1.31 1.23,-1.98 z m 108.89,11.86 1.95,-0.2 1.94,-0.16 1.95,-0.12 1.94,-0.1 1.95,-0.06 1.94,-0.07 1.94,-0.03 1.95,-0.01 h 1.94 l 1.95,-0.02 1.94,0.09 1.95,0.1 1.94,0.14 1.95,0.08 1.94,0.16 1.94,0.07 1.95,0.17 0.18,0.03 -0.18,0.04 -1.95,0.28 -1.94,0.14 -1.94,0.28 -1.95,0.15 -1.94,0.26 -1.95,0.15 -1.94,0.11 -1.95,0.01 h -1.94 l -1.95,-0.01 -1.94,0.07 -1.94,-0.06 -1.95,-0.07 -1.94,-0.18 -1.95,-0.21 -1.94,-0.34 -1.95,-0.45 -0.48,-0.17 z m 5.84,7.72 1.94,-0.16 1.95,-0.14 1.94,-0.13 1.94,-0.11 1.95,-0.13 1.94,-0.04 1.95,-0.01 1.94,0.09 1.95,0.07 1.94,0.11 1.95,0.15 1.94,0.34 1.3,0.21 0.64,0.05 1.95,0.16 1.94,0.07 1.95,0.06 1.94,0.07 1.95,0.07 1.94,0.06 1.95,0.09 1.94,0.04 1.94,0.05 1.95,0.08 1.94,0.08 1.95,0.1 1.94,0.13 1.95,0.07 1.94,0.19 1.95,0.15 1.94,0.15 1.94,0.2 0.98,0.1 -0.98,0.09 -1.94,0.16 -1.94,0.12 -1.95,0.11 -1.94,0.16 -1.95,0.06 -1.94,0.09 -1.95,0.1 -1.94,0.07 -1.95,0.08 -1.94,0.05 -1.94,0.03 -1.95,0.06 -1.94,0.02 -1.95,0.04 -1.94,0.04 -1.95,0.03 -1.94,0.02 h -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 l -1.94,-0.07 -1.95,-0.07 -1.94,-0.07 -1.95,-0.04 -1.94,-0.07 -1.94,-0.03 -1.95,-0.02 -1.94,-0.02 -1.95,-0.02 -1.94,-0.02 -1.95,-0.02 -1.94,-0.01 -1.95,-0.02 H 235 l -1.94,-0.03 -1.95,-0.06 -1.94,-0.03 -1.95,-0.02 -1.94,-0.06 -1.95,-0.03 -1.94,-0.06 -1.95,-0.08 -1.94,-0.1 -1.94,-0.03 -1.95,-0.08 -1.94,0.02 h -1.95 l -1.94,0.05 -1.95,-0.04 h -1.94 l -1.95,-0.01 H 200 l -1.94,-0.04 -1.95,-0.05 -1.94,0.01 -1.95,0.28 -0.59,-0.49 0.59,-0.81 1.95,0.43 1.94,0.05 1.95,-0.09 1.94,-0.08 1.94,0.01 1.95,-0.04 h 1.94 l 1.95,-0.04 1.94,0.1 h 1.95 l 1.94,0.04 1.95,-0.12 1.94,-0.05 1.94,-0.19 1.95,-0.12 1.94,-0.09 h 1.95 l 1.94,-0.09 1.95,-0.03 1.94,-0.03 1.95,-0.06 1.94,-0.04 1.94,0.01 1.95,-0.03 1.94,-0.01 1.95,0.04 1.94,-0.01 1.95,-0.02 1.94,0.01 1.95,0.01 1.94,-0.01 1.94,-0.04 1.95,-0.09 1.94,-0.17 1.95,-0.19 1.94,-0.21 0.15,-0.01 z m 5.83,10.02 1.94,-0.08 1.95,-0.06 h 1.94 1.95 l 1.94,0.07 1.95,0.09 1.94,0.09 v 0 l 1.95,1.23 1.94,0.54 1.94,0.2 -1.94,0.03 -1.94,0.04 -1.95,0.02 -1.94,0.02 -1.95,-0.04 -1.94,0.02 -1.95,-0.02 h -1.94 -1.95 -1.94 l -1.94,0.02 -1.95,-0.09 1.95,-1.13 0.72,-0.84 z m 42.78,2.04 1.94,-0.18 1.95,-0.14 1.94,0.02 1.95,-0.05 1.94,-0.03 1.94,0.05 1.95,0.01 h 1.94 l 1.95,0.08 1.94,0.01 1.95,0.12 h 1.94 l 1.95,0.03 1.94,-0.03 1.94,-0.08 1.95,-0.02 h 1.94 l 1.95,-0.05 1.94,-0.04 1.95,-0.07 1.94,-0.3 0.91,0.71 -0.91,0.65 -1.94,-0.3 -1.95,-0.07 -1.94,-0.03 -1.95,-0.04 h -1.94 l -1.95,-0.02 -1.94,-0.08 -1.94,-0.02 -1.95,0.02 h -1.94 l -1.95,0.08 h -1.94 l -1.95,0.06 h -1.94 -1.95 l -1.94,0.03 -1.94,-0.03 -1.95,-0.04 h -1.94 l -1.95,-0.08 -1.94,-0.1 -0.97,-0.03 z m -95.28,5.26 1.94,0.12 1.95,0.16 1.94,0.06 1.95,0.12 1.94,0.04 1.95,0.04 1.94,0.08 1.11,0.09 -1.11,0.09 -1.94,0.08 -1.95,0.04 -1.94,0.04 -1.95,0.11 -1.94,0.06 -1.95,0.17 -1.94,0.12 -0.89,-0.71 z m 40.83,0.61 1.95,-0.03 1.94,-0.06 1.95,0.06 1.94,0.04 h 1.95 l 1.55,0.09 -1.55,0.11 h -1.95 l -1.94,0.03 -1.95,0.05 -1.94,-0.06 -1.95,-0.04 -1.94,-0.09 z m 13.61,-0.45 1.95,-0.52 1.94,-0.11 1.95,0.02 1.94,0.2 1.95,0.14 1.94,0.21 1.95,0.08 1.94,0.36 1.94,0.17 -1.94,0.21 -1.94,0.44 -1.95,0.04 -1.94,0.23 -1.95,0.13 -1.94,0.18 -1.95,0.02 -1.94,-0.08 -1.95,-0.51 -1.88,-0.66 z m -13.61,10.4 1.95,-0.06 1.94,-0.21 1.95,-0.13 1.94,-0.23 1.95,-0.12 1.94,-0.14 1.94,-0.07 1.95,-0.05 1.94,-0.02 1.95,0.05 1.94,0.11 1.95,0.07 1.94,0.12 1.95,0.07 1.94,0.13 1.94,0.17 1.95,0.27 0.73,0.07 -0.73,0.11 -1.95,0.41 -1.94,0.24 -1.94,0.18 -1.95,0.07 -1.94,0.17 -1.95,0.11 -1.94,0.09 -1.95,0.14 h -1.94 l -1.95,-0.08 -1.94,-0.03 -1.94,-0.18 -1.95,-0.18 -1.94,-0.38 -1.95,-0.19 -1.94,-0.34 -1.95,-0.1 -0.21,-0.04 z"
+       fill="currentColor"
+       fill-opacity="0.114" />
+    <path
+       d="m 285.56,252.78 1.94,-0.13 1.94,-0.1 1.95,0.01 1.94,0.06 1.95,0.12 1.94,0.13 0.49,0.03 1.46,0.08 1.94,0.13 1.95,0.12 1.94,0.06 1.94,0.04 1.95,0.01 1.94,0.01 h 1.95 l 1.94,0.02 1.95,0.01 1.94,0.01 h 1.95 l 1.94,-0.01 h 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,-0.01 1.95,-0.03 1.94,-0.01 h 1.95 l 1.94,0.01 1.94,0.01 1.95,-0.01 h 1.94 l 1.95,-0.01 h 1.94 l 1.95,-0.01 h 1.94 1.95 1.94 l 1.94,0.02 1.95,0.01 1.94,-0.04 h 1.95 l 1.94,-0.03 h 1.95 l 1.94,0.07 1.95,-0.04 1.94,0.01 1.94,-0.01 h 1.95 l 1.94,0.05 1.95,0.05 1.94,0.11 1.95,0.03 h 1.94 l 1.95,-0.04 1.94,0.01 1.94,-0.07 1.95,0.02 1.94,-0.14 1.89,1.56 -1.89,1.03 -1.94,-0.09 -1.95,0.05 h -1.94 -1.94 l -1.95,-0.01 -1.94,0.01 h -1.95 l -1.94,0.02 -1.95,0.01 -1.94,0.02 -1.95,0.01 -1.94,0.02 -1.94,0.01 -1.95,0.01 -1.94,0.01 h -1.95 l -1.94,-0.01 h -1.95 l -1.94,0.01 -1.95,0.01 -1.94,0.01 h -1.94 -1.95 -1.94 l -1.95,-0.01 h -1.94 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.05 -1.94,0.12 -1.95,0.13 -1.94,0.36 -0.63,0.19 -1.32,0.47 -1.94,0.3 -1.95,-0.03 -1.94,-0.12 -1.95,-0.38 -0.88,-0.24 -1.06,-0.21 -1.94,-0.33 -1.95,-0.18 -1.94,-0.1 -1.95,-0.03 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 h -1.94 -1.95 l -1.94,0.01 -1.94,-0.01 h -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 h -1.94 l -1.95,-0.01 -1.94,0.01 h -1.94 l -1.95,0.02 h -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.02 -1.08,-1.1 1.08,-1.7 1.95,0.02 1.94,0.13 1.95,0.01 1.94,-0.01 1.95,0.01 1.94,-0.01 1.95,0.01 1.94,0.01 1.94,0.02 1.95,0.01 h 1.94 l 1.95,-0.01 h 1.94 l 1.95,-0.01 h 1.94 1.95 1.94 l 1.94,0.01 1.95,-0.01 h 1.94 l 1.95,-0.01 1.94,0.01 h 1.95 l 1.94,0.03 1.95,0.01 h 1.94 1.94 l 1.95,-0.02 1.94,-0.01 1.95,-0.02 1.94,-0.04 1.95,-0.02 1.94,0.02 h 1.95 l 1.94,0.03 1.94,0.02 1.95,0.01 h 1.94 l 1.95,-0.01 1.94,-0.01 1.95,-0.02 1.94,-0.01 1.95,0.03 1.94,0.03 1.94,0.03 1.95,-0.04 1.94,-0.07 1.95,-0.13 1.94,-0.09 1.95,-0.03 h 1.94 l 1.95,0.06 1.94,0.04 h 1.94 1.95 1.94 l 1.95,0.01 1.94,0.01 1.95,0.02 1.94,0.01 1.95,0.03 1.94,-0.03 1.94,-0.05 1.95,-0.04 1.94,0.04 1.95,0.04 h 1.94 l 1.95,-0.09 1.94,-0.08 1.09,-0.12 z m -21.39,11.87 1.94,-0.13 1.95,-0.08 1.94,-0.08 1.94,-0.05 1.95,-0.01 h 1.94 l 1.95,-0.02 1.94,0.11 1.95,0.13 1.94,0.18 0.97,0.06 -0.97,0.09 -1.94,0.33 -1.95,0.22 -1.94,0.17 -1.95,-0.02 h -1.94 l -1.95,-0.01 -1.94,-0.02 -1.94,-0.13 -1.95,-0.14 -1.94,-0.27 -1.3,-0.22 z m 3.89,7.91 1.94,-0.18 1.94,-0.14 1.95,-0.17 1.94,-0.05 1.95,-0.02 1.94,0.12 1.95,0.09 1.94,0.14 1.95,0.21 0.53,0.1 1.41,0.19 1.94,0.16 1.95,0.12 1.94,0.07 1.95,0.08 1.94,0.08 1.95,0.08 1.94,0.07 1.95,0.1 1.94,0.05 1.94,0.07 1.95,0.12 1.94,0.11 1.95,0.14 1.94,0.16 1.95,0.09 1.94,0.26 0.24,0.02 -0.24,0.02 -1.94,0.21 -1.95,0.08 -1.94,0.12 -1.95,0.12 -1.94,0.1 -1.95,0.1 -1.94,0.06 -1.94,0.05 -1.95,0.07 -1.94,0.03 -1.95,0.05 -1.94,0.05 -1.95,0.05 -1.94,0.02 h -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 l -1.94,-0.09 -1.95,-0.09 -1.94,-0.09 -1.95,-0.06 -1.94,-0.08 -1.94,-0.05 -1.95,-0.03 -1.94,-0.02 -1.95,-0.03 -1.94,-0.03 -1.95,-0.02 -1.94,-0.02 -1.95,-0.02 H 235 l -1.94,-0.04 -1.95,-0.08 -1.94,-0.03 -1.95,-0.03 -1.94,-0.08 -1.95,-0.04 -1.94,-0.08 -1.95,-0.1 -0.27,-0.02 0.27,-0.03 1.95,-0.16 1.94,-0.12 1.95,-0.05 1.94,-0.12 1.95,-0.04 1.94,-0.05 1.95,-0.1 1.94,-0.06 h 1.94 l 1.95,-0.03 1.94,-0.02 1.95,0.01 1.94,-0.03 1.95,-0.03 1.94,-0.01 1.95,-0.01 1.94,-0.04 1.94,-0.07 1.95,-0.1 1.94,-0.18 1.95,-0.2 1.94,-0.22 1.95,-0.14 1.94,-0.12 0.78,-0.05 z m 85.55,11.69 0.33,0.26 -0.33,0.24 -1.27,-0.24 z m -136.11,5.87 1.94,0.15 1.5,0.17 -1.5,0.16 -1.94,0.16 -0.4,-0.32 z m 54.44,0.22 1.95,-0.69 1.94,-0.14 1.95,0.03 1.94,0.26 1.95,0.18 1.94,0.28 1.95,0.09 0.42,0.09 -0.42,0.1 -1.95,0.1 -1.94,0.32 -1.95,0.18 -1.94,0.26 -1.95,0.03 -1.94,-0.13 -1.95,-0.74 -0.35,-0.12 z m -5.83,9.73 1.95,-0.17 1.94,-0.17 1.94,-0.09 1.95,-0.06 1.94,-0.04 1.95,0.06 1.94,0.15 1.95,0.09 1.94,0.16 1.95,0.09 1.94,0.17 0.49,0.06 -0.49,0.08 -1.94,0.25 -1.95,0.12 -1.94,0.22 -1.95,0.14 -1.94,0.16 -1.95,0.14 -1.94,-0.02 -1.95,-0.1 -1.94,-0.08 -1.94,-0.26 -1.95,-0.25 -1.64,-0.4 z"
+       fill="currentColor"
+       fill-opacity="0.152" />
+    <path
+       d="m 149.44,253.54 1.95,0.01 1.94,0.1 1.95,0.01 1.94,-0.01 1.95,0.01 1.94,-0.01 1.95,0.02 1.94,0.02 1.94,0.01 1.95,0.01 1.94,-0.01 1.95,-0.01 1.94,-0.01 h 1.95 1.94 1.95 1.94 1.94 1.95 1.94 l 1.95,-0.01 1.94,0.01 h 1.95 l 1.94,0.02 1.95,0.01 h 1.94 1.94 l 1.95,-0.02 1.94,-0.01 1.95,-0.01 1.94,-0.03 1.95,-0.02 1.94,0.02 h 1.95 l 1.94,0.02 1.94,0.02 h 1.95 1.94 1.95 l 1.94,-0.01 1.95,-0.02 1.94,-0.01 1.95,0.03 1.94,0.02 1.94,0.02 1.95,-0.03 1.94,-0.06 1.95,-0.09 1.94,-0.08 1.95,-0.02 h 1.94 l 1.95,0.05 1.94,0.03 h 1.94 1.95 1.94 l 1.95,0.01 1.94,0.01 1.95,0.01 1.94,0.01 1.95,0.02 1.94,-0.02 1.94,-0.04 1.95,-0.03 1.94,0.03 1.95,0.03 h 1.94 l 1.95,-0.07 1.94,-0.07 1.95,-0.17 1.94,-0.11 1.94,-0.12 1.95,0.02 1.94,0.07 1.95,0.11 1.94,0.09 1.95,0.08 1.94,0.11 1.95,0.09 1.94,0.05 1.94,0.03 1.95,0.01 1.94,0.01 h 1.95 l 1.94,0.01 1.95,0.01 1.94,0.01 h 1.95 l 1.94,-0.01 h 1.94 l 1.95,-0.01 h 1.94 1.95 1.94 l 1.95,-0.03 1.94,-0.01 h 1.95 l 1.94,0.01 1.94,0.01 1.95,-0.01 h 1.94 1.95 1.94 l 1.95,-0.01 h 1.94 1.95 1.94 l 1.94,0.01 1.95,0.02 1.94,-0.03 h 1.95 l 1.94,-0.02 h 1.95 l 1.94,0.06 1.95,-0.02 1.94,0.01 1.94,0.01 h 1.95 l 1.94,0.06 1.95,0.05 1.94,0.09 1.95,0.02 1.94,0.01 1.95,-0.04 1.94,0.01 1.94,-0.05 1.95,0.05 1.94,-0.17 1.41,1.17 -1.41,0.77 -1.94,-0.11 -1.95,0.06 h -1.94 -1.94 l -1.95,-0.02 -1.94,0.02 -1.95,0.01 -1.94,0.01 -1.95,0.02 -1.94,0.03 -1.95,0.01 -1.94,0.03 -1.94,0.01 -1.95,0.01 -1.94,0.01 h -1.95 l -1.94,-0.01 h -1.95 l -1.94,0.01 -1.95,0.02 h -1.94 l -1.94,0.01 h -1.95 l -1.94,-0.01 h -1.95 -1.94 l -1.95,0.01 h -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.04 -1.94,0.09 -1.95,0.1 -1.94,0.29 -1.79,0.56 -0.16,0.06 -1.94,0.37 -1.95,-0.02 -1.94,-0.16 -1.11,-0.25 -0.84,-0.22 -1.94,-0.36 -1.94,-0.26 -1.95,-0.14 -1.94,-0.08 -1.95,-0.02 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 h -1.94 -1.95 l -1.94,0.01 -1.94,-0.01 h -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 -1.94,0.01 h -1.94 l -1.95,0.02 -1.94,0.01 h -1.95 -1.94 -1.95 -1.94 l -1.95,-0.02 -0.85,-0.87 z m 122.5,11.19 1.95,-0.02 h 1.94 l 1.95,-0.02 0.97,0.07 -0.97,0.11 -1.95,-0.04 h -1.94 l -1.95,-0.03 -0.97,-0.04 z m 1.95,7.71 1.94,-0.06 1.95,-0.02 1.94,0.15 1.95,0.12 0.32,0.03 1.62,0.16 1.95,0.18 1.94,0.22 1.94,0.12 1.95,0.1 1.94,0.07 1.95,0.09 1.94,0.09 1.95,0.1 1.94,0.07 1.95,0.12 1.94,0.06 1.94,0.1 1.95,0.15 1.94,0.15 1.95,0.19 -1.95,0.16 -1.94,0.12 -1.95,0.14 -1.94,0.07 -1.94,0.06 -1.95,0.09 -1.94,0.04 -1.95,0.07 -1.94,0.06 -1.95,0.06 -1.94,0.03 h -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 l -1.94,-0.11 -1.95,-0.12 -1.94,-0.12 -1.95,-0.07 -1.94,-0.11 -1.94,-0.06 -1.95,-0.04 -1.94,-0.02 -1.95,-0.04 -1.94,-0.04 -1.95,-0.02 -1.94,-0.03 -1.95,-0.02 H 235 l -1.94,-0.05 -0.84,-0.05 0.84,-0.06 1.94,-0.08 1.94,0.01 1.95,-0.04 1.94,-0.04 1.95,-0.02 1.94,-0.05 1.95,-0.05 1.94,-0.02 1.95,-0.04 1.94,-0.07 1.94,-0.11 1.95,-0.11 1.94,-0.19 1.95,-0.21 1.94,-0.24 1.95,-0.1 1.94,-0.1 1.95,-0.11 1.94,-0.15 1.94,-0.19 v 0 z m 0,17.53 1.94,-0.18 1.95,0.04 1.94,0.33 1.95,0.24 0.26,0.04 -0.26,0.05 -1.95,0.25 -1.94,0.34 -1.95,0.04 -1.94,-0.17 -1.25,-0.51 z m -3.89,10.13 1.94,-0.11 1.95,-0.08 1.94,-0.04 1.95,0.08 1.94,0.19 1.95,0.11 0.69,0.07 -0.69,0.09 -1.95,0.17 -1.94,0.24 -1.95,0.14 -1.94,-0.05 -1.95,-0.11 -1.94,-0.15 -1.84,-0.33 z"
+       fill="currentColor"
+       fill-opacity="0.2069" />
+    <path
+       d="m 149.44,253.97 1.95,-0.02 1.94,0.07 1.95,0.01 1.94,-0.01 1.95,0.01 h 1.94 l 1.95,0.03 1.94,0.01 1.94,0.02 h 1.95 l 1.94,-0.01 1.95,-0.02 1.94,-0.01 h 1.95 1.94 1.95 l 1.94,-0.01 1.94,0.01 h 1.95 1.94 l 1.95,-0.01 h 1.94 1.95 l 1.94,0.02 h 1.95 1.94 1.94 l 1.95,-0.01 h 1.94 l 1.95,-0.01 1.94,-0.03 1.95,-0.01 1.94,0.01 h 1.95 l 1.94,0.02 1.94,0.01 1.95,0.01 h 1.94 l 1.95,-0.01 h 1.94 l 1.95,-0.02 h 1.94 l 1.95,0.02 1.94,0.01 1.94,0.02 1.95,-0.02 1.94,-0.05 1.95,-0.06 1.94,-0.06 1.95,-0.01 h 1.94 l 1.95,0.03 1.94,0.03 h 1.94 1.95 1.94 1.95 l 1.94,0.01 1.95,0.01 h 1.94 l 1.95,0.02 1.94,-0.02 1.94,-0.02 1.95,-0.03 1.94,0.03 1.95,0.02 h 1.94 l 1.95,-0.05 1.94,-0.05 1.95,-0.12 1.94,-0.08 1.94,-0.08 1.95,0.01 1.94,0.05 1.95,0.08 1.94,0.06 1.95,0.06 1.94,0.07 1.95,0.07 1.94,0.03 1.94,0.02 1.95,0.01 1.94,0.01 h 1.95 l 1.94,0.01 h 1.95 l 1.94,0.01 h 1.95 l 1.94,-0.01 h 1.94 1.95 1.94 1.95 l 1.94,-0.01 1.95,-0.02 h 1.94 1.95 1.94 l 1.94,0.01 1.95,-0.01 h 1.94 l 1.95,0.01 h 1.94 l 1.95,-0.01 1.94,-0.01 h 1.95 l 1.94,0.01 1.94,0.01 1.95,0.03 1.94,-0.01 h 1.95 l 1.94,-0.02 h 1.95 l 1.94,0.04 h 1.95 l 1.94,0.02 1.94,0.03 1.95,0.01 1.94,0.07 1.95,0.04 1.94,0.06 1.95,0.03 1.94,0.02 1.95,-0.04 1.94,0.01 1.94,-0.03 1.95,0.08 1.94,-0.21 0.87,0.72 -0.87,0.47 -1.94,-0.13 -1.95,0.06 h -1.94 l -1.94,0.01 -1.95,-0.02 -1.94,0.01 -1.95,0.02 -1.94,0.02 -1.95,0.01 -1.94,0.05 -1.95,0.01 -1.94,0.03 -1.94,0.01 -1.95,0.02 -1.94,0.01 h -1.95 l -1.94,-0.01 h -1.95 l -1.94,0.01 -1.95,0.03 h -1.94 l -1.94,0.01 h -1.95 l -1.94,-0.01 -1.95,-0.01 h -1.94 l -1.95,0.02 h -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.03 -1.94,0.06 -1.95,0.07 -1.94,0.2 -1.95,0.44 -1.72,0.55 -0.22,0.05 -1.95,-0.04 -0.12,-0.01 -1.82,-0.31 -1.95,-0.45 -1.94,-0.24 -1.94,-0.18 -1.95,-0.1 -1.94,-0.05 -1.95,-0.02 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.01 h -1.94 -1.95 l -1.94,0.01 -1.94,-0.01 h -1.95 -1.94 -1.95 l -1.94,-0.01 -1.95,-0.01 -1.94,-0.01 -1.95,-0.01 -1.94,0.01 h -1.94 l -1.95,0.03 -1.94,0.01 h -1.95 -1.94 -1.95 -1.94 l -1.95,-0.03 -0.58,-0.59 z m 105,20.55 1.95,-0.13 1.94,-0.2 1.95,-0.23 1.94,-0.24 1.95,-0.08 1.94,-0.07 1.95,-0.07 1.94,-0.11 1.94,-0.13 1.95,-0.24 1.94,-0.1 1.95,-0.04 1.94,0.23 1.95,0.13 1.94,0.13 1.95,0.13 1.94,0.15 1.94,0.09 1.95,0.07 1.94,0.06 1.95,0.11 1.94,0.1 1.95,0.12 1.94,0.06 1.95,0.14 1.94,0.09 1.94,0.12 0.28,0.02 -0.28,0.03 -1.94,0.09 -1.94,0.08 -1.95,0.11 -1.94,0.05 -1.95,0.08 -1.94,0.07 -1.95,0.08 -1.94,0.03 h -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 l -1.94,-0.13 -1.95,-0.15 -1.94,-0.14 -1.95,-0.1 -1.45,-0.1 z m 19.45,15.83 1.94,-0.22 1.95,0.04 1.34,0.27 -1.34,0.28 -1.95,0.05 -1.94,-0.24 -0.23,-0.09 z m 0,9.96 1.94,-0.06 1.3,0.07 -1.3,0.09 -1.94,-0.08 -0.24,-0.01 z"
+       fill="currentColor"
+       fill-opacity="0.3043" />
+    <path
+       d="m 149.44,254.33 1.95,-0.03 1.94,0.04 1.95,0.01 1.94,-0.01 1.95,0.01 h 1.94 l 1.95,0.05 H 165 l 1.94,0.02 1.95,-0.01 1.94,-0.01 1.95,-0.02 1.94,-0.01 h 1.95 1.94 1.95 l 1.94,-0.01 1.94,0.01 h 1.95 1.94 l 1.95,-0.02 1.94,0.01 h 1.95 l 1.94,0.01 h 1.95 1.94 1.94 l 1.95,-0.01 h 1.94 l 1.95,-0.01 1.94,-0.01 1.95,-0.01 1.94,0.01 h 1.95 l 1.94,0.01 1.94,0.01 h 1.95 1.94 1.95 l 1.94,-0.01 1.95,-0.01 h 1.94 l 1.95,0.01 1.94,0.01 1.94,0.01 1.95,-0.01 1.94,-0.03 1.95,-0.04 1.94,-0.03 1.95,-0.01 h 1.94 l 1.95,0.02 1.94,0.01 h 1.94 1.95 1.94 l 1.95,0.01 h 1.94 l 1.95,0.01 h 1.94 l 1.95,0.01 1.94,-0.01 1.94,-0.02 1.95,-0.01 1.94,0.01 1.95,0.02 h 1.94 l 1.95,-0.04 1.94,-0.02 1.95,-0.08 1.94,-0.05 1.94,-0.05 1.95,0.01 1.94,0.03 1.95,0.05 1.94,0.04 1.95,0.03 1.94,0.05 1.95,0.04 1.94,0.02 1.94,0.01 1.95,0.01 h 1.94 1.95 l 1.94,0.01 h 1.95 l 1.94,0.01 h 1.95 l 1.94,-0.01 h 1.94 1.95 1.94 1.95 1.94 l 1.95,-0.02 h 1.94 1.95 1.94 l 1.94,0.01 1.95,-0.01 h 1.94 l 1.95,0.02 h 1.94 l 1.95,-0.01 1.94,-0.01 h 1.95 l 1.94,0.01 1.94,0.01 1.95,0.04 1.94,-0.01 h 1.95 l 1.94,-0.01 h 1.95 l 1.94,0.03 1.95,0.02 1.94,0.02 1.94,0.04 1.95,0.02 1.94,0.08 1.95,0.03 1.94,0.05 1.95,0.03 1.94,0.02 1.95,-0.04 1.94,0.01 1.94,-0.01 1.95,0.11 1.94,-0.24 0.4,0.33 -0.4,0.21 -1.94,-0.16 -1.95,0.08 h -1.94 l -1.94,0.01 -1.95,-0.02 -1.94,0.01 -1.95,0.02 -1.94,0.02 -1.95,0.02 -1.94,0.05 -1.95,0.02 -1.94,0.03 -1.94,0.02 -1.95,0.02 -1.94,0.01 h -1.95 l -1.94,-0.01 h -1.95 l -1.94,0.01 -1.95,0.03 -1.94,0.01 -1.94,0.01 h -1.95 l -1.94,-0.01 -1.95,-0.01 h -1.94 l -1.95,0.02 h -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 l -1.94,0.01 -1.94,0.04 -1.95,0.05 -1.94,0.12 -1.95,0.28 -1.94,0.41 -1.95,-0.05 -1.94,-0.21 -1.95,-0.28 -1.94,-0.16 -1.94,-0.11 -1.95,-0.06 -1.94,-0.03 -1.95,-0.01 h -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 l -1.95,-0.02 h -1.94 -1.95 l -1.94,0.02 -1.94,-0.02 h -1.95 -1.94 -1.95 -1.94 l -1.95,-0.02 -1.94,-0.01 -1.95,-0.01 -1.94,0.01 h -1.94 l -1.95,0.04 -1.94,0.01 h -1.95 -1.94 -1.95 -1.94 l -1.95,-0.04 -0.35,-0.35 z m 108.89,20.23 1.95,-0.25 1.94,-0.25 1.95,-0.05 1.94,-0.04 1.95,-0.05 1.94,-0.06 1.94,-0.08 1.95,-0.15 1.94,-0.07 1.95,-0.02 1.94,0.14 1.95,0.08 1.94,0.08 1.95,0.08 1.94,0.1 1.94,0.05 1.95,0.05 1.94,0.06 1.95,0.12 1.94,0.11 1.95,0.13 1.94,0.07 0.3,0.02 -0.3,0.02 -1.94,0.06 -1.95,0.1 -1.94,0.08 -1.95,0.09 -1.94,0.04 h -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.95 -1.94 -1.94 -1.95 -1.94 -1.95 l -1.94,-0.16 -1.95,-0.17 -0.68,-0.06 z m 17.5,15.85 0.98,0.03 -0.98,0.03 -0.23,-0.03 z"
+       fill="currentColor"
+       fill-opacity="0.375" />
+  </g>
+  <g
+     fill="currentColor"
+     transform="matrix(0.66,0,0,0.66,175,68.88)"
+     aria-label="LATITUDE SAMUI">
+    <path
+       d="m 556.17969,232 v -5.79688 h 10.39062 v -70 h -10.39062 v -5.85156 h 31.88281 v 5.85156 h -10.39063 v 69.07032 h 37.29688 v -13.67188 h 6.72656 V 232 Z" />
+    <path
+       d="m 664.79687,202.41406 h 29.96875 L 679.78125,163.58594 Z M 641.71875,232 v -5.79688 h 7.16406 l 29.09375,-75.85156 h 9.1875 l 29.14844,75.85156 h 8.03906 V 232 h -29.69531 v -5.79688 h 9.07812 l -6.83593,-17.9375 h -34.34375 l -6.83594,17.9375 h 8.96875 V 232 Z" />
+    <path
+       d="m 756.51562,232 v -5.79688 h 10.44532 v -69.34375 h -24.00782 v 12.74219 h -6.72656 v -19.25 h 72.51563 v 19.25 h -6.72657 v -12.74219 h -24.00781 v 69.34375 h 10.44531 V 232 Z" />
+    <path
+       d="m 855.50781,226.20312 h 10.39063 V 232 h -31.88282 v -5.79688 h 10.39063 v -70 h -10.39063 v -5.85156 h 31.88282 v 5.85156 h -10.39063 z" />
+    <path
+       d="m 911.46094,232 v -5.79688 h 10.44531 v -69.34375 h -24.00781 v 12.74219 h -6.72657 v -19.25 h 72.51563 v 19.25 h -6.72656 v -12.74219 h -24.00782 v 69.34375 h 10.44532 V 232 Z" />
+    <path
+       d="m 998.47656,156.20312 h -10.44531 v -5.85156 h 31.93745 v 5.85156 h -10.4453 v 42.21875 q 0,15.64063 5.086,21.82032 5.1406,6.17968 17.664,6.17968 12.5235,0 17.6094,-6.17968 5.1406,-6.17969 5.1406,-21.82032 v -42.21875 h -10.4453 v -5.85156 h 27.5625 v 5.85156 H 1061.75 v 43.3125 q 0,18.64844 -7.1641,26.35938 -7.164,7.71094 -24.3359,7.71094 -17.1719,0 -24.5,-7.76563 -7.27344,-7.76562 -7.27344,-26.30469 z" />
+    <path
+       d="m 1122.8438,226.20312 h 10.1718 q 15.9141,0 24.3907,-9.07812 8.5312,-9.07813 8.5312,-26.03125 0,-16.95313 -8.4766,-25.92188 -8.4765,-8.96875 -24.4453,-8.96875 h -10.1718 z M 1101.3516,232 v -5.79688 h 10.3906 v -70 h -10.3906 v -5.85156 h 32.4843 q 21.1094,0 32.8672,10.77344 11.8125,10.77344 11.8125,29.96875 0,19.25 -11.8125,30.07812 Q 1154.8906,232 1133.8359,232 Z" />
+    <path
+       d="m 1209.1484,232 v -5.79688 h 10.3907 v -70 h -10.3907 v -5.85156 h 65.7344 v 18.15625 h -6.7265 v -11.42969 h -37.5157 v 27.34375 h 26.7422 v -10.22656 h 6.7266 v 27.125 h -6.7266 v -10.22656 h -26.7422 v 34.17969 h 38.3907 v -11.42969 h 6.7265 V 232 Z" />
+    <path
+       d="m 1366.7188,228.0625 v -18.59375 l 6.289,0.0547 q 0.2735,9.29687 5.3594,13.78125 5.1406,4.42968 15.5859,4.42968 9.7344,0 14.8203,-3.82812 5.1407,-3.88281 5.1407,-11.26563 0,-5.90625 -3.1172,-9.07812 -3.0625,-3.17188 -13.0156,-6.17969 l -10.7735,-3.22656 q -11.7031,-3.55469 -16.5156,-8.85938 -4.7578,-5.30468 -4.7578,-14.54687 0,-10.39063 7.3828,-16.13281 7.3828,-5.74219 20.7266,-5.74219 5.6875,0 12.4687,1.25781 6.7813,1.20313 14.4375,3.55469 v 17.39062 h -6.1797 q -0.9297,-8.64062 -5.7969,-12.46875 -4.8125,-3.88281 -14.7109,-3.88281 -8.6406,0 -13.1797,3.55469 -4.4844,3.5 -4.4844,10.22656 0,5.85156 3.3907,9.1875 3.3906,3.33594 14.3828,6.61719 l 10.1172,3.00781 q 11.1015,3.33594 15.8047,8.53125 4.7578,5.14063 4.7578,13.83594 0,11.86719 -7.6016,17.88281 -7.6016,6.01563 -22.6406,6.01563 -6.7266,0 -13.7266,-1.36719 -6.9453,-1.36719 -14.164,-4.15625 z" />
+    <path
+       d="m 1473.4766,202.41406 h 29.9687 l -14.9844,-38.82812 z M 1450.3984,232 v -5.79688 h 7.1641 l 29.0938,-75.85156 h 9.1875 l 29.1484,75.85156 h 8.0391 V 232 h -29.6954 v -5.79688 h 9.0782 l -6.836,-17.9375 h -34.3437 l -6.836,17.9375 h 8.9688 V 232 Z" />
+    <path
+       d="m 1556.1172,232 v -5.79688 h 10.3906 v -70 h -10.9922 v -5.85156 h 23.7891 l 28.6562,58.13281 28.6563,-58.13281 h 22.3125 v 5.85156 h -10.8828 v 70 h 10.4453 V 232 h -31.9375 v -5.79688 h 10.3906 v -63.10937 l -28,56.92969 h -7.7109 l -28,-56.92969 v 63.10937 h 10.3906 V 232 Z" />
+    <path
+       d="m 1698.3125,156.20312 h -10.4453 v -5.85156 h 31.9375 v 5.85156 h -10.4453 v 42.21875 q 0,15.64063 5.0859,21.82032 5.1406,6.17968 17.6641,6.17968 12.5234,0 17.6094,-6.17968 5.1406,-6.17969 5.1406,-21.82032 v -42.21875 h -10.4453 v -5.85156 h 27.5625 v 5.85156 h -10.3907 v 43.3125 q 0,18.64844 -7.164,26.35938 -7.1641,7.71094 -24.336,7.71094 -17.1718,0 -24.5,-7.76563 -7.2734,-7.76562 -7.2734,-26.30469 z" />
+    <path
+       d="m 1822.6797,226.20312 h 10.3906 V 232 h -31.8828 v -5.79688 h 10.3906 v -70 h -10.3906 v -5.85156 h 31.8828 v 5.85156 h -10.3906 z" />
+  </g>
+  <g fill="currentColor"
+     aria-label="VILLAS &amp; LIFESTYLE"
+     style="font-weight:300;font-size:38px;font-family:'DejaVu Sans', Arial, sans-serif;letter-spacing:13">
+    <path
+       d="m 668.87305,284 -10.57618,-27.70215 h 3.91504 l 8.77637,23.32324 8.79492,-23.32324 h 3.89649 L 673.12207,284 Z" />
+    <path
+       d="m 700.72461,256.29785 h 3.74805 V 284 h -3.74805 z" />
+    <path
+       d="m 724.93164,256.29785 h 3.74805 v 24.54785 h 13.48926 V 284 h -17.23731 z" />
+    <path
+       d="m 759.10254,256.29785 h 3.74805 v 24.54785 h 13.48925 V 284 h -17.2373 z" />
+    <path
+       d="m 803.4043,259.99023 -5.08399,13.78614 h 10.18653 z m -2.11524,-3.69238 h 4.24903 L 816.0957,284 h -3.89648 l -2.52344,-7.10645 h -12.4873 L 794.66504,284 h -3.95215 z" />
+    <path
+       d="m 849.74707,257.20703 v 3.65527 q -2.13379,-1.0205 -4.02637,-1.52148 -1.89258,-0.50098 -3.65527,-0.50098 -3.06152,0 -4.73145,1.1875 -1.65136,1.1875 -1.65136,3.37696 0,1.83691 1.09472,2.7832 1.11328,0.92773 4.19336,1.50293 l 2.26367,0.46387 q 4.19336,0.79785 6.17872,2.82031 2.0039,2.00391 2.0039,5.38086 0,4.02637 -2.70898,6.10449 -2.69043,2.07813 -7.9043,2.07813 -1.9668,0 -4.19336,-0.44532 -2.20801,-0.44531 -4.58301,-1.31738 v -3.85937 q 2.28223,1.28027 4.47168,1.92968 2.18946,0.64942 4.30469,0.64942 3.20996,0 4.9541,-1.26172 1.74414,-1.26172 1.74414,-3.59961 0,-2.04102 -1.26172,-3.19141 -1.24316,-1.15039 -4.10058,-1.72558 l -2.28223,-0.44532 q -4.19336,-0.83496 -6.06738,-2.61621 -1.87402,-1.78125 -1.87402,-4.9541 0,-3.67383 2.5791,-5.78906 2.59765,-2.11524 7.14355,-2.11524 1.94824,0 3.9707,0.35254 2.02247,0.35254 4.1377,1.05762 z" />
+    <path
+       d="m 900.85156,269.10059 q -1.68847,1.50293 -2.48633,3.00586 -0.77929,1.48437 -0.77929,3.11718 0,2.70899 1.96679,4.50879 1.9668,1.79981 4.93555,1.79981 1.7627,0 3.30274,-0.5752 1.54003,-0.59375 2.89453,-1.78125 z m 2.61621,-2.07813 9.42578,9.64844 q 1.09473,-1.65137 1.70704,-3.52539 0.6123,-1.89258 0.72363,-4.00781 h 3.45117 q -0.22266,2.44921 -1.1875,4.84277 -0.96484,2.39355 -2.69043,4.73144 L 920.07422,284 h -4.67578 l -2.65332,-2.72754 q -1.92969,1.65137 -4.04492,2.46777 -2.11524,0.79786 -4.5459,0.79786 -4.47168,0 -7.31055,-2.542 -2.83887,-2.56054 -2.83887,-6.5498 0,-2.375 1.24317,-4.45313 1.24316,-2.09668 3.72949,-3.93359 -0.89063,-1.16895 -1.35449,-2.31934 -0.46387,-1.16894 -0.46387,-2.28222 0,-3.00586 2.05957,-4.82422 2.05957,-1.83692 5.47363,-1.83692 1.54004,0 3.06153,0.33399 1.54004,0.33398 3.11718,1.00195 v 3.37696 q -1.61425,-0.87207 -3.08007,-1.31739 -1.46582,-0.46386 -2.72754,-0.46386 -1.94825,0 -3.17286,1.03906 -1.20605,1.02051 -1.20605,2.65332 0,0.94629 0.53809,1.91113 0.55664,0.94629 2.24511,2.69043 z" />
+    <path
+       d="m 963.05176,256.29785 h 3.74804 v 24.54785 h 13.48926 V 284 h -17.2373 z" />
+    <path
+       d="m 997.22266,256.29785 h 3.74804 V 284 h -3.74804 z" />
+    <path
+       d="m 1021.4297,256.29785 h 15.9199 v 3.1543 h -12.1719 v 8.16406 h 10.9844 v 3.1543 h -10.9844 V 284 h -3.748 z" />
+    <path
+       d="m 1056.2871,256.29785 h 17.5156 v 3.1543 h -13.7675 v 8.20117 h 13.1923 v 3.1543 h -13.1923 v 10.03808 h 14.1015 V 284 h -17.8496 z" />
+    <path
+       d="m 1109.9033,257.20703 v 3.65527 q -2.1338,-1.0205 -4.0263,-1.52148 -1.8926,-0.50098 -3.6553,-0.50098 -3.0615,0 -4.7315,1.1875 -1.6513,1.1875 -1.6513,3.37696 0,1.83691 1.0947,2.7832 1.1133,0.92773 4.1934,1.50293 l 2.2636,0.46387 q 4.1934,0.79785 6.1787,2.82031 2.0039,2.00391 2.0039,5.38086 0,4.02637 -2.7089,6.10449 -2.6905,2.07813 -7.9043,2.07813 -1.9668,0 -4.1934,-0.44532 -2.208,-0.44531 -4.583,-1.31738 v -3.85937 q 2.2822,1.28027 4.4717,1.92968 2.1894,0.64942 4.3047,0.64942 3.2099,0 4.9541,-1.26172 1.7441,-1.26172 1.7441,-3.59961 0,-2.04102 -1.2617,-3.19141 -1.2432,-1.15039 -4.1006,-1.72558 l -2.2822,-0.44532 q -4.1934,-0.83496 -6.0674,-2.61621 -1.874,-1.78125 -1.874,-4.9541 0,-3.67383 2.5791,-5.78906 2.5976,-2.11524 7.1435,-2.11524 1.9483,0 3.9707,0.35254 2.0225,0.35254 4.1377,1.05762 z" />
+    <path
+       d="m 1126.5771,256.29785 h 23.4346 v 3.1543 h -9.834 V 284 h -3.7666 v -24.54785 h -9.834 z" />
+    <path
+       d="m 1162.8262,256.29785 h 4.0263 l 7.6817,11.39258 7.626,-11.39258 h 4.0263 l -9.7969,14.50977 V 284 h -3.7666 v -13.19238 z" />
+    <path
+       d="m 1202.8418,256.29785 h 3.748 v 24.54785 h 13.4893 V 284 h -17.2373 z" />
+    <path
+       d="m 1237.0127,256.29785 h 17.5156 v 3.1543 h -13.7676 v 8.20117 h 13.1924 v 3.1543 h -13.1924 v 10.03808 h 14.1016 V 284 h -17.8496 z" />
+  </g></symbol></svg>
+
+<header class="nav" id="nav">
+  <a class="nav-logo" href="#top" aria-label="Latitude Samui — accueil"><svg viewBox="0 0 1500 380"><use href="#ls-logo"/></svg></a>
+  <nav class="nav-links" aria-label="Navigation principale">
+    <a href="#villas">Les villas</a>
+    <a href="#ile">Koh Samui</a>
+    <a href="#equipe">L'équipe</a>
+    <a href="#parcours">Le parcours</a>
+    <a class="nav-cta" href="#contact">Nous contacter</a>
+  </nav>
+  <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<section class="hero" id="hero" aria-label="Latitude Samui">
+  <div class="slide active"><span class="ph" data-path="photos/index/01.jpg"><img src="photos/index/01.jpg" alt="" fetchpriority="high" onerror="this.remove()"></span></div>
+  <div class="slide"><span class="ph" data-path="photos/index/02.jpg"><img src="photos/index/02.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span></div>
+  <div class="slide"><span class="ph" data-path="photos/index/03.jpg"><img src="photos/index/03.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span></div>
+  <div class="slide"><span class="ph" data-path="photos/index/04.jpg"><img src="photos/index/04.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span></div>
+  <div class="slide"><span class="ph" data-path="photos/index/05.jpg"><img src="photos/index/05.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span></div>
+  <div class="slide"><span class="ph" data-path="photos/index/06.jpg"><img src="photos/index/06.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <h1>Une île.<br>Des maisons<br><em>d'exception.</em></h1>
+    <p class="hero-tagline">Des villas d'architecte pensées pour mieux vivre, entre matière, lumière tropicale et horizons marins.</p>
+    <div class="hero-actions">
+      <a class="btn btn-light" href="#villas">Découvrir les villas
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a class="btn btn-ghost" href="#parcours">Notre approche</a>
+    </div>
+  </div>
+  <div class="hero-controls" aria-label="Contrôles du diaporama">
+    <button class="indicator active" type="button" aria-label="Afficher l'image 1"></button>
+    <button class="indicator" type="button" aria-label="Afficher l'image 2"></button>
+    <button class="indicator" type="button" aria-label="Afficher l'image 3"></button>
+    <button class="indicator" type="button" aria-label="Afficher l'image 4"></button>
+    <button class="indicator" type="button" aria-label="Afficher l'image 5"></button>
+    <button class="indicator" type="button" aria-label="Afficher l'image 6"></button>
+    <button class="hero-pause" type="button" aria-label="Mettre le diaporama en pause" aria-pressed="false">
+      <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3" height="14"/><rect x="14" y="5" width="3" height="14"/></svg>
+      <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+  </div>
+</section>
+
+<section class="villas" aria-labelledby="philosophie">
+  <div class="intro">
+    <h2 class="reveal" id="philosophie">Une autre idée<br><em>du luxe à Samui.</em></h2>
+    <div class="intro-copy reveal d1">
+      <p>Notre mission : rendre accessible un art de vivre souvent perçu comme inaccessible.</p>
+      <p>En maîtrisant chaque étape de la construction, nous optimisons les coûts sans transiger sur la qualité.</p>
+      <a class="ulink" href="notre-approche.html">Découvrir notre philosophie</a>
+    </div>
+  </div>
+
+  <div class="vg" id="villas">
+    <a class="vcard vg-1 reveal" href="villa-baansawan.html">
+      <span class="ph" data-path="photos/baansawan/card.jpg"><img src="photos/baansawan/card.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="vshade"></span>
+      <span class="vtop"><span class="vbadge">Villa signature 360° vue mer</span><span>Livraison 2027</span></span>
+      <span class="vfoot">
+        <span><span class="vloc">Lamai Heights · Vue mer panoramique</span><span class="vname">Baan Sawan</span><span class="vspecs">5 chambres · 252 m² · terrain 604 m²</span></span>
+        <span class="vright"><span class="vprice"><small>À partir de</small><b>805 000 €</b></span><span class="varrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></span></span>
+      </span>
+    </a>
+
+    <a class="vcard vg-2 reveal d1" href="villa-suk.html">
+      <span class="ph" data-path="photos/suk/card.jpg"><img src="photos/suk/card.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="vshade"></span>
+      <span class="vtop"><span class="vtag">Villa premium</span><span>Livraison 2027</span></span>
+      <span class="vfoot">
+        <span><span class="vloc">Lamai · Orientation est</span><span class="vname">Suk</span><span class="vspecs">3 ch · 152 m² · terrain 458 m²</span></span>
+        <span class="vright"><span class="vprice"><small>À partir de</small><b>510 000 €</b></span><span class="varrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></span></span>
+      </span>
+    </a>
+
+    <a class="vcard vg-3 reveal d2" href="villa-sabai.html">
+      <span class="ph" data-path="photos/sabai/card.jpg"><img src="photos/sabai/card.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="vshade"></span>
+      <span class="vtop"><span class="vtag">Villa premium</span><span>Livraison 2027</span></span>
+      <span class="vfoot">
+        <span><span class="vloc">Lamai · Orientation sud</span><span class="vname">Sabai</span><span class="vspecs">3 ch · 148 m² · terrain 445 m²</span></span>
+        <span class="vright"><span class="vprice"><small>À partir de</small><b>510 000 €</b></span><span class="varrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></span></span>
+      </span>
+    </a>
+
+    <a class="vcard vg-4 reveal d3" href="#contact">
+      <span class="ph" data-path="photos/thongkrut/card.jpg"><img src="photos/thongkrut/card.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="vshade"></span>
+      <span class="vtop"><span class="vbadge">Programme · 20 lots</span><span>Bientôt</span></span>
+      <span class="vfoot">
+        <span><span class="vloc">Thong Krut · Sud de Koh Samui</span><span class="vname">Thong Krut Village</span><span class="vspecs">Village résidentiel · écriture architecturale commune</span></span>
+        <span class="vright"><span class="vprice"><small>À partir de</small><b>215 000 €</b></span><span class="varrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></span></span>
+      </span>
+    </a>
+  </div>
+  <p class="vnote">Paiement en euros, bahts ou cryptomonnaies selon les modalités du projet.</p>
+</section>
+
+<section class="island" id="ile" aria-labelledby="ile-titre">
+  <span class="ph" data-path="photos/index/ile.jpg"><img src="photos/index/ile.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span>
+  <span class="island-shade"></span>
+  <div class="island-inner">
+    <h2 class="h-sec reveal" id="ile-titre" style="color:var(--white)">Une île où l'on prend<br><em style="color:var(--saumon)">le temps de vivre.</em></h2>
+    <p class="lead on-dark reveal d2">Mer, nature, gastronomie, sport et services accessibles toute l'année. Koh Samui permet de vivre au calme sans renoncer au confort du quotidien.</p>
+    <a class="ulink on-dark reveal d3" href="koh-samui.html">Découvrir Koh Samui</a>
+  </div>
+</section>
+
+<section class="sec sec-clair" id="equipe" aria-labelledby="equipe-titre">
+  <div class="sec-head split">
+    <div class="reveal">
+      <h2 class="h-sec" id="equipe-titre">Une équipe complémentaire,<br><em>présente à chaque étape.</em></h2>
+    </div>
+    <div class="reveal d1">
+      <p class="lead">Une organisation directe qui permet de garder chaque décision au plus près du chantier, du projet et du futur propriétaire.</p>
+      <a class="ulink" href="#contact">Découvrez en plus sur notre équipe</a>
+    </div>
+  </div>
+  <div class="team-roles">
+    <div class="team-role reveal">
+      <span class="fonction">Direction &amp; stratégie</span>
+      <h3 class="nom">Sébastien</h3>
+      <p class="txt">Direction et stratégie, relation client, suivi commercial depuis Koh Samui.</p>
+    </div>
+    <div class="team-role reveal d1">
+      <span class="fonction">Construction &amp; terrain</span>
+      <h3 class="nom">Laurent</h3>
+      <p class="txt">Suivi de chantier, contrôle qualité et coordination des opérations de construction sur l'île.</p>
+    </div>
+    <div class="team-role reveal d2">
+      <span class="fonction">Digital &amp; finance</span>
+      <h3 class="nom">Benoît</h3>
+      <p class="txt">Digital, marketing, image de marque et suivi financier des opérations.</p>
+    </div>
+  </div>
+
+</section>
+
+<section class="sec journey" id="parcours" aria-labelledby="parcours-titre">
+  <div class="sec-head split">
+    <div class="reveal">
+      <h2 class="h-sec" id="parcours-titre">Cinq étapes,<br><em>une seule équipe.</em></h2>
+    </div>
+    <p class="lead reveal d1">Du premier échange à la remise des clés, chaque étape est expliquée, suivie et documentée.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal"><span class="step-head"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><b>Étape 01</b></span><h3>Premier échange</h3><p>Un email, un appel ou un échange WhatsApp pour comprendre votre projet et répondre à vos premières questions.</p></div>
+    <div class="step reveal d1"><span class="step-head"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><b>Étape 02</b></span><h3>Visite du projet</h3><p>Chaque villa est associée à une parcelle sélectionnée pour son environnement et son orientation. Visite sur place ou en vidéo.</p></div>
+    <div class="step reveal d2"><span class="step-head"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><b>Étape 03</b></span><h3>Cadre juridique</h3><p>Les avocats partenaires présentent les structures possibles et accompagnent les vérifications comme la signature.</p></div>
+    <div class="step reveal d3"><span class="step-head"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><b>Étape 04</b></span><h3>Construction suivie</h3><p>Choix des finitions, points réguliers et suivi photographique pour garder une vision claire de l'avancement.</p></div>
+    <div class="step reveal d4"><span class="step-head"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg></span><b>Étape 05</b></span><h3>Remise des clés</h3><p>Après la livraison, les services de maintenance, d'entretien et de gestion peuvent rester disponibles.</p></div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="contact-titre">
+  <span class="ph contact-bg" data-path="photos/index/contact.jpg" aria-hidden="true"><img src="photos/index/contact.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span>
+  <div class="contact-grid">
+    <aside class="contact-details reveal">
+      <div class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="contact-label">Bureau</div><div class="contact-value">Bophut, Koh Samui</div></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="contact-label">Email</div><a class="contact-value" href="mailto:contact@latitudesamui.com">contact@latitudesamui.com</a></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg></div>
+        <div><div class="contact-label">Téléphone</div><a class="contact-value" href="tel:+6677000000">+66 (0) 77 000 000</a></div>
+      </div>
+    </aside>
+    <div class="contact-main">
+      <h2 class="h-sec reveal" id="contact-titre">Votre île<br>vous <em>attend.</em></h2>
+      <p class="lead reveal d2">Un projet immobilier à Koh Samui commence par un échange clair. Parlons de vos attentes, de votre calendrier et de la villa qui pourrait vous correspondre.</p>
+      <button class="btn btn-light reveal d3" type="button" onclick="openContactModal({intent:'contact',source:'home-contact'})">Nous écrire</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="nav-logo"><svg viewBox="0 0 1500 380"><use href="#ls-logo"/></svg></span>
+  <span>Villas &amp; art de vivre · Koh Samui, Thaïlande</span>
+  <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  var nav = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 24); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive:true });
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  var revealElements = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold:.12, rootMargin:'0px 0px -50px 0px' });
+    revealElements.forEach(function(el){ observer.observe(el); });
+  } else {
+    revealElements.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  var hero = document.querySelector('.hero');
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var indicators = Array.prototype.slice.call(document.querySelectorAll('.indicator'));
+  var pauseButton = document.querySelector('.hero-pause');
+  var current = 0;
+  var duration = 6500;
+  var remaining = duration;
+  var cycleStartedAt = 0;
+  var timer = null;
+  var paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function restartIndicator(index){
+    indicators.forEach(function(i){ i.classList.remove('active'); });
+    void indicators[index].offsetWidth;
+    indicators[index].classList.add('active');
+  }
+
+  function show(index){
+    slides[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    remaining = duration;
+    restartIndicator(current);
+  }
+
+  function schedule(delay){
+    window.clearTimeout(timer);
+    remaining = Math.max(80, delay || duration);
+    if (paused) return;
+    cycleStartedAt = Date.now();
+    timer = window.setTimeout(function(){
+      show((current + 1) % slides.length);
+      schedule(duration);
+    }, remaining);
+  }
+
+  function setPaused(next){
+    if (next === paused) return;
+    if (next) {
+      var elapsed = cycleStartedAt ? Date.now() - cycleStartedAt : 0;
+      remaining = Math.max(80, remaining - elapsed);
+      window.clearTimeout(timer);
+      paused = true;
+      hero.classList.add('paused');
+    } else {
+      paused = false;
+      hero.classList.remove('paused');
+      schedule(remaining);
+    }
+    pauseButton.setAttribute('aria-pressed', String(paused));
+    pauseButton.setAttribute('aria-label', paused ? 'Relancer le diaporama' : 'Mettre le diaporama en pause');
+  }
+
+  indicators.forEach(function(indicator, index){
+    indicator.addEventListener('click', function(){
+      show(index);
+      if (paused) { remaining = duration; } else { schedule(duration); }
+    });
+  });
+
+  pauseButton.addEventListener('click', function(){ setPaused(!paused); });
+
+  if (paused) {
+    hero.classList.add('paused');
+    pauseButton.setAttribute('aria-pressed','true');
+    pauseButton.setAttribute('aria-label','Relancer le diaporama');
+  } else {
+    schedule(duration);
+  }
+})();
+</script>
+</body>
+</html>

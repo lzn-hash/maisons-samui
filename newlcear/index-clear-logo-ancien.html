@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latitude Samui — Villas d'exception à Koh Samui</title>
+<meta name="description" content="Villas de 3 à 5 chambres avec piscine privée à Lamai, Koh Samui. Conception, construction et accompagnement par une équipe présente sur place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* fonds */
+  --cream:#f4efe6;
+  --white:#fffdf9;
+  --white-pur:#ffffff;
+  --jungle:#1a2e22;
+  --jungle-deep:#14241b;
+  /* textes */
+  --ink:#1a1e1a;
+  --ink-soft:#5a5f5a;
+  --ink-lead:#506058;
+  --ink-faint:#6f746e;
+  /* accents */
+  --vert-titre:#2e4600;
+  --saumon:#e8bda4;
+  /* filets */
+  --line:rgba(26,30,26,.14);
+  --line-soft:rgba(26,30,26,.07);
+  /* voiles sombres, base commune */
+  --voile:9,17,12;
+  /* typographie et gabarit */
+  --display:"Cormorant Garamond",serif;
+  --sans:"Manrope",system-ui,sans-serif;
+  --gut:clamp(1.25rem,4vw,3rem);
+  --nav-h:92px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--cream);line-height:1.7;overflow-x:hidden}
+img{display:block;width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--vert-titre);outline-offset:3px}
+
+.h-sec{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,5.4vw,4rem);line-height:1.03;letter-spacing:-.025em}
+.h-sec em{font-style:italic;color:var(--vert-titre)}
+.on-dark .h-sec em,.h-sec.on-dark em{color:var(--saumon)}
+.lead{font-family:var(--display);font-size:clamp(1.35rem,2.3vw,1.6rem);line-height:1.5;color:var(--ink-soft);margin-top:1.3rem;max-width:46ch}
+.lead.on-dark{color:rgba(255,253,249,.76)}
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:.8rem;
+  padding:.95rem 1.7rem;border-radius:999px;border:1px solid transparent;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  transition:border-color .3s ease,color .25s ease}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:scaleX(0);transform-origin:left;
+  transition:transform .46s cubic-bezier(.4,0,.2,1)}
+.btn:hover{transition:border-color .3s ease,color .25s ease .18s}
+.btn:hover::before{transform:scaleX(1)}
+.btn svg{width:14px;height:14px;flex-shrink:0}
+.btn-solid{background:var(--jungle);color:var(--white)}
+.btn-solid::before{background:var(--ink)}
+.btn-light{background:var(--white);color:var(--ink)}
+.btn-light::before{background:var(--saumon)}
+.btn-ghost{border-color:rgba(255,253,249,.55);color:var(--white)}
+.btn-ghost::before{background:var(--white)}
+.btn-ghost:hover{color:var(--jungle);border-color:var(--white)}
+.ulink{position:relative;display:inline-block;margin-top:22px;padding-bottom:8px;color:inherit;
+  font-family:var(--sans);font-weight:400;font-size:10px;text-transform:uppercase;letter-spacing:.12em}
+.ulink::before,.ulink::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:currentColor}
+.ulink::before{transform-origin:right;transition:transform .32s cubic-bezier(.4,0,.2,1) .2s}
+.ulink:hover::before{transform:scaleX(0);transition-delay:0s}
+.ulink::after{transform:scaleX(0);transform-origin:left;transition:transform .32s cubic-bezier(.4,0,.2,1)}
+.ulink:hover::after{transform:scaleX(1);transition-delay:.2s}
+.ulink.on-dark{color:var(--white)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.09s}.d2{transition-delay:.18s}.d3{transition-delay:.27s}.d4{transition-delay:.36s}
+
+/* réserves photo — chaque bloc affiche le chemin du fichier à déposer */
+.ph{position:relative;isolation:isolate;background:var(--jungle-deep);overflow:hidden;display:block;width:100%;height:100%}
+.ph::before{content:"";position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cg fill='none' stroke='%23faf7f0' stroke-width='9' stroke-linecap='round'%3E%3Cpath d='M70 335 H442'/%3E%3Cpath d='M116 335 A140 140 0 0 1 396 335'/%3E%3Cpath d='M256 195 V335'/%3E%3C/g%3E%3Ccircle cx='256' cy='335' r='17' fill='%23faf7f0'/%3E%3C/svg%3E") center/78px no-repeat;opacity:.15}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.ph::after{content:attr(data-path);position:absolute;left:50%;bottom:clamp(12px,4%,24px);transform:translateX(-50%);
+  font-size:.62rem;letter-spacing:.09em;color:rgba(255,253,249,.4);white-space:nowrap;font-weight:500}
+
+/* ---------- Navigation ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:60;height:var(--nav-h);padding:0 var(--gut);display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;color:var(--white);backdrop-filter:blur(2px);border-bottom:1px solid rgba(255,253,249,.18);transition:height .35s ease,background .35s ease,color .35s ease,border-color .35s ease}
+.nav.scrolled{height:70px;color:var(--ink);background:rgba(255,253,249,.94);backdrop-filter:blur(18px);border-color:var(--line)}
+.nav-logo{display:block;width:240px;flex-shrink:0;color:currentColor}
+.nav-logo svg{width:100%;height:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:2rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.nav-links a{opacity:.88;transition:opacity .25s}
+.nav-links a:hover{opacity:1}
+.nav-cta{border:1px solid currentColor;border-radius:999px;padding:.75rem 1.4rem;transition:background .3s,color .3s}
+.nav.scrolled .nav-cta:hover{background:var(--jungle);border-color:var(--jungle);color:var(--white)}
+.nav:not(.scrolled) .nav-cta:hover{background:var(--white);color:var(--jungle)}
+.burger{display:none;width:40px;height:40px;flex-direction:column;justify-content:center;gap:6px;align-items:center}
+.burger span{width:22px;height:1px;background:currentColor;transition:transform .25s}
+.nav.open .burger span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.nav.open .burger span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+@media(max-width:900px){
+  :root{--nav-h:74px}
+  .nav{height:var(--nav-h)}
+  .nav.scrolled{height:64px}
+  .nav-logo{width:236px}
+  .burger{display:flex}
+  .nav-links{position:absolute;inset:70px 0 auto;flex-direction:column;align-items:stretch;gap:0;padding:1.2rem var(--gut) 2rem;
+    background:#fffdf9;color:var(--ink);border-top:1px solid var(--line);display:none}
+  .nav.open{background:#fffdf9;color:var(--ink);border-color:var(--line)}
+  .nav.open .nav-links{display:flex}
+  .nav-links a{padding:1.05rem 0;border-bottom:1px solid var(--line-soft)}
+  .nav-cta{border:0;border-radius:0;padding:1.05rem 0;text-align:left}
+}
+
+/* ---------- Hero (mécanique identique à la V18) ---------- */
+.hero{position:relative;height:100svh;min-height:520px;overflow:hidden;background:var(--jungle-deep);color:var(--white)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.25s ease}
+.slide.active{opacity:1}
+.slide .ph{will-change:transform}
+.slide.active .ph{animation:kenBurns 7.2s linear forwards}
+@keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.065) translate(-.55%,.55%)}}
+.hero.paused .slide.active .ph,.hero.paused .indicator.active::after{animation-play-state:paused}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--voile),.64),transparent 62%),linear-gradient(0deg,rgba(var(--voile),.5),transparent 40%),linear-gradient(0deg,rgba(var(--voile),.2),transparent 52%),linear-gradient(120deg,rgba(39,56,47,.2),rgba(156,128,105,.08))}
+.hero-inner{position:relative;z-index:3;max-width:1440px;height:100%;margin:0 auto;
+  padding:var(--nav-h) var(--gut) clamp(2rem,7vh,7.5rem);
+  display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(3.6rem,8.4vw,7.4rem);line-height:.93;letter-spacing:-.035em;margin-top:1.1rem;max-width:14ch}
+.hero h1 em{font-style:italic;color:var(--saumon)}
+.hero-tagline{font-family:var(--display);font-size:clamp(1.15rem,1.9vw,1.4rem);line-height:1.55;color:rgba(255,253,249,.84);max-width:44ch;margin-top:1.3rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.2rem}
+.hero-controls{position:absolute;z-index:5;right:max(var(--gut),calc((100vw - 1440px)/2 + var(--gut)));bottom:2.2rem;
+  display:flex;align-items:center;gap:.55rem}
+.indicator{position:relative;width:42px;height:34px;padding:0}
+.indicator::before{content:"";position:absolute;left:0;right:0;top:16px;height:2px;background:rgba(255,255,255,.3)}
+.indicator.active::after{content:"";position:absolute;left:0;top:16px;height:2px;width:0;background:var(--white);animation:heroProgress 6.5s linear forwards}
+@keyframes heroProgress{to{width:100%}}
+.hero-pause{width:38px;height:38px;border:1px solid rgba(255,255,255,.36);border-radius:50%;background:rgba(var(--voile),.2);
+  color:var(--white);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-pause svg{width:14px;height:14px}
+.hero-pause .play-icon{display:none}
+.hero-pause[aria-pressed="true"] .pause-icon{display:none}
+.hero-pause[aria-pressed="true"] .play-icon{display:block}
+@media(max-width:900px){
+  .hero-inner{padding-bottom:6.5rem}
+  .hero-controls{left:var(--gut);right:var(--gut);bottom:calc(1.4rem + env(safe-area-inset-bottom,0px));
+    display:grid;grid-template-columns:repeat(6,minmax(0,1fr)) 38px;gap:clamp(.3rem,1.8vw,.55rem)}
+  .indicator{width:100%;min-width:0;height:30px}
+  .indicator::before,.indicator.active::after{top:14px}
+}
+
+/* ---------- Sections claires ---------- */
+.sec{padding:clamp(5rem,10vw,9rem) 0}
+.sec-clair{background:var(--white)}
+.sec-head{padding:0 var(--gut);max-width:1440px;margin:0 auto clamp(2.5rem,5vw,4rem)}
+.sec-head.split{display:grid;grid-template-columns:1.25fr .75fr;gap:2rem clamp(3rem,8vw,7rem);align-items:end}
+.sec-head.split .lead{margin-top:0}
+@media(max-width:900px){.sec-head.split{grid-template-columns:1fr}}
+
+.intro{max-width:1440px;margin:0 auto;min-height:66vh;padding:clamp(5rem,10vw,9rem) var(--gut) clamp(4rem,7vw,7rem);
+  display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(2.5rem,8vw,7rem);align-items:center}
+.intro h2{font-family:var(--display);font-weight:400;font-size:clamp(3rem,6.4vw,6rem);line-height:1;letter-spacing:-.03em}
+.intro h2 em{font-style:italic;color:var(--vert-titre)}
+.intro-copy{max-width:440px}
+.intro-copy p{font-family:var(--display);font-weight:400;font-size:23px;line-height:1.45;color:var(--ink-lead)}
+.intro-copy p+p{margin-top:1.05rem}
+@media(max-width:900px){.intro{grid-template-columns:1fr;min-height:0;align-items:start}}
+@media(max-width:680px){.intro-copy p{font-size:20px}}
+
+/* ---------- Mosaïque villas ---------- */
+.villas{background:var(--white);overflow:hidden;padding-bottom:clamp(5rem,10vw,9rem)}
+.vg{max-width:1560px;margin:0 auto;scroll-margin-top:var(--nav-h);padding:0 clamp(.75rem,2vw,1.5rem);display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  grid-template-rows:clamp(340px,34vw,480px) clamp(240px,23vw,320px);gap:14px}
+.vg-1{grid-column:1/5;grid-row:1}
+.vg-2{grid-column:5/7;grid-row:1}
+.vg-3{grid-column:1/3;grid-row:2}
+.vg-4{grid-column:3/7;grid-row:2}
+.vcard{position:relative;overflow:hidden;display:block;color:var(--white-pur)}
+.vcard .ph{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.vcard:hover .ph{transform:scale(1.045)}
+.vshade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(var(--voile),.67),transparent 62%);pointer-events:none}
+.vtop{position:absolute;top:20px;left:22px;right:22px;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white-pur);text-shadow:0 1px 3px rgba(var(--voile),.55)}
+.vtag{color:var(--white-pur);font-weight:600}
+.vbadge{background:var(--white-pur);color:var(--jungle);border-radius:999px;padding:.42rem .95rem;font-weight:600;
+  letter-spacing:.14em;white-space:nowrap;text-shadow:none}
+.vfoot{position:absolute;left:22px;right:22px;bottom:19px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:1.2rem}
+.vloc{display:block;font-size:.6rem;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.76);margin-bottom:.3rem}
+.vname{display:block;color:var(--white-pur);font-family:var(--display);font-weight:400;line-height:.98;letter-spacing:-.015em;font-size:clamp(1.8rem,3vw,2.5rem)}
+.vg-1 .vname{font-size:clamp(2.6rem,5vw,4.2rem)}
+.vg-2 .vname{font-size:clamp(2rem,3.4vw,2.9rem)}
+.vspecs{display:block;font-size:.72rem;color:rgba(255,255,255,.72);margin-top:.5rem}
+.vprice{text-align:right;white-space:nowrap;padding-bottom:.2rem}
+.vprice small{display:block;font-size:.57rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.vprice b{font-family:var(--display);font-weight:500;font-size:clamp(1.25rem,2vw,1.6rem);letter-spacing:-.01em}
+.vg-1 .vprice b{font-size:clamp(1.6rem,2.6vw,2.1rem)}
+.vright{display:flex;align-items:flex-end;gap:clamp(.7rem,1.2vw,1.1rem)}
+.varrow{width:45px;height:45px;flex-shrink:0;display:grid;place-items:center;border:1px solid rgba(255,255,255,.7);
+  border-radius:50%;transition:background .3s ease,color .3s ease,border-color .3s ease,transform .3s ease}
+.varrow svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.vcard:hover .varrow{background:var(--white-pur);border-color:var(--white-pur);color:var(--jungle);transform:translate(2px,-2px)}
+.vnote{max-width:1560px;margin:1.5rem auto 0;padding:0 clamp(.75rem,2vw,1.5rem);font-size:.76rem;color:var(--ink-faint)}
+@media(max-width:1000px){
+  .vg{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:clamp(260px,42vw,340px)}
+  .vg-1{grid-column:1/3;grid-row:auto;min-height:clamp(320px,52vw,420px)}
+  .vg-2,.vg-3{grid-column:auto;grid-row:auto}
+  .vg-4{grid-column:1/3;grid-row:auto}
+}
+@media(max-width:640px){
+  .vg{grid-template-columns:1fr;grid-auto-rows:clamp(300px,68vw,380px)}
+  .vg-1,.vg-2,.vg-3,.vg-4{grid-column:auto;min-height:0}
+  .vg-1{min-height:clamp(340px,80vw,430px)}
+  .vfoot{flex-direction:column;align-items:flex-start;gap:.7rem}
+  .vprice{text-align:left}
+}
+
+/* ---------- Île ---------- */
+.island{position:relative;min-height:clamp(460px,58vw,640px);display:grid;align-items:center;color:var(--white);overflow:hidden}
+.island .ph{position:absolute;inset:0}
+.island-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--voile),.86),rgba(var(--voile),.36) 62%,rgba(var(--voile),.2))}
+.island-inner{position:relative;z-index:2;max-width:1440px;width:100%;margin:0 auto;padding:clamp(4rem,8vw,6rem) var(--gut)}
+.island-inner .lead{margin-bottom:2rem}
+
+/* ---------- Équipe ---------- */
+.team-roles{max-width:1440px;margin:0 auto;padding:0 var(--gut);display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.5rem,3vw,2.6rem)}
+.team-role{padding-top:.2rem}
+.team-role .fonction{display:block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--ink-faint)}
+.team-role .nom{font-family:var(--display);font-weight:400;font-size:clamp(1.35rem,2vw,1.7rem);line-height:1.1;margin:.45rem 0 .65rem}
+.team-role .txt{font-size:.86rem;line-height:1.75;color:var(--ink-soft)}
+@media(max-width:800px){.team-roles{grid-template-columns:1fr}}
+
+/* ---------- Parcours ---------- */
+.journey{background:linear-gradient(180deg,#101d16,#1d3527);color:var(--white)}
+.journey .h-sec{color:var(--white)}
+.journey .h-sec em{color:var(--saumon)}
+.journey .lead{color:rgba(255,253,249,.76)}
+.steps{max-width:1440px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(1.5rem,2.5vw,2.2rem)}
+.step{padding:1.5rem 1.25rem;border-radius:3px;transition:background .4s ease}
+.step:nth-child(1){background:rgba(255,253,249,.018)}
+.step:nth-child(2){background:rgba(255,253,249,.038)}
+.step:nth-child(3){background:rgba(255,253,249,.058)}
+.step:nth-child(4){background:rgba(255,253,249,.082)}
+.step:nth-child(5){background:rgba(255,253,249,.11)}
+.step:hover{background:rgba(255,253,249,.15)}
+.step-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.15rem}
+.step-icon{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,253,249,.32);background:rgba(var(--voile),.3);
+  color:var(--white);flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  transition:transform .35s ease,background .35s ease,border-color .35s ease,color .35s ease}
+.step-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.step:hover .step-icon{transform:scale(1.05);background:var(--white);border-color:var(--white);color:var(--jungle-deep)}
+.step b{display:block;font-size:.63rem;letter-spacing:.22em;color:rgba(255,253,249,.6);font-weight:600}
+.step h3{font-family:var(--display);font-weight:400;font-size:clamp(1.35rem,1.9vw,1.65rem);line-height:1.14;margin:0 0 .6rem}
+.step p{font-size:.83rem;line-height:1.75;color:rgba(255,253,249,.72)}
+@media(max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* ---------- Contact ---------- */
+.contact{position:relative;isolation:isolate;background:var(--jungle);color:var(--white);overflow:hidden;padding:clamp(5rem,9vw,6.5rem) var(--gut)}
+.contact-bg{position:absolute;inset:0;z-index:0;opacity:.18;mix-blend-mode:screen;pointer-events:none}
+.contact-grid{position:relative;z-index:2;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:.75fr 1.25fr;
+  gap:clamp(2.6rem,5vw,4.5rem);align-items:center}
+.contact-details{display:flex;flex-direction:column;gap:1.45rem;padding-right:2rem;border-right:1px solid rgba(255,253,249,.22)}
+.contact-row{display:grid;grid-template-columns:42px 1fr;align-items:center;gap:1rem}
+.contact-icon{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,253,249,.32);background:rgba(26,30,26,.18);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-icon svg{width:18px;height:18px}
+.contact-label{font-size:.56rem;letter-spacing:.23em;text-transform:uppercase;color:rgba(255,253,249,.65)}
+.contact-value{font-family:var(--display);font-size:1.08rem;color:var(--white);text-decoration:none;transition:opacity .25s}
+a.contact-value:hover{opacity:.72}
+.contact-main .contact-main .h-sec{color:var(--white);font-size:clamp(2.8rem,5vw,4.7rem)}
+.contact-main .h-sec em{color:var(--saumon)}
+.contact-main .lead{color:rgba(255,253,249,.88);max-width:56ch}
+.contact-main .btn{margin-top:2rem}
+@media(max-width:900px){
+  .contact-grid{grid-template-columns:1fr;gap:2.6rem}
+  .contact-main{order:-1}
+  .contact-details{border-right:0;border-top:1px solid rgba(255,253,249,.22);padding:2rem 0 0}
+}
+
+footer{background:var(--ink);color:rgba(255,253,249,.62);padding:2.4rem var(--gut);
+  display:flex;flex-wrap:wrap;gap:1.2rem 2rem;justify-content:space-between;align-items:center;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+footer .nav-logo{width:270px;color:rgba(255,253,249,.9)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ls-logo" viewBox="0 0 1084 159"><g fill="currentColor" transform="translate(-76,-357)"><g>
+    <path d="m357.36,486.34h-7.78m-3.9,0h-17.49v-2.37c0-10.29-.04-20.58.04-30.87.01-1.65-.48-2.69-1.81-3.67-11.95-8.78-23.82-17.67-35.79-26.41-6.03-4.4-3.89-4.58-10.36.15-11.4,8.33-22.71,16.8-34.03,25.24-.91.68-1.49.82-2.42-.05-18.41-17.28-36.85-34.53-55.27-51.79-2.32-2.17-2.67-2.19-5.04-.01-20.7,19.03-41.41,38.07-62.11,57.11-1.98,1.82-3.96,3.62-5.93,5.45-.93.86-1.14,1.9-.25,2.87.9.98,1.94.77,2.9-.02.39-.32.77-.67,1.15-1.02,3.28-3.04,6.55-6.09,9.85-9.12,15.52-14.28,31.05-28.56,46.58-42.83,3.42-3.15,6.85-6.28,10.31-9.45.66.59,1.19,1.05,1.7,1.52,18.03,16.84,36.07,33.67,54.05,50.56.59.55.93,1.65.94,2.5.06,10.1.03,20.2.02,30.3,0,.61-.06,1.23-.11,2.03-.97,0-1.79,0-2.61,0-52.3,0-104.6.01-156.9.02-1.43,0-3.09-.14-3.07,1.91.01,2.01,1.66,1.92,3.09,1.94.13,0,.26,0,.38,0,64.25,0,128.51-.01,192.76-.02,33.44,0,66.88,0,100.31,0,1.47,0,3.05-.01,3.03-2-.02-1.91-1.58-1.83-2.96-1.83-3.45,0-6.9,0-10.36,0-1.64,0-3.28,0-5.2,0m-84,0c-9.58.01-19.16.01-28.75.01-.88,0-1.81.2-1.81-1.25.03-9.51.02-19.02.02-29.18,10.87,10.24,21.34,20.1,32.05,30.19-.72.11-1.12.23-1.52.23Zm47.3-1c0,.25-.07.5-.14,1-.62,0-1.24,0-1.86,0-12.14,0-24.28.02-36.42-.02-.75,0-1.68-.28-2.21-.77-11.86-11.07-23.68-22.19-35.51-33.3-.09-.08-.12-.22-.28-.5,12.47-9.23,24.96-18.48,37.56-27.8,4.28,3.15,8.49,6.24,12.7,9.34,8.27,6.11,16.55,12.2,24.77,18.37.66.49,1.32,1.49,1.33,2.25.09,10.48.06,20.95.06,31.43Z"/>
+    <path d="m287.67,502.73c-6.51,0-13.02,0-19.53,0-1.39,0-2.72-.16-2.67-1.92.05-1.67,1.33-1.92,2.74-1.92,12.89.02,25.79.01,38.68,0,1.44,0,2.84.13,2.85,1.99,0,1.82-1.39,1.83-2.73,1.83-6.45,0-12.89,0-19.34,0h0Z"/>
+    <path d="m346.18,392.22c-7.71,1.46-14.19,4.84-18.47,11.68-4.23,6.75-3.78,16.21-1.42,21.75.22-.47.42-.86.6-1.27,2.36-5.5,4.98-10.85,8.71-15.6,3.35-4.26,7-8.19,11.9-10.72,1.05-.54,2.19-.93,3.49-1.46,0,.98.02,1.61,0,2.24-.14,4.19-.3,8.38-.45,12.58-.4,11.58-.7,23.16-1.21,34.73-.53,12.07-1.19,24.13-1.94,36.18-.13,2.12-.36,4.23-.6,6.35h2.79c2.36-23.53,2.5-47.12,3.71-70.65,1.06,23.52,1.19,47.09,3.49,70.65h2.78c-2.85-30.64-2.79-61.29-3.88-92.02,2.18.85,4.29,1.64,6.08,2.89,9.31,6.53,15.06,15.74,19.28,26.1,2.38-7.53,2.5-14.84-1.75-21.74-4.24-6.9-10.87-10.11-18.57-11.63,3.48-1.33,7.04-1.79,10.65-1.82,9.91-.07,18.63,3.43,26.58,9.12,1.17.83,2.32,1.69,3.47,2.53-1.39-6.61-4.24-12.33-9.37-16.65-8.63-7.26-18.15-7.16-28.11-3.04,7.48-8.94,16.35-15.75,27.8-19.02-.29-.23-.37-.34-.48-.38-6.69-2.49-13.29-2.4-19.8.65-7.14,3.34-11.75,9.1-15.06,16.01-1.26,2.63-2.16,5.42-3.25,8.2-.1-.28-.19-.53-.27-.78-2.17-7.02-5.23-13.57-10.76-18.6-6.52-5.94-14.12-8.51-22.95-6.57-1.5.33-2.96.82-4.44,1.23,11.18,3.67,20.09,10.19,27.39,19.06-3.51-1.42-7.08-2.39-10.87-2.54-5.31-.22-10.1,1.2-14.42,4.22-5.13,3.59-8.28,8.64-10.35,14.43-.46,1.28-.8,2.61-1.19,3.92,12.15-9.72,25.32-14.64,40.89-10.04Zm-18.62,24.15c-1.03-9.96,7.15-19.69,18.26-20.72-8.23,5.09-13.73,12.34-18.26,20.72Zm52.12-.37c-4.91-8.08-10.39-15.36-18.78-20.39,12.08,1.47,19.33,10.91,18.78,20.39Zm-5.53-33.46c10.14-1.27,18.34,5.43,21.59,12.13-12.07-7.03-24.43-9.15-37.68-5.05.32-.28.61-.59.95-.83,4.6-3.17,9.52-5.54,15.14-6.25Zm7.56-18.29c-5.26,2.72-9.89,5.86-13.8,9.87-3.88,3.99-7.48,8.26-11.03,12.21,1.16-10.36,15.1-23.14,24.83-22.09Zm-56.97.15c8.34-2.48,25,12.75,24.75,22.61-6.69-9.32-14.44-17.3-24.75-22.61Zm-13.5,29.81c.92-1.32,1.75-2.71,2.76-3.96,5.72-7.12,15.72-9.84,24.22-6.4,3.1,1.26,5.99,3.04,8.95,4.61.5.27.91.71,1.32,1.19-13.07-4.08-25.29-2.01-36.89,4.86-.12-.1-.24-.2-.36-.31Z"/>
+    <rect x="281.72" y="507.8" width="15.11" height="3.94" rx="1.41" ry="1.41"/>
+    <g>
+      <path d="m1060.84,489.78h-5.72c-.24-14.38-.49-28.74-.73-43.1-.17-.05-.34-.1-.52-.15-7.4,11.88-14.81,23.76-22.39,35.91-7.56-12.15-14.96-24.06-22.36-35.96-.16.03-.32.06-.47.09-.26,14.36-.52,28.71-.78,43.19h-5.7c.31-20.98.62-41.93.93-62.88.16-.08.32-.17.49-.25,9.21,14.96,18.42,29.91,27.83,45.21,9.45-15.22,18.75-30.17,28.04-45.13.17.02.35.05.52.07.28,20.96.57,41.93.85,63Z"/>
+      <path d="m739.14,489.82v-63.27c4.36,0,8.6-.11,12.84.03,3.95.13,7.99.07,11.83.86,19.97,4.09,28.63,24.45,22.94,41.25-4.32,12.76-14.54,20.47-28.03,21.08-6.47.29-12.95.05-19.58.05Zm5.79-57.6v51.94c4.01,0,7.83.02,11.65,0,13.69-.1,23.44-8.41,25.69-21.86,2.07-12.43-5.56-25.17-17.1-28.73-6.64-2.05-13.41-1.13-20.23-1.35Z"/>
+      <path d="m836.63,455.87v5.73h-25.25v22.53h31.57v5.66h-37.36v-63.09h37.36v5.49h-31.52v23.69h25.21Z"/>
+      <path d="m672.24,426.68h5.65c0,1.25,0,2.38,0,3.52,0,11.98-.07,23.96.02,35.94.08,10.69,8.15,18.6,18.56,18.41,10.02-.18,17.88-8.19,17.94-18.47.07-11.69.01-23.38.01-35.07,0-1.36,0-2.73,0-4.27h5.7c.04.59.11,1.27.11,1.96,0,12.34.15,24.68-.06,37.02-.17,9.85-4.32,17.71-13.47,21.99-8.85,4.14-17.61,3.43-25.51-2.56-6.23-4.72-9.01-11.36-9.09-19.04-.13-12.63-.06-25.26-.05-37.88,0-.49.12-.98.19-1.54Z"/>
+      <path d="m957.59,425.83c9.53,21.55,18.81,42.55,28.31,64.04-2.17,0-3.93.11-5.65-.07-.49-.05-1.04-.89-1.3-1.48-1.91-4.28-3.8-8.56-5.59-12.89-.52-1.25-1.16-1.71-2.54-1.7-8.73.07-17.45.07-26.18,0-1.31,0-1.93.46-2.4,1.61-1.69,4.13-3.57,8.19-5.17,12.35-.69,1.8-1.65,2.48-3.52,2.24-1.11-.14-2.25-.03-3.79-.03,9.3-21.43,18.44-42.48,27.82-64.09Zm-12.11,42.18h24.59c-4.13-9.31-8.14-18.38-12.4-27.99-4.21,9.66-8.13,18.68-12.19,27.99Z"/>
+      <path d="m498.49,425.93c9.56,21.59,18.85,42.58,28.31,63.96-2.2,0-3.92.13-5.6-.08-.56-.07-1.19-.94-1.47-1.58-1.88-4.21-3.73-8.44-5.46-12.71-.55-1.36-1.27-1.79-2.72-1.78-8.66.07-17.32.06-25.98,0-1.25,0-1.91.31-2.41,1.54-1.67,4.15-3.6,8.2-5.19,12.37-.69,1.8-1.65,2.5-3.5,2.29-1.12-.12-2.26-.02-3.84-.02,9.31-21.4,18.45-42.4,27.86-64Zm12.54,42.14c-4.2-9.37-8.24-18.4-12.51-27.94-4.18,9.61-8.12,18.68-12.14,27.94h24.66Z"/>
+      <path d="m1081.85,426.69h5.41c.04.73.13,1.49.13,2.25,0,11.83-.07,23.66.07,35.49.03,2.77.33,5.69,1.27,8.26,3.18,8.64,11.28,13.14,20.1,11.56,8.77-1.58,15.11-8.93,15.2-17.96.11-11.47.03-22.94.04-34.41,0-1.65,0-3.3,0-5.14h5.56c.04.69.12,1.39.12,2.08,0,12.41.07,24.82-.02,37.22-.14,18.93-20.31,30.36-36.58,20.71-7.03-4.17-11.02-10.69-11.31-18.67-.48-13.47-.16-26.97-.17-40.46,0-.27.11-.54.19-.93Z"/>
+      <path d="m882.89,480.31c1.61-.99,3.13-1.92,4.79-2.93,2.3,3.99,5.63,6.27,10,7.04,6.93,1.23,13.44-2.87,14.64-9.26.77-4.09-1.17-8.24-5.37-10.7-3.79-2.23-7.77-4.12-11.61-6.24-2.27-1.25-4.57-2.49-6.64-4.04-4.94-3.69-6.95-8.68-5.92-14.8,1.03-6.11,4.92-9.84,10.48-11.86,8.63-3.15,18.27.16,22.42,7.65-1.47.96-2.96,1.92-4.55,2.95-.83-.95-1.55-1.94-2.44-2.75-3.97-3.63-8.61-4.08-13.52-2.49-3.74,1.21-6.1,3.78-6.73,7.72-.64,4,1.02,7.14,4.27,9.27,3.01,1.96,6.28,3.51,9.41,5.29,3.31,1.89,6.83,3.53,9.85,5.82,7.79,5.89,8.54,16.56,1.92,23.6-8.45,8.99-24.92,6.86-31-4.26Z"/>
+      <path d="m555.39,489.78h-5.72v-57.47h-20.41v-5.64h46.33v5.52h-20.19v57.59Z"/>
+      <path d="m638.23,489.78h-5.65v-57.5h-20.29v-5.57h46.23v5.47h-20.29v57.59Z"/>
+      <path d="m419.15,426.62h5.66v57.54h31.35v5.57h-37.01v-63.11Z"/>
+      <path d="m591.22,426.67h5.55v63.07h-5.55v-63.07Z"/>
+      <path d="m1150.57,426.64h5.43v63.08h-5.43v-63.08Z"/>
+    </g>
+  </g></g></symbol></svg>
+
+<header class="nav" id="nav">
+  <a class="nav-logo" href="#top" aria-label="Latitude Samui — accueil"><svg viewBox="0 0 1084 159"><use href="#ls-logo"/></svg></a>
+  <nav class="nav-links" aria-label="Navigation principale">
+    <a href="#villas">Les villas</a>
+    <a href="#ile">Koh Samui</a>
+    <a href="#equipe">L'équipe</a>
+    <a href="#parcours">Le parcours</a>
+    <a class="nav-cta" href="#contact">Nous contacter</a>
+  </nav>
+  <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<section class="hero" id="hero" aria-label="Latitude Samui">
+  <div class="slide active"><span class="ph" data-path="photos/index/01.jpg"><img src="photos/index/01.jpg" alt="" fetchpriority="high" onerror="this.remove()"></span></div>
+  <div class="slide"><span class="ph" data-path="photos/index/02.jpg"><img src="photos/index/02.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span></div>
+  <div class="slide"><span class="ph" data-path="photos/index/03.jpg"><img src="photos/index/03.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span></div>
+  <div class="slide"><span class="ph" data-path="photos/index/04.jpg"><img src="photos/index/04.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span></div>
+  <div class="slide"><span class="ph" data-path="photos/index/05.jpg"><img src="photos/index/05.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span></div>
+  <div class="slide"><span class="ph" data-path="photos/index/06.jpg"><img src="photos/index/06.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <h1>Une île.<br>Des maisons<br><em>d'exception.</em></h1>
+    <p class="hero-tagline">Des villas d'architecte pensées pour mieux vivre, entre matière, lumière tropicale et horizons marins.</p>
+    <div class="hero-actions">
+      <a class="btn btn-light" href="#villas">Découvrir les villas
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a class="btn btn-ghost" href="#parcours">Notre approche</a>
+    </div>
+  </div>
+  <div class="hero-controls" aria-label="Contrôles du diaporama">
+    <button class="indicator active" type="button" aria-label="Afficher l'image 1"></button>
+    <button class="indicator" type="button" aria-label="Afficher l'image 2"></button>
+    <button class="indicator" type="button" aria-label="Afficher l'image 3"></button>
+    <button class="indicator" type="button" aria-label="Afficher l'image 4"></button>
+    <button class="indicator" type="button" aria-label="Afficher l'image 5"></button>
+    <button class="indicator" type="button" aria-label="Afficher l'image 6"></button>
+    <button class="hero-pause" type="button" aria-label="Mettre le diaporama en pause" aria-pressed="false">
+      <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3" height="14"/><rect x="14" y="5" width="3" height="14"/></svg>
+      <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+  </div>
+</section>
+
+<section class="villas" aria-labelledby="philosophie">
+  <div class="intro">
+    <h2 class="reveal" id="philosophie">Une autre idée<br><em>du luxe à Samui.</em></h2>
+    <div class="intro-copy reveal d1">
+      <p>Notre mission : rendre accessible un art de vivre souvent perçu comme inaccessible.</p>
+      <p>En maîtrisant chaque étape de la construction, nous optimisons les coûts sans transiger sur la qualité.</p>
+      <a class="ulink" href="notre-approche.html">Découvrir notre philosophie</a>
+    </div>
+  </div>
+
+  <div class="vg" id="villas">
+    <a class="vcard vg-1 reveal" href="villa-baansawan.html">
+      <span class="ph" data-path="photos/baansawan/card.jpg"><img src="photos/baansawan/card.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="vshade"></span>
+      <span class="vtop"><span class="vbadge">Villa signature 360° vue mer</span><span>Livraison 2027</span></span>
+      <span class="vfoot">
+        <span><span class="vloc">Lamai Heights · Vue mer panoramique</span><span class="vname">Baan Sawan</span><span class="vspecs">5 chambres · 252 m² · terrain 604 m²</span></span>
+        <span class="vright"><span class="vprice"><small>À partir de</small><b>805 000 €</b></span><span class="varrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></span></span>
+      </span>
+    </a>
+
+    <a class="vcard vg-2 reveal d1" href="villa-suk.html">
+      <span class="ph" data-path="photos/suk/card.jpg"><img src="photos/suk/card.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="vshade"></span>
+      <span class="vtop"><span class="vtag">Villa premium</span><span>Livraison 2027</span></span>
+      <span class="vfoot">
+        <span><span class="vloc">Lamai · Orientation est</span><span class="vname">Suk</span><span class="vspecs">3 ch · 152 m² · terrain 458 m²</span></span>
+        <span class="vright"><span class="vprice"><small>À partir de</small><b>510 000 €</b></span><span class="varrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></span></span>
+      </span>
+    </a>
+
+    <a class="vcard vg-3 reveal d2" href="villa-sabai.html">
+      <span class="ph" data-path="photos/sabai/card.jpg"><img src="photos/sabai/card.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="vshade"></span>
+      <span class="vtop"><span class="vtag">Villa premium</span><span>Livraison 2027</span></span>
+      <span class="vfoot">
+        <span><span class="vloc">Lamai · Orientation sud</span><span class="vname">Sabai</span><span class="vspecs">3 ch · 148 m² · terrain 445 m²</span></span>
+        <span class="vright"><span class="vprice"><small>À partir de</small><b>510 000 €</b></span><span class="varrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></span></span>
+      </span>
+    </a>
+
+    <a class="vcard vg-4 reveal d3" href="#contact">
+      <span class="ph" data-path="photos/thongkrut/card.jpg"><img src="photos/thongkrut/card.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span><span class="vshade"></span>
+      <span class="vtop"><span class="vbadge">Programme · 20 lots</span><span>Bientôt</span></span>
+      <span class="vfoot">
+        <span><span class="vloc">Thong Krut · Sud de Koh Samui</span><span class="vname">Thong Krut Village</span><span class="vspecs">Village résidentiel · écriture architecturale commune</span></span>
+        <span class="vright"><span class="vprice"><small>À partir de</small><b>215 000 €</b></span><span class="varrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></span></span>
+      </span>
+    </a>
+  </div>
+  <p class="vnote">Paiement en euros, bahts ou cryptomonnaies selon les modalités du projet.</p>
+</section>
+
+<section class="island" id="ile" aria-labelledby="ile-titre">
+  <span class="ph" data-path="photos/index/ile.jpg"><img src="photos/index/ile.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span>
+  <span class="island-shade"></span>
+  <div class="island-inner">
+    <h2 class="h-sec reveal" id="ile-titre" style="color:var(--white)">Une île où l'on prend<br><em style="color:var(--saumon)">le temps de vivre.</em></h2>
+    <p class="lead on-dark reveal d2">Mer, nature, gastronomie, sport et services accessibles toute l'année. Koh Samui permet de vivre au calme sans renoncer au confort du quotidien.</p>
+    <a class="ulink on-dark reveal d3" href="koh-samui.html">Découvrir Koh Samui</a>
+  </div>
+</section>
+
+<section class="sec sec-clair" id="equipe" aria-labelledby="equipe-titre">
+  <div class="sec-head split">
+    <div class="reveal">
+      <h2 class="h-sec" id="equipe-titre">Une équipe complémentaire,<br><em>présente à chaque étape.</em></h2>
+    </div>
+    <div class="reveal d1">
+      <p class="lead">Une organisation directe qui permet de garder chaque décision au plus près du chantier, du projet et du futur propriétaire.</p>
+      <a class="ulink" href="#contact">Découvrez en plus sur notre équipe</a>
+    </div>
+  </div>
+  <div class="team-roles">
+    <div class="team-role reveal">
+      <span class="fonction">Direction &amp; stratégie</span>
+      <h3 class="nom">Sébastien</h3>
+      <p class="txt">Direction et stratégie, relation client, suivi commercial depuis Koh Samui.</p>
+    </div>
+    <div class="team-role reveal d1">
+      <span class="fonction">Construction &amp; terrain</span>
+      <h3 class="nom">Laurent</h3>
+      <p class="txt">Suivi de chantier, contrôle qualité et coordination des opérations de construction sur l'île.</p>
+    </div>
+    <div class="team-role reveal d2">
+      <span class="fonction">Digital &amp; finance</span>
+      <h3 class="nom">Benoît</h3>
+      <p class="txt">Digital, marketing, image de marque et suivi financier des opérations.</p>
+    </div>
+  </div>
+
+</section>
+
+<section class="sec journey" id="parcours" aria-labelledby="parcours-titre">
+  <div class="sec-head split">
+    <div class="reveal">
+      <h2 class="h-sec" id="parcours-titre">Cinq étapes,<br><em>une seule équipe.</em></h2>
+    </div>
+    <p class="lead reveal d1">Du premier échange à la remise des clés, chaque étape est expliquée, suivie et documentée.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal"><span class="step-head"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><b>Étape 01</b></span><h3>Premier échange</h3><p>Un email, un appel ou un échange WhatsApp pour comprendre votre projet et répondre à vos premières questions.</p></div>
+    <div class="step reveal d1"><span class="step-head"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><b>Étape 02</b></span><h3>Visite du projet</h3><p>Chaque villa est associée à une parcelle sélectionnée pour son environnement et son orientation. Visite sur place ou en vidéo.</p></div>
+    <div class="step reveal d2"><span class="step-head"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><b>Étape 03</b></span><h3>Cadre juridique</h3><p>Les avocats partenaires présentent les structures possibles et accompagnent les vérifications comme la signature.</p></div>
+    <div class="step reveal d3"><span class="step-head"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><b>Étape 04</b></span><h3>Construction suivie</h3><p>Choix des finitions, points réguliers et suivi photographique pour garder une vision claire de l'avancement.</p></div>
+    <div class="step reveal d4"><span class="step-head"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg></span><b>Étape 05</b></span><h3>Remise des clés</h3><p>Après la livraison, les services de maintenance, d'entretien et de gestion peuvent rester disponibles.</p></div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="contact-titre">
+  <span class="ph contact-bg" data-path="photos/index/contact.jpg" aria-hidden="true"><img src="photos/index/contact.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></span>
+  <div class="contact-grid">
+    <aside class="contact-details reveal">
+      <div class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="contact-label">Bureau</div><div class="contact-value">Bophut, Koh Samui</div></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="contact-label">Email</div><a class="contact-value" href="mailto:contact@latitudesamui.com">contact@latitudesamui.com</a></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg></div>
+        <div><div class="contact-label">Téléphone</div><a class="contact-value" href="tel:+6677000000">+66 (0) 77 000 000</a></div>
+      </div>
+    </aside>
+    <div class="contact-main">
+      <h2 class="h-sec reveal" id="contact-titre">Votre île<br>vous <em>attend.</em></h2>
+      <p class="lead reveal d2">Un projet immobilier à Koh Samui commence par un échange clair. Parlons de vos attentes, de votre calendrier et de la villa qui pourrait vous correspondre.</p>
+      <button class="btn btn-light reveal d3" type="button" onclick="openContactModal({intent:'contact',source:'home-contact'})">Nous écrire</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="nav-logo"><svg viewBox="0 0 1084 159"><use href="#ls-logo"/></svg></span>
+  <span>Villas &amp; art de vivre · Koh Samui, Thaïlande</span>
+  <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  var nav = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 24); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive:true });
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  var revealElements = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold:.12, rootMargin:'0px 0px -50px 0px' });
+    revealElements.forEach(function(el){ observer.observe(el); });
+  } else {
+    revealElements.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  var hero = document.querySelector('.hero');
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var indicators = Array.prototype.slice.call(document.querySelectorAll('.indicator'));
+  var pauseButton = document.querySelector('.hero-pause');
+  var current = 0;
+  var duration = 6500;
+  var remaining = duration;
+  var cycleStartedAt = 0;
+  var timer = null;
+  var paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function restartIndicator(index){
+    indicators.forEach(function(i){ i.classList.remove('active'); });
+    void indicators[index].offsetWidth;
+    indicators[index].classList.add('active');
+  }
+
+  function show(index){
+    slides[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    remaining = duration;
+    restartIndicator(current);
+  }
+
+  function schedule(delay){
+    window.clearTimeout(timer);
+    remaining = Math.max(80, delay || duration);
+    if (paused) return;
+    cycleStartedAt = Date.now();
+    timer = window.setTimeout(function(){
+      show((current + 1) % slides.length);
+      schedule(duration);
+    }, remaining);
+  }
+
+  function setPaused(next){
+    if (next === paused) return;
+    if (next) {
+      var elapsed = cycleStartedAt ? Date.now() - cycleStartedAt : 0;
+      remaining = Math.max(80, remaining - elapsed);
+      window.clearTimeout(timer);
+      paused = true;
+      hero.classList.add('paused');
+    } else {
+      paused = false;
+      hero.classList.remove('paused');
+      schedule(remaining);
+    }
+    pauseButton.setAttribute('aria-pressed', String(paused));
+    pauseButton.setAttribute('aria-label', paused ? 'Relancer le diaporama' : 'Mettre le diaporama en pause');
+  }
+
+  indicators.forEach(function(indicator, index){
+    indicator.addEventListener('click', function(){
+      show(index);
+      if (paused) { remaining = duration; } else { schedule(duration); }
+    });
+  });
+
+  pauseButton.addEventListener('click', function(){ setPaused(!paused); });
+
+  if (paused) {
+    hero.classList.add('paused');
+    pauseButton.setAttribute('aria-pressed','true');
+    pauseButton.setAttribute('aria-label','Relancer le diaporama');
+  } else {
+    schedule(duration);
+  }
+})();
+</script>
+</body>
+</html>

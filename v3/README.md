@@ -16,6 +16,8 @@ Le libellé, les couleurs, le message d'accueil, les horaires et les opérateurs
 
 `https://latitude-samui.odoo.com/im_livechat/support/2`
 
+`js/site.js` ajoute ensuite un thème Latitude dans le Shadow DOM ouvert du widget : bouton de 62 px, notification centrée verticalement et fenêtre desktop de 440 × 680 px maximum. Sous 640 px, la notification textuelle est masquée et le bouton reste compact afin de préserver la surface utile sur mobile.
+
 ## Connexion du formulaire à Odoo
 
 Ne pas exposer les identifiants Odoo dans le navigateur. Le point d'entrée recommandé est une fonction Netlify ou une API serveur qui reçoit le payload normalisé `latitude_lead_v1`, puis crée le lead dans Odoo CRM.

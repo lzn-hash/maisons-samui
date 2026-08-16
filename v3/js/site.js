@@ -1,4 +1,4 @@
-/* Latitude Samui — comportements partagés : navigation, reveals et hero. */
+/* Latitude Samui — comportements partagés : navigation, reveals, hero et thème Live Chat Odoo. */
 (function () {
   'use strict';
 
@@ -178,7 +178,104 @@
     if (!userPaused) schedule(duration);
   }
 
+  function initLiveChatStyling() {
+    var themeId = 'latitude-livechat-theme';
+    var theme = `
+      :host {
+        --latitude-livechat-ink: #1a1e1a;
+        --latitude-livechat-cream: #fffdf9;
+        --latitude-livechat-jungle: #1a2e22;
+      }
+
+      .o-livechat-LivechatButton {
+        width: 62px !important;
+        height: 62px !important;
+        box-shadow: 0 12px 34px rgba(9, 17, 12, .24) !important;
+        transition: filter .3s ease, transform .25s ease, box-shadow .25s ease !important;
+      }
+
+      .o-livechat-LivechatButton:hover {
+        transform: translateY(-2px) scale(1.025);
+        box-shadow: 0 16px 38px rgba(9, 17, 12, .3) !important;
+      }
+
+      .o-livechat-LivechatButton > i {
+        font-size: 25px !important;
+      }
+
+      .o-livechat-LivechatButton-notification {
+        top: 50% !important;
+        right: calc(100% + 14px) !important;
+        bottom: auto !important;
+        transform: translateY(-50%);
+        padding: 12px 17px !important;
+        border: 1px solid rgba(26, 30, 26, .1);
+        border-radius: 999px !important;
+        background: var(--latitude-livechat-cream) !important;
+        box-shadow: 0 10px 30px rgba(9, 17, 12, .15) !important;
+      }
+
+      .o-livechat-LivechatButton-notification p {
+        color: var(--latitude-livechat-ink) !important;
+        font-family: "Manrope", system-ui, sans-serif !important;
+        font-size: 10px !important;
+        font-weight: 600 !important;
+        line-height: 1.15 !important;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+
+      .o-livechat-LivechatButton-animate {
+        animation: latitude-livechat-notification-in .5s cubic-bezier(.2, .75, .25, 1) forwards !important;
+      }
+
+      @keyframes latitude-livechat-notification-in {
+        0% { opacity: 0; transform: translateY(-50%) scale(.72); }
+        65% { opacity: 1; transform: translateY(-50%) scale(1.035); }
+        100% { opacity: 1; transform: translateY(-50%) scale(1); }
+      }
+
+      @media (min-width: 641px) {
+        .o-mail-ChatWindow:not(.o-mobile) {
+          width: 440px !important;
+          height: min(88vh, 680px) !important;
+          border-radius: 14px !important;
+          box-shadow: 0 20px 55px rgba(9, 17, 12, .22) !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .o-livechat-LivechatButton {
+          width: 56px !important;
+          height: 56px !important;
+        }
+
+        .o-livechat-LivechatButton-notification {
+          display: none !important;
+        }
+      }
+    `;
+
+    function styleRoot(root) {
+      if (!root || !root.shadowRoot || root.shadowRoot.getElementById(themeId)) return;
+      var style = document.createElement('style');
+      style.id = themeId;
+      style.textContent = theme;
+      root.shadowRoot.appendChild(style);
+    }
+
+    function scan() {
+      document.querySelectorAll('.o-livechat-root').forEach(styleRoot);
+    }
+
+    scan();
+    var observer = new MutationObserver(scan);
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+    window.setTimeout(function () { observer.disconnect(); }, 30000);
+  }
+
   initNavigation();
   initReveals();
   initHero();
+  initLiveChatStyling();
 })();

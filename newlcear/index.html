@@ -152,6 +152,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ---------- Sections claires ---------- */
 .sec{padding:clamp(5rem,10vw,9rem) 0}
+.sec-clair{background:var(--white)}
 .sec-head{padding:0 var(--gut);max-width:1440px;margin:0 auto clamp(2.5rem,5vw,4rem)}
 .sec-head.split{display:grid;grid-template-columns:1.25fr .75fr;gap:2rem clamp(3rem,8vw,7rem);align-items:end}
 .sec-head.split .lead{margin-top:0}
@@ -223,26 +224,36 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .island-inner .lead{margin-bottom:2rem}
 
 /* ---------- Équipe ---------- */
-.team-body{max-width:1440px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem)}
-.team-body p{font-size:.92rem;line-height:1.85;color:var(--ink-soft)}
-.team-body p+p{margin-top:1.1rem}
-.team-roles{display:grid;gap:0;align-content:start;border-top:1px solid var(--line)}
-.team-role{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;padding:1.15rem 0;border-bottom:1px solid var(--line)}
-.team-role b{font-family:var(--display);font-size:1.25rem;font-weight:500;min-width:6.5rem}
-.team-role span{font-size:.84rem;color:var(--ink-soft);line-height:1.65}
-@media(max-width:900px){.team-body{grid-template-columns:1fr}}
+.team-roles{max-width:1440px;margin:0 auto;padding:0 var(--gut);display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.5rem,3vw,2.6rem)}
+.team-role{padding-top:.2rem}
+.team-role .fonction{display:block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--ink-faint)}
+.team-role .nom{font-family:var(--display);font-weight:400;font-size:clamp(1.35rem,2vw,1.7rem);line-height:1.1;margin:.45rem 0 .65rem}
+.team-role .txt{font-size:.86rem;line-height:1.75;color:var(--ink-soft)}
+@media(max-width:800px){.team-roles{grid-template-columns:1fr}}
 
 /* ---------- Parcours ---------- */
-.journey{background:var(--white)}
+.journey{background:linear-gradient(180deg,#101d16,#1d3527);color:var(--white)}
+.journey .h-sec{color:var(--white)}
+.journey .h-sec em{color:var(--saumon)}
+.journey .lead{color:rgba(255,253,249,.76)}
 .steps{max-width:1440px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(1.5rem,2.5vw,2.2rem)}
+.step{padding:1.5rem 1.25rem;border-radius:3px;transition:background .4s ease}
+.step:nth-child(1){background:rgba(255,253,249,.018)}
+.step:nth-child(2){background:rgba(255,253,249,.038)}
+.step:nth-child(3){background:rgba(255,253,249,.058)}
+.step:nth-child(4){background:rgba(255,253,249,.082)}
+.step:nth-child(5){background:rgba(255,253,249,.11)}
+.step:hover{background:rgba(255,253,249,.15)}
 .step-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.15rem}
-.step-icon{width:52px;height:52px;border-radius:50%;background:var(--jungle);color:var(--white);flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;transition:transform .35s ease,background .35s ease}
+.step-icon{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,253,249,.32);background:rgba(var(--voile),.3);
+  color:var(--white);flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  transition:transform .35s ease,background .35s ease,border-color .35s ease,color .35s ease}
 .step-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.step:hover .step-icon{transform:scale(1.05);background:var(--jungle-deep)}
-.step b{display:block;font-size:.63rem;letter-spacing:.22em;color:var(--ink-faint);font-weight:600}
+.step:hover .step-icon{transform:scale(1.05);background:var(--white);border-color:var(--white);color:var(--jungle-deep)}
+.step b{display:block;font-size:.63rem;letter-spacing:.22em;color:rgba(255,253,249,.6);font-weight:600}
 .step h3{font-family:var(--display);font-weight:400;font-size:clamp(1.35rem,1.9vw,1.65rem);line-height:1.14;margin:0 0 .6rem}
-.step p{font-size:.83rem;line-height:1.75;color:var(--ink-soft)}
+.step p{font-size:.83rem;line-height:1.75;color:rgba(255,253,249,.72)}
 @media(max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.steps{grid-template-columns:1fr}}
 
@@ -516,24 +527,34 @@ footer .nav-logo{width:200px;color:rgba(255,253,249,.9)}
   </div>
 </section>
 
-<section class="sec" id="equipe" aria-labelledby="equipe-titre">
+<section class="sec sec-clair" id="equipe" aria-labelledby="equipe-titre">
   <div class="sec-head split">
     <div class="reveal">
       <h2 class="h-sec" id="equipe-titre">Une équipe complémentaire,<br><em>présente à chaque étape.</em></h2>
     </div>
-    <p class="lead reveal d1">Stratégie, construction et technologie : trois expertises réunies pour piloter chaque projet, de la première visite à la remise des clés.</p>
-  </div>
-  <div class="team-body">
-    <div class="reveal">
-      <p>Cette organisation directe permet de garder chaque décision au plus près du chantier, du projet et du futur propriétaire. Aucun intermédiaire ne s'intercale entre vous et l'équipe qui construit.</p>
-      <a class="ulink" href="#contact">Découvrez notre équipe</a>
-    </div>
-    <div class="team-roles reveal d1">
-      <div class="team-role"><b>Sébastien</b><span>Direction et stratégie, relation client, suivi commercial depuis Koh Samui.</span></div>
-      <div class="team-role"><b>Laurent</b><span>Supervision de la construction et du suivi de terrain sur l'île.</span></div>
-      <div class="team-role"><b>Benoît</b><span>Digital, finance et solutions de paiement, dont les règlements en cryptomonnaies.</span></div>
+    <div class="reveal d1">
+      <p class="lead">Une organisation directe qui permet de garder chaque décision au plus près du chantier, du projet et du futur propriétaire.</p>
+      <a class="ulink" href="#contact">Découvrez en plus sur notre équipe</a>
     </div>
   </div>
+  <div class="team-roles">
+    <div class="team-role reveal">
+      <span class="fonction">Direction &amp; stratégie</span>
+      <h3 class="nom">Sébastien</h3>
+      <p class="txt">Direction et stratégie, relation client, suivi commercial depuis Koh Samui.</p>
+    </div>
+    <div class="team-role reveal d1">
+      <span class="fonction">Construction &amp; terrain</span>
+      <h3 class="nom">Laurent</h3>
+      <p class="txt">Suivi de chantier, contrôle qualité et coordination des opérations de construction sur l'île.</p>
+    </div>
+    <div class="team-role reveal d2">
+      <span class="fonction">Digital &amp; finance</span>
+      <h3 class="nom">Benoît</h3>
+      <p class="txt">Digital, marketing, image de marque et suivi financier des opérations.</p>
+    </div>
+  </div>
+
 </section>
 
 <section class="sec journey" id="parcours" aria-labelledby="parcours-titre">

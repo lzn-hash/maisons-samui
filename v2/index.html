@@ -111,7 +111,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   gap:2rem;color:var(--white);backdrop-filter:blur(2px);border-bottom:1px solid rgba(255,253,249,.18);transition:height .35s ease,background .35s ease,color .35s ease,border-color .35s ease}
 .nav.scrolled{height:74px;color:var(--ink);background:rgba(255,253,249,.94);backdrop-filter:blur(18px);border-color:var(--line)}
 .nav-logo{display:block;width:240px;flex-shrink:0;color:currentColor}
-.nav-logo svg{width:100%;height:auto;display:block}
+.nav-logo img{width:100%;height:auto;display:block;filter:none;transition:filter .35s ease,opacity .35s ease}
+.nav:not(.scrolled)>.nav-logo img{filter:brightness(0) invert(1)}
+.nav.open .nav-logo img{filter:none}
 .nav-links{display:flex;align-items:center;gap:2rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
 .nav-links a{opacity:.88;transition:opacity .25s}
 .nav-links a:hover{opacity:1}
@@ -327,6 +329,7 @@ a.contact-value:hover{opacity:.72}
 footer{background:var(--ink);color:rgba(255,253,249,.62);padding:2.4rem var(--gut);
   display:flex;flex-wrap:wrap;gap:1.2rem 2rem;justify-content:space-between;align-items:center;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
 footer .nav-logo{width:200px;color:rgba(255,253,249,.9)}
+footer .nav-logo img{filter:brightness(0) invert(1);opacity:.9}
 
 .whatsapp-float{position:fixed;z-index:55;right:clamp(1rem,2.5vw,2rem);bottom:clamp(1rem,2.5vw,2rem);display:inline-flex;align-items:center;gap:.7rem;
   min-height:52px;padding:.75rem 1rem;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:var(--jungle);color:var(--white);
@@ -343,7 +346,7 @@ footer .nav-logo{width:200px;color:rgba(255,253,249,.9)}
 </head>
 <body id="top">
 <header class="nav" id="nav">
-  <a class="nav-logo" href="#top" aria-label="Latitude Samui — accueil"><svg viewBox="0 0 1500 380"><use href="assets/latitude-logo.svg#ls-logo"/></svg></a>
+  <a class="nav-logo" href="#top" aria-label="Latitude Samui — accueil"><img src="assets/latitude-logo.svg" alt="" width="1500" height="380"></a>
   <nav class="nav-links" aria-label="Navigation principale">
     <a href="#villas">Les villas</a>
     <a href="#ile">Koh Samui</a>
@@ -528,7 +531,7 @@ footer .nav-logo{width:200px;color:rgba(255,253,249,.9)}
 </main>
 
 <footer>
-  <span class="nav-logo"><svg viewBox="0 0 1500 380"><use href="assets/latitude-logo.svg#ls-logo"/></svg></span>
+  <span class="nav-logo"><img src="assets/latitude-logo.svg" alt="Latitude Samui — Villas &amp; Lifestyle" width="1500" height="380" loading="lazy"></span>
   <span>Villas &amp; art de vivre · Koh Samui, Thaïlande</span>
   <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
 </footer>

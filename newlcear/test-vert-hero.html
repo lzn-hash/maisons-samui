@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test — vert du hero · Latitude Samui</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f4efe6;--white:#fffdf9;--ink:#1a1e1a;--ink-soft:#5a5f5a;--ink-faint:#8b908a;
+  --jungle:#1a2e22;--jungle-deep:#14241b;--vert-titre:#2e4600;
+  --display:"Cormorant Garamond",serif;--sans:"Manrope",system-ui,sans-serif;
+  --gut:clamp(1.25rem,4vw,3rem);--nav-h:92px;
+  --accent:#e8bda4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.7}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.nav{position:fixed;inset:0 0 auto;z-index:60;height:var(--nav-h);padding:0 var(--gut);
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;color:var(--white);
+  backdrop-filter:blur(2px);border-bottom:1px solid rgba(255,253,249,.18)}
+.nav-logo{display:block;width:200px;flex-shrink:0;color:currentColor}
+.nav-logo svg{width:100%;height:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:2rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.nav-cta{border:1px solid currentColor;border-radius:999px;padding:.75rem 1.4rem}
+@media(max-width:900px){:root{--nav-h:70px}.nav-links{display:none}.nav-logo{width:158px}}
+
+.ph{position:relative;isolation:isolate;background:var(--jungle-deep);overflow:hidden;display:block;width:100%;height:100%}
+.ph::before{content:"";position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cg fill='none' stroke='%23faf7f0' stroke-width='9' stroke-linecap='round'%3E%3Cpath d='M70 335 H442'/%3E%3Cpath d='M116 335 A140 140 0 0 1 396 335'/%3E%3Cpath d='M256 195 V335'/%3E%3C/g%3E%3Ccircle cx='256' cy='335' r='17' fill='%23faf7f0'/%3E%3C/svg%3E") center/78px no-repeat;opacity:.15}
+.ph::after{content:attr(data-path);position:absolute;left:50%;bottom:22px;transform:translateX(-50%);
+  font-size:.62rem;letter-spacing:.09em;color:rgba(255,255,255,.4);white-space:nowrap;font-weight:500}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+
+.hero{position:relative;height:100svh;min-height:520px;overflow:hidden;background:var(--jungle-deep);color:var(--white)}
+.hero .ph{position:absolute;inset:0}
+.hero-overlay{position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(9,17,12,.64),transparent 62%),
+  linear-gradient(0deg,rgba(9,16,12,.5),transparent 40%),
+  linear-gradient(0deg,rgba(6,14,9,.2),transparent 52%),
+  linear-gradient(120deg,rgba(39,56,47,.2),rgba(156,128,105,.08))}
+.hero-inner{position:relative;z-index:3;max-width:1440px;height:100%;margin:0 auto;
+  padding:var(--nav-h) var(--gut) clamp(2rem,7vh,7.5rem);
+  display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(3.6rem,8.4vw,7.4rem);line-height:.93;
+  letter-spacing:-.035em;margin-top:1.1rem;max-width:14ch}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-tagline{font-family:var(--display);font-size:clamp(1.15rem,1.9vw,1.4rem);line-height:1.55;
+  color:rgba(255,253,249,.84);max-width:44ch;margin-top:1.3rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.2rem}
+.btn{display:inline-flex;align-items:center;gap:.8rem;padding:.95rem 1.7rem;border-radius:999px;border:1px solid transparent;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+.btn-light{background:var(--white);color:var(--ink)}
+.btn-ghost{border-color:rgba(255,253,249,.55);color:var(--white)}
+
+.echelle{background:var(--jungle);color:var(--white);padding:clamp(3rem,7vw,5.5rem) var(--gut)}
+.echelle h2{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  color:rgba(255,253,249,.55);margin-bottom:2rem;font-family:var(--sans)}
+.rang{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1.6rem;padding:1rem 0;
+  border-bottom:1px solid rgba(255,253,249,.14)}
+.rang em{font-family:var(--display);font-style:italic;font-size:clamp(2.2rem,4.6vw,3.6rem);line-height:1.04;min-width:7ch}
+.rang code{font-family:ui-monospace,Menlo,monospace;font-size:.74rem;color:rgba(255,253,249,.6)}
+.rang small{font-size:.72rem;color:rgba(255,253,249,.55)}
+
+.panel{position:fixed;right:18px;bottom:18px;z-index:80;width:min(300px,calc(100vw - 36px));
+  background:rgba(255,253,249,.97);backdrop-filter:blur(20px);border:1px solid rgba(26,30,26,.14);
+  border-radius:14px;padding:1rem 1.05rem 1.1rem;box-shadow:0 18px 50px rgba(26,30,26,.2)}
+.panel h3{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--ink-faint);margin-bottom:.75rem}
+.sw{display:flex;align-items:center;gap:.6rem;width:100%;padding:.4rem .5rem;border-radius:8px;text-align:left;
+  transition:background .2s}
+.sw:hover{background:var(--cream)}
+.sw[aria-pressed="true"]{background:var(--cream);box-shadow:inset 0 0 0 1px var(--ink)}
+.sw .dot{width:24px;height:24px;border-radius:50%;flex-shrink:0;border:1px solid rgba(26,30,26,.12)}
+.sw b{display:block;font-size:.75rem;font-weight:600}
+.sw span{display:block;font-size:.63rem;color:var(--ink-faint)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="nav-logo" href="#" aria-label="Latitude Samui"><svg width="100%" height="auto"
+   viewBox="0 0 2000 360"
+   xmlns="http://www.w3.org/2000/svg">
+  <g
+     fill="none"
+     stroke="currentColor"
+     stroke-width="11"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+    <path
+       d="M 80,230 H 460" />
+    <path
+       d="m 135,230 a 135,135 0 0 1 270,0" />
+    <path
+       d="M 270,95 V 230" />
+  </g>
+  <circle
+     cx="270"
+     cy="230"
+     r="13"
+     fill="currentColor" />
+  <g fill="currentColor" aria-label="LATITUDE SAMUI"
+     style="font-weight:300;font-size:112px;font-family:'Cormorant Garamond Light', 'Cormorant Garamond', serif;letter-spacing:18">
+    <path
+       d="m 556.17969,232 v -5.79688 h 10.39062 v -70 h -10.39062 v -5.85156 h 31.88281 v 5.85156 h -10.39063 v 69.07032 h 37.29688 v -13.67188 h 6.72656 V 232 Z" />
+    <path
+       d="m 664.79687,202.41406 h 29.96875 L 679.78125,163.58594 Z M 641.71875,232 v -5.79688 h 7.16406 l 29.09375,-75.85156 h 9.1875 l 29.14844,75.85156 h 8.03906 V 232 h -29.69531 v -5.79688 h 9.07812 l -6.83593,-17.9375 h -34.34375 l -6.83594,17.9375 h 8.96875 V 232 Z" />
+    <path
+       d="m 756.51562,232 v -5.79688 h 10.44532 v -69.34375 h -24.00782 v 12.74219 h -6.72656 v -19.25 h 72.51563 v 19.25 h -6.72657 v -12.74219 h -24.00781 v 69.34375 h 10.44531 V 232 Z" />
+    <path
+       d="m 855.50781,226.20312 h 10.39063 V 232 h -31.88282 v -5.79688 h 10.39063 v -70 h -10.39063 v -5.85156 h 31.88282 v 5.85156 h -10.39063 z" />
+    <path
+       d="m 911.46094,232 v -5.79688 h 10.44531 v -69.34375 h -24.00781 v 12.74219 h -6.72657 v -19.25 h 72.51563 v 19.25 h -6.72656 v -12.74219 h -24.00782 v 69.34375 h 10.44532 V 232 Z" />
+    <path
+       d="m 998.47656,156.20312 h -10.44531 v -5.85156 h 31.93745 v 5.85156 h -10.4453 v 42.21875 q 0,15.64063 5.086,21.82032 5.1406,6.17968 17.664,6.17968 12.5235,0 17.6094,-6.17968 5.1406,-6.17969 5.1406,-21.82032 v -42.21875 h -10.4453 v -5.85156 h 27.5625 v 5.85156 H 1061.75 v 43.3125 q 0,18.64844 -7.1641,26.35938 -7.164,7.71094 -24.3359,7.71094 -17.1719,0 -24.5,-7.76563 -7.27344,-7.76562 -7.27344,-26.30469 z" />
+    <path
+       d="m 1122.8438,226.20312 h 10.1718 q 15.9141,0 24.3907,-9.07812 8.5312,-9.07813 8.5312,-26.03125 0,-16.95313 -8.4766,-25.92188 -8.4765,-8.96875 -24.4453,-8.96875 h -10.1718 z M 1101.3516,232 v -5.79688 h 10.3906 v -70 h -10.3906 v -5.85156 h 32.4843 q 21.1094,0 32.8672,10.77344 11.8125,10.77344 11.8125,29.96875 0,19.25 -11.8125,30.07812 Q 1154.8906,232 1133.8359,232 Z" />
+    <path
+       d="m 1209.1484,232 v -5.79688 h 10.3907 v -70 h -10.3907 v -5.85156 h 65.7344 v 18.15625 h -6.7265 v -11.42969 h -37.5157 v 27.34375 h 26.7422 v -10.22656 h 6.7266 v 27.125 h -6.7266 v -10.22656 h -26.7422 v 34.17969 h 38.3907 v -11.42969 h 6.7265 V 232 Z" />
+    <path
+       d="m 1366.7188,228.0625 v -18.59375 l 6.289,0.0547 q 0.2735,9.29687 5.3594,13.78125 5.1406,4.42968 15.5859,4.42968 9.7344,0 14.8203,-3.82812 5.1407,-3.88281 5.1407,-11.26563 0,-5.90625 -3.1172,-9.07812 -3.0625,-3.17188 -13.0156,-6.17969 l -10.7735,-3.22656 q -11.7031,-3.55469 -16.5156,-8.85938 -4.7578,-5.30468 -4.7578,-14.54687 0,-10.39063 7.3828,-16.13281 7.3828,-5.74219 20.7266,-5.74219 5.6875,0 12.4687,1.25781 6.7813,1.20313 14.4375,3.55469 v 17.39062 h -6.1797 q -0.9297,-8.64062 -5.7969,-12.46875 -4.8125,-3.88281 -14.7109,-3.88281 -8.6406,0 -13.1797,3.55469 -4.4844,3.5 -4.4844,10.22656 0,5.85156 3.3907,9.1875 3.3906,3.33594 14.3828,6.61719 l 10.1172,3.00781 q 11.1015,3.33594 15.8047,8.53125 4.7578,5.14063 4.7578,13.83594 0,11.86719 -7.6016,17.88281 -7.6016,6.01563 -22.6406,6.01563 -6.7266,0 -13.7266,-1.36719 -6.9453,-1.36719 -14.164,-4.15625 z" />
+    <path
+       d="m 1473.4766,202.41406 h 29.9687 l -14.9844,-38.82812 z M 1450.3984,232 v -5.79688 h 7.1641 l 29.0938,-75.85156 h 9.1875 l 29.1484,75.85156 h 8.0391 V 232 h -29.6954 v -5.79688 h 9.0782 l -6.836,-17.9375 h -34.3437 l -6.836,17.9375 h 8.9688 V 232 Z" />
+    <path
+       d="m 1556.1172,232 v -5.79688 h 10.3906 v -70 h -10.9922 v -5.85156 h 23.7891 l 28.6562,58.13281 28.6563,-58.13281 h 22.3125 v 5.85156 h -10.8828 v 70 h 10.4453 V 232 h -31.9375 v -5.79688 h 10.3906 v -63.10937 l -28,56.92969 h -7.7109 l -28,-56.92969 v 63.10937 h 10.3906 V 232 Z" />
+    <path
+       d="m 1698.3125,156.20312 h -10.4453 v -5.85156 h 31.9375 v 5.85156 h -10.4453 v 42.21875 q 0,15.64063 5.0859,21.82032 5.1406,6.17968 17.6641,6.17968 12.5234,0 17.6094,-6.17968 5.1406,-6.17969 5.1406,-21.82032 v -42.21875 h -10.4453 v -5.85156 h 27.5625 v 5.85156 h -10.3907 v 43.3125 q 0,18.64844 -7.164,26.35938 -7.1641,7.71094 -24.336,7.71094 -17.1718,0 -24.5,-7.76563 -7.2734,-7.76562 -7.2734,-26.30469 z" />
+    <path
+       d="m 1822.6797,226.20312 h 10.3906 V 232 h -31.8828 v -5.79688 h 10.3906 v -70 h -10.3906 v -5.85156 h 31.8828 v 5.85156 h -10.3906 z" />
+  </g>
+</svg></a>
+  <nav class="nav-links">
+    <a href="#">Les villas</a><a href="#">Koh Samui</a><a href="#">L'équipe</a>
+    <span class="nav-cta">Nous contacter</span>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="ph" data-path="photos/index/01.jpg"><img src="photos/index/01.jpg" alt="" onerror="this.remove()"></span>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <h1>Une île.<br>Des maisons<br><em>d'exception.</em></h1>
+    <p class="hero-tagline">Des villas d'architecte pensées pour mieux vivre, entre matière, lumière tropicale et horizons marins.</p>
+    <div class="hero-actions">
+      <span class="btn btn-light">Découvrir les villas</span>
+      <span class="btn btn-ghost">Notre approche</span>
+    </div>
+  </div>
+</section>
+
+<section class="echelle">
+  <h2>Les candidats côte à côte, hors photo</h2>
+  <div id="echelle"></div>
+</section>
+
+<div class="panel">
+  <h3>Couleur de « d'exception. »</h3>
+  <div id="sw"></div>
+</div>
+
+<script>
+var options = [
+  { hex:'#e8bda4', nom:'Saumon',        note:'référence actuelle' },
+  { hex:'#a2b87a', nom:'Olive clair',   note:'dérivé du #2e4600 des titres' },
+  { hex:'#c3d49a', nom:'Tilleul',       note:'olive éclairci, plus vif' },
+  { hex:'#d4e0a8', nom:'Amande pâle',   note:'le plus lumineux' },
+  { hex:'#8fbba1', nom:'Sauge',         note:'famille du vert jungle' },
+  { hex:'#b5cfae', nom:'Sauge pâle',    note:'sauge éclairci, très doux' },
+  { hex:'#7fa88f', nom:'Sauge sourd',   note:'le plus discret' }
+];
+
+function lum(hex){
+  var c=[1,3,5].map(function(i){
+    var v=parseInt(hex.substr(i,2),16)/255;
+    return v<=0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055,2.4);
+  });
+  return 0.2126*c[0]+0.7152*c[1]+0.0722*c[2];
+}
+function ratio(a,b){var x=lum(a),y=lum(b);return (Math.max(x,y)+0.05)/(Math.min(x,y)+0.05);}
+
+var sw = document.getElementById('sw');
+var ech = document.getElementById('echelle');
+
+options.forEach(function(o,i){
+  var b=document.createElement('button');
+  b.type='button'; b.className='sw'; b.setAttribute('aria-pressed', String(i===0));
+  b.innerHTML='<span class="dot" style="background:'+o.hex+'"></span><span><b>'+o.nom+'</b><span>'+o.hex+' · '+ratio(o.hex,'#1a2e22').toFixed(1)+':1</span></span>';
+  b.addEventListener('click',function(){
+    document.documentElement.style.setProperty('--accent',o.hex);
+    Array.prototype.forEach.call(sw.children,function(el){el.setAttribute('aria-pressed','false');});
+    b.setAttribute('aria-pressed','true');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+  sw.appendChild(b);
+
+  var r=document.createElement('div');
+  r.className='rang';
+  r.innerHTML='<em style="color:'+o.hex+'">d\'exception.</em><code>'+o.hex+'</code>'+
+              '<small>'+o.nom+' · contraste '+ratio(o.hex,'#1a2e22').toFixed(1)+':1 · '+o.note+'</small>';
+  ech.appendChild(r);
+});
+</script>
+</body>
+</html>

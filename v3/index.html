@@ -18,7 +18,10 @@
 <link rel="preload" as="image" href="photos/index/01.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://latitude-samui.odoo.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script defer type="text/javascript" src="https://latitude-samui.odoo.com/im_livechat/loader/2"></script>
+<script defer type="text/javascript" src="https://latitude-samui.odoo.com/im_livechat/assets_embed.js"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -325,16 +328,6 @@ footer{background:var(--ink);color:rgba(255,253,249,.62);padding:2.4rem var(--gu
 footer .nav-logo{width:200px;color:rgba(255,253,249,.9)}
 footer .nav-logo img{filter:brightness(0) invert(1);opacity:.9}
 
-.whatsapp-float{position:fixed;z-index:55;right:clamp(1rem,2.5vw,2rem);bottom:clamp(1rem,2.5vw,2rem);display:inline-flex;align-items:center;gap:.8rem;
-  min-height:60px;padding:.85rem 1.25rem;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:var(--jungle);color:var(--white);
-  box-shadow:0 12px 35px rgba(9,17,12,.25);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;font-weight:600;transition:transform .25s ease,background .25s ease}
-.whatsapp-float:hover{transform:translateY(-2px);background:var(--jungle-deep)}
-.whatsapp-float svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-@media(max-width:640px){
-  .whatsapp-float{right:14px;bottom:calc(14px + env(safe-area-inset-bottom));width:60px;padding:0;justify-content:center}
-  .whatsapp-float span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-}
-
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -518,14 +511,6 @@ footer .nav-logo img{filter:brightness(0) invert(1);opacity:.9}
   <span>Villas &amp; art de vivre · Koh Samui, Thaïlande</span>
   <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
 </footer>
-
-<a class="whatsapp-float" href="#" data-whatsapp-float aria-label="Échangez avec nous">
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M20.5 11.5a8.5 8.5 0 0 1-12.2 7.7L3 21l1.8-5.3a8.5 8.5 0 1 1 15.7-4.2Z"/>
-    <path d="M8.25 7.4h1.65l1 2.45-1.15.9a8.1 8.1 0 0 0 3.5 3.5l.9-1.15 2.45 1v1.65c0 .55-.45 1-1 1A8.35 8.35 0 0 1 7.25 8.4c0-.55.45-1 1-1Z"/>
-  </svg>
-  <span>Échangez avec nous</span>
-</a>
 
 <script src="js/contact.js"></script>
 <script src="js/site.js"></script>

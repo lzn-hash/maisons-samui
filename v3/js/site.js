@@ -1,4 +1,4 @@
-/* Latitude Samui — comportements partagés : navigation, reveals, hero et WhatsApp. */
+/* Latitude Samui — comportements partagés : navigation, reveals et hero. */
 (function () {
   'use strict';
 
@@ -178,38 +178,7 @@
     if (!userPaused) schedule(duration);
   }
 
-  function initWhatsApp() {
-    var button = document.querySelector('[data-whatsapp-float]');
-    if (!button) return;
-
-    var number = String(window.LATITUDE_WHATSAPP_NUMBER || '').replace(/\D/g, '');
-    var message = window.LATITUDE_WHATSAPP_MESSAGE || 'Bonjour, je souhaite échanger au sujet d’un projet Latitude Samui.';
-    var label = button.querySelector('span');
-    var defaultLabel = label ? label.textContent : '';
-
-    if (number) {
-      button.href = 'https://wa.me/' + number + '?text=' + encodeURIComponent(message);
-      button.target = '_blank';
-      button.rel = 'noopener noreferrer';
-    }
-
-    button.addEventListener('click', function (event) {
-      track('chat_click', { source: 'floating-button', direct_whatsapp: Boolean(number) });
-      if (number) return;
-      event.preventDefault();
-      if (typeof window.LATITUDE_CHAT_OPEN === 'function') {
-        window.LATITUDE_CHAT_OPEN({ source: 'floating-button' });
-        return;
-      }
-
-      if (!label) return;
-      label.textContent = 'Bientôt disponible';
-      window.setTimeout(function () { label.textContent = defaultLabel; }, 2200);
-    });
-  }
-
   initNavigation();
   initReveals();
   initHero();
-  initWhatsApp();
 })();

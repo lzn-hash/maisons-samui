@@ -2,30 +2,19 @@
 
 ## Fichiers partagés
 
-- `js/site.js` : navigation, animations d'apparition, diaporama hero, swipe mobile, chargement progressif des slides et bouton WhatsApp.
+- `js/site.js` : navigation, animations d'apparition, diaporama hero, swipe mobile et chargement progressif des slides.
 - `js/contact.js` : modal partagée pour les intentions `contact`, `brochure`, `estimate` et `visit`.
 - `assets/latitude-logo.svg` : sprite SVG externe. Le logo utilise `currentColor`, il reste donc blanc sur le hero puis sombre après le scroll.
 
 Ces fichiers sont conçus pour être réutilisés sur les futures pages villas.
 
-## Chat / WhatsApp
+## Live Chat Odoo
 
-Le bouton flottant est distinct du formulaire de contact. Sans service configuré, il affiche temporairement « Bientôt disponible ». Pour activer plus tard le lien WhatsApp direct, définir avant `js/site.js` :
+La page d'accueil charge le canal Live Chat Odoo `2` au moyen des deux scripts officiels placés dans le `<head>`. Odoo génère la bulle, la fenêtre de discussion et les notifications ; l'ancien bouton WhatsApp factice a été retiré pour éviter un doublon.
 
-```html
-<script>
-  window.LATITUDE_WHATSAPP_NUMBER = '66XXXXXXXXX';
-  window.LATITUDE_WHATSAPP_MESSAGE = 'Bonjour, je souhaite échanger au sujet d’un projet Latitude Samui.';
-</script>
-```
+Le libellé, les couleurs, le message d'accueil, les horaires et les opérateurs se règlent dans la configuration du canal Live Chat dans Odoo. Le lien autonome de test du canal est :
 
-Un autre service de live chat peut être branché sans modifier le composant :
-
-```js
-window.LATITUDE_CHAT_OPEN = function (context) {
-  // Ouvrir ici le fournisseur de live chat choisi.
-};
-```
+`https://latitude-samui.odoo.com/im_livechat/support/2`
 
 ## Connexion du formulaire à Odoo
 

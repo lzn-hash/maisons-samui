@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 380">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1500 380">
 <symbol id="ls-logo" viewBox="0 0 1500 380"><g
      fill="none"
      stroke="currentColor"
@@ -69,7 +69,7 @@
   </g>
   <g
      fill="currentColor"
-     transform="matrix(0.66,0,0,0.66,175,68.88)"
+     transform="matrix(0.7392,0,0,0.7392,110.29,35.73)"
      aria-label="LATITUDE SAMUI">
     <path
        d="m 556.17969,232 v -5.79688 h 10.39062 v -70 h -10.39062 v -5.85156 h 31.88281 v 5.85156 h -10.39063 v 69.07032 h 37.29688 v -13.67188 h 6.72656 V 232 Z" />
@@ -99,6 +99,7 @@
        d="m 1822.6797,226.20312 h 10.3906 V 232 h -31.8828 v -5.79688 h 10.3906 v -70 h -10.3906 v -5.85156 h 31.8828 v 5.85156 h -10.3906 z" />
   </g>
   <g fill="currentColor"
+     transform="matrix(1.2,0,0,1.2,-161.32,-72.03)"
      aria-label="VILLAS &amp; LIFESTYLE"
      style="font-weight:300;font-size:38px;font-family:'DejaVu Sans', Arial, sans-serif;letter-spacing:13">
     <path
@@ -134,5 +135,5 @@
     <path
        d="m 1237.0127,256.29785 h 17.5156 v 3.1543 h -13.7676 v 8.20117 h 13.1924 v 3.1543 h -13.1924 v 10.03808 h 14.1016 V 284 h -17.8496 z" />
   </g></symbol>
-<use href="#ls-logo"/>
+<use href="#ls-logo" xlink:href="#ls-logo"/>
 </svg>

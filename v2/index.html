@@ -199,17 +199,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media(max-width:900px){.intro{grid-template-columns:1fr;min-height:0;align-items:start}}
 @media(max-width:680px){.intro-copy p{font-size:20px}}
 
-.credibility{max-width:1440px;margin:0 auto clamp(3.2rem,6vw,5.5rem);padding:0 var(--gut)}
-.credibility-inner{display:grid;grid-template-columns:minmax(220px,.72fr) minmax(0,1.28fr);gap:clamp(2rem,7vw,7rem);
-  padding:clamp(2rem,4vw,3.2rem) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.credibility-kicker{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--vert-titre);margin-bottom:.75rem}
-.credibility-stat{font-family:var(--display);font-size:clamp(2.1rem,4vw,3.25rem);line-height:1.03;letter-spacing:-.025em}
-.credibility-stat em{font-style:italic;color:var(--vert-titre)}
-.credibility-copy{font-size:.94rem;line-height:1.85;color:var(--ink-soft);max-width:72ch}
-.credibility-copy p+p{margin-top:1rem}
-.credibility-copy a{color:var(--vert-titre);font-weight:600;border-bottom:1px solid currentColor}
-@media(max-width:760px){.credibility-inner{grid-template-columns:1fr;gap:1.5rem}}
-
 /* ---------- Mosaïque villas ---------- */
 .villas{background:var(--white);overflow:hidden;padding-bottom:clamp(5rem,10vw,9rem)}
 .vg{max-width:1560px;margin:0 auto;scroll-margin-top:var(--nav-h);padding:0 clamp(.75rem,2vw,1.5rem);display:grid;
@@ -290,14 +279,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .journey .lead{color:rgba(255,253,249,.76)}
 .steps{max-width:1440px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(1.5rem,2.5vw,2.2rem)}
 .step{padding:1.5rem 1.25rem;border:1px solid rgba(255,253,249,.1);border-radius:3px;background:rgba(255,253,249,.045);transition:background .4s ease,border-color .4s ease,transform .4s ease}
-.step:hover{background:rgba(255,253,249,.09);border-color:rgba(195,212,154,.4);transform:translateY(-3px)}
+.step:hover{background:rgba(255,253,249,.09);border-color:rgba(255,253,249,.2);transform:translateY(-3px)}
 .step-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.15rem}
 .step-icon{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,253,249,.32);background:rgba(var(--voile),.3);
   color:var(--white);flex-shrink:0;display:flex;align-items:center;justify-content:center;
   transition:transform .35s ease,background .35s ease,border-color .35s ease,color .35s ease}
 .step-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.step:hover .step-icon{transform:scale(1.05);background:var(--accent);border-color:var(--accent);color:var(--jungle-deep)}
-.step b{display:block;font-size:.63rem;letter-spacing:.22em;color:var(--accent);font-weight:600}
+.step:hover .step-icon{transform:scale(1.05);background:var(--white);border-color:var(--white);color:var(--jungle-deep)}
+.step b{display:block;font-size:.72rem;letter-spacing:.2em;color:rgba(255,253,249,.72);font-weight:600}
 .step h3{font-family:var(--display);font-weight:400;font-size:clamp(1.35rem,1.9vw,1.65rem);line-height:1.14;margin:0 0 .6rem}
 .step p{font-size:.83rem;line-height:1.75;color:rgba(255,253,249,.72)}
 @media(max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -331,13 +320,13 @@ footer{background:var(--ink);color:rgba(255,253,249,.62);padding:2.4rem var(--gu
 footer .nav-logo{width:200px;color:rgba(255,253,249,.9)}
 footer .nav-logo img{filter:brightness(0) invert(1);opacity:.9}
 
-.whatsapp-float{position:fixed;z-index:55;right:clamp(1rem,2.5vw,2rem);bottom:clamp(1rem,2.5vw,2rem);display:inline-flex;align-items:center;gap:.7rem;
-  min-height:52px;padding:.75rem 1rem;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:var(--jungle);color:var(--white);
+.whatsapp-float{position:fixed;z-index:55;right:clamp(1rem,2.5vw,2rem);bottom:clamp(1rem,2.5vw,2rem);display:inline-flex;align-items:center;gap:.8rem;
+  min-height:60px;padding:.85rem 1.25rem;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:var(--jungle);color:var(--white);
   box-shadow:0 12px 35px rgba(9,17,12,.25);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;font-weight:600;transition:transform .25s ease,background .25s ease}
 .whatsapp-float:hover{transform:translateY(-2px);background:var(--jungle-deep)}
-.whatsapp-float svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.whatsapp-float svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 @media(max-width:640px){
-  .whatsapp-float{right:14px;bottom:calc(14px + env(safe-area-inset-bottom));width:52px;padding:0;justify-content:center}
+  .whatsapp-float{right:14px;bottom:calc(14px + env(safe-area-inset-bottom));width:60px;padding:0;justify-content:center}
   .whatsapp-float span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 }
 
@@ -398,19 +387,6 @@ footer .nav-logo img{filter:brightness(0) invert(1);opacity:.9}
       <a class="ulink" href="notre-approche.html">Découvrir notre philosophie</a>
     </div>
   </div>
-
-  <aside class="credibility" aria-label="Expérience et partenaires">
-    <div class="credibility-inner">
-      <div class="reveal">
-        <p class="credibility-kicker">Une expérience déjà ancrée sur l'île</p>
-        <p class="credibility-stat">Plus de <em>10 villas</em><br>déjà construites à Samui.</p>
-      </div>
-      <div class="credibility-copy reveal d1">
-        <p>Avant de devenir Latitude Samui, notre équipe avait déjà construit plus de dix villas sur l'île. Elle s'appuie également sur les plus de trente ans de savoir-faire de Laurent dans le bâtiment et la maçonnerie, ainsi que sur une connaissance concrète des méthodes, des matériaux et des contraintes locales.</p>
-        <p>Chaque projet Latitude est conçu et supervisé en partenariat avec le cabinet d'architecture <a href="http://ankatana.com/" target="_blank" rel="noopener noreferrer">Ankatana</a>, dont l'expérience de l'immobilier haut de gamme à Bali nourrit une écriture architecturale cohérente, adaptée au climat et aux usages tropicaux.</p>
-      </div>
-    </div>
-  </aside>
 
   <div class="vg" id="villas">
     <a class="vcard vg-1 reveal" href="#contact">
@@ -495,7 +471,7 @@ footer .nav-logo img{filter:brightness(0) invert(1);opacity:.9}
 <section class="sec journey" id="parcours" aria-labelledby="parcours-titre">
   <div class="sec-head split">
     <div class="reveal">
-      <h2 class="h-sec" id="parcours-titre">Cinq étapes,<br><em>une seule équipe.</em></h2>
+      <h2 class="h-sec" id="parcours-titre">Cinq étapes,<br><em>un accompagnement constant.</em></h2>
     </div>
     <p class="lead reveal d1">Du premier échange à la remise des clés, chaque étape est expliquée, suivie et documentée.</p>
   </div>
@@ -536,9 +512,12 @@ footer .nav-logo img{filter:brightness(0) invert(1);opacity:.9}
   <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
 </footer>
 
-<a class="whatsapp-float" href="#contact" data-whatsapp-float aria-label="Échanger avec Latitude Samui sur WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.6 8.2c.4 2.7 2.5 4.8 5.2 5.2"/><path d="m8.5 7.8 1.3-.6 1.1 2-1 .8"/><path d="m14 13.1.8-1 2 1.1-.6 1.3"/></svg>
-  <span>WhatsApp</span>
+<a class="whatsapp-float" href="#" data-whatsapp-float aria-label="Chat with us">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20.5 11.5a8.5 8.5 0 0 1-12.2 7.7L3 21l1.8-5.3a8.5 8.5 0 1 1 15.7-4.2Z"/>
+    <path d="M8.25 7.4h1.65l1 2.45-1.15.9a8.1 8.1 0 0 0 3.5 3.5l.9-1.15 2.45 1v1.65c0 .55-.45 1-1 1A8.35 8.35 0 0 1 7.25 8.4c0-.55.45-1 1-1Z"/>
+  </svg>
+  <span>Chat with us</span>
 </a>
 
 <script src="js/contact.js"></script>

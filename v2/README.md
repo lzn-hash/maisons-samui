@@ -8,15 +8,23 @@
 
 Ces fichiers sont conçus pour être réutilisés sur les futures pages villas.
 
-## WhatsApp
+## Chat / WhatsApp
 
-Sans numéro configuré, le bouton flottant ouvre la modal de contact avec WhatsApp présélectionné. Pour activer plus tard le lien WhatsApp direct, définir avant `js/site.js` :
+Le bouton flottant est distinct du formulaire de contact. Sans service configuré, il affiche temporairement « Bientôt disponible ». Pour activer plus tard le lien WhatsApp direct, définir avant `js/site.js` :
 
 ```html
 <script>
   window.LATITUDE_WHATSAPP_NUMBER = '66XXXXXXXXX';
   window.LATITUDE_WHATSAPP_MESSAGE = 'Bonjour, je souhaite échanger au sujet d’un projet Latitude Samui.';
 </script>
+```
+
+Un autre service de live chat peut être branché sans modifier le composant :
+
+```js
+window.LATITUDE_CHAT_OPEN = function (context) {
+  // Ouvrir ici le fournisseur de live chat choisi.
+};
 ```
 
 ## Connexion du formulaire à Odoo

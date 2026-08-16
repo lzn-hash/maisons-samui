@@ -184,6 +184,8 @@
 
     var number = String(window.LATITUDE_WHATSAPP_NUMBER || '').replace(/\D/g, '');
     var message = window.LATITUDE_WHATSAPP_MESSAGE || 'Bonjour, je souhaite échanger au sujet d’un projet Latitude Samui.';
+    var label = button.querySelector('span');
+    var defaultLabel = label ? label.textContent : '';
 
     if (number) {
       button.href = 'https://wa.me/' + number + '?text=' + encodeURIComponent(message);
@@ -192,18 +194,17 @@
     }
 
     button.addEventListener('click', function (event) {
-      track('whatsapp_click', { source: 'floating-button', direct: Boolean(number) });
+      track('chat_click', { source: 'floating-button', direct_whatsapp: Boolean(number) });
       if (number) return;
       event.preventDefault();
-      if (typeof window.openContactModal === 'function') {
-        window.openContactModal({
-          intent: 'contact',
-          source: 'floating-whatsapp',
-          preferredContact: 'whatsapp'
-        });
-      } else {
-        window.location.hash = 'contact';
+      if (typeof window.LATITUDE_CHAT_OPEN === 'function') {
+        window.LATITUDE_CHAT_OPEN({ source: 'floating-button' });
+        return;
       }
+
+      if (!label) return;
+      label.textContent = 'Bientôt disponible';
+      window.setTimeout(function () { label.textContent = defaultLabel; }, 2200);
     });
   }
 

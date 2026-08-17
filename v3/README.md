@@ -1,9 +1,16 @@
-# Latitude Samui — accueil refactorisé
+# Latitude Samui — master du site
+
+## Pages disponibles
+
+- `index.html` : page d'accueil.
+- `villa-baansawan.html` : première page villa complète, utilisée comme trame pour les futures fiches.
 
 ## Fichiers partagés
 
 - `js/site.js` : navigation, animations d'apparition, diaporama hero, swipe mobile et chargement progressif des slides.
 - `js/contact.js` : modal partagée pour les intentions `contact`, `brochure`, `estimate` et `visit`.
+- `js/villa.js` : galerie plein écran, navigation clavier et sélection des options intérieur/jardin.
+- `css/villa.css` : système visuel responsive des pages villas.
 - `assets/latitude-logo.svg` : sprite SVG externe. Le logo utilise `currentColor`, il reste donc blanc sur le hero puis sombre après le scroll.
 
 Ces fichiers sont conçus pour être réutilisés sur les futures pages villas.
@@ -41,3 +48,9 @@ Web3Forms reste disponible en solution de secours avec `window.LATITUDE_WEB3FORM
 ## Photos
 
 Les chemins attendus restent identiques à la maquette (`photos/index`, `photos/sabai`, etc.). Les slides 2 à 6 du hero ne sont plus chargées au premier affichage : `site.js` charge uniquement la prochaine image nécessaire.
+
+La page Baan Sawan utilise huit WebP optimisés dans `photos/baansawan`. Les visuels sont des images d'intention non contractuelles ; cette mention figure également sous la page.
+
+## Créer une nouvelle page villa
+
+Dupliquer `villa-baansawan.html`, remplacer les contenus, les huit sources de galerie et l'objet `window.VILLA_CONTEXT`. Conserver les attributs `data-contact-intent`, `data-config-group` et `data-config-value` : ils relient automatiquement la brochure, la visite et la configuration au formulaire partagé.

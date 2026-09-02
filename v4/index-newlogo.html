@@ -61,24 +61,24 @@
 }
 .nav-logo{width:auto!important;flex-shrink:0;color:currentColor}
 .lock{
-  --massif-h:31px;
+  --h:31px;
   display:flex;
-  align-items:flex-start;
-  gap:calc(.30 * var(--massif-h));
+  align-items:center;
+  gap:calc(.30 * var(--h));
   color:inherit;
 }
 .lock .pic{
   flex:none;
   display:block;
-  height:calc(1.5 * var(--massif-h));
-  aspect-ratio:438/222;
+  height:var(--h);
+  aspect-ratio:428.2/148;
   background-color:currentColor;
   -webkit-mask:url("assets/brand/latitude-mark.svg") center/contain no-repeat;
           mask:url("assets/brand/latitude-mark.svg") center/contain no-repeat;
 }
 .lock .txt{
   position:relative;
-  top:calc(.205 * var(--massif-h));
+  top:calc(.169 * var(--h));
   display:flex;
   flex:none;
   flex-direction:column;
@@ -92,21 +92,21 @@
 }
 .lock .wm{
   font-family:"Cinzel LS 550",serif;
-  font-size:calc(.520 * var(--massif-h));
+  font-size:calc(.520 * var(--h));
   font-weight:400;
   letter-spacing:0;
 }
 .lock .bl{
-  margin-top:calc(.14 * var(--massif-h));
+  margin-top:calc(.14 * var(--h));
   margin-right:-.20em;
   font-family:"Cinzel LS 600",serif;
-  font-size:calc(.26714 * var(--massif-h));
+  font-size:calc(.26714 * var(--h));
   font-weight:400;
   letter-spacing:.20em;
 }
 body.logo-no-baseline .lock .bl{display:none}
-body.logo-no-baseline .lock .txt{top:calc(.374 * var(--massif-h))}
-footer .lock{--massif-h:30px}
+body.logo-no-baseline .lock .txt{top:calc(.169 * var(--h))}
+footer .lock{--h:30px}
 
 .logo-mode-toggle{
   position:fixed;
@@ -125,12 +125,12 @@ footer .lock{--massif-h:30px}
   text-transform:uppercase;
 }
 .logo-mode-toggle:focus-visible{outline:2px solid #16382f;outline-offset:3px}
-@media(max-width:1180px){.lock{--massif-h:27px}}
+@media(max-width:1180px){.lock{--h:27px}}
 @media(max-width:900px){
-  .lock{--massif-h:23px}
+  .lock{--h:23px}
   .lock .bl{display:none}
-  .lock .txt{top:calc(.374 * var(--massif-h))}
-  footer .lock{--massif-h:30px}
+  .lock .txt{top:calc(.169 * var(--h))}
+  footer .lock{--h:30px}
   .logo-mode-toggle{left:10px;bottom:10px;min-height:38px;padding:0 12px;font-size:10px}
 }
 </style>

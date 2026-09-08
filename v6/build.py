@@ -49,6 +49,7 @@ content = replace_once(content, section(content, 'home-hero'), hero)
 content = replace_once(content, section(content, 'section collection-home'), '<section class="villas-mosaic" aria-label="Les villas">'+cards+'</section>')
 content = replace_once(content, 'Une maison qui respire. Un horizon qui apaise. Une équipe qui connaît l’île.', 'Notre mission : rendre les villas d’architecte plus accessibles à Koh Samui.')
 content = content.replace('class="large-copy"', 'class="mission-copy"')
+content = replace_once(content, 'Ici, le temps<br>prend une <em>autre dimension.</em>', "Une île où l’on prend<br><em>le temps de vivre.</em>")
 content = replace_once(content, 'L’architecture est signée.<br><em>L’atmosphère est la vôtre.</em>', 'Votre villa,<br><em>à votre façon.</em>')
 content = replace_once(content, 'Trois expertises.<br><em>Un engagement commun.</em>', 'Une équipe complémentaire,<br><em>présente à chaque étape.</em>')
 content = replace_once(content, 'Du premier échange<br><em>à votre premier matin.</em>', 'Cinq étapes,<br><em>un accompagnement constant.</em>')
@@ -61,11 +62,23 @@ content = content.replace('<section class="island-band">', '<section class="isla
 content = content.replace('<section class="team-teaser section dark-section">', '<section class="team-teaser section dark-section" id="equipe">')
 content = content.replace('<section class="section"><div class="section-heading "><div><h2>Votre villa,', '<section class="section" id="personnalisation"><div class="section-heading "><div><h2>Votre villa,')
 content = content.replace('<section class="section"><div class="section-heading "><div><h2>Cinq étapes,', '<section class="section" id="parcours"><div class="section-heading "><div><h2>Cinq étapes,')
-icons = re.findall(r'<span class="step-icon" aria-hidden="true">(.*?)</span>', original)
-assert len(icons) == 5
-for i, icon in enumerate(icons, 1):
-    icon = icon.replace('<svg ', '<svg aria-hidden="true" ')
-    content = replace_once(content, f'<span class="step-number">0{i}</span>', f'<div class="step-marker"><span class="step-number">0{i}</span>{icon}</div>')
+# Restore the complete V4 journey, adapting its colors in the V6 stylesheet.
+journey = section(original, 'sec journey')
+journey = re.sub(r'\s*reveal(?: d[1-4])?', '', journey)
+journey = journey.replace('class="step"', 'class="step" role="listitem"').replace('class="steps"', 'class="steps" role="list"')
+previous_journey = re.search(r'<section class="section" id="parcours">.*?</section>', content, re.S).group()
+content = replace_once(content, previous_journey, journey)
+
+collection_heading = '<h2>Votre villa,<br><em>à votre façon.</em></h2></div></div>'
+content = replace_once(content, collection_heading, '<h2>Votre villa,<br><em>à votre façon.</em></h2></div><p class="section-lead">Trois propositions pour accorder votre intérieur et vos extérieurs, de l’essentiel à un aménagement plus complet.</p></div>')
+for interior, garden, name in [
+    ('interieur-carte-blanche.webp', 'jardin-carte-blanche.webp', 'Essentielle'),
+    ('interieur-eveil-des-sens.webp', 'jardin-eclosion.webp', 'Éveil des sens'),
+    ('interieur-art-de-vivre.webp', 'jardin-art-de-vivre.webp', 'Art de vivre')
+]:
+    picture = v5.image(interior, name)
+    composite = '<div class="collection-visual">'+v5.image(interior, 'Intérieur — '+name, 'collection-interior')+v5.image(garden, 'Jardin et extérieurs — '+name, 'collection-garden')+'</div>'
+    content = replace_once(content, picture, composite)
 
 pin = svg('<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/>')
 phone = svg('<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 1.9Z"/>')
@@ -76,6 +89,7 @@ details = f'''<address class="photo-contact">
   <div>{mail}<div><span>Écrivez-nous</span><a href="mailto:contact@latitudesamui.com">contact@latitudesamui.com</a></div></div>
 </address>'''
 content = content.replace('<section class="closing">', '<section class="closing" id="contact">')
+content = content.replace('>Parlons de votre projet<svg', '>Nous contacter<svg')
 content = replace_once(content, '<div class="closing-photo">'+v5.image('beach.webp','Plage bordée de palmiers à Koh Samui')+'</div>', '<div class="closing-photo">'+v5.image('beach.webp','Plage bordée de palmiers à Koh Samui')+details+'</div>')
 
 nav = v5.nav('index')
@@ -101,7 +115,7 @@ for directory in ['css','js','assets']:
 shutil.copyfile(V5/'css/site.css', ROOT/'css/foundation.css')
 shutil.copyfile(V5/'js/contact.js', ROOT/'js/contact.js')
 (ROOT/'js/config.js').write_text("/* Existing contact integration hooks are retained. */\nwindow.LATITUDE_SITE = {version: 6};\n")
-for name in ['logo.svg','favicon.svg','apple-touch-icon.png','island.webp','beach.webp','interieur-carte-blanche.webp','interieur-eveil-des-sens.webp','interieur-art-de-vivre.webp']:
+for name in ['logo.svg','favicon.svg','apple-touch-icon.png','island.webp','beach.webp','interieur-carte-blanche.webp','interieur-eveil-des-sens.webp','interieur-art-de-vivre.webp','jardin-carte-blanche.webp','jardin-eclosion.webp','jardin-art-de-vivre.webp']:
     shutil.copyfile(V5/'assets'/name, ROOT/'assets'/name)
 shutil.copyfile(V5/'favicon.ico', ROOT/'favicon.ico')
 

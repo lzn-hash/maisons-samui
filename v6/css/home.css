@@ -9,7 +9,9 @@ h3{font-size:2.2rem}
 .section{padding-top:clamp(75px,8vw,120px);padding-bottom:clamp(75px,8vw,120px)}
 .section-heading{grid-template-columns:1.3fr .8fr;gap:clamp(35px,5vw,75px)}
 .section-heading:has(>div:only-child){display:block}
-.section-lead{font-size:1.18rem;line-height:1.8;max-width:49ch}
+.section-lead{max-width:49ch}
+/* One type treatment for the four section introductions, on every viewport. */
+#ile p:not(.eyebrow),#personnalisation .section-lead,#equipe .section-lead,#parcours .lead{font-family:var(--sans);font-size:1.125rem;font-weight:400;font-style:normal;line-height:1.8;letter-spacing:normal}
 .text-link{font-size:1rem;gap:25px}
 .text-link svg{width:23px;height:23px}
 .btn{font-size:.95rem}
@@ -64,7 +66,7 @@ h3{font-size:2.2rem}
 .island-band:after{background:linear-gradient(90deg,rgba(9,17,12,.86),rgba(9,17,12,.36) 62%,rgba(9,17,12,.2))}
 .island-band>div{padding:clamp(75px,8vw,110px) var(--gutter)}
 .island-band h2{max-width:20ch}
-.island-band p:not(.eyebrow){font-size:1.12rem;line-height:1.8;max-width:46ch;color:#fffffff0;margin-top:30px}
+.island-band p:not(.eyebrow){max-width:46ch;color:#fffffff0;margin-top:30px}
 .island-band .text-link{margin-top:34px;color:white}
 .collection-grid{margin-top:46px;gap:28px}
 .collection-visual{position:relative;aspect-ratio:1.05;overflow:hidden;background:var(--paper);isolation:isolate}
@@ -85,7 +87,7 @@ h3{font-size:2.2rem}
 .journey .sec-head.split{display:grid;grid-template-columns:1.25fr .75fr;gap:2rem clamp(3rem,8vw,7rem);align-items:end}
 .journey .h-sec{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,5.4vw,4rem);line-height:1.03;letter-spacing:-.025em;color:var(--ink)}
 .journey .h-sec em{color:#3f614c}
-.journey .lead{font-family:var(--display);font-size:clamp(1.35rem,2.3vw,1.6rem);line-height:1.5;color:var(--muted);max-width:46ch;margin:0}
+.journey .lead{color:var(--muted);max-width:46ch;margin:0}
 .steps{max-width:1440px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(1.5rem,2.5vw,2.2rem)}
 .step{padding:1.5rem 1.25rem;border:1px solid #16382f1f;border-radius:3px;background:#f7f8f5;transition:background .4s ease,border-color .4s ease,transform .4s ease}
 .step:hover{background:#fff;border-color:#16382f55;transform:translateY(-3px)}
@@ -177,7 +179,8 @@ h3{font-size:2.2rem}
   body{font-size:1rem}
   h2,.island-band h2{font-size:clamp(2.4rem,5.4vw,4rem);line-height:1.03}
   .section{padding-top:68px;padding-bottom:68px}
-  .section-lead,.intro-copy,.intro-copy .mission-copy{font-size:1.05rem;line-height:1.75}
+  #ile p:not(.eyebrow),#personnalisation .section-lead,#equipe .section-lead,#parcours .lead{font-size:1.0625rem}
+  .intro-copy,.intro-copy .mission-copy{font-size:1.05rem;line-height:1.75}
   .site-header,.site-header.scrolled{height:76px;gap:15px}
   .brand{width:195px;max-width:calc(100vw - 145px)}
   .nav-actions{gap:5px;margin-left:auto}
@@ -190,7 +193,7 @@ h3{font-size:2.2rem}
   .island-band{min-height:610px}
   .island-band>div{padding:75px var(--gutter)}
   .island-band h2{max-width:14ch}
-  .island-band p:not(.eyebrow){font-size:1.05rem;max-width:35ch;line-height:1.8}
+  .island-band p:not(.eyebrow){max-width:35ch}
   .island-band:after{background:linear-gradient(90deg,rgba(9,17,12,.86),rgba(9,17,12,.36) 62%,rgba(9,17,12,.2))}
   .collection-grid{grid-template-columns:1fr;gap:38px;margin-top:30px}
   .collection-visual{aspect-ratio:1.15}

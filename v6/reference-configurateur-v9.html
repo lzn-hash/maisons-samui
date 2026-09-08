@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#16382f">
+<title>Configurateur Villa Sabai — Latitude Samui</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   1. TOKENS — recopiés de css/site.css. En production : supprimer ce bloc,
+      lier css/site.css, ne garder que la partie 2.
+   ========================================================================== */
+:root{--jungle:#16382f;--deep:#102c25;--ink:#20382f;--muted:#617068;--lime:#c3d49a;--paper:#f7f8f5;--white:#fff;--line:#dce2dc;--display:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',Arial,sans-serif;--gutter:clamp(24px,5vw,80px);--max:1440px}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:var(--white);font-family:var(--sans);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0}
+h2{font-size:clamp(42px,4.6vw,72px);line-height:1.06;letter-spacing:-.028em}
+h3{font-size:32px;line-height:1.13}
+p{margin:0;text-wrap:pretty}
+button{cursor:pointer;color:inherit;border:0;background:none;padding:0;font:inherit}
+button svg{width:21px;height:21px;flex:none}
+img{display:block;width:100%;height:auto}
+:focus-visible{outline:2px solid #6c9947;outline-offset:5px}
+.eyebrow{font:500 12px/1.6 var(--sans);text-transform:uppercase;letter-spacing:.17em;margin-bottom:20px}
+.section{max-width:var(--max);padding:110px var(--gutter);margin:auto}
+.section-heading{display:grid;grid-template-columns:1.3fr .8fr;gap:70px;align-items:end;margin-bottom:50px}
+.section-lead{max-width:48ch;font-size:17px;line-height:1.85}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:28px;min-height:54px;background:var(--jungle);border:1px solid var(--jungle);border-radius:100px;color:var(--white);padding:14px 25px;font-size:14px;font-weight:500;line-height:1.45;transition:background .25s,color .25s,transform .25s}
+.btn:hover{background:var(--deep);transform:translateY(-2px)}
+.btn-light{background:var(--white);color:var(--jungle);border-color:var(--white)}
+.btn-light:hover{background:var(--lime);border-color:var(--lime);color:var(--deep)}
+.btn:disabled{cursor:not-allowed;opacity:.38;transform:none}
+.text-link{display:inline-flex;align-items:center;gap:20px;min-height:44px;border-bottom:1px solid currentColor;font-size:14px;line-height:1.55;padding:8px 0;transition:gap .25s}
+.text-link:hover{gap:30px}
+.fine-print{font-size:13px;line-height:1.8;max-width:90ch;margin-top:25px}
+.dialog-close{position:absolute;right:18px;top:16px;width:44px;height:44px;font:30px/1 var(--sans);border:1px solid var(--line);border-radius:50%;z-index:3;background:#fff}
+.dialog-close:hover{background:var(--jungle);color:#fff}
+
+/* ==========================================================================
+   2. CONFIGURATEUR — une structure, deux habillages via data-theme.
+      Le vert n'apparaît que sur l'étape franchie et sur ce qu'il reste à faire.
+   ========================================================================== */
+.cfg-scope{
+  --sec-bg:var(--jungle); --fg:#fff; --fg-soft:#ffffffa6; --fg-lead:#dbe4d9;
+  --deck-bg:#0b201a; --brd:#ffffff26; --brd-hover:#ffffff5c; --brd-on:#fff;
+  --card:#ffffff08; --card-hover:#ffffff12; --card-on:#ffffff1a;
+  --rule:#ffffff1f; --accent:var(--lime); --em:var(--lime); --mark-core:var(--deep);
+  background:var(--sec-bg); color:var(--fg); max-width:none;
+  transition:background .35s,color .35s;
+}
+.cfg-scope[data-theme="light"]{
+  --sec-bg:var(--paper); --fg:var(--ink); --fg-soft:var(--muted); --fg-lead:var(--muted);
+  --deck-bg:#fff; --brd:#dce2dc; --brd-hover:#9fb2a0; --brd-on:var(--jungle);
+  --card:#fff; --card-hover:#f1f4ef; --card-on:#16382f0a;
+  --rule:var(--line); --accent:#4c7150; --em:#3f614c; --mark-core:#fff;
+}
+.cfg-scope .section-lead{color:var(--fg-lead)}
+.cfg-scope h2 em{color:var(--em);font-weight:400}
+.cfg-scope .fine-print{color:var(--fg-soft)}
+
+.cfg-toolbar{display:flex;justify-content:flex-end;margin-bottom:22px}
+.cfg-theme{display:flex;border:1px solid var(--brd);border-radius:100px;padding:3px}
+.cfg-theme button{padding:7px 18px;font-size:13px;border-radius:100px;color:var(--fg-soft);transition:background .25s,color .25s}
+.cfg-theme button[aria-pressed="true"]{background:var(--fg);color:var(--sec-bg)}
+
+.cfg{position:relative;isolation:isolate;background:var(--deck-bg);overflow:hidden;border:1px solid var(--brd);transition:background .35s,border-color .35s}
+.cfg-visual{position:relative;min-height:min(58vh,540px);display:flex;align-items:flex-end;isolation:isolate;background:var(--deep)}
+.cfg-visual>img{position:absolute;inset:0;height:100%;object-fit:cover;z-index:-2;transition:opacity .45s}
+.cfg-visual:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#07170ecc,#07170e40 46%,#07170e14 70%,#07170e59)}
+.cfg-visual.is-loading>img{opacity:0}
+
+.cfg-top{position:absolute;top:26px;left:26px;right:26px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;color:#fff}
+.cfg-steps{display:flex;align-items:center;gap:6px}
+.cfg-step{display:flex;align-items:center;gap:10px;padding:8px 18px 8px 13px;border:1px solid #ffffff2e;border-radius:100px;font-size:13px;color:#ffffff9c;background:#0a1a1433;backdrop-filter:blur(6px);transition:color .3s,border-color .3s}
+.cfg-step .n{font-family:var(--display);font-size:18px;line-height:1;min-width:15px}
+.cfg-step.is-active{color:#fff;border-color:#ffffff8c}
+.cfg-step.is-done{color:#fff}
+.cfg-step.is-done .n{color:var(--lime)}
+.cfg-steps .sep{width:20px;height:1px;background:#ffffff3d}
+.cfg-views{margin-left:auto;display:flex;border:1px solid #ffffff2e;border-radius:100px;padding:3px;background:#0a1a1433;backdrop-filter:blur(6px)}
+.cfg-views button{padding:8px 19px;font-size:13px;border-radius:100px;color:#ffffff9c;transition:background .25s,color .25s}
+.cfg-views button[aria-pressed="true"]{background:#fff;color:var(--jungle)}
+.cfg-views button:disabled{opacity:.32;cursor:not-allowed}
+
+.cfg-caption{position:relative;padding:26px;color:#fff;max-width:46ch}
+.cfg-caption .eyebrow{color:#ffffffbf;margin-bottom:10px}
+.cfg-caption h3{font-size:clamp(38px,3.8vw,58px);line-height:1.04;letter-spacing:-.02em}
+.cfg-caption p{color:#ffffffd4;font-size:16px;line-height:1.65;margin-top:12px;max-width:40ch}
+
+.cfg-deck{display:grid;grid-template-columns:1fr 1fr;gap:30px 44px;padding:26px;background:var(--deck-bg);border-top:1px solid var(--rule);transition:background .35s}
+.cfg-col{min-width:0}
+.cfg-col .eyebrow{display:flex;align-items:baseline;gap:12px;color:var(--fg-soft);margin-bottom:14px}
+.cfg-col .eyebrow b{font-weight:500;color:var(--fg)}
+.cfg-col .eyebrow .todo{color:var(--accent);letter-spacing:.04em;text-transform:none;font-size:12.5px}
+/* align-items:stretch → les trois cartes d'une gamme ont la même hauteur */
+.cfg-row{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;align-items:stretch}
+
+.cfg-opt{position:relative;min-width:0;display:flex;flex-direction:column;border:1px solid var(--brd);background:var(--card);transition:border-color .25s,background .25s}
+.cfg-opt:hover{border-color:var(--brd-hover);background:var(--card-hover)}
+.cfg-opt[data-on="1"]{border-color:var(--brd-on);background:var(--card-on)}
+.cfg-opt .pick{flex:1;display:grid;grid-template-columns:50px 1fr;gap:12px;align-items:center;width:100%;text-align:left;padding:12px 30px 12px 11px;color:var(--fg)}
+.cfg-opt .shot{width:50px;height:50px;overflow:hidden;background:var(--jungle);align-self:start}
+.cfg-opt .shot img{height:100%;object-fit:cover}
+.cfg-opt .name{display:block;font-family:var(--display);font-size:20px;line-height:1.12}
+.cfg-opt .meta{display:block;font-size:11.5px;line-height:1.45;color:var(--fg-soft);margin-top:3px}
+.cfg-opt .mark{position:absolute;right:11px;top:13px;width:15px;height:15px;border:1px solid var(--brd-hover);border-radius:50%;pointer-events:none;transition:background .2s,border-color .2s}
+.cfg-opt[data-on="1"] .mark{background:var(--brd-on);border-color:var(--brd-on);box-shadow:inset 0 0 0 3px var(--mark-core)}
+/* soulignement pointillé : signale un lien, sans peser comme un bouton */
+.cfg-opt .more{display:block;width:100%;text-align:left;margin-top:auto;padding:9px 11px 10px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--fg-soft);transition:color .2s,background .2s}
+.cfg-opt .more span{text-decoration:underline;text-decoration-style:dotted;text-decoration-thickness:1px;text-underline-offset:4px}
+.cfg-opt .more:hover{color:var(--fg);background:var(--card-hover)}
+.cfg-opt .more:hover span{text-decoration-style:solid}
+
+.cfg-actions{grid-column:1/-1;display:flex;align-items:center;gap:26px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--rule)}
+.cfg-hint{font-size:13px;line-height:1.6;color:var(--accent);margin-right:auto}
+.cfg-actions .text-link{color:var(--fg);border-color:var(--brd-hover)}
+.cfg-actions .text-link:disabled{opacity:.38;cursor:not-allowed}
+.cfg-scope[data-theme="light"] .btn-light{background:var(--jungle);border-color:var(--jungle);color:#fff}
+.cfg-scope[data-theme="light"] .btn-light:hover{background:var(--deep);border-color:var(--deep);color:#fff}
+
+@keyframes cfg-call{0%,100%{box-shadow:0 0 0 0 transparent}45%{box-shadow:0 0 0 5px var(--card-hover)}}
+.cfg-col.is-called .cfg-row{animation:cfg-call 1.5s ease 2}
+
+.cfg-dialog{width:min(720px,calc(100% - 32px));max-height:90svh;padding:0;border:0;color:var(--ink);background:#fff;box-shadow:0 30px 150px #0004}
+.cfg-dialog::backdrop{background:#051811bb;backdrop-filter:blur(8px)}
+.cfg-dialog-inner{padding:45px}
+.cfg-dialog h2{font-size:clamp(38px,4vw,52px);margin-bottom:14px}
+.cfg-dialog h2 em{color:#3f614c;font-weight:400}
+.cfg-dialog .eyebrow{padding-right:50px;color:var(--muted)}
+.cfg-dialog .lead{color:var(--muted);font-size:15px}
+.cfg-spec{display:grid;grid-template-columns:170px 1fr;gap:26px;padding:20px 0;border-top:1px solid var(--line)}
+.cfg-spec dt{font-size:13px;color:var(--muted);line-height:1.6}
+.cfg-spec dd{margin:0;font-size:15px;line-height:1.7}
+.cfg-spec.is-excluded dd{color:var(--muted)}
+.cfg-dialog h3{font-size:28px;margin:38px 0 2px}
+.cfg-dialog .group-note{font-size:13px;color:var(--muted);margin-bottom:6px}
+.cfg-dialog-foot{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+
+@media(max-width:1100px){.cfg-deck{grid-template-columns:1fr;gap:26px}}
+@media(max-width:760px){
+  .section-heading{grid-template-columns:1fr;gap:25px;margin-bottom:35px}
+  .cfg-caption h3{font-size:38px}
+  .cfg-row{grid-template-columns:1fr}
+  .cfg-opt .pick{grid-template-columns:64px 1fr}
+  .cfg-opt .shot{width:64px;height:64px}
+  .cfg-actions{align-items:stretch;flex-direction:column;gap:14px}
+  .cfg-actions .btn{width:100%}
+  .cfg-dialog-inner{padding:34px 24px}
+  .cfg-spec{grid-template-columns:1fr;gap:6px;padding:16px 0}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<section class="section cfg-scope" id="configurateur" data-theme="dark">
+
+  <!-- Contrôle d'aperçu : à retirer une fois le parti pris arrêté. -->
+  <div class="cfg-toolbar">
+    <div class="cfg-theme" role="group" aria-label="Aperçu du thème">
+      <button type="button" data-set-theme="dark" aria-pressed="true">Sombre</button>
+      <button type="button" data-set-theme="light" aria-pressed="false">Clair</button>
+    </div>
+  </div>
+
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Villa Sabai · personnalisation</p>
+      <h2>Votre villa<br><em>en deux choix.</em></h2>
+    </div>
+    <p class="section-lead">Une gamme intérieure, une gamme extérieure. Chaque niveau reprend le précédent et l'enrichit ; le détail s'ouvre gamme par gamme.</p>
+  </div>
+
+  <div class="cfg">
+    <div class="cfg-visual" id="cfg-visual">
+      <img alt="Villa Sabai" id="cfg-photo">
+      <div class="cfg-top">
+        <div class="cfg-steps">
+          <span class="cfg-step" id="step-1"><span class="n">01</span>Intérieur</span>
+          <span class="sep"></span>
+          <span class="cfg-step" id="step-2"><span class="n">02</span>Extérieur</span>
+        </div>
+        <div class="cfg-views">
+          <button type="button" data-view="interieur" aria-pressed="true">Vue intérieure</button>
+          <button type="button" data-view="exterieur" aria-pressed="false">Vue extérieure</button>
+        </div>
+      </div>
+      <div class="cfg-caption">
+        <p class="eyebrow" id="cfg-eyebrow">Koh Samui · Lamai</p>
+        <h3 id="cfg-title">Villa Sabai</h3>
+        <p id="cfg-sub">Trois chambres, 152 m², livraison estimée Q4 2028.</p>
+      </div>
+    </div>
+
+    <div class="cfg-deck">
+      <div class="cfg-col" id="col-int">
+        <p class="eyebrow"><b>L'intérieur</b><span id="lab-int" class="todo">à choisir</span></p>
+        <div class="cfg-row" id="row-int"></div>
+      </div>
+      <div class="cfg-col" id="col-ext">
+        <p class="eyebrow"><b>L'extérieur</b><span id="lab-ext" class="todo">à choisir</span></p>
+        <div class="cfg-row" id="row-ext"></div>
+      </div>
+      <div class="cfg-actions">
+        <p class="cfg-hint" id="cfg-hint"></p>
+        <button type="button" class="text-link" id="see-all" disabled>Détail complet des prestations
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 5l7 7-7 7"/></svg></button>
+        <button type="button" class="btn btn-light" id="cfg-cta" disabled>Recevoir cette configuration
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <p class="fine-print">Visuels d'ambiance non contractuels. Descriptifs indicatifs à ce stade du programme : marques, essences et dimensions susceptibles d'ajustement à équivalence de qualité. Le descriptif contractuel est annexé au contrat de réservation.</p>
+</section>
+
+<dialog class="cfg-dialog" id="cfg-dialog" aria-labelledby="cfg-dialog-title">
+  <button class="dialog-close" type="button" data-close aria-label="Fermer">×</button>
+  <div class="cfg-dialog-inner" id="cfg-dialog-inner"></div>
+</dialog>
+
+<script>
+/* ==========================================================================
+   VISUELS — six rendus, un par gamme.
+   Les fichiers intérieurs existent : interieur-carte-blanche.webp est à
+   renommer en interieur-essentiel.webp pour suivre la nouvelle gamme.
+   PREVIEW ne sert qu'à cette maquette : à supprimer en production.
+   ========================================================================== */
+const IMAGES={
+  'interieur|essentiel':    'assets/interieur-essentiel.webp',
+  'interieur|eveil':        'assets/interieur-eveil-des-sens.webp',
+  'interieur|art-de-vivre': 'assets/interieur-art-de-vivre.webp',
+  'exterieur|essentiel':    'assets/exterieur-essentiel.webp',
+  'exterieur|horizon':      'assets/exterieur-horizon.webp',
+  'exterieur|art-de-vivre': 'assets/exterieur-art-de-vivre.webp'
+};
+const HERO='assets/sabai.webp';
+const P='https://latitude-samui-private.blauzin.chatgpt.site/images/';
+const PREVIEW={
+  'interieur|essentiel':P+'villa-interior.png','interieur|eveil':P+'villa-interior.png',
+  'interieur|art-de-vivre':P+'villa-interior.png','exterieur|essentiel':P+'pool-blue-hour.png',
+  'exterieur|horizon':P+'latitude-hero.png','exterieur|art-de-vivre':P+'latitude-hero.png',
+  'hero':P+'latitude-hero.png'
+};
+
+const INT=[
+ {id:'essentiel',n:'Essentiel',meta:'Équipée, non meublée',
+  lead:"Les volumes, les matières et la lumière donnent le ton. Vous apportez le reste.",
+  det:[
+   ['Sols et murs','Béton ciré teinté sable dans les pièces de vie, enduit à la chaux blanc cassé, plinthes intégrées.'],
+   ['Cuisine','Îlot 2,80 m plan quartz, four et plaque induction, hotte encastrée, réfrigérateur deux portes.'],
+   ['Salles de bain','Vasque pierre, robinetterie encastrée, douche à l\u2019italienne, WC suspendus.'],
+   ['Menuiseries','Baies coulissantes aluminium à rupture de pont thermique, moustiquaires, dressings finis.'],
+   ['Climatisation','Split inverter par chambre et séjour, ventilation mécanique, tableau pré-câblé domotique.'],
+   ['Éclairage','Rails techniques et points d\u2019éclairage livrés, sans luminaire décoratif.'],
+   ['Non compris','Mobilier, textiles, décoration, petit électroménager.',1]]},
+ {id:'eveil',n:'Éveil des Sens',meta:'Meublée et équipée',
+  lead:"Mobilier signé et textiles inclus. La villa se vit dès la remise des clés.",
+  det:[
+   ['Base','L\u2019intégralité de la gamme Essentiel.'],
+   ['Mobilier','Salon teck et lin, table huit couverts, lits sommiers et matelas, rangements de chambre.'],
+   ['Textiles','Rideaux occultants, tapis en fibres naturelles, deux parures de lit par chambre.'],
+   ['Éclairage décoratif','Suspensions rotin, appliques laiton, éclairage indirect en terrasse.'],
+   ['Cuisine complétée','Cave à vin 40 bouteilles, batterie de cuisine, service douze couverts.'],
+   ['Mobilier extérieur','Salon de jardin teck, deux transats, parasol déporté.'],
+   ['Non compris','Œuvres et objets personnels, cave garnie.',1]]},
+ {id:'art-de-vivre',n:'Art de Vivre',meta:'Sur-mesure intégral',
+  lead:"Menuiseries dessinées, pierre locale, lumière scénographiée. Chaque volume est arbitré avec vous.",
+  det:[
+   ['Base','L\u2019intégralité de la gamme Éveil des Sens.'],
+   ['Ébénisterie','Dressings dessinés, bibliothèque intégrée, tête de lit et console d\u2019entrée sur mesure.'],
+   ['Matières','Pierre volcanique de Surat Thani, noyer fumé, terrazzo coulé en place.'],
+   ['Lumière','Étude photométrique, gradation par zones, scénarios programmés jour et soir.'],
+   ['Domotique','Pilotage centralisé de la climatisation, de l\u2019éclairage, des stores et de l\u2019audio.'],
+   ['Cuisine','Piano de cuisson, second évier, plan en pierre massive.'],
+   ['Accompagnement','Trois séances d\u2019arbitrage avec l\u2019architecte d\u2019intérieur, planches matières remises.']]}
+];
+
+const EXT=[
+ {id:'essentiel',n:'Essentiel',meta:'Piscine et terrasse',
+  lead:"La parcelle est livrée nette et fonctionnelle : bassin, terrasse, engazonnement.",
+  det:[
+   ['Piscine','Bassin 4 × 9 m, margelle béton lissé, local technique et filtration.'],
+   ['Terrasse','Dalle béton lissé en prolongement du séjour, seuil affleurant.'],
+   ['Végétation','Engazonnement de la parcelle, haie basse en limite, trois palmiers.'],
+   ['Éclairage','Balisage de l\u2019allée d\u2019accès et éclairage fonctionnel de la terrasse.'],
+   ['Eau','Points d\u2019eau extérieurs, arrosage manuel.'],
+   ['Non compris','Mobilier extérieur, pool house, éclairage d\u2019ambiance, plantations hautes.',1]]},
+ {id:'horizon',n:'Horizon',meta:'Débordement et deck',
+  lead:"Le bassin s\u2019aligne sur la ligne d\u2019horizon et le deck prolonge le séjour vers la mer.",
+  det:[
+   ['Base','L\u2019intégralité de la gamme Essentiel.'],
+   ['Piscine','Passage en débordement 4 × 11 m, bassin tampon, ligne d\u2019eau alignée sur l\u2019horizon.'],
+   ['Terrasse','Deck teck filant, plage immergée sur un pan du bassin.'],
+   ['Végétation','Palmiers adultes, frangipaniers, massifs structurés, paillage coco.'],
+   ['Éclairage','Projecteurs immergés, projecteurs orientés sur les troncs, balisage du deck.'],
+   ['Eau','Goutte-à-goutte automatisé, programmateur, récupération des eaux de débordement.'],
+   ['Non compris','Pool house, cuisine d\u2019été, contrat d\u2019entretien.',1]]},
+ {id:'art-de-vivre',n:'Art de Vivre',meta:'Jardin dessiné, pool house',
+  lead:"Le jardin devient une pièce à part entière : pool house, cuisine d\u2019été, lumière scénographiée.",
+  det:[
+   ['Base','L\u2019intégralité de la gamme Horizon.'],
+   ['Pool house','Volume ouvert de 18 m², douche extérieure, rangements et coin ombragé.'],
+   ['Cuisine d\u2019été','Plan en pierre massive, plancha, évier et réfrigérateur extérieurs.'],
+   ['Jardin dessiné','Plan de plantation par paysagiste, essences matures, sujets remarquables.'],
+   ['Lumière','Étude nocturne, gradation par zones, scénarios programmés.'],
+   ['Eau','Arrosage enterré par secteurs, cuve de récupération.'],
+   ['Entretien','Contrat paysagiste, deux passages par semaine, première année incluse.']]}
+];
+
+const SOCLE=[
+ ['Structure','Béton armé, charpente bois lamellé, couverture tuiles locales, isolation de toiture.'],
+ ['Réseaux','Raccordement eau et électricité, fosse toutes eaux aux normes, fibre optique.'],
+ ['Sécurité','Portail motorisé, préparation vidéosurveillance, coffre-fort en chambre principale.'],
+ ['Garanties','Garantie structurelle constructeur, réception contradictoire, levée de réserves.'],
+ ['Calendrier','Livraison estimée Q4 2028, points d\u2019étape trimestriels avec photos de chantier.']
+];
+
+const find=(a,id)=>a.find(o=>o.id===id);
+const state={int:null,ext:null,view:'interieur'};
+const ready=()=>state.int&&state.ext;
+const scope=document.getElementById('configurateur');
+const visual=document.getElementById('cfg-visual');
+const photo=document.getElementById('cfg-photo');
+
+document.querySelectorAll('[data-set-theme]').forEach(b=>{
+  b.onclick=()=>{
+    scope.dataset.theme=b.dataset.setTheme;
+    document.querySelectorAll('[data-set-theme]').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  };
+});
+
+function setPhoto(url,key){
+  if(photo.dataset.url===url) return;
+  photo.dataset.url=url;
+  visual.classList.add('is-loading');
+  const probe=new Image();
+  probe.onload=()=>{photo.src=url;visual.classList.remove('is-loading');};
+  probe.onerror=()=>{ const alt=PREVIEW[key]; if(alt){photo.src=alt;visual.classList.remove('is-loading');} };
+  probe.src=url;
+}
+
+function paint(){
+  const inside=state.view==='interieur';
+  const o=inside?(state.int&&find(INT,state.int)):(state.ext&&find(EXT,state.ext));
+  const key=o?state.view+'|'+o.id:'hero';
+  setPhoto(o?IMAGES[key]:HERO,key);
+  document.getElementById('cfg-eyebrow').textContent=o?(inside?'Gamme intérieure':'Gamme extérieure'):'Koh Samui · Lamai';
+  document.getElementById('cfg-title').textContent=o?o.n:'Villa Sabai';
+  document.getElementById('cfg-sub').textContent=o?o.lead:'Trois chambres, 152 m², livraison estimée Q4 2028.';
+  document.querySelectorAll('.cfg-views button').forEach(b=>{
+    b.setAttribute('aria-pressed',b.dataset.view===state.view);
+    b.disabled=b.dataset.view==='interieur'?!state.int:!state.ext;
+  });
+}
+
+function build(host,data,current,view,assign){
+  host.innerHTML='';
+  data.forEach(o=>{
+    const card=document.createElement('div');
+    card.className='cfg-opt'; card.dataset.on=o.id===current?'1':'0';
+    card.innerHTML=
+      `<button type="button" class="pick">
+         <span class="shot"><img src="${IMAGES[view+'|'+o.id]}" alt="" onerror="this.src='${PREVIEW[view+'|'+o.id]}'"></span>
+         <span><span class="name">${o.n}</span><span class="meta">${o.meta}</span></span>
+         <span class="mark"></span>
+       </button>
+       <button type="button" class="more"><span>Ce qui est inclus</span></button>`;
+    card.querySelector('.pick').onclick=()=>{
+      const first=view==='interieur'?!state.int:!state.ext;
+      assign(o.id); state.view=view; render();
+      if(first&&!ready()){
+        const col=document.getElementById('col-'+(state.int?'ext':'int'));
+        setTimeout(()=>{col.classList.add('is-called');setTimeout(()=>col.classList.remove('is-called'),3200);},400);
+      }
+    };
+    card.querySelector('.more').onclick=()=>openDetail({view:view,id:o.id});
+    host.appendChild(card);
+  });
+}
+
+function render(){
+  build(document.getElementById('row-int'),INT,state.int,'interieur',id=>state.int=id);
+  build(document.getElementById('row-ext'),EXT,state.ext,'exterieur',id=>state.ext=id);
+
+  const s1=document.getElementById('step-1'), s2=document.getElementById('step-2');
+  s1.className='cfg-step '+(state.int?'is-done':'is-active');
+  s2.className='cfg-step '+(state.ext?'is-done':(state.int?'is-active':''));
+  s1.querySelector('.n').textContent=state.int?'✓':'01';
+  s2.querySelector('.n').textContent=state.ext?'✓':'02';
+
+  const li=document.getElementById('lab-int'), le=document.getElementById('lab-ext');
+  li.textContent=state.int?find(INT,state.int).n:'à choisir'; li.className=state.int?'':'todo';
+  le.textContent=state.ext?find(EXT,state.ext).n:'à choisir'; le.className=state.ext?'':'todo';
+
+  const hint=document.getElementById('cfg-hint');
+  hint.textContent=!state.int&&!state.ext?'Choisissez une gamme intérieure, puis une gamme extérieure.'
+    :!state.ext?'Il reste la gamme extérieure à choisir.'
+    :!state.int?'Il reste la gamme intérieure à choisir.':'';
+
+  document.getElementById('cfg-cta').disabled=!ready();
+  document.getElementById('see-all').disabled=!ready();
+  paint();
+}
+
+const specs=det=>det.map(([k,v,x])=>
+  `<div class="cfg-spec${x?' is-excluded':''}"><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+const arrow='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 5l7 7-7 7"/></svg>';
+const dlg=document.getElementById('cfg-dialog');
+
+function openDetail(arg){
+  const box=document.getElementById('cfg-dialog-inner');
+  if(arg&&arg.view){
+    const inside=arg.view==='interieur';
+    const o=inside?find(INT,arg.id):find(EXT,arg.id);
+    const chosen=inside?state.int===o.id:state.ext===o.id;
+    box.innerHTML=
+     `<p class="eyebrow">${inside?'Gamme intérieure':'Gamme extérieure'} · Villa Sabai</p>
+      <h2 id="cfg-dialog-title">${o.n}</h2>
+      <p class="lead">${o.lead}</p>
+      <div style="margin-top:24px">${specs(o.det)}</div>
+      <div class="cfg-dialog-foot">
+        ${chosen
+          ? '<button type="button" class="btn" data-act="ask">Recevoir cette configuration'+arrow+'</button>'
+          : `<button type="button" class="btn" data-act="pick">Choisir cette gamme${arrow}</button>`}
+        <button type="button" class="text-link" data-close>Continuer à comparer</button>
+      </div>`;
+    const act=box.querySelector('[data-act]');
+    act.onclick=()=>{
+      if(act.dataset.act==='pick'){ inside?state.int=o.id:state.ext=o.id; state.view=arg.view; render(); dlg.close(); }
+      else { dlg.close(); requestContact(); }
+    };
+  }else{
+    const i=find(INT,state.int), e=find(EXT,state.ext);
+    box.innerHTML=
+     `<p class="eyebrow">Villa Sabai · 3 chambres · livraison estimée Q4 2028</p>
+      <h2 id="cfg-dialog-title">Intérieur ${i.n}<br><em>extérieur ${e.n}</em></h2>
+      <h3>Intérieur — ${i.n}</h3><p class="group-note">Ce qui est livré dans la villa</p>${specs(i.det)}
+      <h3>Extérieur — ${e.n}</h3><p class="group-note">Ce qui est livré sur la parcelle</p>${specs(e.det)}
+      <h3>Socle technique</h3><p class="group-note">Commun à toutes les configurations</p>${specs(SOCLE)}
+      <div class="cfg-dialog-foot">
+        <button type="button" class="btn" data-act="ask">Recevoir cette configuration${arrow}</button>
+        <button type="button" class="text-link" data-close>Fermer</button>
+      </div>`;
+    box.querySelector('[data-act]').onclick=()=>{ dlg.close(); requestContact(); };
+  }
+  box.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>dlg.close());
+  dlg.showModal();
+}
+
+function requestContact(){
+  if(!ready()) return;
+  const texte=`Villa Sabai\nIntérieur : ${find(INT,state.int).n}\nExtérieur : ${find(EXT,state.ext).n}`;
+  const relais=document.querySelector('[data-contact]');
+  if(relais){
+    relais.dataset.villa='Villa Sabai';
+    relais.dataset.source='configurateur';
+    relais.dataset.configuration=texte;
+    relais.click();
+  }else{
+    alert('Formulaire de contact — configuration transmise :\n\n'+texte);
+  }
+}
+document.getElementById('cfg-cta').onclick=requestContact;
+document.getElementById('see-all').onclick=()=>openDetail();
+dlg.querySelector('.dialog-close').onclick=()=>dlg.close();
+document.querySelectorAll('.cfg-views button').forEach(b=>
+  b.onclick=()=>{ if(!b.disabled){ state.view=b.dataset.view; paint(); } });
+
+render();
+</script>
+</body>
+</html>

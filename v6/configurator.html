@@ -1,0 +1,56 @@
+<section class="cfg-scope" id="configurateur" data-theme="dark"><div class="section cfg-inner">
+
+  <div class="section-heading">
+    <div>
+      <h2>Votre villa,<br><em>à votre façon.</em></h2>
+    </div>
+    <p class="section-lead">Choisissez votre gamme intérieure et vos aménagements extérieurs indépendamment. Cet exemple sur la Villa Sabai vous permet de comparer les prestations et de préparer votre demande.</p>
+  </div>
+
+  <div class="cfg">
+    <div class="cfg-visual" id="cfg-visual">
+      <img src="assets/sabai.webp" alt="Villa Sabai — exemple de personnalisation" id="cfg-photo" loading="lazy" decoding="async">
+      <div class="cfg-top">
+        <div class="cfg-steps">
+          <span class="cfg-step" id="step-1"><span class="n">01</span>Intérieur</span>
+          <span class="sep"></span>
+          <span class="cfg-step" id="step-2"><span class="n">02</span>Extérieur</span>
+        </div>
+        <div class="cfg-views">
+          <button type="button" data-view="interieur" aria-pressed="true">Vue intérieure</button>
+          <button type="button" data-view="exterieur" aria-pressed="false">Vue extérieure</button>
+        </div>
+      </div>
+      <div class="cfg-caption">
+        <p class="eyebrow" id="cfg-eyebrow">Koh Samui · Lamai</p>
+        <h3 id="cfg-title">Villa Sabai</h3>
+        <p id="cfg-sub">Un exemple pour explorer les gammes intérieures et extérieures.</p>
+      </div>
+    </div>
+
+    <div class="cfg-deck">
+      <div class="cfg-col" id="col-int">
+        <p class="eyebrow"><b>L'intérieur</b><span id="lab-int" class="todo">à choisir</span></p>
+        <div class="cfg-row" id="row-int" role="group" aria-label="Gamme intérieure"></div>
+      </div>
+      <div class="cfg-col" id="col-ext">
+        <p class="eyebrow"><b>L'extérieur</b><span id="lab-ext" class="todo">à choisir</span></p>
+        <div class="cfg-row" id="row-ext" role="group" aria-label="Gamme extérieure"></div>
+      </div>
+      <div class="cfg-actions">
+        <p class="cfg-hint" id="cfg-hint" role="status" aria-live="polite"></p>
+        <button type="button" class="text-link" id="see-all" disabled>Détail complet des prestations
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 5l7 7-7 7"/></svg></button>
+        <button type="button" class="btn btn-light" id="cfg-cta" disabled>Demander cette configuration
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <p class="fine-print">Visuels d’ambiance non contractuels. Les prestations présentées sont indicatives et restent à valider avec l’architecte. Le contenu définitif et le prix de chaque gamme seront précisés pour votre villa.</p>
+<noscript><p>Pour comparer les gammes sans JavaScript, <a href="mailto:contact@latitudesamui.com">contactez-nous par email</a>.</p></noscript></div></section>
+
+<dialog class="cfg-dialog" id="cfg-dialog" aria-labelledby="cfg-dialog-title">
+  <button class="dialog-close" type="button" data-close aria-label="Fermer">×</button>
+  <div class="cfg-dialog-inner" id="cfg-dialog-inner"></div>
+</dialog>

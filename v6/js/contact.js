@@ -1,8 +1,8 @@
 (function(root){
   'use strict';
   const INTENTS=['contact','brochure','estimate','visit'];
-  const INTERIORS=['Carte Blanche','Éveil des Sens','Art de Vivre'];
-  const GARDENS=['Carte Blanche','Éclosion','Art de Vivre'];
+  const INTERIORS=['Essentielle','Éveil des sens','Art de vivre','Carte Blanche','Éveil des Sens','Art de Vivre'];
+  const GARDENS=['Essentielle','Horizon','Art de vivre','Carte Blanche','Éclosion','Art de Vivre'];
   function buildLead(data,context,configuration,language){
     const clean=(value,max=2500)=>String(value||'').replace(/\u0000/g,'').trim().slice(0,max);
     const intent=INTENTS.includes(context.intent)?context.intent:'contact';

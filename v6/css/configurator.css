@@ -1,0 +1,155 @@
+.cfg-scope{
+  --sec-bg:var(--jungle); --fg:#fff; --fg-soft:#ffffffa6; --fg-lead:#dbe4d9;
+  --deck-bg:#0b201a; --brd:#ffffff26; --brd-hover:#ffffff5c; --brd-on:#fff;
+  --card:#ffffff08; --card-hover:#ffffff12; --card-on:#ffffff1a;
+  --rule:#ffffff1f; --accent:var(--lime); --em:var(--lime); --mark-core:var(--deep);
+  background:var(--sec-bg); color:var(--fg); max-width:none;
+  transition:background .35s,color .35s;
+}
+.cfg-scope[data-theme="light"]{
+  --sec-bg:var(--paper); --fg:var(--ink); --fg-soft:var(--muted); --fg-lead:var(--muted);
+  --deck-bg:#fff; --brd:#dce2dc; --brd-hover:#9fb2a0; --brd-on:var(--jungle);
+  --card:#fff; --card-hover:#f1f4ef; --card-on:#16382f0a;
+  --rule:var(--line); --accent:#4c7150; --em:#3f614c; --mark-core:#fff;
+}
+.cfg-scope .section-lead{color:var(--fg-lead)}
+.cfg-scope h2 em{color:var(--em);font-weight:400}
+.cfg-scope .fine-print{color:var(--fg-soft)}
+
+.cfg-toolbar{display:flex;justify-content:flex-end;margin-bottom:22px}
+.cfg-theme{display:flex;border:1px solid var(--brd);border-radius:100px;padding:3px}
+.cfg-theme button{padding:7px 18px;font-size:13px;border-radius:100px;color:var(--fg-soft);transition:background .25s,color .25s}
+.cfg-theme button[aria-pressed="true"]{background:var(--fg);color:var(--sec-bg)}
+
+.cfg{position:relative;isolation:isolate;background:var(--deck-bg);overflow:hidden;border:1px solid var(--brd);transition:background .35s,border-color .35s}
+.cfg-visual{position:relative;min-height:min(58vh,540px);display:flex;align-items:flex-end;isolation:isolate;background:var(--deep)}
+.cfg-visual>img{position:absolute;inset:0;height:100%;object-fit:cover;z-index:-2;transition:opacity .45s}
+.cfg-visual:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#07170ecc,#07170e40 46%,#07170e14 70%,#07170e59)}
+.cfg-visual.is-loading>img{opacity:0}
+
+.cfg-top{position:absolute;top:26px;left:26px;right:26px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;color:#fff}
+.cfg-steps{display:flex;align-items:center;gap:6px}
+.cfg-step{display:flex;align-items:center;gap:10px;padding:8px 18px 8px 13px;border:1px solid #ffffff2e;border-radius:100px;font-size:13px;color:#ffffff9c;background:#0a1a1433;backdrop-filter:blur(6px);transition:color .3s,border-color .3s}
+.cfg-step .n{font-family:var(--display);font-size:18px;line-height:1;min-width:15px}
+.cfg-step.is-active{color:#fff;border-color:#ffffff8c}
+.cfg-step.is-done{color:#fff}
+.cfg-step.is-done .n{color:var(--lime)}
+.cfg-steps .sep{width:20px;height:1px;background:#ffffff3d}
+.cfg-views{margin-left:auto;display:flex;border:1px solid #ffffff2e;border-radius:100px;padding:3px;background:#0a1a1433;backdrop-filter:blur(6px)}
+.cfg-views button{padding:8px 19px;font-size:13px;border-radius:100px;color:#ffffff9c;transition:background .25s,color .25s}
+.cfg-views button[aria-pressed="true"]{background:#fff;color:var(--jungle)}
+.cfg-views button:disabled{opacity:.32;cursor:not-allowed}
+
+.cfg-caption{position:relative;padding:26px;color:#fff;max-width:46ch}
+.cfg-caption .eyebrow{color:#ffffffbf;margin-bottom:10px}
+.cfg-caption h3{font-size:clamp(38px,3.8vw,58px);line-height:1.04;letter-spacing:-.02em}
+.cfg-caption p{color:#ffffffd4;font-size:16px;line-height:1.65;margin-top:12px;max-width:40ch}
+
+.cfg-deck{display:grid;grid-template-columns:1fr 1fr;gap:30px 44px;padding:26px;background:var(--deck-bg);border-top:1px solid var(--rule);transition:background .35s}
+.cfg-col{min-width:0}
+.cfg-col .eyebrow{display:flex;align-items:baseline;gap:12px;color:var(--fg-soft);margin-bottom:14px}
+.cfg-col .eyebrow b{font-weight:500;color:var(--fg)}
+.cfg-col .eyebrow .todo{color:var(--accent);letter-spacing:.04em;text-transform:none;font-size:12.5px}
+/* align-items:stretch → les trois cartes d'une gamme ont la même hauteur */
+.cfg-row{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;align-items:stretch}
+
+.cfg-opt{position:relative;min-width:0;display:flex;flex-direction:column;border:1px solid var(--brd);background:var(--card);transition:border-color .25s,background .25s}
+.cfg-opt:hover{border-color:var(--brd-hover);background:var(--card-hover)}
+.cfg-opt[data-on="1"]{border-color:var(--brd-on);background:var(--card-on)}
+.cfg-opt .pick{flex:1;display:grid;grid-template-columns:50px 1fr;gap:12px;align-items:center;width:100%;text-align:left;padding:12px 30px 12px 11px;color:var(--fg)}
+.cfg-opt .shot{width:50px;height:50px;overflow:hidden;background:var(--jungle);align-self:start}
+.cfg-opt .shot img{height:100%;object-fit:cover}
+.cfg-opt .name{display:block;font-family:var(--display);font-size:20px;line-height:1.12}
+.cfg-opt .meta{display:block;font-size:11.5px;line-height:1.45;color:var(--fg-soft);margin-top:3px}
+.cfg-opt .mark{position:absolute;right:11px;top:13px;width:15px;height:15px;border:1px solid var(--brd-hover);border-radius:50%;pointer-events:none;transition:background .2s,border-color .2s}
+.cfg-opt[data-on="1"] .mark{background:var(--brd-on);border-color:var(--brd-on);box-shadow:inset 0 0 0 3px var(--mark-core)}
+/* soulignement pointillé : signale un lien, sans peser comme un bouton */
+.cfg-opt .more{display:block;width:100%;text-align:left;margin-top:auto;padding:9px 11px 10px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--fg-soft);transition:color .2s,background .2s}
+.cfg-opt .more span{text-decoration:underline;text-decoration-style:dotted;text-decoration-thickness:1px;text-underline-offset:4px}
+.cfg-opt .more:hover{color:var(--fg);background:var(--card-hover)}
+.cfg-opt .more:hover span{text-decoration-style:solid}
+
+.cfg-actions{grid-column:1/-1;display:flex;align-items:center;gap:26px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--rule)}
+.cfg-hint{font-size:13px;line-height:1.6;color:var(--accent);margin-right:auto}
+.cfg-actions .text-link{color:var(--fg);border-color:var(--brd-hover)}
+.cfg-actions .text-link:disabled{opacity:.38;cursor:not-allowed}
+.cfg-scope[data-theme="light"] .btn-light{background:var(--jungle);border-color:var(--jungle);color:#fff}
+.cfg-scope[data-theme="light"] .btn-light:hover{background:var(--deep);border-color:var(--deep);color:#fff}
+
+@keyframes cfg-call{0%,100%{box-shadow:0 0 0 0 transparent}45%{box-shadow:0 0 0 5px var(--card-hover)}}
+.cfg-col.is-called .cfg-row{animation:cfg-call 1.5s ease 2}
+
+.cfg-dialog{width:min(720px,calc(100% - 32px));max-height:90svh;padding:0;border:0;color:var(--ink);background:#fff;box-shadow:0 30px 150px #0004}
+.cfg-dialog::backdrop{background:#051811bb;backdrop-filter:blur(8px)}
+.cfg-dialog-inner{padding:45px}
+.cfg-dialog h2{font-size:clamp(38px,4vw,52px);margin-bottom:14px}
+.cfg-dialog h2 em{color:#3f614c;font-weight:400}
+.cfg-dialog .eyebrow{padding-right:50px;color:var(--muted)}
+.cfg-dialog .lead{color:var(--muted);font-size:15px}
+.cfg-spec{display:grid;grid-template-columns:170px 1fr;gap:26px;padding:20px 0;border-top:1px solid var(--line)}
+.cfg-spec dt{font-size:13px;color:var(--muted);line-height:1.6}
+.cfg-spec dd{margin:0;font-size:15px;line-height:1.7}
+.cfg-spec.is-excluded dd{color:var(--muted)}
+.cfg-dialog h3{font-size:28px;margin:38px 0 2px}
+.cfg-dialog .group-note{font-size:13px;color:var(--muted);margin-bottom:6px}
+.cfg-dialog-foot{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+
+@media(max-width:1100px){.cfg-deck{grid-template-columns:1fr;gap:26px}}
+@media(max-width:760px){
+  .section-heading{grid-template-columns:1fr;gap:25px;margin-bottom:35px}
+  .cfg-caption h3{font-size:38px}
+  .cfg-row{grid-template-columns:1fr}
+  .cfg-opt .pick{grid-template-columns:64px 1fr}
+  .cfg-opt .shot{width:64px;height:64px}
+  .cfg-actions{align-items:stretch;flex-direction:column;gap:14px}
+  .cfg-actions .btn{width:100%}
+  .cfg-dialog-inner{padding:34px 24px}
+  .cfg-spec{grid-template-columns:1fr;gap:6px;padding:16px 0}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* V6 integration: readable controls, shared typography, no preview-only theme UI. */
+.cfg-inner{max-width:var(--max);margin:auto}
+.cfg-scope .section-lead{font-size:var(--section-copy-size);line-height:1.75}
+.cfg-scope .fine-print{font-size:.875rem;line-height:1.75;max-width:95ch;margin-top:25px}
+.cfg-visual{min-height:510px}
+.cfg-top{align-items:flex-start}
+.cfg-caption{padding:32px;max-width:54ch}
+.cfg-caption p{max-width:48ch}
+.cfg-caption .eyebrow{font-size:.875rem;letter-spacing:.05em;text-transform:none}
+.cfg-step,.cfg-views button,.cfg-opt .more,.cfg-hint{font-size:.875rem}
+.cfg-step,.cfg-views button{min-height:44px}
+.cfg-col .eyebrow{font-size:1rem;letter-spacing:normal;text-transform:none;flex-wrap:wrap;gap:5px 12px}
+.cfg-col .eyebrow .todo{font-size:.875rem;letter-spacing:normal}
+.cfg-opt .pick{grid-template-columns:48px minmax(0,1fr);padding:16px 30px 16px 12px;gap:10px}
+.cfg-opt .name{font-size:1.6rem;overflow-wrap:normal}
+.cfg-opt .meta{font-size:.875rem;line-height:1.5}
+.cfg-opt .more{padding:12px;min-height:44px}
+.cfg-opt .more:focus-visible,.cfg-opt .pick:focus-visible{outline-offset:-3px}
+.cfg-step{color:#ffffffe0}
+.cfg-views button{color:#ffffffe0}
+.cfg-views button:disabled{opacity:.65}
+.cfg-actions button:disabled{cursor:not-allowed;opacity:.45;transform:none}
+.cfg-scope .btn-light:hover{background:var(--lime);color:var(--jungle)}
+.cfg-dialog .eyebrow{font-size:.875rem;text-transform:none;letter-spacing:.04em}
+.cfg-dialog .lead,.cfg-spec dd{font-size:1rem;line-height:1.75}
+.cfg-dialog .group-note,.cfg-spec dt{font-size:.875rem}
+.cfg-dialog dl{margin:24px 0 0}
+.cfg-dialog h2{padding-right:20px}
+.cfg-dialog .detail-note{font-size:.875rem;color:var(--muted);margin-top:20px}
+.cfg-scope noscript p{margin-top:20px}
+.cfg-scope noscript a{text-decoration:underline}
+@media(max-width:1280px){.cfg-deck{grid-template-columns:1fr;gap:26px}}
+@media(max-width:760px){
+ .cfg-top{top:20px;left:20px;right:20px;gap:14px}
+ .cfg-views{margin-left:0}
+ .cfg-visual{min-height:510px}
+ .cfg-caption{padding:24px 20px}
+ .cfg-caption h3{font-size:2.375rem}
+ .cfg-deck{padding:20px}
+ .cfg-step{padding:8px 13px;gap:7px}
+ .cfg-steps .sep{width:10px}
+ .cfg-opt .pick{grid-template-columns:64px minmax(0,1fr);gap:16px}
+ .cfg-actions .text-link{justify-content:space-between;text-align:left}
+ .cfg-dialog-inner{padding-top:60px}
+}

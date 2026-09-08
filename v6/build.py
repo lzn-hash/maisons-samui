@@ -90,7 +90,10 @@ details = f'''<address class="photo-contact">
 </address>'''
 content = content.replace('<section class="closing">', '<section class="closing" id="contact">')
 content = content.replace('>Parlons de votre projet<svg', '>Nous contacter<svg')
-content = replace_once(content, '<div class="closing-photo">'+v5.image('beach.webp','Plage bordée de palmiers à Koh Samui')+'</div>', '<div class="closing-photo">'+v5.image('beach.webp','Plage bordée de palmiers à Koh Samui')+details+'</div>')
+old_closing = section(content, 'closing')
+closing_copy = re.search(r'<div class="closing-content">(.*?)</div></section>', old_closing, re.S).group(1)
+new_closing = '<section class="closing" id="contact">'+v5.image('beach.webp','Plage bordée de palmiers à Koh Samui','closing-background')+'<div class="closing-inner"><div class="closing-content">'+closing_copy+'</div>'+details+'</div></section>'
+content = replace_once(content, old_closing, new_closing)
 
 nav = v5.nav('index')
 nav = re.sub(r'<a href="boutique.html">.*?</a>', '', nav)

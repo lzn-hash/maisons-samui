@@ -108,7 +108,7 @@ head = (V5/'index.html').read_text().split('<body',1)[0]
 head = head.replace('href="css/site.css"', 'href="css/foundation.css"')
 head = head.replace('</head>', '<link rel="stylesheet" href="css/v4-preserved.css"><link rel="stylesheet" href="css/home.css"><link rel="preload" as="image" href="assets/hero-01.jpg" fetchpriority="high"><link rel="preconnect" href="https://latitude-samui.odoo.com" crossorigin></head>')
 html = head+'<body id="top" data-page="index" class="has-photo-hero v6">'+nav+'<main id="main">'+content+'</main>'+footer+dialogs+'<noscript><p class="noscript-notice">Contact : <a href="mailto:contact@latitudesamui.com">contact@latitudesamui.com</a>.</p></noscript></body></html>'
-html = re.sub(r'href="([a-z][a-z-]*\.html(?:#[^"]*)?)"', lambda m: 'href="'+(m[1] if m[1].split('#')[0] in ['index.html','notre-approche.html'] else '../v5/'+m[1])+'"', html)
+html = re.sub(r'href="([a-z][a-z-]*\.html(?:#[^"]*)?)"', lambda m: 'href="'+(m[1] if m[1].split('#')[0] in ['index.html','notre-approche.html','villa-baansawan.html'] else '../v5/'+m[1])+'"', html)
 html = html.replace('notre-approche.html#collections', 'notre-approche.html#configurateur')
 # Keep generated markup readable without changing text nodes.
 html = re.sub(r'(?<=>)(?=<(?:section|/section|header|main|footer|dialog|link|script)\b)', '\n', html)
@@ -118,8 +118,8 @@ for directory in ['css','js','assets']:
     (ROOT/directory).mkdir(exist_ok=True)
 shutil.copyfile(V5/'css/site.css', ROOT/'css/foundation.css')
 contact_js = (V5/'js/contact.js').read_text()
-contact_js = contact_js.replace("const INTERIORS=['Carte Blanche','Éveil des Sens','Art de Vivre'];", "const INTERIORS=['Essentielle','Éveil des sens','Art de vivre','Carte Blanche','Éveil des Sens','Art de Vivre'];")
-contact_js = contact_js.replace("const GARDENS=['Carte Blanche','Éclosion','Art de Vivre'];", "const GARDENS=['Essentielle','Horizon','Art de vivre','Carte Blanche','Éclosion','Art de Vivre'];")
+contact_js = contact_js.replace("const INTERIORS=['Carte Blanche','Éveil des Sens','Art de Vivre'];", "const INTERIORS=['Essentiel','Essentielle','Éveil des sens','Art de vivre','Carte Blanche','Éveil des Sens','Art de Vivre'];")
+contact_js = contact_js.replace("const GARDENS=['Carte Blanche','Éclosion','Art de Vivre'];", "const GARDENS=['Essentiel','Essentielle','Horizon','Art de vivre','Carte Blanche','Éclosion','Art de Vivre'];")
 (ROOT/'js/contact.js').write_text(contact_js)
 (ROOT/'js/config.js').write_text("/* Existing contact integration hooks are retained. */\nwindow.LATITUDE_SITE = {version: 6};\n")
 for name in ['logo.svg','favicon.svg','apple-touch-icon.png','island.webp','beach.webp','approach.webp','construction.webp','sabai.webp','interieur-carte-blanche.webp','interieur-eveil-des-sens.webp','interieur-art-de-vivre.webp','jardin-carte-blanche.webp','jardin-eclosion.webp','jardin-art-de-vivre.webp']:
@@ -145,6 +145,9 @@ html = (ROOT/'index.html').read_text().replace('<script defer src="js/site.js"><
 from approach import render_approach
 approach_html = render_approach(html, ROOT)
 (ROOT/'notre-approche.html').write_text(approach_html)
+from villa_baansawan import render_villa
+villa_html = render_villa(html, ROOT)
+(ROOT/'villa-baansawan.html').write_text(villa_html)
 
 if '--stage' in sys.argv:
     target = PROJECT/'dist/v6'
@@ -154,4 +157,5 @@ if '--stage' in sys.argv:
     shutil.copyfile(ROOT/'favicon.ico', target/'favicon.ico')
     (target/'index.html').write_text(html.replace('href="../v5/', 'href="../'))
     (target/'notre-approche.html').write_text(approach_html.replace('href="../v5/', 'href="../'))
-print('Generated V6 index and approach; V4/V5 source untouched.')
+    (target/'villa-baansawan.html').write_text(villa_html.replace('href="../v5/', 'href="../'))
+print('Generated V6 index, approach and Baan Sawan; V4/V5 source untouched.')

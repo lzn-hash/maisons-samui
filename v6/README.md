@@ -28,3 +28,16 @@ La page `notre-approche.html` est générée par `approach.py` via `build.py`. E
 Le configurateur fourni (`reference-configurateur-v9.html`, archive de référence non publiée) est intégré en une seule section, thème jungle fixe. `configurator.html`, `css/configurator.css` et `js/configurator.js` en sont les sources adaptées : six images locales, sélections indépendantes, détails en dialogue, transmission explicite au formulaire de contact existant. Pas de faux envoi ni de prix calculé.
 
 Les prestations du fichier fourni restent indicatives, à valider par l’architecte. La surface 152 m² de sa maquette diffère des 148 m² de Sabai dans V5 : la surface n’est donc pas reprise dans cet exemple. Les gammes intérieures utilisent les noms validés sur l’index (Essentielle, Éveil des sens, Art de vivre) ; l’extérieur intermédiaire conserve Horizon, comme dans le configurateur fourni.
+
+
+## Baan Sawan — page villa de référence
+
+`villa_baansawan.py` génère `villa-baansawan.html` avec le shell V6. Le hero et les huit images reprennent la V4, les images sont copiées sans recompression dans `assets/baansawan/`. Le hero et la barre de faits forment une ouverture à hauteur d’écran sur ordinateur, avec croissance naturelle sur les fenêtres courtes et une disposition empilée sur mobile.
+
+La galerie alterne les formats et donne accès aux huit vues (clic, clavier, balayage tactile). La description est intégrée à son introduction. Les six prestations reprennent la V4 avec des icônes de trait et les statuts Inclus / En option.
+
+La configuration conserve des cartes illustrées, avec détails en dialogue et sélection transmise explicitement au formulaire de contact. Noms : Essentiel / Éveil des sens / Art de vivre et Essentiel / Horizon / Art de vivre. Piscine à débordement incluse dès Essentiel pour Baan Sawan, sans copier les dimensions ou promesses de Sabai. Descriptifs indicatifs à finaliser par l’architecte.
+
+Carte chargée seulement au clic ; coordonnées provisoires `9.4512,100.0412` et temps de trajet V4 maintenus à la demande de l’utilisateur, avec indication explicite sur la page. Couverture graphique adaptée du SVG de la page historique.
+
+Le contact photographique et le footer reprennent l’index ; le CTA final ouvre une demande de visite pour Baan Sawan. Les autres villas et les pages V5 restent inchangées.

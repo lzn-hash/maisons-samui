@@ -1,0 +1,15 @@
+/* Same Cormorant / Manrope hierarchy and section spacing as the V6 homepage. */
+.approach-page{font-size:var(--section-copy-size)}
+.approach-page .intro-copy p,.approach-page .editorial-copy>p,.approach-page .section-lead,.approach-page .page-hero .hero-lead{font-family:var(--sans);font-size:var(--section-copy-size);font-weight:400;line-height:1.75;letter-spacing:normal}
+.approach-page .intro-copy>p+p,.approach-page .editorial-copy>p+p{margin-top:24px}
+.approach-hero.with-photo{min-height:clamp(620px,72vh,850px)}
+.approach-hero.with-photo:after{background:linear-gradient(90deg,rgba(9,17,12,.78),rgba(9,17,12,.3) 75%),linear-gradient(0deg,rgba(9,17,12,.25),transparent)}
+.approach-hero h1{max-width:19ch}
+.approach-hero .hero-lead{color:#fff;max-width:51ch;margin-top:30px}
+.approach-hero .text-link{color:#fff;margin-top:32px}
+.approach-page .editorial-copy{padding:clamp(60px,7vw,110px) var(--gutter)}
+.approach-page .editorial-copy .text-link{margin-top:28px}
+.approach-page .editorial-image{position:relative;min-height:650px}
+.approach-page .editorial-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media(max-width:850px){.approach-page .editorial-split{grid-template-columns:1fr}.approach-page .editorial-image{min-height:0;height:clamp(330px,60vw,540px)}}
+@media(max-width:560px){.approach-hero.with-photo{min-height:650px}.approach-hero h1{font-size:clamp(2.75rem,10vw,3.4375rem)}.approach-page .editorial-copy{padding:68px var(--gutter)}}

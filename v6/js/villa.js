@@ -11,6 +11,17 @@
     $('#baan-selection').textContent=`Intérieur ${choice('interior').name} · Extérieurs ${choice('garden').name}`;
   };
   document.querySelectorAll('.baan-option input').forEach(input=>input.addEventListener('change',updateSelection));
+  // A label's default focus scrolls to its hidden radio, sometimes above the viewport.
+  // Keep native radio activation and keyboard behavior, but focus without moving the page.
+  document.querySelectorAll('.baan-option label').forEach(label=>{
+    const input=label.querySelector('input');
+    label.addEventListener('click',event=>{
+      if(event.target===input)return;
+      event.preventDefault();
+      input.focus({preventScroll:true});
+      input.click();
+    });
+  });
   const ask=()=>window.openContactModal({intent:'estimate',villa:data.villa,source:'baansawan-configuration',configuration:selection()});
   $('#baan-estimate').addEventListener('click',ask);
   const detail=$('#baan-detail');

@@ -9,7 +9,7 @@
 .cfg-scope[data-theme="light"]{
   --sec-bg:var(--paper); --fg:var(--ink); --fg-soft:var(--muted); --fg-lead:var(--muted);
   --deck-bg:#fff; --brd:#dce2dc; --brd-hover:#9fb2a0; --brd-on:var(--jungle);
-  --card:#fff; --card-hover:#f1f4ef; --card-on:#16382f0a;
+  --card:#fff; --card-hover:#f1f4ef; --card-on:#102c250a;
   --rule:var(--line); --accent:#4c7150; --em:#3f614c; --mark-core:#fff;
 }
 .cfg-scope .section-lead{color:var(--fg-lead)}

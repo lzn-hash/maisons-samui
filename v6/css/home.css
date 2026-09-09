@@ -1,5 +1,5 @@
 /* Section typography reference: V5's « Le beau a du sens » introduction. */
-:root{--jungle:#16382f;--deep:var(--jungle);--ink:#20382f;--muted:#617068;--white:#fff;--paper:#f7f8f5;--gutter:clamp(24px,4vw,64px);--gut:clamp(1.25rem,4vw,3rem);--nav-h:92px;--nav-height:92px;--accent:#c3d49a;--voile:9,17,12;--jungle-deep:var(--jungle);--white-pur:#fff;--ink-faint:#617068}
+:root{--jungle:#102c25;--deep:var(--jungle);--ink:#20382f;--muted:#617068;--white:#fff;--paper:#f7f8f5;--gutter:clamp(24px,4vw,64px);--gut:clamp(1.25rem,4vw,3rem);--nav-h:92px;--nav-height:92px;--accent:#c3d49a;--voile:9,17,12;--jungle-deep:var(--jungle);--white-pur:#fff;--ink-faint:#617068}
 :root{--section-title-size:clamp(2.625rem,4.6vw,4.5rem);--section-copy-size:1rem}
 html{scroll-padding-top:100px}
 body{font-size:1.1rem;line-height:1.75}
@@ -23,7 +23,7 @@ h3{font-size:2.2rem}
 .intro-title h2{max-width:16ch}
 
 /* Exact V4 hero geometry, with the approved complete logo above it. */
-.hero{--white:#fffdf9;--ink:#1a1e1a;--jungle:#16382f;--deep:var(--jungle);--jungle-deep:var(--jungle);--gut:clamp(1.25rem,4vw,3rem);--nav-h:92px;font-size:16px;line-height:1.7}
+.hero{--white:#fffdf9;--ink:#1a1e1a;--jungle:#102c25;--deep:var(--jungle);--jungle-deep:var(--jungle);--gut:clamp(1.25rem,4vw,3rem);--nav-h:92px;font-size:16px;line-height:1.7}
 .hero .ph,.vcard .ph{position:relative;isolation:isolate;background:var(--jungle-deep);overflow:hidden;display:block;width:100%;height:100%}
 .hero .ph img,.vcard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
 .hero .hero-actions{margin-top:0;gap:1rem;flex-direction:row;align-items:center}
@@ -90,10 +90,10 @@ h3{font-size:2.2rem}
 .journey .h-sec em{color:#3f614c}
 .journey .lead{color:var(--muted);max-width:46ch;margin:0}
 .steps{max-width:1440px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(1.5rem,2.5vw,2.2rem)}
-.step{padding:1.5rem 1.25rem;border:1px solid #16382f1f;border-radius:3px;background:#f7f8f5;transition:background .4s ease,border-color .4s ease,transform .4s ease}
-.step:hover{background:#fff;border-color:#16382f55;transform:translateY(-3px)}
+.step{padding:1.5rem 1.25rem;border:1px solid #102c251f;border-radius:3px;background:#f7f8f5;transition:background .4s ease,border-color .4s ease,transform .4s ease}
+.step:hover{background:#fff;border-color:#102c2555;transform:translateY(-3px)}
 .step-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.15rem}
-.step-icon{width:52px;height:52px;border-radius:50%;border:1px solid #16382f40;background:#fff;color:var(--jungle);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform .35s ease,background .35s ease,border-color .35s ease,color .35s ease}
+.step-icon{width:52px;height:52px;border-radius:50%;border:1px solid #102c2540;background:#fff;color:var(--jungle);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform .35s ease,background .35s ease,border-color .35s ease,color .35s ease}
 .step-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .step:hover .step-icon{transform:scale(1.05);background:var(--jungle);border-color:var(--jungle);color:#fff}
 .step b{display:block;font-size:.72rem;letter-spacing:.2em;color:#617068;font-weight:600}
@@ -103,7 +103,7 @@ h3{font-size:2.2rem}
 /* One continuous photograph: invitation left, practical information right. */
 .closing{display:block;position:relative;isolation:isolate;overflow:hidden;background:var(--deep);color:white}
 .closing>.closing-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2}
-.closing:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(9,17,12,.8),rgba(9,17,12,.42) 53%,rgba(9,17,12,.7)),linear-gradient(0deg,rgba(22,56,47,.82),transparent 32%)}
+.closing:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(9,17,12,.8),rgba(9,17,12,.42) 53%,rgba(9,17,12,.7)),linear-gradient(0deg,rgba(16,44,37,.82),transparent 32%)}
 .closing-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(60px,9vw,140px);align-items:center;max-width:1440px;min-height:640px;margin:auto;padding:clamp(85px,9vw,130px) var(--gutter)}
 .photo-contact{padding:0;display:grid;gap:32px;font-style:normal;color:white;width:100%;max-width:390px;text-align:left;justify-items:start;justify-self:end}
 .photo-contact>div{display:grid;grid-template-columns:26px minmax(0,1fr);gap:20px;align-items:center;max-width:100%}
@@ -136,7 +136,7 @@ h3{font-size:2.2rem}
   .site-header.menu-open .brand img{filter:none}
   .primary-nav{position:absolute;top:100%;left:0;right:0;display:flex;flex-direction:column;align-items:stretch;gap:0;background:#fff;color:var(--jungle);padding:18px var(--gut) 28px;font-family:var(--sans);font-size:1rem;font-weight:500;letter-spacing:.025em;text-transform:none;max-height:calc(100svh - 80px);overflow-y:auto;overscroll-behavior:contain;border-top:1px solid var(--line);box-shadow:0 18px 35px #102c2512;opacity:0;visibility:hidden;transform:translateY(-8px);pointer-events:none;transition:opacity .28s,transform .32s cubic-bezier(.2,.7,.2,1),visibility .32s}
   .site-header.menu-open .primary-nav{display:flex;opacity:1;visibility:visible;transform:none;pointer-events:auto}
-  .primary-nav>a,.primary-nav>.more-nav>summary{font:inherit;letter-spacing:inherit;padding:17px 0;border-bottom:1px solid #16382f13;min-height:56px}
+  .primary-nav>a,.primary-nav>.more-nav>summary{font:inherit;letter-spacing:inherit;padding:17px 0;border-bottom:1px solid #102c2513;min-height:56px}
   .primary-nav>a:after{display:block;left:0;right:auto;bottom:9px;width:38px;height:2px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
   .primary-nav>a:is(:hover,:focus-visible,:active):after{transform:scaleX(1)}
   .primary-nav>a{transition:padding-left .25s ease,color .25s ease}
@@ -202,7 +202,7 @@ h3{font-size:2.2rem}
   .team-names small{font-size:.95rem}
   .steps{grid-template-columns:1fr}
   .closing-inner{padding:70px var(--gutter);gap:40px}
-  .closing:before{background:linear-gradient(90deg,rgba(9,17,12,.8),rgba(9,17,12,.55)),linear-gradient(0deg,rgba(22,56,47,.82),transparent 32%)}
+  .closing:before{background:linear-gradient(90deg,rgba(9,17,12,.8),rgba(9,17,12,.55)),linear-gradient(0deg,rgba(16,44,37,.82),transparent 32%)}
   .photo-contact{padding-top:32px;gap:28px}
   .photo-contact>div{gap:15px}
   .home-footer{flex-direction:column;align-items:flex-start;padding:40px var(--gutter) 85px;gap:25px}

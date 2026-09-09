@@ -1,5 +1,5 @@
 /* Section typography reference: V5's « Le beau a du sens » introduction. */
-:root{--jungle:#16382f;--deep:#102c25;--ink:#20382f;--muted:#617068;--white:#fff;--paper:#f7f8f5;--gutter:clamp(24px,4vw,64px);--gut:clamp(1.25rem,4vw,3rem);--nav-h:92px;--nav-height:92px;--accent:#c3d49a;--voile:9,17,12;--jungle-deep:#14241b;--white-pur:#fff;--ink-faint:#617068}
+:root{--jungle:#16382f;--deep:var(--jungle);--ink:#20382f;--muted:#617068;--white:#fff;--paper:#f7f8f5;--gutter:clamp(24px,4vw,64px);--gut:clamp(1.25rem,4vw,3rem);--nav-h:92px;--nav-height:92px;--accent:#c3d49a;--voile:9,17,12;--jungle-deep:var(--jungle);--white-pur:#fff;--ink-faint:#617068}
 :root{--section-title-size:clamp(2.625rem,4.6vw,4.5rem);--section-copy-size:1rem}
 html{scroll-padding-top:100px}
 body{font-size:1.1rem;line-height:1.75}
@@ -23,7 +23,7 @@ h3{font-size:2.2rem}
 .intro-title h2{max-width:16ch}
 
 /* Exact V4 hero geometry, with the approved complete logo above it. */
-.hero{--white:#fffdf9;--ink:#1a1e1a;--jungle:#1a2e22;--deep:#14241b;--jungle-deep:#14241b;--gut:clamp(1.25rem,4vw,3rem);--nav-h:92px;font-size:16px;line-height:1.7}
+.hero{--white:#fffdf9;--ink:#1a1e1a;--jungle:#16382f;--deep:var(--jungle);--jungle-deep:var(--jungle);--gut:clamp(1.25rem,4vw,3rem);--nav-h:92px;font-size:16px;line-height:1.7}
 .hero .ph,.vcard .ph{position:relative;isolation:isolate;background:var(--jungle-deep);overflow:hidden;display:block;width:100%;height:100%}
 .hero .ph img,.vcard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
 .hero .hero-actions{margin-top:0;gap:1rem;flex-direction:row;align-items:center}
@@ -103,7 +103,7 @@ h3{font-size:2.2rem}
 /* One continuous photograph: invitation left, practical information right. */
 .closing{display:block;position:relative;isolation:isolate;overflow:hidden;background:var(--deep);color:white}
 .closing>.closing-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2}
-.closing:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(9,17,12,.8),rgba(9,17,12,.42) 53%,rgba(9,17,12,.7)),linear-gradient(0deg,rgba(16,44,37,.82),transparent 32%)}
+.closing:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(9,17,12,.8),rgba(9,17,12,.42) 53%,rgba(9,17,12,.7)),linear-gradient(0deg,rgba(22,56,47,.82),transparent 32%)}
 .closing-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(60px,9vw,140px);align-items:center;max-width:1440px;min-height:640px;margin:auto;padding:clamp(85px,9vw,130px) var(--gutter)}
 .photo-contact{padding:0;display:grid;gap:32px;font-style:normal;color:white;width:100%;max-width:390px;text-align:left;justify-items:start;justify-self:end}
 .photo-contact>div{display:grid;grid-template-columns:26px minmax(0,1fr);gap:20px;align-items:center;max-width:100%}
@@ -115,7 +115,7 @@ h3{font-size:2.2rem}
 .closing-content{padding:0;min-width:0}
 .closing-content h2{max-width:15ch}
 .closing-content p:not(.eyebrow){color:#fffffff0;max-width:44ch}
-.home-footer{background:var(--deep);color:#ffffffd9;padding:38px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:30px}
+.home-footer{background:var(--jungle);color:#ffffffd9;padding:38px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:30px}
 .closing-content .btn-light{position:relative;isolation:isolate;overflow:hidden;background:#fff;color:var(--jungle);border-color:#fff;transition:color .3s ease,border-color .3s ease}
 .closing-content .btn-light:before{content:'';position:absolute;inset:0;z-index:-1;background:var(--jungle);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.4,0,.2,1)}
 .closing-content .btn-light:hover,.closing-content .btn-light:focus-visible{color:#fff;background:#fff;border-color:#ffffff88;transform:none}
@@ -202,7 +202,7 @@ h3{font-size:2.2rem}
   .team-names small{font-size:.95rem}
   .steps{grid-template-columns:1fr}
   .closing-inner{padding:70px var(--gutter);gap:40px}
-  .closing:before{background:linear-gradient(90deg,rgba(9,17,12,.8),rgba(9,17,12,.55)),linear-gradient(0deg,rgba(16,44,37,.82),transparent 32%)}
+  .closing:before{background:linear-gradient(90deg,rgba(9,17,12,.8),rgba(9,17,12,.55)),linear-gradient(0deg,rgba(22,56,47,.82),transparent 32%)}
   .photo-contact{padding-top:32px;gap:28px}
   .photo-contact>div{gap:15px}
   .home-footer{flex-direction:column;align-items:flex-start;padding:40px var(--gutter) 85px;gap:25px}

@@ -41,3 +41,5 @@ La configuration conserve des cartes illustrées, avec détails en dialogue et s
 Carte chargée seulement au clic ; coordonnées provisoires `9.4512,100.0412` et temps de trajet V4 maintenus à la demande de l’utilisateur, avec indication explicite sur la page. Couverture graphique adaptée du SVG de la page historique.
 
 Le contact photographique et le footer reprennent l’index ; le CTA final ouvre une demande de visite pour Baan Sawan. Les autres villas et les pages V5 restent inchangées.
+
+La configuration Baan Sawan utilise un fond blanc et des cartes plus compactes sous « Composez une villa qui vous ressemble ». Les liens de détail sont soulignés en tirets (trait continu au survol et au focus). Les prestations sont légèrement resserrées et la localisation reprend le fond papier. Les tailles de titres de section et de paragraphes restent celles de l’index.

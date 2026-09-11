@@ -1,0 +1,8 @@
+# Latitude Samui — robots.txt
+# ETAT ACTUEL : site en preparation, exploration bloquee.
+# AU LANCEMENT : supprimer la ligne "Disallow: /" ci-dessous ET retirer la balise
+# <meta name="robots" content="noindex, nofollow"> des 30 pages HTML.
+User-agent: *
+Disallow: /
+
+Sitemap: https://latitudesamui.com/sitemap.xml

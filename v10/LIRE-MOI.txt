@@ -1,0 +1,70 @@
+LATITUDE SAMUI — MASTER AUTONOME V8 — FR / EN
+10 septembre 2026
+
+INSTALLATION
+Décompresser puis publier directement le contenu de cette archive à la racine
+de votre hébergement. index.html est l’accueil V8 en français.
+Voir CHANGELOG-V8.md pour la liste des corrections apportées à la V7.
+La version anglaise se trouve dans en/index.html.
+Aucun ancien site, dossier de version ou outil de compilation n’est nécessaire.
+
+APERÇU LOCAL
+Dans le dossier extrait, lancer : python3 -m http.server 8000
+Ouvrir http://localhost:8000/.
+Un serveur local est préférable à l’ouverture par double-clic pour tester
+les préférences de langue, les formulaires et les services externes.
+
+PAGES INCLUSES DANS LES DEUX LANGUES
+Accueil, villas, Baan Sawan, Sabai, Suk, Jai, Thong Krut Village,
+notre approche, Koh Samui, équipe, parcours d’achat, questions fréquentes,
+contact, confidentialité et page 404.
+Soit 15 pages par langue (dont la page 404), 30 documents HTML.
+
+MODIFICATIONS
+Les HTML sont les sources directement éditables, sans générateur externe.
+Modifier les textes français à la racine et leurs équivalents dans en/.
+Les styles, scripts et images sont communs aux deux langues.
+css/*.css : styles hors mobile, au-dessus de 850px.
+css/*.mobile.css : styles mobiles, jusqu’à 850px.
+Les pages chargent automatiquement le bon jeu de styles.
+Les données des galeries et des gammes sont dans le bloc JSON « baan-data »
+de chaque fiche villa, traduit dans son équivalent anglais.
+
+LANGUES
+Le bouton EN / FR ouvre la même page dans l’autre langue et mémorise le choix.
+Sur une première entrée par l’accueil, la langue du navigateur sert de préférence.
+Les gammes Essentiel, Éveil des sens, Art de vivre et Horizon conservent leur
+nom de collection dans les deux langues.
+
+CONTACT ET SERVICES EXTERNES
+Les formulaires sont utilisables immédiatement : ils préparent un email complet,
+avec la villa et les gammes choisies. L’utilisateur doit ouvrir sa messagerie
+puis envoyer le message, ou copier la demande. Aucun faux message d’envoi réussi.
+Les demandes de plans/brochure sont des demandes par email : aucun PDF de
+brochure définitive n’a été fourni et aucun téléchargement fictif n’a été ajouté.
+Pour un envoi direct au CRM, configurer un endpoint HTTPS dans js/config.js
+(LATITUDE_ODOO_LEAD_ENDPOINT). Cet endpoint doit accepter le JSON envoyé par
+js/contact.js et autoriser l’origine de votre domaine. Ne jamais exposer une
+clé secrète dans le JavaScript public.
+Le JSON contient un champ anti-spam « website » invisible pour l’utilisateur :
+l’endpoint doit écarter silencieusement toute demande où ce champ est renseigné.
+Le chat conserve le canal Odoo existant. Son affichage dépend de la disponibilité
+réelle du service et des opérateurs.
+Google Fonts, Google Maps et Odoo nécessitent une connexion internet.
+Google Maps est chargé à la demande depuis les fiches villas.
+
+DONNÉES EN ATTENTE
+Les emplacements des portraits et le téléphone provisoire sont conservés.
+Le repère de Baan Sawan est provisoire. Les autres villas affichent le secteur
+Lamai, sans reprendre les coordonnées ou temps de trajet de Baan Sawan.
+Les prestations et visuels restent indicatifs, comme dans les pages validées.
+Le prix de Thong Krut Village est indiqué sur demande de façon cohérente.
+Avant lancement commercial, confirmer dates, prix et descriptions avec l’équipe.
+
+VÉRIFICATIONS EFFECTUÉES
+30 pages contrôlées : une langue et un titre principal par page, IDs uniques,
+liens internes, ancres, feuilles de style, scripts et images présents.
+74 vérifications d’interactions simulées : ouverture des formulaires, sélection
+des gammes, détails, préparation de l’email avec les choix, navigation galerie.
+Aucun envoi réel de formulaire n’a été effectué et aucun service externe n’a
+été testé avec de vraies données. Pas de validation visuelle sur navigateur réel.

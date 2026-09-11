@@ -1,0 +1,37 @@
+.collection-hero{min-height:576px;min-height:100svh}
+.collection-hero .baan-hero-grid{grid-template-columns:1fr;padding-bottom:clamp(43.2px,8vh,79.2px)}
+.collection-hero h1{font-size:var(--hero-title-size);line-height:.93;letter-spacing:-.035em}
+.collection-hero .baan-hero-copy>p{max-width:44ch;margin-top:1.17rem;font-family:var(--display);font-size:var(--hero-caption-size);line-height:1.55;color:#fff}
+.collection-collage{position:absolute;inset:0;z-index:-2;background:var(--jungle)}
+.collection-collage>div{position:absolute;top:0;bottom:0;overflow:hidden}
+.collection-collage>div:nth-child(1){left:0;width:42%;clip-path:polygon(0 0,100% 0,71.43% 100%,0 100%)}
+.collection-collage>div:nth-child(2){left:30%;width:45%;clip-path:polygon(26.67% 0,100% 0,73.33% 100%,0 100%)}
+.collection-collage>div:nth-child(3){left:63%;width:37%;clip-path:polygon(32.43% 0,100% 0,100% 100%,0 100%)}
+.collection-collage img{height:100%;width:100%;object-fit:cover;object-position:center}
+.collection-collage>div:first-child img{object-position:55% center}
+.collection-list{padding:clamp(32.4px,4vw,50.4px) 0 0}
+.collection-row{display:grid;grid-template-columns:1.15fr 1fr;max-width:1296px;margin:0 auto;background:var(--paper)}
+.collection-row:nth-child(even){grid-template-columns:1fr 1.15fr;background:white}
+.collection-row:nth-child(even) .collection-image{order:2}
+.collection-image{display:block;min-width:0;overflow:hidden;min-height:324px}
+.collection-image img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.collection-image:hover img{transform:scale(1.025)}
+.collection-image:focus-visible{outline-offset:-5.4px}
+.collection-copy{padding:clamp(27px,3.2vw,41.4px) clamp(21.6px,4vw,52.2px);align-self:center;min-width:0}
+.collection-copy h2{font-size:var(--section-title-size)}
+.collection-place{font:400 0.7875rem/1.6 var(--sans);color:var(--muted);margin-top:7.2px}
+.collection-description{font:400 var(--section-copy-size)/1.75 var(--sans);color:var(--muted);margin-top:16.2px;max-width:48ch}
+.collection-facts{display:flex;gap:clamp(16.2px,3vw,34.2px);margin:19.8px 0 0;padding:16.2px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.collection-facts>div{display:flex;flex-direction:column-reverse;gap:2.7px}
+.collection-facts dt{font-size:0.75rem;color:var(--muted)}
+.collection-facts dd{margin:0;font:400 1.575rem/1.1 var(--display);white-space:nowrap}
+.collection-actions{display:flex;align-items:end;justify-content:space-between;flex-wrap:wrap;gap:12.6px 21.6px;margin-top:19.8px}
+.collection-price span{display:block;font-size:0.75rem;color:var(--muted)}
+.collection-price strong{display:block;font:400 1.8rem/1.2 var(--display);white-space:nowrap}
+.collection-actions .text-link{margin:0;font-size:0.75rem;gap:12.6px}
+.collection-price-pending{font:400 1.575rem/1.2 var(--display)}
+.collection-note{max-width:1296px;margin:auto;padding:21.6px var(--gutter) 36px;font-size:0.6875rem;line-height:1.7;color:var(--muted)}
+@media(min-width:1296.9px){.collection-row{margin-bottom:25.2px}.collection-list{padding-left:var(--gutter);padding-right:var(--gutter)}}
+@media(max-width:810px){.collection-copy{padding:27px 21.6px}.collection-facts{gap:18px}.collection-image{min-height:324px}.collection-hero .baan-hero-grid{padding-top:130.5px}.collection-actions{align-items:start;flex-direction:column;gap:9px}}
+@media(max-width:585px){.collection-hero{min-height:648px;min-height:100svh}.collection-hero h1{font-size:clamp(2.25rem,10vw,3rem)}.collection-hero .baan-hero-grid{padding:126px var(--gutter) 45px}.collection-row,.collection-row:nth-child(even){grid-template-columns:1fr}.collection-row:nth-child(even) .collection-image{order:0}.collection-image{min-height:0;aspect-ratio:1.4}.collection-copy{padding:27px var(--gutter) 32.4px}.collection-copy h2{font-size:1.75rem}.collection-list{padding-top:21.6px}.collection-actions{flex-direction:row;align-items:end}.collection-collage>div:first-child img{object-position:62% center}}
+@media(prefers-reduced-motion:reduce){.collection-image img{transition:none}}

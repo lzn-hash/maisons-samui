@@ -1,0 +1,35 @@
+.parcours-page .editorial-hero h1{max-width:21ch;font-size:clamp(2.25rem,6vw,4rem)}
+.purchase-steps ol{list-style:none;padding:0;margin:0}
+.purchase-steps li{display:grid;grid-template-columns:63px 1fr 1.15fr;gap:27px;padding:36px 0;border-top:1px solid var(--line)}
+.purchase-number{font:400 2.7rem/1 var(--display);color:var(--muted)}
+.purchase-step-title h2{font-size:clamp(1.75rem,3vw,1.75rem)}
+.purchase-step-title>p{font-size:0.875rem;line-height:1.65;color:var(--muted);margin-top:12.6px}
+.purchase-step-copy p,.purchase-budget p{font:400 0.9rem/1.75 var(--sans);color:var(--muted)}
+.purchase-step-copy .purchase-focus{color:var(--jungle);margin-top:16.2px;padding-top:14.4px;border-top:1px solid var(--line);font-size:0.75rem}
+.purchase-budget article{border-top:1px solid var(--line);padding:21.6px 0}
+.purchase-budget h3{font-size:1.75rem;margin-bottom:12.6px}
+.questions-layout{display:grid;grid-template-columns:252px minmax(0,1fr);gap:clamp(32.4px,7vw,90px);align-items:start}
+.questions-layout>aside{position:sticky;top:108px}
+.questions-nav{display:flex;flex-direction:column}
+.questions-nav a{display:flex;justify-content:space-between;align-items:center;gap:12.6px;padding:15.3px 0;border-bottom:1px solid var(--line);font-size:0.75rem}
+.questions-nav a:first-child{border-top:1px solid var(--line)}
+.questions-nav a:hover{text-decoration:underline;text-underline-offset:4.5px}
+.questions-nav svg{width:15.3px;height:15.3px}
+.questions-contact{margin-top:27px;padding:21.6px;background:var(--paper)}
+.questions-contact p{font-size:0.875rem;line-height:1.65;color:var(--muted)}
+.questions-contact .btn{margin-top:18px;padding:10.8px 16.2px;gap:12.6px}
+.questions-groups>section{scroll-margin-top:103.5px;margin-bottom:43.2px}
+.questions-groups>section:last-child{margin-bottom:0}
+.questions-groups h2{font-size:clamp(1.75rem,3.5vw,2.25rem);margin-bottom:21.6px}
+.questions-groups .faq-item summary{font-size:0.875rem;line-height:1.6;min-height:57.6px;padding:18px 0}
+.questions-groups .faq-item>p{font:400 0.9rem/1.75 var(--sans);color:var(--muted);padding:0 31.5px 21.6px 0;max-width:70ch}
+.questions-groups .faq-item[open]{background:transparent}
+@media(max-width:810px){.questions-layout{grid-template-columns:198px minmax(0,1fr);gap:31.5px}.purchase-steps li{grid-template-columns:43.2px 1fr 1.2fr;gap:19.8px}}
+@media(max-width:585px){.questions-layout{grid-template-columns:1fr;gap:32.4px}.questions-layout>aside{position:static}.questions-nav{flex-direction:row;flex-wrap:wrap;gap:7.2px 18px}.questions-nav a{padding:9px 0;border-top:0!important}.questions-nav svg{display:none}.questions-contact{display:none}.purchase-steps li{grid-template-columns:37.8px 1fr;gap:14.4px;padding:27px 0}.purchase-step-copy{grid-column:2}.purchase-number{font-size:2.25rem}.purchase-step-title h2{font-size:1.75rem}.parcours-page .editorial-hero h1{font-size:clamp(1.75rem,9vw,2.25rem)}}
+
+
+.guide-page .guide-intro{padding-top:126px;padding-bottom:32.4px;background:white}
+.guide-intro h1{font:400 var(--section-title-size)/1.06 var(--display);letter-spacing:-.028em;max-width:24ch}
+.guide-page .purchase-steps,.guide-page .questions-layout{padding-top:0}
+.guide-page .nav-contact:hover{background:var(--jungle);color:white;border-color:var(--jungle)}
+@media(max-width:504px){.guide-page .guide-intro{padding-top:108px;padding-bottom:27px}.guide-intro h1{font-size:1.75rem}}
